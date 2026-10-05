@@ -1,5 +1,5 @@
 --!strict
--- Beast Out on BN6's custom screen (docs/design/rules-in-luau.md §4.4, S6):
+-- Beast Out on EXE6's custom screen (docs/design/rules-in-luau.md §4.4, S6):
 -- the button in the special slot (`sub_8029FB4`, `sub_802A57E`,
 -- `sub_8028D6C`), its animation as a window (`sub_802770C`), the form it
 -- puts the navi in at the turn's start (`sub_802937A`, `sub_802A040`), and

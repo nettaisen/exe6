@@ -1,7 +1,7 @@
 --!strict
 -- The TimeBom chips' dimming controller (the original's effect object
 -- #0x27, `sub_80E31D8`): the shared controller (@exelib/timebom/controller)
--- placing BN6's bomb (./countdown) on the first free enemy panel in front of
+-- placing EXE6's bomb (./countdown) on the first free enemy panel in front of
 -- the user. A chip's `dimming` hook is `controller.hook(variant)`.
 
 local common = require("@exelib/timebom/controller")
@@ -46,6 +46,6 @@ local function place(me: Object)
     end
 end
 
-local bn6 = common.make("timebom/controller", place)
+local exe6 = common.make("timebom/controller", place)
 
-return { kind = bn6.kind, hook = bn6.hook, make = common.make }
+return { kind = exe6.kind, hook = exe6.hook, make = common.make }

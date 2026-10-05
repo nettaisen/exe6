@@ -1,5 +1,5 @@
 --!strict
--- BN6's battle flow where games differ (docs/design/bn5-map.md §15.3 items 7 and 13), the arena's: a custom
+-- EXE6's battle flow where games differ (docs/design/exe5-map.md §15.3 items 7 and 13), the arena's: a custom
 -- screen's result is 50 words on the link (`sub_800B3A2`, the sending side's game's), and the screen closes on the
 -- tick after both results are in (`sub_8026A28`); before it opens, the transformation
 -- sequencer runs once more after the reversions (state 0x24, `sub_8008492`); the fight checks for an escape

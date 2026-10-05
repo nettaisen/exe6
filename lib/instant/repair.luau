@@ -4,7 +4,7 @@
 -- is repaired to full, with the heal effect where it stands and the heal
 -- sound.
 --
--- No chip, weapon routine or link navi of BN6's names effect 6: nothing
+-- No chip, weapon routine or link navi of EXE6's names effect 6: nothing
 -- uses `repair.instant` (unverified: no scenario reaches it).
 
 local repair = {}

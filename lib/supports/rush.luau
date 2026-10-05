@@ -1,6 +1,6 @@
 --!strict
--- Rush (the original's actor object #0x4B, `sub_80C3218`): the shared Rush (@exelib/supports/rush, BN5's too) in
--- BN6's look, the NaviCust support that stops a chip Rush cancels (`sub_8010740`). He spares the second WhiCapsl,
+-- Rush (the original's actor object #0x4B, `sub_80C3218`): the shared Rush (@exelib/supports/rush, EXE5's too) in
+-- EXE6's look, the NaviCust support that stops a chip Rush cancels (`sub_8010740`). He spares the second WhiCapsl,
 -- which doesn't come from the hand; without the opponent's navi at his bite, the game's stack goes wrong. See
 -- docs/engine/chips.md §2.10.
 

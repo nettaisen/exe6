@@ -95,7 +95,7 @@ end
 -- `sub_810FA4C`: which fifth of the panel it is through: the ticks over a
 -- fifth of the panel's, with a 5 counted as 4. (A quotient past 5 stays,
 -- as the game has it: one needs a panel's ticks 5n + r with n < r <= 4,
--- which no BN6 dragon takes, all swimming a panel in 10.)
+-- which no EXE6 dragon takes, all swimming a panel in 10.)
 local function fifth(steps: number, per_panel: number): number
     local n = int.tdiv(per_panel, 5)
     if n == 0 then

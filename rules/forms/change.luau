@@ -1,8 +1,8 @@
 --!strict
--- BN6's form change (`sub_8014A38`): while the battle is paused at a turn's
+-- EXE6's form change (`sub_8014A38`): while the battle is paused at a turn's
 -- start, the navi changes into the form its side asked for (the turn's
 -- transform record, `navi:form_change_target()`). The turn-start sequencer
--- (the framework's, BN5 has it too) waits for it. Every BN6 form names this
+-- (the framework's, EXE5 has it too) waits for it. Every EXE6 form names this
 -- action as its `change`.
 --
 -- Five sequences, the routine's tables, each of four steps (the attack's

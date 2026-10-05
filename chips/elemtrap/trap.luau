@@ -1,6 +1,6 @@
 --!strict
 -- ElemTrap's trap (the original's attack object #0x4D, `sub_80CDF84`): the
--- shared trap (@exelib/elemtrap/trap), BN6's kind and look. The trap
+-- shared trap (@exelib/elemtrap/trap), EXE6's kind and look. The trap
 -- chips' controller (lib/traps/controller) sets it for ElemTrap:
 -- `trap.set(controller, user, chip, bonus)` (`sub_80E358C`).
 
@@ -17,10 +17,10 @@ local SPARKLE = define.effect { sprite = asset.sprite("hit-sparks"), anim = 7, p
 local SPARKLE_SOUND = asset.sound("dimming-sparkle")
 local SPARKLE_DY, SPARKLE_Z = 0x10_0000, 0x20_0000
 
--- BN6's look: it watches fire to wood, is nothing and reaches the other
+-- EXE6's look: it watches fire to wood, is nothing and reaches the other
 -- side's attacks and objects, sparkles 16 pixels down and 32 up, and
 -- strikes with ElemTrap's counterattack.
-local BN6: ElemTrapLook = {
+local EXE6: ElemTrapLook = {
     sparkle = SPARKLE,
     sparkle_sound = SPARKLE_SOUND,
     watches = "fire_to_wood",
@@ -35,9 +35,9 @@ local BN6: ElemTrapLook = {
 trap.make_kind = common.make_kind
 trap.spawn = common.spawn
 
-trap.kind = common.make_kind("elemtrap/trap", BN6)
+trap.kind = common.make_kind("elemtrap/trap", EXE6)
 
--- ElemTrap's (`sub_80E358C`): BN6's trap.
+-- ElemTrap's (`sub_80E358C`): EXE6's trap.
 function trap.set(controller: Object, user: Object, chip: Chip?, bonus: number): Object?
     return common.spawn(trap.kind, controller, user, chip, bonus)
 end

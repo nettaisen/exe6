@@ -1,6 +1,6 @@
 --!strict
 -- TankCan's shell (the original's attack object #0x3C, `sub_80CB6F8`):
--- the shared shell (@exelib/tankcan/shell) with BN6's look. Unseen, it
+-- the shared shell (@exelib/tankcan/shell) with EXE6's look. Unseen, it
 -- steps a panel every two ticks from where it appears; its own hit ends
 -- it with a fiery burst. Off the far edge it blasts the last column it
 -- crossed (and cracks it), and 15, 20 and 25 ticks later explosions go off

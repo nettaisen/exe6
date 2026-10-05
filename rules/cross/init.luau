@@ -1,5 +1,5 @@
 --!strict
--- BN6's Crosses on the custom screen (docs/design/rules-in-luau.md §3.1,
+-- EXE6's Crosses on the custom screen (docs/design/rules-in-luau.md §3.1,
 -- S6): the Cross window (window.luau), ChargeCross's extra chips and the
 -- hand size they go into (`sub_802A49C`, `sub_802A40C`), and DustCross's
 -- scrap button.
@@ -90,7 +90,7 @@ return define.system {
         cross_chosen = "bool",
         chosen = "u8",
     },
-    -- What the player's save brings (bn6-compat writes it, nettai-match
+    -- What the player's save brings (exe6-compat writes it, nettai-match
     -- from a match's side): the game's version (its five Crosses), the
     -- Crosses it owns (by Cross number: Gregar's event flags 0xE2-0xE6,
     -- Falzar's 0xE7-0xEB), and nettai's Cross list (window.luau).

@@ -1,5 +1,5 @@
 --!strict
--- BN6's folder rules, as its folder editor enforces them (`sub_8135080`, with
+-- EXE6's folder rules, as its folder editor enforces them (`sub_8135080`, with
 -- `sub_8135500`) and a link battle checks them again before it starts
 -- (`sub_8120D10`, counting with `sub_8120AE8`): a tool's question
 -- (`folder_check`: a match's checks, netplay's offer, the editor, live play's
@@ -19,13 +19,13 @@
 --   four, 30-39 three, 40-49 two, 50 and up one (`sub_8135500`).
 -- - `mega`, `giga`: at most the navi's Mega and Giga levels (NaviStats+0x0B,
 --   +0x0C).
--- - `dark`: at most three chips with the dark flag (no BN6 chip has it).
+-- - `dark`: at most three chips with the dark flag (no EXE6 chip has it).
 -- - `regular`: an entry of the folder, its MB at most the navi's Regular
 --   memory (+0x09: the editor drops a Regular chip past it, `sub_81352A0`,
 --   `sub_813CEA0`).
 -- - `tags`: two other entries, their MB together at most 60 (`sub_81349E8`: a
 --   chip can be tagged while the tag chips' MB leave room for it).
--- - `system`: a chip one of BN6's systems plays (MstrCros, the cross
+-- - `system`: a chip one of EXE6's systems plays (MstrCros, the cross
 --   system's) only when the side's ruleset has the system (a variant may
 --   leave it out; BeastOut, the beast system's, is past the pack anyway).
 

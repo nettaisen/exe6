@@ -1,6 +1,6 @@
 --!strict
 -- The rising bubble (the original's effect object #0x14, `sub_80E1CF8`):
--- the shared bubble (@exelib/rising-bubble/rising_bubble), BN6's kind and
+-- the shared bubble (@exelib/rising-bubble/rising_bubble), EXE6's kind and
 -- sprite (the small puff).
 
 local common = require("@exelib/rising-bubble")

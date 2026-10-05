@@ -1,13 +1,13 @@
 --!strict
--- BN6's form changes (docs/design/rules-in-luau.md §3.1): the five
+-- EXE6's form changes (docs/design/rules-in-luau.md §3.1): the five
 -- sequences of `sub_8014A38` that change a navi into a Cross, Beast Out, a
--- Cross in Beast Out or Beast Over (change.luau; every BN6 form names the
+-- Cross in Beast Out or Beast Over (change.luau; every EXE6 form names the
 -- action as its `change`), the Cross navi's image merging (merge.luau), and
 -- what a change notes of the round (`sub_800AB2E`: Beast Out used, crossed;
 -- read after the battle).
 --
 -- The turn-start sequencer that asks for the change, and the revert, are
--- the framework's (BN5 has them too).
+-- the framework's (EXE5 has them too).
 
 local change = require("@self/change")
 
@@ -31,7 +31,7 @@ forms.action = define.action {
 forms.system = define.system {
     id = "forms",
     state = { beast_out_used = "bool", crossed = "bool" },
-    -- What BN6's forms say of themselves (docs/design/rules-in-luau.md §7.5;
+    -- What EXE6's forms say of themselves (docs/design/rules-in-luau.md §7.5;
     -- kind.luau reads the kind): their kind (every form but the base form
     -- names one), whose game's form each is (the Beast's roar, a Cross's
     -- game), the navi a Cross (and one in Beast Out) is made with, and the

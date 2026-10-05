@@ -1,4 +1,4 @@
-# Japanese: the strings the Japanese games (EXE6 Falzar and Gregar) show, by definition key, for
+# Japanese: the strings the Japanese games (JP Falzar and Gregar) show, by definition key, for
 # the frontend's --lang ja (docs/design/text-rendering.md §10). Display text only: the
 # battle counts the content's own strings (en.toml: a description's lines, the run message's
 # characters per line), so this table changes neither the battle nor the content's hash.
@@ -101,7 +101,7 @@ language = "ja"
 "darkplus" = { name = "ダークプラス", description = "\n\n" }
 "darkthnd" = { name = "ダークサンダー", description = "\n\n" }
 # (The ROMs print a gift's text here, kept in the save: an `FF 01 nn` script. This is the
-# text Tango's netplay saves for EXE6 hold: tango-gamesupport-bn6 saves/f_jp.raw and g_jp.raw, offset 0x7D6.)
+# text Tango's Japanese netplay saves hold: tango-gamesupport-bn6 saves/f_jp.raw and g_jp.raw, offset 0x7D6.)
 "dblbeast" = { name = "ダブルビースト", description = "はかいするキバと\nひきさくツバサ!\nゆめのダブル攻撃" }
 "dbldream" = { name = "ダブルドリーム", description = "ミテイ" }
 "dblhero" = { name = "ダブルヒーロー", description = "エグゼ1リスペクト\nブルースといっしょ\nにてきを攻撃する!" }
@@ -148,7 +148,7 @@ language = "ja"
 "erasemn-sp" = { name = "キラーマン\uE003", description = "3方向にうごく\nサイトをAボタンで\nとめてビーム攻撃" }
 "etomahwk" = { name = "Eトマホーク", description = "前方1れつを\n攻撃する大オノを\nふりおろす!" }
 # (The ROMs print a gift's text here, kept in the save: an `FF 01 nn` script. This is the
-# text Tango's netplay saves for EXE6 hold: tango-gamesupport-bn6 saves/f_jp.raw, offset 0x83A.)
+# text Tango's Japanese netplay saves hold: tango-gamesupport-bn6 saves/f_jp.raw, offset 0x83A.)
 "falzar" = { name = "ファルザー", description = "電脳獣ファルザーが\nトルネード攻撃!\nすべてをふきとばす" }
 "fan" = { name = "スイコミ", description = "バキュームファンを\nおき 風でてきを\nすいよせる" }
 "fanfare" = { name = "オウエンカ", description = "ララパッパをおく\nえんそうちゅう\n自分がむてきに!" }
@@ -183,7 +183,7 @@ language = "ja"
 "grasseed" = { name = "クサムラシード", description = "3マス前にタネ!\n9マス分のパネルを\nクサムラにする!" }
 "greatyo" = { name = "ヨーヨーグレート", description = "たて3れつに\nすすむヨーヨー!" }
 # (The ROMs print a gift's text here, kept in the save: an `FF 01 nn` script. This is the
-# text Tango's netplay saves for EXE6 hold: tango-gamesupport-bn6 saves/g_jp.raw, offset 0x83A.)
+# text Tango's Japanese netplay saves hold: tango-gamesupport-bn6 saves/g_jp.raw, offset 0x83A.)
 "gregar" = { name = "グレイガ", description = "電脳獣グレイガが\nブレス攻撃!\nすべてをやきつくす" }
 "grndman" = { name = "グランドマン", description = "前方へすすんでいき\n画面はしをドリルで\nほってらくせき攻撃" }
 "grndman-ex" = { name = "グランドマン\uE002", description = "前方へすすんでいき\n画面はしをドリルで\nほってらくせき攻撃" }

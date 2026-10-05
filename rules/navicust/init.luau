@@ -1,5 +1,5 @@
 --!strict
--- BN6's NaviCust (docs/design/navicust.md): as the round is set up
+-- EXE6's NaviCust (docs/design/navicust.md): as the round is set up
 -- (`round_setup`, before anything reads the stats and before the patch
 -- cards, which apply to what the NaviCust made), a player's NaviCust
 -- (`battle.navicust`: the programs placed on its grid) is compiled into the
@@ -32,9 +32,9 @@
 --
 -- A program's color, shape and whether it is a plus part are the engine's
 -- (its definition's); its `bug`, its `exclusive` and its `effects` this
--- system's (./programs.luau). A program `anywhere` (no BN6 program is one)
+-- system's (./programs.luau). A program `anywhere` (no EXE6 program is one)
 -- works on the command line or off it and is never bugged by where it is.
--- The compile is the one BN5's shares (@exelib/navicust/compile); BN6's are
+-- The compile is the one EXE5's shares (@exelib/navicust/compile); EXE6's are
 -- its board (its frame, where a neighbor counts), its bugs and the emotion
 -- window's glitch.
 
@@ -85,9 +85,9 @@ local BUG_WORK: { [string]: (stats: Navi, level: number, hp: number) -> () } = {
     end,
 }
 
--- BN6's compile: its board, its bugs, and the emotion window's glitch any bug sets (flag 0x1720).
-local BN6: NaviCustGame = {
-    name = "BN6",
+-- EXE6's compile: its board, its bugs, and the emotion window's glitch any bug sets (flag 0x1720).
+local EXE6: NaviCustGame = {
+    name = "EXE6",
     board = board,
     bugs = programs.BUGS,
     bug_work = BUG_WORK,
@@ -133,7 +133,7 @@ end
 -- `round_setup`: `side`'s NaviCust compiled into its stats; MegaMan from a
 -- navi code then gets his level's gains, and the HP its maximum.
 local function run(side: number)
-    if not compile.run(side, BN6) then
+    if not compile.run(side, EXE6) then
         return
     end
     local level = battle.navi_level(side)

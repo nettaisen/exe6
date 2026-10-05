@@ -1,6 +1,6 @@
 --!strict
--- BN6's swords' slash (the original's action 0x13, `sub_80EB776`): the
--- shared slash (@exelib/swords/slash) with BN6's attachment for the blade.
+-- EXE6's swords' slash (the original's action 0x13, `sub_80EB776`): the
+-- shared slash (@exelib/swords/slash) with EXE6's attachment for the blade.
 -- Each chip composes its own (`slash.action { blade = ..., hit = ...,
 -- effect = ..., sound = ... }`, docs/design/content-model-v2.md §5.2).
 
@@ -23,7 +23,7 @@ slash.CROSS_HIT = {
     hit_mod = 3,
 }
 
--- BN6's: the blade by its Beast forms' arms, and no step in a Beast form.
+-- EXE6's: the blade by its Beast forms' arms, and no step in a Beast form.
 local GAME: SlashGame = { blade_anim = parts.blade_anim, stays = kind.beast }
 
 -- A chip's slash.

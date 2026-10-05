@@ -5,8 +5,8 @@
 -- first (Geddon breaks them, the capsules crack them, a third change no
 -- chip uses poisons them), with a puff over each that changed; then it
 -- lets its holder go on. Geddon's and the capsules' controller
--- (./controller) spawns it. The behavior is BN5's too
--- (@exelib/geddon/quake), made here with BN6's look.
+-- (./controller) spawns it. The behavior is EXE5's too
+-- (@exelib/geddon/quake), made here with EXE6's look.
 
 local common = require("@exelib/geddon/quake")
 local rising_bubble = require("../../objects/rising-bubble")

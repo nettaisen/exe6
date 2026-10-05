@@ -1,7 +1,7 @@
 --!strict
 -- ElemTrap's counterattack (the original's effect object #0x2B,
--- `sub_80E35A4`): the shared counterattack (@exelib/elemtrap/strike), BN6's
--- kind and look: its strikes by element, and BN6's panel bursts.
+-- `sub_80E35A4`): the shared counterattack (@exelib/elemtrap/strike), EXE6's
+-- kind and look: its strikes by element, and EXE6's panel bursts.
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/elemtrap/strike")
@@ -42,9 +42,9 @@ local STRIKES: { [number]: ElemTrapStrike } = {
     },
     [4] = { sound = asset.sound("junk-shot"), spark = sparks.wood, hit_mod = 1, status = statuses.confuse_480, burst = LEAVES },
 }
--- BN6's look: the strikes by element, what the hits are and reach, and the
+-- EXE6's look: the strikes by element, what the hits are and reach, and the
 -- bursts' kind.
-local BN6: ElemTrapStrikeLook = {
+local EXE6: ElemTrapStrikeLook = {
     strikes = STRIKES,
     self_type = collision.attack,
     target = collision.hits_navis,
@@ -54,10 +54,10 @@ local BN6: ElemTrapStrikeLook = {
 -- A counterattack kind (`id`) of `look`.
 strike.make_kind = common.make_kind
 
-strike.kind = common.make_kind("elemtrap/strike", BN6)
+strike.kind = common.make_kind("elemtrap/strike", EXE6)
 
 -- `sub_80E360E`: the counterattack for `user`, of `element`, with the
--- trap's damage word and bonus. Of `kind`, BN6's by default.
+-- trap's damage word and bonus. Of `kind`, EXE6's by default.
 function strike.spawn(user: Object, element: number, damage: number, bonus: number, kind: Kind?): Object?
     return common.spawn(kind or strike.kind, user, element, damage, bonus)
 end

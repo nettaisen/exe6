@@ -1,7 +1,7 @@
 --!strict
 -- The countdown bomb (the original's attack object #0x4B, `sub_80CD8EC`)
 -- the TimeBom chips set (./controller): the shared bomb
--- (@exelib/timebom/countdown), BN6's kind and look.
+-- (@exelib/timebom/countdown), EXE6's kind and look.
 
 local absorbed_obstacle = require("../../objects/absorbed-obstacle")
 local collision = require("../../rules/collision")
@@ -15,10 +15,10 @@ countdown.make_kind = common.make_kind
 countdown.variant = common.variant
 countdown.spawn_kind = common.spawn_kind
 
-local BN6_SPRITE = asset.sprite("countdown-bomb")
+local EXE6_SPRITE = asset.sprite("countdown-bomb")
 
 countdown.kind = common.make_kind("timebom/countdown", {
-    sprite = BN6_SPRITE,
+    sprite = EXE6_SPRITE,
     sounds = {
         place = asset.sound("appear"),
         tick = asset.sound("tick"),
@@ -35,13 +35,13 @@ countdown.kind = common.make_kind("timebom/countdown", {
     -- sprite, with the sprite parts it hid (its digits); thrown, its parts
     -- keep their own facing.
     absorbed = absorbed_obstacle.look {
-        sprite = BN6_SPRITE,
+        sprite = EXE6_SPRITE,
         keeps_parts = true,
         own_facing = true,
     },
 })
 
--- BN6's bomb.
+-- EXE6's bomb.
 function countdown.spawn(variant: CountdownVariant, x: number, y: number, side: number, damage: number, bonus: number): Object?
     return common.spawn_kind(countdown.kind, variant, x, y, side, damage, bonus)
 end

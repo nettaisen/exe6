@@ -1,6 +1,6 @@
 --!strict
--- BN6's thrown bomb (the original's attack object #8, `sub_80C5BB0`): the
--- shared bomb (@exelib/bombs/bomb), BN6's kind and look. MiniBomb, EnergBom,
+-- EXE6's thrown bomb (the original's attack object #8, `sub_80C5BB0`): the
+-- shared bomb (@exelib/bombs/bomb), EXE6's kind and look. MiniBomb, EnergBom,
 -- MegEnBom and BigBomb: what differs between the chips is its variant, a
 -- record (`bomb.variant { ... }`).
 

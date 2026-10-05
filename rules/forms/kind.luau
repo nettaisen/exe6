@@ -1,7 +1,7 @@
 --!strict
--- BN6's kinds of form: the forms system's extension `kind` (system.luau),
--- which every BN6 form but the base form names: a Cross, Beast Out ("beast"),
--- a Cross in Beast Out ("cross_beast") or Beast Over. What BN6's rules and
+-- EXE6's kinds of form: the forms system's extension `kind` (system.luau),
+-- which every EXE6 form but the base form names: a Cross, Beast Out ("beast"),
+-- a Cross in Beast Out ("cross_beast") or Beast Over. What EXE6's rules and
 -- chips ask of a side's form by it (the original's tests of the form's
 -- number). A form of another game has no kind: it is none of these.
 

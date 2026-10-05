@@ -1,7 +1,7 @@
 --!strict
 -- The Spreaders' action (the original's action 0x25, `sub_80ECBB0`;
 -- docs/engine/shot-chips.md §5): the shared action
--- (@exelib/spreadr/action) with BN6's sound, attachment and bullet.
+-- (@exelib/spreadr/action) with EXE6's sound, attachment and bullet.
 -- SpoutCross's charged shot fires its own bullet from its water cannon the
 -- same way.
 

@@ -1,6 +1,6 @@
 --!strict
 -- DeltaRay, the navi of the DeltaRay chip (the original's actor object
--- #0x3D, `sub_80C2A78`): the shared DeltaRay (@exelib/deltaray/navi), BN6's
+-- #0x3D, `sub_80C2A78`): the shared DeltaRay (@exelib/deltaray/navi), EXE6's
 -- kind. He fades in on his user's panel, flashing, then looks for the first
 -- enemy navi ahead (column by column, rows 1 to 3) and a free panel
 -- diagonally behind and above it; there he strikes with his sword (a

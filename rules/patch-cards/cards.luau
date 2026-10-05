@@ -1,10 +1,10 @@
 --!strict
 -- Patch cards (the Japanese games' Modification Cards, 改造カード;
--- docs/engine/patch-cards.md): BN6's effects. A card is the engine's
--- (`define.patch_card`, content/bn6/cards/), its effects the values the
--- shared constructors make (@exelib/patch-cards/effects, BN5's too); the
+-- docs/engine/patch-cards.md): EXE6's effects. A card is the engine's
+-- (`define.patch_card`, content/exe6/cards/), its effects the values the
+-- shared constructors make (@exelib/patch-cards/effects, EXE5's too); the
 -- patch-cards system (./system.luau) applies a player's installed cards to
--- the navi's stats as the round is set up. BN6's own are its tables: the
+-- the navi's stats as the round is set up. EXE6's own are its tables: the
 -- kinds' order, the trails' bytes.
 
 local effects = require("@exelib/patch-cards/effects")
@@ -86,7 +86,7 @@ patch_cards.CHOICE = {
 patch_cards.BODY = { null = 0, fire = 1, aqua = 2, elec = 3, wood = 4 } :: { [string]: number }
 -- What a step leaves behind, by the panel the effect names (the trail
 -- byte, NaviStats+0x12: `byte_814291C`'s rows; water and magnet panels,
--- which BN6 doesn't have, leave the normal panel's 2).
+-- which EXE6 doesn't have, leave the normal panel's 2).
 patch_cards.TRAILS = {
     crack = 3,
     hole = 1,
@@ -102,7 +102,7 @@ patch_cards.TRAILS = {
 -- The status a hit gives (NaviStats+0x16).
 patch_cards.HIT_STATUS = { blind = 1, confuse = 2, hp_bug = 3, none = 0 } :: { [string]: number }
 
--- ---- The effects (@exelib/patch-cards/effects, BN5's too) ----------------
+-- ---- The effects (@exelib/patch-cards/effects, EXE5's too) ----------------
 
 patch_cards.bug = effects.bug
 patch_cards.hp = effects.hp
@@ -144,7 +144,7 @@ patch_cards.custom_hp_drain = effects.custom_hp_drain
 patch_cards.status_bug = effects.status_bug
 patch_cards.bug_stopper = effects.bug_stopper
 
--- What the application reads of BN6's (@exelib/patch-cards/apply).
+-- What the application reads of EXE6's (@exelib/patch-cards/apply).
 patch_cards.GAME = {
     rank = patch_cards.RANK,
     choice = patch_cards.CHOICE,

@@ -1,6 +1,6 @@
 --!strict
 -- AntiDmg's counter (the original's navi action 0x47, `sub_80EE90C`): the
--- shared counter (@exelib/antidmg/counter) with BN6's shuriken (./shuriken),
+-- shared counter (@exelib/antidmg/counter) with EXE6's shuriken (./shuriken),
 -- sounds and puff. The ruleset starts it by role
 -- (`actions.anti_damage_counter`, rules/roles.luau).
 

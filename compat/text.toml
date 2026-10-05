@@ -53,7 +53,7 @@ dialogue_glyphs = [
     "堀", "杉", "士", "悟", "森", "霧", "麻", "剛", "垣", "★", "[", "]", "﹒", # E4 DC
 ]
 
-# The Japanese ROMs' encoding (EXE6 Falzar, ROCKEXE6_RXXBR6J, and EXE6 Gregar, BR5J: one
+# The Japanese ROMs' encoding (JP Falzar, ROCKEXE6_RXXBR6J, and JP Gregar, BR5J: one
 # encoding and the same fonts): their 8x16 font and their dialogue font draw these, in the same
 # shape as above (bytes below 0xE0 shared by both fonts; the dialogue font's bytes 0xE0-0xE3 and
 # two-byte codes E4 00 to E4 E8 after). Written once from the fonts (the verification

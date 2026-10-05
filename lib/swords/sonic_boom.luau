@@ -1,6 +1,6 @@
 --!strict
--- BN6's sonic boom (the original's attack object #0x58, `sub_80CF7F0`):
--- the shared boom (@exelib/swords/sonic_boom), BN6's kind and look: 16
+-- EXE6's sonic boom (the original's attack object #0x58, `sub_80CF7F0`):
+-- the shared boom (@exelib/swords/sonic_boom), EXE6's kind and look: 16
 -- pixels up; its primary element's palette (`byte_80CF8A8`); a slash that
 -- hits navis.
 
@@ -9,7 +9,7 @@ local common = require("@exelib/swords/sonic_boom")
 
 local sonic_boom = {}
 
-local BN6: SonicBoomLook = {
+local EXE6: SonicBoomLook = {
     sprite = asset.sprite("sword-slash"),
     z = 0x10_0000,
     piercing_palette = 0xB,
@@ -22,7 +22,7 @@ local BN6: SonicBoomLook = {
 -- Its speed (16.16 pixels a tick) as its throwers set it.
 sonic_boom.SPEED = common.SPEED
 
-sonic_boom.kind = common.make_kind("sonic-boom", BN6)
+sonic_boom.kind = common.make_kind("sonic-boom", EXE6)
 
 -- `sub_80CF91E`: a sonic boom from `owner` on panel (x, y), with
 -- `element`, the damage word and what it is. (A game's own kind of it:

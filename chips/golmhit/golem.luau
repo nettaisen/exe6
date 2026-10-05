@@ -9,7 +9,7 @@
 -- hits on the three panels, with dust, and cracks; elsewhere it hits its
 -- panel alone and is gone.
 --
--- What no BN6 chip asks for but the routine has (the original's Param2 to
+-- What no EXE6 chip asks for but the routine has (the original's Param2 to
 -- Param4): a fist that stays on the panel it is spawned on, and one that
 -- cracks its panel, or its column, where it lands.
 

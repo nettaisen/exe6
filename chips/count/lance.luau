@@ -1,6 +1,6 @@
 --!strict
 -- Count's lance (the original's attack object #0x0D; the Japanese
--- games' code, at 0x080C9498 in EXE6 Falzar, 0x080CACF8 in EXE6 Gregar:
+-- games' code, at 0x080C9498 in JP Falzar, 0x080CACF8 in JP Gregar:
 -- the US games point the slot at a placeholder). It waits 4096 pixels up
 -- over its panel, then drops on it and strikes: a thrown attack on its
 -- panel, for 30 ticks or until it hits. Count's (chips/count/navi)
@@ -174,7 +174,7 @@ lance.kind = define.kind {
     end,
 }
 
--- The spawner (0x080C9614 in EXE6 Falzar): a lance of `owner`'s side on
+-- The spawner (0x080C9614 in JP Falzar): a lance of `owner`'s side on
 -- (x, y) with the damage word `damage`, striking as `spec` says; it runs
 -- while dimmed (its own check stops the other kind). Its position is what
 -- the spawner's registers held: the row, the element and `z`, of which its

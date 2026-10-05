@@ -1,6 +1,6 @@
 --!strict
 -- The bullet (the original's attack object #0x12, `sub_80C6946`): the
--- shared bullet (@exelib/bullet/bullet), BN6's kind, look and variants:
+-- shared bullet (@exelib/bullet/bullet), EXE6's kind, look and variants:
 -- the Vulcans' and Spreaders' shot, SpoutCross's charged shot, ColArmy's
 -- and ColForce's soldiers'. See docs/engine/shot-chips.md §4.1.
 
@@ -18,14 +18,14 @@ bullet.variant = common.variant
 -- A bullet kind (`id`) of `look`.
 bullet.make_kind = common.make_kind
 
--- BN6's look: the probe's self type (row 0x3D), the burst's (an attack)
+-- EXE6's look: the probe's self type (row 0x3D), the burst's (an attack)
 -- and what both reach.
-local BN6: BulletLook = { probe = collision.probe, attack = collision.attack, target = collision.hits_navis }
+local EXE6: BulletLook = { probe = collision.probe, attack = collision.attack, target = collision.hits_navis }
 
-bullet.kind = common.make_kind("bullet", BN6)
+bullet.kind = common.make_kind("bullet", EXE6)
 
 -- `sub_80C6ADA`: a bullet of `variant` from `owner` on panel (x, y) at
--- height `z` (16.16), with `element` and the damage word. Of `kind`, BN6's
+-- height `z` (16.16), with `element` and the damage word. Of `kind`, EXE6's
 -- by default.
 function bullet.fire(owner: Object, x: number, y: number, z: number, variant: BulletVariant, element: number, damage: number, kind: Kind?): Object?
     return common.fire(kind or bullet.kind, owner, x, y, z, variant, element, damage)

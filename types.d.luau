@@ -1,5 +1,5 @@
--- Types shared across the bn6 pack's modules. A definitions file like
--- core.d.luau (luau-lsp: `--definitions=content/bn6/types.d.luau`): types
+-- Types shared across the exe6 pack's modules. A definitions file like
+-- core.d.luau (luau-lsp: `--definitions=content/exe6/types.d.luau`): types
 -- a module and the modules that require it both name, declared once for
 -- the pack. (The engine's API is in content/nettai/core.d.luau.)
 
@@ -481,9 +481,9 @@ export type DripShower = { turns: number, quarter_ticks: number, follows_action:
 -- it lands on, and silently.
 export type GroundRockDrop = { warning: number, while_dimmed: boolean, cracks: boolean, silent: boolean }
 
--- The looks of the BN6 modules other games reuse (each module's `make_kind`).
+-- The looks of the EXE6 modules other games reuse (each module's `make_kind`).
 
--- BN6's fields of the engine's chips, forms and navis: its systems'
+-- EXE6's fields of the engine's chips, forms and navis: its systems'
 -- extensions (`extends`), which the engine's specs take untyped
 -- (`[string]: any`). A module that wants them typed casts to these.
 --
@@ -491,7 +491,7 @@ export type GroundRockDrop = { warning: number, while_dimmed: boolean, cracks: b
 -- Beast rush (`rush = false`: a mode without the rush, as some records
 -- have; the beast system's); a dark chip's substitute without bug frags,
 -- and what its use adds to the user's HP bug (the dark-chips system's).
-export type Bn6ChipFields = {
+export type Exe6ChipFields = {
     beast: { lockon: Lockon?, rush: boolean? }?,
     dark_substitute: Chip?,
     hp_bug: number?,
@@ -506,7 +506,7 @@ export type Bn6ChipFields = {
 -- Beast Out; the beast system's); the custom screen dealing one more chip
 -- for each screen spent in it, up to three (ChargeCross), or the scrap
 -- button (DustCross; the cross system's).
-export type Bn6FormFields = {
+export type Exe6FormFields = {
     kind: ("cross" | "beast" | "cross_beast" | "beast_over")?,
     game: ("gregar" | "falzar")?,
     cross_of: NaviDef?,
@@ -520,5 +520,5 @@ export type Bn6FormFields = {
 
 -- A navi's forms by game: the Crosses by their number on the custom
 -- screen, Beast Out and Beast Over (its `forms.gregar`, `forms.falzar`),
--- which BN6's rules and bn6-compat read.
+-- which EXE6's rules and exe6-compat read.
 export type FormSet = { crosses: { FormDef }, beast_out: FormDef?, beast_over: FormDef? }

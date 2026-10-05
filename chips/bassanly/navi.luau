@@ -1,6 +1,6 @@
 --!strict
 -- BassAnly, the navi of the BassAnly chip (the original's actor object
--- #0x50, `sub_80C3CE8`): the shared BassAnly (@exelib/bassanly/navi), BN6's
+-- #0x50, `sub_80C3CE8`): the shared BassAnly (@exelib/bassanly/navi), EXE6's
 -- kind. He appears (with his cloak, a form overlay) on his user's panel,
 -- waits 51 ticks, raises his arm, and fires four dark balls in turn, up and
 -- down the slant, that home in on enemy navis (./shot). Then he goes in a

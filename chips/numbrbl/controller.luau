@@ -1,7 +1,7 @@
 --!strict
 -- NumbrBl's dimming controller (the original's effect object #0x69,
--- `sub_80E7F38`; docs/engine/dimming-chip-effects.md §15): the one BN5
--- shares (@exelib/numbrbl/controller), with BN6's effect, which sends
+-- `sub_80E7F38`; docs/engine/dimming-chip-effects.md §15): the one EXE5
+-- shares (@exelib/numbrbl/controller), with EXE6's effect, which sends
 -- NumberMan (./numberman) out in the user's place and waits until he is
 -- done.
 --

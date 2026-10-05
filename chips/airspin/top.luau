@@ -1,6 +1,6 @@
 --!strict
--- AirSpin's whirlwind top (attack object #0x9B, `sub_80D88E0`): the one BN5
--- shares (@exelib/airspin/top) in BN6's look. A field object (its side's
+-- AirSpin's whirlwind top (attack object #0x9B, `sub_80D88E0`): the one EXE5
+-- shares (@exelib/airspin/top) in EXE6's look. A field object (its side's
 -- class-1 one) with 400 HP. Set down on a solid panel with no body on it,
 -- it rolls forward at 4 pixels a tick toward the next panel while that one
 -- is open (solid, nothing standing on it), at most 4 panels, then stands

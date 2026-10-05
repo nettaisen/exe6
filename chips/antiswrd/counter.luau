@@ -1,6 +1,6 @@
 --!strict
 -- AntiSwrd's counter (the original's navi action 0x48, `sub_80EEA3C`): the
--- shared counter (@exelib/antiswrd/counter) with BN6's sounds, sonic boom
+-- shared counter (@exelib/antiswrd/counter) with EXE6's sounds, sonic boom
 -- and attachment. The ruleset starts it by role
 -- (`actions.anti_sword_counter`, rules/roles.luau).
 
@@ -11,7 +11,7 @@ local sonic_boom = require("../../lib/swords/sonic_boom")
 
 local counter = {}
 
--- The counter, swinging `blade`. Its booms are BN6's, or a game's own kind
+-- The counter, swinging `blade`. Its booms are EXE6's, or a game's own kind
 -- (`boom_kind`).
 function counter.action_with(id: string, blade: AttachmentLook, boom_kind: Kind?): Action
     return common.action_with {

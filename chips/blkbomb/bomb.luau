@@ -1,6 +1,6 @@
 --!strict
 -- A BlkBomb (the original's attack object #0x4A, `sub_80CD4EC`): the shared
--- bomb (@exelib/blkbomb/bomb), BN6's kind and look: a neutral object whose
+-- bomb (@exelib/blkbomb/bomb), EXE6's kind and look: a neutral object whose
 -- burst is an attack, pushed by a pushing hit with its damage kept, leaving
 -- the field as `sub_80CD700` does.
 

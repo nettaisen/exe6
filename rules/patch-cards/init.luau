@@ -3,7 +3,7 @@
 -- up (`round_setup`, before anything reads the stats), a player's installed
 -- patch cards (the engine's definitions and the player's setup,
 -- `battle.patch_cards`; their effects ./cards.luau's) change the navi's
--- stats. The cards are the engine's; what their effects do is BN6's rules'.
+-- stats. The cards are the engine's; what their effects do is EXE6's rules'.
 --
 -- The original (the Japanese `reloadCurNaviStatBoosts`, its card routine)
 -- keeps a block of slots, one per kind of effect, seeded from the stats the
@@ -12,8 +12,8 @@
 -- writing its slot (a later card's write wins); then the slots a card wrote
 -- are copied into the stats, some of them through tables; then the bugs are
 -- counted. A card that lists one effect twice applies the first only. The
--- cards' run over the block is the one BN5's shares
--- (@exelib/patch-cards/apply); BN6's are its seed, its copy and its count.
+-- cards' run over the block is the one EXE5's shares
+-- (@exelib/patch-cards/apply); EXE6's are its seed, its copy and its count.
 
 local apply_cards = require("@exelib/patch-cards/apply")
 local cards = require("@self/cards")

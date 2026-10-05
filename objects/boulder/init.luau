@@ -7,8 +7,8 @@
 -- chunks of rock debris and a splash of dust; a chip can remove or absorb
 -- it. It is one of the field's two stage objects (the field-object
 -- registry's stage slots, which it leaves when it goes). See
--- docs/engine/field-objects.md §3.1. The behavior is BN5's too
--- (@exelib/boulder/boulder), made here with BN6's look.
+-- docs/engine/field-objects.md §3.1. The behavior is EXE5's too
+-- (@exelib/boulder/boulder), made here with EXE6's look.
 --
 -- An obstacle: its update runs the obstacle framework's steps (the
 -- `obstacle` service) around its own actions.

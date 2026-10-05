@@ -1,6 +1,6 @@
 --!strict
 -- BassAnly's shot (the original's attack object #0xC1, `sub_80DD34C`): the
--- shared dark ball (@exelib/bassanly/shot), BN6's kind: its sprite and
+-- shared dark ball (@exelib/bassanly/shot), EXE6's kind: its sprite and
 -- sound, thrown, hitting navis. What it is spawned with is a `DarkBall`
 -- (types.d.luau; the original's Param1 to Param3). See
 -- docs/engine/chips.md §3.6.35.

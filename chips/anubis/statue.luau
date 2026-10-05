@@ -6,7 +6,7 @@
 -- 1 HP each period (Anubis's 6 ticks, PoisPhar's every tick), with bubbles
 -- rising over the enemy's area every 16 ticks, for its lifetime (a field
 -- obstacle's, counting only ticks it runs) or until time is up. The
--- behavior is BN5's too (@exelib/anubis/statue), made here with BN6's look.
+-- behavior is EXE5's too (@exelib/anubis/statue), made here with EXE6's look.
 --
 -- An obstacle: its update runs the obstacle framework's steps (the
 -- `obstacle` service) around its own actions.

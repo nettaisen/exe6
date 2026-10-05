@@ -1,11 +1,11 @@
 --!strict
 -- A follow effect (the original's effect object #0x31, `sub_80E3D68`): the
--- shared follow effect (@exelib/follow-effect), BN6's kind: shown as its
+-- shared follow effect (@exelib/follow-effect), EXE6's kind: shown as its
 -- owner is, and its looks (the original's Param1, `off_80E3E10`):
 --
 -- - "none" (looks 0 to 2): nothing more;
 -- - "slide" (3): slides out beside its owner until the owner's related1 is
---   gone, then plays out (with BN6's sound);
+--   gone, then plays out (with EXE6's sound);
 -- - "flash" (4, DeltaRay's burst): shows for its timer (60 ticks, which its
 --   spawner sets again), switching to animation 1 below 55;
 -- - "while_in_action" (5): lasts while its owner stays in the action it was

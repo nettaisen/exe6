@@ -1,5 +1,5 @@
 --!strict
--- BN6's top module (docs/design/content-model-v2.md §4.0): it requires every module that defines what the game has. A
+-- EXE6's top module (docs/design/content-model-v2.md §4.0): it requires every module that defines what the game has. A
 -- load of the game runs this module, and what it requires is what loads; a definition of what is grouped here, made by
 -- a module this doesn't require itself, is refused. The order is the load order, which no key or handle depends on.
 -- tools/content/index.py (the verification workspace) keeps it.

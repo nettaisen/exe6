@@ -5,7 +5,7 @@
 -- falling meteor, chips/meteors/falling_meteor) falls on one of the other
 -- side's navis still standing, picked at random, or on a panel next to it
 -- (6 draws in 16).
--- (It drops the meteor's row 2 for three drops, else 0: BN6's rows are
+-- (It drops the meteor's row 2 for three drops, else 0: EXE6's rows are
 -- alike.)
 --
 -- No chip names effect 16. The patch cards' meteors (lib/patch-cards/

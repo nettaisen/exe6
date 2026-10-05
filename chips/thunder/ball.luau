@@ -1,6 +1,6 @@
 --!strict
 -- The thunder ball (the original's attack object #0x2A, `sub_80C93CC`):
--- the shared ball (@exelib/thunder/ball), BN6's kind and look.
+-- the shared ball (@exelib/thunder/ball), EXE6's kind and look.
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/thunder/ball")
@@ -11,11 +11,11 @@ local ball = {}
 -- A thunder ball kind (`id`) of `look`.
 ball.make_kind = common.make_kind
 
--- BN6's look: one sprite, its animations small and big (fast, or
+-- EXE6's look: one sprite, its animations small and big (fast, or
 -- DarkThnd's 12 panels; +1 bursting); an attack hitting navis with
 -- modifier 1 and the elec spark; its sound, DarkThnd's own.
 local SPRITE = asset.sprite("thunder-ball")
-local BN6: ThunderBallLook = {
+local EXE6: ThunderBallLook = {
     sprite = SPRITE,
     small_anim = 0,
     big_sprite = SPRITE,
@@ -28,7 +28,7 @@ local BN6: ThunderBallLook = {
     dark_sound = asset.sound("elec-man"),
 }
 
-ball.kind = common.make_kind("thunder/ball", BN6)
+ball.kind = common.make_kind("thunder/ball", EXE6)
 
 -- `sub_80C954C`: a thunder ball for `owner` on (x, y) with the damage word
 -- `damage`. (A game's own kind of it: `kind`.)

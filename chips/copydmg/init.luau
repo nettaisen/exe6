@@ -1,5 +1,5 @@
 --!strict
--- CopyDmg (the original's action 0x23, `sub_80ECA34`): the action BN5
+-- CopyDmg (the original's action 0x23, `sub_80ECA34`): the action EXE5
 -- shares (@exelib/copydmg/action): the navi raises its buster and, on the
 -- next tick, fires its mark (mark.luau) along its row from the panel
 -- ahead: the first navi it hits takes, for 180 ticks, the damage its side
