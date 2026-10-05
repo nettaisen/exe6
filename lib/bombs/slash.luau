@@ -3,7 +3,7 @@
 -- drawn as a sword slash: what a bomb whose variant leaves it
 -- (`after = slash.after(ticks)`) leaves on its panel. It hits there every
 -- tick until it hits something, the battle ends, or its ticks run out. No
--- BN6 chip throws such a bomb (the original's bomb kind 1, with 60 ticks).
+-- EXE6 chip throws such a bomb (the original's bomb kind 1, with 60 ticks).
 
 local collision = require("../../rules/collision")
 local sparks = require("../sparks")

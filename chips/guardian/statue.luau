@@ -7,8 +7,8 @@
 -- stands on. Broken otherwise (by a body, by hits from both sides, by its
 -- time running out) it just crumbles. The Guardian chip places one
 -- (./controller, with the user's side); stages can place one at the start
--- (the kind's `place`, with its panel's side). The behavior is BN5's too
--- (@exelib/guardian/statue), made here with BN6's look.
+-- (the kind's `place`, with its panel's side). The behavior is EXE5's too
+-- (@exelib/guardian/statue), made here with EXE6's look.
 --
 -- An obstacle: its update runs the obstacle framework's steps (the
 -- `obstacle` service) around its own actions.

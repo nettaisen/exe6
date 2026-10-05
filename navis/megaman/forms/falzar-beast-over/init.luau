@@ -19,7 +19,7 @@ return define.form {
         0x0CCC, 0x0CEE, 0x110F, 0x1110, 0x1110, 0x110F, 0x0CEE, 0x0CCC, 0x0CAA,
         0x0888, 0x0887, 0x0866, 0x0865, 0x0444, 0x0443, 0x0422, 0x0421,
     },
-    -- What changes MegaMan into it (BN6's five sequences).
+    -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
     game = "falzar",
     -- (No hit breaks Beast Over; the original's routine, by the form's number, would drop

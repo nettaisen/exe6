@@ -14,7 +14,7 @@ return define.form {
     -- and its palette follows the mood (`sub_80E1566`, `sub_80E341E`, `sub_8012F62`,
     -- `sub_80100EC`).
     traits = { "shows_target_marker", "afterimages_stay", "alt_charge_time", "mood_palette" },
-    -- What changes MegaMan into it (BN6's five sequences).
+    -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
     game = "falzar",
     -- (A weakness hit breaks a Beast as a Cross: the original's routine, by the form's

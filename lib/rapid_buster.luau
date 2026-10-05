@@ -3,7 +3,7 @@
 -- weapon routine 0x39, `sub_8012124`): nine charged shots, six ticks
 -- apart, each from the panel in front and a row up, down or level in an
 -- order one draw picks: the shared rapid buster (@exelib/megaman/rapid_buster,
--- BN5's too) with BN6's buster parts, projectile, attachment and sound, its
+-- EXE5's too) with EXE6's buster parts, projectile, attachment and sound, its
 -- form overlay stepped at once as it restarts. See docs/engine/shot-chips.md §11.
 --
 -- Weapon routine 0x39 is named by no form, navi or NaviStats byte; its

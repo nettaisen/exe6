@@ -1,6 +1,6 @@
 --!strict
 -- Thunder's and DarkThnd's shot (the original's action 0x1F,
--- `sub_80EC7A6`): the shared shot (@exelib/thunder/shoot) with BN6's
+-- `sub_80EC7A6`): the shared shot (@exelib/thunder/shoot) with EXE6's
 -- buster and ball.
 
 local ball = require("./ball")

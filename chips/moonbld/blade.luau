@@ -1,6 +1,6 @@
 --!strict
 -- MoonBld's blade (attack object #0x85, `sub_80D5C48`): the shared blade
--- (@exelib/moonbld/blade) with BN6's sprite and collision types. It rides
+-- (@exelib/moonbld/blade) with EXE6's sprite and collision types. It rides
 -- on its owner and sweeps the eight panels around it, one a tick for 8
 -- ticks, starting ahead and going round, then goes after 10 ticks.
 

@@ -11,7 +11,7 @@ local forms = require("../../../rules/forms")
 return define.form {
     id = "erasecross-beast",
     kind = "cross_beast",
-    -- What changes MegaMan into it (BN6's five sequences).
+    -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
     game = "gregar",
     cross_of = eraseman,

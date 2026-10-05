@@ -1,7 +1,7 @@
 --!strict
 -- Roll, the navi of the Roll chips (the original's actor object #0x2C,
--- `sub_80C07BC`), brought by their navi chip controller: BN6's
--- (@exelib/roll/navi, which BN5's shares). She fades in over her user's
+-- `sub_80C07BC`), brought by their navi chip controller: EXE6's
+-- (@exelib/roll/navi, which EXE5's shares). She fades in over her user's
 -- panel; warps up and down in front of the nearest enemy navi ahead;
 -- whips it three times (a hit region 10 ticks apart, with her ribbon
 -- out); warps up and away; warps her user back in herself; and drops a

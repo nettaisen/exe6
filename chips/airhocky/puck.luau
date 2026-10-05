@@ -1,7 +1,7 @@
 --!strict
 -- A hockey puck (the original's attack object #0x2E, `sub_80C9824`):
 -- AirHocky's and PitHocky's, the shared puck (@exelib/airhocky/puck) with
--- BN6's look. It slides diagonally from panel center to panel center,
+-- EXE6's look. It slides diagonally from panel center to panel center,
 -- bouncing off the field's sides, for its variant's number of steps;
 -- PitHocky's leaves an afterimage trail.
 

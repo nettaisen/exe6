@@ -1,7 +1,7 @@
 --!strict
 -- AreaGrab's and PanelGrab's dimming controller (the original's effect
 -- object #3, `sub_80E0710`): the shared controller
--- (@exelib/grab/controller), BN6's kind with BN6's grab shot
+-- (@exelib/grab/controller), EXE6's kind with EXE6's grab shot
 -- (lib/grab/shot). Each chip's `dimming` hook is `grab.area` or
 -- `grab.panel`.
 

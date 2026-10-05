@@ -1,7 +1,7 @@
 --!strict
 -- A NumbrBl ball (the original's attack object #0x91, `sub_80D7278`;
--- docs/engine/dimming-chip-effects.md §15): the one BN5 shares
--- (@exelib/numbrbl/ball) in BN6's look. NumberMan (./numberman) sets it
+-- docs/engine/dimming-chip-effects.md §15): the one EXE5 shares
+-- (@exelib/numbrbl/ball) in EXE6's look. NumberMan (./numberman) sets it
 -- down in front of him; it sits 15 ticks, waits, then rolls down the row 3
 -- pixels a tick until it hits something (an explosion) or leaves the
 -- field.

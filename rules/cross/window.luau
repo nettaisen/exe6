@@ -1,5 +1,5 @@
 --!strict
--- BN6's Cross window on the custom screen (docs/design/rules-in-luau.md
+-- EXE6's Cross window on the custom screen (docs/design/rules-in-luau.md
 -- §4.4, S6): the Crosses offered (`sub_8029EF8`) and the window's Cross tab
 -- (`sub_8026840`) as the screen opens; UP opening the window (`sub_8028B74`);
 -- its opening (`sub_8027834`), the window and its keys (`sub_802794A`,

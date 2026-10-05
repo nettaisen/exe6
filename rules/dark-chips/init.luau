@@ -1,5 +1,5 @@
 --!strict
--- BN6's dark chips (docs/engine/chips.md): a dark chip, one with a
+-- EXE6's dark chips (docs/engine/chips.md): a dark chip, one with a
 -- `dark_substitute`, costs its user a bug frag as its use is prepared
 -- (`sub_8010D58`, `sub_800F4B2`); with none left the user gets the
 -- substitute instead (`off_8010D84`: Sword, Thunder, Recov10, Invisibl,
@@ -12,8 +12,8 @@
 -- The bug frags are this system's too (`dword_203F7E0`): the player brings
 -- the save's (the setup's `bug_frags`, which the init exchange shares), and
 -- the battle spends them from its state. Chips that spend one (the navi
--- boosts' charged shots) ask BN6's API (rules/api.luau: `bn6.bug_frags`,
--- `bn6.spend_bug_frags`), which reaches this state.
+-- boosts' charged shots) ask EXE6's API (rules/api.luau: `exe6.bug_frags`,
+-- `exe6.spend_bug_frags`), which reaches this state.
 
 export type State = { bug_frags: number }
 

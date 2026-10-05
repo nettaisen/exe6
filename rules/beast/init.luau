@@ -1,11 +1,11 @@
 --!strict
--- BN6's Beast Out (docs/design/rules-in-luau.md §3.1): a navi's turns in
+-- EXE6's Beast Out (docs/design/rules-in-luau.md §3.1): a navi's turns in
 -- Beast Out and when they run out; the rush (rush.luau, the game's wrapper:
 -- the role `actions.wrapper`); Beast Over's berserk (berserk.luau, the
 -- controller of its `controlled` forms) and its exhaustion; and the Cross
 -- special (cross-special.luau, DarkInvs' takeover), whose controller shares
 -- the berserk's state, as the original's share their 0x10 bytes. Their
--- state is the system's. The turn-start sequencer is the framework's (BN5 has it
+-- state is the system's. The turn-start sequencer is the framework's (EXE5 has it
 -- too); it asks each side's systems at its check and when the turn starts.
 -- Beast Out on the custom screen (its button, its animations and the
 -- BeastOut chip's) is custom.luau.
@@ -71,7 +71,7 @@ return define.system {
         controller_started = "bool",
         beast_out_used = "bool",
     },
-    -- What the player's save brings (bn6-compat writes it, nettai-match
+    -- What the player's save brings (exe6-compat writes it, nettai-match
     -- from a match's side): the game's version (its Beast), Beast Out
     -- unlocked (event flag 0xE0), and nettai's Cross list (the cross
     -- system's too: with one, a Cross of the other game's Beast is that

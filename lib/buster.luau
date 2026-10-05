@@ -1,5 +1,5 @@
 --!strict
--- What BN6's buster shots share (the buster, the charged shot, the blank
+-- What EXE6's buster shots share (the buster, the charged shot, the blank
 -- shot, DustCross's charged shot and the like; @exelib/buster): the arm the
 -- navi raises, the recovery after a shot, and the move that may cut the
 -- recovery short. See docs/engine/objects-and-player.md §B6.

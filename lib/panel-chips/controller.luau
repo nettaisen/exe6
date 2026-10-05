@@ -1,7 +1,7 @@
 --!strict
 -- The panel chips' dimming controller (the original's effect object
 -- #0x20, `sub_80E2AE8`): the shared controller
--- (@exelib/panel-chips/controller), BN6's kind with BN6's panel changer
+-- (@exelib/panel-chips/controller), EXE6's kind with EXE6's panel changer
 -- (objects/panel-changer). A chip's `dimming` hook is
 -- `panel_chips.hook(change)`, with its change.
 

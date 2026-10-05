@@ -16,7 +16,7 @@ local controller = require("@self/controller")
 -- the Japanese ROMs copies the card's palette to 0x02000AF0 + 32 * slot;
 -- slot 1 is the console's own beast), and the save keeps it there (save
 -- offset 0xB10). These are the card's colors
--- as Tango's netplay save for EXE6 Gregar has them (tango-gamesupport-bn6,
+-- as Tango's netplay save for JP Gregar has them (tango-gamesupport-bn6,
 -- saves/g_jp.raw, offset 0xB10). The picture is the Japanese Gregar ROM's
 -- (docs/engine/jp-differences.md §4.4).
 local ART_PALETTE = {

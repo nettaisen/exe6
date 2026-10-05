@@ -1,7 +1,7 @@
 --!strict
 -- WideSht and SuprSpr (the original's action 0x30, `sub_80ED55C`;
 -- docs/engine/shot-chips.md §10): the shared action
--- (@exelib/widesht/action) with BN6's wide shooter, attachment and wave.
+-- (@exelib/widesht/action) with EXE6's wide shooter, attachment and wave.
 --
 -- These are their actions; the chips are ./chip and chips/suprspr
 -- (WideSht is SuprSpr's Program Advance ingredient).

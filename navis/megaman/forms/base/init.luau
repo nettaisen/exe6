@@ -6,7 +6,7 @@ local charged_shot = require("../weapons/charged-shot")
 
 return define.form {
     id = "base",
-    -- BN6's base form.
+    -- EXE6's base form.
     base = true,
     sprite = asset.sprite("megaman"),
     element = "null",

@@ -2,8 +2,8 @@
 -- Count, the navi of the Count chips (the Japanese games' name; the US
 -- release calls him HackJack; the original's actor object #0x11). The US
 -- games have no routine for him: their navi chip table's entry 18
--- (`off_802CD5C[18]`) is null and the actor slot a placeholder. This is the Japanese games' code (EXE6
--- Falzar 0x080BCFCC, EXE6 Gregar 0x080BE82C; the two are the same but for
+-- (`off_802CD5C[18]`) is null and the actor slot a placeholder. This is the Japanese games' code (JP
+-- Falzar 0x080BCFCC, JP Gregar 0x080BE82C; the two are the same but for
 -- where things are), brought by the navi chip controller. He appears and
 -- casts a rain over the middle of the other side's area (a dust storm,
 -- lib/instant/dust_storm: the 3x3 around it, the whole area, hit every 12
@@ -14,7 +14,7 @@
 -- docs/engine/chips.md §3.6.37.
 --
 -- Each chip's `navi` hook is `count.summon { lance_damage = n }`
--- (EXE6 Falzar 0x080BD236).
+-- (JP Falzar 0x080BD236).
 
 local dust_storm = require("../../lib/instant/dust_storm")
 local navi_chips = require("../../lib/navi-chips/navi")
@@ -46,13 +46,13 @@ local SPRITE = asset.sprite("count")
 local SOUND_APPEAR, SOUND_RAIN = asset.sound("appear"), asset.sound("drip-shower")
 
 -- The controller calls his spawner through r3, which his position takes
--- (EXE6 Falzar's address with the Thumb bit; EXE6 Gregar's is 0x080BEA97).
+-- (JP Falzar's address with the Thumb bit; JP Gregar's is 0x080BEA97).
 -- His init clears all of Z.
 local SPAWNER_ADDRESS = 0x080BD237
 
 -- By side: the middle of the other side's area, where the rain falls and
 -- the lances' search is centered (two equal tables, at 0x080BD180 and
--- 0x080BD390 in EXE6 Falzar).
+-- 0x080BD390 in JP Falzar).
 local MIDDLE = { [0] = { 5, 2 }, [1] = { 2, 2 } }
 
 -- The rain: 60 ticks (the storm's Param2), untied (its Param3 2: it lands

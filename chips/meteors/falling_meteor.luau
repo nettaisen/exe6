@@ -1,6 +1,6 @@
 --!strict
 -- A falling meteor (the original's attack object #0x56, `sub_80CF3BE`): the
--- shared meteor (@exelib/meteors/falling_meteor), BN6's kind and look.
+-- shared meteor (@exelib/meteors/falling_meteor), EXE6's kind and look.
 -- Meteors (./chip) drops thirty; the instant chips' meteor shower
 -- (lib/instant/meteor_shower) uses it too.
 
@@ -15,20 +15,20 @@ local falling_meteor = {}
 falling_meteor.make_kind = common.make_kind
 falling_meteor.spawn_kind = common.spawn_kind
 
--- BN6's rows 0 to 2, alike: thrown, hitting navis, hit modifier 3; a
+-- EXE6's rows 0 to 2, alike: thrown, hitting navis, hit modifier 3; a
 -- shake of 1; the panel left as it is.
-local BN6_ROW: MeteorRow = { is = collision.thrown, hits = collision.hits_navis, hit_mod = 3, shake = 1, panel = "none" }
+local EXE6_ROW: MeteorRow = { is = collision.thrown, hits = collision.hits_navis, hit_mod = 3, shake = 1, panel = "none" }
 
 falling_meteor.kind = common.make_kind("meteors/falling-meteor", {
     sprite = asset.sprite("meteor"),
     sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
-    rows = { [0] = BN6_ROW, [1] = BN6_ROW, [2] = BN6_ROW },
+    rows = { [0] = EXE6_ROW, [1] = EXE6_ROW, [2] = EXE6_ROW },
     spark = sparks.of_element,
     burst = effects.burst,
     marker = marker.kind,
 })
 
--- BN6's meteor of row `row`.
+-- EXE6's meteor of row `row`.
 function falling_meteor.spawn(
     row: number,
     owner: Object,

@@ -7,7 +7,7 @@
 -- changes the shot's kind on a lucky draw. See
 -- docs/engine/objects-and-player.md §B7.
 --
--- Action 0x16 (@exelib/megaman/charged_shot, with BN6's buster parts,
+-- Action 0x16 (@exelib/megaman/charged_shot, with EXE6's buster parts,
 -- projectile and attachment) waits 5 ticks, raises the buster, and on the next tick the
 -- projectile flies from the panel in front with a muzzle flash in the
 -- navi's first related slot; after five ticks, the recovery, which a move

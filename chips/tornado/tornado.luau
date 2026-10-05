@@ -1,6 +1,6 @@
 --!strict
 -- A tornado (the original's attack object #0x31, `sub_80C9F78`): the
--- shared tornado (@exelib/tornado/tornado), BN6's kind, look and variants:
+-- shared tornado (@exelib/tornado/tornado), EXE6's kind, look and variants:
 -- Tornado's and Static's. A plain tornado on a volcano, grass or ice panel
 -- takes the panel's variant instead, turns the panel normal and doubles its
 -- damage.
@@ -33,10 +33,10 @@ tornado.variants = {
     row7 = variant { palette = 0, rearm = 0 },
 }
 
--- BN6's look: its sprite and sound; what a plain tornado becomes on a panel
+-- EXE6's look: its sprite and sound; what a plain tornado becomes on a panel
 -- of these types (`byte_80CA25C`), the doubling, what it is (row 0x12,
 -- whatever its variant) and reaches, and the element's spark.
-local BN6: TornadoLook = {
+local EXE6: TornadoLook = {
     sprite = asset.sprite("tornado"),
     sound = asset.sound("aqua-surge"),
     panel_variants = {
@@ -50,10 +50,10 @@ local BN6: TornadoLook = {
     spark = sparks.of_element,
 }
 
-tornado.kind = common.make_kind("tornado/tornado", BN6)
+tornado.kind = common.make_kind("tornado/tornado", EXE6)
 
 -- `sub_80CA0E2`: a tornado for `owner`'s side on (x, y) with the damage
--- word `damage`, of `kind` (BN6's by default).
+-- word `damage`, of `kind` (EXE6's by default).
 function tornado.spawn(owner: Object, x: number, y: number, element: number, damage: number, spec: TornadoSpec, kind: Kind?): Object?
     return common.spawn(kind or tornado.kind, owner, x, y, element, damage, spec)
 end

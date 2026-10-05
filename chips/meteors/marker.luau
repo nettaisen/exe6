@@ -1,6 +1,6 @@
 --!strict
 -- A falling meteor's panel marker (the original's effect object #0x35,
--- `sub_80E4344`): the shared marker (@exelib/meteors/marker), BN6's kind.
+-- `sub_80E4344`): the shared marker (@exelib/meteors/marker), EXE6's kind.
 
 local common = require("@exelib/meteors/marker")
 

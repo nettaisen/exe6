@@ -1,6 +1,6 @@
 --!strict
 -- FlmHook's hook (the original's effect object #0x8C, `sub_80EA010`): the
--- shared hook (@exelib/flmhook/hook), BN6's kind. It has no sprite; it
+-- shared hook (@exelib/flmhook/hook), EXE6's kind. It has no sprite; it
 -- swings two flames (./fire), one from the column in front of its user and
 -- 20 ticks later one from the column two ahead, then goes 10 ticks later.
 -- FlmHook1 to 3 bring it as their instant effect (`sub_80EA11C`, instant

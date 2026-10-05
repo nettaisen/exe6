@@ -1,5 +1,5 @@
 --!strict
--- BN6's Cross special: DarkInvs' auto-battle in the chip gate battle.
+-- EXE6's Cross special: DarkInvs' auto-battle in the chip gate battle.
 -- DarkInvs asks for a takeover of its user (the request "takeover"); idle
 -- hands the request to the side's systems (`sub_802E4E4`), and the beast
 -- system starts it: 0x1E0 ticks (`battle.take_over`), the navi
@@ -131,7 +131,7 @@ end
 -- (at most 7).
 local TICKS_LANDING = 0x1E
 local SOUND_END = asset.sound("fade")
--- The effect over the navi (BN6's role `effects.deletion`), 20 pixels up.
+-- The effect over the navi (EXE6's role `effects.deletion`), 20 pixels up.
 local LOOK_Z = 0x14 * 0x10000
 
 type EndState = { timer: number }
@@ -165,7 +165,7 @@ local function finish(me: Object, s: EndState)
     if left > 0 then
         return
     end
-    -- (BN6's role `regions.anchor`.)
+    -- (EXE6's role `regions.anchor`.)
     me.collision:set_region(regions.single)
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
     for _, r in { "mode9_a", "alt_chip", "back_special", "charged_chip", "chip", "buster", "forced_charged_shot" } :: { Request } do

@@ -1,6 +1,6 @@
 --!strict
--- Tango's heal (the original's attack object #0xC7, `sub_80DE000`): the shared heal (@exelib/supports/heal, BN5's
--- too) in BN6's look: it arcs onto Tango's navi's panel, heals it 300 HP and gives it Barr100's barrier (lib/barriers)
+-- Tango's heal (the original's attack object #0xC7, `sub_80DE000`): the shared heal (@exelib/supports/heal, EXE5's
+-- too) in EXE6's look: it arcs onto Tango's navi's panel, heals it 300 HP and gives it Barr100's barrier (lib/barriers)
 -- with the barrier's visual. See docs/engine/chips.md §2.10.
 
 local barriers = require("../barriers")

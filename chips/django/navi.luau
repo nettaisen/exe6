@@ -2,7 +2,7 @@
 -- Django, the navi of the Django chips (the original's actor object
 -- #0x12). The US games have no routine for him: their navi chip table's
 -- entry 19 (`off_802CD5C[19]`) is null and the actor slot a placeholder.
--- This is the Japanese games' code (EXE6 Falzar 0x080BD3B8, EXE6 Gregar
+-- This is the Japanese games' code (JP Falzar 0x080BD3B8, JP Gregar
 -- 0x080BEC18; the two are the same but for where things are), brought by
 -- the navi chip controller. On his bike he drops in from behind his side's
 -- edge onto its back column, then rides along his row across the field,
@@ -14,7 +14,7 @@
 -- (CrosOver's Django, chips/crosover/navi, is another kind: the US games'
 -- code, which these share nothing with but the sprite.)
 --
--- Each chip's `navi` hook is `django.summon { slash_damage = n }` (EXE6
+-- Each chip's `navi` hook is `django.summon { slash_damage = n }` (JP
 -- Falzar 0x080BD6A2): the slash's damage is the chip's parameter byte (50,
 -- 80, 120); the ride's hits deal the chip's damage.
 
@@ -55,7 +55,7 @@ local SOUND_APPEAR, SOUND_BIKE = asset.sound("appear"), asset.sound("django-bike
 local SOUND_COMMAND, SOUND_SWING = asset.sound("ok-8b"), asset.sound("sword-swing")
 
 -- The controller calls his spawner through r3, which his position takes:
--- EXE6 Falzar's address with the Thumb bit (EXE6 Gregar's is 0x080BEF03),
+-- JP Falzar's address with the Thumb bit (JP Gregar's is 0x080BEF03),
 -- whose fraction his Z keeps throughout.
 local SPAWNER_ADDRESS = 0x080BD6A3
 
@@ -84,7 +84,7 @@ local SMOKE_HEIGHT = 0x10_0000
 -- the panel ahead (an attack); no spark; hit modifier 3.
 local HIT_MOD = 3
 
--- The command, a key at a time (`word_80BD71C`, EXE6 Falzar), with 60
+-- The command, a key at a time (`word_80BD71C`, JP Falzar), with 60
 -- ticks from its first to put in the rest.
 local COMMAND: { [number]: Key } = { [0] = "l", [1] = "l", [2] = "l", [3] = "a" }
 local COMMAND_TICKS = 0x3C
@@ -294,7 +294,7 @@ local function ride(me: Object)
     end
 end
 
--- The slash's target (`sub_80BD782` in EXE6 Falzar's numbering): from his
+-- The slash's target (`sub_80BD782` in JP Falzar's numbering): from his
 -- user's column forward, the first enemy's body in the rows tried (his
 -- user's row, then above, below, two above, two below) with a panel in
 -- front of it he can stand on; that panel, or (0, 0) for none (also once

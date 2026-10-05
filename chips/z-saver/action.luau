@@ -1,7 +1,7 @@
 --!strict
 -- Z Saver's action (the original's action 0x5B, `sub_80EFEE0`;
--- docs/engine/shot-chips.md §13): the one BN5 shares (@exelib/zsaver/action)
--- in BN6's look. Three slashes with growing reach; B and Left together in
+-- docs/engine/shot-chips.md §13): the one EXE5 shares (@exelib/zsaver/action)
+-- in EXE6's look. Three slashes with growing reach; B and Left together in
 -- the twelve ticks after the third slash's hit give a fourth, a piercing
 -- sonic boom. (The original's weapon routine 0x6E starts the same action.)
 

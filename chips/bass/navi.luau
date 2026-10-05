@@ -1,7 +1,7 @@
 --!strict
 -- Bass, the navi of the Bass chip (the original's actor object #0x4F,
--- `sub_80C3970`), brought by its navi chip controller: BN6's
--- (@exelib/bass/navi, which BN5's shares). He appears on his user's panel
+-- `sub_80C3970`), brought by its navi chip controller: EXE6's
+-- (@exelib/bass/navi, which EXE5's shares). He appears on his user's panel
 -- with his cape (a form overlay), rises for 100 ticks, then fires 24
 -- volleys of two shots (objects/panel-strike), 8 ticks apart, at the
 -- columns ahead holding the other side's panels: each shot at a panel with

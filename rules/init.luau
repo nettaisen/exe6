@@ -1,7 +1,7 @@
 --!strict
--- BN6's rules, its one ruleset (docs/design/rules-in-luau.md §2.2): the
--- systems a BN6 player plays by, in the order the framework calls them. The framework
--- (Rust) still runs the BN6 rules no system has taken over yet; the systems
+-- EXE6's rules, its one ruleset (docs/design/rules-in-luau.md §2.2): the
+-- systems an EXE6 player plays by, in the order the framework calls them. The framework
+-- (Rust) still runs the EXE6 rules no system has taken over yet; the systems
 -- take them slice by slice (§8).
 
 local beast = require("@self/beast")

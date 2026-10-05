@@ -1,7 +1,7 @@
 --!strict
--- BN6's emotions (docs/design/rules-in-luau.md §3.1, S5): what in BN6
+-- EXE6's emotions (docs/design/rules-in-luau.md §3.1, S5): what in EXE6
 -- makes a navi tired, Full Synchro on a counter, and the NaviCust
--- emotion-swing bug. The emotion's state is the framework's, which BN5's
+-- emotion-swing bug. The emotion's state is the framework's, which EXE5's
 -- rules share (the mood, held tired or exhausted, anger and its timer, and
 -- the order `sub_8015B54` reads them in); a game's rules decide when.
 

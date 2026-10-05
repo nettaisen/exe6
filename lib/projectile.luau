@@ -1,5 +1,5 @@
 --!strict
--- Firing BN6's projectile (objects/projectile, the original's attack object
+-- Firing EXE6's projectile (objects/projectile, the original's attack object
 -- #0; @exelib/projectile): `projectile.fire` from the panel in front of its
 -- navi as the buster does, or `projectile.spawn`, from any panel.
 

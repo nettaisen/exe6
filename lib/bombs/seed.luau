@@ -1,7 +1,7 @@
 --!strict
 -- A thrown seed (the original's attack object #0x4F, `sub_80CE24C`):
 -- PoisSeed, IceSeed and GrasSeed: the shared seed (@exelib/bombs/seed)
--- with BN6's look. It flies three panels ahead in the bomb's arc and
+-- with EXE6's look. It flies three panels ahead in the bomb's arc and
 -- lands: on a solid panel it hits it for a tick, then turns the panels
 -- around it into its variant's kind of panel, only its own if the hit
 -- landed on something; off the field or on a hole it just ends (a splash

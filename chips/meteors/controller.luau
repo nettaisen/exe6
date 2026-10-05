@@ -1,6 +1,6 @@
 --!strict
 -- Meteors' dimming controller (the original's effect object #0x34): the
--- shared controller (@exelib/meteors/controller), BN6's kind with BN6's
+-- shared controller (@exelib/meteors/controller), EXE6's kind with EXE6's
 -- meteor (./falling_meteor). The chip's `dimming` hook is
 -- `controller.hook`.
 

@@ -1,5 +1,5 @@
 --!strict
--- BN6's Beast Out rush (`sub_80EAD9C`): the game's wrapper (the role
+-- EXE6's Beast Out rush (`sub_80EAD9C`): the game's wrapper (the role
 -- `actions.wrapper`), which the navi's dispatcher (`sub_801B9E6`) runs
 -- instead of an attack while the attack's `wrapped` is 1: a chip with
 -- the lock-on flag in a Beast form, the Beast forms' charged claw and
@@ -106,8 +106,8 @@ local function lockon_mode(navi: Object): Lockon?
     end
     -- (The empty hand's chip, the zeroed one, has no lock-on mode.)
     local chip = navi.attack_chip
-    -- (The beast system's extension of chips, BN6's: types.d.luau.)
-    local beast = if chip ~= nil then ((chip :: any) :: Bn6ChipFields).beast else nil
+    -- (The beast system's extension of chips, EXE6's: types.d.luau.)
+    local beast = if chip ~= nil then ((chip :: any) :: Exe6ChipFields).beast else nil
     return if beast ~= nil then beast.lockon else nil
 end
 

@@ -1,7 +1,7 @@
 --!strict
 -- BlzrdBal's snowball (the original's attack object #0xB2, `sub_80DB994`;
 -- docs/engine/dimming-chip-effects.md §10): the shared snowball
--- (@exelib/blzrdbal/ball), BN6's kind and look. It rolls 3 pixels a tick to
+-- (@exelib/blzrdbal/ball), EXE6's kind and look. It rolls 3 pixels a tick to
 -- the end of the field, hitting once in each column it enters, and stops on
 -- a panel that isn't solid. Its roller (./roller), a step ahead, swallows
 -- the field objects it meets: each makes the ball bigger (its animation 1)

@@ -1,7 +1,7 @@
 --!strict
 -- GrabBnsh's and GrabRvng's dimming controller (the original's effect
 -- object #0x22, `sub_80E2CA4`): the shared controller
--- (@exelib/grabbnsh/controller), BN6's kind with BN6's hand (./hand), the
+-- (@exelib/grabbnsh/controller), EXE6's kind with EXE6's hand (./hand), the
 -- flash on each panel taken back (effect 0x3B) and its sound.
 
 local common = require("@exelib/grabbnsh/controller")

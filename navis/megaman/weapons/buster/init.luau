@@ -8,7 +8,7 @@
 -- this weapon's in compat (weapons.toml). See docs/engine/objects-and-player.md
 -- §B6.
 --
--- Action 0x11 (@exelib/megaman/buster, with BN6's buster parts, projectile,
+-- Action 0x11 (@exelib/megaman/buster, with EXE6's buster parts, projectile,
 -- attachment and throw) raises the buster; on its second tick the projectile flies
 -- from the panel in front (the spread adds shots a row up and down; a
 -- throw, `throw_absorbed`'s, throws the obstacle the navi absorbed

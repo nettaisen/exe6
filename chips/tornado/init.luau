@@ -1,6 +1,6 @@
 --!strict
 -- Tornado and Static (the original's action 0x2F, `sub_80ED454`; the
--- shared blow, @exelib/tornado/blow, with BN6's attachment and tornado):
+-- shared blow, @exelib/tornado/blow, with EXE6's attachment and tornado):
 -- the navi
 -- holds out a fan (an attachment) and, ten ticks in, raises tornadoes
 -- (tornado.luau) two panels ahead; the fan turns while they blow. Tornado
@@ -24,7 +24,7 @@ local CHARGED_FAN = attachment.look { sprite = asset.sprite("hand-fan"), palette
 
 local LOOK: TornadoBlowLook = { attachment = attachment.kind, tornado = tornado.kind }
 
--- A chip's blow (@exelib/tornado/blow), with BN6's attachment and tornado.
+-- A chip's blow (@exelib/tornado/blow), with EXE6's attachment and tornado.
 local function blow(spec: TornadoBlow): Action
     return common.blow(spec, LOOK)
 end
