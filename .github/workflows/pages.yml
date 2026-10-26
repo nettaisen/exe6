@@ -1,0 +1,106 @@
+# This game's content site (https://nettai.n1gp.net/<game>/), which nettai downloads the game's content from, built
+# from this repository's releases each time one is published (nettai's docs/design/content-deployment.md §4). Each
+# release, tagged <line>-r<revision> (0.11-r1) and made by `nettai-content publish <game>` in the engine's checkout,
+# holds one bundle of the game's content for nettai's <line>: <id>.tar.gz, and bundle.json, its index entry. The site
+# serves:
+#
+#   index.json               the game's bundles by line, each line's in revision order
+#                            ({"game": "exe6", "lines": {"0.11": [{"id": ..., "content_hash": ..., "revision": 1, ...}]}})
+#   bundles/<id>.tar.gz      every bundle, named by its id (the SHA-256 of its tar), checked against it
+#
+# The bundles stay out of git: a release's files are kept by GitHub, and this workflow puts them on the site. The site
+# deploys from main alone (the github-pages environment's rule), so a published release starts this workflow again on
+# main, which builds and deploys it.
+name: Pages
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # A release runs on its tag, which may not deploy: run again on main.
+  on-main:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: write
+    steps:
+      - name: Run this workflow on main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml -R "${{ github.repository }}" --ref main
+
+  build:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Build the site from the releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          gh api --paginate "repos/$REPO/releases" --jq '.[] | select(.draft | not) | .tag_name' > tags.txt
+          python3 - <<'PY'
+          import gzip, hashlib, json, os, pathlib, re, subprocess
+          repo = os.environ["REPO"]
+          game = repo.split("/", 1)[1]
+          site = pathlib.Path("site")
+          (site / "bundles").mkdir(parents=True)
+          lines = {}
+          for tag in pathlib.Path("tags.txt").read_text().split():
+              m = re.fullmatch(r"(\d+\.\d+)-r([1-9]\d*)", tag)
+              if not m:
+                  print(f"skipping release {tag}: not <line>-r<revision>")
+                  continue
+              line, revision = m.group(1), int(m.group(2))
+              d = pathlib.Path("download") / tag
+              d.mkdir(parents=True)
+              def download(name):
+                  subprocess.run(["gh", "release", "download", tag, "-R", repo, "-p", name, "-D", str(d)], check=True)
+                  return (d / name).read_bytes()
+              entry = json.loads(download("bundle.json"))
+              if entry["revision"] != revision:
+                  raise SystemExit(f"{tag}: its bundle.json is revision {entry['revision']}'s")
+              name = f"{entry['id']}.tar.gz"
+              data = download(name)
+              if len(data) != entry["size"]:
+                  raise SystemExit(f"{tag}: {name} is {len(data)} bytes, and its bundle.json says {entry['size']}")
+              sha = hashlib.sha256(gzip.decompress(data)).hexdigest()
+              if sha != entry["id"]:
+                  raise SystemExit(f"{tag}: {name}'s tar's SHA-256 is {sha}")
+              (site / "bundles" / name).write_bytes(data)
+              lines.setdefault(line, []).append(entry)
+              print(f"{tag}: {entry['id']}, content hash {entry['content_hash']}, {len(data):,} bytes")
+          for line, entries in lines.items():
+              entries.sort(key=lambda e: e["revision"])
+              revisions = [e["revision"] for e in entries]
+              if revisions != list(range(1, len(entries) + 1)):
+                  raise SystemExit(f"line {line}'s releases are revisions {revisions}, not 1 to {len(entries)}")
+          index = {"game": game, "lines": {line: lines[line] for line in sorted(lines)}}
+          (site / "index.json").write_text(json.dumps(index, indent=2) + "\n")
+          PY
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
