@@ -41,6 +41,9 @@ jobs:
   build:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: read
     steps:
       - name: Build the site from the releases
         env:
@@ -49,6 +52,10 @@ jobs:
         run: |
           set -euo pipefail
           gh api --paginate "repos/$REPO/releases" --jq '.[] | select(.draft | not) | .tag_name' > tags.txt
+          # The site's own address (its custom domain's, https), which each index entry's bundle address starts with.
+          BASE=$(gh api "repos/$REPO/pages" --jq .html_url)
+          case "$BASE" in https://*) ;; *) echo "the site's address isn't https: $BASE"; exit 1;; esac
+          export BASE
           python3 - <<'PY'
           import gzip, hashlib, json, os, pathlib, re, subprocess
           repo = os.environ["REPO"]
@@ -78,6 +85,7 @@ jobs:
               if sha != entry["id"]:
                   raise SystemExit(f"{tag}: {name}'s tar's SHA-256 is {sha}")
               (site / "bundles" / name).write_bytes(data)
+              entry["url"] = os.environ["BASE"].rstrip("/") + f"/bundles/{name}"
               lines.setdefault(line, []).append(entry)
               print(f"{tag}: {entry['id']}, content hash {entry['content_hash']}, {len(data):,} bytes")
           for line, entries in lines.items():
