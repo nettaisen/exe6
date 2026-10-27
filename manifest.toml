@@ -18,9 +18,8 @@ depends = ["exelib"]
 text = ["game", "patch_card_effects", "patch_card_groups", "bugs", "builds", "battle_themes", "rulesets", "lettering", "emotions"]
 # How its assets are extracted (the engine's docs/design/extraction-recipes.md §4.2): every ROM of a complete Legacy
 # Collection, in the order its places read an address by (a ROM's slot): Falzar's US ROM, Gregar's, then their
-# Japanese ones; the primitives its recipe (extract/) needs; and the files outside extract/ it reads.
+# Japanese ones; and the files outside extract/ its recipe reads.
 [extract]
-primitives = 1
 roms = ["BR6E", "BR5E", "BR6J", "BR5J"]
 size = 0x800000
 reads = ["compat/assets.toml", "compat/chips.toml", "compat/navis.toml", "compat/text.toml"]
