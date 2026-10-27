@@ -4,22 +4,3 @@
 id = "exe6"
 kind = "game"
 depends = ["exelib"]
-# Its locales' text tables (top-level tables of key to text that no definition owns; a top-level table that is no
-# collection and not one of these the locales' check refuses): `game`, the game's `name` as a player sees it (BN6 in
-# English, EXE6 in Japanese: the header's, a message's); `patch_card_effects`, each patch card effect's line on the
-# card screen, by the effect's kind and choice; `patch_card_groups`, the two groups the card screen lists them in, by
-# the effects' `group`; `bugs`, each NaviCust bug's name; `builds`, what a build is made of, by name (rules/builds:
-# its versions and its choices' presets); `battle_themes`, each battle theme's name, by its song's asset name
-# (rules/battle_themes); `lettering`, the words of the battle's lettered pictures (the banners, the HUD's labels, the
-# chip window's help pictures) by picture, which the enhanced graphics draw in a font in their place
-# (docs/design/text-rendering.md §12).
-# `emotions`, the emotions a navi can be held in (its rules' `emotion.order`, `EmotionRules::holdable`), by name,
-# for the app's practice menu, which holds a side in one.
-text = ["game", "patch_card_effects", "patch_card_groups", "bugs", "builds", "battle_themes", "rulesets", "lettering", "emotions"]
-# How its assets are extracted (the engine's docs/design/extraction-recipes.md §4.2): every ROM of a complete Legacy
-# Collection, in the order its places read an address by (a ROM's slot): Falzar's US ROM, Gregar's, then their
-# Japanese ones; and the files outside extract/ its recipe reads.
-[extract]
-roms = ["BR6E", "BR5E", "BR6J", "BR5J"]
-size = 0x800000
-reads = ["compat/assets.toml", "compat/chips.toml", "compat/navis.toml", "compat/text.toml"]
