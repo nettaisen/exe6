@@ -15,9 +15,13 @@ local sparks = require("../../lib/sparks")
 local navi_chips = require("../../lib/navi_chips/navi")
 local parts = require("../../lib/swords/parts")
 local regions = require("@exelib/regions")
+local big_slash_sprite = require("../../sprites/big_slash")
+local charge_glow_sprite = require("../../sprites/charge_glow")
+local dark_aura_sprite = require("./dark_aura_sprite")
+local element_pillar_flames_sprite = require("../../sprites/element_pillar_flames")
 
 -- The big slash.
-local BIG_SLASH = new.effect { sprite = asset.sprite("big-slash"), anim = 0, palette = 0 }
+local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0 }
 
 local darkness = {}
 
@@ -37,7 +41,7 @@ export type State = {
 -- parts (NameID 0x16D's: his cape). Dark MegaMan wears MegaMan's identity,
 -- in his base form (NameID 0x1A0: no parts), whose attach points his aura
 -- takes.
-local BASS_SPRITE = asset.sprite("bass-anly")
+local BASS_SPRITE = require("../bassanly/bass_anly_sprite")
 local BASS = new.identity {
     id = "bass",
     class = "navi",
@@ -46,7 +50,7 @@ local BASS = new.identity {
     ice = "medium",
     parts = {
         body = {
-            sprite = asset.sprite("bass-anly"),
+            sprite = BASS_SPRITE,
             anims = 20,
             behind = { { 0x13, 0x13 } },
             anim_offset = 0x14,
@@ -60,7 +64,7 @@ local SOUND_CHARGE, SOUND_CHARGED = asset.sound("buster-charge"), asset.sound("b
 
 -- Dark MegaMan's palette, and his aura (attachment 0x32).
 local DARK_PALETTE = 0x19
-local AURA = attachment.look { sprite = asset.sprite("dark-aura"), palette = 0, attach_point = 24 }
+local AURA = attachment.look { sprite = dark_aura_sprite, palette = 0, attach_point = 24 }
 
 -- The dark flames (`sub_80BFD02`): element pillars (objects/element_pillar;
 -- the original's fifth kind: flames that stand back by their wave and last
@@ -71,7 +75,7 @@ local FLAME_ELEMENT, FLAME_Z, FLAME_TICKS = 1, 0x6_0000, 0x5A
 -- Their look: flames (the pillar's first parameter 4: hit modifier 3, the
 -- fire spark).
 local FLAME_LOOK = element_pillar.look {
-    sprite = asset.sprite("element-pillar-flames"),
+    sprite = element_pillar_flames_sprite,
     hit_mod = 3,
     spark = sparks.fire,
     cracks = false,
@@ -85,8 +89,8 @@ local FLAME_PANELS = {
 -- Bass's charge: the glow while it builds (effect 0x4E) and the flash
 -- when it is full (0x4F), at his sprite's attach point 0 (`sub_8018810` by
 -- his NameID: his sprite's table row, whose point 0 is (0, 16)).
-local CHARGING = new.effect { sprite = asset.sprite("charge-glow"), anim = 0, palette = 0 }
-local CHARGED = new.effect { sprite = asset.sprite("charge-glow"), anim = 2, palette = 0 }
+local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0 }
+local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0 }
 local GLOW_X, GLOW_Z = 0, 16
 
 -- Bass's afterimages (`sub_80BFD90`): their color shader and lifetime.

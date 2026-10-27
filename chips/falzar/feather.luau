@@ -21,7 +21,7 @@ export type State = {
     while_dimmed: boolean,
 }
 
-local SPRITE = asset.sprite("falzar-feather")
+local SPRITE = require("./falzar_feather_sprite")
 local SOUND = asset.sound("justice-one")
 
 -- Where it starts: 192 pixels back and up (16.16).

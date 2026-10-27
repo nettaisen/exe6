@@ -6,14 +6,15 @@
 local colonel = require("./colonel/navi")
 local navi_chips = require("../lib/navi_chips/chip")
 local regions = require("@exelib/regions")
+local colonel_effect_sprite = require("../sprites/colonel_effect")
 
 -- What it looks for (`byte_80B84E4`: an enemy navi's body).
 local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
 
 -- Its two effects (0x36, 0x37).
 local CROSS = {
-    new.effect { sprite = asset.sprite("colonel-effect"), anim = 1, palette = 0 },
-    new.effect { sprite = asset.sprite("colonel-effect"), anim = 2, palette = 0 },
+    new.effect { sprite = colonel_effect_sprite, anim = 1, palette = 0 },
+    new.effect { sprite = colonel_effect_sprite, anim = 2, palette = 0 },
 }
 
 -- `sub_80B84A4`: its panel: the first ahead in Colonel's row holding an

@@ -27,7 +27,7 @@ export type State = {
 -- What a book's judge keeps.
 type Judge = { books_done: number }
 
-local SPRITE = asset.sprite("judgeman")
+local SPRITE = require("./judgeman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local ANIM_WAIT, ANIM_FLY = 0xA, 0xB
 

@@ -20,7 +20,7 @@ export type State = {
     steered: boolean,
 }
 
-local SPRITE = asset.sprite("slash-wave")
+local SPRITE = require("./slash_wave_sprite")
 local SOUND_AQUA_NEEDLE_2 = asset.sound("aqua-needle-2")
 local SOUND_BOOMERANG = asset.sound("boomerang")
 local SOUND_OK_8B = asset.sound("ok-8b")

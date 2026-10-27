@@ -17,7 +17,7 @@ export type State = {
 
 local blastman = {}
 
-local SPRITE = asset.sprite("blast-fire")
+local SPRITE = require("../../sprites/blast_fire")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_BLAST_MAN = asset.sound("blast-man")
 

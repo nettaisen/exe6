@@ -12,7 +12,7 @@ local sparks = require("../../lib/sparks")
 
 local vine = {}
 
-local SPRITE = asset.sprite("elmnt-man")
+local SPRITE = require("./elmnt_man_sprite")
 local SOUND_ELMNT_VINE = asset.sound("elmnt-vine")
 local ANIM = 0x12
 

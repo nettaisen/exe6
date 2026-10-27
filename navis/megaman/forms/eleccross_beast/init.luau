@@ -7,6 +7,7 @@ local gregar_beast_buster = require("../weapons/gregar_beast_buster")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local charge = require("@self/charge")
 local forms = require("../../../rules/forms")
+local eleccross_beast_sprite = require("@self/eleccross_beast_sprite")
 
 local form: FormDef = {
     kind = "cross_beast",
@@ -19,7 +20,7 @@ local form: FormDef = {
     cross_of = elecman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = gregar_beast,
-    sprite = asset.sprite("eleccross-beast"),
+    sprite = eleccross_beast_sprite,
     element = "elec",
     buster_bonus = 0,
     weapons = { buster = gregar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = charge.weapon },

@@ -19,7 +19,7 @@ export type State = {
     cracks: boolean,
 }
 
-local SPRITE = asset.sprite("aqua-needle")
+local SPRITE = require("./aqua_needle_sprite")
 local ANIM = 4
 local SOUND_FALL = asset.sound("aqua-needle-2")
 local SOUND_LAND = asset.sound("aqua-needle")

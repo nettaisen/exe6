@@ -30,7 +30,7 @@ export type State = {
     center_y: number,
 }
 
-local SPRITE = asset.sprite("bubble-star")
+local SPRITE = require("./bubble_star_sprite")
 local SOUND_HIT = asset.sound("bubble")
 -- One full sway (a phase of 0x10000) per this far, 16.16.
 local SWAY_LENGTH = 0x50_0000

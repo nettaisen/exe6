@@ -5,12 +5,13 @@
 local action = require("@self/action")
 local attachment = require("../objects/attachment")
 local lockon = require("../rules/lockon")
+local thunder_doll_hand_sprite = require("@self/thunder_doll_hand_sprite")
 
 -- Every level's thunder lasts 15 ticks (the original's second
 -- parameter).
 local TICKS = 0x0F
 -- The doll the navi holds out (the original's attachment row 0x29).
-local DOLL = attachment.look { sprite = asset.sprite("thunder-doll-hand"), palette = 0, attach_point = 0x0E }
+local DOLL = attachment.look { sprite = thunder_doll_hand_sprite, palette = 0, attach_point = 0x0E }
 
 local chips: { [string]: Chip } = {
     dolthdr1 = {

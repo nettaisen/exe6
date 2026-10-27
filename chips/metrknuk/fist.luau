@@ -9,12 +9,13 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/metrknuk/fist")
 local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
+local justice_one_sprite = require("../justcone/justice_one_sprite")
 
 -- Its hit (`sub_80DBEBA`, 0x15050001): a breaking thrown attack hitting
 -- navis on its panel, with the null spark.
 return common.make {
     id = "metrknuk/fist",
-    sprite = asset.sprite("justice-one"),
+    sprite = justice_one_sprite,
     anim = 0,
     sound = asset.sound("justice-one"),
     burst = effects.burst,

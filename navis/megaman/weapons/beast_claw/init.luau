@@ -33,7 +33,7 @@ local HIT_PARAM = 0x9E
 -- (`byte_80EF606`), the hit's region (`byte_80EF5FC`'s records: the panel
 -- and the one ahead, then the column) and hit modifier (`byte_80EF604`),
 -- and the sound.
-local CLAWS = asset.sprite("slash-man-effect")
+local CLAWS = require("../../../sprites/slash_man_effect")
 local LOOKS = {
     [0] = new.effect { sprite = CLAWS, anim = 1, palette = 0 },
     [1] = new.effect { sprite = CLAWS, anim = 0, palette = 0 },

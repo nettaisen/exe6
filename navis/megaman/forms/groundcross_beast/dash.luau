@@ -10,6 +10,7 @@ local dash_hit = require("../../dash_hit")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
 local weapon = require("../../../../lib/weapon")
+local puff_sprite = require("../../../../sprites/puff")
 
 -- Its hits: hit modifier 1, the plain spark; each hits again on the next
 -- panel.
@@ -41,7 +42,7 @@ local HIT_Z = 0x18_0000
 local SOUND_DASH, SOUND_RUMBLE = asset.sound("ground-beast-dash"), asset.sound("ground-beast-dash-2")
 
 -- The dust it lands in, 16.16 up.
-local LANDING_DUST = new.effect { sprite = asset.sprite("puff"), anim = 1, palette = 0 }
+local LANDING_DUST = new.effect { sprite = puff_sprite, anim = 1, palette = 0 }
 local LANDING_Z = 0x1E_0000
 
 -- `sub_8011D54`: 90 damage and 20 more per point of buster Attack (up to

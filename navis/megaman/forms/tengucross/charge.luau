@@ -10,6 +10,7 @@
 local attachment = require("../../../../objects/attachment")
 local weapon = require("../../../../lib/weapon")
 local windrack = require("../../../../chips/windrack/action")
+local tengu_fan_sprite = require("./tengu_fan_sprite")
 
 local charge = {}
 
@@ -19,7 +20,7 @@ local charge = {}
 -- variants).
 local GUST = windrack.action {
     id = "tengucross/charge/gust",
-    rack = attachment.look { sprite = asset.sprite("tengu-fan"), palette = 0 },
+    rack = attachment.look { sprite = tengu_fan_sprite, palette = 0 },
 }
 
 -- The attack's element (Wind, secondary element 0x20) and hit parameter.

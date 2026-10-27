@@ -12,6 +12,7 @@ local collision = require("../rules/collision")
 local flying_shot = require("../objects/flying_shot")
 local lockon = require("../rules/lockon")
 local sparks = require("../lib/sparks")
+local bow_sprite = require("@self/bow_sprite")
 
 export type State = {
     -- Ticks of the draw so far, then the recovery's (AIAttackVars+0x10).
@@ -28,7 +29,7 @@ local DRAW, RECOVER = 0x0, 0x4
 local UNTIL_ANIM_END, AFTER = 1, 2
 
 -- The bow (the original's attachment row 0x17).
-local BOW = attachment.look { sprite = asset.sprite("bow"), palette = 0, attach_point = 0x17 }
+local BOW = attachment.look { sprite = bow_sprite, palette = 0, attach_point = 0x17 }
 -- The navi's attach point the arrows are shot from.
 local HAND = 0x17
 -- Panels an arrow passes over, by side (`byte_80ECEAC`): flag 0x10000 and
@@ -42,7 +43,7 @@ local ARROW = flying_shot.variant {
     hit_mod = 1,
     element = "aqua",
     spark = sparks.of_element(2),
-    sprite = asset.sprite("bow"),
+    sprite = bow_sprite,
     anim = 3,
     speed = 0x6_0000,
     range = 8,

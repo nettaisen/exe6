@@ -24,7 +24,7 @@ export type State = {
 -- The owner's state: the slot this pillar sits in.
 export type OwnerState = { pillar: Object? }
 
-local SPRITE = asset.sprite("spout-pillar")
+local SPRITE = require("./spout_pillar_sprite")
 
 -- The owner's action a navi AI's pillar lasts through.
 local OWNER_ACTION = 0xB

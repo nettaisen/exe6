@@ -9,6 +9,7 @@
 -- EXE6's sound; its looks are its holders'.
 
 local common = require("@exelib/rflectr/shield")
+local reflector_shield_sprite = require("./reflector_shield_sprite")
 
 local shield = {}
 
@@ -22,7 +23,7 @@ shield.look = common.look
 
 -- The Reflector shield's sheet (the chips' and the NaviCust programs'
 -- looks are animations of it).
-shield.sprite = asset.sprite("reflector-shield")
+shield.sprite = reflector_shield_sprite
 
 local made = common.make { id = "rflectr/shield", sound = asset.sound("follow-effect") }
 shield.kind = made.kind

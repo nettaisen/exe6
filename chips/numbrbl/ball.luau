@@ -9,10 +9,11 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/numbrbl/ball")
 local effects = require("../../lib/effects")
+local number_ball_sprite = require("./number_ball_sprite")
 
 return common.make {
     id = "numbrbl/ball",
-    sprite = asset.sprite("number-ball"),
+    sprite = number_ball_sprite,
     -- The ticks it sits before its wait (the first sets the count).
     sit_ticks = 0xE,
     set_sound = asset.sound("place"),

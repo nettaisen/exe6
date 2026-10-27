@@ -16,6 +16,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/anubis/statue")
 local effects = require("../../lib/effects")
 local rising_bubble = require("../../objects/rising_bubble")
+local anubis_sprite = require("./anubis_sprite")
 
 local statue = {}
 
@@ -24,14 +25,14 @@ local DRAIN_IS = new.collision { side0 = 0x80001080, side1 = 0x40001080, row_off
 
 local made = common.make {
     id = "anubis/statue",
-    sprite = asset.sprite("anubis"),
+    sprite = anubis_sprite,
     sounds = { land = asset.sound("land"), ["break"] = asset.sound("hit-bomb-1") },
     -- A field obstacle of its side, hit by the other side.
     is = collision.own_body,
     hits = collision.hit_by_other_side,
     drain = DRAIN_IS,
     nothing = collision.nothing,
-    absorbed = absorbed_obstacle.look { sprite = asset.sprite("anubis") },
+    absorbed = absorbed_obstacle.look { sprite = anubis_sprite },
     effects = { puff = effects.puff, explosion = effects.explosion },
     bubble = rising_bubble.kind,
 }

@@ -14,7 +14,7 @@ export type State = {
     action: Action?,
 }
 
-local SPRITE = asset.sprite("judgeman")
+local SPRITE = require("./judgeman_sprite")
 local ANIM_RAISE, ANIM_HOLD = 8, 9
 
 -- `sub_80E70F8`: on its owner.

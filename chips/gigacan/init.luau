@@ -11,12 +11,13 @@ local cannon = require("../lib/cannon")
 local variants = require("../objects/projectile/variants")
 local cannon_chips = require("./cannon")
 local lockon = require("../rules/lockon")
+local cannon_sprite = require("./cannon/cannon_sprite")
 
 -- Their cannons (the original's attachment rows 0 to 2: the cannon in
 -- palettes 0, 1 and 2, the Cannons'), at the navi's attach point 7.
-local GIGACAN1_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 0, attach_point = 7 }
-local GIGACAN2_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 1, attach_point = 7 }
-local GIGACAN3_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 2, attach_point = 7 }
+local GIGACAN1_ARM = attachment.look { sprite = cannon_sprite, palette = 0, attach_point = 7 }
+local GIGACAN2_ARM = attachment.look { sprite = cannon_sprite, palette = 1, attach_point = 7 }
+local GIGACAN3_ARM = attachment.look { sprite = cannon_sprite, palette = 2, attach_point = 7 }
 
 local function giga(id: string, arm: AttachmentLook): Action
     return cannon.action { id = id, arm = arm, shot = variants.gigacan, afterimages = true }

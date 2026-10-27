@@ -14,7 +14,7 @@ export type State = {
     action: Action?,
 }
 
-local SPRITE = asset.sprite("eagle-tomahawk")
+local SPRITE = require("./eagle_tomahawk_sprite")
 local ANIM_RAISED, ANIM_SWUNG = 6, 7
 
 -- Its actions, which his routine sets.

@@ -20,6 +20,8 @@
 -- `navi_boost.hook(change)`.
 
 local dimming_chips = require("@exelib/dimming")
+local bug_sprite = require("../../sprites/bug")
+local charge_glow_a_sprite = require("../../sprites/charge_glow_a")
 
 local navi_boost = {}
 
@@ -38,8 +40,8 @@ export type State = {
 navi_boost.WAIT = 0x3C
 -- The effects around the navi (the original's effects 0x5B and 0x5C), and
 -- the sounds.
-local BUG_EFFECT = new.effect { sprite = asset.sprite("bug"), anim = 0, palette = 0 }
-local ARM_EFFECT = new.effect { sprite = asset.sprite("charge-glow-a"), anim = 3, palette = 1 }
+local BUG_EFFECT = new.effect { sprite = bug_sprite, anim = 0, palette = 0 }
+local ARM_EFFECT = new.effect { sprite = charge_glow_a_sprite, anim = 3, palette = 1 }
 local BUG_SOUND, LOG_IN_SOUND = asset.sound("bug"), asset.sound("log-in")
 -- When the arms' log-in sound plays, by timer.
 local ARM_LOG_IN_AT = 0x28

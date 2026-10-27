@@ -7,6 +7,8 @@ local falzar_beast_buster = require("../weapons/falzar_beast_buster")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local charge = require("@self/charge")
 local forms = require("../../../rules/forms")
+local beast_head_sprite = require("./beast_head_sprite")
+local spoutcross_beast_sprite = require("@self/spoutcross_beast_sprite")
 
 local form: FormDef = {
     kind = "cross_beast",
@@ -21,7 +23,7 @@ local form: FormDef = {
     cross_of = spoutman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = falzar_beast,
-    sprite = asset.sprite("spoutcross-beast"),
+    sprite = spoutcross_beast_sprite,
     element = "aqua",
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = charge.weapon },
@@ -50,7 +52,7 @@ local form: FormDef = {
         aura_anim = 13,
         ice = "medium",
         -- The beast's head, in the Cross's palette.
-        parts = { beast_head = { sprite = asset.sprite("beast-head"), palette = 2 } },
+        parts = { beast_head = { sprite = beast_head_sprite, palette = 2 } },
         attach_points = {
             { 4, 16 },
             { 4, 24 },

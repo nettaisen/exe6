@@ -6,6 +6,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/circgun/shot")
 local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
+local sight_sprite = require("../../sprites/sight")
 
 local shot = {}
 
@@ -16,7 +17,7 @@ shot.spawn_kind = common.spawn_kind
 
 -- EXE6's look, which the gun's kind shares.
 shot.look = {
-    sprite = asset.sprite("sight"),
+    sprite = sight_sprite,
     sounds = {
         -- (The cursor steps with the sound EraseMan's mark has, the
         -- original's 0x10E.)

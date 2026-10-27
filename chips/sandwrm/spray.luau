@@ -25,7 +25,7 @@ export type State = {
     angle: number,
 }
 
-local SPRITE = asset.sprite("sand-worm")
+local SPRITE = require("./sand_worm_sprite")
 -- The arc's length (`byte_80DEA50`, the same for every level), and its
 -- height (`dword_80DF0A0`, in units of the sine table).
 local LENGTH = 0x10

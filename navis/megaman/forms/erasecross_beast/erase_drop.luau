@@ -20,7 +20,8 @@ export type State = {
     y: number,
 }
 
-local SPRITE = asset.sprite("erase-drop")
+local SPRITE = require("./erase_drop_sprite")
+local puff_sprite = require("../../../../sprites/puff")
 
 -- Where it starts, relative to its panel: this much back and up, 16.16;
 -- the fall covers the first part of each.
@@ -34,7 +35,7 @@ local FALLING, BLINKING = 0, 4
 local SOLID = 0x10
 
 -- Where it appears, and its burst (a puff).
-local APPEAR = new.effect { sprite = asset.sprite("puff"), anim = 3, palette = 0 }
+local APPEAR = new.effect { sprite = puff_sprite, anim = 3, palette = 0 }
 local BURST = effects.puff
 
 -- Its element: Cursor, whatever the attack's.

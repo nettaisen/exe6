@@ -8,6 +8,8 @@ local erasecross_beast = require("./erasecross_beast")["erasecross-beast"]
 local buster = require("../weapons/buster")
 local charge = require("@self/charge")
 local forms = require("../../../rules/forms")
+local erasecross_overlay_sprite = require("@self/erasecross_overlay_sprite")
+local megaman_sprite = require("./megaman_sprite")
 
 local form: FormDef = {
     kind = "cross",
@@ -20,7 +22,7 @@ local form: FormDef = {
     beast = erasecross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
-    sprite = asset.sprite("megaman"),
+    sprite = megaman_sprite,
     element = "null",
     weakness = { "wind" },
     buster_bonus = 0,
@@ -48,7 +50,7 @@ local form: FormDef = {
         aura_anim = 28,
         ice = "medium",
         -- What it wears over MegaMan's body.
-        parts = cross_overlay(asset.sprite("erasecross-overlay")),
+        parts = cross_overlay(erasecross_overlay_sprite),
         attach_points = {
             { 2, 0 },
             { 2, 0 },

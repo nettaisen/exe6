@@ -13,11 +13,13 @@ local common = require("@exelib/bugbomb/bomb")
 local rising_bubble = require("../../objects/rising_bubble")
 local statuses = require("../../rules/status")
 local trajectory = require("../../lib/trajectory")
+local bomb_sprite = require("../../sprites/bomb")
+local explosion_sprite = require("../../sprites/explosion")
 
 local bug_bomb = {}
 
 -- The explosion (effect 0x4A).
-local EXPLOSION = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 2 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 2 }
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 
 -- The bugs (`byte_80DA034`): the code and its argument, by what the target
@@ -53,7 +55,7 @@ local function pick_bug(me: Object)
 end
 
 bug_bomb.kind = common.make_kind("bugbomb/bomb", {
-    sprite = asset.sprite("bomb"),
+    sprite = bomb_sprite,
     anim = 5,
     -- Its status 0x20.
     is = collision.own_thrown_body,

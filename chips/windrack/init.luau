@@ -5,6 +5,7 @@
 local attachment = require("../objects/attachment")
 local action = require("@self/action")
 local lockon = require("../rules/lockon")
+local wind_rack_sprite = require("@self/wind_rack_sprite")
 
 local chip: Chip = {
     codes = { "F", "J", "R", "*" },
@@ -15,7 +16,7 @@ local chip: Chip = {
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.widesht },
     -- Its rack (the original's attachment row 0x2A, variant 0).
-    action = action.action { rack = attachment.look { sprite = asset.sprite("wind-rack"), palette = 0 } },
+    action = action.action { rack = attachment.look { sprite = wind_rack_sprite, palette = 0 } },
 }
 
 return { windrack = chip }

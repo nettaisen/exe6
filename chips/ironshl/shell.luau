@@ -17,6 +17,7 @@ local collision = require("../../rules/collision")
 local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
+local iron_shell_sprite = require("./iron_shell_sprite")
 
 local shell = {}
 
@@ -41,7 +42,7 @@ export type State = {
     softened: boolean,
 }
 
-local SPRITE, ANIM = asset.sprite("iron-shell"), 3
+local SPRITE, ANIM = iron_shell_sprite, 3
 local SOUND = asset.sound("iron-shell")
 -- A panel's width, 16.16.
 local PANEL_WIDTH = 0x28_0000

@@ -9,6 +9,7 @@
 local collision = require("../../rules/collision")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
+local energy_burst_sprite = require("../../sprites/energy_burst")
 
 local corn = {}
 
@@ -36,7 +37,7 @@ local BURSTS = 2
 -- once).
 local BURST_TICKS, SPREAD_TICKS = 0xC, 0xC
 local HIT_MOD = 1
-local EFFECT = new.effect { sprite = asset.sprite("energy-burst"), anim = 0, palette = 1 }
+local EFFECT = new.effect { sprite = energy_burst_sprite, anim = 0, palette = 1 }
 local SOUND = asset.sound("hit-bomb-1")
 -- The other side's body on a panel (`off_80C6764`, by side).
 local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }

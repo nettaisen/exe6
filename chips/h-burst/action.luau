@@ -6,6 +6,7 @@
 local attachment = require("../../objects/attachment")
 local burst = require("./burst")
 local common = require("@exelib/h_burst/action")
+local spreader_sprite = require("../spreadr/spreader_sprite")
 
 local action = {}
 
@@ -14,7 +15,7 @@ action.STATE = common.STATE
 
 local LOOK: HyperBurstLook = {
     -- The spreader the navi holds (the original's attachment row 0x15).
-    spreader = attachment.look { sprite = asset.sprite("spreader"), palette = 0, attach_point = 0x0B },
+    spreader = attachment.look { sprite = spreader_sprite, palette = 0, attach_point = 0x0B },
     -- In the overlay, its animation 0.
     hold = function(me: Object, look: AttachmentLook, which: Slot)
         attachment.attach(me, look, which)

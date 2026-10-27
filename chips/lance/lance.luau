@@ -6,6 +6,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/lance")
 local sparks = require("../../lib/sparks")
+local lance_sprite = require("./lance_sprite")
 
 local lance = {}
 
@@ -14,7 +15,7 @@ lance.spawn_kind = common.spawn_kind
 lance.instant_of = common.instant_of
 
 lance.kind = common.make_kind("lance/lance", {
-    sprite = asset.sprite("lance"),
+    sprite = lance_sprite,
     sound = asset.sound("sword-swing"),
 })
 

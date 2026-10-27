@@ -11,6 +11,7 @@ local collision = require("../../rules/collision")
 local link = require("../../lib/link_chips")
 local regions = require("@exelib/regions")
 local weapon = require("../../lib/weapon")
+local big_slash_sprite = require("../../sprites/big_slash")
 
 export type State = {
     timer: number,
@@ -39,7 +40,7 @@ local WOOD = 4
 
 -- The slash's hit modifier, and its effect 16 pixels up.
 local HIT_MOD = 1
-local SLASH = new.effect { sprite = asset.sprite("big-slash"), anim = 1, palette = 0 }
+local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
 local SLASH_Z = 0x10_0000
 
 -- `sub_8012258`: 100 damage and 20 more per point of buster Attack (up to

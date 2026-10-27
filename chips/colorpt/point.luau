@@ -10,10 +10,11 @@
 
 local common = require("@exelib/colorpt/point")
 local trajectory = require("../../lib/trajectory")
+local grab_shot_sprite = require("../../sprites/grab_shot")
 
 return common.make {
     id = "colorpt/point",
-    sprite = asset.sprite("grab-shot"),
+    sprite = grab_shot_sprite,
     sounds = {
         appear = asset.sound("point-appear"),
         rise = asset.sound("point-rise"),

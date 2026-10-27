@@ -8,6 +8,7 @@
 local collision = require("../rules/collision")
 local controller = require("@self/controller")
 local countdown = require("@self/countdown")
+local countdown_bomb_sprite = require("@self/countdown_bomb_sprite")
 
 -- What both bombs are and what they react to: a neutral body, hit by
 -- everything; the one field object of their side's own class.
@@ -25,7 +26,7 @@ local BOMB = countdown.variant {
         class = "field_object",
         version = 5,
         ai_index = 1,
-        look = { sprite = asset.sprite("countdown-bomb"), anim = 1, palette = 0, shadow = true, keeps_flip = true },
+        look = { sprite = countdown_bomb_sprite, anim = 1, palette = 0, shadow = true, keeps_flip = true },
     },
     class = 1,
     collision = BODY,
@@ -39,7 +40,7 @@ local BIG_BOMB = countdown.variant {
         class = "field_object",
         version = 0,
         ai_index = 1,
-        look = { sprite = asset.sprite("countdown-bomb"), anim = 3, palette = 0, shadow = true, keeps_flip = true },
+        look = { sprite = countdown_bomb_sprite, anim = 3, palette = 0, shadow = true, keeps_flip = true },
     },
     class = 1,
     collision = BODY,

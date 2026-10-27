@@ -9,6 +9,7 @@
 
 local attachment = require("../../objects/attachment")
 local corn = require("./corn")
+local corn_shooter_sprite = require("./corn_shooter_sprite")
 
 local cornsht = {}
 
@@ -28,7 +29,7 @@ local FIRE_TICKS, RECOVER_TICKS = 0xA, 0x18
 local SOUND = asset.sound("corn-shot")
 
 -- The corn gun (the original's attachment row 0x18).
-local GUN = attachment.look { sprite = asset.sprite("corn-shooter"), palette = 0, attach_point = 25 }
+local GUN = attachment.look { sprite = corn_shooter_sprite, palette = 0, attach_point = 25 }
 
 -- A chip's CornSht (its action's id).
 function cornsht.action(id: string): Action

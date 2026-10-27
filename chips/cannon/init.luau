@@ -7,12 +7,13 @@ local attachment = require("../objects/attachment")
 local shooter = require("../lib/cannon")
 local variants = require("../objects/projectile/variants")
 local lockon = require("../rules/lockon")
+local cannon_sprite = require("@self/cannon_sprite")
 
 -- Their cannons (the original's attachment rows 0 to 2: the cannon in
 -- palettes 0, 1 and 2), at the navi's attach point 7.
-local CANNON_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 0, attach_point = 7 }
-local HICANNON_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 1, attach_point = 7 }
-local M_CANNON_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 2, attach_point = 7 }
+local CANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 0, attach_point = 7 }
+local HICANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 1, attach_point = 7 }
+local M_CANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 2, attach_point = 7 }
 
 local cannon: Chip = {
     codes = { "A", "B", "C", "*" },

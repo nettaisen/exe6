@@ -6,11 +6,12 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/moonbld/blade")
+local moon_blade_sprite = require("../../sprites/moon_blade")
 
 local blade = {}
 
 blade.kind = common.make_kind("moonbld/blade", {
-    sprite = asset.sprite("moon-blade"),
+    sprite = moon_blade_sprite,
     is = collision.slash,
     hits = collision.hits_navis,
 })

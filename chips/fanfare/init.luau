@@ -5,6 +5,7 @@
 local instrument = require("../lib/instruments/instrument")
 local instruments = require("../lib/instruments/controller")
 local kind = require("../rules/forms/kind")
+local instrument_sprite = require("../lib/instruments/instrument_sprite")
 
 -- How long its every-third-tick invulnerability lasts.
 local INVULNERABLE_TICKS = 4
@@ -33,7 +34,7 @@ local chip: Chip = {
             class = "field_object",
             version = 4,
             ai_index = 1,
-            look = { sprite = asset.sprite("instrument"), anim = 0, palette = 0, shadow = true },
+            look = { sprite = instrument_sprite, anim = 0, palette = 0, shadow = true },
         },
         palette = 0,
         play_ticks = 0x55 * 2,

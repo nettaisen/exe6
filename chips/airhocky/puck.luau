@@ -9,6 +9,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/airhocky/puck")
 local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
+local hockey_puck_sprite = require("./hockey_puck_sprite")
 
 local puck = {}
 
@@ -20,7 +21,7 @@ export type Variant = PuckVariant
 puck.variant = common.variant
 
 puck.kind = common.make_kind("airhocky/puck", {
-    sprite = asset.sprite("hockey-puck"),
+    sprite = hockey_puck_sprite,
     sound = asset.sound("hockey-puck"),
     bounce = asset.sound("bounce"),
     is = collision.breaking,

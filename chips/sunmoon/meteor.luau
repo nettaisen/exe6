@@ -7,6 +7,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/sun_meteor")
 local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
+local meteor_sprite = require("../meteors/meteor_sprite")
 
 local made = common.make {
     id = "sunmoon/meteor",
@@ -21,7 +22,7 @@ local meteor = { kind = made.kind, spawn = made.spawn }
 -- The variant (`byte_80DBEE0`'s record 0, six bytes): the sprite, the animation, what it is and hits, whether the
 -- landing shakes the camera (drawn only), and what it does to a panel holding something.
 meteor.fire = common.variant {
-    sprite = asset.sprite("meteor"),
+    sprite = meteor_sprite,
     anim = 0,
     collision = { is = collision.thrown, hits = collision.hits_navis },
     shake = true,

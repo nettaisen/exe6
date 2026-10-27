@@ -5,9 +5,12 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local heatman = require("@self/chip").heatpres
+local heatman_overlay_sprite = require("@self/heatman_overlay_sprite")
+local heatman_portrait_sprite = require("@self/heatman_portrait_sprite")
+local heatman_sprite = require("@self/heatman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("heatman"),
+    sprite = heatman_sprite,
     element = "fire",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -20,7 +23,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("heatman-portrait"),
+        portrait = heatman_portrait_sprite,
     },
     own_chip = { chip = heatman, code = "H" },
     chip_bonus = {
@@ -69,7 +72,7 @@ local navi: NaviDef = {
         -- What he wears over his body; a flinch restarts it too.
         parts = {
             body = {
-                sprite = asset.sprite("heatman-overlay"),
+                sprite = heatman_overlay_sprite,
                 anims = 160,
                 behind = { { 0x15, 0x17 }, { 0x22, 0x23 }, { 0x3B, 0x4F }, { 0x64, 0x8B }, { 0x9F, 0x9F } },
             },

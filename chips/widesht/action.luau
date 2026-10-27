@@ -9,6 +9,7 @@
 local attachment = require("../../objects/attachment")
 local common = require("@exelib/widesht/action")
 local wave = require("./wave")
+local wide_shooter_sprite = require("./wide_shooter_sprite")
 
 local widesht = {}
 
@@ -16,7 +17,7 @@ widesht.STATE = common.STATE
 
 local LOOK: WideShotLook = {
     -- The wide shooter (the original's attachment row 0x23).
-    shooter = attachment.look { sprite = asset.sprite("wide-shooter"), palette = 0, attach_point = 12 },
+    shooter = attachment.look { sprite = wide_shooter_sprite, palette = 0, attach_point = 12 },
     attachment = attachment.kind,
     wave = wave.kind,
 }

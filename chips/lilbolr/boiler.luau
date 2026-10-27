@@ -40,7 +40,7 @@ export type State = {
     steam: Object?,
 }
 
-local SPRITE = asset.sprite("lil-boiler")
+local SPRITE = require("../../sprites/lil_boiler")
 -- Its identity: a field object, with the look something that takes its
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {
@@ -48,7 +48,7 @@ local IDENTITY = new.identity {
     class = "field_object",
     version = 0,
     ai_index = 1,
-    look = { sprite = asset.sprite("lil-boiler"), anim = 0, palette = 0, shadow = true },
+    look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
 }
 local MAX_HP, LIFETIME = 4000, 0xB4
 -- Its HP never goes below this: it deals 999 at most.

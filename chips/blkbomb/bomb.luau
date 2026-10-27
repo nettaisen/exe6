@@ -15,7 +15,9 @@ local trajectory = require("../../lib/trajectory")
 
 local black_bomb = {}
 
-local SPRITE = asset.sprite("black-bomb")
+local SPRITE = require("./black_bomb_sprite")
+local bomb_sprite = require("../../sprites/bomb")
+local hit_sparks_sprite = require("../../sprites/hit_sparks")
 -- Its identity: a field object, with the look something that takes its
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {
@@ -23,17 +25,17 @@ local IDENTITY = new.identity {
     class = "field_object",
     version = 2,
     ai_index = 1,
-    look = { sprite = asset.sprite("black-bomb"), anim = 0, palette = 0, shadow = true },
+    look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
 }
 -- Its hit spark (0x0A).
-local HIT_SPARK = new.spark { sprite = asset.sprite("hit-sparks"), anim = 1, palette = 0 }
+local HIT_SPARK = new.spark { sprite = hit_sparks_sprite, anim = 1, palette = 0 }
 -- How it looks absorbed (the original's obstacle kind's sprite: its own).
 local ABSORBED = absorbed_obstacle.look { sprite = SPRITE }
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 
 -- What the navi holds while throwing one: the bomb's sprite, palette 4
 -- (the original's attachment row 0x2D).
-black_bomb.held = attachment.look { sprite = asset.sprite("bomb"), palette = 4 }
+black_bomb.held = attachment.look { sprite = bomb_sprite, palette = 4 }
 
 -- Gone from the field's bookkeeping, and freed at the next update.
 black_bomb.finish = common.finish

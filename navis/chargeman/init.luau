@@ -6,9 +6,11 @@ local buster = require("./megaman/weapons/buster")
 local a_charge = require("./megaman/weapons/charged_chip_bonus_29")
 local charge = require("@self/charge")
 local chargeman = require("@self/chip").volcchrg
+local chargeman_portrait_sprite = require("@self/chargeman_portrait_sprite")
+local chargeman_sprite = require("@self/chargeman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("chargeman"),
+    sprite = chargeman_sprite,
     element = "fire",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -21,7 +23,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("chargeman-portrait"),
+        portrait = chargeman_portrait_sprite,
     },
     own_chip = { chip = chargeman, code = "C" },
     -- What a navi switch brings the navi with (`byte_80210DD`): its weapons,

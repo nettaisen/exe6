@@ -17,9 +17,11 @@ local gregar_beast_over = require("@self/forms/gregar_beast_over")["gregar-beast
 local falzar_beast_over = require("@self/forms/falzar_beast_over")["falzar-beast-over"]
 local buster = require("@self/weapons/buster")
 local charged_shot = require("@self/weapons/charged_shot")
+local megaman_navi_sprite = require("@self/megaman_navi_sprite")
+local megaman_portrait_sprite = require("@self/megaman_portrait_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("megaman-navi"),
+    sprite = megaman_navi_sprite,
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -28,7 +30,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("megaman-portrait"),
+        portrait = megaman_portrait_sprite,
     },
     -- What a navi switch brings the navi with (`byte_80210DD`): its weapons,
     -- and the rest of its fresh stats; and its HP after the change, by side

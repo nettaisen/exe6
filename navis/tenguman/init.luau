@@ -6,9 +6,11 @@ local buster = require("./megaman/weapons/buster")
 local tengu_wind = require("./megaman/weapons/tengu_wind")
 local charge = require("@self/charge")
 local tenguman = require("@self/chip").ftornado
+local tenguman_portrait_sprite = require("@self/tenguman_portrait_sprite")
+local tenguman_sprite = require("@self/tenguman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("tenguman"),
+    sprite = tenguman_sprite,
     element = "null",
     weakness = { "sword" },
     buster_bonus = 1,
@@ -21,7 +23,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("tenguman-portrait"),
+        portrait = tenguman_portrait_sprite,
     },
     own_chip = { chip = tenguman, code = "T" },
     chip_bonus = {

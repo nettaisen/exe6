@@ -9,6 +9,8 @@ local throw_absorbed = require("@self/throw_absorbed")
 local charge = require("@self/charge")
 local absorb = require("../weapons/absorb")
 local forms = require("../../../rules/forms")
+local dustcross_overlay_sprite = require("@self/dustcross_overlay_sprite")
+local megaman_sprite = require("./megaman_sprite")
 
 local form: FormDef = {
     kind = "cross",
@@ -19,7 +21,7 @@ local form: FormDef = {
     beast = dustcross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
-    sprite = asset.sprite("megaman"),
+    sprite = megaman_sprite,
     element = "null",
     weakness = { "cursor" },
     buster_bonus = 0,
@@ -45,7 +47,7 @@ local form: FormDef = {
         aura_anim = 34,
         ice = "medium",
         -- What it wears over MegaMan's body.
-        parts = cross_overlay(asset.sprite("dustcross-overlay")),
+        parts = cross_overlay(dustcross_overlay_sprite),
         attach_points = {
             { 2, 0 },
             { 2, 0 },

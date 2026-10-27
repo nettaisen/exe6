@@ -8,12 +8,13 @@ local attachment = require("../objects/attachment")
 local burn = require("../lib/burner/burn")
 local firebrn_chips = require("./firebrn")
 local lockon = require("../rules/lockon")
+local burner_sprite = require("../sprites/burner")
 
 local function wide_burn(id: string): Action
     return burn.action {
         id = id,
         -- The burner (the original's attachment row 0x16).
-        burner = attachment.look { sprite = asset.sprite("burner"), palette = 0, attach_point = 0x14 },
+        burner = attachment.look { sprite = burner_sprite, palette = 0, attach_point = 0x14 },
         flame = { ticks = 60, spread = 2, wide = true, cracks = true },
     }
 end

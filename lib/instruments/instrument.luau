@@ -13,7 +13,7 @@ instrument.instrument = common.instrument
 instrument.make_kind = common.make_kind
 instrument.spawn_kind = common.spawn_kind
 
-local EXE6_SPRITE = asset.sprite("instrument")
+local EXE6_SPRITE = require("./instrument_sprite")
 
 instrument.kind = common.make_kind("instrument", {
     sprite = EXE6_SPRITE,

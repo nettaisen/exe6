@@ -6,10 +6,11 @@
 -- drawn; LifeSync's controller places it outside link battles only.
 
 local common = require("@exelib/lifesync/marker")
+local hit_sparks_sprite = require("../../sprites/hit_sparks")
 
 local marker = {}
 
-marker.kind = common.make_kind { id = "lifesync/marker", sprite = asset.sprite("hit-sparks"), palette = 2 }
+marker.kind = common.make_kind { id = "lifesync/marker", sprite = hit_sparks_sprite, palette = 2 }
 
 -- `sub_80E7774`: a marker at `pos` for `ticks` ticks.
 function marker.spawn(pos: Vec3, ticks: number): Object?

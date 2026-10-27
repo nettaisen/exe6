@@ -8,6 +8,8 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/widesht/wave")
+local rock_cubes_sprite = require("../../sprites/rock_cubes")
+local wide_wave_sprite = require("./wide_wave_sprite")
 
 local wave = {}
 
@@ -17,9 +19,9 @@ wave.variant = common.variant
 
 wave.kind = common.make_kind {
     id = "widesht/wave",
-    sprite = asset.sprite("wide-wave"),
+    sprite = wide_wave_sprite,
     sound = asset.sound("wide-shot"),
-    trail_sprite = asset.sprite("rock-cubes"),
+    trail_sprite = rock_cubes_sprite,
     target = collision.hits_navis,
 }
 

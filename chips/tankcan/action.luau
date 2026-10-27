@@ -9,6 +9,7 @@
 local attachment = require("../../objects/attachment")
 local common = require("@exelib/tankcan/action")
 local shell = require("./shell")
+local tank_cannon_sprite = require("./tank_cannon_sprite")
 
 local tankcan = {}
 
@@ -16,7 +17,7 @@ local tankcan = {}
 tankcan.STATE = common.STATE
 
 -- The tank cannon (the original's attachment row 0x14).
-local TANK = attachment.look { sprite = asset.sprite("tank-cannon"), palette = 0, attach_point = 8 }
+local TANK = attachment.look { sprite = tank_cannon_sprite, palette = 0, attach_point = 8 }
 
 -- A chip's tank cannon: the shell it fires.
 function tankcan.action(spec: { shell: ShellSpec }): Action

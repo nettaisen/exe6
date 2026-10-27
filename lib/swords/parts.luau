@@ -8,6 +8,7 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/swords/parts")
 local kind = require("../../rules/forms/kind")
+local sword_sprite = require("../../sprites/sword")
 
 local parts = {}
 
@@ -16,7 +17,7 @@ parts.slashes_navis = { is = collision.slash, hits = collision.hits_navis }
 
 -- The plain blade the navi holds (the original's attachment row 3), which most swords hold. (The elemental swords'
 -- and BambSwrd's are their own: rows 0x19 to 0x1C.)
-parts.blade = attachment.look { sprite = asset.sprite("sword"), palette = 0 }
+parts.blade = attachment.look { sprite = sword_sprite, palette = 0 }
 
 -- The swings' sounds: most swords', and the big swords' (LifeSrd, DrkSword, DblDream). (The slashes over the panels
 -- each sword hits are its own.)

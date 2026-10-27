@@ -7,6 +7,7 @@ local effects = require("@exelib/instruments/effects")
 local instrument = require("../lib/instruments/instrument")
 local instruments = require("../lib/instruments/controller")
 local statuses = require("../rules/status")
+local instrument_sprite = require("../lib/instruments/instrument_sprite")
 
 -- Blinded (status 0x33: 4 ticks) over the whole field (`sub_80D43E8`).
 local hush = effects.hush(statuses.blind_4, collision.guard_breaking, collision.hits_navis)
@@ -24,7 +25,7 @@ local chip: Chip = {
             class = "field_object",
             version = 1,
             ai_index = 1,
-            look = { sprite = asset.sprite("instrument"), anim = 0, palette = 6, shadow = true },
+            look = { sprite = instrument_sprite, anim = 0, palette = 6, shadow = true },
         },
         palette = 6,
         play_ticks = 0x78 * 2,

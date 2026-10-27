@@ -6,9 +6,12 @@ local buster = require("./megaman/weapons/buster")
 local a_charge = require("./megaman/weapons/charged_chip_bonus_20")
 local charge = require("@self/charge")
 local spoutman = require("@self/chip").dripshwr
+local idle_overlay_sprite = require("@self/idle_overlay_sprite")
+local spoutman_portrait_sprite = require("@self/spoutman_portrait_sprite")
+local spoutman_sprite = require("@self/spoutman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("spoutman"),
+    sprite = spoutman_sprite,
     element = "aqua",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -20,7 +23,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("spoutman-portrait"),
+        portrait = spoutman_portrait_sprite,
     },
     own_chip = { chip = spoutman, code = "A" },
     -- What a navi switch brings the navi with (`byte_80210DD`): its weapons,
@@ -65,7 +68,7 @@ local navi: NaviDef = {
         aura_anim = 6,
         ice = "medium",
         -- What he wears while he stands.
-        parts = { idle = { sprite = asset.sprite("idle-overlay") } },
+        parts = { idle = { sprite = idle_overlay_sprite } },
         attach_points = {
             { 0, -4 },
             { 0, 0 },

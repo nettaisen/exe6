@@ -11,6 +11,7 @@ local element_pillar = require("../../../../objects/element_pillar")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
 local weapon = require("../../../../lib/weapon")
+local element_pillar_flames_sprite = require("../../../../sprites/element_pillar_flames")
 
 export type State = {
     -- Ticks left (AIAttackVars+0x10).
@@ -33,7 +34,7 @@ local FIRE, HIT_PARAM = 1, 0x8A
 -- fire spark), 90 ticks, 4 once the navi stops, on the panel in front and
 -- the two columns past it.
 local FLAMES = element_pillar.look {
-    sprite = asset.sprite("element-pillar-flames"),
+    sprite = element_pillar_flames_sprite,
     hit_mod = 3,
     spark = sparks.fire,
     cracks = false,

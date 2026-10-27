@@ -30,6 +30,16 @@ local sparks = require("../lib/sparks")
 local stun_strike = require("../lib/swords/stun_strike")
 local statuses = require("./status")
 local supports = require("../lib/supports/controller")
+local blindness_sprite = require("./blindness_sprite")
+local bubble_sprite = require("../sprites/bubble")
+local charge_glow_a_sprite = require("../sprites/charge_glow_a")
+local charge_glow_sprite = require("../sprites/charge_glow")
+local confusion_sprite = require("./confusion_sprite")
+local full_synchro_aura_sprite = require("./full_synchro_aura_sprite")
+local hit_marker_sprite = require("../sprites/hit_marker")
+local ice_block_sprite = require("./ice_block_sprite")
+local lockon_marker_sprite = require("./lockon_marker_sprite")
+local rock_cubes_sprite = require("../sprites/rock_cubes")
 
 local roles: RolesSpec = {
     actions = {
@@ -223,22 +233,22 @@ local roles: RolesSpec = {
     sprites = {
         -- The charge glow of a B charge and of an A charge; the Full
         -- Synchro aura.
-        charge_glow = asset.sprite("charge-glow"),
-        charge_glow_a = asset.sprite("charge-glow-a"),
-        full_synchro_aura = asset.sprite("full-synchro-aura"),
+        charge_glow = charge_glow_sprite,
+        charge_glow_a = charge_glow_a_sprite,
+        full_synchro_aura = full_synchro_aura_sprite,
         -- The status visuals over a navi (confusion's stars, blindness, the
         -- immobilized one), the ice block around a frozen navi and the
         -- bubble around a bubbled one.
-        confusion = asset.sprite("confusion"),
-        blindness = asset.sprite("blindness"),
-        immobilized = asset.sprite("rock-cubes"),
-        ice = asset.sprite("ice-block"),
-        bubble = asset.sprite("bubble"),
+        confusion = confusion_sprite,
+        blindness = blindness_sprite,
+        immobilized = rock_cubes_sprite,
+        ice = ice_block_sprite,
+        bubble = bubble_sprite,
         -- The mark over a navi a hit told something about ("!!", the HP
         -- bug's).
-        hit_marker = asset.sprite("hit-marker"),
+        hit_marker = hit_marker_sprite,
         -- The Beast forms' lock-on marker.
-        target_marker = asset.sprite("lockon-marker"),
+        target_marker = lockon_marker_sprite,
     },
     banners = {
         -- A round's start (the battle's number), a turn's, the final turns'.

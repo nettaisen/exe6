@@ -7,10 +7,11 @@
 local collision = require("../rules/collision")
 local navi_boost = require("../lib/navi_boost/controller")
 local shield = require("../navis/megaman/weapons/shield")
+local hub_sprite = require("../sprites/hub")
 
 -- The effect around the navi (the original's effect 0x5A) and its sound;
 -- when the log-in sound plays, by timer.
-local HUB_EFFECT = new.effect { sprite = asset.sprite("hub"), anim = 0, palette = 0 }
+local HUB_EFFECT = new.effect { sprite = hub_sprite, anim = 0, palette = 0 }
 local HUB_SOUND = asset.sound("hub")
 local LOG_IN_AT = 0x1C
 -- The buster, custom screen and B+Back special (the NaviCust Shield) it

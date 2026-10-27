@@ -13,13 +13,14 @@ local debris = require("../../chips/rockcube/debris")
 local effects = require("../../lib/effects")
 local rock = require("../../chips/rockcube/rock")
 local sparks = require("../../lib/sparks")
+local rock_cubes_sprite = require("../../sprites/rock_cubes")
 
 local bubble = {}
 
 local made = common.make {
     id = "encased-bubble",
     -- Sheet 10-00 (`sub_80D9870`).
-    sprite = asset.sprite("rock-cubes"),
+    sprite = rock_cubes_sprite,
     sounds = { form = asset.sound("place"), burst = asset.sound("falling-rock") },
     spark = sparks.of_element(2),
     is = collision.neutral_body,

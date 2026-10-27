@@ -17,7 +17,7 @@ export type State = {
     while_dimmed: boolean,
 }
 
-local SPRITE = asset.sprite("dustman")
+local SPRITE = require("../../../dustman/dustman_sprite")
 local SOUND_LAND = asset.sound("land")
 
 -- How far in front of its panel's center it starts, and how fast it rolls,

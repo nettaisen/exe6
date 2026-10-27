@@ -8,6 +8,8 @@
 -- its absorbed list while the navi is still in this action); 11 ticks
 -- later the navi idles. See docs/engine/field-objects.md §4.4.
 
+local dust_cloud_sprite = require("../../../sprites/dust_cloud")
+
 export type State = {
     -- Ticks left in the phase (AIAttackVars+0x10).
     timer: number,
@@ -25,7 +27,7 @@ local PULL, RECOVER = 0x0, 0x4
 local COOLDOWN = 0x28
 
 -- The vortex effect, and what keeps it alive each tick.
-local VORTEX = new.effect { sprite = asset.sprite("dust-cloud"), anim = 0, palette = 0 }
+local VORTEX = new.effect { sprite = dust_cloud_sprite, anim = 0, palette = 0 }
 local VORTEX_TICKS = 2
 
 -- DustCross's Beast form (the navi stats' form).

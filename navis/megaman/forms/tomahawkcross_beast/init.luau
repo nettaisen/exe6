@@ -7,6 +7,8 @@ local falzar_beast_buster = require("../weapons/falzar_beast_buster")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local throw = require("@self/throw")
 local forms = require("../../../rules/forms")
+local beast_head_sprite = require("./beast_head_sprite")
+local tomahawkcross_beast_sprite = require("@self/tomahawkcross_beast_sprite")
 
 local form: FormDef = {
     kind = "cross_beast",
@@ -18,7 +20,7 @@ local form: FormDef = {
     cross_of = tomahawkman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = falzar_beast,
-    sprite = asset.sprite("tomahawkcross-beast"),
+    sprite = tomahawkcross_beast_sprite,
     element = "wood",
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = throw.weapon },
@@ -49,7 +51,7 @@ local form: FormDef = {
         aura_anim = 13,
         ice = "medium",
         -- The beast's head, in the Cross's palette.
-        parts = { beast_head = { sprite = asset.sprite("beast-head"), palette = 4 } },
+        parts = { beast_head = { sprite = beast_head_sprite, palette = 4 } },
         attach_points = {
             { 4, 16 },
             { 4, 24 },

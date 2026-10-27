@@ -7,15 +7,17 @@ local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
+local fire_sword_sprite = require("@self/fire_sword_sprite")
+local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 -- FireSwrd's blade (the original's attachment row 0x19).
-local FIRE_BLADE = attachment.look { sprite = asset.sprite("fire-sword"), palette = 0 }
+local FIRE_BLADE = attachment.look { sprite = fire_sword_sprite, palette = 0 }
 
 -- Its charged slash in SlashCross: over a column, in palette 1, its own blade.
 local CHARGED = slashes.slash {
-    wave = slashes.wave { region = regions.wide, sprite = asset.sprite("sword-slash"), anim = 0, palette = 1 },
+    wave = slashes.wave { region = regions.wide, sprite = sword_slash_sprite, anim = 0, palette = 1 },
     blade = FIRE_BLADE,
     sound = parts.swing,
     lockon = lockon.widesht,

@@ -14,17 +14,18 @@ local attachment = require("../../objects/attachment")
 local heart = require("./heart")
 local collision = require("../../rules/collision")
 local sparks = require("../../lib/sparks")
+local roll_heart_sprite = require("./roll_heart_sprite")
 
 return common.make {
     id = "roll/navi",
-    sprite = asset.sprite("roll-heart"),
+    sprite = roll_heart_sprite,
     appear = asset.sound("appear"),
     warp = asset.sound("roll"),
     swish = asset.sound("roll-2"),
     sparkle = heart.sparkle,
     -- Her ribbon (the original's attachment row 0x12), its animation 5,
     -- animating while dimmed.
-    ribbon = attachment.look { sprite = asset.sprite("roll-heart"), palette = 0 },
+    ribbon = attachment.look { sprite = roll_heart_sprite, palette = 0 },
     ribbon_anim = 5,
     attach = attachment.attach,
     heart = heart.spawn,

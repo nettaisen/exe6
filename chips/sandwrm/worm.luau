@@ -39,7 +39,7 @@ export type State = {
     end_timer: number,
 }
 
-local SPRITE = asset.sprite("sand-worm")
+local SPRITE = require("./sand_worm_sprite")
 local EMERGE_SOUND, DIVE_SOUND = asset.sound("sand-worm"), asset.sound("sand-worm-2")
 -- Where it can come out (`byte_80DEE44`, by side: required and forbidden
 -- flags): an open panel, not the other side's body or object's.

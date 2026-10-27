@@ -9,12 +9,13 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/bodygrd/shuriken")
 local effects = require("../../lib/effects")
+local shuriken_sprite = require("../../sprites/shuriken")
 
 local shuriken = {}
 
 shuriken.kind = common.make_kind {
     id = "bodygrd/shuriken",
-    sprite = asset.sprite("shuriken"),
+    sprite = shuriken_sprite,
     land_sound = asset.sound("panel-crack"),
     puff = effects.bubbles,
     self_type = collision.thrown_slash,

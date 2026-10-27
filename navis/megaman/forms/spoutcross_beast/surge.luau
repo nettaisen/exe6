@@ -16,7 +16,7 @@ type Spec = AquaSurge
 
 export type State = { ticks: number, beat: number }
 
-local SPRITE = asset.sprite("aqua-surge")
+local SPRITE = require("./aqua_surge_sprite")
 local SOUND = asset.sound("aqua-surge")
 
 -- How far ahead of its panel's center it stands, 16.16.

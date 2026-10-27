@@ -27,7 +27,7 @@ export type State = {
 
 type Drop = GroundRockDrop
 
-local SPRITE = asset.sprite("falling-rock")
+local SPRITE = require("../../objects/falling_rock/falling_rock_sprite")
 local SOUND_BREAK = asset.sound("falling-rock")
 
 -- Its height as it starts to fall, how fast it falls (`byte_80D5574`),

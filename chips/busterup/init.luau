@@ -3,7 +3,9 @@
 -- `sub_8010820`, run once by action 0x1C), with a sparkle at the navi's
 -- attach point 0x20.
 
-local SPARKLE = new.effect { sprite = asset.sprite("buster-up"), anim = 0, palette = 0 }
+local buster_up_sprite = require("@self/buster_up_sprite")
+
+local SPARKLE = new.effect { sprite = buster_up_sprite, anim = 0, palette = 0 }
 local SOUND = asset.sound("hub")
 
 -- Where the sparkle shows.

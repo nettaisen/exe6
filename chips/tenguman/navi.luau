@@ -23,7 +23,7 @@ export type State = {
 
 local tenguman = {}
 
-local SPRITE = asset.sprite("tenguman")
+local SPRITE = require("../../navis/tenguman/tenguman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_TENGU_MAN = asset.sound("tengu-man")
 

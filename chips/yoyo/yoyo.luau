@@ -55,7 +55,7 @@ export type ControllerState = {
     above: Object?,
 }
 
-local SPRITE = asset.sprite("yoyo")
+local SPRITE = require("./yoyo_sprite")
 local SOUND = asset.sound("set-down")
 local HIT_MOD = 1
 -- Its speed, 16.16 per tick, and the ticks per panel or round.

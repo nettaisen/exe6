@@ -32,7 +32,8 @@ export type State = {
 
 local spoutman = {}
 
-local SPRITE = asset.sprite("spoutman")
+local SPRITE = require("../../navis/spoutman/spoutman_sprite")
+local spout_man_effect_sprite = require("../../sprites/spout_man_effect")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_BUBBLE = asset.sound("bubble")
 local SOUND_SPOUT_MAN = asset.sound("spout-man")
@@ -50,7 +51,7 @@ local GEYSER_TICKS = 0x5A
 -- panel it lands on.
 local BALL: WaterBall = { while_dimmed = true, cracks = true }
 -- His throw's splash where he stands (effect 0x2A).
-local THROW = new.effect { sprite = asset.sprite("spout-man-effect"), anim = 0, palette = 0 }
+local THROW = new.effect { sprite = spout_man_effect_sprite, anim = 0, palette = 0 }
 
 -- The controller calls his spawner through r3, which his position takes:
 -- its address with the Thumb bit, whose fraction his Z keeps.

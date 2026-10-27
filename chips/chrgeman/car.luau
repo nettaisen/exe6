@@ -33,7 +33,7 @@ export type State = {
     owner_action: number,
 }
 
-local SPRITE = asset.sprite("charge-car")
+local SPRITE = require("./charge_car_sprite")
 
 -- The floor it needs (`byte_80DB004`, both rows alike): require, forbid.
 local FLOOR = { 0x10, 0 }

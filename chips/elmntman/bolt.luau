@@ -15,7 +15,7 @@ local sparks = require("../../lib/sparks")
 
 local bolt = {}
 
-local SPRITE = asset.sprite("lightning")
+local SPRITE = require("../../sprites/lightning")
 local SOUND_BEAST_OVER_BURST = asset.sound("beast-over-burst")
 
 -- `sub_80DC41C`: on its panel, on the ground (Z's whole part cleared).

@@ -15,7 +15,7 @@ countdown.make_kind = common.make_kind
 countdown.variant = common.variant
 countdown.spawn_kind = common.spawn_kind
 
-local EXE6_SPRITE = asset.sprite("countdown-bomb")
+local EXE6_SPRITE = require("./countdown_bomb_sprite")
 
 countdown.kind = common.make_kind("timebom/countdown", {
     sprite = EXE6_SPRITE,

@@ -10,11 +10,12 @@
 
 local collision = require("../rules/collision")
 local common = require("@exelib/gust")
+local gust_sprite = require("@self/gust_sprite")
 
 local gust = {}
 
 gust.kind = common.make_kind("gust", {
-    sprite = asset.sprite("gust"),
+    sprite = gust_sprite,
     is = collision.pull,
     hits = collision.hits_navis,
     -- A hit that stops it (the collision's hit flags).

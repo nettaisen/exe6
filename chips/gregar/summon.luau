@@ -37,7 +37,7 @@ export type State = {
     roar: number,
 }
 
-local SPRITE = asset.sprite("gregar-summon")
+local SPRITE = require("./gregar_summon_sprite")
 -- The arrival's look: animation 8 of its sprite.
 local ARRIVAL_ANIM = 8
 

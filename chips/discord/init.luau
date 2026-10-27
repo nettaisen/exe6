@@ -8,6 +8,7 @@ local instrument = require("../lib/instruments/instrument")
 local instruments = require("../lib/instruments/controller")
 local regions = require("@exelib/regions")
 local statuses = require("../rules/status")
+local instrument_sprite = require("../lib/instruments/instrument_sprite")
 
 -- Confusion (status 0x23: 4 ticks) on the other navi's panel, learning
 -- nothing (`sub_80D4392`: regions 0x85 and 0x84).
@@ -26,7 +27,7 @@ local chip: Chip = {
             class = "field_object",
             version = 5,
             ai_index = 1,
-            look = { sprite = asset.sprite("instrument"), anim = 0, palette = 2, shadow = true },
+            look = { sprite = instrument_sprite, anim = 0, palette = 2, shadow = true },
         },
         palette = 2,
         play_ticks = 0x37 * 2,

@@ -32,7 +32,7 @@ function wave.variant(v: Variant): Variant
     return new.record("shock-wave-variant", v)
 end
 
-local SPRITE = asset.sprite("shock-wave")
+local SPRITE = require("./shock_wave_sprite")
 local SOUND = asset.sound("shock-wave")
 local SOLID = 0x10
 -- The rows ahead it looks for enemies in (`byte_80C6DB8`), by facing

@@ -21,7 +21,7 @@ export type State = {
     found: boolean,
 }
 
-local SPRITE = asset.sprite("erase-mark")
+local SPRITE = require("../eraseman/erase_mark_sprite")
 local STEP_SOUND = asset.sound("erase-man")
 -- The aim's row step (`off_80D9328`).
 local ROW_STEP: { [number]: number } = { [0] = -1, [1] = 0, [2] = 1 }

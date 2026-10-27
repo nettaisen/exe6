@@ -16,7 +16,7 @@ export type State = {
     action: Action?,
 }
 
-local SPRITE = asset.sprite("ground-drill")
+local SPRITE = require("./ground_drill_sprite")
 
 -- `sub_80E77B8`: on its owner, as visible as he is.
 local function init(me: Object)

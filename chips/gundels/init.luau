@@ -7,13 +7,15 @@
 local action = require("@self/action")
 local lockon = require("../rules/lockon")
 local regions = require("@exelib/regions")
+local sun_beam_ex_sprite = require("@self/sun_beam_ex_sprite")
+local sun_beam_sprite = require("../sprites/sun_beam")
 
 -- The beams (the original's looks, `dword_80E5C28`, and palettes): in the
 -- shade, and in the sun; GunDelEX's wider.
-local BEAM: SunBeam = { sprite = asset.sprite("sun-beam"), palette = 0 }
-local BEAM_IN_SUN: SunBeam = { sprite = asset.sprite("sun-beam"), palette = 2 }
-local WIDE_BEAM: SunBeam = { sprite = asset.sprite("sun-beam-ex"), palette = 0 }
-local WIDE_BEAM_IN_SUN: SunBeam = { sprite = asset.sprite("sun-beam-ex"), palette = 3 }
+local BEAM: SunBeam = { sprite = sun_beam_sprite, palette = 0 }
+local BEAM_IN_SUN: SunBeam = { sprite = sun_beam_sprite, palette = 2 }
+local WIDE_BEAM: SunBeam = { sprite = sun_beam_ex_sprite, palette = 0 }
+local WIDE_BEAM_IN_SUN: SunBeam = { sprite = sun_beam_ex_sprite, palette = 3 }
 
 local chips: { [string]: Chip } = {
     gundels1 = {

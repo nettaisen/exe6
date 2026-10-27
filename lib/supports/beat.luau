@@ -3,10 +3,11 @@
 -- EXE6's look, the NaviCust support that snatches a Mega or Giga chip (`sub_80106C0`). See docs/engine/chips.md §2.10.
 
 local common = require("@exelib/supports/beat")
+local beat_sprite = require("./beat_sprite")
 
 return common.make {
     id = "beat",
-    sprite = asset.sprite("beat"),
+    sprite = beat_sprite,
     swoop_sound = asset.sound("set-down"),
     snatch_sound = asset.sound("snatch"),
 }

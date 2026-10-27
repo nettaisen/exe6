@@ -7,6 +7,8 @@ local falzar_beast_buster = require("../weapons/falzar_beast_buster")
 local rock_barrage = require("../weapons/rock_barrage")
 local dash = require("@self/dash")
 local forms = require("../../../rules/forms")
+local beast_head_sprite = require("./beast_head_sprite")
+local groundcross_beast_sprite = require("@self/groundcross_beast_sprite")
 
 local form: FormDef = {
     kind = "cross_beast",
@@ -21,7 +23,7 @@ local form: FormDef = {
     cross_of = groundman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = falzar_beast,
-    sprite = asset.sprite("groundcross-beast"),
+    sprite = groundcross_beast_sprite,
     element = "null",
     weakness = { "cursor" },
     buster_bonus = 0,
@@ -50,7 +52,7 @@ local form: FormDef = {
         aura_anim = 13,
         ice = "medium",
         -- The beast's head, in the Cross's palette.
-        parts = { beast_head = { sprite = asset.sprite("beast-head"), palette = 8 } },
+        parts = { beast_head = { sprite = beast_head_sprite, palette = 8 } },
         attach_points = {
             { 4, 16 },
             { 4, 24 },

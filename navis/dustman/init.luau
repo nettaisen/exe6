@@ -5,9 +5,11 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local dustman = require("@self/chip").dustbrk
+local dustman_portrait_sprite = require("@self/dustman_portrait_sprite")
+local dustman_sprite = require("@self/dustman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("dustman"),
+    sprite = dustman_sprite,
     element = "null",
     weakness = { "cursor" },
     buster_bonus = 1,
@@ -20,7 +22,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("dustman-portrait"),
+        portrait = dustman_portrait_sprite,
     },
     own_chip = { chip = dustman, code = "D" },
     chip_bonus = {

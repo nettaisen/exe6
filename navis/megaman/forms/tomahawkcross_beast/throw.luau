@@ -8,6 +8,7 @@
 -- after the swing began it idles.
 
 local boomerang = require("../../../../chips/boomer/boomerang")
+local boomerang_tomahawk_sprite = require("./boomerang_tomahawk_sprite")
 
 export type State = {
     -- Ticks left in the swing (AIAttackVars+0x10).
@@ -63,7 +64,7 @@ local TOMAHAWK = boomerang.variant {
     speed = 0x8_0000,
     turn_speed = 314573,
     grass = false,
-    sprite = asset.sprite("boomerang-tomahawk"),
+    sprite = boomerang_tomahawk_sprite,
     shadow = "with_sprite",
     off_row_1_anim = 1,
 }

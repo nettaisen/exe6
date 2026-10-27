@@ -8,6 +8,7 @@
 
 local attachment = require("../../objects/attachment")
 local bee = require("./bee")
+local hive_sprite = require("./hive_sprite")
 
 local action = {}
 
@@ -26,7 +27,7 @@ local RAISE, RELEASE, WINDOWS = 0x0, 0x4, 0x8
 
 local ANIM_RAISE = 0x0A
 -- The hive (the original's attachment row 0x28), and the sound of a bee.
-local HIVE = attachment.look { sprite = asset.sprite("hive"), palette = 0, attach_point = 0x0E }
+local HIVE = attachment.look { sprite = hive_sprite, palette = 0, attach_point = 0x0E }
 local BUZZ = asset.sound("buzz")
 local WINDOW_TICKS, WINDOW_COUNT = 10, 3
 

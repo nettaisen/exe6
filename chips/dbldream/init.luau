@@ -6,19 +6,20 @@ local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
+local big_slash_sprite = require("../sprites/big_slash")
 
 -- The big slash.
-local BIG_SLASH = new.effect { sprite = asset.sprite("big-slash"), anim = 0, palette = 0 }
+local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0 }
 
 -- Its charged slashes in SlashCross: two big slashes over two columns, the
 -- first flinching. (The second's lock-on mode is the table's entry; the
 -- rush has locked on by then.)
 local CHARGED = slashes.slash {
-    wave = slashes.wave { region = regions.wide_long, sprite = asset.sprite("big-slash"), anim = 0, hit_mod = 1 },
+    wave = slashes.wave { region = regions.wide_long, sprite = big_slash_sprite, anim = 0, hit_mod = 1 },
     blade = parts.blade,
     sound = parts.big_swing,
     again = slashes.slash {
-        wave = slashes.wave { region = regions.wide_long, sprite = asset.sprite("big-slash"), anim = 0 },
+        wave = slashes.wave { region = regions.wide_long, sprite = big_slash_sprite, anim = 0 },
         blade = parts.blade,
         sound = parts.big_swing,
         lockon = lockon.drksword,

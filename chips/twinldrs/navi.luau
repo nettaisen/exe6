@@ -14,9 +14,15 @@ local collision = require("../../rules/collision")
 local navi_chips = require("../../lib/navi_chips/navi")
 local parts = require("../../lib/swords/parts")
 local regions = require("@exelib/regions")
+local charge_glow_sprite = require("../../sprites/charge_glow")
+local colonel_effect_sprite = require("../../sprites/colonel_effect")
+local colonel_sprite = require("../colonel/colonel_sprite")
+local colonel_sword_sprite = require("../colonel/colonel_sword_sprite")
+local protoman_sprite = require("../../navis/protoman/protoman_sprite")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 
 local twinldrs = {}
 
@@ -55,7 +61,7 @@ local COLONEL_IDENTITY = new.identity {
     ice = "large",
     parts = {
         body = {
-            sprite = asset.sprite("colonel"),
+            sprite = colonel_sprite,
             anims = 192,
             behind = { { 0x0D, 0x0F }, { 0x35, 0x37 }, { 0x42, 0x43 }, { 0x5B, 0x6F }, { 0x84, 0xAB }, { 0xBF, 0xBF } },
             anim_offset = 0x0D,
@@ -67,8 +73,8 @@ local COLONEL_IDENTITY = new.identity {
 -- wears (his actor record's: ProtoMan's wears nothing), and where beside
 -- his user he comes in, in pixels (forward, down).
 type Look = { sprite: SpriteAsset, identity: Identity?, dx: number, dy: number }
-local PROTOMAN: Look = { sprite = asset.sprite("protoman"), dx = 10, dy = 10 }
-local COLONEL: Look = { sprite = asset.sprite("colonel"), identity = COLONEL_IDENTITY, dx = -10, dy = -10 }
+local PROTOMAN: Look = { sprite = protoman_sprite, dx = 10, dy = 10 }
+local COLONEL: Look = { sprite = colonel_sprite, identity = COLONEL_IDENTITY, dx = -10, dy = -10 }
 
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_STRIKE = asset.sound("spin")
@@ -76,17 +82,17 @@ local SOUND_CHARGE, SOUND_CHARGED = asset.sound("buster-charge"), asset.sound("b
 
 -- Colonel's sword (attachment 0x1F) and his X's two halves (effects 0x36
 -- and 0x37).
-local COLONEL_SWORD = attachment.look { sprite = asset.sprite("colonel-sword"), palette = 0 }
+local COLONEL_SWORD = attachment.look { sprite = colonel_sword_sprite, palette = 0 }
 local CROSS = {
-    new.effect { sprite = asset.sprite("colonel-effect"), anim = 1, palette = 0 },
-    new.effect { sprite = asset.sprite("colonel-effect"), anim = 2, palette = 0 },
+    new.effect { sprite = colonel_effect_sprite, anim = 1, palette = 0 },
+    new.effect { sprite = colonel_effect_sprite, anim = 2, palette = 0 },
 }
 
 -- Colonel's charge: the glow while it builds (effect 0x4E) and the flash
 -- when it is full (0x4F), at his sprite's attach point 0 (`sub_8018810` by
 -- his NameID: his sprite's table row, whose point 0 is (0, 0)).
-local CHARGING = new.effect { sprite = asset.sprite("charge-glow"), anim = 0, palette = 0 }
-local CHARGED = new.effect { sprite = asset.sprite("charge-glow"), anim = 2, palette = 0 }
+local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0 }
+local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0 }
 local GLOW_X, GLOW_Z = 0, 0
 
 -- The afterimages ProtoMan leaves (`sub_80BDA7C`): their color shader and

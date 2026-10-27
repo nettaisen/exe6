@@ -6,14 +6,16 @@ local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
+local cross_slash_sprite = require("../sprites/cross_slash")
+local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- CrosSwrd's X.
-local CROSS_SLASH = new.effect { sprite = asset.sprite("cross-slash"), anim = 0, palette = 0 }
+local CROSS_SLASH = new.effect { sprite = cross_slash_sprite, anim = 0, palette = 0 }
 
 -- Its charged slash in SlashCross: its X, and the plain sword's wave unseen under it.
 local CHARGED = slashes.slash {
-    wave = slashes.wave { region = regions.x, sprite = asset.sprite("cross-slash"), anim = 0, animates = true },
-    hidden_wave = slashes.wave { region = regions.single, sprite = asset.sprite("sword-slash"), anim = 2 },
+    wave = slashes.wave { region = regions.x, sprite = cross_slash_sprite, anim = 0, animates = true },
+    hidden_wave = slashes.wave { region = regions.single, sprite = sword_slash_sprite, anim = 2 },
     blade = parts.blade,
     sound = parts.swing,
     lockon = lockon.thunder,

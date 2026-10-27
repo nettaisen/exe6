@@ -13,6 +13,8 @@ local lockon = require("../../../../rules/lockon")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local weapon = require("../../../../lib/weapon")
+local ground_drill_effect_sprite = require("../../../../sprites/ground_drill_effect")
+local puff_sprite = require("../../../../sprites/puff")
 
 export type State = {
     -- AIAttackVars+0x10: ticks left in the phase.
@@ -36,9 +38,9 @@ local SOUND = asset.sound("ground-beast-dash")
 
 -- The dust where it burrows, and the puffs where it sinks and where it
 -- comes back up.
-local DUST = new.effect { sprite = asset.sprite("ground-drill-effect"), anim = 0, palette = 0 }
-local SINK_PUFF = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
-local RETURN_PUFF = new.effect { sprite = asset.sprite("puff"), anim = 1, palette = 0 }
+local DUST = new.effect { sprite = ground_drill_effect_sprite, anim = 0, palette = 0 }
+local SINK_PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local RETURN_PUFF = new.effect { sprite = puff_sprite, anim = 1, palette = 0 }
 
 -- Where the navi waits off the field (X, 16.16).
 local AWAY = 0xB4_0000

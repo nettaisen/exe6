@@ -13,15 +13,18 @@ local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local falzar_beast = require("../../navis/megaman/forms/falzar_beast")["falzar-beast"]
 local parts = require("../../lib/swords/parts")
+local hand_fan_sprite = require("../tornado/hand_fan_sprite")
+local sword_slash_sprite = require("../../sprites/sword_slash")
+local tornado_sprite = require("../tornado/tornado_sprite")
 
 -- The slash over two panels.
-local LONG_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 1, palette = 0 }
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 
 local falzar = {}
 
-local SPRITE = asset.sprite("falzar-beast")
+local SPRITE = require("../../navis/megaman/forms/falzar_beast/falzar_beast_sprite")
 -- Its identity: Falzar Beast Out's (its parts and the attach points its
 -- attachments take).
 local IDENTITY = assert(falzar_beast.identity)
@@ -40,8 +43,8 @@ local HITS: { [string]: DblBeastHit } = {
 
 -- The breath's maw (attachment row 0x21, the fan Tornado holds) and its
 -- gust two panels ahead (effect 0x59, 30 ticks).
-local MAW = attachment.look { sprite = asset.sprite("hand-fan"), palette = 0, attach_point = 9 }
-local GUST = new.effect { sprite = asset.sprite("tornado"), anim = 0, palette = 0 }
+local MAW = attachment.look { sprite = hand_fan_sprite, palette = 0, attach_point = 9 }
+local GUST = new.effect { sprite = tornado_sprite, anim = 0, palette = 0 }
 local GUST_TICKS = 0x1E
 
 local SOUND_BREATH = asset.sound("aqua-surge")

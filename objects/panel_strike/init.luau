@@ -25,7 +25,7 @@ export type State = {
     solid_only: boolean,
 }
 
-local SPRITE = asset.sprite("panel-strike")
+local SPRITE = require("@self/panel_strike_sprite")
 local SOUND_COL_ARMY_2 = asset.sound("col-army-2")
 
 -- `sub_80C5E00`: on its panel, its collision on with its region off.

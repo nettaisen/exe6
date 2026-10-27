@@ -10,7 +10,7 @@ local effects = require("../effects")
 
 local bomb = {}
 
-local SPRITE = asset.sprite("bomb")
+local SPRITE = require("../../sprites/bomb")
 
 -- What the navi holds while throwing a bomb (the original's attachment row
 -- 0x04; BigBomb's throw adds 3 to its palette).

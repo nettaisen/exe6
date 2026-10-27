@@ -9,10 +9,11 @@ local common = require("@exelib/supports/rush")
 local effects = require("../effects")
 local statuses = require("../../rules/status")
 local whicapsl_invisible = require("../../chips/whicapsl-invisible")["whicapsl-invisible"]
+local rush_sprite = require("./rush_sprite")
 
 return common.make {
     id = "rush",
-    sprite = asset.sprite("rush"),
+    sprite = rush_sprite,
     appear_sound = asset.sound("place"),
     bite_sound = asset.sound("bite"),
     -- Digging in and out.

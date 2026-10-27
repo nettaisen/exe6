@@ -6,13 +6,14 @@ local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
+local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- The slash over two panels.
-local LONG_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 1, palette = 0 }
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
 
 -- Its charged slash in SlashCross: over two panels.
 local CHARGED = slashes.slash {
-    wave = slashes.wave { region = regions.long, sprite = asset.sprite("sword-slash"), anim = 1 },
+    wave = slashes.wave { region = regions.long, sprite = sword_slash_sprite, anim = 1 },
     blade = parts.blade,
     sound = parts.swing,
     lockon = lockon.firebrn1,

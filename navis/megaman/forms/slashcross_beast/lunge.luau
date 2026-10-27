@@ -12,6 +12,7 @@ local lockon = require("../../../../rules/lockon")
 local lunge_slash = require("./lunge_slash")
 local regions = require("@exelib/regions")
 local weapon = require("../../../../lib/weapon")
+local cross_slash_sprite = require("../../../../sprites/cross_slash")
 
 export type State = {
     -- AIAttackVars+0x10: ticks of the phase.
@@ -33,7 +34,7 @@ local SAME_ROW, OWN_ROW = lockon.thunder, lockon.beast_lunge
 local SOUND = asset.sound("flame-hook-fire")
 
 -- The slash's effect and its height, 16.16.
-local SLASH_EFFECT = new.effect { sprite = asset.sprite("cross-slash"), anim = 0, palette = 0 }
+local SLASH_EFFECT = new.effect { sprite = cross_slash_sprite, anim = 0, palette = 0 }
 local SLASH_Z = 0x10_0000
 
 -- `sub_8011D9C`: 50 damage and 30 more per point of buster Attack (up to

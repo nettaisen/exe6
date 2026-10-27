@@ -45,7 +45,8 @@ local SOUND = asset.sound("aqua-needle-2")
 -- The shots (the flying shot's rows 3 and 5: `sub_80EC5EC` passes 3, and
 -- `sub_80EC710` adds 2 for the volley's): the shot ahead, and the volley's
 -- other two, which fly two panels and burst.
-local SHOT_SPRITE = asset.sprite("beast-shot")
+local SHOT_SPRITE = require("./beast_shot_sprite")
+local hit_sparks_sprite = require("../../../sprites/hit_sparks")
 local HITS = { is = collision.attack, hits = collision.hits_navis }
 local SHOT = flying_shot.variant {
     collision = HITS,
@@ -64,7 +65,7 @@ local VOLLEY_SHOT = flying_shot.variant {
     sprite = SHOT_SPRITE,
     speed = 0xC_0000,
     range = 2,
-    end_effect = new.effect { sprite = asset.sprite("hit-sparks"), anim = 0, palette = 0 },
+    end_effect = new.effect { sprite = hit_sparks_sprite, anim = 0, palette = 0 },
 }
 
 -- The first shot's height (`dword_80EC70C`'s first byte), pixels.

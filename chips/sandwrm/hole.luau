@@ -12,7 +12,7 @@ export type State = {
     worm: Object?,
 }
 
-local SPRITE = asset.sprite("sand-hole")
+local SPRITE = require("../../sprites/sand_hole")
 
 -- The actions.
 local OPEN, WAIT, CLOSE = 0, 4, 8

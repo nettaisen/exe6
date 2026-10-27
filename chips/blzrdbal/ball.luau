@@ -10,12 +10,13 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/blzrdbal/ball")
 local roller = require("./roller")
+local blizzard_ball_sprite = require("./blizzard_ball_sprite")
 
 local ball = {}
 
 ball.kind = common.make_kind {
     id = "blzrdbal/ball",
-    sprite = asset.sprite("blizzard-ball"),
+    sprite = blizzard_ball_sprite,
     anim = 0,
     grown = { 1, 1 },
     roller = roller.kind,

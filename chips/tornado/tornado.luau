@@ -9,6 +9,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/tornado")
 local sparks = require("../../lib/sparks")
+local tornado_sprite = require("./tornado_sprite")
 
 local tornado = {}
 
@@ -30,7 +31,7 @@ local ICE = variant { palette = 5, rearm = 4 }
 -- of these types (`byte_80CA25C`), the doubling, what it is (row 0x12,
 -- whatever its variant) and reaches, and the element's spark.
 local EXE6: TornadoLook = {
-    sprite = asset.sprite("tornado"),
+    sprite = tornado_sprite,
     sound = asset.sound("aqua-surge"),
     panel_variants = {
         volcano = VOLCANO,

@@ -5,6 +5,7 @@ local falzar_beast = require("./falzar_beast")["falzar-beast"]
 local gregar_beast_buster = require("../weapons/gregar_beast_buster")
 local beast_claw = require("../weapons/beast_claw")
 local forms = require("../../../rules/forms")
+local gregar_beast_sprite = require("./gregar_beast/gregar_beast_sprite")
 
 local form: FormDef = {
     kind = "beast_over",
@@ -24,7 +25,7 @@ local form: FormDef = {
     -- (No hit breaks Beast Over; the original's routine, by the form's number, would drop
     -- either to the Falzar beast.)
     breaks_to = falzar_beast,
-    sprite = asset.sprite("gregar-beast"),
+    sprite = gregar_beast_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = gregar_beast_buster.weapon, alt_a_charge = beast_claw.weapon },

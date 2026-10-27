@@ -5,6 +5,7 @@ local gregar_beast_buster = require("../weapons/gregar_beast_buster")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local beast_claw = require("../weapons/beast_claw")
 local forms = require("../../../rules/forms")
+local gregar_beast_sprite = require("@self/gregar_beast_sprite")
 
 local form: FormDef = {
     kind = "beast",
@@ -15,7 +16,7 @@ local form: FormDef = {
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
     version = "gregar",
-    sprite = asset.sprite("gregar-beast"),
+    sprite = gregar_beast_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = gregar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = beast_claw.weapon },

@@ -16,7 +16,7 @@ export type State = {
     ticks: number,
 }
 
-local SPRITE = asset.sprite("element-pillar-flames")
+local SPRITE = require("../../sprites/element_pillar_flames")
 -- Its palette: the flames' red.
 local PALETTE = 4
 -- Eight pixels up.

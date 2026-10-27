@@ -9,6 +9,7 @@ local collision = require("../../rules/collision")
 local link = require("../../lib/link_chips")
 local regions = require("@exelib/regions")
 local weapon = require("../../lib/weapon")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 
 export type State = { timer: number }
 
@@ -31,7 +32,7 @@ local NULL = 0
 -- swords' wide slash in his color) 24 pixels up.
 local AHEAD = 2
 local HIT_MOD = 3
-local SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 6 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 6 }
 local SLASH_Z = 0x18_0000
 
 -- `sub_8012292`: 50 damage and 20 more per point of buster Attack (up to

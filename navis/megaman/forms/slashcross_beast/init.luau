@@ -7,6 +7,7 @@ local gregar_beast_buster = require("../weapons/gregar_beast_buster")
 local slash_a_charge = require("../weapons/slash_a_charge")
 local lunge = require("@self/lunge")
 local forms = require("../../../rules/forms")
+local slashcross_beast_sprite = require("@self/slashcross_beast_sprite")
 
 local form: FormDef = {
     kind = "cross_beast",
@@ -16,7 +17,7 @@ local form: FormDef = {
     cross_of = slashman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = gregar_beast,
-    sprite = asset.sprite("slashcross-beast"),
+    sprite = slashcross_beast_sprite,
     element = "null",
     weakness = { "break" },
     buster_bonus = 0,

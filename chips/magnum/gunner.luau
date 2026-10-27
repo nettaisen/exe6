@@ -11,6 +11,7 @@ local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local stand_in = require("@exelib/dimming/stand_in")
+local sight_sprite = require("../../sprites/sight")
 
 local gunner = {}
 
@@ -38,7 +39,7 @@ local SOUND_BLAST = asset.sound("target-move")
 -- The sight (effect 0x49), each part 12 ticks: its panel and the column's
 -- other rows (24 pixels up and down) or the row's other columns (40
 -- pixels either side).
-local SIGHT = new.effect { sprite = asset.sprite("sight"), anim = 0, palette = 0 }
+local SIGHT = new.effect { sprite = sight_sprite, anim = 0, palette = 0 }
 -- The shot's panels (hit regions 4 and 0x1D, not turned by the facing):
 -- the column's three, or the row's three.
 local COLUMN = { { 0, 0 }, { 0, -1 }, { 0, 1 } }

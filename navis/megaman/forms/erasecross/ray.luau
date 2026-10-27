@@ -51,7 +51,7 @@ export type State = {
     action: Action?,
 }
 
-local SPRITE = asset.sprite("erase-ray")
+local SPRITE = require("./erase_ray_sprite")
 
 -- The phases, on its phase byte.
 local OPENING, BEAMING, CLOSING = 0x0, 0x4, 0x8

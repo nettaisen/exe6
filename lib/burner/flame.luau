@@ -35,7 +35,7 @@ export type State = {
     wide: boolean,
 }
 
-local SPRITE = asset.sprite("flame")
+local SPRITE = require("./flame_sprite")
 -- The owner's attach point it starts at, and how far back of it.
 local HAND, BACK = 0x12, 0x28
 -- Ticks before it lights the next panel.

@@ -17,7 +17,7 @@ export type State = {
     target: number,
 }
 
-local SPRITE = asset.sprite("junk-shot")
+local SPRITE = require("./junk_shot_sprite")
 local SOUND_THROW, SOUND_BURST = asset.sound("junk-shot"), asset.sound("hit-bomb-1")
 
 -- How far in front of and above the navi it starts, 16.16.

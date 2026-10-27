@@ -19,7 +19,7 @@ export type State = {
     pulse: ElecPulse,
 }
 
-local SPRITE = asset.sprite("elec-pulse")
+local SPRITE = require("./elec_pulse_sprite")
 local SOUND = asset.sound("elec-pulse")
 -- How far back from its panel it starts (whole pixels), before the hand's
 -- offset.

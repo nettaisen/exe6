@@ -5,9 +5,11 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local slashman = require("@self/chip").rslash
+local slashman_portrait_sprite = require("@self/slashman_portrait_sprite")
+local slashman_sprite = require("@self/slashman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("slashman"),
+    sprite = slashman_sprite,
     element = "null",
     weakness = { "break" },
     buster_bonus = 1,
@@ -21,7 +23,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("slashman-portrait"),
+        portrait = slashman_portrait_sprite,
     },
     own_chip = { chip = slashman, code = "S" },
     chip_bonus = {

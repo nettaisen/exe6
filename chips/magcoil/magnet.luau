@@ -16,7 +16,7 @@ export type State = {
     ticks: number,
 }
 
-local SPRITE = asset.sprite("magnet")
+local SPRITE = require("./magnet_sprite")
 local HAND, PANEL = 0x1F, 0x28
 -- An enemy of each side stands there (the other side's body bit).
 local ENEMY_BODY = { [0] = 0x0400_0000, 0x0800_0000 }

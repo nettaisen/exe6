@@ -26,7 +26,7 @@ export type State = {
 }
 
 -- `sub_8011504`: sprite `flash-bomb` with a ground shadow, animation 0.
-local SPRITE = asset.sprite("flash-bomb")
+local SPRITE = require("./flash_bomb_sprite")
 local HIT_MOD, SET_HIT_MOD = 3, 3
 local FLIGHT_TICKS, GRAVITY = 0x28, -0x3000
 -- What in its hits ends it at once: bodies and objects (0x0F800000).

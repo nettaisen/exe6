@@ -7,13 +7,14 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/firehit/fist")
 local sparks = require("../../lib/sparks")
+local fire_hit_sprite = require("./fire_hit_sprite")
 
 local fist = {}
 
 -- EXE6's look: its sprite and sound, the strike's spark and collision types
 -- (`dword_80CFEC0`'s bytes 1 to 3).
 local EXE6: FireHitFistLook = {
-    sprite = asset.sprite("fire-hit"),
+    sprite = fire_hit_sprite,
     sound = asset.sound("fire-hit"),
     spark = sparks.fire,
     target = collision.hits_navis,

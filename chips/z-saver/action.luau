@@ -13,7 +13,7 @@ local sonic_boom = require("../../lib/swords/sonic_boom")
 
 -- The slashes' effects over the panel ahead (effects 0x65 to 0x67,
 -- `dword_80F0064`).
-local SLASH_SPRITE = asset.sprite("sword-slash")
+local SLASH_SPRITE = require("../../sprites/sword_slash")
 
 return {
     action = common.make {

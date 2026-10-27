@@ -7,12 +7,14 @@ local a_charge = require("@self/a_charge")
 local back_special = require("@self/back_special")
 local charge = require("@self/charge")
 local protoman = require("@self/chip")["stepswrd-protoman"]
+local protoman_portrait_sprite = require("@self/protoman_portrait_sprite")
+local protoman_sprite = require("@self/protoman_sprite")
 
 local navi: NaviDef = {
     -- VarSwrd's sword stays plain for him: he waits for its sequence while A is up and gets neither the charged sword
     -- nor the Beast lock-on (lib/swords/vari).
     var_sword_plain = true,
-    sprite = asset.sprite("protoman"),
+    sprite = protoman_sprite,
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -23,7 +25,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("protoman-portrait"),
+        portrait = protoman_portrait_sprite,
     },
     own_chip = { chip = protoman, code = "B" },
     -- What a navi switch brings the navi with (`byte_80210DD`): its weapons,

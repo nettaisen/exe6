@@ -11,6 +11,7 @@ local bullet = require("../../../../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("../../../../chips/spreadr/action")
 local weapon = require("../../../../lib/weapon")
+local water_cannon_sprite = require("./water_cannon_sprite")
 
 local charge = {}
 
@@ -21,7 +22,7 @@ local charge = {}
 local SHOT = spreader.action {
     id = "spoutcross/charge/action",
     -- The water cannon, at the navi's attach point 25.
-    gun = attachment.look { sprite = asset.sprite("water-cannon"), palette = 0, attach_point = 25 },
+    gun = attachment.look { sprite = water_cannon_sprite, palette = 0, attach_point = 25 },
     z = 0,
     bullet = bullet.variant { region = regions.long, hit_mod = 3, effect = bullet.splash, sound = bullet.splash_sound },
 }

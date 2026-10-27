@@ -9,6 +9,7 @@ local common = require("@exelib/meteors/falling_meteor")
 local effects = require("../../lib/effects")
 local marker = require("./marker")
 local sparks = require("../../lib/sparks")
+local meteor_sprite = require("./meteor_sprite")
 
 local falling_meteor = {}
 
@@ -21,7 +22,7 @@ falling_meteor.spawn_kind = common.spawn_kind
 falling_meteor.row = common.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = 3, shake = 1, panel = "none" }
 
 falling_meteor.kind = common.make_kind("meteors/falling-meteor", {
-    sprite = asset.sprite("meteor"),
+    sprite = meteor_sprite,
     sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
     spark = sparks.of_element,
     burst = effects.burst,

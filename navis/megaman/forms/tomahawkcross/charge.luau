@@ -8,6 +8,7 @@
 local collision = require("../../../../rules/collision")
 local regions = require("@exelib/regions")
 local weapon = require("../../../../lib/weapon")
+local big_slash_sprite = require("../../../../sprites/big_slash")
 
 export type State = {
     -- AIAttackVars+0x10: ticks left in the phase.
@@ -27,7 +28,7 @@ local SOUND = asset.sound("tomahawk-man")
 -- The swing's hit: Wood, a slash at navis over two columns, no spark; the
 -- swipe effect.
 local WOOD, HIT_MOD = 4, 1
-local SWIPE = new.effect { sprite = asset.sprite("big-slash"), anim = 1, palette = 0 }
+local SWIPE = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
 
 -- The swing's tick (of its count down from 21) the hit lands on.
 local HIT_TICK = 12

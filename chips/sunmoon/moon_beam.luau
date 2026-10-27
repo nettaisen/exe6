@@ -17,7 +17,7 @@ local regions = require("@exelib/regions")
 
 local moon_beam = {}
 
-local SPRITE = asset.sprite("moon-beam")
+local SPRITE = require("./moon_beam_sprite")
 local SOUND_MOON_BEAM = asset.sound("moon-beam")
 local ANIM = 4
 

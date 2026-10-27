@@ -30,7 +30,7 @@ export type State = {
     thrown: boolean,
 }
 
-local SPRITE = asset.sprite("rolling-log")
+local SPRITE = require("./rolling_log_sprite")
 local HIT_MOD = 0x01
 -- Its arc (thrown): ticks, gravity (16.16 per tick); then its speed.
 local ARC_TICKS, GRAVITY, ARC_ROLL_SPEED = 0x0D, -0x8000, 0x3_0000

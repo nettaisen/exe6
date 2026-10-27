@@ -22,7 +22,7 @@ export type State = {
     blows: number,
 }
 
-local SPRITE = asset.sprite("whirlwind")
+local SPRITE = require("../../sprites/whirlwind")
 -- Forty pixels ahead of its panel.
 local AHEAD = 0x28_0000
 -- Its hits' modifier.

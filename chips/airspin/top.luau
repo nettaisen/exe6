@@ -17,7 +17,8 @@ local common = require("@exelib/airspin/top")
 local effects = require("../../lib/effects")
 
 -- Its sprite: animation 0 standing, 1 spinning.
-local SPRITE = asset.sprite("air-spin")
+local SPRITE = require("./air_spin_sprite")
+local moon_blade_sprite = require("../../sprites/moon_blade")
 
 return common.make {
     id = "airspin/top",
@@ -29,13 +30,13 @@ return common.make {
         class = "field_object",
         version = 0,
         ai_index = 1,
-        look = { sprite = asset.sprite("air-spin"), anim = 1, palette = 0, shadow = false },
+        look = { sprite = SPRITE, anim = 1, palette = 0, shadow = false },
     },
     hp = 0x190,
     body = collision.neutral_body,
     hit_by = collision.everything,
     -- The spin's gust (effect 0x43), and its palette offset.
-    gust = new.effect { sprite = asset.sprite("moon-blade"), anim = 0, palette = 0 },
+    gust = new.effect { sprite = moon_blade_sprite, anim = 0, palette = 0 },
     gust_palette = 2,
     gust_side = true,
     gust_self = collision.pushing,

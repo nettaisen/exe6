@@ -15,9 +15,14 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/deltaray/navi")
 local parts = require("../../lib/swords/parts")
+local deletion_sprite = require("../../sprites/deletion")
+local follow_effect_sprite = require("./follow_effect_sprite")
+local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local protoman_sprite = require("../../navis/protoman/protoman_sprite")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 
 -- What a chip summons him with: his palette (the chip's first parameter
 -- picks it).
@@ -25,7 +30,7 @@ export type Summon = { palette: number }
 
 return common.make {
     id = "deltaray/navi",
-    sprite = asset.sprite("protoman"),
+    sprite = protoman_sprite,
     sounds = {
         appear = asset.sound("appear"),
         arrive = asset.sound("log-in"),
@@ -35,8 +40,8 @@ return common.make {
     },
     -- The flash above him as he arrives (effect 0x03), and the mark on his
     -- target (effect 0x28); his slash drawn over the column (effect 0x27).
-    flash = new.effect { sprite = asset.sprite("deletion"), anim = 0, palette = 0 },
-    mark = new.effect { sprite = asset.sprite("hit-sparks"), anim = 11, palette = 1 },
+    flash = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 },
+    mark = new.effect { sprite = hit_sparks_sprite, anim = 11, palette = 1 },
     slash = WIDE_SLASH,
     -- His sword: the swords' blade (the original's attachment 3), its
     -- animation 0x0B, stepping while dimmed.
@@ -47,7 +52,7 @@ return common.make {
     target = collision.hits_navis,
     finish_anim = 0xF,
     -- His bursts (the follow effect's look 4), shown as he is.
-    burst = { id = "deltaray/burst", sprite = asset.sprite("follow-effect"), copies_visibility = true },
+    burst = { id = "deltaray/burst", sprite = follow_effect_sprite, copies_visibility = true },
     flashes = true,
     candidate_x = common.behind,
     tracks = false,

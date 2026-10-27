@@ -13,10 +13,11 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/justcone/strike")
 local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
+local justice_one_sprite = require("./justice_one_sprite")
 
 return common.make {
     id = "justcone/strike",
-    sprite = asset.sprite("justice-one"),
+    sprite = justice_one_sprite,
     sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
     -- Its own collision (`dword_80DB558`): a thrown breaking attack that
     -- hits navis, with the breaking spark.

@@ -9,6 +9,7 @@
 local attachment = require("../../../../objects/attachment")
 local burn = require("../../../../lib/burner/burn")
 local weapon = require("../../../../lib/weapon")
+local heatcross_burner_sprite = require("./heatcross_burner_sprite")
 
 local heat_charge = {}
 
@@ -17,7 +18,7 @@ local heat_charge = {}
 local FLAME = burn.action {
     id = "heatcross/charge/action",
     -- HeatCross's burner (the original's attachment row 0x1E).
-    burner = attachment.look { sprite = asset.sprite("heatcross-burner"), palette = 0, attach_point = 0x16 },
+    burner = attachment.look { sprite = heatcross_burner_sprite, palette = 0, attach_point = 0x16 },
     flame = { ticks = 0x3C, spread = 2 },
 }
 

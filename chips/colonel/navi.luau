@@ -35,7 +35,9 @@ export type State = {
 
 local colonel = {}
 
-local SPRITE = asset.sprite("colonel")
+local SPRITE = require("./colonel_sprite")
+local colonel_effect_sprite = require("../../sprites/colonel_effect")
+local colonel_sword_sprite = require("./colonel_sword_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SPIN = asset.sound("spin")
 
@@ -46,7 +48,7 @@ local CAPE: FormOverlaySpec =
 
 -- His sword (`dword_80B85C8`: the original's attachment 0x1F, animation
 -- 0x1C, animating while dimmed).
-local SWORD = attachment.look { sprite = asset.sprite("colonel-sword"), palette = 0 }
+local SWORD = attachment.look { sprite = colonel_sword_sprite, palette = 0 }
 local SWORD_ANIM = 0x1C
 
 -- ScreenDivide's X (region 0x29: the diagonals of a column of three
@@ -54,7 +56,7 @@ local SWORD_ANIM = 0x1C
 local SCREEN_DIVIDE = new.region {
     panels = { { 0, -1 }, { 1, -1 }, { 2, -1 }, { 1, 0 }, { 0, 1 }, { 1, 1 }, { 2, 1 } },
 }
-local DIVIDE = new.effect { sprite = asset.sprite("colonel-effect"), anim = 3, palette = 0 }
+local DIVIDE = new.effect { sprite = colonel_effect_sprite, anim = 3, palette = 0 }
 
 -- His fade-in's starting gray.
 local FADE_GRAY = 0x1F

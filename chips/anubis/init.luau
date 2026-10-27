@@ -5,6 +5,7 @@
 
 local controller = require("@self/controller")
 local statue = require("@self/statue")
+local anubis_sprite = require("@self/anubis_sprite")
 
 -- Its statue (`byte_80CF0C0`'s row 0): a drain every 6 ticks, 100 HP, 3000
 -- ticks.
@@ -18,7 +19,7 @@ local STATUE = statue.variant {
         class = "field_object",
         version = 2,
         ai_index = 1,
-        look = { sprite = asset.sprite("anubis"), anim = 0, palette = 0, shadow = true },
+        look = { sprite = anubis_sprite, anim = 0, palette = 0, shadow = true },
     },
 }
 

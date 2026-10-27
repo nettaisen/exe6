@@ -18,7 +18,7 @@ local sparks = require("../sparks")
 local seed = {}
 
 -- `sub_8011504`: sprite `bomb`, animation 9, with a ground shadow.
-local SPRITE = asset.sprite("bomb")
+local SPRITE = require("../../sprites/bomb")
 
 -- What the navi holds while throwing a seed: the bomb's sprite in the
 -- seed's colors (the original's attachment rows 0x24, 0x25, 0x26).

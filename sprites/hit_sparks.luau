@@ -1,0 +1,18 @@
+--!strict
+-- The hit-sparks sprite: its animations, each its frames' durations in ticks.
+return asset.sprite("hit-sparks", {
+    { 1, 1, 1, 1 },
+    { 2, 2, 2, 2 },
+    { 2, 2, 2, 3, 3, 3 },
+    { 3, 3, 3, 2 },
+    { 2, 2, 2, 2, 2, 2 },
+    { 2, 2, 2, 2, 2, 3 },
+    { 2 },
+    { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 },
+    { 1, 1, 1, 1 },
+    { 1, 1, 1 },
+    { 2 },
+    { 4, 3, 3, 4, 3, 3, loop = true },
+    { 1 },
+    { 3, 5, 3, 2 },
+})

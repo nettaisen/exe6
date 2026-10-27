@@ -11,7 +11,7 @@ export type State = {
     keeps_flip: boolean,
 }
 
-local SPRITE = asset.sprite("propeller")
+local SPRITE = require("./propeller_sprite")
 -- Where it sits on the owner: on the owner's sprite part 1, and 32 pixels
 -- nearer (Y) and 31 higher (Z) than the owner.
 local PART = 1

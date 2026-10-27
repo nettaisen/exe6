@@ -12,7 +12,7 @@ local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
 local trajectory = require("../../lib/trajectory")
 
-local SPRITE = asset.sprite("voodoo-doll")
+local SPRITE = require("./voodoo_doll_sprite")
 
 return common.make {
     id = "vdoll/doll",
@@ -23,7 +23,7 @@ return common.make {
         class = "field_object",
         version = 3,
         ai_index = 1,
-        look = { sprite = asset.sprite("voodoo-doll"), anim = 1, palette = 0, shadow = true },
+        look = { sprite = SPRITE, anim = 1, palette = 0, shadow = true },
     },
     -- How it looks absorbed (the original's obstacle kind's sprite: its own).
     absorbed = absorbed_obstacle.look { sprite = SPRITE },

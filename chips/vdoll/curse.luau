@@ -12,6 +12,7 @@ local dimming_chips = require("@exelib/dimming")
 local regions = require("@exelib/regions")
 local sparkles = require("./sparkles")
 local sparks = require("../../lib/sparks")
+local explosion_sprite = require("../../sprites/explosion")
 
 local curse = {}
 
@@ -36,7 +37,7 @@ local OCCUPIED = { [0] = 0x0020_0000, [1] = 0x0040_0000 }
 -- The sparkles over whoever is hit: 32 ticks of effect 0x24.
 -- (Its length, `dword_80E19F0`'s row 2, the curse's first parameter.)
 local SPARKLES_TICKS = 0x20
-local SPARKLE = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 1 }
+local SPARKLE = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 }
 
 -- `sub_80E7486`: the combatant (one of either side's still in) whose
 -- collision stands on (x, y), when the panel says one of `side`'s

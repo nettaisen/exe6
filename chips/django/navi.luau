@@ -50,7 +50,7 @@ export type State = {
     target: boolean,
 }
 
-local SPRITE = asset.sprite("django")
+local SPRITE = require("./django_sprite")
 local SOUND_APPEAR, SOUND_BIKE = asset.sound("appear"), asset.sound("django-bike")
 local SOUND_COMMAND, SOUND_SWING = asset.sound("ok-8b"), asset.sound("sword-swing")
 

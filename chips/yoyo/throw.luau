@@ -9,6 +9,7 @@
 
 local attachment = require("../../objects/attachment")
 local common = require("@exelib/yoyo/throw")
+local yoyo_arm_sprite = require("./yoyo_arm_sprite")
 
 local throw = {}
 
@@ -16,7 +17,7 @@ local throw = {}
 throw.STATE = common.STATE
 
 -- The yoyo arm (the original's attachment row 0x0E).
-local ARM = attachment.look { sprite = asset.sprite("yoyo-arm"), palette = 0, attach_point = 0x0F }
+local ARM = attachment.look { sprite = yoyo_arm_sprite, palette = 0, attach_point = 0x0F }
 
 -- A chip's throw: what it throws (`yoyo.one`, YoYo's; `yoyo.three`, the
 -- controller, GreatYo's); `id`, the action's key (its compat key: both

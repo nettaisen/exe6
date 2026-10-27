@@ -5,10 +5,11 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/energbom/burst")
+local energy_burst_sprite = require("../../sprites/energy_burst")
 
 return common.make {
     id = "energbom/burst",
-    sprite = asset.sprite("energy-burst"),
+    sprite = energy_burst_sprite,
     sound = asset.sound("energy-burst"),
     target = collision.hits_navis,
     self_type = collision.thrown,

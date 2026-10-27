@@ -25,6 +25,7 @@ local lib = require("../../../lib/buster")
 local projectile = require("../../../lib/projectile")
 local sparks = require("../../../lib/sparks")
 local variants = require("../../../objects/projectile/variants")
+local beast_shot_sprite = require("./beast_shot_sprite")
 
 -- (The recovery after the shot is the navi's `attack_count`, AIAttackVars+0x12:
 -- a throw doesn't write it, so it waits the last shot's, whatever ran in
@@ -88,7 +89,7 @@ local THROWN = flying_shot.variant {
     element = "null",
     secondary = { "break" },
     spark = sparks.breaking,
-    sprite = asset.sprite("beast-shot"),
+    sprite = beast_shot_sprite,
     speed = 0xA_0000,
     range = 8,
     highlight = true,

@@ -32,7 +32,7 @@ export type State = {
     aim_ticks: number,
 }
 
-local SPRITE = asset.sprite("eraseman")
+local SPRITE = require("../../navis/eraseman/eraseman_sprite")
 local SOUND_APPEAR, SOUND_MARK, SOUND_SLASH = asset.sound("appear"), asset.sound("erase-man"), asset.sound("erase-man-2")
 
 -- The aims each row cycles through, five bytes a row, 0xFF ending a row

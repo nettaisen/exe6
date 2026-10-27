@@ -11,7 +11,7 @@ local regions = require("@exelib/regions")
 
 local shot = {}
 
-local SPRITE = asset.sprite("pink-flash")
+local SPRITE = require("../../sprites/pink_flash")
 -- Ticks before the next segment starts.
 local SPREAD_TICKS = 2
 

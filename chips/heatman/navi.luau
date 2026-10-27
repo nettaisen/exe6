@@ -20,7 +20,7 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = asset.sprite("heatman")
+local SPRITE = require("../../navis/heatman/heatman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 
 -- What he wears (his overlay, `sub_8010F6A`): the link navi's own parts.

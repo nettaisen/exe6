@@ -8,6 +8,7 @@
 local attachment = require("../../objects/attachment")
 local bullet = require("../../objects/bullet")
 local common = require("@exelib/vulcan/action")
+local vulcan_sprite = require("./vulcan_sprite")
 
 local vulcan = {}
 
@@ -17,7 +18,7 @@ vulcan.STATE = common.STATE
 local LOOK: VulcanLook = {
     sound = asset.sound("col-army-2"),
     -- The vulcan (the original's attachment row 0xD).
-    arm = attachment.look { sprite = asset.sprite("vulcan"), palette = 0, attach_point = 14 },
+    arm = attachment.look { sprite = vulcan_sprite, palette = 0, attach_point = 14 },
     -- Held in the overlay (`sub_80EBF30`), its animation 0.
     hold = function(me: Object, look: AttachmentLook, which: Slot)
         attachment.attach(me, look, which)

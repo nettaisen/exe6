@@ -13,6 +13,7 @@ local collision = require("../../rules/collision")
 local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
+local aura_head_sprite = require("./aura_head_sprite")
 
 local head = {}
 
@@ -30,7 +31,7 @@ export type State = {
 
 -- `sub_8011504`'s words: the sprite (animation 4, a ground shadow), and
 -- the collision (a breaking attack, hit modifier 3 or 1 by its strength).
-local SPRITE, ANIM = asset.sprite("aura-head"), 4
+local SPRITE, ANIM = aura_head_sprite, 4
 local STRONG_HIT_MOD, HIT_MOD = 3, 1
 local SOUND = asset.sound("set-down")
 -- A panel's width, 16.16.

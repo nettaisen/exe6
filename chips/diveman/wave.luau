@@ -17,7 +17,7 @@ export type State = {
     while_dimmed: boolean,
 }
 
-local SPRITE = asset.sprite("diveman")
+local SPRITE = require("./diveman_sprite")
 local SOUND = asset.sound("wide-shot")
 local ANIM = 0x14
 

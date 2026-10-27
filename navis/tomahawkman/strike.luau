@@ -6,6 +6,7 @@
 -- hit ends its region. See docs/engine/standard-chips.md, "Action 0x0A".
 
 local regions = require("@exelib/regions")
+local dust_2_sprite = require("../../sprites/dust_2")
 
 local strike = {}
 
@@ -15,7 +16,7 @@ export type Spec = { delay: number, is: CollisionType, hits: CollisionType, spar
 export type State = Spec
 
 local HEIGHT = 0x30_0000
-local DUST = new.effect { sprite = asset.sprite("dust-2"), anim = 0, palette = 0 }
+local DUST = new.effect { sprite = dust_2_sprite, anim = 0, palette = 0 }
 -- Its hit lasts 15 less 5 ticks.
 local HIT_TICKS = 0x0F - 5
 local HIT_MOD = 3

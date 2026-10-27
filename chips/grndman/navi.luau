@@ -29,7 +29,7 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = asset.sprite("groundman")
+local SPRITE = require("../../navis/groundman/groundman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_DRILL_OUT = asset.sound("drill-out")
 local SOUND_DRILL = asset.sound("drill-spin")

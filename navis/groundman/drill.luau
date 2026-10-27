@@ -23,7 +23,7 @@ export type State = {
     action: Action?,
 }
 
-local SPRITE = asset.sprite("groundman")
+local SPRITE = require("./groundman_sprite")
 local SOUND = asset.sound("drilarm")
 
 -- Its actions.

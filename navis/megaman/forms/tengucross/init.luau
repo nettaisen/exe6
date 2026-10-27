@@ -9,6 +9,8 @@ local buster = require("../weapons/buster")
 local charge = require("@self/charge")
 local tengu_wind = require("../weapons/tengu_wind")
 local forms = require("../../../rules/forms")
+local megaman_sprite = require("./megaman_sprite")
+local tengucross_overlay_sprite = require("@self/tengucross_overlay_sprite")
 
 local form: FormDef = {
     kind = "cross",
@@ -19,7 +21,7 @@ local form: FormDef = {
     beast = tengucross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
-    sprite = asset.sprite("megaman"),
+    sprite = megaman_sprite,
     element = "null",
     weakness = { "sword" },
     buster_bonus = 0,
@@ -47,7 +49,7 @@ local form: FormDef = {
         aura_anim = 32,
         ice = "medium",
         -- What it wears over MegaMan's body.
-        parts = cross_overlay(asset.sprite("tengucross-overlay")),
+        parts = cross_overlay(tengucross_overlay_sprite),
         attach_points = {
             { 2, 0 },
             { 2, 0 },

@@ -7,17 +7,19 @@ local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
+local sword_slash_sprite = require("../sprites/sword_slash")
+local sword_sprite = require("../sprites/sword")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 -- BambSwrd's blade (row 0x1C: the sword in palette 2).
-local BAMBOO_BLADE = attachment.look { sprite = asset.sprite("sword"), palette = 2 }
+local BAMBOO_BLADE = attachment.look { sprite = sword_sprite, palette = 2 }
 
 -- Its charged slash in SlashCross: over a column, in palette 4, its own blade.
 local CHARGED = slashes.slash {
     wave = slashes.wave {
         region = regions.wide,
-        sprite = asset.sprite("sword-slash"),
+        sprite = sword_slash_sprite,
         anim = 0,
         palette = 4,
         hit_mod = 1,

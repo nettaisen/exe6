@@ -3,11 +3,12 @@
 
 local buster = require("../weapons/buster")
 local charged_shot = require("../weapons/charged_shot")
+local megaman_sprite = require("./megaman_sprite")
 
 local form: FormDef = {
     -- EXE6's base form.
     base = true,
-    sprite = asset.sprite("megaman"),
+    sprite = megaman_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charged_shot.weapon },

@@ -17,13 +17,14 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = asset.sprite("circusman")
+local SPRITE = require("./circusman_sprite")
+local pink_flash_sprite = require("../../sprites/pink_flash")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CATCH = asset.sound("circus-catch")
 local SOUND_DRUMROLL = asset.sound("drumroll")
 
 -- A show's sparkle (effect 0x21).
-local SPARKLE = new.effect { sprite = asset.sprite("pink-flash"), anim = 0, palette = 0 }
+local SPARKLE = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0 }
 
 -- What he is taken for: his actor record, and what he wears (his two overlays, `sub_8010FD8`).
 local IDENTITY = new.identity {
@@ -34,13 +35,13 @@ local IDENTITY = new.identity {
     ice = "large",
     parts = {
         body = {
-            sprite = asset.sprite("circusman"),
+            sprite = SPRITE,
             anims = 100,
             behind = { { 0x00, 0x13 }, { 0x28, 0x4F }, { 0x63, 0x63 } },
             anim_offset = 0x14,
         },
         second = {
-            sprite = asset.sprite("circusman"),
+            sprite = SPRITE,
             anims = 80,
             behind = { { 0x14, 0x3B }, { 0x4F, 0x4F } },
             anim_offset = 0x28,

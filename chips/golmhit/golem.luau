@@ -32,7 +32,9 @@ export type State = {
     cracks_column: boolean,
 }
 
-local SPRITE = asset.sprite("golem")
+local SPRITE = require("./golem_sprite")
+local dust_2_sprite = require("../../sprites/dust_2")
+local puff_sprite = require("../../sprites/puff")
 local LEAP_SOUND, LAND_SOUND, HIT_SOUND = asset.sound("golem-2"), asset.sound("land"), asset.sound("golem")
 
 -- The nearest target's column (`byte_80E4E74`, by side: required and
@@ -50,8 +52,8 @@ local HOP_TICKS = 2
 local HIT_MOD = 3
 local NO_SPARK: Spark? = nil
 -- Effects: the dust where it lands (effect 0x34), and where it can't (0x15).
-local DUST = new.effect { sprite = asset.sprite("dust-2"), anim = 0, palette = 0 }
-local GONE = new.effect { sprite = asset.sprite("puff"), anim = 3, palette = 0 }
+local DUST = new.effect { sprite = dust_2_sprite, anim = 0, palette = 0 }
+local GONE = new.effect { sprite = puff_sprite, anim = 3, palette = 0 }
 -- Its dust afterimages (`sub_80E4FFC`, `sub_80E5024`).
 local AFTERIMAGE_SHADER, AFTERIMAGE_TICKS = 0x83E0, 0xE
 local AFTERIMAGE_LOW = 0x4_0000

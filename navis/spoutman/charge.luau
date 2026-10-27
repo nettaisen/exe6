@@ -9,6 +9,7 @@
 local ball = require("../../chips/spoutman/ball")
 local link = require("../../lib/link_chips")
 local weapon = require("../../lib/weapon")
+local spout_man_effect_sprite = require("../../sprites/spout_man_effect")
 
 export type State = { timer: number }
 
@@ -19,7 +20,7 @@ local ANIM_WIND_UP, ANIM_THROW = 0x13, 0x14
 local WIND_UP_TICKS, RECOVER_TICKS = 8, 0x1E
 
 local SOUND = asset.sound("bubble")
-local SPLASH = new.effect { sprite = asset.sprite("spout-man-effect"), anim = 0, palette = 0 }
+local SPLASH = new.effect { sprite = spout_man_effect_sprite, anim = 0, palette = 0 }
 
 -- The hits' counter byte, and the ball's element: Aqua (the attack's
 -- element byte).

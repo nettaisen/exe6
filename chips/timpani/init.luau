@@ -8,6 +8,7 @@ local effects = require("@exelib/instruments/effects")
 local instrument = require("../lib/instruments/instrument")
 local instruments = require("../lib/instruments/controller")
 local statuses = require("../rules/status")
+local instrument_sprite = require("../lib/instruments/instrument_sprite")
 
 -- Held in place (status 0x43: 4 ticks) over the solid panels, and a
 -- camera shake (`sub_80D43C0`).
@@ -26,7 +27,7 @@ local chip: Chip = {
             class = "field_object",
             version = 0,
             ai_index = 1,
-            look = { sprite = asset.sprite("instrument"), anim = 0, palette = 4, shadow = true },
+            look = { sprite = instrument_sprite, anim = 0, palette = 4, shadow = true },
         },
         palette = 4,
         play_ticks = 0x3C * 2,

@@ -6,11 +6,12 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/swords/sonic_boom")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 
 local sonic_boom = {}
 
 local EXE6: SonicBoomLook = {
-    sprite = asset.sprite("sword-slash"),
+    sprite = sword_slash_sprite,
     z = 0x10_0000,
     piercing_palette = 0xB,
     palettes = { [0] = 0, 1, 2, 3, 4, 0, 0, 0 },

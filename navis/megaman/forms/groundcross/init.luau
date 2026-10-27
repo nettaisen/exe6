@@ -9,6 +9,8 @@ local buster = require("../weapons/buster")
 local drill = require("@self/drill")
 local rock_barrage = require("../weapons/rock_barrage")
 local forms = require("../../../rules/forms")
+local groundcross_overlay_sprite = require("@self/groundcross_overlay_sprite")
+local megaman_sprite = require("./megaman_sprite")
 
 local form: FormDef = {
     kind = "cross",
@@ -19,7 +21,7 @@ local form: FormDef = {
     beast = groundcross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
-    sprite = asset.sprite("megaman"),
+    sprite = megaman_sprite,
     element = "null",
     weakness = { "cursor" },
     buster_bonus = 0,
@@ -51,7 +53,7 @@ local form: FormDef = {
         aura_anim = 33,
         ice = "medium",
         -- What it wears over MegaMan's body.
-        parts = cross_overlay(asset.sprite("groundcross-overlay")),
+        parts = cross_overlay(groundcross_overlay_sprite),
         attach_points = {
             { 2, 0 },
             { 2, 0 },

@@ -19,7 +19,7 @@ export type State = {
     while_dimmed: boolean,
 }
 
-local SPRITE = asset.sprite("meteor")
+local SPRITE = require("../meteors/meteor_sprite")
 local SOUND_JUSTICE_ONE = asset.sound("justice-one")
 
 -- Where it starts, this far behind and above its panel; its speed forward

@@ -6,10 +6,11 @@
 
 local common = require("@exelib/grabbnsh/controller")
 local hand = require("./hand")
+local grab_shot_sprite = require("../../sprites/grab_shot")
 
 return common.make {
     id = "grabbnsh/controller",
     hand = hand.kind,
-    returned = new.effect { sprite = asset.sprite("grab-shot"), anim = 1, palette = 0 },
+    returned = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 },
     return_sound = asset.sound("err-select-91"),
 }

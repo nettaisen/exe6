@@ -10,6 +10,7 @@ local effects = require("../lib/effects")
 local falling = require("@exelib/rock/falling")
 local sparks = require("../lib/sparks")
 local chip = require("@self/chip")
+local falling_rock_sprite = require("@self/falling_rock_sprite")
 
 local falling_rock = {}
 
@@ -17,7 +18,7 @@ local falling_rock = {}
 -- hit modifier 1, the plain spark; a puff into a hole (effect 0x14), its chips with their crash.
 falling_rock.kind = falling.make_kind {
     id = "falling-rock",
-    sprite = asset.sprite("falling-rock"),
+    sprite = falling_rock_sprite,
     height = 0x68_0000,
     gravity = 0x2000,
     is = collision.thrown_break,

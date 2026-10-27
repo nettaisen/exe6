@@ -24,6 +24,8 @@ local regions = require("@exelib/regions")
 local slashes = require("./slashes")
 local sword_wave = require("./sword_wave")
 local weapon = require("../../../../lib/weapon")
+local charged_slash_sprite = require("./charged_slash_sprite")
+local sword_slash_sprite = require("../../../../sprites/sword_slash")
 
 export type State = {
     -- AIAttackVars+0x10: ticks into the slash, or of the end. (The slashes
@@ -69,7 +71,7 @@ end
 -- The plain sword's slash (the original's row 0, what a chip without a
 -- subtype reads): over the panel ahead.
 slash_charge.plain = slashes.slash {
-    wave = slashes.wave { region = regions.single, sprite = asset.sprite("sword-slash"), anim = 2 },
+    wave = slashes.wave { region = regions.single, sprite = sword_slash_sprite, anim = 2 },
     blade = parts.blade,
     sound = parts.swing,
     lockon = lockon.thunder,
@@ -90,7 +92,7 @@ end
 local OWN = slashes.slash {
     wave = slashes.wave {
         region = regions.wide,
-        sprite = asset.sprite("charged-slash"),
+        sprite = charged_slash_sprite,
         anim = 0,
         reach = 1,
         steps = true,

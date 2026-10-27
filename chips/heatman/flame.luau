@@ -15,7 +15,7 @@ local flame = {}
 type Spec = HeatFlame
 export type State = Spec
 
-local SPRITE = asset.sprite("heat-flame")
+local SPRITE = require("./heat_flame_sprite")
 local SOUND = asset.sound("form-change")
 
 -- Its actions.

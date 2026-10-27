@@ -5,9 +5,12 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local groundman = require("@self/chip")["rc-brakr"]
+local groundman_overlay_sprite = require("@self/groundman_overlay_sprite")
+local groundman_portrait_sprite = require("@self/groundman_portrait_sprite")
+local groundman_sprite = require("@self/groundman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("groundman"),
+    sprite = groundman_sprite,
     element = "null",
     weakness = { "cursor" },
     buster_bonus = 1,
@@ -20,7 +23,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("groundman-portrait"),
+        portrait = groundman_portrait_sprite,
     },
     own_chip = { chip = groundman, code = "G" },
     chip_bonus = {
@@ -69,7 +72,7 @@ local navi: NaviDef = {
         -- What he wears over his body.
         parts = {
             body = {
-                sprite = asset.sprite("groundman-overlay"),
+                sprite = groundman_overlay_sprite,
                 anims = 60,
                 behind = { { 0x00, 0x27 }, { 0x3B, 0x3B } },
             },

@@ -15,9 +15,11 @@ local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local statuses = require("../../rules/status")
 local swords = require("../../lib/swords/parts")
+local elec_sword_sprite = require("../../chips/elecswrd/elec_sword_sprite")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 
 export type State = {
     timer: number,
@@ -41,7 +43,7 @@ local action: Action
 -- is. It shows the slash's animation once he slashes.
 local GLOW = follow_effect.make {
     id = "delecswd/glow",
-    sprite = asset.sprite("elec-sword"),
+    sprite = elec_sword_sprite,
     anim = 0xF,
     palette = 0,
     copies_visibility = true,

@@ -8,12 +8,13 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/drilarm/drill")
 local sparks = require("../../lib/sparks")
+local drill_arm_sprite = require("./drill_arm_sprite")
 
 local drill = {}
 
 -- The drill arm the navi wears while it drills (the original's attachment
 -- row 0x20), in its drilling animation (1) or drawn back (0).
-drill.arm = attachment.look { sprite = asset.sprite("drill-arm"), palette = 0, attach_point = 0x13 }
+drill.arm = attachment.look { sprite = drill_arm_sprite, palette = 0, attach_point = 0x13 }
 drill.ARM_DRILLING = 1
 
 local exe6_kind, exe6_spawn = common.make_kind("drilarm/drill", {

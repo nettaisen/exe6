@@ -12,6 +12,7 @@
 local attachment = require("../../objects/attachment")
 local beam = require("./beam")
 local collision = require("../../rules/collision")
+local gun_del_sol_sprite = require("./gun_del_sol_sprite")
 
 local action = {}
 
@@ -41,7 +42,7 @@ local DAMAGE, SUN_DAMAGE = 2, 4
 -- The gun (the original's attachment rows 7 to 0xA, by the chip), in its
 -- palette.
 function action.gun(palette: number): AttachmentLook
-    return attachment.look { sprite = asset.sprite("gun-del-sol"), palette = palette, attach_point = 0x0D }
+    return attachment.look { sprite = gun_del_sol_sprite, palette = palette, attach_point = 0x0D }
 end
 
 local function set_phase(me: Object, step: number)

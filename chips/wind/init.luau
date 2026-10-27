@@ -6,6 +6,7 @@
 
 local controller = require("@self/controller")
 local fan = require("@self/fan")
+local fan_sprite = require("@self/fan_sprite")
 
 local wind: Chip = {
     codes = { "*" },
@@ -30,7 +31,7 @@ local wind: Chip = {
             class = "field_object",
             version = 3,
             ai_index = 1,
-            look = { sprite = asset.sprite("fan"), anim = 0, palette = 0, shadow = false },
+            look = { sprite = fan_sprite, anim = 0, palette = 0, shadow = false },
         },
         absorbed = fan.absorbed,
     }),
@@ -59,7 +60,7 @@ local fan_chip: Chip = {
             class = "field_object",
             version = 4,
             ai_index = 1,
-            look = { sprite = asset.sprite("fan"), anim = 0, palette = 1, shadow = false },
+            look = { sprite = fan_sprite, anim = 0, palette = 1, shadow = false },
         },
         absorbed = fan.absorbed,
     }),

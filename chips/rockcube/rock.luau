@@ -24,7 +24,7 @@ local rock = {}
 
 -- The cubes' sheet (animation 0 a cube rising; the rows' are the cubes
 -- standing).
-local SPRITE = asset.sprite("rock-cubes")
+local SPRITE = require("../../sprites/rock_cubes")
 
 -- What a rock is taken for: a rock cube, an ice block (field objects, with
 -- the looks something that takes their place shows).

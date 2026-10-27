@@ -7,6 +7,7 @@
 
 local attachment = require("../objects/attachment")
 local magnet = require("@self/magnet")
+local magnet_coil_sprite = require("@self/magnet_coil_sprite")
 
 export type State = {
     -- Ticks left in the current phase (AIAttackVars+0x10). (The hold is
@@ -22,7 +23,7 @@ local RAISE, SET, LOWER = 0x0, 0x4, 0x8
 local ANIM_RAISE = 0x0A
 local SOUND = asset.sound("elec-pulse")
 -- The coil the navi holds (the original's attachment row 0x2C).
-local COIL = attachment.look { sprite = asset.sprite("magnet-coil"), palette = 0, attach_point = 0x0E }
+local COIL = attachment.look { sprite = magnet_coil_sprite, palette = 0, attach_point = 0x0E }
 local HOLD, LOWER_TICKS = 0x0A, 6
 
 -- The coil's animation steps. Without a coil (its pool was full) there is

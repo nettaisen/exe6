@@ -34,7 +34,7 @@ export type State = {
     restart: boolean,
 }
 
-local SPRITE = asset.sprite("sensor")
+local SPRITE = require("./sensor_sprite")
 -- Its identity: a field object, with the look something that takes its
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {
@@ -42,7 +42,7 @@ local IDENTITY = new.identity {
     class = "field_object",
     version = 5,
     ai_index = 1,
-    look = { sprite = asset.sprite("sensor"), anim = 0, palette = 0, shadow = true },
+    look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
 }
 local LIFETIME = 0x2D0
 -- Its collision: another body of its side, reached by the other side.

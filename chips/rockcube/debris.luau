@@ -8,12 +8,13 @@
 
 local common = require("@exelib/rock/debris")
 local effects = require("../../lib/effects")
+local rock_debris_sprite = require("./rock_debris_sprite")
 
 local debris = {}
 
 -- Its chunks' sheet, and the dust it lands in (effect 1, the splash's
 -- look).
-debris.kind = common.make_kind("rockcube/debris", asset.sprite("rock-debris"), effects.splash)
+debris.kind = common.make_kind("rockcube/debris", rock_debris_sprite, effects.splash)
 
 -- `sub_80E47A4`: a chunk at `pos` in sprite palette `palette`.
 function debris.spawn(pos: Vec3, palette: number): Object?

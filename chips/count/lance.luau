@@ -22,7 +22,7 @@ export type State = {
     warn_ticks: number,
 }
 
-local SPRITE = asset.sprite("count")
+local SPRITE = require("./count_sprite")
 local SOUND_STRIKE = asset.sound("elmnt-vine")
 
 -- Its animation, and its height until it strikes (whole pixels).

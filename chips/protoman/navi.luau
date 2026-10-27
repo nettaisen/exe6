@@ -8,9 +8,11 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/protoman/navi")
 local parts = require("../../lib/swords/parts")
+local protoman_sprite = require("../../navis/protoman/protoman_sprite")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 
 local protoman = {}
 
@@ -25,7 +27,7 @@ protoman.look = common.look
 -- controller calls through r3 and his position takes (his init sets it
 -- all).
 protoman.exe6 = protoman.look {
-    sprite = asset.sprite("protoman"),
+    sprite = protoman_sprite,
     palette = 0,
     sword = parts.blade,
     sword_anim = 0xB,

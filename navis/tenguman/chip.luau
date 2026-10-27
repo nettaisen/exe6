@@ -10,6 +10,7 @@ local collision = require("../../rules/collision")
 local link = require("../../lib/link_chips")
 local regions = require("@exelib/regions")
 local tornado = require("./tornado")
+local swirl_sprite = require("../../sprites/swirl")
 
 export type State = { timer: number }
 
@@ -20,7 +21,7 @@ local ANIM_BLOW, ANIM_RECOVER = 0x10, 7
 local SOUND = asset.sound("aqua-surge")
 
 -- The gust on him (32 pixels up).
-local GUST = new.effect { sprite = asset.sprite("swirl"), anim = 1, palette = 1 }
+local GUST = new.effect { sprite = swirl_sprite, anim = 1, palette = 1 }
 local GUST_Z = 0x20_0000
 
 local BLOW_TICKS, RECOVER_TICKS = 0x1E, 0x14

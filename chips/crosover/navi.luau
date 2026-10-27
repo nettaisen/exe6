@@ -18,9 +18,12 @@ local projectile = require("../../lib/projectile")
 local variants = require("../../objects/projectile/variants")
 local regions = require("@exelib/regions")
 local sun_beam = require("../gundels/beam")
+local colonel_effect_sprite = require("../../sprites/colonel_effect")
+local sun_beam_sprite = require("../../sprites/sun_beam")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- Sword's slash over the panel ahead.
-local SWORD_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 2, palette = 0 }
+local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0 }
 
 local crosover = {}
 
@@ -42,7 +45,7 @@ export type State = {
     in_position: boolean,
 }
 
-local DJANGO_SPRITE = asset.sprite("django")
+local DJANGO_SPRITE = require("../django/django_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SHOT = asset.sound("buster-shot")
 local SOUND_GUN = asset.sound("gundels1")
@@ -63,14 +66,14 @@ local SHOTS, SHOT_TICKS = 0xC, 0xA
 -- Django's sun beam (GunDelSol's, chips/gundels/beam: its plain look), 80
 -- pixels ahead of him, and its drain on the target's column: element 5, 3
 -- damage, under it for 120 ticks.
-local BEAM: SunBeam = { sprite = asset.sprite("sun-beam"), palette = 0 }
+local BEAM: SunBeam = { sprite = sun_beam_sprite, palette = 0 }
 local DRAIN_ELEMENT, DRAIN_DAMAGE, DRAIN_TICKS = 5, 3, 0x78
 
 -- The slashes: a plain one, or half of an X when the other stands in
 -- place too (effects 0x18 and 0x36).
 local SLASH = { effect = SWORD_SLASH, region = regions.single }
 local CROSS_HALF = {
-    effect = new.effect { sprite = asset.sprite("colonel-effect"), anim = 1, palette = 0 },
+    effect = new.effect { sprite = colonel_effect_sprite, anim = 1, palette = 0 },
     region = regions.falling,
 }
 

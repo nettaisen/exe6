@@ -44,7 +44,7 @@ export type State = {
 
 local elmntman = {}
 
-local SPRITE = asset.sprite("elmnt-man")
+local SPRITE = require("./elmnt_man_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ELMNT_MAN = asset.sound("elmnt-man")
 local SOUND_ELMNT_MAN_2 = asset.sound("elmnt-man-2")
@@ -60,7 +60,7 @@ local IDENTITY = new.identity {
     ice = "large",
     parts = {
         body = {
-            sprite = asset.sprite("elmnt-man"),
+            sprite = SPRITE,
             anims = 32,
             behind = { { 0x00, 0x0B }, { 0x1F, 0x1F } },
             own_palette = true,

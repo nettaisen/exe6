@@ -12,6 +12,7 @@ local arm = require("../../lib/arm")
 local collision = require("../../rules/collision")
 local gust = require("../../objects/gust")
 local regions = require("@exelib/regions")
+local swirl_sprite = require("../../sprites/swirl")
 
 local action = {}
 
@@ -30,7 +31,7 @@ local SWING, RECOVER = 0x0, 0x4
 local ANIM_SWING = 5
 local SOUND = asset.sound("windrack")
 -- The swirl around the navi (effect 0x44), 16 pixels up on its panel.
-local SWIRL = new.effect { sprite = asset.sprite("swirl"), anim = 0, palette = 0 }
+local SWIRL = new.effect { sprite = swirl_sprite, anim = 0, palette = 0 }
 local HEIGHT = 0x10_0000
 -- The phase's ticks, and the tick (timer value) the swing lands.
 local SWING_TICKS, HIT_AT = 0x15, 0x0C

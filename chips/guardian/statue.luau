@@ -22,7 +22,9 @@ local strike = require("./strike")
 
 local statue = {}
 
-local SPRITE = asset.sprite("guardian-statue")
+local SPRITE = require("./guardian_statue_sprite")
+local lightning_sprite = require("../../sprites/lightning")
+local puff_sprite = require("../../sprites/puff")
 
 local made = common.make {
     id = "guardian/statue",
@@ -34,7 +36,7 @@ local made = common.make {
         class = "field_object",
         version = 4,
         ai_index = 1,
-        look = { sprite = asset.sprite("guardian-statue"), anim = 0, palette = 0, shadow = true },
+        look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
     },
     hp = 1,
     -- The damage word a stage's statues strike with (the actor list's entry type 9, `sub_800751C`: `byte_80077F4`'s
@@ -46,9 +48,9 @@ local made = common.make {
         strike = asset.sound("beast-over-burst"),
     },
     -- The flash it arrives in, 16 pixels up (effect 0x15).
-    arrival = new.effect { sprite = asset.sprite("puff"), anim = 3, palette = 0 },
+    arrival = new.effect { sprite = puff_sprite, anim = 3, palette = 0 },
     -- The burst on each panel it strikes (effect 0x45).
-    burst = new.effect { sprite = asset.sprite("lightning"), anim = 0, palette = 0 },
+    burst = new.effect { sprite = lightning_sprite, anim = 0, palette = 0 },
     -- A neutral obstacle that everything reaches (row 0x0E, while dimmed
     -- too, breaking).
     is = collision.neutral_body,

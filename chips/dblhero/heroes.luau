@@ -15,9 +15,11 @@ local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
 local parts = require("../../lib/swords/parts")
 local protoman = require("../../navis/protoman").protoman
+local charge_glow_sprite = require("../../sprites/charge_glow")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 
 local heroes = {}
 
@@ -37,7 +39,7 @@ export type State = {
 
 -- ProtoMan's look and identity (which his parts and attach points come
 -- by).
-local PROTOMAN_SPRITE = asset.sprite("protoman")
+local PROTOMAN_SPRITE = require("../../navis/protoman/protoman_sprite")
 local PROTOMAN = protoman.identity
 -- Where each stands from the user's spot (`dword_80BCE44`, pixels; x
 -- toward its front).
@@ -45,8 +47,8 @@ local OFFSET: { [string]: { number } } = { megaman = { -10, -10 }, protoman = { 
 
 -- The charge (effects 0x4E and 0x4F at its attach point 0, for 40 and 20
 -- ticks).
-local CHARGING = new.effect { sprite = asset.sprite("charge-glow"), anim = 0, palette = 0 }
-local CHARGED = new.effect { sprite = asset.sprite("charge-glow"), anim = 2, palette = 0 }
+local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0 }
+local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0 }
 local CHARGE_TICKS, CHARGED_AT, CHARGING_LASTS = 0x3C, 0x14, 0x28
 local SOUND_CHARGING = asset.sound("buster-charge")
 local SOUND_CHARGED = asset.sound("buster-charged")

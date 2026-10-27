@@ -15,7 +15,7 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = asset.sprite("diveman")
+local SPRITE = require("./diveman_sprite")
 local SOUND_SURFACE = asset.sound("sand-worm")
 
 -- What he is taken for: his actor record, and what he wears (his overlay, `sub_8010F96`).
@@ -27,7 +27,7 @@ local IDENTITY = new.identity {
     ice = "large",
     parts = {
         body = {
-            sprite = asset.sprite("diveman"),
+            sprite = SPRITE,
             anims = 136,
             behind = { { 0x0A, 0x0B }, { 0x23, 0x37 }, { 0x4C, 0x73 }, { 0x87, 0x87 } },
             anim_offset = 0x0A,

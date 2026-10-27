@@ -5,6 +5,8 @@ local falzar_beast = require("./falzar_beast")["falzar-beast"]
 local falzar_beast_buster = require("../weapons/falzar_beast_buster")
 local beast_claw = require("../weapons/beast_claw")
 local forms = require("../../../rules/forms")
+local beast_head_sprite = require("./beast_head_sprite")
+local falzar_beast_sprite = require("./falzar_beast/falzar_beast_sprite")
 
 local form: FormDef = {
     kind = "beast_over",
@@ -24,7 +26,7 @@ local form: FormDef = {
     -- (No hit breaks Beast Over; the original's routine, by the form's number, would drop
     -- either to the Falzar beast.)
     breaks_to = falzar_beast,
-    sprite = asset.sprite("falzar-beast"),
+    sprite = falzar_beast_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, alt_a_charge = beast_claw.weapon },
@@ -50,7 +52,7 @@ local form: FormDef = {
         aura_anim = 13,
         ice = "medium",
         -- The beast's head, whose palette follows the mood.
-        parts = { beast_head = { sprite = asset.sprite("beast-head") } },
+        parts = { beast_head = { sprite = beast_head_sprite } },
         attach_points = {
             { 4, 16 },
             { 4, 24 },

@@ -10,7 +10,7 @@ export type State = {
     ticks: number,
 }
 
-local SPRITE = asset.sprite("erase-mark")
+local SPRITE = require("./erase_mark_sprite")
 
 -- `sub_80E78E0`: on its panel, at the fraction of its Z.
 local function init(me: Object)

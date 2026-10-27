@@ -6,6 +6,8 @@ local falzar_beast_buster = require("../weapons/falzar_beast_buster")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local beast_claw = require("../weapons/beast_claw")
 local forms = require("../../../rules/forms")
+local beast_head_sprite = require("./beast_head_sprite")
+local falzar_beast_sprite = require("@self/falzar_beast_sprite")
 
 local form: FormDef = {
     kind = "beast",
@@ -19,7 +21,7 @@ local form: FormDef = {
     -- (A weakness hit breaks a Beast as a Cross: the original's routine, by the form's
     -- number, drops this one to the Gregar beast.)
     breaks_to = gregar_beast,
-    sprite = asset.sprite("falzar-beast"),
+    sprite = falzar_beast_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = beast_claw.weapon },
@@ -46,7 +48,7 @@ local form: FormDef = {
         aura_anim = 13,
         ice = "medium",
         -- The beast's head, whose palette follows the mood.
-        parts = { beast_head = { sprite = asset.sprite("beast-head") } },
+        parts = { beast_head = { sprite = beast_head_sprite } },
         attach_points = {
             { 4, 16 },
             { 4, 24 },

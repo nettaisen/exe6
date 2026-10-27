@@ -18,7 +18,8 @@ export type State = {
     trail: number,
 }
 
-local SPRITE = asset.sprite("charge-wave")
+local SPRITE = require("./charge_wave_sprite")
+local hit_sparks_sprite = require("../../../../sprites/hit_sparks")
 
 -- Its speed, 16.16.
 local SPEED = 0xC_0000
@@ -29,7 +30,7 @@ local TRAIL_FIRST, TRAIL_EVERY = 0xA, 5
 local TRAIL_SHADER, TRAIL_LIFETIME = 0xCA8F, 0x14
 
 -- The flash where it hits.
-local HIT_FLASH = new.effect { sprite = asset.sprite("hit-sparks"), anim = 1, palette = 6 }
+local HIT_FLASH = new.effect { sprite = hit_sparks_sprite, anim = 1, palette = 6 }
 
 -- Its hit: an attack at navis, no spark.
 local HIT_MOD = 3

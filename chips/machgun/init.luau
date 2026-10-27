@@ -9,6 +9,8 @@
 local attachment = require("../objects/attachment")
 local panel_strike = require("../objects/panel_strike")
 local panels = require("@exelib/panels")
+local machine_gun_sprite = require("@self/machine_gun_sprite")
+local reticle_sprite = require("../sprites/reticle")
 
 export type State = {
     -- The countdown to the next strike (AIAttackVars+0x10).
@@ -37,13 +39,13 @@ local STRIKES, INTERVAL, START_ROW = 9, 8, 3
 local PANEL_STRIKE: PanelStrike = { warning = 6, hit_mod = 1 }
 -- The reticle (effect 0x2F) over the target, for 6 ticks (the chips'
 -- second parameter).
-local RETICLE = new.effect { sprite = asset.sprite("reticle"), anim = 0, palette = 0 }
+local RETICLE = new.effect { sprite = reticle_sprite, anim = 0, palette = 0 }
 local RETICLE_TICKS = 6
 -- The gun's animation as it fires.
 local GUN_FIRE = 1
 
 -- The machine gun (the original's attachment row 0x1D).
-local GUN = attachment.look { sprite = asset.sprite("machine-gun"), palette = 0, attach_point = 26 }
+local GUN = attachment.look { sprite = machine_gun_sprite, palette = 0, attach_point = 26 }
 
 -- `sub_80ED040` (@exelib/panels, the dragons' too): from the column ahead
 -- forward, the first with an enemy in some row; none, the last column

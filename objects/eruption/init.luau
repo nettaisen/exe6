@@ -14,7 +14,7 @@ export type State = {
     lifetime: number,
 }
 
-local SPRITE = asset.sprite("eruption")
+local SPRITE = require("@self/eruption_sprite")
 -- Added to its first parameter for its lifetime.
 local LIFETIME = 0x28
 -- What a volcano's spawn starts it with (`sub_80C5B76`), and the damage word it takes (50).

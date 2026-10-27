@@ -4,5 +4,6 @@
 -- ticks and is gone. A falling rock (./init) breaks into two, as GroundMan's rocks do (chips/grndman/rock).
 
 local falling_chip = require("@exelib/rock/falling_chip")
+local falling_rock_sprite = require("./falling_rock_sprite")
 
-return falling_chip.make_kind("falling-rock/chip", asset.sprite("falling-rock"))
+return falling_chip.make_kind("falling-rock/chip", falling_rock_sprite)

@@ -11,6 +11,9 @@
 -- FirstBarrier and the patch cards set it.
 
 local visual = require("@self/visual")
+local aura_sprite = require("@self/aura_sprite")
+local barrier_sprite = require("@self/barrier_sprite")
+local bubble_sprite = require("../sprites/bubble")
 
 local barriers = {}
 
@@ -19,7 +22,7 @@ function barriers.barrier(b: Barrier): Barrier
     return new.record("barrier", b)
 end
 
-local SPRITE, BUBBLE, AURA = asset.sprite("barrier"), asset.sprite("bubble"), asset.sprite("aura")
+local SPRITE, BUBBLE, AURA = barrier_sprite, bubble_sprite, aura_sprite
 local SOUND, BUBBLE_SOUND, BUBBLE_POP = asset.sound("barrier"), asset.sound("bubble"), asset.sound("bubble-pop")
 local NO_TIMER = 0xFFFF
 

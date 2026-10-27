@@ -8,6 +8,8 @@ local tengu_wind = require("../weapons/tengu_wind")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local charge = require("@self/charge")
 local forms = require("../../../rules/forms")
+local beast_head_sprite = require("./beast_head_sprite")
+local tengucross_beast_sprite = require("@self/tengucross_beast_sprite")
 
 local form: FormDef = {
     kind = "cross_beast",
@@ -19,7 +21,7 @@ local form: FormDef = {
     cross_of = tenguman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = falzar_beast,
-    sprite = asset.sprite("tengucross-beast"),
+    sprite = tengucross_beast_sprite,
     element = "null",
     weakness = { "sword" },
     buster_bonus = 0,
@@ -56,7 +58,7 @@ local form: FormDef = {
         aura_anim = 13,
         ice = "medium",
         -- The beast's head, in the Cross's palette.
-        parts = { beast_head = { sprite = asset.sprite("beast-head"), palette = 6 } },
+        parts = { beast_head = { sprite = beast_head_sprite, palette = 6 } },
         attach_points = {
             { 4, 16 },
             { 4, 24 },
