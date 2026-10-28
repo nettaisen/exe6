@@ -16,6 +16,7 @@ export type State = {
     action: Action?,
 }
 
+local looks = require("@exelib/looks")
 local SPRITE = require("./ground_drill_sprite")
 
 -- `sub_80E77B8`: on its owner, as visible as he is.
@@ -48,10 +49,10 @@ local function tick(me: Object)
     me.pos = owner.pos
     me:copy_visibility(owner)
     local sprite, look = me.sprite, owner.sprite
-    sprite:copy_from(look, "palette", "color_shader", "white", "mosaic")
+    looks.copy(sprite, look, "palette", "color_shader", "white", "mosaic")
     me.flip = owner.flip
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-    sprite:copy_from(look, "alpha")
+    looks.copy(sprite, look, "alpha")
     if s.follows_action and owner:navi_action() ~= s.action then
         me:set_lifecycle("destroy")
     end

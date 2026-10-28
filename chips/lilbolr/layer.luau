@@ -6,6 +6,8 @@
 -- its steam with one, AirRaid's plane its jet flame (chips/airraid); the
 -- viruses use it too. See docs/engine/shot-chips.md §14.1.
 
+local looks = require("@exelib/looks")
+
 local layer = {}
 
 export type State = {
@@ -79,19 +81,19 @@ local function tick(me: Object)
         me:copy_visibility(owner)
     end
     if not s.own_palette then
-        sprite:copy_from(look, "palette")
+        looks.copy(sprite, look, "palette")
     end
     if not s.own_look then
-        sprite:copy_from(look, "color_shader")
+        looks.copy(sprite, look, "color_shader")
     end
     -- The owner's final palette (`sprite_setFinalPalette`: its white
     -- flash) and mosaic (`sub_8002F3E`, `sprite_setMosaicSize`).
-    sprite:copy_from(look, "white", "mosaic")
+    looks.copy(sprite, look, "white", "mosaic")
     if not s.own_flip then
         me.flip = owner.flip
         sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     end
-    sprite:copy_from(look, "alpha")
+    looks.copy(sprite, look, "alpha")
     if s.row_offset then
         row_offset(me)
     end

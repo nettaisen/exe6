@@ -11,6 +11,7 @@ export type State = {
     keeps_flip: boolean,
 }
 
+local looks = require("@exelib/looks")
 local SPRITE = require("./propeller_sprite")
 -- Where it sits on the owner: on the owner's sprite part 1, and 32 pixels
 -- nearer (Y) and 31 higher (Z) than the owner.
@@ -36,12 +37,12 @@ local function follow(me: Object)
     me.pos = Vec3.new(int.i32(p.x + px * 0x1_0000 * dir), int.i32(p.y + DY + py * 0x1_0000), int.i32(p.z + DZ))
     me:copy_visibility(owner)
     local look, worn = me.sprite, owner.sprite
-    look:copy_from(worn, "color_shader", "white", "mosaic")
+    looks.copy(look, worn, "color_shader", "white", "mosaic")
     if not (me.state :: State).keeps_flip then
         me.flip = owner.flip
         look:set_flip(bit32.bxor(me.alliance, me.flip))
     end
-    look:copy_from(worn, "alpha")
+    looks.copy(look, worn, "alpha")
     if battle.dimmed() or held(owner) then
         return
     end

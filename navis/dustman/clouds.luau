@@ -18,6 +18,7 @@ export type State = {
 
 local CLOUD_SPRITE = require("../../sprites/dust_cloud")
 local DUSTMAN_SPRITE = require("./dustman_sprite")
+local looks = require("@exelib/looks")
 local DUSTMAN_ANIM = 0x15
 
 -- `sub_80E86AC`, `sub_80E87B8`: on its owner.
@@ -46,10 +47,10 @@ local function follow(me: Object)
     me.pos = owner.pos
     me:copy_visibility(owner)
     local look, worn = me.sprite, owner.sprite
-    look:copy_from(worn, "palette", "color_shader", "white", "mosaic")
+    looks.copy(look, worn, "palette", "color_shader", "white", "mosaic")
     me.flip = owner.flip
     look:set_flip(bit32.bxor(me.alliance, me.flip))
-    look:copy_from(worn, "alpha")
+    looks.copy(look, worn, "alpha")
     if owner:navi_action() ~= (me.state :: State).action then
         me:set_lifecycle("destroy")
     end

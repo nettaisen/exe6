@@ -14,6 +14,7 @@ export type State = {
     action: Action?,
 }
 
+local looks = require("@exelib/looks")
 local SPRITE = require("./eagle_tomahawk_sprite")
 local ANIM_RAISED, ANIM_SWUNG = 6, 7
 
@@ -46,7 +47,7 @@ local function tick(me: Object)
     me.run_while_dimmed = owner.run_while_dimmed
     me.holds_reservation = owner.holds_reservation
     local look, worn = me.sprite, owner.sprite
-    look:copy_from(worn, "color_shader", "white", "mosaic", "alpha")
+    looks.copy(look, worn, "color_shader", "white", "mosaic", "alpha")
     if not battle.over() and owner:navi_action() == (me.state :: State).action then
         local a = me.action
         if a == axe.SWING then
