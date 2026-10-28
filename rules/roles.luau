@@ -17,6 +17,7 @@ local collision = require("./collision")
 local dust_beast_scatter = require("../navis/megaman/forms/dustcross_beast/scatter")
 local effects = require("../lib/effects")
 local encased_bubble = require("../objects/encased_bubble/bubble")
+local exe6 = require("./api")
 local invalid = require("../chips/invalid").invalid
 local megabstr = require("../chips/megabstr").megabstr
 local rush = require("../chips/rush").rush
@@ -30,6 +31,7 @@ local sparks = require("../lib/sparks")
 local stun_strike = require("../lib/swords/stun_strike")
 local statuses = require("./status")
 local supports = require("../lib/supports/controller")
+local wind_registry = require("@exelib/wind/registry")
 local blindness_sprite = require("./blindness_sprite")
 local bubble_sprite = require("../sprites/bubble")
 local charge_glow_a_sprite = require("../sprites/charge_glow_a")
@@ -280,9 +282,12 @@ local roles: RolesSpec = {
                 barriers.raise(navi, barrier, true)
             end
         end,
-        -- What an obstacle encased in ice or a bubble becomes
-        -- (`sub_801813A`'s end).
-        encased = encased_bubble.replace,
+        -- An obstacle encased in ice or a bubble is done (`sub_801813A`'s
+        -- end): no side's wind (`sub_80E544C`), then what it becomes.
+        encased = function(obstacle: Object, ice: boolean, class: number?)
+            wind_registry.clear(exe6.wind, obstacle)
+            encased_bubble.replace(obstacle, ice, class)
+        end,
     },
 }
 

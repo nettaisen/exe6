@@ -101,15 +101,17 @@ local THROW_SOUND = asset.sound("junk-shot")
 -- `sub_80EB450`'s throw (the original's attack variant 2): the junk shot's
 -- sound besides the shot's, and the last obstacle absorbed (what the
 -- throw's setup took from the absorbed list into the attack: the
--- original's marker word) flies from the panel in front (`sub_80C6248`).
+-- original's marker word, the navi's state's: the rules' `navi_state`)
+-- flies from the panel in front (`sub_80C6248`).
 local THROW = common.throw(function(me: Object)
     battle.play_sound(THROW_SOUND)
+    local thrown = me.state :: NaviState
     local x, y = field.center(me.panel_x + me.facing, me.panel_y)
     flying_shot.launch(me, Vec3.new(x, y, THROW_Z), {
         variant = THROWN,
         damage = common.damage_word(me),
-        obstacle = me.thrown_look,
-        obstacle_anim = me.thrown_anim,
+        obstacle = thrown.thrown_look,
+        obstacle_anim = thrown.thrown_anim,
     })
 end)
 

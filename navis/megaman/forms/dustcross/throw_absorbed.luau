@@ -11,16 +11,26 @@ local throw_absorbed = {}
 local DAMAGE = 200
 
 -- `sub_8011F8C`'s throw (`sub_8011FCE`'s too): the newest obstacle
--- absorbed goes into the attack; false when the navi has none.
+-- absorbed (the navi's state's, the rules' `navi_state`) leaves the list
+-- and goes into the attack; false when the navi has none.
 function throw_absorbed.take(navi: Object): boolean
-    local look, anim = navi:pop_absorbed()
-    if look == nil then
+    local s = navi.state :: NaviState
+    local absorbed = s.absorbed
+    local n = #absorbed
+    if n == 0 then
         return false
     end
+    local newest = absorbed[n]
+    local look, anim = newest.look, newest.anim
+    local kept: { { look: AbsorbedLook, anim: number } } = {}
+    for i = 1, n - 1 do
+        kept[i] = { look = absorbed[i].look, anim = absorbed[i].anim }
+    end
+    s.absorbed = kept
     -- What it throws, which the game keeps in the action's marker word (the
     -- absorbed list's byte, kind | animation << 4, and the kind's sprite in
     -- the high half): the obstacle's look and animation.
-    navi.thrown_look, navi.thrown_anim = look, anim :: number
+    s.thrown_look, s.thrown_anim = look, anim
     navi.attack_damage = DAMAGE
     -- (The game sets the hit parameter to 0x94 and then clears it.)
     navi.hit_param = 0

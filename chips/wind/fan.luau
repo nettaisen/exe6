@@ -6,6 +6,7 @@ local absorbed_obstacle = require("../../objects/absorbed_obstacle")
 local collision = require("../../rules/collision")
 local common = require("@exelib/wind/fan")
 local effects = require("../../lib/effects")
+local exe6 = require("../../rules/api")
 local gust = require("../../objects/gust")
 
 local fan = {}
@@ -27,6 +28,7 @@ local made = common.make {
     is = collision.own_body,
     hits = collision.hit_by_other_side,
     spawn_gust = gust.spawn,
+    wind = exe6.wind,
     absorbs = true,
 }
 

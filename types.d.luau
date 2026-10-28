@@ -556,3 +556,15 @@ export type Exe6NaviFields = {
 -- sets') and Beast Over (its `forms.gregar`, `forms.falzar`), which EXE6's
 -- rules and exe6-compat read.
 export type FormSet = { form_list: { FormDef }, cybeast: FormDef?, beast_over: FormDef? }
+
+-- A navi's state (the rules' `navi_state`, rules/init: its object's own):
+-- DustCross's absorbed obstacles, oldest first (at most 8:
+-- navis/megaman/weapons/absorb, objects/absorbed_obstacle), and the look and
+-- animation of the one its last throw took
+-- (navis/megaman/forms/dustcross/throw_absorbed), which the buster's shot
+-- throws.
+export type NaviState = {
+    absorbed: { { look: AbsorbedLook, anim: number } },
+    thrown_look: AbsorbedLook?,
+    thrown_anim: number,
+}
