@@ -48,13 +48,10 @@ local function tick(me: Object)
     me.pos = owner.pos
     me:copy_visibility(owner)
     local sprite, look = me.sprite, owner.sprite
-    sprite.palette = look.palette
-    sprite.color_shader = look.color_shader
-    sprite.white = look.white
-    sprite.mosaic = look.mosaic
+    sprite:copy_from(look, "palette", "color_shader", "white", "mosaic")
     me.flip = owner.flip
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-    sprite.alpha = look.alpha
+    sprite:copy_from(look, "alpha")
     if s.follows_action and owner:navi_action() ~= s.action then
         me:set_lifecycle("destroy")
     end

@@ -79,20 +79,19 @@ local function tick(me: Object)
         me:copy_visibility(owner)
     end
     if not s.own_palette then
-        sprite.palette = look.palette
+        sprite:copy_from(look, "palette")
     end
     if not s.own_look then
-        sprite.color_shader = look.color_shader
+        sprite:copy_from(look, "color_shader")
     end
     -- The owner's final palette (`sprite_setFinalPalette`: its white
     -- flash) and mosaic (`sub_8002F3E`, `sprite_setMosaicSize`).
-    sprite.white = look.white
-    sprite.mosaic = look.mosaic
+    sprite:copy_from(look, "white", "mosaic")
     if not s.own_flip then
         me.flip = owner.flip
         sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     end
-    sprite.alpha = look.alpha
+    sprite:copy_from(look, "alpha")
     if s.row_offset then
         row_offset(me)
     end

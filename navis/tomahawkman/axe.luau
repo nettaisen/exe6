@@ -46,10 +46,7 @@ local function tick(me: Object)
     me.run_while_dimmed = owner.run_while_dimmed
     me.holds_reservation = owner.holds_reservation
     local look, worn = me.sprite, owner.sprite
-    look.color_shader = worn.color_shader
-    look.white = worn.white
-    look.mosaic = worn.mosaic
-    look.alpha = worn.alpha
+    look:copy_from(worn, "color_shader", "white", "mosaic", "alpha")
     if not battle.over() and owner:navi_action() == (me.state :: State).action then
         local a = me.action
         if a == axe.SWING then

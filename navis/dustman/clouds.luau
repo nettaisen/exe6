@@ -46,13 +46,10 @@ local function follow(me: Object)
     me.pos = owner.pos
     me:copy_visibility(owner)
     local look, worn = me.sprite, owner.sprite
-    look.palette = worn.palette
-    look.color_shader = worn.color_shader
-    look.white = worn.white
-    look.mosaic = worn.mosaic
+    look:copy_from(worn, "palette", "color_shader", "white", "mosaic")
     me.flip = owner.flip
     look:set_flip(bit32.bxor(me.alliance, me.flip))
-    look.alpha = worn.alpha
+    look:copy_from(worn, "alpha")
     if owner:navi_action() ~= (me.state :: State).action then
         me:set_lifecycle("destroy")
     end
