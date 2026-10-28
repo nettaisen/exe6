@@ -13,6 +13,7 @@ local effects = require("../../lib/effects")
 local erase_ray = require("../../navis/megaman/forms/erasecross/ray")
 local exe6 = require("../../rules/api")
 local navi_chips = require("../../lib/navi_chips/navi")
+local overlays = require("@exelib/overlays")
 local panel_bursts = require("../../objects/panel_bursts")
 local panels = require("@exelib/panels")
 local parts = require("../../lib/swords/parts")
@@ -430,7 +431,7 @@ local function blink_out(me: Object)
         return
     end
     done(me)
-    me:navi_image_parts(false)
+    overlays.remove_parts_of(me, me)
     me:set_lifecycle("destroy")
 end
 
@@ -739,7 +740,7 @@ local function leave(me: Object)
     end
     me.visible = false
     done(me)
-    me:navi_image_parts(false)
+    overlays.remove_parts_of(me, me)
     me:set_lifecycle("destroy")
 end
 
@@ -806,7 +807,7 @@ local function init(me: Object)
         local p = me.pos
         me.pos = Vec3.new(p.x, p.y, 0)
         me.sprite:set_flip(flip_of(me))
-        me:navi_image_parts(true)
+        overlays.add_parts_of(me, me, false, true)
     end
     me:set_lifecycle("update")
     if form and s.move == "charge" then

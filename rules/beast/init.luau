@@ -94,7 +94,7 @@ beast.takeover = cross_special.takeover
 local RANDOM = 0x200000
 
 -- `sub_801D814`: whether the emotion window shows the Beast Out count (else its empty box), which the round's setup
--- says (`battle.set_window_count`, a presentation): always in battle mode 5, never in mode 1, and otherwise while the
+-- says (the HUD's `window_count`, a presentation): always in battle mode 5, never in mode 1, and otherwise while the
 -- player's save has Beast Out (event flag 0xE0: the setup's `beast_out`) and no navi code sealed it (0x163: the
 -- setup's `level`), in a battle without a gauge for each player (battle flag 0x40) that isn't random.
 function beast.round_setup(side: number)
@@ -108,7 +108,7 @@ function beast.round_setup(side: number)
             and not battle.own_gauges()
             and not bit32.btest(battle.effects(), RANDOM)
         )
-    battle.set_window_count(side, shown)
+    battle.set_hud("window_count", shown, side)
 end
 
 function beast.form_reverted(side: number, navi: Object)

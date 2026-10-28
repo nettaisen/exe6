@@ -5,6 +5,8 @@
 -- when told to (`hole.close`) or its navi is deleted. It shows only while
 -- its navi does, with the worm's palette.
 
+local visibility = require("@exelib/visibility")
+
 local hole = {}
 
 export type State = {
@@ -101,7 +103,7 @@ local function tick(me: Object)
         error(string.format("sand hole action %#x reads past its table", a))
     end
     local navi = me.related1 :: Object
-    me:copy_visibility(navi)
+    visibility.copy(me, navi)
 end
 
 -- `sub_80BC8A8`.

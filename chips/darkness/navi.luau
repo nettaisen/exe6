@@ -11,6 +11,7 @@ local megaman = require("../../navis/megaman").megaman
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local element_pillar = require("../../objects/element_pillar")
+local overlays = require("@exelib/overlays")
 local sparks = require("../../lib/sparks")
 local navi_chips = require("../../lib/navi_chips/navi")
 local parts = require("../../lib/swords/parts")
@@ -536,7 +537,7 @@ local function init(me: Object)
     if s.bass then
         me:add_parts(BASS, 1)
     else
-        me:navi_image_parts(true)
+        overlays.add_parts_of(me, me, false, true)
     end
     me:set_lifecycle("update")
     act(me)
@@ -549,7 +550,7 @@ local function destroy(me: Object)
     if s.bass then
         me:remove_parts(BASS)
     else
-        me:navi_image_parts(false)
+        overlays.remove_parts_of(me, me)
     end
     if s.controller then
         navi_left(s.controller)

@@ -15,6 +15,7 @@ local collision = require("../../rules/collision")
 local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
+local visibility = require("@exelib/visibility")
 
 local car = {}
 
@@ -67,7 +68,7 @@ local function init(me: Object)
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-    me:update_visibility()
+    visibility.update(me)
     me.lifecycle = "update"
     me:set_action(if s.wait ~= 0 then 0 else 4)
 end
@@ -161,7 +162,7 @@ local function tick(me: Object)
         me.lifecycle = "destroy"
         return
     end
-    me:update_visibility()
+    visibility.update(me)
     local s = me.state :: State
     local action = s.owner_action
     if action ~= UNTIED and (me.related1 :: Object).action ~= action then

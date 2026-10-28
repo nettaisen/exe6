@@ -19,8 +19,9 @@
 local effects = require("../../lib/effects")
 local kind = require("./kind")
 local merge = require("./merge")
-local navi_status = require("@exelib/navi_status")
 local looks = require("@exelib/looks")
+local navi_status = require("@exelib/navi_status")
+local overlays = require("@exelib/overlays")
 
 local change = {}
 
@@ -112,14 +113,14 @@ local function prepare(me: Object, s: State, seq: Sequence, current: FormDef)
             me.related1 = nil
             me.overlay = nil
             me:set_navi_state("form_change_sprite_held", false)
-            me:overlay_stepping("keep")
+            overlays.keep_stepping(me)
         end
     elseif seq == "beast_cross" then
-        me:overlay_stepping("keep")
+        overlays.keep_stepping(me)
         s.timer = 6
     else
         me.anim = 0x11
-        me:overlay_stepping("keep")
+        overlays.keep_stepping(me)
         s.timer = 6
     end
     set_step(me, VANISH)
@@ -266,7 +267,7 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
             end
         end
         local stats = battle.navi(side)
-        me:take_off_form_overlay(stats.form)
+        overlays.take_off_form(me, stats.form)
         if seq == "beast_cross" then
             me.related1 = nil
             me.overlay = nil
@@ -285,17 +286,17 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
         -- `sub_8015B22`: the form's NameID (the navi's own, for a form
         -- without one).
         me.identity = target.identity or stats.navi.identity
-        me:put_on_form_overlay(target)
+        overlays.put_on_form(me, target)
         local o = overlay(me)
         if o then
             if seq == "beast_out" or seq == "beast_over" then
                 -- Its Param3 = 0.
-                me:overlay_stepping("normal")
+                overlays.set_stepping(me, "normal")
             elseif seq == "cross_beast" or seq == "beast_cross" then
                 -- Its animation 0 and Param3 0 (and in a Cross Beast,
                 -- flags 0x14).
                 o.anim = 0
-                me:overlay_stepping("normal")
+                overlays.set_stepping(me, "normal")
                 if seq == "cross_beast" then
                     o.run_while_paused = true
                     o.run_while_dimmed = true

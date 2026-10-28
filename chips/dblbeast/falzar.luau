@@ -9,6 +9,7 @@
 local beast = require("./beast")
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
+local overlays = require("@exelib/overlays")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local falzar_beast = require("../../navis/megaman/forms/falzar_beast")["falzar-beast"]
@@ -193,7 +194,7 @@ local function leave(me: Object)
     local t = me.timer - 1
     me.timer = t
     if t <= 0 then
-        me:remove_parts_of(me)
+        overlays.remove_parts_of(me, me)
         beast.leave(me, "falzar_out")
     end
 end
@@ -234,7 +235,7 @@ falzar.kind = new.kind {
             -- identity's parts, stepping even while paused); its update
             -- first runs next tick.
             beast.init(me, SPRITE, false, IDENTITY)
-            me:add_parts_of(me, false, true)
+            overlays.add_parts_of(me, me, false, true)
             me:set_lifecycle("update")
         elseif l == "update" then
             tick(me)

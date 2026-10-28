@@ -19,6 +19,7 @@ export type State = {
 local CLOUD_SPRITE = require("../../sprites/dust_cloud")
 local DUSTMAN_SPRITE = require("./dustman_sprite")
 local looks = require("@exelib/looks")
+local visibility = require("@exelib/visibility")
 local DUSTMAN_ANIM = 0x15
 
 -- `sub_80E86AC`, `sub_80E87B8`: on its owner.
@@ -45,7 +46,7 @@ local function follow(me: Object)
     end
     local owner = me.related1 :: Object
     me.pos = owner.pos
-    me:copy_visibility(owner)
+    visibility.copy(me, owner)
     local look, worn = me.sprite, owner.sprite
     looks.copy(look, worn, "palette", "color_shader", "white", "mosaic")
     me.flip = owner.flip

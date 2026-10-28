@@ -13,6 +13,7 @@ local attachment = require("../../objects/attachment")
 local buster = require("../../lib/buster")
 local collision = require("../../rules/collision")
 local navi_chips = require("../../lib/navi_chips/navi")
+local overlays = require("@exelib/overlays")
 local parts = require("../../lib/swords/parts")
 local projectile = require("../../lib/projectile")
 local variants = require("../../objects/projectile/variants")
@@ -307,7 +308,7 @@ local function lower(me: Object)
         me:set_action(SLASHES)
         return
     end
-    me:navi_image_parts(false)
+    overlays.remove_parts_of(me, me)
     gone(me)
     dimming.show_user(me.related1 :: Object)
 end
@@ -416,7 +417,7 @@ end
 -- `sub_80BE0FA`: 10 ticks, then his parts off and he goes.
 local function leave(me: Object)
     if wait(me, 0xA) then
-        me:navi_image_parts(false)
+        overlays.remove_parts_of(me, me)
         gone(me)
     end
 end
@@ -655,7 +656,7 @@ local function init_megaman(me: Object)
     me:set_panel_from_coordinates()
     me.visible = true
     me.sprite:set_flip(flip_of(me))
-    me:navi_image_parts(true)
+    overlays.add_parts_of(me, me, false, true)
     s.partner = nil
     local dx, dy, tx, ty = search(me)
     me.future_panel_x, me.future_panel_y = tx, ty
@@ -699,7 +700,7 @@ end
 local function destroy(me: Object)
     local s = me.state :: State
     if not s.django then
-        me:navi_image_parts(false)
+        overlays.remove_parts_of(me, me)
     end
     if s.controller then
         navi_left(s.controller)
