@@ -7,6 +7,7 @@
 -- viruses use it too. See docs/engine/shot-chips.md §14.1.
 
 local looks = require("@exelib/looks")
+local visibility = require("@exelib/visibility")
 
 local layer = {}
 
@@ -78,7 +79,7 @@ local function tick(me: Object)
     me.pos = Vec3.new(p.x, p.y + dz, int.i32(p.z + s.z_offset + dz))
     local sprite, look = me.sprite, owner.sprite
     if not s.own_look then
-        me:copy_visibility(owner)
+        visibility.copy(me, owner)
     end
     if not s.own_palette then
         looks.copy(sprite, look, "palette")

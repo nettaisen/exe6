@@ -17,6 +17,7 @@ export type State = {
 }
 
 local looks = require("@exelib/looks")
+local visibility = require("@exelib/visibility")
 local SPRITE = require("./ground_drill_sprite")
 
 -- `sub_80E77B8`: on its owner, as visible as he is.
@@ -32,7 +33,7 @@ local function init(me: Object)
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-    me:copy_visibility(owner)
+    visibility.copy(me, owner)
     me:set_lifecycle("update")
 end
 
@@ -47,7 +48,7 @@ local function tick(me: Object)
     local owner = me.related1 :: Object
     local s = me.state :: State
     me.pos = owner.pos
-    me:copy_visibility(owner)
+    visibility.copy(me, owner)
     local sprite, look = me.sprite, owner.sprite
     looks.copy(sprite, look, "palette", "color_shader", "white", "mosaic")
     me.flip = owner.flip

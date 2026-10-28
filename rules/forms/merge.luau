@@ -75,7 +75,7 @@ local function init(me: Object, s: State)
     -- hook's result, ExtraVars[0] = 1; the original tests his navi number:
     -- the one navi that wears an idle overlay).
     if identity and identity.parts and identity.parts.idle and me.related2 then
-        (me.related2 :: Object):pin_overlay()
+        (me.related2 :: Object).pinned = true
     end
     me:set_lifecycle("update")
 end

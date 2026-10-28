@@ -12,6 +12,7 @@ export type State = {
 }
 
 local looks = require("@exelib/looks")
+local visibility = require("@exelib/visibility")
 local SPRITE = require("./propeller_sprite")
 -- Where it sits on the owner: on the owner's sprite part 1, and 32 pixels
 -- nearer (Y) and 31 higher (Z) than the owner.
@@ -35,7 +36,7 @@ local function follow(me: Object)
     local p = owner.pos
     local px, py = owner.sprite:part_offset(PART)
     me.pos = Vec3.new(int.i32(p.x + px * 0x1_0000 * dir), int.i32(p.y + DY + py * 0x1_0000), int.i32(p.z + DZ))
-    me:copy_visibility(owner)
+    visibility.copy(me, owner)
     local look, worn = me.sprite, owner.sprite
     looks.copy(look, worn, "color_shader", "white", "mosaic")
     if not (me.state :: State).keeps_flip then

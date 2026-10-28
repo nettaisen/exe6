@@ -15,6 +15,7 @@ export type State = {
 }
 
 local looks = require("@exelib/looks")
+local visibility = require("@exelib/visibility")
 local SPRITE = require("./eagle_tomahawk_sprite")
 local ANIM_RAISED, ANIM_SWUNG = 6, 7
 
@@ -41,7 +42,7 @@ end
 local function tick(me: Object)
     local owner = me.related1 :: Object
     me.pos = owner.pos
-    me:copy_visibility(owner)
+    visibility.copy(me, owner)
     me.run_while_paused = owner.run_while_paused
     me.no_sprite_update = owner.no_sprite_update
     me.run_while_dimmed = owner.run_while_dimmed

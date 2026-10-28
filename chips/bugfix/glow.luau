@@ -9,6 +9,7 @@
 -- field and higher than the navi, its parts stepping on.
 
 local common = require("@exelib/bugfix/glow")
+local overlays = require("@exelib/overlays")
 
 local glow = {}
 
@@ -17,7 +18,7 @@ local made = common.make {
     offset = 1,
     -- The navi's parts, stepping on.
     wear = function(me: Object, navi: Object)
-        me:add_parts_of(navi, true)
+        overlays.add_parts_of(me, navi, true)
     end,
 }
 glow.kind = made.kind

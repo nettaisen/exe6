@@ -7,6 +7,7 @@
 -- slashes hit nothing); MegaMan gives the user back once ProtoMan is gone.
 -- MegaMan shares the user's actor data, so his buster arm is the user's.
 
+local overlays = require("@exelib/overlays")
 local stand_in = require("@exelib/dimming/stand_in")
 local attachment = require("../../objects/attachment")
 local buster = require("../../lib/buster")
@@ -480,7 +481,7 @@ local function init(me: Object)
         sprite.palette = user.sprite.palette
     end
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-    me:add_parts_of(me, false, true)
+    overlays.add_parts_of(me, me, false, true)
     dimming.hide_user(user)
     if not s.protoman then
         local proto = spawn(user, me.panel_x, me.panel_y, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), true)

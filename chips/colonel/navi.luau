@@ -44,7 +44,7 @@ local SOUND_SPIN = asset.sound("spin")
 -- His cape (`dword_80B85C4`): his own sprite, stepping while dimmed, his
 -- animation plus 0x0D, his palette.
 local CAPE: FormOverlaySpec =
-    { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x0D, nudged = false, owner_palette = true }
+    { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x0D, pinned = false, owner_palette = true }
 
 -- His sword (`dword_80B85C8`: the original's attachment 0x1F, animation
 -- 0x1C, animating while dimmed).

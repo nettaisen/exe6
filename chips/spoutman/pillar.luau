@@ -11,6 +11,8 @@
 -- 4), which its init keeps (compat's `scratch_z_fraction`). See
 -- docs/engine/chips.md §3.6.11.
 
+local visibility = require("@exelib/visibility")
+
 local pillar = {}
 
 export type State = {
@@ -121,7 +123,7 @@ local function tick(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    me:copy_visibility(owner)
+    visibility.copy(me, owner)
     if not own and battle.dimmed() then
         return
     end

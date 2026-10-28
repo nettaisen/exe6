@@ -45,10 +45,12 @@ local PIECES: { Piece } = {
 -- false: `sub_801DACC`) or show (`sub_801DA48`): HUD draw tasks 4 and 14,
 -- or with each side's own gauge (the chip gate battle) 17 and 14.
 local function hud(shown: boolean)
-    local parts: { HudPart } = if chip_gate_battle()
+    local parts: { HudField } = if chip_gate_battle()
         then { "level_gauge", "emotion_window" }
         else { "gauge", "emotion_window" }
-    battle.show_hud(parts, shown)
+    for _, part in parts do
+        battle.set_hud(part, shown)
+    end
 end
 
 -- 0x080EE21C: every field object's HP to 0 (the registry's eight slots,
