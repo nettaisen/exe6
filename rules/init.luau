@@ -65,6 +65,17 @@ local rules: Rules = {
         bug_frags = "u32",
         -- AIData+0x1C: the NaviCust's hit bug took this hit sequence (./navicust/bugs).
         hit_bug_latched = "bool",
+        -- The side's wind (the battle state's +0xC0 + 4 × side, who placed it at +0xC8: @exelib/wind/registry, ./api).
+        wind = { object = "object", source = { "obstacle", "navi" } } :: StateSchema,
+    },
+    -- The state of each navi, its object's own (the pack's `NaviState`): DustCross's absorbed obstacles, oldest first
+    -- (AIData+0x6C, their count at +0x0D: navis/megaman/weapons/absorb, objects/absorbed_obstacle), and the one its
+    -- last throw took (the attack's marker word: navis/megaman/forms/dustcross/throw_absorbed), which the buster's shot
+    -- throws and the next throw replaces.
+    navi_state = {
+        absorbed = schema.list({ look = "record:absorbed-look", anim = "u8" }, 8),
+        thrown_look = "record:absorbed-look",
+        thrown_anim = "u8",
     },
     -- A navi's stats of EXE6's own, beside the engine's (NaviStats' bytes, which exe6-compat maps by these names): the
     -- Beast Out turns left (+0x21, 3 fresh: ./beast spends them, ./emotion reads them; the emotion window's box

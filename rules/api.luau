@@ -42,6 +42,12 @@ function exe6.navi_level(side: number): number?
     return if s then s.level else nil
 end
 
+-- The side's wind slot (@exelib/wind/registry: the rules' state, ./init), which Wind and Fan's fan fills
+-- (chips/wind/fan) and the encasing's end empties (./roles).
+function exe6.wind(side: number): WindSlot
+    return (rules.state_of(side) :: { wind: WindSlot }).wind
+end
+
 -- The side's form's kind (the rules' extension: rules/forms/kind):
 -- a Beast form's; Beast Over; a kind that is a Beast form's.
 exe6.beast = kind.beast

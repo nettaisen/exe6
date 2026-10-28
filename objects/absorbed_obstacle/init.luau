@@ -83,7 +83,8 @@ local function init(me: Object)
 end
 
 -- `sub_80E991C`: fly; once there (with its navi still absorbing), join the
--- navi's list, or keep flying if it is full.
+-- navi's list (its state's, the rules' `navi_state`), or keep flying if it
+-- is full.
 local function fly(me: Object)
     me.pos = me.pos + me.vel
     me:set_panel_from_coordinates()
@@ -93,8 +94,9 @@ local function fly(me: Object)
     if navi:navi_action() == absorb.action then
         local left = me.timer - 1
         me.timer = left
-        if left <= 0 and #navi:absorbed() < MAX_ABSORBED then
-            navi:push_absorbed((me.state :: State).look, me.anim)
+        local absorbed = if left <= 0 then (navi.state :: NaviState).absorbed else nil
+        if absorbed and #absorbed < MAX_ABSORBED then
+            absorbed[#absorbed + 1] = { look = (me.state :: State).look, anim = me.anim }
             me:set_lifecycle("destroy")
         end
     end
