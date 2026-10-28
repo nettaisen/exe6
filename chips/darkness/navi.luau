@@ -42,6 +42,8 @@ export type State = {
 -- in his base form (NameID 0x1A0: no parts), whose attach points his aura
 -- takes.
 local BASS_SPRITE = require("../bassanly/bass_anly_sprite")
+local navi_left = require("@exelib/navi_chips/left")
+local looks = require("@exelib/looks")
 local BASS = new.identity {
     id = "bass",
     class = "navi",
@@ -522,7 +524,7 @@ local function init(me: Object)
         me.anim = 0
         me.anim_loaded = 0xFF
     else
-        me:wear_form_image(megaman, base_form)
+        looks.wear_form_image(me, megaman, base_form)
     end
     local p = (me.related1 :: Object).pos
     me.pos = p
@@ -550,7 +552,7 @@ local function destroy(me: Object)
         me:navi_image_parts(false)
     end
     if s.controller then
-        navi_chip.navi_left(s.controller)
+        navi_left(s.controller)
     end
     local leader = s.leader
     if leader then

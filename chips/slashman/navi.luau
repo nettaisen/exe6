@@ -37,6 +37,7 @@ export type State = {
 
 local SPRITE = require("../../navis/slashman/slashman_sprite")
 local slash_man_effect_sprite = require("../../sprites/slash_man_effect")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FLAME_HOOK_FIRE = asset.sound("flame-hook-fire")
 -- His slash, drawn over the panel ahead (effect 0x39).
@@ -287,7 +288,7 @@ local function leave(me: Object)
     end
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:set_lifecycle("destroy")
 end

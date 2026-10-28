@@ -20,6 +20,7 @@ local colonel_sprite = require("../colonel/colonel_sprite")
 local colonel_sword_sprite = require("../colonel/colonel_sword_sprite")
 local protoman_sprite = require("../../navis/protoman/protoman_sprite")
 local sword_slash_sprite = require("../../sprites/sword_slash")
+local navi_left = require("@exelib/navi_chips/left")
 
 -- The slash over a column.
 local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
@@ -673,7 +674,7 @@ local function destroy(me: Object)
         me:remove_parts(look.identity)
     end
     if s.controller then
-        navi_chip.navi_left(s.controller)
+        navi_left(s.controller)
     end
     me:free()
 end

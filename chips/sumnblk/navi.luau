@@ -36,6 +36,7 @@ local CLAW_FLIP, CLAW_PALETTE = 2, 6
 -- Gregar the Cybeast's sheet: an actor whose look is it stands two panels
 -- wide.
 local GREGAR_LOOK = require("../../sprites/gregar_cybeast")
+local looks = require("@exelib/looks")
 -- Bodies (of either side) on a panel.
 local BODIES = 0x0F80_0000
 
@@ -51,7 +52,7 @@ end
 
 -- The panel in front of `actor` (two ahead for Gregar the Cybeast).
 local function in_front(actor: Object): (number, number)
-    local step = if actor:name_look_is(GREGAR_LOOK) then 2 else 1
+    local step = if looks.name_sprite(actor) == GREGAR_LOOK then 2 else 1
     return actor.panel_x + actor.facing * step, actor.panel_y
 end
 

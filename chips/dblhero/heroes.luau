@@ -40,6 +40,7 @@ export type State = {
 -- ProtoMan's look and identity (which his parts and attach points come
 -- by).
 local PROTOMAN_SPRITE = require("../../navis/protoman/protoman_sprite")
+local looks = require("@exelib/looks")
 local PROTOMAN = protoman.identity
 -- Where each stands from the user's spot (`dword_80BCE44`, pixels; x
 -- toward its front).
@@ -466,7 +467,7 @@ local function init(me: Object)
     if s.protoman then
         sprite:load(PROTOMAN_SPRITE)
     else
-        sprite:load_like(user)
+        looks.load_like(sprite, user)
     end
     sprite.shadow = "ground"
     me.anim, me.anim_loaded = 0, 0xFF

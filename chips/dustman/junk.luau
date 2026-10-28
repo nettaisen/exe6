@@ -8,11 +8,12 @@
 
 local collision = require("../../rules/collision")
 local sparks = require("../../lib/sparks")
+local looks = require("@exelib/looks")
 
 local junk = {}
 
 export type State = {
-    -- Its look (`obstacle.absorbed_look` of the object it was, ExtraVars[0]).
+    -- Its look (`looks.absorbed` of the object it was, ExtraVars[0]).
     look: Identity?,
 }
 
@@ -29,7 +30,7 @@ local function init(me: Object)
     if not look then
         error("junk with no look (sub_80DBB64 would take a virus's sprite)")
     end
-    if not me:wear_absorbed_look(look) then
+    if not looks.wear_absorbed(me, look) then
         me:free()
         return
     end

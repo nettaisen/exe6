@@ -24,6 +24,7 @@ export type State = {
 local tenguman = {}
 
 local SPRITE = require("../../navis/tenguman/tenguman_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_TENGU_MAN = asset.sound("tengu-man")
 
@@ -254,7 +255,7 @@ end
 local function finish(me: Object)
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:free()
 end

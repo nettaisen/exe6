@@ -5,6 +5,8 @@
 -- rules share (the mood, held tired or exhausted, anger and its timer, and
 -- the order `sub_8015B54` reads them in); a game's rules decide when.
 
+local navi_status = require("@exelib/navi_status")
+
 local emotion = {}
 
 type State = {
@@ -59,7 +61,7 @@ local function navi_tick(side: number, navi: Object)
         return
     end
     if not stats.form.base then
-        navi:end_anger()
+        navi_status.end_anger(navi, "reset")
         navi.tired = false
         return
     end
@@ -69,7 +71,7 @@ local function navi_tick(side: number, navi: Object)
         return
     end
     s.swing_ticks = 0
-    navi:end_anger()
+    navi_status.end_anger(navi, "reset")
     -- sub_8014446
     navi.tired = false
     local current = s.swung

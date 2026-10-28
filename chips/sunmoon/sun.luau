@@ -23,6 +23,7 @@ export type State = {
 local sunmoon = {}
 
 local SPRITE = require("./moon_beam_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_BLAST_MAN = asset.sound("blast-man")
 local SOUND_BURST = asset.sound("burst")
@@ -290,7 +291,7 @@ end
 local function leave(me: Object)
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:free()
 end

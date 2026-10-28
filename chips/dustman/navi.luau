@@ -23,6 +23,7 @@ export type State = {
 }
 
 local SPRITE = require("../../navis/dustman/dustman_sprite")
+local looks = require("@exelib/looks")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_TAKE = asset.sound("dustbrk")
 local SOUND_THROW = asset.sound("junk-shot")
@@ -66,7 +67,7 @@ local function take(me: Object): number
     local s = me.state :: State
     local n = 0
     for _, o in field.all_objects(me.alliance) do
-        local look = obstacle.absorbed_look(o)
+        local look = looks.absorbed(o)
         if look then
             n += 1
             s.taken[n] = look

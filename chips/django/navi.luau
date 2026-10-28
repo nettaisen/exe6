@@ -51,6 +51,7 @@ export type State = {
 }
 
 local SPRITE = require("./django_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR, SOUND_BIKE = asset.sound("appear"), asset.sound("django-bike")
 local SOUND_COMMAND, SOUND_SWING = asset.sound("ok-8b"), asset.sound("sword-swing")
 
@@ -165,7 +166,7 @@ end
 local function gone(me: Object)
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:free()
 end

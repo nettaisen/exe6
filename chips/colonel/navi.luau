@@ -38,6 +38,7 @@ local colonel = {}
 local SPRITE = require("./colonel_sprite")
 local colonel_effect_sprite = require("../../sprites/colonel_effect")
 local colonel_sword_sprite = require("./colonel_sword_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SPIN = asset.sound("spin")
 
@@ -296,7 +297,7 @@ end
 local function finish(me: Object)
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:free()
 end

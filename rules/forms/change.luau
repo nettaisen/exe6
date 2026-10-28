@@ -19,6 +19,8 @@
 local effects = require("../../lib/effects")
 local kind = require("./kind")
 local merge = require("./merge")
+local navi_status = require("@exelib/navi_status")
+local looks = require("@exelib/looks")
 
 local change = {}
 
@@ -92,9 +94,9 @@ local function prepare(me: Object, s: State, seq: Sequence, current: FormDef)
         me:set_navi_state("form_change_sprite_held", true)
     end
     me:snap_to_future_panel()
-    me:clear_invulnerable()
+    navi_status.clear_invulnerable(me)
     me:face_default()
-    me:reset_charge()
+    navi_status.reset_charge(me)
     me:end_full_synchro_aura()
     if not crossing then
         me.related1 = nil
@@ -269,7 +271,7 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
             me.related1 = nil
             me.overlay = nil
         end
-        me:load_form_sprite(target)
+        looks.load_form_sprite(me, target)
         me:set_coordinates_from_panel()
         s.timer = 10
         if seq == "beast_over" then
@@ -311,7 +313,7 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
     end
     local full_synchro = battle.emotion(side) == "full_synchro"
     me:reset_status()
-    me:end_anger()
+    navi_status.end_anger(me, "reset")
     if seq == "beast_out" then
         if full_synchro then
             battle.set_mood(side, 0xFF)
@@ -320,7 +322,7 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
         battle.set_mood(side, 0x80)
     end
     if seq ~= "beast_over" then
-        me:clear_invulnerable()
+        navi_status.clear_invulnerable(me)
     end
     local o = overlay(me)
     if (seq == "beast_out" or seq == "beast_over" or seq == "beast_cross") and o then

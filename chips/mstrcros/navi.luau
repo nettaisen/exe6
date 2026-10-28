@@ -67,6 +67,8 @@ local swirl_sprite = require("../../sprites/swirl")
 local sword_slash_sprite = require("../../sprites/sword_slash")
 local sword_sprite = require("../../sprites/sword")
 local wind_rack_sprite = require("../windrack/wind_rack_sprite")
+local navi_left = require("@exelib/navi_chips/left")
+local looks = require("@exelib/looks")
 
 -- Sword's slash over the panel ahead.
 local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0 }
@@ -341,7 +343,7 @@ local function wait_finale(me: Object)
     end
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:set_lifecycle("destroy")
 end
@@ -799,7 +801,7 @@ local function init(me: Object)
     local s = me.state :: State
     local form = s.form
     if form then
-        me:wear_form_image(megaman, form)
+        looks.wear_form_image(me, megaman, form)
         me:set_coordinates_from_panel()
         local p = me.pos
         me.pos = Vec3.new(p.x, p.y, 0)

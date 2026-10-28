@@ -46,6 +46,8 @@ export type State = {
 }
 
 local DJANGO_SPRITE = require("../django/django_sprite")
+local navi_left = require("@exelib/navi_chips/left")
+local looks = require("@exelib/looks")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SHOT = asset.sound("buster-shot")
 local SOUND_GUN = asset.sound("gundels1")
@@ -612,13 +614,41 @@ local function spawn(user: Object, spec: NaviChipSpec, r3: number?, django: bool
     return o
 end
 
+-- `sub_80BDBC8`'s image: the user's identity when the user is MegaMan or one
+-- of his forms (the original's NameID 0x1A0, or past the link navis': true),
+-- else MegaMan's own; its sprite (a ground shadow, animation 0 loaded by the
+-- next sprite update) and the side's form's palette.
+local function wear_navi_image(me: Object, user: Object): boolean
+    local identity = user.identity
+    local own = identity ~= nil and identity.changes_form == true
+    local sprite
+    if not own then
+        sprite = looks.navi_sprite(megaman, battle.navi(me.alliance).base_form)
+        identity = megaman.identity
+    elseif looks.actor_type(identity) == "player" then
+        local stats = battle.navi(user.alliance)
+        sprite = looks.navi_sprite(stats.navi, stats.form)
+    else
+        error("the user's identity is no player's: its sprite would be sub_800F26C's (enemy_getStruct1)")
+    end
+    -- (byte_80203EA covers the base form and the Crosses; the bytes after it,
+    -- the Beast forms', are 0: the form's `palette`.)
+    local palette = battle.navi(me.alliance).form.palette or 0
+    me.sprite:load(sprite)
+    me.identity = identity
+    me.anim, me.anim_loaded = 0, 0xFF
+    me.sprite.shadow = "ground"
+    me.sprite.palette = palette
+    return own
+end
+
 -- `sub_80BDBC8` for MegaMan: his user's image or MegaMan's (the user out of
 -- sight, his confusion and blindness still shown), on his user, his parts;
 -- the target, and Django beyond it facing back.
 local function init_megaman(me: Object)
     local s = me.state :: State
     local user = me.related1 :: Object
-    s.user_image = me:wear_navi_image(user, megaman)
+    s.user_image = wear_navi_image(me, user)
     dimming.hide_user_sparing(user)
     me:set_coordinates_from_panel()
     me.pos = user.pos
@@ -672,7 +702,7 @@ local function destroy(me: Object)
         me:navi_image_parts(false)
     end
     if s.controller then
-        navi_chip.navi_left(s.controller)
+        navi_left(s.controller)
     end
     me:free()
 end
