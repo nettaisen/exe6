@@ -1,7 +1,8 @@
 --!strict
 -- EXE6's extraction recipe (docs/design/extraction-recipes.md): how its pack's assets are extracted from a complete
 -- Legacy Collection's four ROMs (its `roms`). It reads the ROMs through the primitives (content/nettai/extract.d.luau)
--- and returns the asset model; the extractor makes the pack.
+-- and returns the asset model, which the host finishes. The game's root gives it as its `extract` (init.luau), so it
+-- loads with the content.
 --
 -- What the four ROMs have alike is read from the Falzar US ROM (BR6E), a version's own from its US ROM
 -- (versions.luau), the Japanese words from the Japanese ROMs (lettering.luau), and what the US release cut from the
