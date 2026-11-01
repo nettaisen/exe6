@@ -53,7 +53,6 @@ local rules: Rules = {
         offered = schema.role("form_list.offered", "u8[5]"),
         offered_count = schema.role("form_list.count", "u8"),
         marked = schema.role("form_list.marked", "bool[5]"),
-        window_cursor = schema.role("form_list.cursor", "u8"),
         cross_chosen = schema.role("form_list.chosen", "bool"),
         chosen = schema.role("form_list.chosen_place", "u8"),
         -- (What a form change notes of the round, `byte_203EAE0`, nettai keeps none of: ./forms.)
@@ -241,11 +240,9 @@ local rules: Rules = {
         beast_out = beast.custom.button,
         redeal = navicust.redeal,
     },
-    -- Its windows: the Cross window's four (./cross/window.luau) and Beast Out's two.
+    -- Its windows: a Cross chosen (./cross/window.luau; the Cross window itself is each player's layer's, by the
+    -- custom screen's `form_list`) and Beast Out's two.
     windows = {
-        cross_opening = cross.window.opening,
-        cross_window = cross.window.window,
-        cross_closing = cross.window.closing,
         cross_chosen = cross.window.chosen,
         beast_out = beast.custom.window,
         beast_out_chip = beast.custom.chip_window,
@@ -261,7 +258,7 @@ local rules: Rules = {
             cross.window.confirmed(side)
             beast.custom.confirmed(side)
         end,
-        keys = cross.window.keys,
+        choose_form = cross.window.choose,
         take_back = cross.window.take_back,
         chip_picked = beast.custom.chip_picked,
         chip_taken_back = beast.custom.chip_taken_back,

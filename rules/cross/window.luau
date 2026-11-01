@@ -1,15 +1,17 @@
 --!strict
 -- EXE6's Cross window on the custom screen (docs/design/rules-in-luau.md
 -- §4.4, S6): the Crosses offered (`sub_8029EF8`) and the window's Cross tab
--- (`sub_8026840`) as the screen opens; UP opening the window (`sub_8028B74`);
--- its opening (`sub_8027834`), the window and its keys (`sub_802794A`,
--- `sub_8028A78`), its closing (`sub_802790C`) and a Cross chosen
--- (`sub_8027A58`, `sub_8027AAE`, `sub_8027ADE`) as the rules' windows; B
--- taking the Cross back (`sub_8029032`); the form it puts the navi in at
--- the turn's start (`sub_802937A`); and the round's record of the Crosses
--- used (`dword_20349A0`). Its state is the rules', which the
--- frontend draws the window from: its four windows are a form list's (their
--- `view`), which shows these fields by their names.
+-- (`sub_8026840`) as the screen opens; a Cross chosen in the window
+-- (`sub_8028A78`'s A: the rules' `custom.choose_form`) and its window
+-- (`sub_8027A58`, `sub_8027AAE`, `sub_8027ADE`); B taking the Cross back
+-- (`sub_8029032`); the form it puts the navi in at the turn's start
+-- (`sub_802937A`); and the round's record of the Crosses used
+-- (`dword_20349A0`). The window itself, UP opening it (`sub_8028B74`), its
+-- opening (`sub_8027834`), its cursor and keys (`sub_802794A`), its closing
+-- (`sub_802790C`) and a Cross's description, is each player's own layer's,
+-- which shows the rules' form list (these fields, by their roles) as the
+-- custom screen's `form_list` (rules/custom_screen.luau) says. Its state is
+-- the rules', which the frontend draws the window from.
 
 local exe6 = require("../api")
 local kind = require("../forms/kind")
@@ -42,12 +44,12 @@ export type State = {
     -- them.
     crosses_used: { boolean },
     -- The screen's window (`+0x50`): the places of the Crosses offered,
-    -- how many, which entry is chosen (one at most), the entry under the
-    -- window's cursor, and the place of the Cross chosen.
+    -- how many, which entry is chosen (one at most), and the place of the
+    -- Cross chosen. (The entry under the window's cursor is the player's
+    -- layer's.)
     offered: { number },
     offered_count: number,
     marked: { boolean },
-    window_cursor: number,
     cross_chosen: boolean,
     chosen: number,
 }
@@ -55,17 +57,12 @@ export type State = {
 -- The Crosses a window offers at most: `sub_8029EC8` counts the five Cross flags of the save's version's table
 -- (`byte_8029F4C`, `cmp r4, #5`), and the setup's list holds as many (rules/init.luau's `form[5]`).
 local CROSSES = 5
--- The screen's OK slot.
-local OK_SLOT = 10
 -- The white fade of a Cross's choice (`sub_8027A58`), and the tick it is
 -- white and the Cross is put on (`sub_8027AAE`: 16 ticks, then 8 steps of
 -- the fade, then one more).
 local FADE_SPEED = 0x20
 local PUT_ON_TICK = 25
--- The window's sounds: it opens (`sub_8027834`, the original's 0x7A) and closes (`sub_802790C`, 0x7D), and a Cross
--- is put on (`sub_8027AAE`, 0x92).
-local OPEN_SOUND = asset.sound("select-7a")
-local CLOSE_SOUND = asset.sound("cross-window-close")
+-- A Cross is put on (`sub_8027AAE`, 0x92).
 local CHOSEN_SOUND = asset.sound("delta-ray-2")
 
 -- The side's navi changes form (MegaMan).
@@ -160,7 +157,6 @@ function window.open(side: number)
         s.marked[i] = false
     end
     s.offered_count = 0
-    s.window_cursor = 0
     s.cross_chosen = false
     s.chosen = 0
     local allowed = crosses_allowed(side) and custom.player(side).emotion ~= "worn_out"
@@ -191,20 +187,30 @@ function window.confirmed(side: number)
     end
 end
 
--- Choosing chips: UP opens the window when MegaMan has a Cross on offer,
--- no other pick holds the turn's form (Beast Out's), and the cursor is on
--- the top row or OK.
-function window.keys(side: number): boolean
+-- `sub_8028A78`'s A in the window (the player's layer shows it, as the custom
+-- screen's `form_list` says: UP opens it from the top row or OK while
+-- MegaMan has a Cross on offer and no other pick holds the turn's form,
+-- Beast Out's): entry `entry` chosen, until a Cross is (a chosen one
+-- refused). The Cross is marked and chosen, the form it puts the navi in
+-- held, and its window plays; Beast Out grays out.
+function window.choose(side: number, entry: number)
     local s = rules.state() :: State
-    if not custom.repeated(side, "up") or not megaman(side) or custom.form_taken(side, "cross_window") or s.offered_count == 0 then
-        return false
+    if s.cross_chosen or entry >= s.offered_count or not megaman(side) or custom.form_taken(side, "cross_chosen") then
+        return
     end
-    local cursor = custom.cursor(side)
-    if cursor ~= OK_SLOT and cursor > 4 then
-        return false
+    local i = entry + 1
+    if s.marked[i] then
+        custom.play(side, "refused")
+        return
     end
-    custom.open_window(side, "cross_opening")
-    return true
+    custom.play(side, "pick")
+    s.marked[i] = true
+    s.cross_chosen = true
+    s.chosen = s.offered[i]
+    custom.set_form(side, "cross_chosen", result_form(side, s.chosen))
+    custom.open_window(side, "cross_chosen")
+    -- A chosen Cross grays out Beast Out (its button's state).
+    custom.refresh_buttons(side)
 end
 
 -- B with nothing picked takes the Cross chosen back.
@@ -213,131 +219,16 @@ function window.take_back(side: number): boolean
     if not s.cross_chosen then
         return false
     end
-    s.marked[s.window_cursor + 1] = false
+    for i = 1, CROSSES do
+        s.marked[i] = false
+    end
     s.cross_chosen = false
     s.chosen = 0
-    custom.set_form(side, "cross_window", nil)
+    custom.set_form(side, "cross_chosen", nil)
     custom.set_face(side, nil)
     custom.play(side, "cancel")
     return true
 end
-
--- `sub_802794A`'s drawing: the window's sprites and the Cross window's
--- cursor (the frontend draws the Crosses' names from the state); the frame
--- counts on.
-local function draw(side: number)
-    custom.draw_window(side)
-    custom.draw_form_list_cursor(side)
-    custom.set_frame(side, custom.frame(side) + 1)
-end
-
--- `sub_8027834`: the window's map changes every 3 ticks (the frontend's);
--- on the 12th the Cross window is up, and its first tick runs at once.
-window.opening = {
-    view = "form_list_opening",
-    update = function(side: number): boolean
-        local tick = custom.window_tick(side)
-        if tick == 1 then
-            custom.play_sound(side, OPEN_SOUND)
-        end
-        if tick >= 12 then
-            custom.open_window(side, "cross_window", 1)
-            custom.set_frame(side, 0)
-            draw(side)
-        else
-            custom.set_frame(side, tick)
-            custom.draw_window(side)
-        end
-        return true
-    end,
-} :: WindowSpec
-
--- `sub_8028A78`: the window's keys. Until a Cross is chosen, UP and DOWN
--- move the cursor (wrapping) and A chooses the Cross under it (a chosen one
--- refused); then B closes the window, START closes it with the screen's
--- cursor on OK, and R describes the Cross under the cursor (its own, of
--- whichever game it is).
-local function keys(side: number)
-    local s = rules.state() :: State
-    if not s.cross_chosen then
-        local n = s.offered_count
-        local up, down = custom.repeated(side, "up"), custom.repeated(side, "down")
-        if up or down then
-            if up then
-                s.window_cursor = if s.window_cursor == 0 then n - 1 else s.window_cursor - 1
-            elseif s.window_cursor + 1 >= n then
-                s.window_cursor = 0
-            else
-                s.window_cursor += 1
-            end
-            if n > 1 then
-                custom.play(side, "cursor")
-            end
-            return
-        end
-        if custom.pressed(side, "a") then
-            local i = s.window_cursor + 1
-            if s.marked[i] then
-                custom.play(side, "refused")
-                return
-            end
-            custom.play(side, "pick")
-            s.marked[i] = true
-            s.cross_chosen = true
-            s.chosen = s.offered[i]
-            custom.set_form(side, "cross_window", result_form(side, s.chosen))
-            custom.open_window(side, "cross_chosen")
-            -- A chosen Cross grays out Beast Out (its button's state).
-            custom.refresh_buttons(side)
-            return
-        end
-    end
-    if custom.pressed(side, "b") then
-        custom.open_window(side, "cross_closing")
-    elseif custom.pressed(side, "start") then
-        custom.set_cursor(side, OK_SLOT)
-        custom.open_window(side, "cross_closing")
-        custom.play(side, "cursor")
-    elseif custom.pressed(side, "r") then
-        custom.describe(side, cross_at(side, s.offered[s.window_cursor + 1]))
-        custom.play(side, "description")
-    end
-end
-
--- `sub_802794A`: its first tick reads no keys; every tick draws, after the
--- keys.
-window.window = {
-    view = "form_list",
-    update = function(side: number): boolean
-        if custom.window_tick(side) == 1 then
-            custom.set_frame(side, 0)
-        else
-            keys(side)
-        end
-        draw(side)
-        return true
-    end,
-} :: WindowSpec
-
--- `sub_802790C`: after 5 ticks the window is the chips' again
--- (`sub_80279FC`, `sub_80279C8`, `sub_8028476`).
-window.closing = {
-    view = "form_list_closing",
-    update = function(side: number): boolean
-        local tick = custom.window_tick(side)
-        if tick == 1 then
-            custom.play_sound(side, CLOSE_SOUND)
-        end
-        custom.set_frame(side, tick)
-        if tick >= 6 then
-            custom.draw_window(side)
-            custom.show_chip_window(side)
-        end
-        custom.draw_emblem(side, 0)
-        custom.draw_regular(side)
-        return tick < 6
-    end,
-} :: WindowSpec
 
 -- `sub_8027A58`: 16 ticks, then the screen fades to white and back; when it
 -- is white the Cross is put on (`sub_8027AAE`: the face, the window, the

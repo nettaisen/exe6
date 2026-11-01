@@ -98,4 +98,14 @@ return {
     -- The chip window draws the damage of a chip whose flags have `damage_shown_variable` as it draws any other
     -- (`sub_80284E2`: either flag shows the number; Muramasa's "???" is its chip's trait).
     variable_damage_shows = "damage",
+    -- The Cross window (the rules' form list, ./cross/window.luau), as each player's layer shows it: UP opens it from
+    -- the top row and OK (`sub_8028B74`); it opens in 12 ticks (`sub_8027834`: its map every 3, up on the 12th) with
+    -- the original's 0x7A, and closes in 6 (`sub_802790C`) with 0x7D.
+    form_list = {
+        opens_from = { 0, 1, 2, 3, 4, 10 },
+        opening = 12,
+        closing = 6,
+        open_sound = asset.sound("select-7a"),
+        close_sound = asset.sound("cross-window-close"),
+    },
 }
