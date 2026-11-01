@@ -372,363 +372,363 @@ language = "en"
 "z-saver" = { name = "Z Saber", long_name = "Z Saber", description = "Add an\neffect:\nBlind" }
 
 [navis]
-"chargeman" = { name = "ChrgeMan", run_message = "Chug-a-chug-a!!\nNo time to steam on\noutta here!" }
-"dustman" = { name = "DustMan", run_message = "Hahahah! You can't\nleave 'em in the\ndust now!" }
-"elecman" = { name = "ElecMan", run_message = "Don't run away now!!" }
-"eraseman" = { name = "EraseMan", run_message = "Why are you running\naway!? I've got\nmore erasing to do!" }
-"groundman" = { name = "GrndMan", run_message = "Don't be a fool!!\nYou can't be runnin'\naway!!" }
-"heatman" = { name = "HeatMan", run_message = "This is no time to\nrun out of here!!" }
-"megaman" = { name = "MegaMan", run_message = "Lan, this is no time\nto run away!" }
-"protoman" = { name = "ProtoMan", run_message = "Don't run away now!" }
-"slashman" = { name = "SlashMan", run_message = "Now's not the time\nto cut and run!\nKeep slashing!!" }
-"spoutman" = { name = "AquaMan", run_message = "Don't run away now,\ndrip!" }
-"tenguman" = { name = "TenguMan", run_message = "Don't turn your\nback..." }
-"tomahawkman" = { name = "TmhkMan", run_message = "Strange to be\nrunning away now!" }
+"chargeman" = { name = "ChrgeMan", long_name = "ChargeMan", run_message = "Chug-a-chug-a!!\nNo time to steam on\noutta here!" }
+"dustman" = { name = "DustMan", long_name = "DustMan", run_message = "Hahahah! You can't\nleave 'em in the\ndust now!" }
+"elecman" = { name = "ElecMan", long_name = "ElecMan", run_message = "Don't run away now!!" }
+"eraseman" = { name = "EraseMan", long_name = "EraseMan", run_message = "Why are you running\naway!? I've got\nmore erasing to do!" }
+"groundman" = { name = "GrndMan", long_name = "GroundMan", run_message = "Don't be a fool!!\nYou can't be runnin'\naway!!" }
+"heatman" = { name = "HeatMan", long_name = "HeatMan", run_message = "This is no time to\nrun out of here!!" }
+"megaman" = { name = "MegaMan", long_name = "MegaMan", run_message = "Lan, this is no time\nto run away!" }
+"protoman" = { name = "ProtoMan", long_name = "ProtoMan", run_message = "Don't run away now!" }
+"slashman" = { name = "SlashMan", long_name = "SlashMan", run_message = "Now's not the time\nto cut and run!\nKeep slashing!!" }
+"spoutman" = { name = "AquaMan", long_name = "AquaMan", run_message = "Don't run away now,\ndrip!" }
+"tenguman" = { name = "TenguMan", long_name = "TenguMan", run_message = "Don't turn your\nback..." }
+"tomahawkman" = { name = "TmhkMan", long_name = "TomahawkMan", run_message = "Strange to be\nrunning away now!" }
 
 [forms]
-"chargecross" = { name = "ChargeCross", description = "Chrg FireChip\nAtk Up!In turn\nslct more chip" }
-"dustcross" = { name = "DustCross", description = "CustScrn:Dscrd\nChip.Ⓑ+Left:\nSuckIn Ⓑ:Fire!" }
-"eleccross" = { name = "ElecCross", description = "Elec Chip Attk\n+50! Chrg Elm-\nntless: Parlyz" }
-"erasecross" = { name = "EraseCross", description = "If 4 digit HP\nElemntless:Dth\nCursChipAtk+30" }
-"falzar-beast" = { name = "FBeast" }
-"gregar-beast" = { name = "GBeast" }
-"groundcross" = { name = "GroundCross", description = "BrkChip Atk+10\nChrg Brk:Fall\nRck!SuprArmrOn" }
-"heatcross" = { name = "HeatCross", description = "Fire Chip Attk\n+50! Buster \nAttk +1!" }
-"slashcross" = { name = "SlashCross", description = "Swrd Chip Attk\n+50! Chrg Swrd\nChip: WaveAttk" }
-"spoutcross" = { name = "AquaCross", description = "Chrg WatrChip:\nAtk x2! Watr\nChip = HP Rcvr" }
-"tengucross" = { name = "TenguCross", description = "WindChip Atk\n+10!AirShsOn!\nⒷ+Left:SuckIn" }
-"tomahawkcross" = { name = "TmhawkCross", description = "Chrg WoodChip:\nAtk x2! Status\nGuard:NoAbnorm" }
+"chargecross" = { name = "ChargeCross", long_name = "Charge Cross", description = "Chrg FireChip\nAtk Up!In turn\nslct more chip" }
+"dustcross" = { name = "DustCross", long_name = "Dust Cross", description = "CustScrn:Dscrd\nChip.Ⓑ+Left:\nSuckIn Ⓑ:Fire!" }
+"eleccross" = { name = "ElecCross", long_name = "Elec Cross", description = "Elec Chip Attk\n+50! Chrg Elm-\nntless: Parlyz" }
+"erasecross" = { name = "EraseCross", long_name = "Erase Cross", description = "If 4 digit HP\nElemntless:Dth\nCursChipAtk+30" }
+"falzar-beast" = { name = "FBeast", long_name = "Falzar Beast" }
+"gregar-beast" = { name = "GBeast", long_name = "Gregar Beast" }
+"groundcross" = { name = "GroundCross", long_name = "Ground Cross", description = "BrkChip Atk+10\nChrg Brk:Fall\nRck!SuprArmrOn" }
+"heatcross" = { name = "HeatCross", long_name = "Heat Cross", description = "Fire Chip Attk\n+50! Buster \nAttk +1!" }
+"slashcross" = { name = "SlashCross", long_name = "Slash Cross", description = "Swrd Chip Attk\n+50! Chrg Swrd\nChip: WaveAttk" }
+"spoutcross" = { name = "AquaCross", long_name = "Aqua Cross", description = "Chrg WatrChip:\nAtk x2! Watr\nChip = HP Rcvr" }
+"tengucross" = { name = "TenguCross", long_name = "Tengu Cross", description = "WindChip Atk\n+10!AirShsOn!\nⒷ+Left:SuckIn" }
+"tomahawkcross" = { name = "TmhawkCross", long_name = "Tomahawk Cross", description = "Chrg WoodChip:\nAtk x2! Status\nGuard:NoAbnorm" }
 
 # The backgrounds' names by asset name: the game's menus' names of their areas (the verification's
 # tools/backgrounds/names.tsv, which its areas.py --check holds to the US and the Japanese ROMs).
 [backgrounds]
-"acdc-area" = { name = "ACDC Area" }
-"acdc-hp" = { name = "ACDC HP" }
-"aquarium-comp" = { name = "AquarumComp" }
-"aquarium-hp" = { name = "Aquarium HP" }
-"central-area" = { name = "CentralArea" }
-"comp" = { name = "Comp" }
-"comp-alt" = { name = "Comp (Alt)" }
-"copybot-comp" = { name = "CopyBotComp" }
-"graveyard" = { name = "Graveyard" }
-"green-area" = { name = "Green Area" }
-"green-hp" = { name = "Green HP" }
-"judgetree-comp" = { name = "JdgTreeComp" }
-"lans-hp" = { name = "Lan's HP" }
-"mr-weather-comp" = { name = "MrWeathrCmp" }
-"mr-weather-comp-storm" = { name = "MrWeathrCmp (Typhoon)" }
-"robot-control-comp" = { name = "RobCtrlComp" }
-"seaside-area" = { name = "SeasideArea" }
-"sky-area" = { name = "Sky Area" }
-"sky-hp" = { name = "Sky HP" }
-"underground" = { name = "Underground" }
-"undernet" = { name = "Undernet" }
+"acdc-area" = { name = "ACDC Area", long_name = "ACDC Area" }
+"acdc-hp" = { name = "ACDC HP", long_name = "ACDC HP" }
+"aquarium-comp" = { name = "AquarumComp", long_name = "Aquarium Comp" }
+"aquarium-hp" = { name = "Aquarium HP", long_name = "Aquarium HP" }
+"central-area" = { name = "CentralArea", long_name = "Central Area" }
+"comp" = { name = "Comp", long_name = "Comp" }
+"comp-alt" = { name = "Comp (Alt)", long_name = "Comp (Alternate)" }
+"copybot-comp" = { name = "CopyBotComp", long_name = "CopyBot Comp" }
+"graveyard" = { name = "Graveyard", long_name = "Graveyard" }
+"green-area" = { name = "Green Area", long_name = "Green Area" }
+"green-hp" = { name = "Green HP", long_name = "Green HP" }
+"judgetree-comp" = { name = "JdgTreeComp", long_name = "Judge Tree Comp" }
+"lans-hp" = { name = "Lan's HP", long_name = "Lan's HP" }
+"mr-weather-comp" = { name = "MrWeathrCmp", long_name = "Mr. Weather Comp" }
+"mr-weather-comp-storm" = { name = "MrWeathrCmp (Typhoon)", long_name = "Mr. Weather Comp (Typhoon)" }
+"robot-control-comp" = { name = "RobCtrlComp", long_name = "Robot Control Comp" }
+"seaside-area" = { name = "SeasideArea", long_name = "Seaside Area" }
+"sky-area" = { name = "Sky Area", long_name = "Sky Area" }
+"sky-hp" = { name = "Sky HP", long_name = "Sky HP" }
+"underground" = { name = "Underground", long_name = "Underground" }
+"undernet" = { name = "Undernet", long_name = "Undernet" }
 
 [patch_cards]
-"airman" = { name = "AirMan" }
-"amonicul" = { name = "Ammonicl" }
-"armadill" = { name = "Armadill" }
-"bass-cross-megaman" = { name = "Bass-\nCross\nMegaMan" }
-"bassbx" = { name = "BassBX" }
-"beastman" = { name = "BeastMan" }
-"beetle" = { name = "Beetle" }
-"bighat" = { name = "BigHat" }
-"blastman" = { name = "BlastMan" }
-"blizman" = { name = "BlizMan" }
-"bombcorn" = { name = "BombCorn" }
-"bomboy" = { name = "BomBoy" }
-"bowlman" = { name = "BowlMan" }
-"burnrman" = { name = "BurnMan" }
-"canguard" = { name = "CanGard" }
-"canodumb" = { name = "Canodumb" }
-"chrgeman" = { name = "ChrgeMan" }
-"cloudman" = { name = "CloudMan" }
-"coldbear" = { name = "ColdBear" }
-"coldman" = { name = "ColdMan" }
-"colorman" = { name = "ColorMan" }
-"count" = { name = "Count" }
-"cragger" = { name = "Cragger" }
-"crcusman" = { name = "CrcusMan" }
-"cutman" = { name = "CutMan" }
-"cybeast-falzar" = { name = "Cybeast Falzar" }
-"cybeast-gregar" = { name = "Cybeast Gregar" }
-"dark-megaman" = { name = "DarkMega" }
-"darkman" = { name = "DarkMan" }
-"darkmech" = { name = "DarkMech" }
-"desertmn" = { name = "DesertMn" }
-"diodon" = { name = "Diodon" }
-"diveman" = { name = "DiveMan" }
-"django" = { name = "Django" }
-"draggin" = { name = "Draggin" }
-"dustman" = { name = "DustMan" }
-"eleogre" = { name = "Eleogre" }
-"elmntman" = { name = "ElmntMan" }
-"eraseman" = { name = "EraseMan" }
-"erthdrgn" = { name = "ErthDrgn" }
-"famous-custom" = { name = "Mr.Fam's\nCustom" }
-"fgtrplne" = { name = "FitrPlne" }
-"flashy" = { name = "Flashy" }
-"freezemn" = { name = "FreezeMn" }
-"gridman" = { name = "GridMan" }
-"grndman" = { name = "GrndMan" }
-"gunner" = { name = "Gunner" }
-"handy" = { name = "Handi" }
-"heavy" = { name = "Heavy" }
-"hntdcndl" = { name = "HntdCndl" }
-"honybomr" = { name = "HonyBmbr" }
-"iceman" = { name = "IceMan" }
-"japanman" = { name = "JapanMan" }
-"jelly" = { name = "Jelly" }
-"judgeman" = { name = "JudgeMan" }
-"kendoman" = { name = "KendoMan" }
-"kettle" = { name = "Kettle" }
-"kilby" = { name = "Kilby" }
-"kilplant" = { name = "KillPlnt" }
-"knigtman" = { name = "KnightMn" }
-"larkman" = { name = "LarkMan" }
-"magneakr" = { name = "Magneakr" }
-"magntman" = { name = "MagnetMn" }
-"magtect" = { name = "MagTect" }
-"marina" = { name = "Marina" }
-"megalian" = { name = "Heady" }
-"megaman-zero" = { name = "Zero" }
-"metrid" = { name = "Metrid" }
-"mettfire" = { name = "MetFire" }
-"miney" = { name = "Miney" }
-"mistman" = { name = "MistMan" }
-"momogra" = { name = "Momogra" }
-"napalmmn" = { name = "NapalmMn" }
-"needler" = { name = "Needler" }
-"nghtmare" = { name = "Nghtmare" }
-"number" = { name = "Number" }
-"numbrman" = { name = "NumbrMan" }
-"octon" = { name = "Octon" }
-"oldstov" = { name = "OldStov" }
-"pharoman" = { name = "PharoMan" }
-"planetmn" = { name = "PlanetMn" }
-"plantman" = { name = "PlantMan" }
-"poitton" = { name = "Poitton" }
-"puffy" = { name = "Puffy" }
-"pulsbulb" = { name = "PulsBulb" }
-"punk" = { name = "Punk" }
-"satella" = { name = "Satella" }
-"scarcrow" = { name = "ScarCrow" }
-"searchmn" = { name = "SerchMan" }
-"shadoman" = { name = "ShadoMan" }
-"shadow" = { name = "Shadow" }
-"sharkman" = { name = "SharkMan" }
-"shelgeek" = { name = "Shlgeek" }
-"shrubby" = { name = "Shrubby" }
-"skarab" = { name = "Skarab" }
-"skullman" = { name = "SkullMan" }
-"slashman" = { name = "SlashMan" }
-"slimey" = { name = "Slimer" }
-"snakearm" = { name = "SnakeArm" }
-"soul-battlrs-custom" = { name = "SBatlr's\nCustom" }
-"sparky" = { name = "Shakey" }
-"spidy" = { name = "Spidy" }
-"starfish" = { name = "StarFish" }
-"starman" = { name = "StarMan" }
-"stoneman" = { name = "StoneMan" }
-"tenguman" = { name = "TenguMan" }
-"thunman" = { name = "ThunMan" }
-"toadman" = { name = "ToadMan" }
-"topman" = { name = "TopMan" }
-"totem" = { name = "Totem" }
-"twins" = { name = "Twins" }
-"twisty" = { name = "Twisty" }
-"videoman" = { name = "VideoMan" }
-"viney" = { name = "Viney" }
-"volcano" = { name = "Volcano" }
-"walla" = { name = "Walla" }
-"wunote" = { name = "WuNote" }
+"airman" = { name = "AirMan", long_name = "AirMan" }
+"amonicul" = { name = "Ammonicl", long_name = "Ammonicule" }
+"armadill" = { name = "Armadill", long_name = "Armadill" }
+"bass-cross-megaman" = { name = "Bass-\nCross\nMegaMan", long_name = "Bass Cross MegaMan" }
+"bassbx" = { name = "BassBX", long_name = "Bass BX" }
+"beastman" = { name = "BeastMan", long_name = "BeastMan" }
+"beetle" = { name = "Beetle", long_name = "Beetle" }
+"bighat" = { name = "BigHat", long_name = "BigHat" }
+"blastman" = { name = "BlastMan", long_name = "BlastMan" }
+"blizman" = { name = "BlizMan", long_name = "BlizzardMan" }
+"bombcorn" = { name = "BombCorn", long_name = "BombCorn" }
+"bomboy" = { name = "BomBoy", long_name = "BomBoy" }
+"bowlman" = { name = "BowlMan", long_name = "BowlMan" }
+"burnrman" = { name = "BurnMan", long_name = "BurnerMan" }
+"canguard" = { name = "CanGard", long_name = "CanGuard" }
+"canodumb" = { name = "Canodumb", long_name = "Canodumb" }
+"chrgeman" = { name = "ChrgeMan", long_name = "ChargeMan" }
+"cloudman" = { name = "CloudMan", long_name = "CloudMan" }
+"coldbear" = { name = "ColdBear", long_name = "ColdBear" }
+"coldman" = { name = "ColdMan", long_name = "ColdMan" }
+"colorman" = { name = "ColorMan", long_name = "ColorMan" }
+"count" = { name = "Count", long_name = "Count" }
+"cragger" = { name = "Cragger", long_name = "Cragger" }
+"crcusman" = { name = "CrcusMan", long_name = "CircusMan" }
+"cutman" = { name = "CutMan", long_name = "CutMan" }
+"cybeast-falzar" = { name = "Cybeast Falzar", long_name = "Cybeast Falzar" }
+"cybeast-gregar" = { name = "Cybeast Gregar", long_name = "Cybeast Gregar" }
+"dark-megaman" = { name = "DarkMega", long_name = "Dark MegaMan" }
+"darkman" = { name = "DarkMan", long_name = "DarkMan" }
+"darkmech" = { name = "DarkMech", long_name = "DarkMech" }
+"desertmn" = { name = "DesertMn", long_name = "DesertMan" }
+"diodon" = { name = "Diodon", long_name = "Diodon" }
+"diveman" = { name = "DiveMan", long_name = "DiveMan" }
+"django" = { name = "Django", long_name = "Django" }
+"draggin" = { name = "Draggin", long_name = "Draggin" }
+"dustman" = { name = "DustMan", long_name = "DustMan" }
+"eleogre" = { name = "Eleogre", long_name = "Eleogre" }
+"elmntman" = { name = "ElmntMan", long_name = "ElementMan" }
+"eraseman" = { name = "EraseMan", long_name = "EraseMan" }
+"erthdrgn" = { name = "ErthDrgn", long_name = "EarthDragon" }
+"famous-custom" = { name = "Mr.Fam's\nCustom", long_name = "Mr. Famous's Custom" }
+"fgtrplne" = { name = "FitrPlne", long_name = "FighterPlane" }
+"flashy" = { name = "Flashy", long_name = "Flashy" }
+"freezemn" = { name = "FreezeMn", long_name = "FreezeMan" }
+"gridman" = { name = "GridMan", long_name = "GridMan" }
+"grndman" = { name = "GrndMan", long_name = "GroundMan" }
+"gunner" = { name = "Gunner", long_name = "Gunner" }
+"handy" = { name = "Handi", long_name = "Handi" }
+"heavy" = { name = "Heavy", long_name = "Heavy" }
+"hntdcndl" = { name = "HntdCndl", long_name = "HauntedCandle" }
+"honybomr" = { name = "HonyBmbr", long_name = "HoneyBomber" }
+"iceman" = { name = "IceMan", long_name = "IceMan" }
+"japanman" = { name = "JapanMan", long_name = "JapanMan" }
+"jelly" = { name = "Jelly", long_name = "Jelly" }
+"judgeman" = { name = "JudgeMan", long_name = "JudgeMan" }
+"kendoman" = { name = "KendoMan", long_name = "KendoMan" }
+"kettle" = { name = "Kettle", long_name = "Kettle" }
+"kilby" = { name = "Kilby", long_name = "Kilby" }
+"kilplant" = { name = "KillPlnt", long_name = "KillPlant" }
+"knigtman" = { name = "KnightMn", long_name = "KnightMan" }
+"larkman" = { name = "LarkMan", long_name = "LarkMan" }
+"magneakr" = { name = "Magneakr", long_name = "Magneaker" }
+"magntman" = { name = "MagnetMn", long_name = "MagnetMan" }
+"magtect" = { name = "MagTect", long_name = "MagTect" }
+"marina" = { name = "Marina", long_name = "Marina" }
+"megalian" = { name = "Heady", long_name = "Heady" }
+"megaman-zero" = { name = "Zero", long_name = "MegaMan Zero" }
+"metrid" = { name = "Metrid", long_name = "Metrid" }
+"mettfire" = { name = "MetFire", long_name = "MetFire" }
+"miney" = { name = "Miney", long_name = "Miney" }
+"mistman" = { name = "MistMan", long_name = "MistMan" }
+"momogra" = { name = "Momogra", long_name = "Momogra" }
+"napalmmn" = { name = "NapalmMn", long_name = "NapalmMan" }
+"needler" = { name = "Needler", long_name = "Needler" }
+"nghtmare" = { name = "Nghtmare", long_name = "Nightmare" }
+"number" = { name = "Number", long_name = "Number" }
+"numbrman" = { name = "NumbrMan", long_name = "NumberMan" }
+"octon" = { name = "Octon", long_name = "Octon" }
+"oldstov" = { name = "OldStov", long_name = "OldStove" }
+"pharoman" = { name = "PharoMan", long_name = "PharaohMan" }
+"planetmn" = { name = "PlanetMn", long_name = "PlanetMan" }
+"plantman" = { name = "PlantMan", long_name = "PlantMan" }
+"poitton" = { name = "Poitton", long_name = "Poitton" }
+"puffy" = { name = "Puffy", long_name = "Puffy" }
+"pulsbulb" = { name = "PulsBulb", long_name = "PulseBulb" }
+"punk" = { name = "Punk", long_name = "Punk" }
+"satella" = { name = "Satella", long_name = "Satella" }
+"scarcrow" = { name = "ScarCrow", long_name = "ScareCrow" }
+"searchmn" = { name = "SerchMan", long_name = "SearchMan" }
+"shadoman" = { name = "ShadoMan", long_name = "ShadowMan" }
+"shadow" = { name = "Shadow", long_name = "Shadow" }
+"sharkman" = { name = "SharkMan", long_name = "SharkMan" }
+"shelgeek" = { name = "Shlgeek", long_name = "Shellgeek" }
+"shrubby" = { name = "Shrubby", long_name = "Shrubby" }
+"skarab" = { name = "Skarab", long_name = "Skarab" }
+"skullman" = { name = "SkullMan", long_name = "SkullMan" }
+"slashman" = { name = "SlashMan", long_name = "SlashMan" }
+"slimey" = { name = "Slimer", long_name = "Slimer" }
+"snakearm" = { name = "SnakeArm", long_name = "SnakeArm" }
+"soul-battlrs-custom" = { name = "SBatlr's\nCustom", long_name = "Soul Battler's Custom" }
+"sparky" = { name = "Shakey", long_name = "Shakey" }
+"spidy" = { name = "Spidy", long_name = "Spidy" }
+"starfish" = { name = "StarFish", long_name = "StarFish" }
+"starman" = { name = "StarMan", long_name = "StarMan" }
+"stoneman" = { name = "StoneMan", long_name = "StoneMan" }
+"tenguman" = { name = "TenguMan", long_name = "TenguMan" }
+"thunman" = { name = "ThunMan", long_name = "ThunderMan" }
+"toadman" = { name = "ToadMan", long_name = "ToadMan" }
+"topman" = { name = "TopMan", long_name = "TopMan" }
+"totem" = { name = "Totem", long_name = "Totem" }
+"twins" = { name = "Twins", long_name = "Twins" }
+"twisty" = { name = "Twisty", long_name = "Twisty" }
+"videoman" = { name = "VideoMan", long_name = "VideoMan" }
+"viney" = { name = "Viney", long_name = "Viney" }
+"volcano" = { name = "Volcano", long_name = "Volcano" }
+"walla" = { name = "Walla", long_name = "Walla" }
+"wunote" = { name = "WuNote", long_name = "WuNote" }
 
 [navicust_programs]
-"airshoes" = { name = "AirShoes", description = "Move\novr hole" }
-"antidmg" = { name = "AntiDmg", description = "Ⓑ+Left=\nThrow a\nstar!" }
-"attack-1" = { name = "Attack+1", description = "MegaBstr\nAttck +1" }
-"attckmax" = { name = "AttckMAX", description = "MegaBstr\nAttckMAX" }
-"autoheal" = { name = "AutoHeal", description = "HP recv\nafter\nbattle" }
-"battery" = { name = "Battery", description = "Attracts\nElec\nViruses!" }
-"beat" = { name = "Beat", description = "VS only!\nSnatches\nMegaChps" }
-"bodypack" = { name = "BodyPack", description = "Armr, Sht\nFlot, Air\n4-pc set" }
-"bugstop" = { name = "BugStop", description = "Prevents\nbugs" }
-"bustpack" = { name = "BustPack", description = "Atk/Spd\n/Charge\n+3 each!" }
-"charge-1" = { name = "Charge+1", description = "MegaBstr\nCharge\n+1" }
-"chargmax" = { name = "ChargMAX", description = "MegaBstr\nCharge\nMAX!" }
-"chpshufl" = { name = "ChpShufl", description = "CustmScr\nShuffle\nchp once" }
-"collect" = { name = "Collect", description = "Get more\nchips\nfrm enmy" }
-"custom1" = { name = "Custom1", description = "Custom\nScreen\n+1 chip" }
-"custom2" = { name = "Custom2", description = "Custom\nScreen\n+2 chips" }
-"fish" = { name = "Fish", description = "Attracts\nAqua\nViruses!" }
-"fldrpak1" = { name = "FldrPak1", description = "A 2-pack\nCustom1&\nMegFldr1" }
-"fldrpak2" = { name = "FldrPak2", description = "A 2-pack\nCustom2&\nMegFldr2" }
-"flotshoe" = { name = "FlotShoe", description = "No effct\nfrom\npnl type" }
-"fstbarr" = { name = "FstBarr", description = "Start\nwith\nBarrier" }
-"gigfldr1" = { name = "GigFldr1", description = "GigaChip\n+1" }
-"hp-100" = { name = "HP+100", description = "Max HP\n+100!" }
-"hp-200" = { name = "HP+200", description = "Max HP\n+200!" }
-"hp-300" = { name = "HP+300", description = "Max HP\n+300!" }
-"hp-400" = { name = "HP+400", description = "Max HP\n+400!" }
-"hp-50" = { name = "HP+50", description = "Max HP\n+50!" }
-"hp-500" = { name = "HP+500", description = "Max HP\n+500!" }
-"humor" = { name = "Humor", description = "Install\nand try\nⓁ" }
-"jungle" = { name = "Jungle", description = "Attracts\nWood\nViruses!" }
-"megfldr1" = { name = "MegFldr1", description = "MegaChip\n+1" }
-"megfldr2" = { name = "MegFldr2", description = "MegaChip\n+2" }
-"millions" = { name = "Millions", description = "Gn mstry\ndata =\nZennys" }
-"numbropn" = { name = "NumbrOpn", description = "CustmScr\nSlected\nChip=10" }
-"oilbody" = { name = "OilBody", description = "Attracts\nFire\nViruses!" }
-"poem" = { name = "Poem", description = "Press Ⓛ:\nRecite\nPoem" }
-"reflect" = { name = "Reflect", description = "Ⓑ+Left=\nReflect\nattacks!" }
-"rush" = { name = "Rush", description = "VS only!\nTracks\nenemies" }
-"shield" = { name = "Shield", description = "Ⓑ+Left=\nStrong\nshield!" }
-"sliprunr" = { name = "SlipRunr", description = "Ⓑ+Move:\nslide\nno stop" }
-"sneakrun" = { name = "SneakRun", description = "No weak\nenemies" }
-"speed-1" = { name = "Speed+1", description = "MegaBstr\nSpeed +1" }
-"speedmax" = { name = "SpeedMAX", description = "MegaBstr\nSpeedMAX" }
-"suprarmr" = { name = "SuprArmr", description = "Won't be\npushed!" }
-"tango" = { name = "Tango", description = "VS only!\nHeals\nlow HP" }
-"undersht" = { name = "UnderSht", description = "Keep 1HP\neven on\nhard hit" }
+"airshoes" = { name = "AirShoes", long_name = "Air Shoes", description = "Move\novr hole" }
+"antidmg" = { name = "AntiDmg", long_name = "Anti Damage", description = "Ⓑ+Left=\nThrow a\nstar!" }
+"attack-1" = { name = "Attack+1", long_name = "Attack +1", description = "MegaBstr\nAttck +1" }
+"attckmax" = { name = "AttckMAX", long_name = "Attack MAX", description = "MegaBstr\nAttckMAX" }
+"autoheal" = { name = "AutoHeal", long_name = "Auto Heal", description = "HP recv\nafter\nbattle" }
+"battery" = { name = "Battery", long_name = "Battery", description = "Attracts\nElec\nViruses!" }
+"beat" = { name = "Beat", long_name = "Beat", description = "VS only!\nSnatches\nMegaChps" }
+"bodypack" = { name = "BodyPack", long_name = "Body Pack", description = "Armr, Sht\nFlot, Air\n4-pc set" }
+"bugstop" = { name = "BugStop", long_name = "Bug Stop", description = "Prevents\nbugs" }
+"bustpack" = { name = "BustPack", long_name = "Buster Pack", description = "Atk/Spd\n/Charge\n+3 each!" }
+"charge-1" = { name = "Charge+1", long_name = "Charge +1", description = "MegaBstr\nCharge\n+1" }
+"chargmax" = { name = "ChargMAX", long_name = "Charge MAX", description = "MegaBstr\nCharge\nMAX!" }
+"chpshufl" = { name = "ChpShufl", long_name = "Chip Shuffle", description = "CustmScr\nShuffle\nchp once" }
+"collect" = { name = "Collect", long_name = "Collect", description = "Get more\nchips\nfrm enmy" }
+"custom1" = { name = "Custom1", long_name = "Custom 1", description = "Custom\nScreen\n+1 chip" }
+"custom2" = { name = "Custom2", long_name = "Custom 2", description = "Custom\nScreen\n+2 chips" }
+"fish" = { name = "Fish", long_name = "Fish", description = "Attracts\nAqua\nViruses!" }
+"fldrpak1" = { name = "FldrPak1", long_name = "Folder Pack 1", description = "A 2-pack\nCustom1&\nMegFldr1" }
+"fldrpak2" = { name = "FldrPak2", long_name = "Folder Pack 2", description = "A 2-pack\nCustom2&\nMegFldr2" }
+"flotshoe" = { name = "FlotShoe", long_name = "Float Shoes", description = "No effct\nfrom\npnl type" }
+"fstbarr" = { name = "FstBarr", long_name = "First Barrier", description = "Start\nwith\nBarrier" }
+"gigfldr1" = { name = "GigFldr1", long_name = "Giga Folder 1", description = "GigaChip\n+1" }
+"hp-100" = { name = "HP+100", long_name = "HP +100", description = "Max HP\n+100!" }
+"hp-200" = { name = "HP+200", long_name = "HP +200", description = "Max HP\n+200!" }
+"hp-300" = { name = "HP+300", long_name = "HP +300", description = "Max HP\n+300!" }
+"hp-400" = { name = "HP+400", long_name = "HP +400", description = "Max HP\n+400!" }
+"hp-50" = { name = "HP+50", long_name = "HP +50", description = "Max HP\n+50!" }
+"hp-500" = { name = "HP+500", long_name = "HP +500", description = "Max HP\n+500!" }
+"humor" = { name = "Humor", long_name = "Humor", description = "Install\nand try\nⓁ" }
+"jungle" = { name = "Jungle", long_name = "Jungle", description = "Attracts\nWood\nViruses!" }
+"megfldr1" = { name = "MegFldr1", long_name = "Mega Folder 1", description = "MegaChip\n+1" }
+"megfldr2" = { name = "MegFldr2", long_name = "Mega Folder 2", description = "MegaChip\n+2" }
+"millions" = { name = "Millions", long_name = "Millions", description = "Gn mstry\ndata =\nZennys" }
+"numbropn" = { name = "NumbrOpn", long_name = "Number Open", description = "CustmScr\nSlected\nChip=10" }
+"oilbody" = { name = "OilBody", long_name = "Oil Body", description = "Attracts\nFire\nViruses!" }
+"poem" = { name = "Poem", long_name = "Poem", description = "Press Ⓛ:\nRecite\nPoem" }
+"reflect" = { name = "Reflect", long_name = "Reflect", description = "Ⓑ+Left=\nReflect\nattacks!" }
+"rush" = { name = "Rush", long_name = "Rush", description = "VS only!\nTracks\nenemies" }
+"shield" = { name = "Shield", long_name = "Shield", description = "Ⓑ+Left=\nStrong\nshield!" }
+"sliprunr" = { name = "SlipRunr", long_name = "Slip Runner", description = "Ⓑ+Move:\nslide\nno stop" }
+"sneakrun" = { name = "SneakRun", long_name = "Sneak Run", description = "No weak\nenemies" }
+"speed-1" = { name = "Speed+1", long_name = "Speed +1", description = "MegaBstr\nSpeed +1" }
+"speedmax" = { name = "SpeedMAX", long_name = "Speed MAX", description = "MegaBstr\nSpeedMAX" }
+"suprarmr" = { name = "SuprArmr", long_name = "Super Armor", description = "Won't be\npushed!" }
+"tango" = { name = "Tango", long_name = "Tango", description = "VS only!\nHeals\nlow HP" }
+"undersht" = { name = "UnderSht", long_name = "Undershirt", description = "Keep 1HP\neven on\nhard hit" }
 
 # Each line a patch card's menu shows of an effect, by the effect's kind and its one choice's name (the
 # editor's key), `{amount}` its number: the fan translation's effect names (MMEXE6F.ips over the Japanese Falzar ROM). Written by bn6battle-verify's
 # trace-tests (tests/patch_card_text.rs), which checks it.
 [patch_card_effects]
-"air_shoes" = "AirShoe"
-"attack_add" = "Attack+{amount}"
-"attack_sub" = "Attack-{amount}"
-"attack_times" = "Attack×{amount}"
-"b_button.patch-cards/b-sword" = "Ⓑ-Sword"
-"b_button.patch-cards/beetle/b-button" = "Ⓑ-Bomb"
-"b_button.patch-cards/mettfire/b-button" = "Ⓑ-Metr1"
-"b_button.patch-cards/planetmn/b-button" = "Ⓑ-Crack"
-"b_button.patch-cards/triple-buster" = "TriBustr"
-"back_special" = "Ⓑ+←"
-"back_special.megaman/anti-damage" = "Ⓑ+←AntiD"
-"back_special.megaman/reflect" = "Ⓑ+←Reflc"
-"back_special.megaman/shield" = "Ⓑ+←Shld"
-"back_special.patch-cards/darkmech/back-special" = "Ⓑ+←MaSwd"
-"back_special.patch-cards/dustman/back-special" = "Ⓑ+←Fan"
-"back_special.patch-cards/honybomr/back-special" = "Ⓑ+←RsHny"
-"back_special.patch-cards/magntman/back-special" = "Ⓑ+←Mgntz"
-"back_special.patch-cards/metrid/back-special" = "Ⓑ+←Metr3"
-"beat" = "Beat"
-"body.aqua" = "AquaBody"
-"body.elec" = "ElecBody"
-"body.fire" = "FireBody"
-"body.null" = "NormBody"
-"body.wood" = "WoodBody"
-"buster_blanks" = "BstBlank"
-"buster_shot" = "AddBustr"
-"buster_shot.shot/cracking" = "CrakBust"
-"buster_shot.shot/grass" = "GrasBust"
-"buster_shot.shot/ice" = "IceBust"
-"buster_shot.shot/poisoning" = "SwmpBust"
-"buster_shot.shot/pushing" = "Bst1sqrR"
-"buster_shot.shot/shoving" = "BstREdge"
-"charge_add" = "Charge+{amount}"
-"charge_shot_kind.shot/breaking" = "CSbreak"
-"charge_shot_kind.shot/charged" = "CSeffect"
-"charge_shot_kind.shot/charged-bubbling" = "CSbubble"
-"charge_shot_kind.shot/charged-confusing" = "CSconfus"
-"charge_shot_kind.shot/charged-freezing" = "CSfreeze"
-"charge_shot_kind.shot/charged-grass" = "CSgras"
-"charge_shot_kind.shot/charged-hp-bug" = "CSHPbug"
-"charge_shot_kind.shot/charged-hp-bug-marked" = "CSinsdlt"
-"charge_shot_kind.shot/charged-ice" = "CSice"
-"charge_shot_kind.shot/charged-paralyzing" = "CSstun"
-"charge_shot_kind.shot/charged-pulling" = "CSlmove"
-"charge_shot_kind.shot/charged-road" = "CSlarrow"
-"charge_shot_kind.shot/charged-road-back" = "CSrarrow"
-"charge_shot_kind.shot/chip-destruction" = "CSchpdst"
-"charge_sub" = "Charge-{amount}"
-"charged_shot.patch-cards/airman/charge" = "Ⓑ↓Trnado"
-"charged_shot.patch-cards/bass-cross-megaman/charge" = "Ⓑ↓HelzR"
-"charged_shot.patch-cards/beastman/charge" = "Ⓑ↓StpSwd"
-"charged_shot.patch-cards/bighat/charge" = "Ⓑ↓FlshBm"
-"charged_shot.patch-cards/blizman/charge" = "Ⓑ↓Blzrd"
-"charged_shot.patch-cards/bombcorn/charge" = "Ⓑ↓CornSh"
-"charged_shot.patch-cards/bowlman/charge" = "B↓Vulcan"
-"charged_shot.patch-cards/canguard/charge" = "B↓Cannon"
-"charged_shot.patch-cards/canodumb/charge" = "B↓M.Cann"
-"charged_shot.patch-cards/chrgs" = "Ⓑ↓ChrgS"
-"charged_shot.patch-cards/cloudman/charge" = "Ⓑ↓Thundr"
-"charged_shot.patch-cards/coldbear/charge" = "Ⓑ↓IceCbe"
-"charged_shot.patch-cards/count/charge" = "Ⓑ↓BlRain"
-"charged_shot.patch-cards/cutman/charge" = "Ⓑ↓YoYo"
-"charged_shot.patch-cards/dark-megaman/charge" = "Ⓑ↓DrkSwd"
-"charged_shot.patch-cards/darkman/charge" = "Ⓑ↓VDoll"
-"charged_shot.patch-cards/diveman/charge" = "Ⓑ↓Wshot"
-"charged_shot.patch-cards/django/charge" = "Ⓑ↓GunDel"
-"charged_shot.patch-cards/grndman/charge" = "Ⓑ↓DrlArm"
-"charged_shot.patch-cards/gunner/charge" = "Ⓑ↓MchGun"
-"charged_shot.patch-cards/handy/charge" = "Ⓑ↓TimeBm"
-"charged_shot.patch-cards/iceman/charge" = "Ⓑ↓IceSd"
-"charged_shot.patch-cards/invisible-charge" = "Ⓑ↓Invis"
-"charged_shot.patch-cards/judgeman/charge" = "Ⓑ↓GrBnsh"
-"charged_shot.patch-cards/kendoman/charge" = "Ⓑ↓BamSwd"
-"charged_shot.patch-cards/kettle/charge" = "Ⓑ↓Spread"
-"charged_shot.patch-cards/kilby/charge" = "Ⓑ↓Lance"
-"charged_shot.patch-cards/kilplant/charge" = "Ⓑ↓GrasSd"
-"charged_shot.patch-cards/megaman-zero/charge" = "Ⓑ↓ZSaber"
-"charged_shot.patch-cards/napalmmn/charge" = "Ⓑ↓BigBmb"
-"charged_shot.patch-cards/oldstov/charge" = "Ⓑ↓FireBn"
-"charged_shot.patch-cards/puffy/charge" = "Ⓑ↓BblSpr"
-"charged_shot.patch-cards/pulsbulb/charge" = "Ⓑ↓ElePls"
-"charged_shot.patch-cards/rapid-buster" = "B↓Sbustr"
-"charged_shot.patch-cards/scarcrow/charge" = "Ⓑ↓DThndr"
-"charged_shot.patch-cards/searchmn/charge" = "Ⓑ↓CircG"
-"charged_shot.patch-cards/shadoman/charge" = "Ⓑ↓LongS"
-"charged_shot.patch-cards/slashman/charge" = "Ⓑ↓WideS"
-"charged_shot.patch-cards/slimey/charge" = "Ⓑ↓PnlGrb"
-"charged_shot.patch-cards/snakearm/charge" = "Ⓑ↓SndWrm"
-"charged_shot.patch-cards/soul-battlrs-custom/charge" = "B↓SuperV"
-"charged_shot.patch-cards/tenguman/charge" = "Ⓑ↓WndRac"
-"charged_shot.patch-cards/thunman/charge" = "Ⓑ↓EleSwd"
-"charged_shot.patch-cards/volcano/charge" = "Ⓑ↓BlkBom"
-"chip_recovery" = "ChpRecov"
-"chip_shuffle" = "ChpShufl"
-"custom_add" = "Custom+{amount}"
-"custom_damage" = "CustDmg"
-"custom_hp_drain" = "CusHPbug"
-"custom_sub" = "Custom-{amount}"
-"emotion_bug" = "EmoBug"
-"first_barrier" = "Fbarrier"
-"first_barrier.barrier/10" = "Fbarrier"
-"first_barrier.barrier/100" = "Fbarr100"
-"first_barrier.barrier/200" = "Fbarr200"
-"first_barrier.barrier/bubble" = "Fbblwrap"
-"first_barrier.barrier/life-aura" = "FlifeAur"
-"float_shoes" = "FlotShoe"
-"gauge.fast" = "FstGauge"
-"gauge.normal" = "NrmGauge"
-"gauge.slow" = "SloGauge"
-"giga_add" = "GigFld+{amount}"
-"hit_status.confuse" = "DmgConfs"
-"hit_status.hp_bug" = "DmgHPbug"
-"hit_status.none" = "DmgBug"
-"hp_add" = "HP+{amount}"
-"hp_drain" = "BatHPbug"
-"hp_percent_add" = "HP+{amount}%"
-"hp_percent_sub" = "HP-{amount}%"
-"hp_sub" = "HP-{amount}"
-"mega_add" = "MegFld+{amount}"
-"mega_sub" = "MegFld-{amount}"
-"panel_trail.crack" = "MoveCrak"
-"panel_trail.grass" = "MoveGras"
-"panel_trail.hole" = "MoveHole"
-"panel_trail.ice" = "MoveIce"
-"panel_trail.none" = "PanelBug"
-"rapid_add" = "Speed+{amount}"
-"rapid_sub" = "Speed-{amount}"
-"rush" = "Rush"
-"status_bug" = "StatBug"
-"status_guard" = "StatGrd"
-"step_bug" = "MoveBug"
-"super_armor" = "SprArmr"
-"tango" = "Tango"
-"undershirt" = "UnderSht"
+"air_shoes" = { text = "AirShoe", long_text = "Air Shoes" }
+"attack_add" = { text = "Attack+{amount}", long_text = "Attack +{amount}" }
+"attack_sub" = { text = "Attack-{amount}", long_text = "Attack -{amount}" }
+"attack_times" = { text = "Attack×{amount}", long_text = "Attack ×{amount}" }
+"b_button.patch-cards/b-sword" = { text = "Ⓑ-Sword", long_text = "Ⓑ-Sword" }
+"b_button.patch-cards/beetle/b-button" = { text = "Ⓑ-Bomb", long_text = "Ⓑ-Mini Bomb" }
+"b_button.patch-cards/mettfire/b-button" = { text = "Ⓑ-Metr1", long_text = "Ⓑ-Meteor 1" }
+"b_button.patch-cards/planetmn/b-button" = { text = "Ⓑ-Crack", long_text = "Ⓑ-Crack Shot" }
+"b_button.patch-cards/triple-buster" = { text = "TriBustr", long_text = "Triple Buster" }
+"back_special" = { text = "Ⓑ+←", long_text = "Ⓑ+←" }
+"back_special.megaman/anti-damage" = { text = "Ⓑ+←AntiD", long_text = "Ⓑ+←: Anti Damage" }
+"back_special.megaman/reflect" = { text = "Ⓑ+←Reflc", long_text = "Ⓑ+←: Reflect" }
+"back_special.megaman/shield" = { text = "Ⓑ+←Shld", long_text = "Ⓑ+←: Shield" }
+"back_special.patch-cards/darkmech/back-special" = { text = "Ⓑ+←MaSwd", long_text = "Ⓑ+←: Machine Sword" }
+"back_special.patch-cards/dustman/back-special" = { text = "Ⓑ+←Fan", long_text = "Ⓑ+←: Fan" }
+"back_special.patch-cards/honybomr/back-special" = { text = "Ⓑ+←RsHny", long_text = "Ⓑ+←: Risky Honey" }
+"back_special.patch-cards/magntman/back-special" = { text = "Ⓑ+←Mgntz", long_text = "Ⓑ+←: Magnetize" }
+"back_special.patch-cards/metrid/back-special" = { text = "Ⓑ+←Metr3", long_text = "Ⓑ+←: Meteor 3" }
+"beat" = { text = "Beat", long_text = "Beat" }
+"body.aqua" = { text = "AquaBody", long_text = "Aqua Body" }
+"body.elec" = { text = "ElecBody", long_text = "Elec Body" }
+"body.fire" = { text = "FireBody", long_text = "Fire Body" }
+"body.null" = { text = "NormBody", long_text = "Normal Body" }
+"body.wood" = { text = "WoodBody", long_text = "Wood Body" }
+"buster_blanks" = { text = "BstBlank", long_text = "Buster Blank" }
+"buster_shot" = { text = "AddBustr", long_text = "Add Buster" }
+"buster_shot.shot/cracking" = { text = "CrakBust", long_text = "Crack Buster" }
+"buster_shot.shot/grass" = { text = "GrasBust", long_text = "Grass Buster" }
+"buster_shot.shot/ice" = { text = "IceBust", long_text = "Ice Buster" }
+"buster_shot.shot/poisoning" = { text = "SwmpBust", long_text = "Swamp Buster" }
+"buster_shot.shot/pushing" = { text = "Bst1sqrR", long_text = "Buster: Push 1 Square Right" }
+"buster_shot.shot/shoving" = { text = "BstREdge", long_text = "Buster: Push to Right Edge" }
+"charge_add" = { text = "Charge+{amount}", long_text = "Charge +{amount}" }
+"charge_shot_kind.shot/breaking" = { text = "CSbreak", long_text = "Charged shot: Break" }
+"charge_shot_kind.shot/charged" = { text = "CSeffect", long_text = "Charged shot: Effect" }
+"charge_shot_kind.shot/charged-bubbling" = { text = "CSbubble", long_text = "Charged shot: Bubble" }
+"charge_shot_kind.shot/charged-confusing" = { text = "CSconfus", long_text = "Charged shot: Confuse" }
+"charge_shot_kind.shot/charged-freezing" = { text = "CSfreeze", long_text = "Charged shot: Freeze" }
+"charge_shot_kind.shot/charged-grass" = { text = "CSgras", long_text = "Charged shot: Grass" }
+"charge_shot_kind.shot/charged-hp-bug" = { text = "CSHPbug", long_text = "Charged shot: HP Bug" }
+"charge_shot_kind.shot/charged-hp-bug-marked" = { text = "CSinsdlt", long_text = "Charged shot: Instant Delete" }
+"charge_shot_kind.shot/charged-ice" = { text = "CSice", long_text = "Charged shot: Ice" }
+"charge_shot_kind.shot/charged-paralyzing" = { text = "CSstun", long_text = "Charged shot: Stun" }
+"charge_shot_kind.shot/charged-pulling" = { text = "CSlmove", long_text = "Charged shot: Pull Left" }
+"charge_shot_kind.shot/charged-road" = { text = "CSlarrow", long_text = "Charged shot: Left Arrow" }
+"charge_shot_kind.shot/charged-road-back" = { text = "CSrarrow", long_text = "Charged shot: Right Arrow" }
+"charge_shot_kind.shot/chip-destruction" = { text = "CSchpdst", long_text = "Charged shot: Chip Destruction" }
+"charge_sub" = { text = "Charge-{amount}", long_text = "Charge -{amount}" }
+"charged_shot.patch-cards/airman/charge" = { text = "Ⓑ↓Trnado", long_text = "Ⓑ↓: Tornado" }
+"charged_shot.patch-cards/bass-cross-megaman/charge" = { text = "Ⓑ↓HelzR", long_text = "Ⓑ↓: Hell's Rolling" }
+"charged_shot.patch-cards/beastman/charge" = { text = "Ⓑ↓StpSwd", long_text = "Ⓑ↓: Step Sword" }
+"charged_shot.patch-cards/bighat/charge" = { text = "Ⓑ↓FlshBm", long_text = "Ⓑ↓: Flash Bomb" }
+"charged_shot.patch-cards/blizman/charge" = { text = "Ⓑ↓Blzrd", long_text = "Ⓑ↓: Blizzard Ball" }
+"charged_shot.patch-cards/bombcorn/charge" = { text = "Ⓑ↓CornSh", long_text = "Ⓑ↓: Corn Shot" }
+"charged_shot.patch-cards/bowlman/charge" = { text = "B↓Vulcan", long_text = "B↓: Vulcan" }
+"charged_shot.patch-cards/canguard/charge" = { text = "B↓Cannon", long_text = "B↓: Cannon" }
+"charged_shot.patch-cards/canodumb/charge" = { text = "B↓M.Cann", long_text = "B↓: Mega Cannon" }
+"charged_shot.patch-cards/chrgs" = { text = "Ⓑ↓ChrgS", long_text = "Ⓑ↓: Charged Shot" }
+"charged_shot.patch-cards/cloudman/charge" = { text = "Ⓑ↓Thundr", long_text = "Ⓑ↓: Thunder" }
+"charged_shot.patch-cards/coldbear/charge" = { text = "Ⓑ↓IceCbe", long_text = "Ⓑ↓: Ice Cube" }
+"charged_shot.patch-cards/count/charge" = { text = "Ⓑ↓BlRain", long_text = "Ⓑ↓: Blood Rain" }
+"charged_shot.patch-cards/cutman/charge" = { text = "Ⓑ↓YoYo", long_text = "Ⓑ↓: Yo-Yo" }
+"charged_shot.patch-cards/dark-megaman/charge" = { text = "Ⓑ↓DrkSwd", long_text = "Ⓑ↓: Dark Sword" }
+"charged_shot.patch-cards/darkman/charge" = { text = "Ⓑ↓VDoll", long_text = "Ⓑ↓: Voodoo Doll" }
+"charged_shot.patch-cards/diveman/charge" = { text = "Ⓑ↓Wshot", long_text = "Ⓑ↓: Wide Shot" }
+"charged_shot.patch-cards/django/charge" = { text = "Ⓑ↓GunDel", long_text = "Ⓑ↓: Gun del Sol" }
+"charged_shot.patch-cards/grndman/charge" = { text = "Ⓑ↓DrlArm", long_text = "Ⓑ↓: Drill Arm" }
+"charged_shot.patch-cards/gunner/charge" = { text = "Ⓑ↓MchGun", long_text = "Ⓑ↓: Machine Gun" }
+"charged_shot.patch-cards/handy/charge" = { text = "Ⓑ↓TimeBm", long_text = "Ⓑ↓: Time Bomb" }
+"charged_shot.patch-cards/iceman/charge" = { text = "Ⓑ↓IceSd", long_text = "Ⓑ↓: Ice Seed" }
+"charged_shot.patch-cards/invisible-charge" = { text = "Ⓑ↓Invis", long_text = "Ⓑ↓: Invisible" }
+"charged_shot.patch-cards/judgeman/charge" = { text = "Ⓑ↓GrBnsh", long_text = "Ⓑ↓: Grab Banish" }
+"charged_shot.patch-cards/kendoman/charge" = { text = "Ⓑ↓BamSwd", long_text = "Ⓑ↓: Bamboo Sword" }
+"charged_shot.patch-cards/kettle/charge" = { text = "Ⓑ↓Spread", long_text = "Ⓑ↓: Spreader" }
+"charged_shot.patch-cards/kilby/charge" = { text = "Ⓑ↓Lance", long_text = "Ⓑ↓: Lance" }
+"charged_shot.patch-cards/kilplant/charge" = { text = "Ⓑ↓GrasSd", long_text = "Ⓑ↓: Grass Seed" }
+"charged_shot.patch-cards/megaman-zero/charge" = { text = "Ⓑ↓ZSaber", long_text = "Ⓑ↓: Z Saber" }
+"charged_shot.patch-cards/napalmmn/charge" = { text = "Ⓑ↓BigBmb", long_text = "Ⓑ↓: Big Bomb" }
+"charged_shot.patch-cards/oldstov/charge" = { text = "Ⓑ↓FireBn", long_text = "Ⓑ↓: Fire Burner" }
+"charged_shot.patch-cards/puffy/charge" = { text = "Ⓑ↓BblSpr", long_text = "Ⓑ↓: Bubble Spread" }
+"charged_shot.patch-cards/pulsbulb/charge" = { text = "Ⓑ↓ElePls", long_text = "Ⓑ↓: Elec Pulse" }
+"charged_shot.patch-cards/rapid-buster" = { text = "B↓Sbustr", long_text = "B↓: Shooting Buster" }
+"charged_shot.patch-cards/scarcrow/charge" = { text = "Ⓑ↓DThndr", long_text = "Ⓑ↓: Doll Thunder" }
+"charged_shot.patch-cards/searchmn/charge" = { text = "Ⓑ↓CircG", long_text = "Ⓑ↓: Circle Gun" }
+"charged_shot.patch-cards/shadoman/charge" = { text = "Ⓑ↓LongS", long_text = "Ⓑ↓: Long Sword" }
+"charged_shot.patch-cards/slashman/charge" = { text = "Ⓑ↓WideS", long_text = "Ⓑ↓: Wide Sword" }
+"charged_shot.patch-cards/slimey/charge" = { text = "Ⓑ↓PnlGrb", long_text = "Ⓑ↓: Panel Grab" }
+"charged_shot.patch-cards/snakearm/charge" = { text = "Ⓑ↓SndWrm", long_text = "Ⓑ↓: Sand Worm" }
+"charged_shot.patch-cards/soul-battlrs-custom/charge" = { text = "B↓SuperV", long_text = "B↓: Super Vulcan" }
+"charged_shot.patch-cards/tenguman/charge" = { text = "Ⓑ↓WndRac", long_text = "Ⓑ↓: Wind Racket" }
+"charged_shot.patch-cards/thunman/charge" = { text = "Ⓑ↓EleSwd", long_text = "Ⓑ↓: Elec Sword" }
+"charged_shot.patch-cards/volcano/charge" = { text = "Ⓑ↓BlkBom", long_text = "Ⓑ↓: Black Bomb" }
+"chip_recovery" = { text = "ChpRecov", long_text = "Chip Recovery" }
+"chip_shuffle" = { text = "ChpShufl", long_text = "Chip Shuffle" }
+"custom_add" = { text = "Custom+{amount}", long_text = "Custom +{amount}" }
+"custom_damage" = { text = "CustDmg", long_text = "Custom Damage" }
+"custom_hp_drain" = { text = "CusHPbug", long_text = "Custom HP Bug" }
+"custom_sub" = { text = "Custom-{amount}", long_text = "Custom -{amount}" }
+"emotion_bug" = { text = "EmoBug", long_text = "Emotion Bug" }
+"first_barrier" = { text = "Fbarrier", long_text = "First Barrier" }
+"first_barrier.barrier/10" = { text = "Fbarrier", long_text = "First Barrier" }
+"first_barrier.barrier/100" = { text = "Fbarr100", long_text = "First Barrier 100" }
+"first_barrier.barrier/200" = { text = "Fbarr200", long_text = "First Barrier 200" }
+"first_barrier.barrier/bubble" = { text = "Fbblwrap", long_text = "First Bubble Wrap" }
+"first_barrier.barrier/life-aura" = { text = "FlifeAur", long_text = "First Life Aura" }
+"float_shoes" = { text = "FlotShoe", long_text = "Float Shoes" }
+"gauge.fast" = { text = "FstGauge", long_text = "Fast Gauge" }
+"gauge.normal" = { text = "NrmGauge", long_text = "Normal Gauge" }
+"gauge.slow" = { text = "SloGauge", long_text = "Slow Gauge" }
+"giga_add" = { text = "GigFld+{amount}", long_text = "Giga Folder +{amount}" }
+"hit_status.confuse" = { text = "DmgConfs", long_text = "Damage Confusion" }
+"hit_status.hp_bug" = { text = "DmgHPbug", long_text = "Damage HP Bug" }
+"hit_status.none" = { text = "DmgBug", long_text = "Damage Bug" }
+"hp_add" = { text = "HP+{amount}", long_text = "HP +{amount}" }
+"hp_drain" = { text = "BatHPbug", long_text = "Battle HP Bug" }
+"hp_percent_add" = { text = "HP+{amount}%", long_text = "HP +{amount}%" }
+"hp_percent_sub" = { text = "HP-{amount}%", long_text = "HP -{amount}%" }
+"hp_sub" = { text = "HP-{amount}", long_text = "HP -{amount}" }
+"mega_add" = { text = "MegFld+{amount}", long_text = "Mega Folder +{amount}" }
+"mega_sub" = { text = "MegFld-{amount}", long_text = "Mega Folder -{amount}" }
+"panel_trail.crack" = { text = "MoveCrak", long_text = "Movement Crack" }
+"panel_trail.grass" = { text = "MoveGras", long_text = "Movement Grass" }
+"panel_trail.hole" = { text = "MoveHole", long_text = "Movement Hole" }
+"panel_trail.ice" = { text = "MoveIce", long_text = "Movement Ice" }
+"panel_trail.none" = { text = "PanelBug", long_text = "Panel Bug" }
+"rapid_add" = { text = "Speed+{amount}", long_text = "Speed +{amount}" }
+"rapid_sub" = { text = "Speed-{amount}", long_text = "Speed -{amount}" }
+"rush" = { text = "Rush", long_text = "Rush" }
+"status_bug" = { text = "StatBug", long_text = "Status Bug" }
+"status_guard" = { text = "StatGrd", long_text = "Status Guard" }
+"step_bug" = { text = "MoveBug", long_text = "Movement Bug" }
+"super_armor" = { text = "SprArmr", long_text = "Super Armor" }
+"tango" = { text = "Tango", long_text = "Tango" }
+"undershirt" = { text = "UnderSht", long_text = "Undershirt" }
 
 # The bugs' names, for a tool that lists a build's bugs with their levels (nettai-match's `build`): every bug the
 # NaviCust or a patch card can bring, each a full name, written out. A bug a patch card can bring is keyed as its
