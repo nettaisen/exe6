@@ -547,7 +547,7 @@ language = "ja"
 
 [navicust_programs]
 "airshoes" = { name = "エアシューズ", description = "パネルのないマスでも\nいどうできる!" }
-"antidmg" = { name = "カワリミマジック", description = "B+左のコマンドで\n攻撃をうけたふりして\nしゅりけんをなげる!" }
+"antidmg" = { name = "カワリミマジック", description = "Ⓑ+左のコマンドで\n攻撃をうけたふりして\nしゅりけんをなげる!" }
 "attack-1" = { name = "アタック+1", description = "ロックバスターの\n攻撃力が1アップ!" }
 "attckmax" = { name = "アタックMAX", description = "ロックバスターの\n攻撃力がMAXに!" }
 "autoheal" = { name = "セルフリカバリー", description = "バトルしゅうりょうご\nHPがすこしだけ\nかいふくする" }
@@ -574,18 +574,18 @@ language = "ja"
 "hp-400" = { name = "HP+400", description = "マックスHPが\n400ふえる!" }
 "hp-50" = { name = "HP+50", description = "マックスHPが\n50ふえる!" }
 "hp-500" = { name = "HP+500", description = "マックスHPが\n500ふえる!" }
-"humor" = { name = "ユーモアセンス", description = "きまじめすぎるナビに\nくみこんでLで\nはなしてみてください" }
+"humor" = { name = "ユーモアセンス", description = "きまじめすぎるナビに\nくみこんでⓁで\nはなしてみてください" }
 "jungle" = { name = "ジャングルランド", description = "ジャングルのかおりを\nほうしゅつして木属性\nウイルスをひきつける" }
 "megfldr1" = { name = "メガフォルダ1", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+1" }
 "megfldr2" = { name = "メガフォルダ2", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+2" }
 "millions" = { name = "ミリオネア", description = "ランダムミステリー\nデータからゼニー\nばかりが手に入る!" }
 "numbropn" = { name = "ナンバーオープン", description = "カスタム画面で\nえらべるチップが\n10枚になる!" }
 "oilbody" = { name = "オイルボディ", description = "炎属性ウイルスが\n大スキなオイルをぬり\nねらわれやすくなる!" }
-"poem" = { name = "リズミカルポエム", description = "Lでナビが\n5・7・5のリズムで\nココロのうちをうたう" }
-"reflect" = { name = "リフレクト", description = "B+左のコマンドで\n攻撃をはねかえす\nリフレクト!" }
+"poem" = { name = "リズミカルポエム", description = "Ⓛでナビが\n5・7・5のリズムで\nココロのうちをうたう" }
+"reflect" = { name = "リフレクト", description = "Ⓑ+左のコマンドで\n攻撃をはねかえす\nリフレクト!" }
 "rush" = { name = "ラッシュサポート", description = "たいせんせんよう!\nきえたあいてのニオイ\nをかぎつけとびかかる" }
-"shield" = { name = "シールド", description = "B+左のコマンドで\nほとんどの攻撃を\nふせぐシールド!" }
-"sliprunr" = { name = "スリップランナー", description = "B+いどうですべって\nいどうできる、ただし\nとちゅうでとまれない" }
+"shield" = { name = "シールド", description = "Ⓑ+左のコマンドで\nほとんどの攻撃を\nふせぐシールド!" }
+"sliprunr" = { name = "スリップランナー", description = "Ⓑ+いどうですべって\nいどうできる、ただし\nとちゅうでとまれない" }
 "sneakrun" = { name = "シノビダッシュ", description = "自分よりよわいてきと\nであわなくなる!" }
 "speed-1" = { name = "ラピッド+1", description = "ロックバスターの\n連射力が1アップ!" }
 "speedmax" = { name = "ラピッドMAX", description = "ロックバスターの\n連射力がMAXに!" }
@@ -601,20 +601,20 @@ language = "ja"
 "attack_add" = "アタック+{amount}"
 "attack_sub" = "アタック-{amount}"
 "attack_times" = "アタック×{amount}"
-"b_button.patch-cards/b-sword" = "Bソード"
-"b_button.patch-cards/beetle/b-button" = "Bミニボム"
-"b_button.patch-cards/mettfire/b-button" = "Bメテオ1"
-"b_button.patch-cards/planetmn/b-button" = "Bクラック"
+"b_button.patch-cards/b-sword" = "Ⓑソード"
+"b_button.patch-cards/beetle/b-button" = "Ⓑミニボム"
+"b_button.patch-cards/mettfire/b-button" = "Ⓑメテオ1"
+"b_button.patch-cards/planetmn/b-button" = "Ⓑクラック"
 "b_button.patch-cards/triple-buster" = "トリプルバスター"
-"back_special" = "B+←"
-"back_special.megaman/anti-damage" = "B+←でカワリミ"
-"back_special.megaman/reflect" = "B+←リフレクト"
-"back_special.megaman/shield" = "B+←でシールド"
-"back_special.patch-cards/darkmech/back-special" = "B+←でMソード"
-"back_special.patch-cards/dustman/back-special" = "B+←でスイコミ"
-"back_special.patch-cards/honybomr/back-special" = "B+←でRハニー"
-"back_special.patch-cards/magntman/back-special" = "B+←であしどめ"
-"back_special.patch-cards/metrid/back-special" = "B+←でメテオ3"
+"back_special" = "Ⓑ+←"
+"back_special.megaman/anti-damage" = "Ⓑ+←でカワリミ"
+"back_special.megaman/reflect" = "Ⓑ+←リフレクト"
+"back_special.megaman/shield" = "Ⓑ+←でシールド"
+"back_special.patch-cards/darkmech/back-special" = "Ⓑ+←でMソード"
+"back_special.patch-cards/dustman/back-special" = "Ⓑ+←でスイコミ"
+"back_special.patch-cards/honybomr/back-special" = "Ⓑ+←でRハニー"
+"back_special.patch-cards/magntman/back-special" = "Ⓑ+←であしどめ"
+"back_special.patch-cards/metrid/back-special" = "Ⓑ+←でメテオ3"
 "beat" = "ビートサポート"
 "body.aqua" = "アクアボディ"
 "body.elec" = "エレキボディ"
@@ -645,50 +645,50 @@ language = "ja"
 "charge_shot_kind.shot/charged-road-back" = "CSで右やじるし"
 "charge_shot_kind.shot/chip-destruction" = "CSチップはかい"
 "charge_sub" = "チャージ-{amount}"
-"charged_shot.patch-cards/airman/charge" = "Bためトルネード"
-"charged_shot.patch-cards/bass-cross-megaman/charge" = "BためヘルズR"
-"charged_shot.patch-cards/beastman/charge" = "BためフミコミZ"
-"charged_shot.patch-cards/bighat/charge" = "BためFボム"
-"charged_shot.patch-cards/blizman/charge" = "Bためブリザード"
-"charged_shot.patch-cards/bombcorn/charge" = "BためコーンS"
+"charged_shot.patch-cards/airman/charge" = "Ⓑためトルネード"
+"charged_shot.patch-cards/bass-cross-megaman/charge" = "ⒷためヘルズR"
+"charged_shot.patch-cards/beastman/charge" = "ⒷためフミコミZ"
+"charged_shot.patch-cards/bighat/charge" = "ⒷためFボム"
+"charged_shot.patch-cards/blizman/charge" = "Ⓑためブリザード"
+"charged_shot.patch-cards/bombcorn/charge" = "ⒷためコーンS"
 "charged_shot.patch-cards/bowlman/charge" = "Bためバルカン"
 "charged_shot.patch-cards/canguard/charge" = "Bためキャノン"
 "charged_shot.patch-cards/canodumb/charge" = "BためMキャノン"
-"charged_shot.patch-cards/chrgs" = "BためチャージS"
-"charged_shot.patch-cards/cloudman/charge" = "BためサンダーB"
-"charged_shot.patch-cards/coldbear/charge" = "BためアイスC"
-"charged_shot.patch-cards/count/charge" = "BためBレイン"
-"charged_shot.patch-cards/cutman/charge" = "Bためヨーヨー"
-"charged_shot.patch-cards/dark-megaman/charge" = "BためDソード"
-"charged_shot.patch-cards/darkman/charge" = "Bためニンギョウ"
-"charged_shot.patch-cards/diveman/charge" = "BためWショット"
-"charged_shot.patch-cards/django/charge" = "Bためガンデル"
-"charged_shot.patch-cards/grndman/charge" = "BためドリルA"
-"charged_shot.patch-cards/gunner/charge" = "Bためマシンガン"
-"charged_shot.patch-cards/handy/charge" = "BためCボム"
-"charged_shot.patch-cards/iceman/charge" = "BためアイスS"
-"charged_shot.patch-cards/invisible-charge" = "Bためインビジ"
-"charged_shot.patch-cards/judgeman/charge" = "BためSパニシュ"
-"charged_shot.patch-cards/kendoman/charge" = "BためBソード"
-"charged_shot.patch-cards/kettle/charge" = "Bためスプレッド"
-"charged_shot.patch-cards/kilby/charge" = "BためBランス"
-"charged_shot.patch-cards/kilplant/charge" = "BためクサムラS"
-"charged_shot.patch-cards/megaman-zero/charge" = "BためZセイバー"
-"charged_shot.patch-cards/napalmmn/charge" = "Bためビッグボム"
-"charged_shot.patch-cards/oldstov/charge" = "BためHバーナー"
-"charged_shot.patch-cards/puffy/charge" = "BためバブルSP"
-"charged_shot.patch-cards/pulsbulb/charge" = "BためエレキP"
+"charged_shot.patch-cards/chrgs" = "ⒷためチャージS"
+"charged_shot.patch-cards/cloudman/charge" = "ⒷためサンダーB"
+"charged_shot.patch-cards/coldbear/charge" = "ⒷためアイスC"
+"charged_shot.patch-cards/count/charge" = "ⒷためBレイン"
+"charged_shot.patch-cards/cutman/charge" = "Ⓑためヨーヨー"
+"charged_shot.patch-cards/dark-megaman/charge" = "ⒷためDソード"
+"charged_shot.patch-cards/darkman/charge" = "Ⓑためニンギョウ"
+"charged_shot.patch-cards/diveman/charge" = "ⒷためWショット"
+"charged_shot.patch-cards/django/charge" = "Ⓑためガンデル"
+"charged_shot.patch-cards/grndman/charge" = "ⒷためドリルA"
+"charged_shot.patch-cards/gunner/charge" = "Ⓑためマシンガン"
+"charged_shot.patch-cards/handy/charge" = "ⒷためCボム"
+"charged_shot.patch-cards/iceman/charge" = "ⒷためアイスS"
+"charged_shot.patch-cards/invisible-charge" = "Ⓑためインビジ"
+"charged_shot.patch-cards/judgeman/charge" = "ⒷためSパニシュ"
+"charged_shot.patch-cards/kendoman/charge" = "ⒷためBソード"
+"charged_shot.patch-cards/kettle/charge" = "Ⓑためスプレッド"
+"charged_shot.patch-cards/kilby/charge" = "ⒷためBランス"
+"charged_shot.patch-cards/kilplant/charge" = "ⒷためクサムラS"
+"charged_shot.patch-cards/megaman-zero/charge" = "ⒷためZセイバー"
+"charged_shot.patch-cards/napalmmn/charge" = "Ⓑためビッグボム"
+"charged_shot.patch-cards/oldstov/charge" = "ⒷためHバーナー"
+"charged_shot.patch-cards/puffy/charge" = "ⒷためバブルSP"
+"charged_shot.patch-cards/pulsbulb/charge" = "ⒷためエレキP"
 "charged_shot.patch-cards/rapid-buster" = "BためSバスター"
-"charged_shot.patch-cards/scarcrow/charge" = "BためドールT"
-"charged_shot.patch-cards/searchmn/charge" = "BためサークルG"
-"charged_shot.patch-cards/shadoman/charge" = "BためロングS"
-"charged_shot.patch-cards/slashman/charge" = "BためWソード"
-"charged_shot.patch-cards/slimey/charge" = "BためパネルS"
-"charged_shot.patch-cards/snakearm/charge" = "BためサンドW"
+"charged_shot.patch-cards/scarcrow/charge" = "ⒷためドールT"
+"charged_shot.patch-cards/searchmn/charge" = "ⒷためサークルG"
+"charged_shot.patch-cards/shadoman/charge" = "ⒷためロングS"
+"charged_shot.patch-cards/slashman/charge" = "ⒷためWソード"
+"charged_shot.patch-cards/slimey/charge" = "ⒷためパネルS"
+"charged_shot.patch-cards/snakearm/charge" = "ⒷためサンドW"
 "charged_shot.patch-cards/soul-battlrs-custom/charge" = "BためSバルカン"
-"charged_shot.patch-cards/tenguman/charge" = "BためFラケット"
-"charged_shot.patch-cards/thunman/charge" = "BためEソード"
-"charged_shot.patch-cards/volcano/charge" = "BためブラックB"
+"charged_shot.patch-cards/tenguman/charge" = "ⒷためFラケット"
+"charged_shot.patch-cards/thunman/charge" = "ⒷためEソード"
+"charged_shot.patch-cards/volcano/charge" = "ⒷためブラックB"
 "chip_recovery" = "チップリカバリー"
 "chip_shuffle" = "サーチシャッフル"
 "custom_add" = "カスタム+{amount}"
