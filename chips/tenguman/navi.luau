@@ -250,12 +250,17 @@ local function tick(me: Object)
     c:present()
 end
 
--- `sub_80B9F00`: the controller moves on, and he goes (his collision slot
--- stays taken, as in the game).
+-- `sub_80B9F00`: the controller moves on, and he goes, his collision
+-- record freed. (The game's frees him alone: his record stays taken to the
+-- round's end, one more of its 32 each time he is used. nettai frees it, as
+-- every other navi chip's end does.)
 local function finish(me: Object)
     local controller = (me.state :: State).controller
     if controller then
         navi_left(controller)
+    end
+    if me.has_collision then
+        me.collision:free()
     end
     me:free()
 end
