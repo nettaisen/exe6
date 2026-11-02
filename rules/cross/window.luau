@@ -4,7 +4,8 @@
 -- (`sub_8026840`) as the screen opens; a Cross chosen in the window
 -- (`sub_8028A78`'s A: the rules' `custom.choose_form`) and its window
 -- (`sub_8027A58`, `sub_8027AAE`, `sub_8027ADE`); B taking the Cross back
--- (`sub_8029032`); the form it puts the navi in at the turn's start
+-- (`sub_8029032`), and a click on it un-choosing it with the picks kept (the
+-- rules' `custom.unchoose_form`); the form it puts the navi in at the turn's start
 -- (`sub_802937A`); and the round's record of the Crosses used
 -- (`dword_20349A0`). The window itself, UP opening it (`sub_8028B74`), its
 -- opening (`sub_8027834`), its cursor and keys (`sub_802794A`), its closing
@@ -13,6 +14,7 @@
 -- custom screen's `form_list` (rules/custom_screen.luau) says. Its state is
 -- the rules', which the frontend draws the window from.
 
+local custom_beast = require("../beast/custom")
 local exe6 = require("../api")
 local kind = require("../forms/kind")
 local chip_gate_battle = require("../../lib/chip_gate_battle")
@@ -213,8 +215,10 @@ function window.choose(side: number, entry: number)
     custom.refresh_buttons(side)
 end
 
--- B with nothing picked takes the Cross chosen back.
-function window.take_back(side: number): boolean
+-- B with nothing picked takes the Cross chosen back (`sub_8029032`), as the player's un-choosing of it does with picks
+-- too, which keeps them: the emotion window's face goes, or is a pick's again (the BeastOut chip's, which a Cross
+-- chosen after it covered).
+function window.unchoose(side: number): boolean
     local s = rules.state() :: State
     if not s.cross_chosen then
         return false
@@ -225,7 +229,7 @@ function window.take_back(side: number): boolean
     s.cross_chosen = false
     s.chosen = 0
     custom.set_form(side, "cross_chosen", nil)
-    custom.set_face(side, nil)
+    custom.set_face(side, custom_beast.picked_face(side))
     custom.play(side, "cancel")
     return true
 end

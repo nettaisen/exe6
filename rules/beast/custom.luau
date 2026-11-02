@@ -123,7 +123,7 @@ custom_beast.button = {
         custom.set_column_icon(side, beast_out_chip)
     end,
     -- `sub_802A0EC`: taking Beast Out back takes its face back.
-    taken_back = function(side: number)
+    taken_back = function(side: number, _place: number)
         custom.set_form(side, "beast_out", nil)
         custom.set_face(side, nil)
         custom.play(side, "back")
@@ -140,7 +140,7 @@ function custom_beast.chip_picked(side: number, chip: Chip)
 end
 
 -- `sub_802A0EC`: taking the BeastOut chip back takes its face back.
-function custom_beast.chip_taken_back(side: number, chip: Chip)
+function custom_beast.chip_taken_back(side: number, chip: Chip, _place: number)
     if chip == beast_out_chip then
         custom.set_face(side, nil)
         custom.play(side, "back")
@@ -217,6 +217,18 @@ custom_beast.window = {
         return tick < 70
     end,
 }
+
+-- The face a pick gives the emotion window, if any: the BeastOut chip's, as its window put it on (`sub_8027672`).
+-- (Beast Out's own pick and a Cross chosen exclude each other.)
+function custom_beast.picked_face(side: number): FormDef?
+    for _, slot in custom.picks(side) do
+        local pick = custom.slot(side, slot)
+        if pick ~= nil and pick.chip == beast_out_chip then
+            return beast_form(side, false)
+        end
+    end
+    return nil
+end
 
 -- The round's first screen forgets the round's Beast Out.
 function custom_beast.open(side: number)

@@ -259,7 +259,7 @@ local rules: Rules = {
             beast.custom.confirmed(side)
         end,
         choose_form = cross.window.choose,
-        take_back = cross.window.take_back,
+        unchoose_form = cross.window.unchoose,
         chip_picked = beast.custom.chip_picked,
         chip_taken_back = beast.custom.chip_taken_back,
     },
