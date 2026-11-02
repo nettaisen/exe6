@@ -101,7 +101,8 @@ return {
     -- The Cross window (the rules' form list, ./cross/window.luau), as each player's layer shows it: UP opens it from
     -- the top row and OK (`sub_8028B74`); it opens in 12 ticks (`sub_8027834`: its map every 3, up on the 12th) with
     -- the original's 0x7A, and closes in 6 (`sub_802790C`) with 0x7D. A pointer opens and closes it from its tab, the
-    -- window's CROSS SELECT label (the tab's, and the window's header once it is up).
+    -- window's CROSS SELECT label (the tab's, and the window's header once it is up), and closes it from the B:EXIT
+    -- label at its foot as B does.
     form_list = {
         opens_from = { 0, 1, 2, 3, 4, 10 },
         opening = 12,
@@ -109,5 +110,6 @@ return {
         open_sound = asset.sound("select-7a"),
         close_sound = asset.sound("cross-window-close"),
         tab = "cross-select",
+        exit = "b-exit",
     },
 }
