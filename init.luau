@@ -13,5 +13,6 @@ return {
     patch_cards = require("@self/patch_cards"),
     navicust_programs = require("@self/navicust"),
     rules = require("@self/rules"),
+    backgrounds = require("@self/backgrounds"),
     extract = require("@self/extract"),
 }
