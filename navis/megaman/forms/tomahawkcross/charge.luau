@@ -8,7 +8,7 @@
 local collision = require("../../../../rules/collision")
 local regions = require("@exelib/regions")
 local weapon = require("../../../../lib/weapon")
-local big_slash_sprite = require("../../../../sprites/big_slash")
+local big_slash_sprite = asset.sprite("big-slash")
 
 export type State = {
     -- AIAttackVars+0x10: ticks left in the phase.

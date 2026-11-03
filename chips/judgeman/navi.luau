@@ -38,7 +38,7 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("./judgeman_sprite")
+local SPRITE = asset.sprite("judgeman")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_LASH = asset.sound("erase-man-2")
 

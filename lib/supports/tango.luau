@@ -6,8 +6,8 @@
 local common = require("@exelib/supports/tango")
 local effects = require("../effects")
 local heal = require("./heal")
-local puff_sprite = require("../../sprites/puff")
-local tango_sprite = require("./tango_sprite")
+local puff_sprite = asset.sprite("puff")
+local tango_sprite = asset.sprite("tango")
 
 return common.make {
     id = "tango",

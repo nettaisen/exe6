@@ -5,7 +5,6 @@
 -- (./whirlwind) from the panel in front when the navi's wind-up animation
 -- ends; the navi holds for 46 ticks.
 
-local played = require("@exelib/played")
 local weapon = require("../../../../lib/weapon")
 local whirlwind = require("./whirlwind")
 
@@ -52,7 +51,7 @@ local function wind_up(me: Object, s: State)
         me.step_init = 4
         return
     end
-    if not played.ended(me.sprite, WIND_UP_STEPS) then
+    if me.sprite.steps < WIND_UP_STEPS then
         return
     end
     me:set_animation(0x14)

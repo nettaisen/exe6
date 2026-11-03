@@ -22,9 +22,9 @@ local strike = require("./strike")
 
 local statue = {}
 
-local SPRITE = require("./guardian_statue_sprite")
-local lightning_sprite = require("../../sprites/lightning")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("guardian-statue")
+local lightning_sprite = asset.sprite("lightning")
+local puff_sprite = asset.sprite("puff")
 
 local made = common.make {
     id = "guardian/statue",

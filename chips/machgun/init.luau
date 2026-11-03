@@ -9,8 +9,8 @@
 local attachment = require("../objects/attachment")
 local panel_strike = require("../objects/panel_strike")
 local panels = require("@exelib/panels")
-local machine_gun_sprite = require("@self/machine_gun_sprite")
-local reticle_sprite = require("../sprites/reticle")
+local machine_gun_sprite = asset.sprite("machine-gun")
+local reticle_sprite = asset.sprite("reticle")
 
 export type State = {
     -- The countdown to the next strike (AIAttackVars+0x10).

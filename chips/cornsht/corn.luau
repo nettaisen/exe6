@@ -9,7 +9,7 @@
 local collision = require("../../rules/collision")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
-local energy_burst_sprite = require("../../sprites/energy_burst")
+local energy_burst_sprite = asset.sprite("energy-burst")
 
 local corn = {}
 

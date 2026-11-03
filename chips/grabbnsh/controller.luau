@@ -6,7 +6,7 @@
 
 local common = require("@exelib/grabbnsh/controller")
 local hand = require("./hand")
-local grab_shot_sprite = require("../../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 return common.make {
     id = "grabbnsh/controller",

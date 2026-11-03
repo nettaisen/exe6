@@ -10,7 +10,7 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/batcan")
 local sparks = require("../../lib/sparks")
-local bat_cannon_sprite = require("./bat_cannon_sprite")
+local bat_cannon_sprite = asset.sprite("bat-cannon")
 
 return common.make {
     shot_id = "batcan/shot",

@@ -3,7 +3,7 @@
 
 local buster = require("../weapons/buster")
 local charged_shot = require("../weapons/charged_shot")
-local megaman_sprite = require("./megaman_sprite")
+local megaman_sprite = asset.sprite("megaman")
 
 local form: FormDef = {
     -- EXE6's base form.

@@ -17,8 +17,8 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("./circusman_sprite")
-local pink_flash_sprite = require("../../sprites/pink_flash")
+local SPRITE = asset.sprite("circusman")
+local pink_flash_sprite = asset.sprite("pink-flash")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CATCH = asset.sound("circus-catch")
 local SOUND_DRUMROLL = asset.sound("drumroll")

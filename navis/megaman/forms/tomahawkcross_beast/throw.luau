@@ -8,8 +8,7 @@
 -- after the swing began it idles.
 
 local boomerang = require("../../../../chips/boomer/boomerang")
-local played = require("@exelib/played")
-local boomerang_tomahawk_sprite = require("./boomerang_tomahawk_sprite")
+local boomerang_tomahawk_sprite = asset.sprite("boomerang-tomahawk")
 
 export type State = {
     -- Ticks left in the swing (AIAttackVars+0x10).
@@ -53,7 +52,7 @@ local function wind_up(me: Object, s: State)
         me.step_init = 4
         return
     end
-    if not played.ended(me.sprite, WIND_UP_STEPS) then
+    if me.sprite.steps < WIND_UP_STEPS then
         return
     end
     me:set_animation(0x18)

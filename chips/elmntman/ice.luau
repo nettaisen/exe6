@@ -21,7 +21,7 @@ export type State = {
     while_dimmed: boolean,
 }
 
-local SPRITE = require("../../sprites/elmnt_ice")
+local SPRITE = asset.sprite("elmnt-ice")
 
 -- Its height, in whole pixels (a halfword store over Z's whole part).
 local HEIGHT = 8

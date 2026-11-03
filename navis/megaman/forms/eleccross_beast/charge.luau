@@ -9,12 +9,11 @@
 -- stops.
 
 local element_pillar = require("../../../../objects/element_pillar")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
 local statuses = require("../../../../rules/status")
 local weapon = require("../../../../lib/weapon")
-local element_pillar_lightning_sprite = require("./element_pillar_lightning_sprite")
+local element_pillar_lightning_sprite = asset.sprite("element-pillar-lightning")
 
 export type State = {
     -- Ticks left (AIAttackVars+0x10). (The ticks to the next crackle are
@@ -68,7 +67,7 @@ local function wind_up(me: Object, s: State)
         me.step_init = 4
         return
     end
-    if not played.ended(me.sprite, WIND_UP_STEPS) then
+    if me.sprite.steps < WIND_UP_STEPS then
         return
     end
     me:set_animation(0x13)

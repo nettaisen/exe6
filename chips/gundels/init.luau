@@ -7,8 +7,8 @@
 local action = require("@self/action")
 local lockon = require("../rules/lockon")
 local regions = require("@exelib/regions")
-local sun_beam_ex_sprite = require("@self/sun_beam_ex_sprite")
-local sun_beam_sprite = require("../sprites/sun_beam")
+local sun_beam_ex_sprite = asset.sprite("sun-beam-ex")
+local sun_beam_sprite = asset.sprite("sun-beam")
 
 -- The beams (the original's looks, `dword_80E5C28`, and palettes): in the
 -- shade, and in the sun; GunDelEX's wider.

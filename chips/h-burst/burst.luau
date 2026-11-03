@@ -8,7 +8,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/h_burst/burst")
 local statuses = require("../../rules/status")
-local pink_flash_sprite = require("../../sprites/pink_flash")
+local pink_flash_sprite = asset.sprite("pink-flash")
 
 local burst = {}
 

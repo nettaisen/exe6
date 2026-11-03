@@ -6,8 +6,8 @@ local buster = require("./megaman/weapons/buster")
 local a_charge = require("./megaman/weapons/charged_chip_bonus_29")
 local charge = require("@self/charge")
 local chargeman = require("@self/chip").volcchrg
-local chargeman_portrait_sprite = require("@self/chargeman_portrait_sprite")
-local chargeman_sprite = require("@self/chargeman_sprite")
+local chargeman_portrait_sprite = asset.sprite("chargeman-portrait")
+local chargeman_sprite = asset.sprite("chargeman")
 
 local navi: NaviDef = {
     sprite = chargeman_sprite,

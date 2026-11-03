@@ -15,8 +15,8 @@ local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local statuses = require("../../rules/status")
 local swords = require("../../lib/swords/parts")
-local elec_sword_sprite = require("../../chips/elecswrd/elec_sword_sprite")
-local sword_slash_sprite = require("../../sprites/sword_slash")
+local elec_sword_sprite = asset.sprite("elec-sword")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- The slash over a column.
 local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }

@@ -9,7 +9,7 @@
 
 local common = require("@exelib/geddon/quake")
 local rising_bubble = require("../../objects/rising_bubble")
-local small_puff_sprite = require("../../sprites/small_puff")
+local small_puff_sprite = asset.sprite("small-puff")
 
 return common.make {
     id = "geddon/quake",

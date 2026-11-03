@@ -11,7 +11,7 @@ local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local stand_in = require("@exelib/dimming/stand_in")
-local sight_sprite = require("../../sprites/sight")
+local sight_sprite = asset.sprite("sight")
 
 local gunner = {}
 

@@ -10,7 +10,7 @@ local collision = require("../../rules/collision")
 local link = require("../../lib/link_chips")
 local regions = require("@exelib/regions")
 local tornado = require("./tornado")
-local swirl_sprite = require("../../sprites/swirl")
+local swirl_sprite = asset.sprite("swirl")
 
 export type State = { timer: number }
 

@@ -20,8 +20,8 @@
 -- `navi_boost.hook(change)`.
 
 local dimming_chips = require("@exelib/dimming")
-local bug_sprite = require("../../sprites/bug")
-local charge_glow_a_sprite = require("../../sprites/charge_glow_a")
+local bug_sprite = asset.sprite("bug")
+local charge_glow_a_sprite = asset.sprite("charge-glow-a")
 
 local navi_boost = {}
 

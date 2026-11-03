@@ -12,7 +12,7 @@ local lockon = require("../../../../rules/lockon")
 local lunge_slash = require("./lunge_slash")
 local regions = require("@exelib/regions")
 local weapon = require("../../../../lib/weapon")
-local cross_slash_sprite = require("../../../../sprites/cross_slash")
+local cross_slash_sprite = asset.sprite("cross-slash")
 
 export type State = {
     -- AIAttackVars+0x10: ticks of the phase.

@@ -32,9 +32,9 @@ export type State = {
     cracks_column: boolean,
 }
 
-local SPRITE = require("./golem_sprite")
-local dust_2_sprite = require("../../sprites/dust_2")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("golem")
+local dust_2_sprite = asset.sprite("dust-2")
+local puff_sprite = asset.sprite("puff")
 local LEAP_SOUND, LAND_SOUND, HIT_SOUND = asset.sound("golem-2"), asset.sound("land"), asset.sound("golem")
 
 -- The nearest target's column (`byte_80E4E74`, by side: required and

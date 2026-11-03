@@ -7,7 +7,6 @@
 -- if there is none; 21 ticks later it idles.
 
 local erase_drop = require("./erase_drop")
-local played = require("@exelib/played")
 local weapon = require("../../../../lib/weapon")
 
 export type State = {
@@ -81,7 +80,7 @@ local function raise(me: Object)
         me.step_init = 4
         return
     end
-    if played.ended(me.sprite, RAISE_STEPS) then
+    if me.sprite.steps >= RAISE_STEPS then
         me:set_animation(0x13)
         me.step = DROP
         me.step_init = 0
@@ -90,7 +89,7 @@ end
 
 -- `sub_80EE89C`: when the animation ends, the drop on the target.
 local function drop(me: Object, s: State)
-    if not played.ended(me.sprite, DROP_STEPS) then
+    if me.sprite.steps < DROP_STEPS then
         return
     end
     local x, found = enemy_column(me)

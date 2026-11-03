@@ -8,7 +8,7 @@
 local attachment = require("../../objects/attachment")
 local bullet = require("../../objects/bullet")
 local common = require("@exelib/vulcan/action")
-local vulcan_sprite = require("./vulcan_sprite")
+local vulcan_sprite = asset.sprite("vulcan")
 
 local vulcan = {}
 

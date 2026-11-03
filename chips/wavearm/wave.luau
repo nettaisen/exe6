@@ -12,7 +12,6 @@
 
 local collision = require("../../rules/collision")
 local panels = require("@exelib/panels")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 
 local wave = {}
@@ -33,7 +32,7 @@ function wave.variant(v: Variant): Variant
     return new.record("shock-wave-variant", v)
 end
 
-local SPRITE = require("./shock_wave_sprite")
+local SPRITE = asset.sprite("shock-wave")
 local SOUND = asset.sound("shock-wave")
 local SOLID = 0x10
 -- The rows ahead it looks for enemies in (`byte_80C6DB8`), by facing
@@ -150,7 +149,7 @@ local function roll(me: Object)
         me.action = 4
     end
     local steps = s.variant.steps
-    if played.ended(me.sprite, steps, steps) then
+    if (me.sprite.steps > 0 and me.sprite.steps % steps == 0) then
         off_field(me)
         me.collision:set_region(nil)
     end
@@ -161,7 +160,7 @@ end
 local function linger(me: Object)
     local v = (me.state :: State).variant
     if not v.quick then
-        if not played.ended(me.sprite, v.steps, v.steps) then
+        if not (me.sprite.steps > 0 and me.sprite.steps % v.steps == 0) then
             return
         end
     else

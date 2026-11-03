@@ -34,7 +34,7 @@ export type State = {
     restart: boolean,
 }
 
-local SPRITE = require("./sensor_sprite")
+local SPRITE = asset.sprite("sensor")
 -- Its identity: a field object, with the look something that takes its
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {

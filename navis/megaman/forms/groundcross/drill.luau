@@ -13,8 +13,8 @@ local lockon = require("../../../../rules/lockon")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local weapon = require("../../../../lib/weapon")
-local ground_drill_effect_sprite = require("../../../../sprites/ground_drill_effect")
-local puff_sprite = require("../../../../sprites/puff")
+local ground_drill_effect_sprite = asset.sprite("ground-drill-effect")
+local puff_sprite = asset.sprite("puff")
 
 export type State = {
     -- AIAttackVars+0x10: ticks left in the phase.

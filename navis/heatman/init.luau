@@ -5,9 +5,9 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local heatman = require("@self/chip").heatpres
-local heatman_overlay_sprite = require("@self/heatman_overlay_sprite")
-local heatman_portrait_sprite = require("@self/heatman_portrait_sprite")
-local heatman_sprite = require("@self/heatman_sprite")
+local heatman_overlay_sprite = asset.sprite("heatman-overlay")
+local heatman_portrait_sprite = asset.sprite("heatman-portrait")
+local heatman_sprite = asset.sprite("heatman")
 
 local navi: NaviDef = {
     sprite = heatman_sprite,

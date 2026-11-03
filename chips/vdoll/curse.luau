@@ -12,7 +12,7 @@ local dimming_chips = require("@exelib/dimming")
 local regions = require("@exelib/regions")
 local sparkles = require("./sparkles")
 local sparks = require("../../lib/sparks")
-local explosion_sprite = require("../../sprites/explosion")
+local explosion_sprite = asset.sprite("explosion")
 
 local curse = {}
 

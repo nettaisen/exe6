@@ -8,8 +8,8 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/widesht/wave")
-local rock_cubes_sprite = require("../../sprites/rock_cubes")
-local wide_wave_sprite = require("./wide_wave_sprite")
+local rock_cubes_sprite = asset.sprite("rock-cubes")
+local wide_wave_sprite = asset.sprite("wide-wave")
 
 local wave = {}
 

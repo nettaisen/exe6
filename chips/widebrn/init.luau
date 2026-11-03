@@ -8,7 +8,7 @@ local attachment = require("../objects/attachment")
 local burn = require("../lib/burner/burn")
 local firebrn_chips = require("./firebrn")
 local lockon = require("../rules/lockon")
-local burner_sprite = require("../sprites/burner")
+local burner_sprite = asset.sprite("burner")
 
 local function wide_burn(id: string): Action
     return burn.action {

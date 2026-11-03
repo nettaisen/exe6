@@ -11,7 +11,7 @@ local dash_hit = require("../../dash_hit")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
 local weapon = require("../../../../lib/weapon")
-local puff_sprite = require("../../../../sprites/puff")
+local puff_sprite = asset.sprite("puff")
 
 export type State = {
     -- AIAttackVars+0x10: ticks of the phase. (The ticks of slowing down

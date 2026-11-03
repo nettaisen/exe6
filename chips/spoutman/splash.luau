@@ -19,7 +19,7 @@ export type State = {
     cracks: boolean,
 }
 
-local SPRITE = require("../../sprites/spout_splash")
+local SPRITE = asset.sprite("spout-splash")
 
 -- `sub_80C8708`: on its panel on the ground, collision on.
 local function init(me: Object)

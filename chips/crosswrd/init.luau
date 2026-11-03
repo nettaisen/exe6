@@ -6,8 +6,8 @@ local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
-local cross_slash_sprite = require("../sprites/cross_slash")
-local sword_slash_sprite = require("../sprites/sword_slash")
+local cross_slash_sprite = asset.sprite("cross-slash")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- CrosSwrd's X.
 local CROSS_SLASH = new.effect { sprite = cross_slash_sprite, anim = 0, palette = 0, steps = 11 }

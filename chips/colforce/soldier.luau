@@ -16,7 +16,7 @@ export type State = {
     delay: number,
 }
 
-local SPRITE = require("../colarmy/col_army_sprite")
+local SPRITE = asset.sprite("col-army")
 local SHOT_SOUND = asset.sound("col-army-2")
 -- Where it drops from, 16.16.
 local DROP_Z = 0xFF_0000

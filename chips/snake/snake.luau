@@ -8,8 +8,8 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/snake")
 local trajectory = require("../../lib/trajectory")
-local pink_flash_sprite = require("../../sprites/pink_flash")
-local snake_sprite = require("./snake_sprite")
+local pink_flash_sprite = asset.sprite("pink-flash")
+local snake_sprite = asset.sprite("snake")
 
 local snake = {}
 

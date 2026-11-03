@@ -35,8 +35,8 @@ export type State = {
     column: number,
 }
 
-local SPRITE = require("../../navis/slashman/slashman_sprite")
-local slash_man_effect_sprite = require("../../sprites/slash_man_effect")
+local SPRITE = asset.sprite("slashman")
+local slash_man_effect_sprite = asset.sprite("slash-man-effect")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FLAME_HOOK_FIRE = asset.sound("flame-hook-fire")

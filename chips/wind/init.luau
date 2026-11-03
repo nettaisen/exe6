@@ -6,7 +6,7 @@
 
 local controller = require("@self/controller")
 local fan = require("@self/fan")
-local fan_sprite = require("@self/fan_sprite")
+local fan_sprite = asset.sprite("fan")
 
 local wind: Chip = {
     codes = { "*" },

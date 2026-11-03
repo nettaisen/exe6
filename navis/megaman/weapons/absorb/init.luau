@@ -8,7 +8,7 @@
 -- its absorbed list while the navi is still in this action); 11 ticks
 -- later the navi idles. See docs/engine/field-objects.md §4.4.
 
-local dust_cloud_sprite = require("../../../sprites/dust_cloud")
+local dust_cloud_sprite = asset.sprite("dust-cloud")
 
 export type State = {
     -- Ticks left in the phase (AIAttackVars+0x10).

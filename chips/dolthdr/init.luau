@@ -5,7 +5,7 @@
 local action = require("@self/action")
 local attachment = require("../objects/attachment")
 local lockon = require("../rules/lockon")
-local thunder_doll_hand_sprite = require("@self/thunder_doll_hand_sprite")
+local thunder_doll_hand_sprite = asset.sprite("thunder-doll-hand")
 
 -- Every level's thunder lasts 15 ticks (the original's second
 -- parameter).

@@ -12,7 +12,7 @@
 local attachment = require("../../objects/attachment")
 local beam = require("./beam")
 local collision = require("../../rules/collision")
-local gun_del_sol_sprite = require("./gun_del_sol_sprite")
+local gun_del_sol_sprite = asset.sprite("gun-del-sol")
 
 local action = {}
 

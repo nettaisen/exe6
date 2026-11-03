@@ -12,7 +12,7 @@ local arm = require("../../lib/arm")
 local collision = require("../../rules/collision")
 local gust = require("../../objects/gust")
 local regions = require("@exelib/regions")
-local swirl_sprite = require("../../sprites/swirl")
+local swirl_sprite = asset.sprite("swirl")
 
 local action = {}
 

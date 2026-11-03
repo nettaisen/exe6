@@ -5,8 +5,8 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/mine/land_mine")
-local blast_sprite = require("../../sprites/blast")
-local land_mine_sprite = require("./land_mine_sprite")
+local blast_sprite = asset.sprite("blast")
+local land_mine_sprite = asset.sprite("land-mine")
 
 local land_mine = {}
 

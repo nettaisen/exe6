@@ -11,9 +11,9 @@
 -- FirstBarrier and the patch cards set it.
 
 local visual = require("@self/visual")
-local aura_sprite = require("@self/aura_sprite")
-local barrier_sprite = require("@self/barrier_sprite")
-local bubble_sprite = require("../sprites/bubble")
+local aura_sprite = asset.sprite("aura")
+local barrier_sprite = asset.sprite("barrier")
+local bubble_sprite = asset.sprite("bubble")
 
 local barriers = {}
 

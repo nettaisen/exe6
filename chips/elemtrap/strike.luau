@@ -9,9 +9,9 @@ local effects = require("../../lib/effects")
 local panel_bursts = require("../../objects/panel_bursts")
 local sparks = require("../../lib/sparks")
 local statuses = require("../../rules/status")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
-local lightning_sprite = require("../../sprites/lightning")
-local spout_splash_sprite = require("../../sprites/spout_splash")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local lightning_sprite = asset.sprite("lightning")
+local spout_splash_sprite = asset.sprite("spout-splash")
 
 local strike = {}
 

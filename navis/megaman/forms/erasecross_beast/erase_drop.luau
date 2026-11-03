@@ -20,8 +20,8 @@ export type State = {
     y: number,
 }
 
-local SPRITE = require("./erase_drop_sprite")
-local puff_sprite = require("../../../../sprites/puff")
+local SPRITE = asset.sprite("erase-drop")
+local puff_sprite = asset.sprite("puff")
 
 -- Where it starts, relative to its panel: this much back and up, 16.16;
 -- the fall covers the first part of each.

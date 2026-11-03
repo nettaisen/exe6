@@ -10,7 +10,7 @@ local effects = require("../lib/effects")
 local falling = require("@exelib/rock/falling")
 local sparks = require("../lib/sparks")
 local chip = require("@self/chip")
-local falling_rock_sprite = require("@self/falling_rock_sprite")
+local falling_rock_sprite = asset.sprite("falling-rock")
 
 local falling_rock = {}
 

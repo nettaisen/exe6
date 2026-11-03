@@ -5,7 +5,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/airspin/whirl")
-local bass_anly_shot_sprite = require("../bassanly/bass_anly_shot_sprite")
+local bass_anly_shot_sprite = asset.sprite("bass-anly-shot")
 
 return common.make {
     id = "airspin/whirl",

@@ -16,10 +16,10 @@ local sparks = require("../../lib/sparks")
 local navi_chips = require("../../lib/navi_chips/navi")
 local parts = require("../../lib/swords/parts")
 local regions = require("@exelib/regions")
-local big_slash_sprite = require("../../sprites/big_slash")
-local charge_glow_sprite = require("../../sprites/charge_glow")
-local dark_aura_sprite = require("./dark_aura_sprite")
-local element_pillar_flames_sprite = require("../../sprites/element_pillar_flames")
+local big_slash_sprite = asset.sprite("big-slash")
+local charge_glow_sprite = asset.sprite("charge-glow")
+local dark_aura_sprite = asset.sprite("dark-aura")
+local element_pillar_flames_sprite = asset.sprite("element-pillar-flames")
 
 -- The big slash.
 local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0, steps = 15 }
@@ -42,7 +42,7 @@ export type State = {
 -- parts (NameID 0x16D's: his cape). Dark MegaMan wears MegaMan's identity,
 -- in his base form (NameID 0x1A0: no parts), whose attach points his aura
 -- takes.
-local BASS_SPRITE = require("../bassanly/bass_anly_sprite")
+local BASS_SPRITE = asset.sprite("bass-anly")
 local navi_left = require("@exelib/navi_chips/left")
 local looks = require("@exelib/looks")
 local BASS = new.identity {

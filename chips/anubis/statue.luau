@@ -16,7 +16,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/anubis/statue")
 local effects = require("../../lib/effects")
 local rising_bubble = require("../../objects/rising_bubble")
-local anubis_sprite = require("./anubis_sprite")
+local anubis_sprite = asset.sprite("anubis")
 
 local statue = {}
 

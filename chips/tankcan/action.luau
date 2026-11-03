@@ -9,7 +9,7 @@
 local attachment = require("../../objects/attachment")
 local common = require("@exelib/tankcan/action")
 local shell = require("./shell")
-local tank_cannon_sprite = require("./tank_cannon_sprite")
+local tank_cannon_sprite = asset.sprite("tank-cannon")
 
 local tankcan = {}
 

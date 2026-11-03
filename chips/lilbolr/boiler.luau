@@ -40,7 +40,7 @@ export type State = {
     steam: Object?,
 }
 
-local SPRITE = require("../../sprites/lil_boiler")
+local SPRITE = asset.sprite("lil-boiler")
 -- Its identity: a field object, with the look something that takes its
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {

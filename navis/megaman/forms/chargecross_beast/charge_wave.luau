@@ -18,8 +18,8 @@ export type State = {
     trail: number,
 }
 
-local SPRITE = require("./charge_wave_sprite")
-local hit_sparks_sprite = require("../../../../sprites/hit_sparks")
+local SPRITE = asset.sprite("charge-wave")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 -- Its speed, 16.16.
 local SPEED = 0xC_0000

@@ -8,8 +8,8 @@ local erasecross_beast = require("./erasecross_beast")["erasecross-beast"]
 local buster = require("../weapons/buster")
 local charge = require("@self/charge")
 local forms = require("../../../rules/forms")
-local erasecross_overlay_sprite = require("@self/erasecross_overlay_sprite")
-local megaman_sprite = require("./megaman_sprite")
+local erasecross_overlay_sprite = asset.sprite("erasecross-overlay")
+local megaman_sprite = asset.sprite("megaman")
 
 local form: FormDef = {
     kind = "cross",

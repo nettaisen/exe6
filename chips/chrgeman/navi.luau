@@ -23,7 +23,7 @@ export type State = {
 
 local chrgeman = {}
 
-local SPRITE = require("../../navis/chargeman/chargeman_sprite")
+local SPRITE = asset.sprite("chargeman")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CHARGE_MAN = asset.sound("charge-man")
 

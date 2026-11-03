@@ -13,7 +13,6 @@
 -- §3.6.33.
 
 local collision = require("../rules/collision")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../lib/sparks")
 
@@ -26,7 +25,7 @@ export type State = {
     solid_only: boolean,
 }
 
-local SPRITE = require("@self/panel_strike_sprite")
+local SPRITE = asset.sprite("panel-strike")
 -- The burst plays over 12 of its sprite's steps (its animation's length).
 local BURST_STEPS = 12
 local SOUND_COL_ARMY_2 = asset.sound("col-army-2")
@@ -91,7 +90,7 @@ local function burst(me: Object)
         me.phase = 1
         me.collision:set_region(nil)
     end
-    if played.ended(me.sprite, BURST_STEPS) then
+    if me.sprite.steps >= BURST_STEPS then
         me:set_lifecycle("destroy")
     end
 end

@@ -10,7 +10,7 @@
 
 local attachment = require("../../objects/attachment")
 local log = require("./log")
-local log_thrower_sprite = require("./log_thrower_sprite")
+local log_thrower_sprite = asset.sprite("log-thrower")
 
 local action = {}
 

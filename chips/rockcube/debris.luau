@@ -8,7 +8,7 @@
 
 local common = require("@exelib/rock/debris")
 local effects = require("../../lib/effects")
-local rock_debris_sprite = require("./rock_debris_sprite")
+local rock_debris_sprite = asset.sprite("rock-debris")
 
 local debris = {}
 

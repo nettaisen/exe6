@@ -9,8 +9,8 @@ local throw_absorbed = require("@self/throw_absorbed")
 local charge = require("@self/charge")
 local absorb = require("../weapons/absorb")
 local forms = require("../../../rules/forms")
-local dustcross_overlay_sprite = require("@self/dustcross_overlay_sprite")
-local megaman_sprite = require("./megaman_sprite")
+local dustcross_overlay_sprite = asset.sprite("dustcross-overlay")
+local megaman_sprite = asset.sprite("megaman")
 
 local form: FormDef = {
     kind = "cross",

@@ -20,13 +20,12 @@
 
 local lockon = require("../../../../rules/lockon")
 local parts = require("../../../../lib/swords/parts")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local slashes = require("./slashes")
 local sword_wave = require("./sword_wave")
 local weapon = require("../../../../lib/weapon")
-local charged_slash_sprite = require("./charged_slash_sprite")
-local sword_slash_sprite = require("../../../../sprites/sword_slash")
+local charged_slash_sprite = asset.sprite("charged-slash")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 export type State = {
     -- AIAttackVars+0x10: ticks into the slash, or of the end. (The slashes
@@ -227,7 +226,7 @@ end
 -- `sub_80EE50C`: after the animation's last frame, back on the panel the
 -- dash started from.
 local function return_(me: Object)
-    if not played.ended(me.sprite, steps_of(me.anim)) then
+    if me.sprite.steps < steps_of(me.anim) then
         return
     end
     me.panel_x, me.panel_y = me.future_panel_x, me.future_panel_y

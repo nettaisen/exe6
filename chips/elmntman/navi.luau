@@ -44,7 +44,7 @@ export type State = {
 
 local elmntman = {}
 
-local SPRITE = require("./elmnt_man_sprite")
+local SPRITE = asset.sprite("elmnt-man")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ELMNT_MAN = asset.sound("elmnt-man")
 local SOUND_ELMNT_MAN_2 = asset.sound("elmnt-man-2")

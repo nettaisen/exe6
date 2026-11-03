@@ -7,7 +7,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/elemtrap/trap")
 local strike = require("./strike")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 local trap = {}
 

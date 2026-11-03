@@ -6,9 +6,9 @@
 -- an effect, and goes 60 ticks later. See docs/engine/chips.md §3.6.20.
 
 local common = require("@exelib/roll/heart")
-local elmnt_ice_sprite = require("../../sprites/elmnt_ice")
-local heal_sprite = require("../../sprites/heal")
-local roll_heart_sprite = require("./roll_heart_sprite")
+local elmnt_ice_sprite = asset.sprite("elmnt-ice")
+local heal_sprite = asset.sprite("heal")
+local roll_heart_sprite = asset.sprite("roll-heart")
 
 -- The sparkle around it, and around Roll as she warps (effect 0x26), and
 -- the effect on the healed navi (effect 0x06).

@@ -24,7 +24,7 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("./falzar_summon_sprite")
+local SPRITE = asset.sprite("falzar-summon")
 -- The arrival's look: animation 0x0C of its sprite.
 local ARRIVAL_ANIM = 0x0C
 

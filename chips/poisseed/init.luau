@@ -3,7 +3,7 @@
 
 local seed = require("../lib/bombs/seed")
 local throw = require("../lib/bombs/throw")
-local grab_shot_sprite = require("../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local chip: Chip = {
     codes = { "H", "N", "P", "*" },

@@ -11,7 +11,7 @@ local collision = require("../../rules/collision")
 local link = require("../../lib/link_chips")
 local regions = require("@exelib/regions")
 local weapon = require("../../lib/weapon")
-local big_slash_sprite = require("../../sprites/big_slash")
+local big_slash_sprite = asset.sprite("big-slash")
 
 export type State = {
     timer: number,

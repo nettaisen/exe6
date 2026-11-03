@@ -12,7 +12,7 @@ local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
 local trajectory = require("../../lib/trajectory")
 
-local SPRITE = require("./voodoo_doll_sprite")
+local SPRITE = asset.sprite("voodoo-doll")
 
 return common.make {
     id = "vdoll/doll",

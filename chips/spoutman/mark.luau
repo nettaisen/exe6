@@ -19,7 +19,7 @@ export type State = {
     while_dimmed: boolean,
 }
 
-local SPRITE = require("./spout_geyser_sprite")
+local SPRITE = asset.sprite("spout-geyser")
 
 -- Its animation (`word_80E3A30`): the trail's, the column's.
 local ANIM_TRAIL, ANIM_COLUMN = 1, 2

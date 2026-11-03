@@ -10,7 +10,6 @@
 -- its own (`sword_wave.wave`, the rows' usual make).
 
 local collision = require("../../../../rules/collision")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local statuses = require("../../../../rules/status")
 
@@ -152,7 +151,7 @@ local function update(me: Object)
         me:destroy()
     end
     if animates then
-        if played.ended(me.sprite, animates) then
+        if me.sprite.steps >= animates then
             me.anim_loaded = 0xFF
         end
         me:update_sprite()

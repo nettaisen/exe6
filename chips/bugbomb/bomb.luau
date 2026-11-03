@@ -13,8 +13,8 @@ local common = require("@exelib/bugbomb/bomb")
 local rising_bubble = require("../../objects/rising_bubble")
 local statuses = require("../../rules/status")
 local trajectory = require("../../lib/trajectory")
-local bomb_sprite = require("../../sprites/bomb")
-local explosion_sprite = require("../../sprites/explosion")
+local bomb_sprite = asset.sprite("bomb")
+local explosion_sprite = asset.sprite("explosion")
 
 local bug_bomb = {}
 

@@ -17,7 +17,7 @@ local collision = require("../../rules/collision")
 local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
-local iron_shell_sprite = require("./iron_shell_sprite")
+local iron_shell_sprite = asset.sprite("iron-shell")
 
 local shell = {}
 

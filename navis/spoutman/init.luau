@@ -6,9 +6,9 @@ local buster = require("./megaman/weapons/buster")
 local a_charge = require("./megaman/weapons/charged_chip_bonus_20")
 local charge = require("@self/charge")
 local spoutman = require("@self/chip").dripshwr
-local idle_overlay_sprite = require("@self/idle_overlay_sprite")
-local spoutman_portrait_sprite = require("@self/spoutman_portrait_sprite")
-local spoutman_sprite = require("@self/spoutman_sprite")
+local idle_overlay_sprite = asset.sprite("idle-overlay")
+local spoutman_portrait_sprite = asset.sprite("spoutman-portrait")
+local spoutman_sprite = asset.sprite("spoutman")
 
 local navi: NaviDef = {
     sprite = spoutman_sprite,

@@ -25,7 +25,7 @@ export type State = {
     action: Action?,
 }
 
-local SPRITE = require("./erase_beam_sprite")
+local SPRITE = asset.sprite("erase-beam")
 
 -- By aim: the height in whole pixels (`dword_80DD9FC`) and the animation
 -- (`dword_80DDA04`); a fourth entry is each word's last byte.

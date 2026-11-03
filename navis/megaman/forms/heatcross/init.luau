@@ -8,8 +8,8 @@ local heatcross_beast = require("./heatcross_beast")["heatcross-beast"]
 local buster = require("../weapons/buster")
 local charge = require("@self/charge")
 local forms = require("../../../rules/forms")
-local heatcross_overlay_sprite = require("@self/heatcross_overlay_sprite")
-local megaman_sprite = require("./megaman_sprite")
+local heatcross_overlay_sprite = asset.sprite("heatcross-overlay")
+local megaman_sprite = asset.sprite("megaman")
 
 local form: FormDef = {
     kind = "cross",

@@ -7,7 +7,7 @@ local attachment = require("../objects/attachment")
 local shooter = require("../lib/cannon")
 local variants = require("../objects/projectile/variants")
 local lockon = require("../rules/lockon")
-local cannon_sprite = require("@self/cannon_sprite")
+local cannon_sprite = asset.sprite("cannon")
 
 -- Their cannons (the original's attachment rows 0 to 2: the cannon in
 -- palettes 0, 1 and 2), at the navi's attach point 7.

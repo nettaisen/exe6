@@ -13,18 +13,18 @@ local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local gregar_beast = require("../../navis/megaman/forms/gregar_beast")["gregar-beast"]
 local parts = require("../../lib/swords/parts")
-local drill_arm_sprite = require("../drilarm/drill_arm_sprite")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
-local pink_flash_sprite = require("../../sprites/pink_flash")
-local slash_man_effect_sprite = require("../../sprites/slash_man_effect")
-local sword_slash_sprite = require("../../sprites/sword_slash")
+local drill_arm_sprite = asset.sprite("drill-arm")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local pink_flash_sprite = asset.sprite("pink-flash")
+local slash_man_effect_sprite = asset.sprite("slash-man-effect")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- The slash over a column.
 local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 
 local gregar = {}
 
-local SPRITE = require("../../navis/megaman/forms/gregar_beast/gregar_beast_sprite")
+local SPRITE = asset.sprite("gregar-beast")
 -- Its identity: Gregar Beast Out's (the attach points its attachments
 -- take).
 local IDENTITY = assert(gregar_beast.identity)

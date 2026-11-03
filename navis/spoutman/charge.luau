@@ -9,7 +9,7 @@
 local ball = require("../../chips/spoutman/ball")
 local link = require("../../lib/link_chips")
 local weapon = require("../../lib/weapon")
-local spout_man_effect_sprite = require("../../sprites/spout_man_effect")
+local spout_man_effect_sprite = asset.sprite("spout-man-effect")
 
 export type State = { timer: number }
 

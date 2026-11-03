@@ -17,8 +17,8 @@ export type State = {
     centers: number,
 }
 
-local SPRITE = require("./crack_shot_sprite")
-local dust_sprite = require("../../sprites/dust")
+local SPRITE = asset.sprite("crack-shot")
+local dust_sprite = asset.sprite("dust")
 local SOUND = asset.sound("crack-shot")
 -- The dust it raises on its panel (the original's effect 0x30).
 local DUST = new.effect { sprite = dust_sprite, anim = 0, palette = 0, steps = 17 }

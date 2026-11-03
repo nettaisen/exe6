@@ -26,7 +26,7 @@ export type State = {
     action: Action?,
 }
 
-local SPRITE = require("../../../../sprites/whirlwind")
+local SPRITE = asset.sprite("whirlwind")
 
 -- How far ahead of its panel's center it stands (`byte_80D5738`), 16.16.
 local AHEAD = 0x28_0000

@@ -6,7 +6,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/grabbnsh/hand")
-local grab_shot_sprite = require("../../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local hand = {}
 

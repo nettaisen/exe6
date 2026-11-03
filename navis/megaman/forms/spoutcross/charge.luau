@@ -11,7 +11,7 @@ local bullet = require("../../../../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("../../../../chips/spreadr/action")
 local weapon = require("../../../../lib/weapon")
-local water_cannon_sprite = require("./water_cannon_sprite")
+local water_cannon_sprite = asset.sprite("water-cannon")
 
 local charge = {}
 

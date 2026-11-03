@@ -10,7 +10,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/tankcan/shell")
 local effects = require("../../lib/effects")
-local tank_blast_sprite = require("../../sprites/tank_blast")
+local tank_blast_sprite = asset.sprite("tank-blast")
 
 local shell = {}
 

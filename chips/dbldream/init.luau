@@ -6,7 +6,7 @@ local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
-local big_slash_sprite = require("../sprites/big_slash")
+local big_slash_sprite = asset.sprite("big-slash")
 
 -- The big slash.
 local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0, steps = 15 }

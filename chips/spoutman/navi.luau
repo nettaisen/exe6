@@ -32,8 +32,8 @@ export type State = {
 
 local spoutman = {}
 
-local SPRITE = require("../../navis/spoutman/spoutman_sprite")
-local spout_man_effect_sprite = require("../../sprites/spout_man_effect")
+local SPRITE = asset.sprite("spoutman")
+local spout_man_effect_sprite = asset.sprite("spout-man-effect")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_BUBBLE = asset.sound("bubble")
 local SOUND_SPOUT_MAN = asset.sound("spout-man")

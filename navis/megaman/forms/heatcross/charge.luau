@@ -9,7 +9,7 @@
 local attachment = require("../../../../objects/attachment")
 local burn = require("../../../../lib/burner/burn")
 local weapon = require("../../../../lib/weapon")
-local heatcross_burner_sprite = require("./heatcross_burner_sprite")
+local heatcross_burner_sprite = asset.sprite("heatcross-burner")
 
 local heat_charge = {}
 

@@ -26,7 +26,7 @@ export type State = {
     turns: number,
 }
 
-local SPRITE = require("./honey_bee_sprite")
+local SPRITE = asset.sprite("honey-bee")
 -- What it is and hits (`dword_80D34A8`).
 local HIT = { is = collision.attack, hits = collision.hits_navis }
 local HIT_MOD = 0x01

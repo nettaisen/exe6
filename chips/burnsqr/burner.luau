@@ -8,7 +8,7 @@
 local stand_in = require("@exelib/dimming/stand_in")
 local collision = require("../../rules/collision")
 local heat_flame = require("../../chips/heatman/flame")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 local burner = {}
 

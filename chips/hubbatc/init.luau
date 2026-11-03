@@ -7,7 +7,7 @@
 local collision = require("../rules/collision")
 local navi_boost = require("../lib/navi_boost/controller")
 local shield = require("../navis/megaman/weapons/shield")
-local hub_sprite = require("../sprites/hub")
+local hub_sprite = asset.sprite("hub")
 
 -- The effect around the navi (the original's effect 0x5A) and its sound;
 -- when the log-in sound plays, by timer.

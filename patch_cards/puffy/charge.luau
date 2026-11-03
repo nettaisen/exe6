@@ -9,7 +9,7 @@ local attachment = require("../../objects/attachment")
 local bullet = require("../../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("../../chips/spreadr/action")
-local water_cannon_sprite = require("../../navis/megaman/forms/spoutcross/water_cannon_sprite")
+local water_cannon_sprite = asset.sprite("water-cannon")
 
 -- The Spreaders' action as the original's variant 2 (the water cannon,
 -- fired from the ground) with the bubble's bullet (the parameter word 7).

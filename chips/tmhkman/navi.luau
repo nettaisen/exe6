@@ -18,8 +18,8 @@ export type State = {
 
 local tmhkman = {}
 
-local SPRITE = require("../../navis/tomahawkman/tomahawkman_sprite")
-local big_slash_sprite = require("../../sprites/big_slash")
+local SPRITE = asset.sprite("tomahawkman")
+local big_slash_sprite = asset.sprite("big-slash")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_TOMAHAWK_MAN = asset.sound("tomahawk-man")
 

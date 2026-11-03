@@ -9,7 +9,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/airhocky/puck")
 local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
-local hockey_puck_sprite = require("./hockey_puck_sprite")
+local hockey_puck_sprite = asset.sprite("hockey-puck")
 
 local puck = {}
 

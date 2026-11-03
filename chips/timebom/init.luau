@@ -8,7 +8,7 @@
 local collision = require("../rules/collision")
 local controller = require("@self/controller")
 local countdown = require("@self/countdown")
-local countdown_bomb_sprite = require("@self/countdown_bomb_sprite")
+local countdown_bomb_sprite = asset.sprite("countdown-bomb")
 
 -- What both bombs are and what they react to: a neutral body, hit by
 -- everything; the one field object of their side's own class.

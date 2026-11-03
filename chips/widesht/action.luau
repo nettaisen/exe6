@@ -9,7 +9,7 @@
 local attachment = require("../../objects/attachment")
 local common = require("@exelib/widesht/action")
 local wave = require("./wave")
-local wide_shooter_sprite = require("./wide_shooter_sprite")
+local wide_shooter_sprite = asset.sprite("wide-shooter")
 
 local widesht = {}
 

@@ -11,7 +11,7 @@
 -- sprite parts. See docs/engine/field-objects.md §4.4.
 
 local absorb = require("../navis/megaman/weapons/absorb")
-local puff_sprite = require("../sprites/puff")
+local puff_sprite = asset.sprite("puff")
 
 local absorbed_obstacle = {}
 

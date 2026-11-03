@@ -15,9 +15,9 @@ local trajectory = require("../../lib/trajectory")
 
 local black_bomb = {}
 
-local SPRITE = require("./black_bomb_sprite")
-local bomb_sprite = require("../../sprites/bomb")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local SPRITE = asset.sprite("black-bomb")
+local bomb_sprite = asset.sprite("bomb")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 -- Its identity: a field object, with the look something that takes its
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {

@@ -16,8 +16,8 @@ local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
 local parts = require("../../lib/swords/parts")
 local protoman = require("../../navis/protoman").protoman
-local charge_glow_sprite = require("../../sprites/charge_glow")
-local sword_slash_sprite = require("../../sprites/sword_slash")
+local charge_glow_sprite = asset.sprite("charge-glow")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- The slash over a column.
 local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
@@ -40,7 +40,7 @@ export type State = {
 
 -- ProtoMan's look and identity (which his parts and attach points come
 -- by).
-local PROTOMAN_SPRITE = require("../../navis/protoman/protoman_sprite")
+local PROTOMAN_SPRITE = asset.sprite("protoman")
 local looks = require("@exelib/looks")
 local PROTOMAN = protoman.identity
 -- Where each stands from the user's spot (`dword_80BCE44`, pixels; x

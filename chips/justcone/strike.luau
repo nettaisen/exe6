@@ -13,7 +13,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/justcone/strike")
 local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
-local justice_one_sprite = require("./justice_one_sprite")
+local justice_one_sprite = asset.sprite("justice-one")
 
 return common.make {
     id = "justcone/strike",

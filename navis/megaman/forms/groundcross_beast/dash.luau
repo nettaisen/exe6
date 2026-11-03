@@ -10,7 +10,7 @@ local dash_hit = require("../../dash_hit")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
 local weapon = require("../../../../lib/weapon")
-local puff_sprite = require("../../../../sprites/puff")
+local puff_sprite = asset.sprite("puff")
 
 -- Its hits: hit modifier 1, the plain spark; each hits again on the next
 -- panel.

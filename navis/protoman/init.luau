@@ -7,8 +7,8 @@ local a_charge = require("@self/a_charge")
 local back_special = require("@self/back_special")
 local charge = require("@self/charge")
 local protoman = require("@self/chip")["stepswrd-protoman"]
-local protoman_portrait_sprite = require("@self/protoman_portrait_sprite")
-local protoman_sprite = require("@self/protoman_sprite")
+local protoman_portrait_sprite = asset.sprite("protoman-portrait")
+local protoman_sprite = asset.sprite("protoman")
 
 local navi: NaviDef = {
     -- VarSwrd's sword stays plain for him: he waits for its sequence while A is up and gets neither the charged sword

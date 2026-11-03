@@ -21,7 +21,7 @@ local effects = require("../lib/effects")
 
 local boulder = {}
 
-local SPRITE = require("@self/boulder_sprite")
+local SPRITE = asset.sprite("boulder")
 
 boulder.kind = common.make {
     id = "boulder",

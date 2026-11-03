@@ -8,8 +8,8 @@
 
 local collision = require("../rules/collision")
 local common = require("@exelib/bullet")
-local spout_splash_sprite = require("../sprites/spout_splash")
-local vulcan_hit_sprite = require("../sprites/vulcan_hit")
+local spout_splash_sprite = asset.sprite("spout-splash")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 
 local bullet = {}
 

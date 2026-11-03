@@ -7,8 +7,8 @@ local falzar_beast_buster = require("../weapons/falzar_beast_buster")
 local rock_barrage = require("../weapons/rock_barrage")
 local dash = require("@self/dash")
 local forms = require("../../../rules/forms")
-local beast_head_sprite = require("./beast_head_sprite")
-local groundcross_beast_sprite = require("@self/groundcross_beast_sprite")
+local beast_head_sprite = asset.sprite("beast-head")
+local groundcross_beast_sprite = asset.sprite("groundcross-beast")
 
 local form: FormDef = {
     kind = "cross_beast",
