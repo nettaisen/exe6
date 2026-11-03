@@ -7,11 +7,11 @@ local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
-local aqua_sword_sprite = require("@self/aqua_sword_sprite")
-local sword_slash_sprite = require("../sprites/sword_slash")
+local aqua_sword_sprite = asset.sprite("aqua-sword")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 -- AquaSwrd's blade (row 0x1A).
 local AQUA_BLADE = attachment.look { sprite = aqua_sword_sprite, palette = 0 }
 

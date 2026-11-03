@@ -27,7 +27,7 @@ export type State = {
     column: number,
 }
 
-local SPRITE = require("./spout_geyser_sprite")
+local SPRITE = asset.sprite("spout-geyser")
 
 -- The owner's action a navi AI's geyser lasts through.
 local OWNER_ACTION = 0xB

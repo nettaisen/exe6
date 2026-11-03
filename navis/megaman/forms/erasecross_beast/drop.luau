@@ -24,8 +24,9 @@ local CURSOR, HIT_PARAM = 0x40, 0x9E
 
 local SOUND = asset.sound("justice-one")
 
--- A frame's "last" flag.
-local LAST_FRAME = 0x80
+-- The navi raises its arms over 3 of its sprite's steps, and drops over
+-- 8 (EraseCross Beast's raising and dropping animations' lengths).
+local RAISE_STEPS, DROP_STEPS = 3, 8
 
 -- What marks a panel with an enemy on it, by the navi's side, alone and
 -- with the panel bit the column search wants too (`byte_80ED080`).
@@ -79,7 +80,7 @@ local function raise(me: Object)
         me.step_init = 4
         return
     end
-    if bit32.btest(me.sprite.frame_flags, LAST_FRAME) then
+    if me.sprite.steps >= RAISE_STEPS then
         me:set_animation(0x13)
         me.step = DROP
         me.step_init = 0
@@ -88,7 +89,7 @@ end
 
 -- `sub_80EE89C`: when the animation ends, the drop on the target.
 local function drop(me: Object, s: State)
-    if not bit32.btest(me.sprite.frame_flags, LAST_FRAME) then
+    if me.sprite.steps < DROP_STEPS then
         return
     end
     local x, found = enemy_column(me)

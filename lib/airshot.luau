@@ -8,7 +8,7 @@ local attachment = require("../objects/attachment")
 local common = require("@exelib/airshot")
 local navi_arms = require("./navi_arms")
 local projectile = require("./projectile")
-local air_shooter_sprite = require("../sprites/air_shooter")
+local air_shooter_sprite = asset.sprite("air-shooter")
 
 local airshot = {}
 

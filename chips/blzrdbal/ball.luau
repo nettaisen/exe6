@@ -10,7 +10,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/blzrdbal/ball")
 local roller = require("./roller")
-local blizzard_ball_sprite = require("./blizzard_ball_sprite")
+local blizzard_ball_sprite = asset.sprite("blizzard-ball")
 
 local ball = {}
 

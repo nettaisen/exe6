@@ -19,7 +19,7 @@ local statuses = require("../../rules/status")
 local variants = {}
 
 local SHOT = { is = collision.attack, hits = collision.hits_navis }
-local BLADE = require("../../sprites/sword")
+local BLADE = asset.sprite("sword")
 
 local function v(spec: ProjectileVariant): ProjectileVariant
     return projectile.variant(spec)

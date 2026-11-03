@@ -6,7 +6,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/antidmg/shuriken")
 local effects = require("../../lib/effects")
-local shuriken_sprite = require("../../sprites/shuriken")
+local shuriken_sprite = asset.sprite("shuriken")
 
 local shuriken = {}
 

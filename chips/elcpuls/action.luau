@@ -8,7 +8,7 @@
 
 local attachment = require("../../objects/attachment")
 local pulse = require("./pulse")
-local elec_coil_sprite = require("../../sprites/elec_coil")
+local elec_coil_sprite = asset.sprite("elec-coil")
 
 local action = {}
 

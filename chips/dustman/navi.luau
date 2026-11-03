@@ -22,7 +22,7 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("../../navis/dustman/dustman_sprite")
+local SPRITE = asset.sprite("dustman")
 local looks = require("@exelib/looks")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_TAKE = asset.sound("dustbrk")

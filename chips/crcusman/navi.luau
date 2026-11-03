@@ -17,14 +17,14 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("./circusman_sprite")
-local pink_flash_sprite = require("../../sprites/pink_flash")
+local SPRITE = asset.sprite("circusman")
+local pink_flash_sprite = asset.sprite("pink-flash")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CATCH = asset.sound("circus-catch")
 local SOUND_DRUMROLL = asset.sound("drumroll")
 
 -- A show's sparkle (effect 0x21).
-local SPARKLE = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0 }
+local SPARKLE = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 }
 
 -- What he is taken for: his actor record, and what he wears (his two overlays, `sub_8010FD8`).
 local IDENTITY = new.identity {

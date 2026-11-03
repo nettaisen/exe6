@@ -7,7 +7,7 @@ local controller = require("./anubis/controller")
 local statue = require("./anubis/statue")
 local anubis = require("./anubis").anubis
 local poisseed = require("./poisseed").poisseed
-local anubis_sprite = require("./anubis/anubis_sprite")
+local anubis_sprite = asset.sprite("anubis")
 
 -- Its statue (`byte_80CF0C0`'s row 1): a drain every tick, 100 HP, 1441
 -- ticks.

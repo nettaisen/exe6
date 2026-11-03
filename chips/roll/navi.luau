@@ -14,7 +14,7 @@ local attachment = require("../../objects/attachment")
 local heart = require("./heart")
 local collision = require("../../rules/collision")
 local sparks = require("../../lib/sparks")
-local roll_heart_sprite = require("./roll_heart_sprite")
+local roll_heart_sprite = asset.sprite("roll-heart")
 
 return common.make {
     id = "roll/navi",

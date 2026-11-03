@@ -9,8 +9,8 @@ local buster = require("../weapons/buster")
 local charge = require("@self/charge")
 local charged_chip_bonus_20 = require("../weapons/charged_chip_bonus_20")
 local forms = require("../../../rules/forms")
-local megaman_sprite = require("./megaman_sprite")
-local tomahawkcross_overlay_sprite = require("@self/tomahawkcross_overlay_sprite")
+local megaman_sprite = asset.sprite("megaman")
+local tomahawkcross_overlay_sprite = asset.sprite("tomahawkcross-overlay")
 
 local form: FormDef = {
     kind = "cross",

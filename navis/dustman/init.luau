@@ -5,11 +5,13 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local dustman = require("@self/chip").dustbrk
-local dustman_portrait_sprite = require("@self/dustman_portrait_sprite")
-local dustman_sprite = require("@self/dustman_sprite")
+local dustman_portrait_sprite = asset.sprite("dustman-portrait")
+local dustman_sprite = asset.sprite("dustman")
 
 local navi: NaviDef = {
     sprite = dustman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 5, hold = 8 },
     element = "null",
     weakness = { "cursor" },
     buster_bonus = 1,

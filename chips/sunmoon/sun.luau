@@ -22,7 +22,7 @@ export type State = {
 
 local sunmoon = {}
 
-local SPRITE = require("./moon_beam_sprite")
+local SPRITE = asset.sprite("moon-beam")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_BLAST_MAN = asset.sound("blast-man")

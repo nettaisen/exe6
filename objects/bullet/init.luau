@@ -8,8 +8,8 @@
 
 local collision = require("../rules/collision")
 local common = require("@exelib/bullet")
-local spout_splash_sprite = require("../sprites/spout_splash")
-local vulcan_hit_sprite = require("../sprites/vulcan_hit")
+local spout_splash_sprite = asset.sprite("spout-splash")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 
 local bullet = {}
 
@@ -35,8 +35,8 @@ end
 -- The looks several users' variants share: the Vulcans' and the
 -- soldiers' hit (shown once, at the bullet), and the splash with its
 -- sound (SpoutCross's charged shot and the puffy's).
-bullet.hit = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 }
-bullet.splash = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0 }
+bullet.hit = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 }
+bullet.splash = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 }
 bullet.splash_sound = asset.sound("spout-ball")
 
 return bullet

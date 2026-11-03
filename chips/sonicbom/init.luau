@@ -7,7 +7,7 @@ local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
 local sonic = require("@self/action")
-local sword_slash_sprite = require("../sprites/sword_slash")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- Its charged slash in SlashCross: the plain sword's, over the panel ahead.
 local CHARGED = slashes.slash {

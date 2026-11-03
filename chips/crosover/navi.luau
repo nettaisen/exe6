@@ -19,12 +19,12 @@ local projectile = require("../../lib/projectile")
 local variants = require("../../objects/projectile/variants")
 local regions = require("@exelib/regions")
 local sun_beam = require("../gundels/beam")
-local colonel_effect_sprite = require("../../sprites/colonel_effect")
-local sun_beam_sprite = require("../../sprites/sun_beam")
-local sword_slash_sprite = require("../../sprites/sword_slash")
+local colonel_effect_sprite = asset.sprite("colonel-effect")
+local sun_beam_sprite = asset.sprite("sun-beam")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- Sword's slash over the panel ahead.
-local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0 }
+local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0, steps = 10 }
 
 local crosover = {}
 
@@ -46,7 +46,7 @@ export type State = {
     in_position: boolean,
 }
 
-local DJANGO_SPRITE = require("../django/django_sprite")
+local DJANGO_SPRITE = asset.sprite("django")
 local navi_left = require("@exelib/navi_chips/left")
 local looks = require("@exelib/looks")
 local SOUND_APPEAR = asset.sound("appear")
@@ -76,7 +76,7 @@ local DRAIN_ELEMENT, DRAIN_DAMAGE, DRAIN_TICKS = 5, 3, 0x78
 -- place too (effects 0x18 and 0x36).
 local SLASH = { effect = SWORD_SLASH, region = regions.single }
 local CROSS_HALF = {
-    effect = new.effect { sprite = colonel_effect_sprite, anim = 1, palette = 0 },
+    effect = new.effect { sprite = colonel_effect_sprite, anim = 1, palette = 0, steps = 13 },
     region = regions.falling,
 }
 

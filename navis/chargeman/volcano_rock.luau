@@ -15,7 +15,7 @@ local trajectory = require("../../lib/trajectory")
 
 local volcano_rock = {}
 
-local SPRITE = require("./volcano_rock_sprite")
+local SPRITE = asset.sprite("volcano-rock")
 local SOUND_LAND = asset.sound("hit-bomb-1")
 
 -- It starts 10 pixels ahead of its thrower, 48 up.

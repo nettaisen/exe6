@@ -6,7 +6,7 @@
 local attachment = require("../../objects/attachment")
 local burst = require("./burst")
 local common = require("@exelib/h_burst/action")
-local spreader_sprite = require("../spreadr/spreader_sprite")
+local spreader_sprite = asset.sprite("spreader")
 
 local action = {}
 

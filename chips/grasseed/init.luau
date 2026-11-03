@@ -3,7 +3,7 @@
 
 local seed = require("../lib/bombs/seed")
 local throw = require("../lib/bombs/throw")
-local grab_shot_sprite = require("../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local chip: Chip = {
     codes = { "A", "F", "S", "*" },
@@ -19,7 +19,7 @@ local chip: Chip = {
             palette = 2,
             panel = "grass",
             -- Its green sprout (effect 0x3C).
-            effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 8 },
+            effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 8, steps = 16 },
             sound = asset.sound("grass"),
         }),
     },

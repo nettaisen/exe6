@@ -10,7 +10,7 @@ local effects = require("../lib/effects")
 local spreader = require("@self/action")
 local lockon = require("../rules/lockon")
 local regions = require("@exelib/regions")
-local spreader_sprite = require("@self/spreader_sprite")
+local spreader_sprite = asset.sprite("spreader")
 
 -- 16 pixels up (`dword_80ECC5C`'s rows 0, 1 and 3).
 local HIGH = 0x10_0000

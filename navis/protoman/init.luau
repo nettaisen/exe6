@@ -7,14 +7,16 @@ local a_charge = require("@self/a_charge")
 local back_special = require("@self/back_special")
 local charge = require("@self/charge")
 local protoman = require("@self/chip")["stepswrd-protoman"]
-local protoman_portrait_sprite = require("@self/protoman_portrait_sprite")
-local protoman_sprite = require("@self/protoman_sprite")
+local protoman_portrait_sprite = asset.sprite("protoman-portrait")
+local protoman_sprite = asset.sprite("protoman")
 
 local navi: NaviDef = {
     -- VarSwrd's sword stays plain for him: he waits for its sequence while A is up and gets neither the charged sword
     -- nor the Beast lock-on (lib/swords/vari).
     var_sword_plain = true,
     sprite = protoman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 4, hold = 2 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

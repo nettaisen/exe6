@@ -9,7 +9,7 @@ local common = require("@exelib/meteors/falling_meteor")
 local effects = require("../../lib/effects")
 local marker = require("./marker")
 local sparks = require("../../lib/sparks")
-local meteor_sprite = require("./meteor_sprite")
+local meteor_sprite = asset.sprite("meteor")
 
 local falling_meteor = {}
 

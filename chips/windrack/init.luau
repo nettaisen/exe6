@@ -5,7 +5,7 @@
 local attachment = require("../objects/attachment")
 local action = require("@self/action")
 local lockon = require("../rules/lockon")
-local wind_rack_sprite = require("@self/wind_rack_sprite")
+local wind_rack_sprite = asset.sprite("wind-rack")
 
 local chip: Chip = {
     codes = { "F", "J", "R", "*" },

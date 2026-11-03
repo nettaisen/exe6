@@ -5,7 +5,7 @@
 local instrument = require("../lib/instruments/instrument")
 local instruments = require("../lib/instruments/controller")
 local kind = require("../rules/forms/kind")
-local instrument_sprite = require("../lib/instruments/instrument_sprite")
+local instrument_sprite = asset.sprite("instrument")
 
 -- How long its every-third-tick invulnerability lasts.
 local INVULNERABLE_TICKS = 4

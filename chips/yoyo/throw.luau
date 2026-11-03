@@ -9,7 +9,7 @@
 
 local attachment = require("../../objects/attachment")
 local common = require("@exelib/yoyo/throw")
-local yoyo_arm_sprite = require("./yoyo_arm_sprite")
+local yoyo_arm_sprite = asset.sprite("yoyo-arm")
 
 local throw = {}
 

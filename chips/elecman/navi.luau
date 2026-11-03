@@ -20,7 +20,7 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("../../navis/elecman/elecman_sprite")
+local SPRITE = asset.sprite("elecman")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ELEC_MAN = asset.sound("elec-man")
 -- Where he looks (a panel region around him, dx along his side's

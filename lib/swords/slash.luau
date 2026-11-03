@@ -26,7 +26,14 @@ local CROSS_HIT: SwordHit = {
 slash.CROSS_HIT = CROSS_HIT
 
 -- EXE6's: the blade by its Beast forms' arms, and no step in a Beast form.
-local GAME: SlashGame = { blade_anim = parts.blade_anim, stays = kind.beast }
+local GAME: SlashGame = {
+    blade_anim = parts.blade_anim,
+    stays = kind.beast,
+    -- The navi's own warp out (its `animation_steps`).
+    warp_out_steps = function(me: Object): number
+        return ((battle.navi(me.alliance).navi :: any) :: Exe6NaviFields).animation_steps.warp_out
+    end,
+}
 
 -- A chip's slash.
 function slash.action(spec: SlashSpec): Action

@@ -6,11 +6,13 @@ local buster = require("./megaman/weapons/buster")
 local tengu_wind = require("./megaman/weapons/tengu_wind")
 local charge = require("@self/charge")
 local tenguman = require("@self/chip").ftornado
-local tenguman_portrait_sprite = require("@self/tenguman_portrait_sprite")
-local tenguman_sprite = require("@self/tenguman_sprite")
+local tenguman_portrait_sprite = asset.sprite("tenguman-portrait")
+local tenguman_sprite = asset.sprite("tenguman")
 
 local navi: NaviDef = {
     sprite = tenguman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 4, hold = 2 },
     element = "null",
     weakness = { "sword" },
     buster_bonus = 1,

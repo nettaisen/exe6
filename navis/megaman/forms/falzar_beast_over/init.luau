@@ -5,8 +5,8 @@ local falzar_beast = require("./falzar_beast")["falzar-beast"]
 local falzar_beast_buster = require("../weapons/falzar_beast_buster")
 local beast_claw = require("../weapons/beast_claw")
 local forms = require("../../../rules/forms")
-local beast_head_sprite = require("./beast_head_sprite")
-local falzar_beast_sprite = require("./falzar_beast/falzar_beast_sprite")
+local beast_head_sprite = asset.sprite("beast-head")
+local falzar_beast_sprite = asset.sprite("falzar-beast")
 
 local form: FormDef = {
     kind = "beast_over",

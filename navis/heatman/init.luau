@@ -5,12 +5,14 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local heatman = require("@self/chip").heatpres
-local heatman_overlay_sprite = require("@self/heatman_overlay_sprite")
-local heatman_portrait_sprite = require("@self/heatman_portrait_sprite")
-local heatman_sprite = require("@self/heatman_sprite")
+local heatman_overlay_sprite = asset.sprite("heatman-overlay")
+local heatman_portrait_sprite = asset.sprite("heatman-portrait")
+local heatman_sprite = asset.sprite("heatman")
 
 local navi: NaviDef = {
     sprite = heatman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA, which loops) last.
+    animation_steps = { warp_out = 5, hold = 12, hold_loops = true },
     element = "fire",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

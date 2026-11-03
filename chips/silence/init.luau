@@ -7,7 +7,7 @@ local effects = require("@exelib/instruments/effects")
 local instrument = require("../lib/instruments/instrument")
 local instruments = require("../lib/instruments/controller")
 local statuses = require("../rules/status")
-local instrument_sprite = require("../lib/instruments/instrument_sprite")
+local instrument_sprite = asset.sprite("instrument")
 
 -- Blinded (status 0x33: 4 ticks) over the whole field (`sub_80D43E8`).
 local hush = effects.hush(statuses.blind_4, collision.guard_breaking, collision.hits_navis)

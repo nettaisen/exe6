@@ -23,7 +23,7 @@ export type State = {
     was_paused: boolean,
 }
 
-local SPRITE = require("../eraseman/erase_beam_sprite")
+local SPRITE = asset.sprite("erase-beam")
 -- By aim: the height in whole pixels (`byte_80D9410`) and the animation
 -- (`dword_80D9408`).
 local HEIGHTS: { [number]: number } = { [0] = 0x10, [1] = 0x16, [2] = 0x14 }

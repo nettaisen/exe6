@@ -9,7 +9,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/numbrbl/ball")
 local effects = require("../../lib/effects")
-local number_ball_sprite = require("./number_ball_sprite")
+local number_ball_sprite = asset.sprite("number-ball")
 
 return common.make {
     id = "numbrbl/ball",

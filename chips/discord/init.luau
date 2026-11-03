@@ -8,7 +8,7 @@ local instrument = require("../lib/instruments/instrument")
 local instruments = require("../lib/instruments/controller")
 local regions = require("@exelib/regions")
 local statuses = require("../rules/status")
-local instrument_sprite = require("../lib/instruments/instrument_sprite")
+local instrument_sprite = asset.sprite("instrument")
 
 -- Confusion (status 0x23: 4 ticks) on the other navi's panel, learning
 -- nothing (`sub_80D4392`: regions 0x85 and 0x84).

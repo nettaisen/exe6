@@ -12,8 +12,8 @@
 local common = require("@exelib/bass/navi")
 local panel_strike = require("../../objects/panel_strike")
 local effects = require("../../lib/effects")
-local bass_anly_sprite = require("../bassanly/bass_anly_sprite")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local bass_anly_sprite = asset.sprite("bass-anly")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 -- His shots: 20 ticks of warning, hit modifier 3, on solid panels only.
 local SHOT: PanelStrike = { warning = 0x14, hit_mod = 3, solid_only = true }
@@ -25,6 +25,7 @@ return common.make {
     -- dimmed.
     cape_anim_offset = 0x14,
     raise_anim = 0xA,
+    raise_steps = 10,
     volley_anim = 0xC,
     ending = "timed",
     -- `sub_80C5F4A`: a panel strike running while dimmed (outlasting the
@@ -33,7 +34,7 @@ return common.make {
         panel_strike.spawn(me, x, y, 0, SHOT, damage, 0, true)
     end,
     -- A shot's flash at his hand (effect 0x57).
-    flash = new.effect { sprite = hit_sparks_sprite, anim = 8, palette = 0 },
+    flash = new.effect { sprite = hit_sparks_sprite, anim = 8, palette = 0, steps = 4 },
     smoke = effects.smoke,
     appear = asset.sound("appear"),
 }

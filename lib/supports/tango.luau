@@ -6,8 +6,8 @@
 local common = require("@exelib/supports/tango")
 local effects = require("../effects")
 local heal = require("./heal")
-local puff_sprite = require("../../sprites/puff")
-local tango_sprite = require("./tango_sprite")
+local puff_sprite = asset.sprite("puff")
+local tango_sprite = asset.sprite("tango")
 
 return common.make {
     id = "tango",
@@ -16,7 +16,7 @@ return common.make {
     land_sound = asset.sound("tango-land"),
     throw_sound = asset.sound("minibomb-throw"),
     -- Her arrival sparkle (the original's effect 0x15); she leaves in a puff.
-    arrive = new.effect { sprite = puff_sprite, anim = 3, palette = 0 },
+    arrive = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 },
     puff = effects.puff,
     heal = heal,
 }

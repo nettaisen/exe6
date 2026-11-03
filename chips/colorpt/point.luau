@@ -10,7 +10,7 @@
 
 local common = require("@exelib/colorpt/point")
 local trajectory = require("../../lib/trajectory")
-local grab_shot_sprite = require("../../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 return common.make {
     id = "colorpt/point",

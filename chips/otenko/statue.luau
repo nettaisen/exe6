@@ -18,7 +18,7 @@ local effects = require("../../lib/effects")
 -- statue loads 0C-00, the swords' sheet, instead; the content shows the
 -- Japanese games' Otenko on every console (docs/engine/jp-differences.md
 -- §5).
-local SPRITE = require("./otenko_sprite")
+local SPRITE = asset.sprite("otenko")
 
 return common.make {
     statue_id = "otenko/statue",

@@ -35,9 +35,9 @@ export type State = {
 
 local colonel = {}
 
-local SPRITE = require("./colonel_sprite")
-local colonel_effect_sprite = require("../../sprites/colonel_effect")
-local colonel_sword_sprite = require("./colonel_sword_sprite")
+local SPRITE = asset.sprite("colonel")
+local colonel_effect_sprite = asset.sprite("colonel-effect")
+local colonel_sword_sprite = asset.sprite("colonel-sword")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SPIN = asset.sound("spin")
@@ -57,7 +57,7 @@ local SWORD_ANIM = 0x1C
 local SCREEN_DIVIDE = new.region {
     panels = { { 0, -1 }, { 1, -1 }, { 2, -1 }, { 1, 0 }, { 0, 1 }, { 1, 1 }, { 2, 1 } },
 }
-local DIVIDE = new.effect { sprite = colonel_effect_sprite, anim = 3, palette = 0 }
+local DIVIDE = new.effect { sprite = colonel_effect_sprite, anim = 3, palette = 0, steps = 16 }
 
 -- His fade-in's starting gray.
 local FADE_GRAY = 0x1F

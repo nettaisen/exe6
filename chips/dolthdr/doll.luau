@@ -26,7 +26,7 @@ export type State = {
     ticks: number,
 }
 
-local SPRITE = require("./thunder_doll_sprite")
+local SPRITE = asset.sprite("thunder-doll")
 -- The user's hand (attach point 0x1D), and a panel's width in pixels.
 local HAND, PANEL = 0x1D, 0x28
 

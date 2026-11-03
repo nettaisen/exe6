@@ -13,7 +13,7 @@ local collision = require("../../rules/collision")
 local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
-local aura_head_sprite = require("./aura_head_sprite")
+local aura_head_sprite = asset.sprite("aura-head")
 
 local head = {}
 

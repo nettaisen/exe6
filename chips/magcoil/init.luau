@@ -7,7 +7,7 @@
 
 local attachment = require("../objects/attachment")
 local magnet = require("@self/magnet")
-local magnet_coil_sprite = require("@self/magnet_coil_sprite")
+local magnet_coil_sprite = asset.sprite("magnet-coil")
 
 export type State = {
     -- Ticks left in the current phase (AIAttackVars+0x10). (The hold is

@@ -29,7 +29,7 @@ export type State = {
     sound: number,
 }
 
-local SPRITE = require("./drip_shower_sprite")
+local SPRITE = asset.sprite("drip-shower")
 local SOUND = asset.sound("drip-shower")
 local SOUND_EVERY = 0x10
 

@@ -22,20 +22,24 @@ export type State = {
     target_y: number,
 }
 
-local SPRITE = require("./summon_black_sprite")
-local puff_sprite = require("../../sprites/puff")
-local sword_slash_sprite = require("../../sprites/sword_slash")
+local SPRITE = asset.sprite("summon-black")
+local puff_sprite = asset.sprite("puff")
+local sword_slash_sprite = asset.sprite("sword-slash")
 local APPEAR_SOUND, RISE_SOUND, CLAW_SOUND = asset.sound("appear"), asset.sound("bug"), asset.sound("tomahawk-man")
+-- It rises over 35 of its sprite's steps (its rising animation's length),
+-- raises its claw over 41 (its raising one's), and strikes over 26 (its
+-- striking one's).
+local RISE_STEPS, RAISE_STEPS, STRIKE_STEPS = 35, 41, 26
 -- The puffs where it sinks and where it comes up (`byte_80C1854`: effect
 -- 0x14 by 1, 0x15 by 0), and its claw (effect 0x16).
-local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
-local ARRIVE = new.effect { sprite = puff_sprite, anim = 3, palette = 0 }
-local CLAW = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
+local ARRIVE = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 }
+local CLAW = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 -- The claw drawn upside down (flip bit 1) and in palette +6.
 local CLAW_FLIP, CLAW_PALETTE = 2, 6
 -- Gregar the Cybeast's sheet: an actor whose look is it stands two panels
 -- wide.
-local GREGAR_LOOK = require("../../sprites/gregar_cybeast")
+local GREGAR_LOOK = asset.sprite("gregar-cybeast")
 local looks = require("@exelib/looks")
 -- Bodies (of either side) on a panel.
 local BODIES = 0x0F80_0000
@@ -120,7 +124,7 @@ local function rise(me: Object)
         end
     elseif phase == 4 then
         if me.phase_init == 0 then
-            if bit32.band(me.sprite.frame_flags, 0x80) ~= 0 then
+            if me.sprite.steps >= RISE_STEPS then
                 me.anim = 4
                 me.timer = 0x1E
                 me.phase_init = 4
@@ -202,7 +206,7 @@ local function strike(me: Object)
         me.phase, me.phase_init = 8, 0
     elseif phase == 8 or phase == 0xC then
         if me.phase_init == 0 then
-            if bit32.band(me.sprite.frame_flags, 0x80) == 0 then
+            if me.sprite.steps < (if phase == 8 then RAISE_STEPS else STRIKE_STEPS) then
                 return
             end
             me.phase_init = 1

@@ -11,9 +11,9 @@
 -- FirstBarrier and the patch cards set it.
 
 local visual = require("@self/visual")
-local aura_sprite = require("@self/aura_sprite")
-local barrier_sprite = require("@self/barrier_sprite")
-local bubble_sprite = require("../sprites/bubble")
+local aura_sprite = asset.sprite("aura")
+local barrier_sprite = asset.sprite("barrier")
+local bubble_sprite = asset.sprite("bubble")
 
 local barriers = {}
 
@@ -33,7 +33,7 @@ barriers.barrier_10 = barriers.barrier {
     hp = 10,
     threshold = 0,
     timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 0, attach_point = 2, hidden_parts = 0 },
+    look = { sprite = SPRITE, anim = 0, palette = 0, attach_point = 2, hidden_parts = 0, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -44,7 +44,7 @@ barriers.barrier_100 = barriers.barrier {
     hp = 100,
     threshold = 0,
     timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 3, attach_point = 2, hidden_parts = 0 },
+    look = { sprite = SPRITE, anim = 0, palette = 3, attach_point = 2, hidden_parts = 0, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -55,7 +55,7 @@ barriers.barrier_200 = barriers.barrier {
     hp = 200,
     threshold = 0,
     timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 6, attach_point = 2, hidden_parts = 0 },
+    look = { sprite = SPRITE, anim = 0, palette = 6, attach_point = 2, hidden_parts = 0, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -67,7 +67,7 @@ barriers.bubble = barriers.barrier {
     hp = 1,
     threshold = 0,
     timer = NO_TIMER,
-    look = { sprite = BUBBLE, anim = 0, palette = 0, attach_point = 0x15, hidden_parts = 0 },
+    look = { sprite = BUBBLE, anim = 0, palette = 0, attach_point = 0x15, hidden_parts = 0, up_steps = 46, down_steps = 5 },
     sound = BUBBLE_SOUND,
     down_sound = BUBBLE_POP,
 }
@@ -79,7 +79,7 @@ barriers.life_aura = barriers.barrier {
     hp = 1,
     threshold = 200,
     timer = 3000,
-    look = { sprite = AURA, anim = 0, palette = 0, attach_point = 1, hidden_parts = 0 },
+    look = { sprite = AURA, anim = 0, palette = 0, attach_point = 1, hidden_parts = 0, up_steps = 9, down_steps = 19 },
     hidden_unless_local_megaman = true,
     sound = SOUND,
 }

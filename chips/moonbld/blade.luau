@@ -6,7 +6,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/moonbld/blade")
-local moon_blade_sprite = require("../../sprites/moon_blade")
+local moon_blade_sprite = asset.sprite("moon-blade")
 
 local blade = {}
 

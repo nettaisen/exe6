@@ -11,7 +11,7 @@ local gust = require("../../objects/gust")
 
 local fan = {}
 
-local SPRITE = require("./fan_sprite")
+local SPRITE = asset.sprite("fan")
 -- How a fan looks absorbed (both variants' obstacle kind 0: its own sprite).
 fan.absorbed = absorbed_obstacle.look { sprite = SPRITE }
 

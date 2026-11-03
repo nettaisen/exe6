@@ -11,7 +11,7 @@
 -- sprite parts. See docs/engine/field-objects.md §4.4.
 
 local absorb = require("../navis/megaman/weapons/absorb")
-local puff_sprite = require("../sprites/puff")
+local puff_sprite = asset.sprite("puff")
 
 local absorbed_obstacle = {}
 
@@ -36,7 +36,7 @@ local ARRIVAL_Z = 0x10_0000
 local MAX_ABSORBED = 8
 
 -- The puff when it goes early (effect 0x12), 16 pixels up.
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 local PUFF_LIFT = 0x10_0000
 
 -- An absorbed obstacle's look, an "absorbed-look" record: what an obstacle

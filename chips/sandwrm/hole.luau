@@ -14,7 +14,10 @@ export type State = {
     worm: Object?,
 }
 
-local SPRITE = require("../../sprites/sand_hole")
+local SPRITE = asset.sprite("sand-hole")
+-- It opens over 24 of its sprite's steps (its opening animation's length),
+-- and closes over 19 (its closing one's).
+local OPEN_STEPS, CLOSE_STEPS = 24, 19
 
 -- The actions.
 local OPEN, WAIT, CLOSE = 0, 4, 8
@@ -63,7 +66,7 @@ local function open(me: Object)
     if navi.hp == 0 then
         return close_now(me)
     end
-    if step(me) and bit32.btest(me.sprite.frame_flags, 0x80) then
+    if step(me) and me.sprite.steps >= OPEN_STEPS then
         me.anim = 1
         me.action = WAIT
         me.phase = 0
@@ -85,7 +88,7 @@ local function close(me: Object)
         return
     end
     me:update_sprite_even_paused()
-    if bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.sprite.steps >= CLOSE_STEPS then
         me:set_lifecycle("destroy")
     end
 end

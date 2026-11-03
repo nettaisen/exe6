@@ -32,7 +32,7 @@ export type State = {
     aim_ticks: number,
 }
 
-local SPRITE = require("../../navis/eraseman/eraseman_sprite")
+local SPRITE = asset.sprite("eraseman")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR, SOUND_MARK, SOUND_SLASH = asset.sound("appear"), asset.sound("erase-man"), asset.sound("erase-man-2")
 

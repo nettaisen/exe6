@@ -125,11 +125,13 @@ export type ElementPillar = {
 export type AirRaidPlane = { lifetime: number, bombs: number, palette: number, hp: number }
 
 -- A shock wave's look and timing (chips/wavearm/wave, a row of the
--- original's `byte_80C6B00`): its animation, ticks on a panel before the
--- next rolls on, the panel type it leaves ("cracked" cracks the panel,
--- "broken" breaks it, or cracks it under something); `quick`: it goes 4
--- ticks after sending the next; `steers`: it turns toward an enemy's row.
-export type ShockWaveVariant = { anim: number, ticks: number, panel: PanelType?, quick: boolean?, steers: boolean? }
+-- original's `byte_80C6B00`): its animation, and the steps of its sprite
+-- that animation loops over (at each loop's end it goes out of sight),
+-- ticks on a panel before the next rolls on, the panel type it leaves
+-- ("cracked" cracks the panel, "broken" breaks it, or cracks it under
+-- something); `quick`: it goes 4 ticks after sending the next; `steers`:
+-- it turns toward an enemy's row.
+export type ShockWaveVariant = { anim: number, steps: number, ticks: number, panel: PanelType?, quick: boolean?, steers: boolean? }
 
 -- A hockey puck (chips/airhocky/puck, a row of the original's
 -- `byte_80C9818`): the steps it lasts (0: no limit), how it bounces (1:
@@ -545,9 +547,11 @@ export type Exe6FormFields = {
     plain_erase_beam: boolean?,
 }
 
--- A navi's: VarSwrd's sword stays plain for it (lib/swords/vari).
+-- A navi's: VarSwrd's sword stays plain for it (lib/swords/vari); how many of its sprite's steps its warp out
+-- (animation 4) and its hold (animation 0xA, looping with `hold_loops`) last (rules/init's).
 export type Exe6NaviFields = {
     var_sword_plain: boolean?,
+    animation_steps: { warp_out: number, hold: number, hold_loops: boolean? },
 }
 
 -- A navi's forms by game: the Crosses by their number on the custom

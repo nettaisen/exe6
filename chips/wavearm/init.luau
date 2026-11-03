@@ -5,9 +5,10 @@
 local strike = require("@self/strike")
 local wave = require("@self/wave")
 
--- The wave (`byte_80C6B00`'s rows 0xC to 0xE, one a chip, alike): quick, it
--- steers toward an enemy's row.
-local WAVE = wave.variant { anim = 1, ticks = 6, quick = true, steers = true }
+-- The wave (`byte_80C6B00`'s rows 0xC to 0xE, one a chip, alike): its
+-- animation looping every 17 steps; quick, it steers toward an enemy's
+-- row.
+local WAVE = wave.variant { anim = 1, steps = 17, ticks = 6, quick = true, steers = true }
 
 local wavearm1: Chip = {
     codes = { "E", "F", "G" },

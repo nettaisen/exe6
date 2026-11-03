@@ -12,10 +12,10 @@ local slashes = require("../navis/megaman/forms/slashcross/slashes")
 local sword = require("./sword").sword
 local wideblde = require("./wideblde").wideblde
 local wideswrd = require("./wideswrd").wideswrd
-local big_slash_sprite = require("../sprites/big_slash")
+local big_slash_sprite = asset.sprite("big-slash")
 
 -- The big slash.
-local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0 }
+local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0, steps = 15 }
 
 -- Its charged slash in SlashCross: the big slash over two columns.
 local CHARGED = slashes.slash {

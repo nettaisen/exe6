@@ -8,11 +8,11 @@ local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
 local statuses = require("../rules/status")
-local elec_sword_sprite = require("@self/elec_sword_sprite")
-local sword_slash_sprite = require("../sprites/sword_slash")
+local elec_sword_sprite = asset.sprite("elec-sword")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 -- ElecSwrd's blade (row 0x1B).
 local ELEC_BLADE = attachment.look { sprite = elec_sword_sprite, palette = 0 }
 

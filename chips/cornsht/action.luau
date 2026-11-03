@@ -9,7 +9,7 @@
 
 local attachment = require("../../objects/attachment")
 local corn = require("./corn")
-local corn_shooter_sprite = require("./corn_shooter_sprite")
+local corn_shooter_sprite = asset.sprite("corn-shooter")
 
 local cornsht = {}
 

@@ -6,7 +6,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/lance")
 local sparks = require("../../lib/sparks")
-local lance_sprite = require("./lance_sprite")
+local lance_sprite = asset.sprite("lance")
 
 local lance = {}
 

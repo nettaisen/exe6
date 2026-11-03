@@ -2,7 +2,9 @@
 -- AirRaid's plane's propeller (the original's actor object #3,
 -- `sub_80B88D0`; docs/engine/dimming-chips.md §7.3): it sits on the
 -- plane's first sprite part, following the plane's position, visibility
--- and look every tick, and spins unless the plane is held.
+-- and look every tick, and spins unless the plane is held. (Where that
+-- part is in the plane's frame is drawing's: it is drawn riding on it,
+-- `sprite:attach`, the original's place added to its position.)
 
 local propeller = {}
 
@@ -13,9 +15,9 @@ export type State = {
 
 local looks = require("@exelib/looks")
 local visibility = require("@exelib/visibility")
-local SPRITE = require("./propeller_sprite")
--- Where it sits on the owner: on the owner's sprite part 1, and 32 pixels
--- nearer (Y) and 31 higher (Z) than the owner.
+local SPRITE = asset.sprite("propeller")
+-- Where it sits on the owner: on the owner's sprite part 1 (drawn there),
+-- and 32 pixels nearer (Y) and 31 higher (Z) than the owner.
 local PART = 1
 local DY, DZ = 0x20_0000, 0x1F_0000
 
@@ -31,11 +33,11 @@ end
 
 -- `sub_80B8932`.
 local function follow(me: Object)
-    local dir = me.facing
     local owner = me.related1 :: Object
     local p = owner.pos
-    local px, py = owner.sprite:part_offset(PART)
-    me.pos = Vec3.new(int.i32(p.x + px * 0x1_0000 * dir), int.i32(p.y + DY + py * 0x1_0000), int.i32(p.z + DZ))
+    me.pos = Vec3.new(p.x, int.i32(p.y + DY), int.i32(p.z + DZ))
+    -- (From its first follow on: before it, it stands where it was spawned.)
+    me.sprite:attach(owner, PART)
     visibility.copy(me, owner)
     local look, worn = me.sprite, owner.sprite
     looks.copy(look, worn, "color_shader", "white", "mosaic")

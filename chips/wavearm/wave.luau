@@ -25,14 +25,14 @@ export type State = {
     turned: number,
 }
 
--- A shock wave variant (a row of `byte_80C6B00`): its animation, its ticks
--- on a panel, what it does to the panels it passes, and whether it is
--- quick or steers.
+-- A shock wave variant (a row of `byte_80C6B00`): its animation and the
+-- steps it loops over, its ticks on a panel, what it does to the panels it
+-- passes, and whether it is quick or steers.
 function wave.variant(v: Variant): Variant
     return new.record("shock-wave-variant", v)
 end
 
-local SPRITE = require("./shock_wave_sprite")
+local SPRITE = asset.sprite("shock-wave")
 local SOUND = asset.sound("shock-wave")
 local SOLID = 0x10
 -- The rows ahead it looks for enemies in (`byte_80C6DB8`), by facing
@@ -148,7 +148,8 @@ local function roll(me: Object)
         wave.spawn(me, x, y, s.variant, me.damage + me.stamina * 0x10000, s.turned)
         me.action = 4
     end
-    if bit32.btest(me.sprite.frame_flags, 0x80) then
+    local steps = s.variant.steps
+    if (me.sprite.steps > 0 and me.sprite.steps % steps == 0) then
         off_field(me)
         me.collision:set_region(nil)
     end
@@ -157,8 +158,9 @@ end
 -- `sub_80C6CBA` (action 4): gone at its animation's end, or (a quick one)
 -- after its second timer.
 local function linger(me: Object)
-    if not (me.state :: State).variant.quick then
-        if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    local v = (me.state :: State).variant
+    if not v.quick then
+        if not (me.sprite.steps > 0 and me.sprite.steps % v.steps == 0) then
             return
         end
     else

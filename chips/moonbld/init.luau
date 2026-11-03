@@ -7,7 +7,7 @@ local lockon = require("../rules/lockon")
 local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
-local moon_blade_sprite = require("../sprites/moon_blade")
+local moon_blade_sprite = asset.sprite("moon-blade")
 
 -- Its charged slash in SlashCross: the moon blade's ring, its hits giving
 -- a bug (code 0x18, argument 1); no blade.
@@ -16,7 +16,8 @@ local CHARGED = slashes.slash {
         region = regions.ring,
         sprite = moon_blade_sprite,
         anim = 0,
-        animates = true,
+        -- Its blade comes round every 10 of its sprite's steps.
+        animates = 10,
         bug = 0x18,
         bug_arg = 1,
     },

@@ -8,7 +8,7 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/swords/parts")
 local kind = require("../../rules/forms/kind")
-local sword_sprite = require("../../sprites/sword")
+local sword_sprite = asset.sprite("sword")
 
 local parts = {}
 

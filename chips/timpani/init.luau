@@ -8,7 +8,7 @@ local effects = require("@exelib/instruments/effects")
 local instrument = require("../lib/instruments/instrument")
 local instruments = require("../lib/instruments/controller")
 local statuses = require("../rules/status")
-local instrument_sprite = require("../lib/instruments/instrument_sprite")
+local instrument_sprite = asset.sprite("instrument")
 
 -- Held in place (status 0x43: 4 ticks) over the solid panels, and a
 -- camera shake (`sub_80D43C0`).

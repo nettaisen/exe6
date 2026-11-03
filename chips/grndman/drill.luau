@@ -18,7 +18,7 @@ export type State = {
 
 local looks = require("@exelib/looks")
 local visibility = require("@exelib/visibility")
-local SPRITE = require("./ground_drill_sprite")
+local SPRITE = asset.sprite("ground-drill")
 
 -- `sub_80E77B8`: on its owner, as visible as he is.
 local function init(me: Object)

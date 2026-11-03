@@ -4,7 +4,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/grab/shot")
-local grab_shot_sprite = require("../../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local shot = {}
 
@@ -13,6 +13,7 @@ shot.kind = common.make_kind {
     sprite = grab_shot_sprite,
     fall_sound = asset.sound("grab-shot-2"),
     land_sound = asset.sound("grab-shot"),
+    landing_steps = 16,
     target = collision.hits_navis,
     self_type = collision.thrown,
     spares = "last_full_column",

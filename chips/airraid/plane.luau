@@ -34,7 +34,7 @@ export type State = {
     next_target: number,
 }
 
-local SPRITE = require("./air_raid_plane_sprite")
+local SPRITE = asset.sprite("air-raid-plane")
 -- Its identity: a field object, with the look something that takes its
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {
@@ -44,7 +44,7 @@ local IDENTITY = new.identity {
     ai_index = 1,
     look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
 }
-local FLAME = require("./jet_flame_sprite")
+local FLAME = asset.sprite("jet-flame")
 -- Its collision: another body of its side, reached by the other side.
 local HIT_MOD = 3
 -- How it looks absorbed (the original's obstacle kind 6: its own sprite).

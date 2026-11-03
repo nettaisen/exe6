@@ -9,7 +9,7 @@
 -- EXE6's sound; its looks are its holders'.
 
 local common = require("@exelib/rflectr/shield")
-local reflector_shield_sprite = require("./reflector_shield_sprite")
+local reflector_shield_sprite = asset.sprite("reflector-shield")
 
 local shield = {}
 

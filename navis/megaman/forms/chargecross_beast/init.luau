@@ -7,7 +7,7 @@ local gregar_beast_buster = require("../weapons/gregar_beast_buster")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local wave = require("@self/wave")
 local forms = require("../../../rules/forms")
-local chargecross_beast_sprite = require("@self/chargecross_beast_sprite")
+local chargecross_beast_sprite = asset.sprite("chargecross-beast")
 
 local form: FormDef = {
     kind = "cross_beast",

@@ -6,11 +6,13 @@ local buster = require("./megaman/weapons/buster")
 local a_charge = require("./megaman/weapons/charged_chip_bonus_29")
 local charge = require("@self/charge")
 local chargeman = require("@self/chip").volcchrg
-local chargeman_portrait_sprite = require("@self/chargeman_portrait_sprite")
-local chargeman_sprite = require("@self/chargeman_sprite")
+local chargeman_portrait_sprite = asset.sprite("chargeman-portrait")
+local chargeman_sprite = asset.sprite("chargeman")
 
 local navi: NaviDef = {
     sprite = chargeman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 4, hold = 2 },
     element = "fire",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

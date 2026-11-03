@@ -14,7 +14,7 @@ local attachment = require("../objects/attachment")
 local common = require("@exelib/tornado/blow")
 local lockon = require("../rules/lockon")
 local tornado = require("@self/tornado")
-local hand_fan_sprite = require("@self/hand_fan_sprite")
+local hand_fan_sprite = asset.sprite("hand-fan")
 
 -- The fan (the original's attachment rows 0x21 and 0x22).
 local FAN = attachment.look { sprite = hand_fan_sprite, palette = 0, attach_point = 9 }

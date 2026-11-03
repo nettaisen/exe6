@@ -13,7 +13,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/flmhook/fire")
 local trajectory = require("../../lib/trajectory")
-local flame_hook_fire_sprite = require("./flame_hook_fire_sprite")
+local flame_hook_fire_sprite = asset.sprite("flame-hook-fire")
 
 -- Where the arc's center is behind, 16.16; a column's width.
 local CENTER_BACK = 0x78_0000

@@ -12,7 +12,7 @@ local collision = require("../rules/collision")
 local flying_shot = require("../objects/flying_shot")
 local lockon = require("../rules/lockon")
 local sparks = require("../lib/sparks")
-local bow_sprite = require("@self/bow_sprite")
+local bow_sprite = asset.sprite("bow")
 
 export type State = {
     -- Ticks of the draw so far, then the recovery's (AIAttackVars+0x10).
@@ -105,12 +105,22 @@ local function draw(me: Object, s: State)
     me.step_init = 0
 end
 
+-- Whether the navi's hold (animation 0xA, its own length: its `animation_steps`) has ended, or come round.
+local function hold_ended(me: Object): boolean
+    local steps = ((battle.navi(me.alliance).navi :: any) :: Exe6NaviFields).animation_steps
+    local s = me.sprite.steps
+    if steps.hold_loops then
+        return s > 0 and s % steps.hold == 0
+    end
+    return s >= steps.hold
+end
+
 -- `sub_80ECEBC`: 16 ticks; when the navi's animation ends the bow steps
 -- on; then the bow goes and back to idle.
 local function recover(me: Object, s: State)
     local init = me.step_init
     if init == UNTIL_ANIM_END then
-        if bit32.btest(me.sprite.frame_flags, 0x80) then
+        if hold_ended(me) then
             local bow = me.overlay
             if bow then
                 bow.anim += 1

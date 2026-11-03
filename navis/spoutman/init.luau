@@ -6,12 +6,14 @@ local buster = require("./megaman/weapons/buster")
 local a_charge = require("./megaman/weapons/charged_chip_bonus_20")
 local charge = require("@self/charge")
 local spoutman = require("@self/chip").dripshwr
-local idle_overlay_sprite = require("@self/idle_overlay_sprite")
-local spoutman_portrait_sprite = require("@self/spoutman_portrait_sprite")
-local spoutman_sprite = require("@self/spoutman_sprite")
+local idle_overlay_sprite = asset.sprite("idle-overlay")
+local spoutman_portrait_sprite = asset.sprite("spoutman-portrait")
+local spoutman_sprite = asset.sprite("spoutman")
 
 local navi: NaviDef = {
     sprite = spoutman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 7, hold = 2 },
     element = "aqua",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

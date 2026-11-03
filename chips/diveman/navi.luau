@@ -15,7 +15,7 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("./diveman_sprite")
+local SPRITE = asset.sprite("diveman")
 local SOUND_SURFACE = asset.sound("sand-worm")
 
 -- What he is taken for: his actor record, and what he wears (his overlay, `sub_8010F96`).

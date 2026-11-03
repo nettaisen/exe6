@@ -10,7 +10,7 @@
 local attachment = require("../../../../objects/attachment")
 local weapon = require("../../../../lib/weapon")
 local windrack = require("../../../../chips/windrack/action")
-local tengu_fan_sprite = require("./tengu_fan_sprite")
+local tengu_fan_sprite = asset.sprite("tengu-fan")
 
 local charge = {}
 

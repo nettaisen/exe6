@@ -8,8 +8,8 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/snake")
 local trajectory = require("../../lib/trajectory")
-local pink_flash_sprite = require("../../sprites/pink_flash")
-local snake_sprite = require("./snake_sprite")
+local pink_flash_sprite = asset.sprite("pink-flash")
+local snake_sprite = asset.sprite("snake")
 
 local snake = {}
 
@@ -32,7 +32,7 @@ snake.kind = common.make_kind("snake/snake", {
     -- Its strike (`sub_80C53A6`, 0x04050501): an attack hitting navis with
     -- hit modifier 3.
     strike_element = 0,
-    strike_spark = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 0 },
+    strike_spark = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
     strike_hit_mod = 3,
     is = collision.attack,
     hits = collision.hits_navis,

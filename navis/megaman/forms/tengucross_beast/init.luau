@@ -8,8 +8,8 @@ local tengu_wind = require("../weapons/tengu_wind")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local charge = require("@self/charge")
 local forms = require("../../../rules/forms")
-local beast_head_sprite = require("./beast_head_sprite")
-local tengucross_beast_sprite = require("@self/tengucross_beast_sprite")
+local beast_head_sprite = asset.sprite("beast-head")
+local tengucross_beast_sprite = asset.sprite("tengucross-beast")
 
 local form: FormDef = {
     kind = "cross_beast",

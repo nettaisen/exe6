@@ -13,7 +13,7 @@ local sonic_boom = require("../../lib/swords/sonic_boom")
 
 -- The slashes' effects over the panel ahead (effects 0x65 to 0x67,
 -- `dword_80F0064`).
-local SLASH_SPRITE = require("../../sprites/sword_slash")
+local SLASH_SPRITE = asset.sprite("sword-slash")
 
 return {
     action = common.make {
@@ -29,9 +29,9 @@ return {
         is = collision.slash,
         hits = collision.hits_navis,
         effects = {
-            new.effect { sprite = SLASH_SPRITE, anim = 1, palette = 4 },
-            new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 4 },
-            new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 4 },
+            new.effect { sprite = SLASH_SPRITE, anim = 1, palette = 4, steps = 13 },
+            new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 4, steps = 13 },
+            new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 4, steps = 13 },
         },
         boom = function(owner: Object, x: number, y: number, element: number, damage: number, boom: SonicBoom): Object?
             return sonic_boom.throw(owner, x, y, element, damage, boom)

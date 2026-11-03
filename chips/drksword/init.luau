@@ -7,10 +7,10 @@ local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
 local slashes = require("../navis/megaman/forms/slashcross/slashes")
 local sword = require("./sword").sword
-local big_slash_sprite = require("../sprites/big_slash")
+local big_slash_sprite = asset.sprite("big-slash")
 
 -- The dark big slash.
-local DARK_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 2 }
+local DARK_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 2, steps = 15 }
 
 -- Its charged slash in SlashCross: the big slash over two columns, in palette 10.
 local CHARGED = slashes.slash {

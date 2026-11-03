@@ -18,7 +18,7 @@ local statuses = require("../../rules/status")
 
 local army = {}
 
-local SPRITE = require("./col_army_sprite")
+local SPRITE = asset.sprite("col-army")
 local APPEAR_SOUND, SHOT_SOUND = asset.sound("col-army"), asset.sound("col-army-2")
 -- Its collision: an object of its side that the other side's attacks,
 -- objects and bodies (and blockers) reach; hit modifier 3; the plain
@@ -34,6 +34,8 @@ local SHOT = bullet.variant { region = regions.long, hit_mod = 1, effect = bulle
 local SHOTS, SHOT_TICKS = 3, 0xA
 local HEIGHTS = { [0] = 0x08, 0x10, 0x18, 0x20 }
 local WAIT_TICKS, SHOW_AT = 0x30, 0x1E
+-- It leaves over 14 of its sprite's steps (its leaving animation's length).
+local LEAVE_STEPS = 14
 
 -- The actions.
 local WAIT, FIRE, LEAVE = 0, 4, 8
@@ -138,7 +140,7 @@ end
 
 -- `sub_80C9E88`: gone when its animation ends.
 local function leave(me: Object)
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.sprite.steps < LEAVE_STEPS then
         return
     end
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)

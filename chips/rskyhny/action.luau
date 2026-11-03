@@ -8,7 +8,7 @@
 
 local attachment = require("../../objects/attachment")
 local bee = require("./bee")
-local hive_sprite = require("./hive_sprite")
+local hive_sprite = asset.sprite("hive")
 
 local action = {}
 

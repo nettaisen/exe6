@@ -25,7 +25,7 @@ local lib = require("../../../lib/buster")
 local projectile = require("../../../lib/projectile")
 local sparks = require("../../../lib/sparks")
 local variants = require("../../../objects/projectile/variants")
-local beast_shot_sprite = require("./beast_shot_sprite")
+local beast_shot_sprite = asset.sprite("beast-shot")
 
 -- (The recovery after the shot is the navi's `attack_count`, AIAttackVars+0x12:
 -- a throw doesn't write it, so it waits the last shot's, whatever ran in

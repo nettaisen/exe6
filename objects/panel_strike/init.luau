@@ -25,7 +25,9 @@ export type State = {
     solid_only: boolean,
 }
 
-local SPRITE = require("@self/panel_strike_sprite")
+local SPRITE = asset.sprite("panel-strike")
+-- The burst plays over 12 of its sprite's steps (its animation's length).
+local BURST_STEPS = 12
 local SOUND_COL_ARMY_2 = asset.sound("col-army-2")
 
 -- `sub_80C5E00`: on its panel, its collision on with its region off.
@@ -88,7 +90,7 @@ local function burst(me: Object)
         me.phase = 1
         me.collision:set_region(nil)
     end
-    if bit32.band(me.sprite.frame_flags, 0x80) ~= 0 then
+    if me.sprite.steps >= BURST_STEPS then
         me:set_lifecycle("destroy")
     end
 end

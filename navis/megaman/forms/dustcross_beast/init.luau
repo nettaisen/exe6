@@ -8,8 +8,8 @@ local absorb = require("../weapons/absorb")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local scatter = require("@self/scatter")
 local forms = require("../../../rules/forms")
-local beast_head_sprite = require("./beast_head_sprite")
-local dustcross_beast_sprite = require("@self/dustcross_beast_sprite")
+local beast_head_sprite = asset.sprite("beast-head")
+local dustcross_beast_sprite = asset.sprite("dustcross-beast")
 
 local form: FormDef = {
     kind = "cross_beast",

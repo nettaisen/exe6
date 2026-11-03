@@ -5,12 +5,14 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local groundman = require("@self/chip")["rc-brakr"]
-local groundman_overlay_sprite = require("@self/groundman_overlay_sprite")
-local groundman_portrait_sprite = require("@self/groundman_portrait_sprite")
-local groundman_sprite = require("@self/groundman_sprite")
+local groundman_overlay_sprite = asset.sprite("groundman-overlay")
+local groundman_portrait_sprite = asset.sprite("groundman-portrait")
+local groundman_sprite = asset.sprite("groundman")
 
 local navi: NaviDef = {
     sprite = groundman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 5, hold = 2 },
     element = "null",
     weakness = { "cursor" },
     buster_bonus = 1,

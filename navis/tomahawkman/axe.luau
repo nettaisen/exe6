@@ -16,7 +16,7 @@ export type State = {
 
 local looks = require("@exelib/looks")
 local visibility = require("@exelib/visibility")
-local SPRITE = require("./eagle_tomahawk_sprite")
+local SPRITE = asset.sprite("eagle-tomahawk")
 local ANIM_RAISED, ANIM_SWUNG = 6, 7
 
 -- Its actions, which his routine sets.

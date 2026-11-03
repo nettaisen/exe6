@@ -5,11 +5,13 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local eraseman = require("@self/chip").edeletbm
-local eraseman_portrait_sprite = require("@self/eraseman_portrait_sprite")
-local eraseman_sprite = require("@self/eraseman_sprite")
+local eraseman_portrait_sprite = asset.sprite("eraseman-portrait")
+local eraseman_sprite = asset.sprite("eraseman")
 
 local navi: NaviDef = {
     sprite = eraseman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 4, hold = 2 },
     element = "null",
     weakness = { "wind" },
     buster_bonus = 1,

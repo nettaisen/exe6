@@ -8,7 +8,7 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/drilarm/drill")
 local sparks = require("../../lib/sparks")
-local drill_arm_sprite = require("./drill_arm_sprite")
+local drill_arm_sprite = asset.sprite("drill-arm")
 
 local drill = {}
 

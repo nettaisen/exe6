@@ -13,7 +13,7 @@ local debris = require("../../chips/rockcube/debris")
 local effects = require("../../lib/effects")
 local rock = require("../../chips/rockcube/rock")
 local sparks = require("../../lib/sparks")
-local rock_cubes_sprite = require("../../sprites/rock_cubes")
+local rock_cubes_sprite = asset.sprite("rock-cubes")
 
 local bubble = {}
 

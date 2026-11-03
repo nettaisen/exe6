@@ -14,16 +14,16 @@ local collision = require("../../rules/collision")
 local navi_chips = require("../../lib/navi_chips/navi")
 local parts = require("../../lib/swords/parts")
 local regions = require("@exelib/regions")
-local charge_glow_sprite = require("../../sprites/charge_glow")
-local colonel_effect_sprite = require("../../sprites/colonel_effect")
-local colonel_sprite = require("../colonel/colonel_sprite")
-local colonel_sword_sprite = require("../colonel/colonel_sword_sprite")
-local protoman_sprite = require("../../navis/protoman/protoman_sprite")
-local sword_slash_sprite = require("../../sprites/sword_slash")
+local charge_glow_sprite = asset.sprite("charge-glow")
+local colonel_effect_sprite = asset.sprite("colonel-effect")
+local colonel_sprite = asset.sprite("colonel")
+local colonel_sword_sprite = asset.sprite("colonel-sword")
+local protoman_sprite = asset.sprite("protoman")
+local sword_slash_sprite = asset.sprite("sword-slash")
 local navi_left = require("@exelib/navi_chips/left")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 
 local twinldrs = {}
 
@@ -85,15 +85,15 @@ local SOUND_CHARGE, SOUND_CHARGED = asset.sound("buster-charge"), asset.sound("b
 -- and 0x37).
 local COLONEL_SWORD = attachment.look { sprite = colonel_sword_sprite, palette = 0 }
 local CROSS = {
-    new.effect { sprite = colonel_effect_sprite, anim = 1, palette = 0 },
-    new.effect { sprite = colonel_effect_sprite, anim = 2, palette = 0 },
+    new.effect { sprite = colonel_effect_sprite, anim = 1, palette = 0, steps = 13 },
+    new.effect { sprite = colonel_effect_sprite, anim = 2, palette = 0, steps = 13 },
 }
 
 -- Colonel's charge: the glow while it builds (effect 0x4E) and the flash
 -- when it is full (0x4F), at his sprite's attach point 0 (`sub_8018810` by
 -- his NameID: his sprite's table row, whose point 0 is (0, 0)).
-local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0 }
-local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0 }
+local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0, steps = 16 }
+local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0, steps = 16 }
 local GLOW_X, GLOW_Z = 0, 0
 
 -- The afterimages ProtoMan leaves (`sub_80BDA7C`): their color shader and

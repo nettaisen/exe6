@@ -23,7 +23,7 @@ export type State = {
     while_dimmed: boolean,
 }
 
-local SPRITE = require("../../sprites/blast_fire")
+local SPRITE = asset.sprite("blast-fire")
 local HIT_MOD = 3
 
 -- By direction: its step (`byte_80C846C`), how far it goes (16.16,

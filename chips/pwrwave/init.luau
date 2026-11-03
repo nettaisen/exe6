@@ -7,8 +7,9 @@ local strike = require("./wavearm/strike")
 local wave = require("./wavearm/wave")
 local wavearm_chips = require("./wavearm")
 
--- The wave (`byte_80C6B00`'s row 0xF): quick, straight.
-local WAVE = wave.variant { anim = 1, ticks = 6, quick = true }
+-- The wave (`byte_80C6B00`'s row 0xF): its animation looping every 17
+-- steps; quick, straight.
+local WAVE = wave.variant { anim = 1, steps = 17, ticks = 6, quick = true }
 
 local pwrwave1: Chip = {
     codes = { "A", "B", "C", "*" },

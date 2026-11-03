@@ -6,7 +6,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/circgun/shot")
 local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
-local sight_sprite = require("../../sprites/sight")
+local sight_sprite = asset.sprite("sight")
 
 local shot = {}
 

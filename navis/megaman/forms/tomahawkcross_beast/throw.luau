@@ -8,7 +8,7 @@
 -- after the swing began it idles.
 
 local boomerang = require("../../../../chips/boomer/boomerang")
-local boomerang_tomahawk_sprite = require("./boomerang_tomahawk_sprite")
+local boomerang_tomahawk_sprite = asset.sprite("boomerang-tomahawk")
 
 export type State = {
     -- Ticks left in the swing (AIAttackVars+0x10).
@@ -26,6 +26,9 @@ local WOOD, HIT_PARAM = 4, 0x9E
 -- The swing's length, and when the tomahawks fly (on row 1, then row 3).
 local SWING_TICKS = 0x5F
 local ROW_1_AT, ROW_3_AT = 0x5D, 0x53
+-- The navi winds up over 9 of its sprite's steps (TomahawkCross Beast's
+-- wind-up animation's length).
+local WIND_UP_STEPS = 9
 
 -- `sub_8011DBC`: 50 damage and 20 more per point of buster Attack (up to
 -- 5) (`sub_8012642`), Wood.
@@ -49,7 +52,7 @@ local function wind_up(me: Object, s: State)
         me.step_init = 4
         return
     end
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.sprite.steps < WIND_UP_STEPS then
         return
     end
     me:set_animation(0x18)
