@@ -1,0 +1,56 @@
+# EXE6's backgrounds (docs/design/asset-formats.md §8): the background its link battle stages are drawn on, those a
+# link battle picks one of, and each background's music. Presentation, read with the locales: no tick reads any of it,
+# so the content hash leaves it out.
+
+# The background every link battle stage is drawn on (each stage record's, the same one in every record): a round's
+# where it states none and none is picked, and where the one it states isn't here.
+stage = "comp"
+
+# The backgrounds a link battle picks one of at random with its settings (`sub_81209DC`: `byte_8120A20`, 21 entries,
+# in the table's order; three are there twice, so twice as likely). Whoever makes a random match picks from them (the
+# engine picks none: a round's settings state its background).
+link_battle = [
+    "lans-hp", "acdc-hp", "acdc-hp", "aquarium-hp", "sky-hp", "green-hp", "robot-control-comp", "comp",
+    "comp-alt", "central-area", "aquarium-comp", "seaside-area", "judgetree-comp", "green-area", "sky-area",
+    "undernet", "mr-weather-comp", "underground", "underground", "acdc-area", "acdc-area"
+]
+
+# Each background's music, the battle theme a round drawn on it plays where the player picked none (docs/app.md §1,
+# "The battle's music"). Each is the theme most of the original's battles on it start (their settings' byte 2; a
+# battle draws the background its settings state, or with 0xFF its map's): the random encounters of the maps that draw
+# it (`sub_80AA4C0`; the encounter lists `off_8020170` and the story's three others, virus battles but for a
+# conditional navi) and the battles their scripts start (`battleSettingsList0`, by cutscene command 0x55 and text
+# command FB 03). Lan's HP has no encounters and starts no battle: link battles alone draw it, and theirs is a link
+# battle's, the virus battles'. A comp or dungeon that ends in a story navi's battle has the boss battles' (the user's
+# pick: by count every one would be the virus battles', its encounters outnumbering them).
+[backgrounds]
+acdc-area = { music = "virus-battle" }
+acdc-hp = { music = "virus-battle" }
+# AquarumComp3's navi battle (record 0x43) ends its dungeon.
+aquarium-comp = { music = "boss-battle" }
+aquarium-hp = { music = "virus-battle" }
+central-area = { music = "virus-battle" }
+comp = { music = "virus-battle" }
+comp-alt = { music = "virus-battle" }
+# vs Cybeast, the user's pick: the two battles against a Cybeast (records 0x84 and 0x85) are on CopyBotComp. By count
+# it would be the virus battles' (4 encounters).
+copybot-comp = { music = "final-battle" }
+# The crossover battle's, the user's pick: by count it would be the virus battles' (60, and 4 navis').
+graveyard = { music = "crossover-battle" }
+green-area = { music = "virus-battle" }
+green-hp = { music = "virus-battle" }
+# JdgTreeComp3's navi battle (record 0x51) ends its dungeon; PavilonComp2's (0x81) too.
+judgetree-comp = { music = "boss-battle" }
+lans-hp = { music = "virus-battle" }
+# MrWeathrCmp3's navi battle (record 0x70) ends its dungeon; PavilonComp3's (0x82) too.
+mr-weather-comp = { music = "boss-battle" }
+# MrWeathrCmp in its storm: the same comp's.
+mr-weather-comp-storm = { music = "boss-battle" }
+# RobCtrlComp2's navi battle (record 0x41) ends its dungeon; PavilonComp4's (0x83) too.
+robot-control-comp = { music = "boss-battle" }
+seaside-area = { music = "virus-battle" }
+sky-area = { music = "virus-battle" }
+sky-hp = { music = "virus-battle" }
+# Underground2's four navi battles (records 0x7A, 0x7B, 0x8C and 0x8D).
+underground = { music = "boss-battle" }
+undernet = { music = "virus-battle" }

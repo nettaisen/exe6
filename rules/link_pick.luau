@@ -50,16 +50,4 @@ return {
     first_round_stages = 96,
     -- The stages a match may name (a match file's, the editor's, an offer's): the link battle's.
     match_stages = match_stages(),
-    -- The backgrounds a link battle picks one of at random with its settings (`sub_81209DC`: `byte_8120A20`, 21
-    -- entries, in the table's order; three are there twice, so twice as likely). Whoever makes a random match picks
-    -- from them (the engine picks none: a round's settings state its background).
-    backgrounds = {
-        asset.background("lans-hp"), asset.background("acdc-hp"), asset.background("acdc-hp"),
-        asset.background("aquarium-hp"), asset.background("sky-hp"), asset.background("green-hp"),
-        asset.background("robot-control-comp"), asset.background("comp"), asset.background("comp-alt"),
-        asset.background("central-area"), asset.background("aquarium-comp"), asset.background("seaside-area"),
-        asset.background("judgetree-comp"), asset.background("green-area"), asset.background("sky-area"),
-        asset.background("undernet"), asset.background("mr-weather-comp"), asset.background("underground"),
-        asset.background("underground"), asset.background("acdc-area"), asset.background("acdc-area"),
-    },
 }
