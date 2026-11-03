@@ -36,6 +36,8 @@ local function follow(me: Object)
     local owner = me.related1 :: Object
     local p = owner.pos
     me.pos = Vec3.new(p.x, int.i32(p.y + DY), int.i32(p.z + DZ))
+    -- (From its first follow on: before it, it stands where it was spawned.)
+    me.sprite:attach(owner, PART)
     visibility.copy(me, owner)
     local look, worn = me.sprite, owner.sprite
     looks.copy(look, worn, "color_shader", "white", "mosaic")
@@ -61,7 +63,6 @@ local function init(me: Object)
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-    sprite:attach(me.related1, PART)
     me:set_lifecycle("update")
 end
 
