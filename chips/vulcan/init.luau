@@ -16,7 +16,7 @@ local SHOT = bullet.variant { region = regions.long, hit_mod = 1, effect = bulle
 local SUPER_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 1 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 1, steps = 10 },
     single = true,
 }
 

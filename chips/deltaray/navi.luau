@@ -22,7 +22,7 @@ local protoman_sprite = require("../../navis/protoman/protoman_sprite")
 local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 
 -- What a chip summons him with: his palette (the chip's first parameter
 -- picks it).
@@ -40,8 +40,8 @@ return common.make {
     },
     -- The flash above him as he arrives (effect 0x03), and the mark on his
     -- target (effect 0x28); his slash drawn over the column (effect 0x27).
-    flash = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 },
-    mark = new.effect { sprite = hit_sparks_sprite, anim = 11, palette = 1 },
+    flash = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 },
+    mark = new.effect { sprite = hit_sparks_sprite, anim = 11, palette = 1, steps = 20 },
     slash = WIDE_SLASH,
     -- His sword: the swords' blade (the original's attachment 3), its
     -- animation 0x0B, stepping while dimmed.

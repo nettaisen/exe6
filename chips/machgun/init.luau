@@ -39,7 +39,7 @@ local STRIKES, INTERVAL, START_ROW = 9, 8, 3
 local PANEL_STRIKE: PanelStrike = { warning = 6, hit_mod = 1 }
 -- The reticle (effect 0x2F) over the target, for 6 ticks (the chips'
 -- second parameter).
-local RETICLE = new.effect { sprite = reticle_sprite, anim = 0, palette = 0 }
+local RETICLE = new.effect { sprite = reticle_sprite, anim = 0, palette = 0, steps = 14 }
 local RETICLE_TICKS = 6
 -- The gun's animation as it fires.
 local GUN_FIRE = 1

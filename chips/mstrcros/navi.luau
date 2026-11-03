@@ -72,9 +72,9 @@ local navi_left = require("@exelib/navi_chips/left")
 local looks = require("@exelib/looks")
 
 -- Sword's slash over the panel ahead.
-local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0 }
+local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0, steps = 10 }
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 -- AquaSwrd's blade (row 0x1A).
 local AQUA_BLADE = attachment.look { sprite = aqua_sword_sprite, palette = 0 }
 -- BambSwrd's blade (row 0x1C: the sword in palette 2).
@@ -142,12 +142,12 @@ local FINALE: { [string]: { Entry } } = {
 -- WindRack's rack) and its gust (effect 0x44).
 local DRILL_ARM = attachment.look { sprite = drill_arm_sprite, palette = 0, attach_point = 19 }
 local FAN = attachment.look { sprite = wind_rack_sprite, palette = 0 }
-local GUST = new.effect { sprite = swirl_sprite, anim = 0, palette = 0 }
+local GUST = new.effect { sprite = swirl_sprite, anim = 0, palette = 0, steps = 24 }
 
 -- The finale's charge: the glow while it builds (effect 0x4E) and the
 -- flash when it is full (0x4F), at the Cross's attach point 0.
-local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0 }
-local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0 }
+local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0, steps = 16 }
+local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0, steps = 16 }
 
 local SOUND_APPEAR, SOUND_CIRCLE = asset.sound("appear"), asset.sound("sun-moon")
 local SOUND_BEAM, SOUND_DRILL, SOUND_FAN = asset.sound("erase-man-2"), asset.sound("drilarm"), asset.sound("windrack")

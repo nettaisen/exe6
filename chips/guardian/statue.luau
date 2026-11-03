@@ -48,9 +48,9 @@ local made = common.make {
         strike = asset.sound("beast-over-burst"),
     },
     -- The flash it arrives in, 16 pixels up (effect 0x15).
-    arrival = new.effect { sprite = puff_sprite, anim = 3, palette = 0 },
+    arrival = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 },
     -- The burst on each panel it strikes (effect 0x45).
-    burst = new.effect { sprite = lightning_sprite, anim = 0, palette = 0 },
+    burst = new.effect { sprite = lightning_sprite, anim = 0, palette = 0, steps = 17 },
     -- A neutral obstacle that everything reaches (row 0x0E, while dimmed
     -- too, breaking).
     is = collision.neutral_body,

@@ -52,8 +52,8 @@ local HOP_TICKS = 2
 local HIT_MOD = 3
 local NO_SPARK: Spark? = nil
 -- Effects: the dust where it lands (effect 0x34), and where it can't (0x15).
-local DUST = new.effect { sprite = dust_2_sprite, anim = 0, palette = 0 }
-local GONE = new.effect { sprite = puff_sprite, anim = 3, palette = 0 }
+local DUST = new.effect { sprite = dust_2_sprite, anim = 0, palette = 0, steps = 14 }
+local GONE = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 }
 -- Its dust afterimages (`sub_80E4FFC`, `sub_80E5024`).
 local AFTERIMAGE_SHADER, AFTERIMAGE_TICKS = 0x83E0, 0xE
 local AFTERIMAGE_LOW = 0x4_0000

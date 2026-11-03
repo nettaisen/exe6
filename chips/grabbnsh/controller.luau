@@ -11,6 +11,6 @@ local grab_shot_sprite = require("../../sprites/grab_shot")
 return common.make {
     id = "grabbnsh/controller",
     hand = hand.kind,
-    returned = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 },
+    returned = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 16 },
     return_sound = asset.sound("err-select-91"),
 }

@@ -9,7 +9,7 @@ local slashes = require("../navis/megaman/forms/slashcross/slashes")
 local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- Sword's slash over the panel ahead.
-local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0 }
+local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0, steps = 10 }
 
 -- Its charged slash in SlashCross: the plain sword's (the original's row 0): over the panel ahead.
 local CHARGED = slashes.slash {

@@ -16,7 +16,7 @@ return common.make {
     land_sound = asset.sound("tango-land"),
     throw_sound = asset.sound("minibomb-throw"),
     -- Her arrival sparkle (the original's effect 0x15); she leaves in a puff.
-    arrive = new.effect { sprite = puff_sprite, anim = 3, palette = 0 },
+    arrive = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 },
     puff = effects.puff,
     heal = heal,
 }

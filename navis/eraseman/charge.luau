@@ -32,7 +32,7 @@ local NULL = 0
 -- swords' wide slash in his color) 24 pixels up.
 local AHEAD = 2
 local HIT_MOD = 3
-local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 6 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 6, steps = 13 }
 local SLASH_Z = 0x18_0000
 
 -- `sub_8012292`: 50 damage and 20 more per point of buster Attack (up to

@@ -9,7 +9,7 @@ local slashes = require("../navis/megaman/forms/slashcross/slashes")
 local big_slash_sprite = require("../sprites/big_slash")
 
 -- The big slash.
-local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0 }
+local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0, steps = 15 }
 
 -- Its charged slashes in SlashCross: two big slashes over two columns, the
 -- first flinching. (The second's lock-on mode is the table's entry; the

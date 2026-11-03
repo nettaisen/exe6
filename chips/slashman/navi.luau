@@ -41,7 +41,7 @@ local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FLAME_HOOK_FIRE = asset.sound("flame-hook-fire")
 -- His slash, drawn over the panel ahead (effect 0x39).
-local SLASH = new.effect { sprite = slash_man_effect_sprite, anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = slash_man_effect_sprite, anim = 0, palette = 0, steps = 11 }
 
 -- His actions.
 local APPEAR, STAND, AIM, WAVES, REST, LEAP, STRIKE, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14, 0x18, 0x1C

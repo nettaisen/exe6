@@ -35,8 +35,8 @@ end
 -- The looks several users' variants share: the Vulcans' and the
 -- soldiers' hit (shown once, at the bullet), and the splash with its
 -- sound (SpoutCross's charged shot and the puffy's).
-bullet.hit = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 }
-bullet.splash = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0 }
+bullet.hit = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 }
+bullet.splash = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 }
 bullet.splash_sound = asset.sound("spout-ball")
 
 return bullet

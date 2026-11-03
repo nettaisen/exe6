@@ -18,9 +18,9 @@ local strike = {}
 -- The bursts' looks: water for aqua, lightning for elec, leaves for wood
 -- (the original's panel-burst rows 0, 2 and 4; fire and the null element
 -- take the shells' fiery burst, row 3).
-local SPLASH = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0 }
-local LIGHTNING = new.effect { sprite = lightning_sprite, anim = 0, palette = 0 }
-local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0 }
+local SPLASH = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 }
+local LIGHTNING = new.effect { sprite = lightning_sprite, anim = 0, palette = 0, steps = 17 }
+local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0, steps = 13 }
 
 -- The strike by element (null, fire, aqua, elec, wood): its sound
 -- (`byte_80E3714`; none for the null element), its hit (`byte_80E36EC`:

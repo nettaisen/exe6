@@ -65,7 +65,7 @@ local VOLLEY_SHOT = flying_shot.variant {
     sprite = SHOT_SPRITE,
     speed = 0xC_0000,
     range = 2,
-    end_effect = new.effect { sprite = hit_sparks_sprite, anim = 0, palette = 0 },
+    end_effect = new.effect { sprite = hit_sparks_sprite, anim = 0, palette = 0, steps = 4 },
 }
 
 -- The first shot's height (`dword_80EC70C`'s first byte), pixels.

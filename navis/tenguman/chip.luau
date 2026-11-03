@@ -21,7 +21,7 @@ local ANIM_BLOW, ANIM_RECOVER = 0x10, 7
 local SOUND = asset.sound("aqua-surge")
 
 -- The gust on him (32 pixels up).
-local GUST = new.effect { sprite = swirl_sprite, anim = 1, palette = 1 }
+local GUST = new.effect { sprite = swirl_sprite, anim = 1, palette = 1, steps = 15 }
 local GUST_Z = 0x20_0000
 
 local BLOW_TICKS, RECOVER_TICKS = 0x1E, 0x14

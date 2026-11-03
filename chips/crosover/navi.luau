@@ -24,7 +24,7 @@ local sun_beam_sprite = require("../../sprites/sun_beam")
 local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- Sword's slash over the panel ahead.
-local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0 }
+local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0, steps = 10 }
 
 local crosover = {}
 
@@ -76,7 +76,7 @@ local DRAIN_ELEMENT, DRAIN_DAMAGE, DRAIN_TICKS = 5, 3, 0x78
 -- place too (effects 0x18 and 0x36).
 local SLASH = { effect = SWORD_SLASH, region = regions.single }
 local CROSS_HALF = {
-    effect = new.effect { sprite = colonel_effect_sprite, anim = 1, palette = 0 },
+    effect = new.effect { sprite = colonel_effect_sprite, anim = 1, palette = 0, steps = 13 },
     region = regions.falling,
 }
 

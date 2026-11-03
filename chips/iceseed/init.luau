@@ -19,7 +19,7 @@ local chip: Chip = {
             palette = 1,
             panel = "ice",
             -- Its sprout (effect 0x3B).
-            effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 },
+            effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 16 },
             sound = asset.sound("freeze"),
         }),
     },

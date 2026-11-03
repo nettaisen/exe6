@@ -30,7 +30,7 @@ local SPAWNER_ADDRESS = 0x080B999B
 -- When his tomahawk lands (ticks left of his swing).
 local STRIKE = 0x37
 -- The earth it splashes (effect 0x33).
-local EARTH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
+local EARTH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 12 }
 
 -- `sub_80B97E4`: on his panel, on the ground (Z's whole part cleared).
 local function init(me: Object)

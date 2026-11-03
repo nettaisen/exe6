@@ -22,7 +22,7 @@ local SOUND = asset.sound("wide-shot")
 local ANIM = 0x14
 
 -- The splash (effect 0x2B): DiveMan's sprite.
-local SPLASH = new.effect { sprite = SPRITE, anim = 0x15, palette = 0 }
+local SPLASH = new.effect { sprite = SPRITE, anim = 0x15, palette = 0, steps = 14 }
 
 -- `sub_80CB208`: a hit `ahead` panels toward the other side lasting
 -- `ticks` (`sub_80C53A6`: it runs while dimmed), when that panel is on

@@ -11,6 +11,10 @@
 return {
     shake = "console_rng",
     spark_steps_at_start = true,
+    -- The marks over a navi a hit told about (a damaging weakness hit's "!!", an HP bug's) show for 18 of their
+    -- sprite's steps, and a bubble's pop for 5.
+    hit_marker_steps = { weakness = 18, bug = 18 },
+    bubble_pop_steps = 5,
     retype = "is_and_hits",
     -- Its damage words (`sub_8019F44`): the damage the low 11 bits, doubled with 0x8000; then 0x4000 the paralysis with a
     -- flinch, then 0x2000 bug code 0xF8 and no more, else 0x1000 bug code 0xF7, each code's high byte the target lookup's

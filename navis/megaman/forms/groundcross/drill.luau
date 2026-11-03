@@ -38,9 +38,9 @@ local SOUND = asset.sound("ground-beast-dash")
 
 -- The dust where it burrows, and the puffs where it sinks and where it
 -- comes back up.
-local DUST = new.effect { sprite = ground_drill_effect_sprite, anim = 0, palette = 0 }
-local SINK_PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
-local RETURN_PUFF = new.effect { sprite = puff_sprite, anim = 1, palette = 0 }
+local DUST = new.effect { sprite = ground_drill_effect_sprite, anim = 0, palette = 0, steps = 1 }
+local SINK_PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
+local RETURN_PUFF = new.effect { sprite = puff_sprite, anim = 1, palette = 0, steps = 4 }
 
 -- Where the navi waits off the field (X, 16.16).
 local AWAY = 0xB4_0000

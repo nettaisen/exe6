@@ -27,7 +27,7 @@ local PULL, RECOVER = 0x0, 0x4
 local COOLDOWN = 0x28
 
 -- The vortex effect, and what keeps it alive each tick.
-local VORTEX = new.effect { sprite = dust_cloud_sprite, anim = 0, palette = 0 }
+local VORTEX = new.effect { sprite = dust_cloud_sprite, anim = 0, palette = 0, steps = 18 }
 local VORTEX_TICKS = 2
 
 -- DustCross's Beast form (the navi stats' form).

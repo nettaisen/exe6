@@ -22,7 +22,7 @@ local dark_aura_sprite = require("./dark_aura_sprite")
 local element_pillar_flames_sprite = require("../../sprites/element_pillar_flames")
 
 -- The big slash.
-local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0 }
+local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0, steps = 15 }
 
 local darkness = {}
 
@@ -92,8 +92,8 @@ local FLAME_PANELS = {
 -- Bass's charge: the glow while it builds (effect 0x4E) and the flash
 -- when it is full (0x4F), at his sprite's attach point 0 (`sub_8018810` by
 -- his NameID: his sprite's table row, whose point 0 is (0, 16)).
-local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0 }
-local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0 }
+local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0, steps = 16 }
+local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0, steps = 16 }
 local GLOW_X, GLOW_Z = 0, 16
 
 -- Bass's afterimages (`sub_80BFD90`): their color shader and lifetime.

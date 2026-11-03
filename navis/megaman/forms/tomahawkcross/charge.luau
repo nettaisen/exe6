@@ -28,7 +28,7 @@ local SOUND = asset.sound("tomahawk-man")
 -- The swing's hit: Wood, a slash at navis over two columns, no spark; the
 -- swipe effect.
 local WOOD, HIT_MOD = 4, 1
-local SWIPE = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
+local SWIPE = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 12 }
 
 -- The swing's tick (of its count down from 21) the hit lands on.
 local HIT_TICK = 12

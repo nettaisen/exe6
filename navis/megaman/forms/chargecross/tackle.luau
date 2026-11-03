@@ -51,8 +51,8 @@ local SOUND = asset.sound("iron-shell")
 local HIT = dash_hit.variant { hit_mod = 3, spark = sparks.fire, reports = true }
 
 -- The puff where it stops, and the dust it lands in.
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
-local LANDING_DUST = new.effect { sprite = puff_sprite, anim = 1, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
+local LANDING_DUST = new.effect { sprite = puff_sprite, anim = 1, palette = 0, steps = 4 }
 
 -- `sub_8011F44`: 30 damage and 20 more per point of buster Attack (up to
 -- 5), Fire.

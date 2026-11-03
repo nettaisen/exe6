@@ -14,7 +14,7 @@ local trap = {}
 -- `sub_800ABC6`: the sparkle on each of the enemy navi's panels
 -- (`byte_80CE0DC`: the panels of the other side's player navi), 16 pixels
 -- down and 32 up from the panel's center, and its sound.
-local SPARKLE = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0 }
+local SPARKLE = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0, steps = 24 }
 local SPARKLE_SOUND = asset.sound("dimming-sparkle")
 local SPARKLE_DY, SPARKLE_Z = 0x10_0000, 0x20_0000
 

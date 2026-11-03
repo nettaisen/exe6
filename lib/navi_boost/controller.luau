@@ -40,8 +40,8 @@ export type State = {
 navi_boost.WAIT = 0x3C
 -- The effects around the navi (the original's effects 0x5B and 0x5C), and
 -- the sounds.
-local BUG_EFFECT = new.effect { sprite = bug_sprite, anim = 0, palette = 0 }
-local ARM_EFFECT = new.effect { sprite = charge_glow_a_sprite, anim = 3, palette = 1 }
+local BUG_EFFECT = new.effect { sprite = bug_sprite, anim = 0, palette = 0, steps = 41 }
+local ARM_EFFECT = new.effect { sprite = charge_glow_a_sprite, anim = 3, palette = 1, steps = 22 }
 local BUG_SOUND, LOG_IN_SOUND = asset.sound("bug"), asset.sound("log-in")
 -- When the arms' log-in sound plays, by timer.
 local ARM_LOG_IN_AT = 0x28

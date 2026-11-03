@@ -28,7 +28,7 @@ local IDENTITY = new.identity {
     look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
 }
 -- Its hit spark (0x0A).
-local HIT_SPARK = new.spark { sprite = hit_sparks_sprite, anim = 1, palette = 0 }
+local HIT_SPARK = new.spark { sprite = hit_sparks_sprite, anim = 1, palette = 0, steps = 8 }
 -- How it looks absorbed (the original's obstacle kind's sprite: its own).
 local ABSORBED = absorbed_obstacle.look { sprite = SPRITE }
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")

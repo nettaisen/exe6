@@ -9,7 +9,7 @@ local slashes = require("../navis/megaman/forms/slashcross/slashes")
 local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- Muramasa's slash.
-local MURAMASA_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 6 }
+local MURAMASA_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 6, steps = 13 }
 
 -- Its charged slash in SlashCross: over two panels, in palette 6.
 local CHARGED = slashes.slash {

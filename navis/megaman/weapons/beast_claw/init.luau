@@ -35,8 +35,8 @@ local HIT_PARAM = 0x9E
 -- and the sound.
 local CLAWS = require("../../../sprites/slash_man_effect")
 local LOOKS = {
-    [0] = new.effect { sprite = CLAWS, anim = 1, palette = 0 },
-    [1] = new.effect { sprite = CLAWS, anim = 0, palette = 0 },
+    [0] = new.effect { sprite = CLAWS, anim = 1, palette = 0, steps = 11 },
+    [1] = new.effect { sprite = CLAWS, anim = 0, palette = 0, steps = 11 },
 }
 local REGIONS = { [0] = regions.long, [1] = regions.wide }
 local HIT_MODS = { [0] = 1, [1] = 3 }

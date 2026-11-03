@@ -20,7 +20,7 @@ local charge_glow_sprite = require("../../sprites/charge_glow")
 local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 
 local heroes = {}
 
@@ -49,8 +49,8 @@ local OFFSET: { [string]: { number } } = { megaman = { -10, -10 }, protoman = { 
 
 -- The charge (effects 0x4E and 0x4F at its attach point 0, for 40 and 20
 -- ticks).
-local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0 }
-local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0 }
+local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0, steps = 16 }
+local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0, steps = 16 }
 local CHARGE_TICKS, CHARGED_AT, CHARGING_LASTS = 0x3C, 0x14, 0x28
 local SOUND_CHARGING = asset.sound("buster-charge")
 local SOUND_CHARGED = asset.sound("buster-charged")

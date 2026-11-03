@@ -20,7 +20,7 @@ local ANIM_WIND_UP, ANIM_THROW = 0x13, 0x14
 local WIND_UP_TICKS, RECOVER_TICKS = 8, 0x1E
 
 local SOUND = asset.sound("bubble")
-local SPLASH = new.effect { sprite = spout_man_effect_sprite, anim = 0, palette = 0 }
+local SPLASH = new.effect { sprite = spout_man_effect_sprite, anim = 0, palette = 0, steps = 12 }
 
 -- The hits' counter byte, and the ball's element: Aqua (the attack's
 -- element byte).

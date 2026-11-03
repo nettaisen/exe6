@@ -57,7 +57,7 @@ local SWORD_ANIM = 0x1C
 local SCREEN_DIVIDE = new.region {
     panels = { { 0, -1 }, { 1, -1 }, { 2, -1 }, { 1, 0 }, { 0, 1 }, { 1, 1 }, { 2, 1 } },
 }
-local DIVIDE = new.effect { sprite = colonel_effect_sprite, anim = 3, palette = 0 }
+local DIVIDE = new.effect { sprite = colonel_effect_sprite, anim = 3, palette = 0, steps = 16 }
 
 -- His fade-in's starting gray.
 local FADE_GRAY = 0x1F

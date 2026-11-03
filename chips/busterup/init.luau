@@ -5,7 +5,7 @@
 
 local buster_up_sprite = require("@self/buster_up_sprite")
 
-local SPARKLE = new.effect { sprite = buster_up_sprite, anim = 0, palette = 0 }
+local SPARKLE = new.effect { sprite = buster_up_sprite, anim = 0, palette = 0, steps = 17 }
 local SOUND = asset.sound("hub")
 
 -- Where the sparkle shows.

@@ -10,7 +10,7 @@ local cross_slash_sprite = require("../sprites/cross_slash")
 local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- CrosSwrd's X.
-local CROSS_SLASH = new.effect { sprite = cross_slash_sprite, anim = 0, palette = 0 }
+local CROSS_SLASH = new.effect { sprite = cross_slash_sprite, anim = 0, palette = 0, steps = 11 }
 
 -- Its charged slash in SlashCross: its X, and the plain sword's wave unseen under it.
 local CHARGED = slashes.slash {

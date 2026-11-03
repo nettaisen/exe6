@@ -13,7 +13,7 @@ local small_puff_sprite = require("../../sprites/small_puff")
 
 return common.make {
     id = "geddon/quake",
-    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 },
+    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 },
     bubble = rising_bubble.kind,
     sounds = { puff = asset.sound("panel-crack"), bubble = asset.sound("panel-poison"), poison = asset.sound("panel-poison") },
 }

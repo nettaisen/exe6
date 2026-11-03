@@ -28,9 +28,9 @@ local sword_slash_sprite = require("../../sprites/sword_slash")
 local APPEAR_SOUND, RISE_SOUND, CLAW_SOUND = asset.sound("appear"), asset.sound("bug"), asset.sound("tomahawk-man")
 -- The puffs where it sinks and where it comes up (`byte_80C1854`: effect
 -- 0x14 by 1, 0x15 by 0), and its claw (effect 0x16).
-local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
-local ARRIVE = new.effect { sprite = puff_sprite, anim = 3, palette = 0 }
-local CLAW = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
+local ARRIVE = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 }
+local CLAW = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 -- The claw drawn upside down (flip bit 1) and in palette +6.
 local CLAW_FLIP, CLAW_PALETTE = 2, 6
 -- Gregar the Cybeast's sheet: an actor whose look is it stands two panels

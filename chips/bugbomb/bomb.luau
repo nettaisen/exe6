@@ -19,7 +19,7 @@ local explosion_sprite = require("../../sprites/explosion")
 local bug_bomb = {}
 
 -- The explosion (effect 0x4A).
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 2 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 2, steps = 22 }
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 
 -- The bugs (`byte_80DA034`): the code and its argument, by what the target

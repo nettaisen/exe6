@@ -11,7 +11,7 @@ local regions = require("@exelib/regions")
 local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- The slash over a column.
-local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
 
 local strike = {}
 

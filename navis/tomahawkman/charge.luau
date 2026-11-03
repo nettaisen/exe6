@@ -40,7 +40,7 @@ local WOOD = 4
 
 -- The slash's hit modifier, and its effect 16 pixels up.
 local HIT_MOD = 1
-local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
+local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 12 }
 local SLASH_Z = 0x10_0000
 
 -- `sub_8012258`: 100 damage and 20 more per point of buster Attack (up to
