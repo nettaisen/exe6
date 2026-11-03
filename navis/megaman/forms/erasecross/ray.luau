@@ -11,6 +11,7 @@
 -- (`erase_ray.shut`).
 
 local collision = require("../../../../rules/collision")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
 local thunder_column = require("../../../../chips/dolthdr/column")
@@ -52,6 +53,8 @@ export type State = {
 }
 
 local SPRITE = require("./erase_ray_sprite")
+-- It opens over 6 of its sprite's steps (its opening animation's length).
+local OPEN_STEPS = 6
 
 -- The phases, on its phase byte.
 local OPENING, BEAMING, CLOSING = 0x0, 0x4, 0x8
@@ -74,7 +77,7 @@ end
 -- `sub_80D8EE4`: after the opening animation, the zones from its panel
 -- forward (to the field's edge, five at most).
 local function opening(me: Object, s: State)
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if not played.ended(me.sprite, OPEN_STEPS) then
         return
     end
     me.anim = 1

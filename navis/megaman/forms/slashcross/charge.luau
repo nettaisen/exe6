@@ -20,6 +20,7 @@
 
 local lockon = require("../../../../rules/lockon")
 local parts = require("../../../../lib/swords/parts")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local slashes = require("./slashes")
 local sword_wave = require("./sword_wave")
@@ -56,6 +57,23 @@ local AFTERIMAGE_SHADER, AFTERIMAGE_TICKS = 0xFFE0, 0x14
 -- The tick of the count the wave goes out on (the game means 17 for the
 -- slashes without a blade, but compares the wrong register).
 local WAVE_TICK = 12
+
+-- The navi's animations the return waits out, and their lengths in its
+-- sprite's steps (SlashCross's and its Beast's alike): the one in place of
+-- a blocked dash, 4; raising the sword, 22; raising the arm alone (a slash
+-- without a blade), 16.
+local NO_DASH, RAISE_SWORD, RAISE_ARM = 4, 5, 0xC
+local NO_DASH_STEPS, RAISE_SWORD_STEPS, RAISE_ARM_STEPS = 4, 22, 16
+
+-- The steps the navi's animation `anim` (one of the above) lasts.
+local function steps_of(anim: number): number
+    if anim == NO_DASH then
+        return NO_DASH_STEPS
+    elseif anim == RAISE_SWORD then
+        return RAISE_SWORD_STEPS
+    end
+    return RAISE_ARM_STEPS
+end
 
 -- The charged slash as `slash`, with a dash first or not: its action, for
 -- `navi` to start. (The Beast Out rush locks on in the slash's mode, which
@@ -129,7 +147,7 @@ local function dash(me: Object, s: State)
     me:reserve_panel(me.panel_x, me.panel_y)
     local x, y = me.panel_x + 2 * me.facing, me.panel_y
     if not field.check(x, y, DASH_REQUIRE, DASH_FORBID) then
-        me:set_animation(4)
+        me:set_animation(NO_DASH)
         me.step = RETURN
         me.step_init = 0
         return
@@ -163,7 +181,7 @@ local function slash(me: Object, s: State)
     if me.step_init == 0 then
         local slash = s.slash
         local blade = slash.blade
-        me:set_animation(if blade then 5 else 0xC)
+        me:set_animation(if blade then RAISE_SWORD else RAISE_ARM)
         me:refresh_form_overlay()
         me:open_counter_window()
         battle.play_sound(slash.sound)
@@ -209,7 +227,7 @@ end
 -- `sub_80EE50C`: after the animation's last frame, back on the panel the
 -- dash started from.
 local function return_(me: Object)
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if not played.ended(me.sprite, steps_of(me.anim)) then
         return
     end
     me.panel_x, me.panel_y = me.future_panel_x, me.future_panel_y

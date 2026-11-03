@@ -7,6 +7,7 @@
 -- chips.md §3.3.
 
 local collision = require("../../rules/collision")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 
 local shot = {}
@@ -14,6 +15,9 @@ local shot = {}
 local SPRITE = require("../../sprites/pink_flash")
 -- Ticks before the next segment starts.
 local SPREAD_TICKS = 2
+-- Each segment plays out over 10 of its sprite's steps (its flash's
+-- length).
+local FADE_STEPS = 10
 
 -- The actions: waiting to spread, then playing out.
 local SPREADING, FADING = 0, 4
@@ -32,7 +36,7 @@ end
 
 -- `sub_80C9CC4`: gone once its animation ends.
 local function fade(me: Object)
-    if bit32.btest(me.sprite.frame_flags, 0x80) then
+    if played.ended(me.sprite, FADE_STEPS) then
         me.collision:set_region(nil)
         me:set_lifecycle("destroy")
     end

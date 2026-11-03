@@ -125,11 +125,13 @@ export type ElementPillar = {
 export type AirRaidPlane = { lifetime: number, bombs: number, palette: number, hp: number }
 
 -- A shock wave's look and timing (chips/wavearm/wave, a row of the
--- original's `byte_80C6B00`): its animation, ticks on a panel before the
--- next rolls on, the panel type it leaves ("cracked" cracks the panel,
--- "broken" breaks it, or cracks it under something); `quick`: it goes 4
--- ticks after sending the next; `steers`: it turns toward an enemy's row.
-export type ShockWaveVariant = { anim: number, ticks: number, panel: PanelType?, quick: boolean?, steers: boolean? }
+-- original's `byte_80C6B00`): its animation, and the steps of its sprite
+-- that animation loops over (at each loop's end it goes out of sight),
+-- ticks on a panel before the next rolls on, the panel type it leaves
+-- ("cracked" cracks the panel, "broken" breaks it, or cracks it under
+-- something); `quick`: it goes 4 ticks after sending the next; `steers`:
+-- it turns toward an enemy's row.
+export type ShockWaveVariant = { anim: number, steps: number, ticks: number, panel: PanelType?, quick: boolean?, steers: boolean? }
 
 -- A hockey puck (chips/airhocky/puck, a row of the original's
 -- `byte_80C9818`): the steps it lasts (0: no limit), how it bounces (1:

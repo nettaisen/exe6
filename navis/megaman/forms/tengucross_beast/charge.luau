@@ -5,6 +5,7 @@
 -- (./whirlwind) from the panel in front when the navi's wind-up animation
 -- ends; the navi holds for 46 ticks.
 
+local played = require("@exelib/played")
 local weapon = require("../../../../lib/weapon")
 local whirlwind = require("./whirlwind")
 
@@ -28,6 +29,10 @@ local SOUND = asset.sound("aqua-surge")
 -- turn, 45 ticks, while the navi stays in this action.
 local WHIRLWIND: Whirlwind = { at_once = false, ticks = 0x2D, anim = 0 }
 
+-- The navi winds up over 8 of its sprite's steps (TenguCross Beast's
+-- wind-up animation's length).
+local WIND_UP_STEPS = 8
+
 -- `sub_8011C18`: 30 damage and 20 more per point of buster Attack (up to
 -- 5), Wind.
 local function setup(navi: Object): Action
@@ -47,7 +52,7 @@ local function wind_up(me: Object, s: State)
         me.step_init = 4
         return
     end
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if not played.ended(me.sprite, WIND_UP_STEPS) then
         return
     end
     me:set_animation(0x14)

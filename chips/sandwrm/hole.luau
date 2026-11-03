@@ -5,6 +5,7 @@
 -- when told to (`hole.close`) or its navi is deleted. It shows only while
 -- its navi does, with the worm's palette.
 
+local played = require("@exelib/played")
 local visibility = require("@exelib/visibility")
 
 local hole = {}
@@ -15,6 +16,9 @@ export type State = {
 }
 
 local SPRITE = require("../../sprites/sand_hole")
+-- It opens over 24 of its sprite's steps (its opening animation's length),
+-- and closes over 19 (its closing one's).
+local OPEN_STEPS, CLOSE_STEPS = 24, 19
 
 -- The actions.
 local OPEN, WAIT, CLOSE = 0, 4, 8
@@ -63,7 +67,7 @@ local function open(me: Object)
     if navi.hp == 0 then
         return close_now(me)
     end
-    if step(me) and bit32.btest(me.sprite.frame_flags, 0x80) then
+    if step(me) and played.ended(me.sprite, OPEN_STEPS) then
         me.anim = 1
         me.action = WAIT
         me.phase = 0
@@ -85,7 +89,7 @@ local function close(me: Object)
         return
     end
     me:update_sprite_even_paused()
-    if bit32.btest(me.sprite.frame_flags, 0x80) then
+    if played.ended(me.sprite, CLOSE_STEPS) then
         me:set_lifecycle("destroy")
     end
 end

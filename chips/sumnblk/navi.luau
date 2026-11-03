@@ -7,6 +7,7 @@
 -- it is gone.
 
 local collision = require("../../rules/collision")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 
 local navi = {}
@@ -26,6 +27,10 @@ local SPRITE = require("./summon_black_sprite")
 local puff_sprite = require("../../sprites/puff")
 local sword_slash_sprite = require("../../sprites/sword_slash")
 local APPEAR_SOUND, RISE_SOUND, CLAW_SOUND = asset.sound("appear"), asset.sound("bug"), asset.sound("tomahawk-man")
+-- It rises over 35 of its sprite's steps (its rising animation's length),
+-- raises its claw over 41 (its raising one's), and strikes over 26 (its
+-- striking one's).
+local RISE_STEPS, RAISE_STEPS, STRIKE_STEPS = 35, 41, 26
 -- The puffs where it sinks and where it comes up (`byte_80C1854`: effect
 -- 0x14 by 1, 0x15 by 0), and its claw (effect 0x16).
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
@@ -120,7 +125,7 @@ local function rise(me: Object)
         end
     elseif phase == 4 then
         if me.phase_init == 0 then
-            if bit32.band(me.sprite.frame_flags, 0x80) ~= 0 then
+            if played.ended(me.sprite, RISE_STEPS) then
                 me.anim = 4
                 me.timer = 0x1E
                 me.phase_init = 4
@@ -202,7 +207,7 @@ local function strike(me: Object)
         me.phase, me.phase_init = 8, 0
     elseif phase == 8 or phase == 0xC then
         if me.phase_init == 0 then
-            if bit32.band(me.sprite.frame_flags, 0x80) == 0 then
+            if not played.ended(me.sprite, if phase == 8 then RAISE_STEPS else STRIKE_STEPS) then
                 return
             end
             me.phase_init = 1

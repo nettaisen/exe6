@@ -8,6 +8,7 @@
 -- and the flames die down once it stops.
 
 local element_pillar = require("../../../../objects/element_pillar")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
 local weapon = require("../../../../lib/weapon")
@@ -42,6 +43,9 @@ local FLAMES = element_pillar.look {
 local PILLARS: ElementPillar = { look = FLAMES, ticks = 0x5A, after = 4 }
 local REGION = regions.deep_fan
 local TICKS = 0x5A
+-- The navi winds up over 9 of its sprite's steps (HeatCross Beast's wind-up
+-- animation's length).
+local WIND_UP_STEPS = 9
 
 local HUM = asset.sound("roar")
 
@@ -64,7 +68,7 @@ local function wind_up(me: Object, s: State)
         me.step_init = 4
         return
     end
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if not played.ended(me.sprite, WIND_UP_STEPS) then
         return
     end
     me:set_animation(0x13)
