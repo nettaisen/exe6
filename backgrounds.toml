@@ -9,10 +9,11 @@ stage = "comp"
 # The backgrounds a link battle picks one of at random with its settings (`sub_81209DC`: `byte_8120A20`, 21 entries,
 # in the table's order; three are there twice, so twice as likely). Whoever makes a random match picks from them (the
 # engine picks none: a round's settings state its background).
+# And the two backgrounds of this content's own (below), each once.
 link_battle = [
     "lans-hp", "acdc-hp", "acdc-hp", "aquarium-hp", "sky-hp", "green-hp", "robot-control-comp", "comp",
     "comp-alt", "central-area", "aquarium-comp", "seaside-area", "judgetree-comp", "green-area", "sky-area",
-    "undernet", "mr-weather-comp", "underground", "underground", "acdc-area", "acdc-area"
+    "undernet", "mr-weather-comp", "underground", "underground", "acdc-area", "acdc-area", "hong-kong", "taiwan"
 ]
 
 # Each background's music, the battle theme a round drawn on it plays where the player picked none (docs/app.md §1,
@@ -54,3 +55,32 @@ sky-hp = { music = "virus-battle" }
 # Underground2's four navi battles (records 0x7A, 0x7B, 0x8C and 0x8D).
 underground = { music = "boss-battle" }
 undernet = { music = "virus-battle" }
+
+# 光復香港，時代革命 (Liberate Hong Kong, Revolution of Our Times): the flower of Hong Kong's flag wilting into the Black
+# Bauhinia of the 2019 protests and back, twice on a 128-pixel tile, staggered: the flag's red with its white flower and
+# red stars held 2 seconds, then in 14 steps its two right petals droop, turning down as they wither (the other three
+# stay), the stars fade, its red lines turn black and the red darkens to black, the Black Bauhinia held 2 seconds, and
+# the same back (30 pictures, 6.8 seconds, looped). Its edges, stars and lines are smoothed. Drawn by nettai-verify's
+# tools/flags/hong_kong_taiwan.py from "Flag of Hong Kong" (public domain) and the flower of "Flag of Hong Kong (black
+# and white; variant 2)" on Wikimedia Commons, by Iflwlou, CC BY-SA 3.0; the picture is under the same license.
+[backgrounds.hong-kong]
+file = "backgrounds/hong_kong.png"
+scroll = [-8, -4]
+frames = [
+    120, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+    120, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6
+]
+loop = true
+music = "glory-to-hong-kong"
+
+# 今日香港，明日台灣 (Today Hong Kong, Tomorrow Taiwan): the Republic of China's emblem, the white sun in its blue disc, spinning
+# on red, twice on a 128-pixel tile, staggered: the sun turns clockwise, 2 degrees a picture, 15 pictures of 4 frames a
+# twelfth of a turn (after which it looks as it began), looped. Its edges are smoothed. Drawn by nettai-verify's
+# tools/flags/hong_kong_taiwan.py from the emblem's geometry ("National Emblem of the Republic of China" on Wikimedia
+# Commons, public domain).
+[backgrounds.taiwan]
+file = "backgrounds/taiwan.png"
+scroll = [-8, -4]
+frames = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+loop = true
+music = "national-anthem-of-the-roc"

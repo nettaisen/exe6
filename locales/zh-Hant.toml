@@ -418,6 +418,8 @@ language = "zh-Hant"
 "sky-hp" = { name = "天空鎮的首頁" }
 "underground" = { name = "地下世界" }
 "undernet" = { name = "裏網路" }
+"hong-kong" = { name = "光復香港，時代革命" }
+"taiwan" = { name = "今日香港，明日台灣" }
 
 [patch_cards]
 "airman" = { name = "空氣人" }
@@ -768,6 +770,8 @@ language = "zh-Hant"
 "boss-battle" = "頭目戰"
 "final-battle" = "VS 電腦獸"
 "crossover-battle" = "交錯對戰"
+"glory-to-hong-kong" = "願榮光歸香港"
+"national-anthem-of-the-roc" = "中華民國國歌"
 
 [emotions]
 "full_synchro" = "完全同步"

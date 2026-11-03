@@ -423,6 +423,8 @@ language = "en"
 "sky-hp" = { name = "Sky HP", long_name = "Sky HP" }
 "underground" = { name = "Underground", long_name = "Underground" }
 "undernet" = { name = "Undernet", long_name = "Undernet" }
+"hong-kong" = { name = "Liberate HK", long_name = "Liberate Hong Kong, Revolution of Our Times" }
+"taiwan" = { name = "Today HK, Tomorrow TW", long_name = "Today Hong Kong, Tomorrow Taiwan" }
 
 [patch_cards]
 "airman" = { name = "AirMan", long_name = "AirMan" }
@@ -813,6 +815,8 @@ language = "en"
 "boss-battle" = "Boss Battle"
 "final-battle" = "vs Cybeast"
 "crossover-battle" = "Crossover Battle"
+"glory-to-hong-kong" = "Glory to Hong Kong"
+"national-anthem-of-the-roc" = "National Anthem of the ROC"
 
 # The words of the battle's lettered pictures, by picture (docs/design/text-rendering.md §12): the enhanced graphics
 # draw them in the lettering font in the picture's place, in its look; the original graphics draw the pictures. A

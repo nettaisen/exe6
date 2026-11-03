@@ -5,4 +5,21 @@
 # and 0x17B in Falzar, 0x173 and 0x175 in Gregar: the disassembly's "final battle") and the crossover battle's (record
 # 0, the disassembly's name). Their names are the locales' (`battle_themes`, by asset name). Presentation, read with
 # the locales: no tick reads them, so the content hash leaves them out.
-themes = ["virus-battle", "boss-battle", "final-battle", "crossover-battle"]
+themes = [
+    "virus-battle", "boss-battle", "final-battle", "crossover-battle", "glory-to-hong-kong",
+    "national-anthem-of-the-roc"
+]
+
+# Glory to Hong Kong (願榮光歸香港, 2019) arranged as a BN6 battle theme, on the virus battles' instruments (song 21): its
+# voicegroup, reverb and priority, six tracks. Made from bnmusic's glory_to_hong_kong_bn6_style (its .s) by
+# nettai-verify's tools/songs/m4a_to_midi.py.
+[songs.glory-to-hong-kong]
+file = "music/glory_to_hong_kong.mid"
+voices = "virus-battle"
+
+# The National Anthem of the Republic of China (中華民國國歌, San Min Chu-i; music by Cheng Mao-yun, 1928, public domain)
+# arranged as a BN6 battle theme, on the virus battles' instruments (song 21): its voicegroup, reverb and priority, six
+# tracks. Made from bnmusic's san_min_chu_i_bn6_style (its .s) by nettai-verify's tools/songs/m4a_to_midi.py.
+[songs.national-anthem-of-the-roc]
+file = "music/national_anthem_of_the_roc.mid"
+voices = "virus-battle"
