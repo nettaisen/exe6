@@ -11,6 +11,8 @@ local chargeman_sprite = require("@self/chargeman_sprite")
 
 local navi: NaviDef = {
     sprite = chargeman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 4, hold = 2 },
     element = "fire",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

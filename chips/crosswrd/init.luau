@@ -14,7 +14,7 @@ local CROSS_SLASH = new.effect { sprite = cross_slash_sprite, anim = 0, palette 
 
 -- Its charged slash in SlashCross: its X, and the plain sword's wave unseen under it.
 local CHARGED = slashes.slash {
-    wave = slashes.wave { region = regions.x, sprite = cross_slash_sprite, anim = 0, animates = true },
+    wave = slashes.wave { region = regions.x, sprite = cross_slash_sprite, anim = 0, animates = 11 },
     hidden_wave = slashes.wave { region = regions.single, sprite = sword_slash_sprite, anim = 2 },
     blade = parts.blade,
     sound = parts.swing,

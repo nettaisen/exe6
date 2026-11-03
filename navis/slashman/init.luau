@@ -10,6 +10,8 @@ local slashman_sprite = require("@self/slashman_sprite")
 
 local navi: NaviDef = {
     sprite = slashman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 4, hold = 2 },
     element = "null",
     weakness = { "break" },
     buster_bonus = 1,

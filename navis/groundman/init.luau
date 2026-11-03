@@ -11,6 +11,8 @@ local groundman_sprite = require("@self/groundman_sprite")
 
 local navi: NaviDef = {
     sprite = groundman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 5, hold = 2 },
     element = "null",
     weakness = { "cursor" },
     buster_bonus = 1,

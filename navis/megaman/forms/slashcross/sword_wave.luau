@@ -10,6 +10,7 @@
 -- its own (`sword_wave.wave`, the rows' usual make).
 
 local collision = require("../../../../rules/collision")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local statuses = require("../../../../rules/status")
 
@@ -139,7 +140,7 @@ local function init(me: Object)
 end
 
 -- `sub_80D807C`: its lifecycle; then a variant that animates restarts its
--- animation after the last frame and steps.
+-- animation once it has played (its `animates` steps), and steps.
 local function update(me: Object)
     local animates = (me.state :: State).variant.animates
     local l = me.lifecycle
@@ -151,7 +152,7 @@ local function update(me: Object)
         me:destroy()
     end
     if animates then
-        if bit32.btest(me.sprite.frame_flags, 0x80) then
+        if played.ended(me.sprite, animates) then
             me.anim_loaded = 0xFF
         end
         me:update_sprite()
@@ -228,7 +229,7 @@ function sword_wave.wave(v: {
     hit_mod: number?,
     status: Status?,
     reach: number?,
-    animates: boolean?,
+    animates: number?,
     steps: boolean?,
     bug: number?,
     bug_arg: number?,

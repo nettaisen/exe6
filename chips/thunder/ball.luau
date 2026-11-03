@@ -18,8 +18,10 @@ local SPRITE = require("./thunder_ball_sprite")
 local EXE6: ThunderBallLook = {
     sprite = SPRITE,
     small_anim = 0,
+    small_steps = { flight = 16, burst = 11 },
     big_sprite = SPRITE,
     big_anim = 2,
+    big_steps = { flight = 14, burst = 5 },
     is = collision.attack,
     target = collision.hits_navis,
     hit_mod = 1,

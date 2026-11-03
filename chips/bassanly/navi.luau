@@ -21,6 +21,7 @@ return common.make {
     cloak = { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x14 },
     sounds = { appear = asset.sound("appear"), raise = asset.sound("bass-anly") },
     anims = { raise = 8, stance = 0xD, fire = 9, fire_loop = nil, rest = 0 },
+    steps = { raise = 2 },
     arm = nil,
     smoke = effects.smoke,
     -- His shots: the fastest, seeking enemy navis along the slant.

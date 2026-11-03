@@ -547,9 +547,11 @@ export type Exe6FormFields = {
     plain_erase_beam: boolean?,
 }
 
--- A navi's: VarSwrd's sword stays plain for it (lib/swords/vari).
+-- A navi's: VarSwrd's sword stays plain for it (lib/swords/vari); how many of its sprite's steps its warp out
+-- (animation 4) and its hold (animation 0xA, looping with `hold_loops`) last (rules/init's).
 export type Exe6NaviFields = {
     var_sword_plain: boolean?,
+    animation_steps: { warp_out: number, hold: number, hold_loops: boolean? },
 }
 
 -- A navi's forms by game: the Crosses by their number on the custom

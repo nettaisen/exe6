@@ -10,6 +10,8 @@ local dustman_sprite = require("@self/dustman_sprite")
 
 local navi: NaviDef = {
     sprite = dustman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 5, hold = 8 },
     element = "null",
     weakness = { "cursor" },
     buster_bonus = 1,

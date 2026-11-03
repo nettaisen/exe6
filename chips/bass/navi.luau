@@ -25,6 +25,7 @@ return common.make {
     -- dimmed.
     cape_anim_offset = 0x14,
     raise_anim = 0xA,
+    raise_steps = 10,
     volley_anim = 0xC,
     ending = "timed",
     -- `sub_80C5F4A`: a panel strike running while dimmed (outlasting the

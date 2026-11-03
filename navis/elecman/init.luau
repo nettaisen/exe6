@@ -10,6 +10,8 @@ local elecman_sprite = require("@self/elecman_sprite")
 
 local navi: NaviDef = {
     sprite = elecman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
+    animation_steps = { warp_out = 4, hold = 1 },
     element = "elec",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

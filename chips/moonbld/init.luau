@@ -16,7 +16,8 @@ local CHARGED = slashes.slash {
         region = regions.ring,
         sprite = moon_blade_sprite,
         anim = 0,
-        animates = true,
+        -- Its blade comes round every 10 of its sprite's steps.
+        animates = 10,
         bug = 0x18,
         bug_arg = 1,
     },

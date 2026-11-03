@@ -11,6 +11,8 @@ local heatman_sprite = require("@self/heatman_sprite")
 
 local navi: NaviDef = {
     sprite = heatman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA, which loops) last.
+    animation_steps = { warp_out = 5, hold = 12, hold_loops = true },
     element = "fire",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

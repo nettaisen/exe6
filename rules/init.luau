@@ -228,6 +228,10 @@ local rules: Rules = {
             -- VarSwrd's sword stays plain (lib/swords/vari): the navi waits for its sequence while A is up and gets
             -- neither the charged sword nor the Beast lock-on (ProtoMan).
             var_sword_plain = "bool",
+            -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last, where an
+            -- action waits for one to end (a step sword with nowhere to step: lib/swords/slash; TrnArrw's recovery);
+            -- `hold_loops`: its hold loops, coming round every `hold` steps.
+            animation_steps = { warp_out = "u8", hold = "u8", hold_loops = "bool" },
         },
     },
     -- Its own actions, which reach its state: the change into a form (./forms), the Beast rush and the Cross
