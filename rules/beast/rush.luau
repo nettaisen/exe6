@@ -42,10 +42,6 @@ local HOLD, WARP, ATTACK = 0, 1, 2
 -- Ticks after the rush starts before an A press can queue the next chip.
 local CHAIN_BLOCK_TICKS = 12
 
--- Where the lock-on marker's target stands when the navi has no marker
--- (`sub_80E1676`): off the field.
-local NO_MARKER_X, NO_MARKER_Y = 0xA0, 0xE3
-
 -- The framework's states an attack isn't (the original's CurAction below
 -- 0x10).
 local STATES = {
@@ -152,15 +148,15 @@ local function warp(navi: Object, s: State)
     local hx, hy = navi.panel_x, navi.panel_y
     navi:panel_trail(hx, hy)
     local mode = lockon_mode(navi)
-    local tx, ty = NO_MARKER_X, NO_MARKER_Y
-    local marker = navi.target_marker
-    if marker ~= nil then
-        tx, ty = marker.panel_x, marker.panel_y
-    end
-    -- (No panel fits: the navi stays.)
-    local dx, dy = lockon.panel(navi, tx, ty, mode)
-    if dy == 0x7F then
-        dx, dy = hx, hy
+    -- (No marker, the marker on no opponent, or no panel fits: the navi
+    -- stays.)
+    local dx, dy = hx, hy
+    local tx, ty = navi:lock_on_panel()
+    if tx ~= nil and ty ~= nil then
+        local x, y = lockon.panel(navi, tx, ty, mode)
+        if y ~= 0x7F then
+            dx, dy = x, y
+        end
     end
     s.rush_home_x, s.rush_home_y = hx, hy
     navi.panel_x, navi.panel_y = dx, dy

@@ -77,12 +77,7 @@ local function special_chip(side: number, navi: Object, s: State): "nothing" | "
         battle.play_sound(SOUND_START)
     end
     if s.controller_moves <= 3 then
-        local x, y = berserk.NO_MARKER_X, berserk.NO_MARKER_Y
-        local marker = navi.target_marker
-        if marker ~= nil then
-            x, y = marker.panel_x, marker.panel_y
-        end
-        local t = berserk.opponent_on(x, y, navi.alliance)
+        local t = berserk.locked_opponent(navi)
         if t ~= nil and t:status("flashing") then
             s.controller_step = berserk.BUSTER
             -- The game means 6 (2 in Beast Out) but stores the form's

@@ -38,11 +38,6 @@ end
 local USE_CHIP, BUSTER, MOVE = 0, 1, 2
 berserk.USE_CHIP, berserk.BUSTER, berserk.MOVE = USE_CHIP, BUSTER, MOVE
 
--- Where the lock-on marker's target stands when the navi has no marker
--- (`sub_80E1676`): off the field.
-local NO_MARKER_X, NO_MARKER_Y = 0xA0, 0xE3
-berserk.NO_MARKER_X, berserk.NO_MARKER_Y = NO_MARKER_X, NO_MARKER_Y
-
 -- `sub_80E7486`: the opposing player standing on (x, y) (the panel shows
 -- the other side's player flag and an alive actor's collision sits there).
 function berserk.opponent_on(x: number, y: number, alliance: number): Object?
@@ -59,6 +54,17 @@ function berserk.opponent_on(x: number, y: number, alliance: number): Object?
         end
     end
     return nil
+end
+
+-- The opposing player under the navi's lock-on marker (`sub_80E164A`, then
+-- `sub_80E7486`): none without a marker, or with the marker on no opponent
+-- (where the original reads a panel off the field, on which none stands).
+function berserk.locked_opponent(navi: Object): Object?
+    local x, y = navi:lock_on_panel()
+    if x == nil or y == nil then
+        return nil
+    end
+    return berserk.opponent_on(x, y, navi.alliance)
 end
 
 -- A random one of `panels` (`GetPositiveSignedRNG2` modulo their count;
@@ -172,12 +178,7 @@ end
 -- left or it can't start; then the buster is next.
 local function use_chip(navi: Object, s: State): "nothing" | "chip"
     if s.controller_moves <= 3 then
-        local x, y = NO_MARKER_X, NO_MARKER_Y
-        local marker = navi.target_marker
-        if marker ~= nil then
-            x, y = marker.panel_x, marker.panel_y
-        end
-        local t = berserk.opponent_on(x, y, navi.alliance)
+        local t = berserk.locked_opponent(navi)
         if t ~= nil and t:status("flashing") then
             s.controller_step = BUSTER
             return "nothing"

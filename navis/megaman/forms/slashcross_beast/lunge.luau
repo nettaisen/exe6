@@ -50,13 +50,13 @@ local function setup(navi: Object): Action
 end
 
 -- `sub_80EEFBC`: where to strike from, by the lock-on marker's panel
--- (`sub_80E164A`).
+-- (`sub_80E164A`). No marker, or the marker on no opponent: where it is
+-- (the original reads a panel off the field, from which the search stays).
 local function target(me: Object): (number, number)
-    local marker = me.target_marker
-    if marker == nil then
-        error("SlashCross Beast's lunge reads the lock-on marker the navi doesn't have (sub_80E164A)")
+    local mx, my = me:lock_on_panel()
+    if mx == nil or my == nil then
+        return me.panel_x, me.panel_y
     end
-    local mx, my = marker.panel_x, marker.panel_y
     if my == me.panel_y then
         return lockon.panel(me, mx, my, SAME_ROW)
     end

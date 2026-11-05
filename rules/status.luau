@@ -112,9 +112,6 @@ local status = {
         form_keeps_back_special = false,
         -- The mercy flash hides the navi while its timer's bit 1 is set (`sub_8016934`).
         flash_hides_on_clear = false,
-        -- What a navi's status word reads as while it has no collision data: the opcode the BIOS last fetched, the
-        -- object spawn's fill's (`ZeroFillByWord`'s CpuSet), which has the blind bit.
-        missing_collision_status = 0xE3A02004,
         -- A navi's status block runs a drag, the slides and a flinch, then the mercy flash's timer
         -- (`sub_801A5EE`, while the battle is fighting).
         reactions = "flash_timer_last",
