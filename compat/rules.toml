@@ -164,6 +164,7 @@ custom_cancel = 0x1D2
 # The roles `music` of rules/roles.luau: the music (the song table's entry) the original's routines
 # name each by.
 [music]
+title_screen = 0x001
 link_battle = 0x015
 winner_special = 0x019
 loser = 0x01A
