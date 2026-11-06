@@ -48,7 +48,6 @@ local SOUND = asset.sound("iron-shell")
 local PANEL_WIDTH = 0x28_0000
 -- The hit modifiers.
 local PUSHES, STILL = 3, 1
-local SOLID = 0x10
 
 -- The actions.
 local SLIDE, BUMP, FLY = 0, 4, 8
@@ -131,7 +130,7 @@ local function tick(me: Object)
     local s = me.state :: State
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         s.hit_panel = panel_word(me)
         c:set_region(nil)
     end
@@ -145,7 +144,7 @@ local function tick(me: Object)
     else
         error(string.format("iron shell action %#x reads past off_80CA828", a))
     end
-    if not bit32.btest(field.flags(me.panel_x, me.panel_y), SOLID) then
+    if not field.solid(me.panel_x, me.panel_y) then
         puff(me)
         c:set_region(nil)
         me:set_lifecycle("destroy")
@@ -188,7 +187,7 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local s = me.state :: State
     local x, y = me.panel_x, me.panel_y
-    local ok = field.valid(x, y) and bit32.btest(field.flags(x, y), SOLID)
+    local ok = field.valid(x, y) and field.solid(x, y)
     if ok then
         -- It knocks back only thrown onto a middle column.
         local hit_mod = if not s.variant.pushes or x == 1 or x >= 6 then STILL else PUSHES

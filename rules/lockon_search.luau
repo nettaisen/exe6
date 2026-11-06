@@ -4,9 +4,9 @@
 -- with what the modes share (`Search`: ./lockon's `search`).
 
 -- The column shifts toward the user tried, in order, when no panel next to the target fits (`byte_8026735`); what
--- every panel between the chosen one and the target must be for the modes that need a clear path, by alliance
--- (`byte_8026544`).
-export type Search = { column_shifts: { number }, clear_path: { PanelCondition } }
+-- every panel between the chosen one and the target must be for the modes that need a clear path, of the navi's side
+-- (`byte_8026544`, by alliance).
+export type Search = { column_shifts: { number }, clear_path: PanelCondition }
 
 local lockon_search = {}
 
@@ -14,9 +14,10 @@ local lockon_search = {}
 -- condition (a panel off the field never does).
 local function path_clear(navi: Object, x: number, y: number, target_x: number, search: Search): boolean
     local front = navi.facing
-    local cond = search.clear_path[bit32.band(navi.alliance, 1) + 1]
+    local cond = search.clear_path
+    local side = bit32.band(navi.alliance, 1)
     while true do
-        if x < 0 or x > 0xFF or not field.check(x, y, cond.require, cond.forbid) then
+        if x < 0 or x > 0xFF or not field.check(x, y, cond.require, cond.forbid, side) then
             return false
         end
         x += front

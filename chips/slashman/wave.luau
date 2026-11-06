@@ -41,12 +41,13 @@ end
 -- Its actions.
 local WIND_UP, SWING, FLY = 0, 4, 8
 
--- What ends it when hit (`byte_80D08C4`), by side: any bit of the word.
-local ENDS = { [0] = 0x0580_0000, 0x0A80_0000 }
+-- What ends it when hit (`byte_80D08C4`, by side): any of the other side's
+-- bodies and other bodies, or a neutral object.
+local ENDS: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
 
--- What it steers toward (`off_80D0A3C`): an enemy navi's body, by side;
+-- What it steers toward (`off_80D0A3C`): an enemy navi's body, of its side;
 -- the rows it tries, nearest first (`byte_80D0A48`).
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
+local ENEMY_NAVI = "enemy_body"
 local ROWS = { 0, -1, 1, -2, 2 }
 
 -- `sub_80D07FC`: over its panel; collision on, region off.
@@ -149,11 +150,18 @@ local function swing(me: Object)
 end
 
 -- `object_getFirstPanelInDirectionFiltered`: from (x, y) along `step`, the
--- first column whose panel passes `field.check`, while on the field; 0 if
--- none.
-local function first_in_direction(x: number, y: number, step: number, require: number, forbid: number): number
+-- first column whose panel meets (require, forbid) (`field.check`, of side
+-- `of`), while on the field; 0 if none.
+local function first_in_direction(
+    x: number,
+    y: number,
+    step: number,
+    require: PanelFlags?,
+    forbid: PanelFlags?,
+    of: number
+): number
     while true do
-        if field.check(x, y, require, forbid) then
+        if field.check(x, y, require, forbid, of) then
             return x
         end
         x += step
@@ -173,7 +181,7 @@ local function aim(me: Object)
     if s.steered then
         local front = me.facing
         for _, dy in ROWS do
-            local found = first_in_direction(me.panel_x + front, me.panel_y + dy, front, ENEMY_NAVI[me.alliance], 0)
+            local found = first_in_direction(me.panel_x + front, me.panel_y + dy, front, ENEMY_NAVI, nil, me.alliance)
             if found ~= 0 then
                 local ticks = int.tdiv(int.mul32(math.abs(found - me.panel_x), 0x28_0000), speed)
                 vy = int.tdiv(int.mul32(0x18_0000, dy), ticks)
@@ -211,7 +219,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if battle.over() or bit32.band(c.hit_flags, ENDS[me.alliance]) ~= 0 then
+    if battle.over() or c:hit_any(ENDS) then
         c:set_region(nil)
         me.lifecycle = "destroy"
         return

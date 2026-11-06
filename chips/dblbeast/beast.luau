@@ -28,19 +28,18 @@ beast.STATE = STATE
 -- The ticks of an attack and of a wait.
 beast.TICKS = 0x1E
 
--- The enemy's bodies, by the beast's side (`off_80C1EEC`).
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
 -- A panel to attack from: on the field, nothing on it or reserved.
-local FREE_REQUIRE, FREE_FORBID = 0x00010000, 0x0F880080
+local FREE_REQUIRE, FREE_FORBID = "on_field", "occupied"
 -- At most this many of a pattern's entries are tried.
 local MAX_TRIED = 6
 
 -- `sub_80C1ECE` / `sub_80C24F4`: the panels with an enemy body on them
--- but its own (rows 3 to 1, columns 6 to 1); the first target first.
+-- (`off_80C1EEC`, by the beast's side) but its own (rows 3 to 1, columns 6
+-- to 1); the first target first.
 function beast.list_targets(me: Object)
     local s = me.state :: DblBeastState
     -- (In its side's order: docs/engine/side-symmetry.md.)
-    local list = panels.filtered_except(me, ENEMY_BODY[me.alliance], 0, me.alliance)
+    local list = panels.filtered_except(me, "enemy_body", nil, me.alliance, me.alliance)
     for i, p in list do
         s.targets[i] = p
     end

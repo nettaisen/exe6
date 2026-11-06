@@ -34,13 +34,23 @@ local HIT_MOD = 0x01
 local PANEL_WIDTH = 0x28_0000
 -- It gives up turning after this many turns (`sub_80D3496`).
 local TURNS = 2
--- Collision results: something that ends it (attacks and the like), and a
--- body it stays on (`dword_80D34B0`, `byte_80D34B4`).
-local ENDS_IT, BODIES = 0xF380_0000, 0x0C00_0000
--- A body of the other side on a panel, by its own side (`off_80D33F4`).
-local ENEMY_BODY = { [0] = 0x0400_0000, 0x0800_0000 }
--- The other side's navi on a panel, by its own side (`byte_80E74C4`).
-local ENEMY_NAVI = { [0] = 0x0020_0000, 0x0040_0000 }
+-- Collision results: something that ends it (attacks, objects, other bodies
+-- and neutral objects, of either side), and a body it stays on (either
+-- side's) (`dword_80D34B0`, `byte_80D34B4`).
+local ENDS_IT: { HitName } = {
+    "own_attack",
+    "enemy_attack",
+    "own_object",
+    "enemy_object",
+    "own_other_body",
+    "enemy_other_body",
+    "neutral",
+}
+local BODIES: { HitName } = { "own_body", "enemy_body" }
+-- A body of the other side on a panel, of its own side (`off_80D33F4`).
+local ENEMY_BODY = "enemy_body"
+-- The other side's navi on a panel, of its own side (`byte_80E74C4`).
+local ENEMY_NAVI = "enemy_navi"
 -- Stings, and the ticks between them.
 local STINGS, STING_TICKS = 5, 5
 -- Its puff, 16 pixels up, when it can't start.
@@ -51,7 +61,7 @@ local FLY, STING, FADE = 0, 4, 8
 -- `sub_80E7486`: the other side's combatant whose collision is on (x,
 -- y), if the panel shows the other side's navi.
 local function enemy_on(x: number, y: number, side: number): Object?
-    if not bit32.btest(field.flags(x, y), ENEMY_NAVI[side]) then
+    if not field.any(x, y, ENEMY_NAVI, side) then
         return nil
     end
     for s = 0, 1 do
@@ -69,11 +79,10 @@ end
 -- enemy body in it; of its panels, the one in the bee's row, else the
 -- nearest row (the upper one on a tie). nil if none.
 local function nearest_in_columns(me: Object, x: number, step: number): (number?, number)
-    local body = ENEMY_BODY[me.alliance]
     while true do
         local rows = {}
         for y = 1, 3 do
-            if field.check(x, y, body, 0) then
+            if field.check(x, y, ENEMY_BODY, nil, me.alliance) then
                 table.insert(rows, y)
             end
         end
@@ -270,13 +279,12 @@ local function tick(me: Object)
         finish(me)
         return
     end
-    local hit = c.hit_flags
-    if hit ~= 0 then
-        if bit32.btest(hit, ENDS_IT) then
+    if c.hit then
+        if c:hit_any(ENDS_IT) then
             finish(me)
             return
         end
-        if bit32.btest(hit, BODIES) then
+        if c:hit_any(BODIES) then
             c:set_region(nil)
             if me.action ~= STING then
                 me.action = STING

@@ -26,7 +26,7 @@ strike.STATE = { timer = "u16" }
 local SWING, RECOVER = 0x0, 0x4
 
 -- Grass, ice and volcano panels' flags.
-local ELEMENT_PANELS = 0x1C00
+local ELEMENT_PANELS: { PanelFlag } = { "grass", "ice", "volcano" }
 
 local function set_step(me: Object, step: number)
     me.step = step
@@ -39,7 +39,7 @@ function strike.action(spec: StrikeSpec): Action
     local function slash(me: Object, target: Object)
         local x, y = target.panel_x, target.panel_y
         local open = (spec.finds ~= "on_element_panels" and target:status_timer("paralyze") ~= 0)
-            or (spec.finds ~= "paralyzed" and bit32.btest(field.flags(x, y), ELEMENT_PANELS))
+            or (spec.finds ~= "paralyzed" and field.any(x, y, ELEMENT_PANELS))
         if not open then
             return
         end

@@ -34,9 +34,18 @@ export type State = {
 local FALL = -0x1_2000
 -- The height of a panel spark (`sub_801A100`), 16.16.
 local PANEL_SPARK_Z = 0x10_0000
--- Collision results that show a hit spark (`object_spawnCollisionEffect`),
--- unless the first bit is set too.
-local SPARKS, NO_SPARK = 0x3F800000, 1
+-- Collision results that show a hit spark (`object_spawnCollisionEffect`:
+-- an object, a body, another body of either side, or a neutral object),
+-- unless a guard turned the hit aside.
+local SPARKS: { HitName } = {
+    "own_object",
+    "enemy_object",
+    "own_body",
+    "enemy_body",
+    "own_other_body",
+    "enemy_other_body",
+    "neutral",
+}
 
 -- A flying shot variant (a row of `byte_80C6038`, 16 bytes: its collision,
 -- hit modifier, element, spark, look, highlight, range, shadow, status and
@@ -63,8 +72,7 @@ end
 -- (`sub_800E258`), 16 pixels up (one RNG draw when it shows).
 local function panel_spark(me: Object, v: FlyingShotVariant)
     local c = me.collision
-    local f = c.hit_flags
-    if not bit32.btest(f, SPARKS) or bit32.btest(f, NO_SPARK) or v.spark == nil then
+    if not c:hit_any(SPARKS) or c:hit_any("guarded") or v.spark == nil then
         return
     end
     local p = me.pos
@@ -116,7 +124,7 @@ local function tick(me: Object)
     else
         me:hit_spark()
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         finish(me)
     else
         local wait = s.wait

@@ -34,7 +34,6 @@ end
 
 local SPRITE = asset.sprite("shock-wave")
 local SOUND = asset.sound("shock-wave")
-local SOLID = 0x10
 -- The rows ahead it looks for enemies in (`byte_80C6DB8`), by facing
 -- (right, left) and panel column: the panels from the next one to the
 -- field's edge (regions 0x08, 0x20, 0x07, 0x06, 0x02, 0x01).
@@ -181,12 +180,12 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if battle.over() or not bit32.btest(field.flags(me.panel_x, me.panel_y), SOLID) then
+    if battle.over() or not field.solid(me.panel_x, me.panel_y) then
         c:set_region(nil)
         me:set_lifecycle("destroy")
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local a = me.action
@@ -204,7 +203,7 @@ end
 -- `sub_80C6B64`: on a solid panel of the field, or not at all.
 local function init(me: Object)
     local x, y = me.panel_x, me.panel_y
-    if not field.valid(x, y) or not bit32.btest(field.flags(x, y), SOLID) then
+    if not field.valid(x, y) or not field.solid(x, y) then
         me:free()
         return
     end

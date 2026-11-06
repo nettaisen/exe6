@@ -40,9 +40,7 @@ local HIT_MOD = 1
 local EFFECT = new.effect { sprite = energy_burst_sprite, anim = 0, palette = 1, steps = 32 }
 local SOUND = asset.sound("hit-bomb-1")
 -- The other side's body on a panel (`off_80C6764`, by side).
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
--- A solid panel (it turns to grass under the first burst).
-local SOLID = 0x10
+local ENEMY_BODY = "enemy_body"
 
 -- `sub_80C673A`: the panels of the column around the one ahead with an
 -- enemy's body on them, in the region's order.
@@ -52,7 +50,7 @@ local function find_spread(me: Object, s: State)
     local n = 0
     for _, p in regions.wide.panels or {} do
         local px, py = x + p[1] * dir, y + p[2]
-        if field.check(px, py, ENEMY_BODY[me.alliance], 0) then
+        if field.check(px, py, ENEMY_BODY, nil, me.alliance) then
             n += 1
             s.spread[n] = panels.pack(px, py)
         end
@@ -112,7 +110,8 @@ end
 local function burst(me: Object, s: State)
     if not s.grassed then
         s.grassed = true
-        if field.check(me.panel_x, me.panel_y, SOLID, 0) then
+        -- (A solid panel turns to grass under the first burst.)
+        if field.solid(me.panel_x, me.panel_y) then
             field.set_type(me.panel_x, me.panel_y, "grass")
         end
     end
@@ -160,7 +159,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         if me.action == 4 then
             c:set_region(nil)
         else

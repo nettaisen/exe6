@@ -36,9 +36,6 @@ export type State = {
 
 local SPRITE = asset.sprite("charge-car")
 
--- The floor it needs (`byte_80DB004`, both rows alike): require, forbid.
-local FLOOR = { 0x10, 0 }
-
 -- No owner's action to watch.
 local UNTIED = 0xFF
 
@@ -134,7 +131,8 @@ local function roll(me: Object)
     me.pos = Vec3.new(p.x + me.vel.x, p.y, p.z)
     local x, y = panel_under(me)
     if field.valid(x, y) then
-        if not field.check(x, y, FLOOR[1], FLOOR[2]) then
+        -- (The floor it needs, `byte_80DB004`, both rows alike: solid.)
+        if not field.solid(x, y) then
             explode(me)
             me:set_lifecycle("destroy")
             return

@@ -28,12 +28,11 @@ local SOUND_LAND = asset.sound("aqua-needle")
 local SPEED, FLIGHT, LANDED_Z = 0xC_0000, 12, 0x4_0000
 -- Ticks it blinks out over once landed.
 local FADE = 0x0C
-local CRACKED = 0x40
 local HIT_MOD = 3
 
 -- `sub_8109794`: crack (x, y) unless it is already cracked.
 local function crack(x: number, y: number)
-    if not bit32.btest(field.flags(x, y), CRACKED) then
+    if not field.any(x, y, "cracked") then
         field.crack(x, y)
     end
 end
@@ -101,7 +100,7 @@ local function tick(me: Object)
         return
     end
     if not battle.dimmed() then
-        if c.hit_flags ~= 0 then
+        if c.hit then
             finish(me)
             return
         end

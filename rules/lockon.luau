@@ -218,14 +218,11 @@ local lockon = {
 }
 
 -- The column shifts toward the user tried, in order, when no panel next to the target fits (`byte_8026735`), and
--- what every panel between the chosen one and the target must be for the modes that need a clear path, by alliance
--- (`byte_8026544`).
+-- what every panel between the chosen one and the target must be for the modes that need a clear path, of the
+-- navi's side (`byte_8026544`, by alliance): none of the other side's bodies and other bodies, nor a neutral object.
 lockon.search = new.record("lockon-search", {
     column_shifts = { -1, -2, -3, -4 },
-    clear_path = {
-        { require = 0x00000000, forbid = 0x05800000 },
-        { require = 0x00000000, forbid = 0x0A800000 },
-    },
+    clear_path = { forbid = { "enemy_body", "enemy_other_body", "neutral" } },
 })
 
 -- `ho_8026554`: the panel `navi` attacks (x, y) from in lock-on `mode` (its own for no mode or a target off the

@@ -22,11 +22,11 @@ local ERUPT_TICKS, RECOVER_TICKS = 0x1E, 0x1E
 -- The timer value the volcano erupts at.
 local ERUPT_AT = 0xB
 
--- The panels he aims at first, by side (`off_80F1434`: an enemy navi's
--- body on the other side's area), then the other side's panels without
--- one (`byte_80F1448`); requires and forbids.
-local ENEMIES = { [0] = { 0x0400_0020, 0 }, { 0x0800_0000, 0x20 } }
-local EMPTY = { [0] = { 0x20, 0x0400_0000 }, { 0, 0x0800_0020 } }
+-- The panels he aims at first, of his side (`off_80F1434`, by side: an
+-- enemy navi's body on the other side's area), then the other side's panels
+-- without one (`byte_80F1448`).
+local ENEMIES: PanelCondition = { require = { "enemy_body", "enemy_area" } }
+local EMPTY: PanelCondition = { require = "enemy_area", forbid = "enemy_body" }
 
 -- Last, the column off the field's far edge (`dword_80F145C`, by side),
 -- rows 1 to 3.
@@ -44,8 +44,8 @@ local FIRST_Z = 4
 local function erupt(me: Object)
     local side = me.alliance
     -- (In its side's order, and shuffled: docs/engine/side-symmetry.md.)
-    local targets = panels.filtered_except(me, ENEMIES[side][1], ENEMIES[side][2], side)
-    local empty = panels.filtered_except(me, EMPTY[side][1], EMPTY[side][2], side)
+    local targets = panels.filtered_except(me, ENEMIES.require, ENEMIES.forbid, side, side)
+    local empty = panels.filtered_except(me, EMPTY.require, EMPTY.forbid, side, side)
     if #empty > 0 then
         panels.shuffle(empty, #empty, #empty)
     end

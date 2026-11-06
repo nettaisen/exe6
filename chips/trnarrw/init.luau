@@ -32,9 +32,9 @@ local UNTIL_ANIM_END, AFTER = 1, 2
 local BOW = attachment.look { sprite = bow_sprite, palette = 0, attach_point = 0x17 }
 -- The navi's attach point the arrows are shot from.
 local HAND = 0x17
--- Panels an arrow passes over, by side (`byte_80ECEAC`): flag 0x10000 and
--- none of the other side's bodies.
-local PASSES = { [0] = { require = 0x10000, forbid = 0x05800000 }, [1] = { require = 0x10000, forbid = 0x0A800000 } }
+-- Panels an arrow passes over, of its side (`byte_80ECEAC`): on the field,
+-- and none of the other side's bodies or other bodies, nor a neutral one.
+local PASSES: PanelCondition = { require = "on_field", forbid = { "enemy_body", "enemy_other_body", "neutral" } }
 local SOUND_TWANG = asset.sound("twang")
 -- The arrow (the flying shot's row 2): aqua, sparking over its panel's
 -- center, with the twang as it sets off after its wait.
@@ -74,11 +74,11 @@ local function draw(me: Object, s: State)
         local dir = me.facing
         local x, y = me.panel_x, me.panel_y
         local delay = 0x14
-        local passes = PASSES[me.alliance]
+        local passes = PASSES
         while true do
             x += dir
             delay -= 4
-            if not field.check(x, y, passes.require, passes.forbid) then
+            if not field.check(x, y, passes.require, passes.forbid, me.alliance) then
                 break
             end
             arrow(me, x, y, bit32.band(delay, 0xFF))

@@ -38,8 +38,8 @@ local SWAY_LENGTH = 0x50_0000
 local SWAY = 0x18
 -- What it does to what it hits: a bubble.
 local STATUS = statuses.bubble_150
--- A hit on this bursts it.
-local BURSTS = 0x80_0000
+-- A hit on this bursts it: a neutral object's.
+local BURSTS = "neutral"
 
 -- The puff it bursts in, 16 pixels above it.
 local function puff(me: Object)
@@ -83,9 +83,8 @@ local function tick(me: Object)
     c:remove()
     me:hit_spark()
     local s = me.state :: State
-    local hits = c.hit_flags
-    if hits ~= 0 then
-        if bit32.btest(hits, BURSTS) then
+    if c.hit then
+        if c:hit_any(BURSTS) then
             puff(me)
             c:set_region(nil)
             me:set_lifecycle("destroy")

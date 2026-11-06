@@ -22,15 +22,24 @@ local HIT_TICKS = 0x0F - 5
 local HIT_MOD = 3
 local WAIT, STRIKE = 0x0, 0x4
 
--- What it counts as having hit, and a guard (`sub_801A100`).
-local HIT_SOMETHING, GUARDED = 0x3F80_0000, 1
+-- What it counts as having hit (`sub_801A100`: an object, a body, another
+-- body of either side, or a neutral object).
+local HIT_SOMETHING: { HitName } = {
+    "own_object",
+    "enemy_object",
+    "own_body",
+    "enemy_body",
+    "own_other_body",
+    "enemy_other_body",
+    "neutral",
+}
 
 -- `sub_801A100`: after a hit on something (not guarded), its spark over the
 -- center of the panel it stands over, 16 pixels up, jittered.
 local function panel_spark(me: Object)
-    local f = me.collision.hit_flags
+    local c = me.collision
     local spark = (me.state :: State).spark
-    if not bit32.btest(f, HIT_SOMETHING) or bit32.btest(f, GUARDED) or spark == nil then
+    if not c:hit_any(HIT_SOMETHING) or c:hit_any("guarded") or spark == nil then
         return
     end
     local px, py = int.tdiv(int.asr(me.pos.x, 16) + 0xA0, 0x28), int.tdiv(int.asr(me.pos.y, 16) + 0x20, 0x18)
@@ -84,7 +93,7 @@ local function tick(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     if not battle.dimmed() then

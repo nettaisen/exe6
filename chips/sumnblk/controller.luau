@@ -20,7 +20,7 @@ export type State = {
 }
 
 -- `dword_80E91E0`: a solid panel, or a body on it.
-local NOT_A_FREE_HOLE = 0x0F80_0010
+local NOT_A_FREE_HOLE: { PanelFlag } = { "any_body", "solid" }
 
 -- `sub_80E9164`.
 local function effect(me: Object)
@@ -32,7 +32,7 @@ local function effect(me: Object)
         return
     end
     local x, y = me.panel_x + me.facing, me.panel_y
-    if bit32.band(field.flags(x, y), NOT_A_FREE_HOLE) ~= 0 then
+    if field.any(x, y, NOT_A_FREE_HOLE) then
         dimming_chips.done(me)
         return
     end

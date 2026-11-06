@@ -37,12 +37,9 @@ local dust_2_sprite = asset.sprite("dust-2")
 local puff_sprite = asset.sprite("puff")
 local LEAP_SOUND, LAND_SOUND, HIT_SOUND = asset.sound("golem-2"), asset.sound("land"), asset.sound("golem")
 
--- The nearest target's column (`byte_80E4E74`, by side: required and
--- forbidden panel flags): a panel of the other side's area.
-local TARGET_REQUIRE = { [0] = 0x10020, [1] = 0x10000 }
-local TARGET_FORBID = { [0] = 0, [1] = 0x20 }
--- Where a panel can take the landing.
-local SOLID = 0x10
+-- The nearest target's column (`byte_80E4E74`, by side): a panel of the
+-- other side's area.
+local TARGET: { PanelFlag } = { "on_field", "enemy_area" }
 -- The hops: how far short and how high each starts, and its speeds, 16.16.
 local HOP_1_BACK, HOP_1_UP, HOP_1_VX, HOP_1_VZ = 0x5F_0000, 0x28_0000, 0x20_8000, 0xC_8000
 local HOP_2_BACK, HOP_2_UP, HOP_2_VX, HOP_2_VZ = 0xA_0000, 0x1E_0000, 0x5_0000, 0xF_0000
@@ -111,9 +108,10 @@ local function hit(me: Object, x: number, y: number)
     })
 end
 
--- `sub_80E5068`: a hit and dust on (x, y), if it can take the landing.
+-- `sub_80E5068`: a hit and dust on (x, y), if it can take the landing
+-- (solid).
 local function strike(me: Object, x: number, y: number)
-    if not bit32.btest(field.flags(x, y), SOLID) then
+    if not field.solid(x, y) then
         return
     end
     hit(me, x, y)
@@ -154,7 +152,7 @@ local function hop_2(me: Object)
         return
     end
     local x, y = me.panel_x, me.panel_y
-    if not bit32.btest(field.flags(x, y), SOLID) then
+    if not field.solid(x, y) then
         hit(me, x, y)
         battle.effect(me.pos, GONE)
         me:set_lifecycle("destroy")
@@ -222,7 +220,7 @@ local function init(me: Object)
         -- `object_getClosestPanelMatchingRowFiltered` (@exelib/panels):
         -- from column 6 when side ^ flip is 1, else from column 1.
         local from = bit32.bxor(bit32.bxor(side, me.flip), 1)
-        local x = panels.closest_in_row(from, me.panel_y, TARGET_REQUIRE[side], TARGET_FORBID[side])
+        local x = panels.closest_in_row(from, me.panel_y, TARGET, nil, side)
         if x == 0 then
             x = me.panel_x + me.facing
         end

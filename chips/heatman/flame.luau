@@ -109,7 +109,7 @@ local function tick(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     if (me.state :: State).while_dimmed or not battle.dimmed() then

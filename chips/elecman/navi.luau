@@ -24,9 +24,10 @@ local SPRITE = asset.sprite("elecman")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ELEC_MAN = asset.sound("elec-man")
 -- Where he looks (a panel region around him, dx along his side's
--- direction), and what for, by strike and side (`byte_80B94AC`).
+-- direction), and what for, by strike, of his side (`byte_80B94AC`, by
+-- strike and side): an enemy's body, then a neutral object, on the field.
 local REGION = regions.big_square
-local TARGETS = { [0] = { [0] = 0x0401_0000, 0x0801_0000 }, { [0] = 0x0081_0000, 0x0081_0000 } }
+local TARGETS: { [number]: { PanelFlag } } = { [0] = { "enemy_body", "on_field" }, [1] = { "neutral", "on_field" } }
 
 -- His thunderbolts, by strike: the second's also hit the panels around
 -- them.
@@ -108,7 +109,7 @@ end
 -- panel the region search finds, from the last found to the first.
 local function strike(me: Object, n: number)
     local direction = if me.alliance == 0 then 1 else -1
-    local found = panels.region(me.panel_x, me.panel_y, REGION, direction, TARGETS[n][me.alliance], 0)
+    local found = panels.region(me.panel_x, me.panel_y, REGION, direction, TARGETS[n], nil, me.alliance)
     local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
     -- r3: the search's, then each spawn's (the spawned bolt's side and
     -- flip halfword, or the element if the pool was full).

@@ -36,8 +36,6 @@ local STATUS = statuses.paralyze_90
 local DELAY = 0
 -- Hit effect 3: an elec attack's spark.
 local SPARK = sparks.of_element(3)
--- Its panel must be free of bodies and objects to arm again.
-local OCCUPIED = 0x0F88_0080
 
 -- The actions (the object's action byte).
 local WAIT, ARMED, SPENT, ENDED = 0, 4, 8, 0xC
@@ -101,7 +99,8 @@ local function spent(me: Object)
         return
     end
     me.collision:set_region(nil)
-    if bit32.band(field.flags(me.panel_x, me.panel_y), OCCUPIED) == 0 then
+    -- (Its panel must be free of bodies and objects to arm again.)
+    if not field.any(me.panel_x, me.panel_y, "occupied") then
         me.action = ARMED
     end
 end
@@ -126,7 +125,7 @@ local function tick(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
         if me.action ~= ENDED then
             me.action = SPENT

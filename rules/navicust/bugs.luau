@@ -84,7 +84,7 @@ end
 -- The rules' `navi_flinched`: `sub_8013F1E`'s gate (a hit, damage, once a hit sequence), then the hit bug.
 function navicust_bugs.navi_flinched(side: number, navi: Object)
     local c = navi.collision
-    if c.hit_flags == 0 then
+    if not c.hit then
         return
     end
     -- Three unaligned words from CollisionData+0x82, which the ARM's rotation reads as each damage slot paired with

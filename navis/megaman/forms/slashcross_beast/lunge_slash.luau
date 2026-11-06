@@ -12,7 +12,7 @@ local regions = require("@exelib/regions")
 local lunge_slash = {}
 
 -- What its hit struck that flashes: a body of either side.
-local BODY = 0x0C00_0000
+local BODY: { HitName } = { "own_body", "enemy_body" }
 
 -- Its hit: a slash at navis, no spark.
 local HIT_MOD = 3
@@ -30,9 +30,8 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    local hit = c.hit_flags
-    if hit ~= 0 then
-        if bit32.btest(hit, BODY) then
+    if c.hit then
+        if c:hit_any(BODY) then
             hit_flash.spawn(me)
         end
         return finish(me)

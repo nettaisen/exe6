@@ -105,10 +105,9 @@ local AFTERIMAGE_SHADER, AFTERIMAGE_TICKS = 0x8318, 0x1E
 local SPAWNER_ADDRESS = 0x080BD9A3
 
 -- What ProtoMan looks for (an enemy navi's body, `off_80BD63C`; Colonel's
--- `off_80BDA68` is the same), and what a panel he lands on must be (solid)
--- and be free of (as words).
-local ENEMY_NAVI = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
-local SOLID, OCCUPIED = 0x10, 0x0F80_0000
+-- `off_80BDA68` is the same). A panel he lands on must be solid, with no
+-- body on it (`can_land`).
+local ENEMY_NAVI = "enemy_body"
 
 -- Where Colonel strikes when no enemy navi is in his row (`dword_80BDA70`),
 -- by side.
@@ -259,7 +258,7 @@ local function can_land(me: Object, x: number, y: number): boolean
     if user and lx == user.panel_x and y == user.panel_y then
         return true
     end
-    return field.check(lx, y, SOLID, OCCUPIED)
+    return field.check(lx, y, "solid", "any_body")
 end
 
 -- `sub_80BD5A8`: the next enemy navi, from the last one's next row (or
@@ -268,11 +267,10 @@ local function search(me: Object)
     local s = me.state :: State
     local x, y = me.future_panel_x, me.future_panel_y
     if field.valid(x, y) then
-        local enemy = ENEMY_NAVI[me.alliance]
         y = if s.fresh then 1 else y + 1
         while true do
             while y <= 3 do
-                if field.check(x, y, enemy, 0) and can_land(me, x, y) then
+                if field.check(x, y, ENEMY_NAVI, nil, me.alliance) and can_land(me, x, y) then
                     me.future_panel_x, me.future_panel_y = x, y
                     s.fresh = false
                     s.count += 1
@@ -449,9 +447,8 @@ local COLONEL_APPEAR_PHASES: { [number]: (me: Object) -> () } = { [0] = colonel_
 local function target(me: Object): (number, number)
     local step = me.facing
     local x, y = me.panel_x + step, me.panel_y
-    local enemy = ENEMY_NAVI[me.alliance]
     while field.valid(x, y) do
-        if bit32.btest(field.flags(x, y), enemy) then
+        if field.any(x, y, ENEMY_NAVI, me.alliance) then
             return x, y
         end
         x += step

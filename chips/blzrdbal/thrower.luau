@@ -20,7 +20,6 @@ local SOUND_WINDUP = asset.sound("blizzard-windup")
 local SOUND_THROW = asset.sound("blizzard-throw")
 -- The ball leaves 10 pixels in front of it.
 local AHEAD = 0xA_0000
-local SOLID = 0x10
 
 -- `sub_80B8B08`: the windup; on a panel that isn't solid, no throw.
 local function throw(me: Object)
@@ -29,7 +28,7 @@ local function throw(me: Object)
         me.phase_init = 4
     end
     if me.timer == THROW_ANIM_AT then
-        if not bit32.btest(field.flags(me.panel_x, me.panel_y), SOLID) then
+        if not field.solid(me.panel_x, me.panel_y) then
             me.timer = 1
             me.phase, me.phase_init = 4, 0
             return

@@ -37,9 +37,8 @@ local ARC_TICKS, GRAVITY, ARC_ROLL_SPEED = 0x0D, -0x8000, 0x3_0000
 -- Dropping in: its speed forward and down.
 local DROP_ROLL_SPEED, DROP_FALL = 0x1_C000, -0x2_0000
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
-local SOLID = 0x10
 -- Hits that make it burst: bodies and neutral objects.
-local BURSTING = 0x0F800000
+local BURSTING: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
 -- Ticks it lingers, hidden, after it breaks.
 local BREAK_TICKS = 0x14
 -- How high it is drawn, and its explosion: 16 pixels up, 12 more for a
@@ -66,10 +65,10 @@ local function grounded(me: Object, s: State): boolean
         return true
     end
     local x, y = me.panel_x, me.panel_y
-    if bit32.btest(field.flags(x, y), SOLID) then
+    if field.solid(x, y) then
         return true
     end
-    return s.big and bit32.btest(field.flags(x, y - 1), SOLID)
+    return s.big and field.solid(x, y - 1)
 end
 
 -- `sub_80D149E`: thrown in an arc onto the panel ahead, or dropping in
@@ -193,7 +192,7 @@ local function tick(me: Object)
         c:set_region(nil)
         me.timer = BREAK_TICKS
         to_broken(me)
-    elseif bit32.btest(c.hit_flags, BURSTING) then
+    elseif c:hit_any(BURSTING) then
         return burst(me)
     else
         local hp = me.hp

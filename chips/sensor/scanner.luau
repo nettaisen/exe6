@@ -25,11 +25,11 @@ local SPRITE = asset.sprite("erase-mark")
 local STEP_SOUND = asset.sound("erase-man")
 -- The aim's row step (`off_80D9328`).
 local ROW_STEP: { [number]: number } = { [0] = -1, [1] = 0, [2] = 1 }
--- The other side's bodies (by its side: `off_80D9340`, `off_80D9344`);
+-- The other side's bodies, of its side (`off_80D9340`, `off_80D9344`);
 -- the other side's other bodies and neutral objects (`dword_80D9348`,
 -- `dword_80D934C`).
-local OTHER_BODY: { [number]: number } = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
-local BLOCKERS: { [number]: number } = { [0] = 0x0180_0000, [1] = 0x0280_0000 }
+local OTHER_BODY = "enemy_body"
+local BLOCKERS: { PanelFlag } = { "enemy_other_body", "neutral" }
 
 -- `sub_80D9298`: a step along its aim (true if blocked): with
 -- `stops_at_objects`, not off a panel holding a blocker nor onto one; not
@@ -38,8 +38,7 @@ local BLOCKERS: { [number]: number } = { [0] = 0x0180_0000, [1] = 0x0280_0000 }
 local function step(me: Object): boolean
     battle.play_sound(STEP_SOUND)
     local s = me.state :: State
-    local blockers = BLOCKERS[me.alliance]
-    if s.stops_at_objects and bit32.band(field.flags(me.panel_x, me.panel_y), blockers) ~= 0 then
+    if s.stops_at_objects and field.any(me.panel_x, me.panel_y, BLOCKERS, me.alliance) then
         return true
     end
     local dir = me.facing
@@ -54,7 +53,7 @@ local function step(me: Object): boolean
         return true
     end
     me.panel_y = y
-    if s.stops_at_objects and bit32.band(field.flags(me.panel_x, me.panel_y), blockers) ~= 0 then
+    if s.stops_at_objects and field.any(me.panel_x, me.panel_y, BLOCKERS, me.alliance) then
         return true
     end
     me:set_coordinates_from_panel()
@@ -109,7 +108,7 @@ local function tick(me: Object)
         return
     end
     local s = me.state :: State
-    if bit32.band(field.flags(me.panel_x, me.panel_y), OTHER_BODY[me.alliance]) ~= 0 then
+    if field.any(me.panel_x, me.panel_y, OTHER_BODY, me.alliance) then
         s.found = true
     end
     if battle.dimmed() then

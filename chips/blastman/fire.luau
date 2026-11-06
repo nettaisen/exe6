@@ -89,7 +89,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if battle.over() or c.hit_flags ~= 0 then
+    if battle.over() or c.hit then
         c:set_region(nil)
         me:set_lifecycle("destroy")
         return

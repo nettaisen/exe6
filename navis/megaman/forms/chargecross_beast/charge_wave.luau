@@ -70,7 +70,7 @@ local function tick(me: Object)
         return
     end
     local s = me.state :: State
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
         s.hit_panel = panel_word(me)
         battle.effect(me.pos, HIT_FLASH)

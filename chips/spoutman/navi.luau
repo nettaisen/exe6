@@ -43,7 +43,7 @@ local IDENTITY = spoutman_navi.identity
 
 -- What his geyser looks for, by side (`off_80B97B8`: an enemy navi's
 -- body).
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
+local ENEMY_NAVI = "enemy_body"
 
 -- How long his geyser lasts.
 local GEYSER_TICKS = 0x5A
@@ -181,7 +181,7 @@ local function target_column(me: Object): number
     local i = 1
     while true do
         local x = me.panel_x + me.facing * i
-        if #panels.in_column(x, ENEMY_NAVI[me.alliance], 0) ~= 0 or x <= 1 or x >= 6 then
+        if #panels.in_column(x, ENEMY_NAVI, nil, me.alliance) ~= 0 or x <= 1 or x >= 6 then
             return x
         end
         i += 1

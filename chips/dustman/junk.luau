@@ -71,7 +71,7 @@ local function fly(me: Object)
     me.pos = Vec3.new(p.x + me.vel.x, p.y, p.z)
     me:set_panel_from_coordinates()
     me:update_collision_panels()
-    if me.collision.hit_flags ~= 0 then
+    if me.collision.hit then
         me.collision:set_region(nil)
         me:set_lifecycle("destroy")
         return
@@ -86,7 +86,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if battle.over() or c.hit_flags ~= 0 then
+    if battle.over() or c.hit then
         c:set_region(nil)
         me:set_lifecycle("destroy")
         return

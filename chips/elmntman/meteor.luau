@@ -28,9 +28,9 @@ local START = 0xC0_0000
 local SPEED = 0xB_0000
 local FALL_TICKS = 0x11
 
--- What it bursts on, by side (`byte_80D6D08`): a panel flags word any bit
--- of which will do.
-local TARGETS = { [0] = 0x1580_0010, 0x2A80_0010 }
+-- What it bursts on, of its side (`byte_80D6D08`, by side): a panel with
+-- any of these.
+local TARGETS: { PanelFlag } = { "solid", "enemy_object", "enemy_body", "enemy_other_body", "neutral" }
 
 -- `sub_80D6C04`: high above, behind its panel.
 local function init(me: Object)
@@ -84,7 +84,7 @@ local function fall(me: Object)
         local left = me.timer - 1
         me.timer = left
         if left <= 0 then
-            if bit32.band(field.flags(me.panel_x, me.panel_y), TARGETS[me.alliance]) ~= 0 then
+            if field.any(me.panel_x, me.panel_y, TARGETS, me.alliance) then
                 battle.effect(me.pos, effects.explosion)
                 hit(me)
             end

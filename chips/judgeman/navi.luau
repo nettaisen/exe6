@@ -50,7 +50,7 @@ local SPAWNER_ADDRESS = 0x080BA921
 local COLUMNS = { [0] = { 5, 4, 3, 2 }, [1] = { 2, 3, 4, 5 } }
 
 -- A panel for a book: solid, nothing on it, not reserved.
-local BOOK_FLOOR, BOOK_FORBID = 0x10, 0x0F88_0080
+local BOOK_FLOOR, BOOK_FORBID = "solid", "occupied"
 
 -- The lash: paralyzing (status 0x11).
 local LASH_STATUS = statuses.paralyze_120

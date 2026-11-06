@@ -12,10 +12,10 @@ local soldier = require("./soldier")
 
 local force = {}
 
--- What a soldier's panel must be (`byte_80E955C`, by side: required and
--- forbidden flags): a free panel of the other side's, by side.
-local REQUIRE = { [0] = 0x10, [1] = 0x30 }
-local FORBID = { [0] = 0x03800020, [1] = 0x03800000 }
+-- What a soldier's panel must be (`byte_80E955C`, by side): a solid panel
+-- of its own side's, with no other body or neutral object on it.
+local REQUIRE: { PanelFlag } = { "solid", "own_area" }
+local FORBID: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
 local LOOK_TICKS = 0x32
 local SOLDIER_DELAY = 0xA
 
@@ -25,7 +25,6 @@ local function look(me: Object): number
     local side = me.alliance
     -- object_getEnemyDirection, the other way.
     local toward = -(1 - 2 * side)
-    local require, forbid = REQUIRE[side], FORBID[side]
     local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
     local n = 0
     local ahead = 1
@@ -35,7 +34,7 @@ local function look(me: Object): number
             if x < 1 or x > 6 then
                 return n
             end
-            if field.check(x, y, require, forbid) then
+            if field.check(x, y, REQUIRE, FORBID, side) then
                 soldier.spawn(me, x, y, me.element, SOLDIER_DELAY * n, damage)
                 n += 1
             end

@@ -25,8 +25,8 @@ local SOUND_LAND = asset.sound("land")
 local AHEAD, SPEED = 0x12_0000, 0x6_0000
 
 -- What stops it (`byte_80DB888`, by side): the other side's bodies and
--- objects, and neutral objects.
-local STOPS = { [0] = 0x05800000, [1] = 0x0A800000 }
+-- other bodies, and neutral objects.
+local STOPS: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
 
 -- The phases, on its action.
 local ROLL, BURST = 0, 4
@@ -54,7 +54,7 @@ end
 
 -- `sub_80DB864`: the other side's body or object on its panel.
 local function blocked(me: Object): boolean
-    return bit32.btest(field.flags(me.panel_x, me.panel_y), STOPS[me.alliance])
+    return field.any(me.panel_x, me.panel_y, STOPS, me.alliance)
 end
 
 -- Stop rolling: on to the burst (only the phase byte is reset).

@@ -77,7 +77,7 @@ local function tick(me: Object)
     if gone then
         return finish(me)
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
         s.hit_panel = me.panel_x + me.panel_y * 0x100
         if s.variant.reports then

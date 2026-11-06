@@ -18,7 +18,7 @@ local chip: Chip = {
         panels = "row",
         flicker = true,
         ticks = 0x40,
-        sides = panel_chips.OTHER_AREA,
+        condition = panel_chips.OTHER_AREA,
         tick_sound = panel_changer.TICK_SOUND,
         change_sound = panel_changer.CHANGE_SOUND,
     }),

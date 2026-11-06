@@ -24,13 +24,9 @@ local SOUND = asset.sound("crack-shot")
 local DUST = new.effect { sprite = dust_sprite, anim = 0, palette = 0, steps = 17 }
 -- Up, then forward, 16.16 per tick; how high it flies (whole pixels).
 local RISE, SPEED, HEIGHT = 0x8_0000, 0x8_0000, 0x14
--- A panel it can dig: solid (0x10) with nothing on it (bodies, neutral
--- objects, blockers, reservations).
-local SOLID, CRACKED, OCCUPIED = 0x10, 0x40, 0x0F880080
-
 -- `sub_8109794`: crack (x, y) unless it is already cracked.
 local function crack(x: number, y: number)
-    if not bit32.btest(field.flags(x, y), CRACKED) then
+    if not field.any(x, y, "cracked") then
         field.crack(x, y)
     end
 end
@@ -53,7 +49,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         finish(me)
     else
         local p = me.pos
@@ -89,7 +85,8 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     battle.effect(me.pos, DUST)
     local x, y = me.panel_x, me.panel_y
-    if not field.check(x, y, SOLID, OCCUPIED) then
+    -- (A panel it can dig: solid, with nothing on it: bodies, neutral objects, blockers, reservations.)
+    if not field.check(x, y, "solid", "occupied") then
         crack(x, y)
         me:free()
         return

@@ -24,8 +24,8 @@ return common.make {
     -- open panels ahead.
     recovery = require("../rules/buster").recovery,
     -- What stops a shot's panel count (`byte_800FB4C`, by side): bodies,
-    -- neutral objects, blockers and reservations, and only the other side's
-    -- barrier bits.
-    closed = { [0] = 0x0D880080, [1] = 0x0E880080 },
+    -- neutral objects, blockers and reservations, but its own side's other
+    -- bodies.
+    closed = { "reserved", "own_body", "enemy_body", "enemy_other_body", "neutral", "blocker" },
     attachment = attachment.kind,
 }

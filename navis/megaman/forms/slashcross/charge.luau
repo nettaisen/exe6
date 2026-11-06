@@ -46,9 +46,9 @@ local DASH, COUNT, SLASH, RETURN, FINISH = 0x0, 0x4, 0x8, 0xC, 0x10
 -- parameter.
 local SWORD, HIT_PARAM = 0x80, 0x94
 
--- The panels a dash may end on (`sub_8015B00`, two ahead): with the
--- other side's body flag (0x10000) and none of 0xF800000.
-local DASH_REQUIRE, DASH_FORBID = 0x10000, 0x0F800000
+-- The panels a dash may end on (`sub_8015B00`, two ahead): on the field
+-- (0x10000), with no body on it (0xF800000).
+local DASH_REQUIRE, DASH_FORBID = "on_field", "any_body"
 
 -- The dash's afterimage: its color shader and lifetime.
 local AFTERIMAGE_SHADER, AFTERIMAGE_TICKS = 0xFFE0, 0x14

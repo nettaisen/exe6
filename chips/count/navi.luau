@@ -65,11 +65,16 @@ local RAIN_Z = 0x2_0000
 -- spawn Z is the chip's damage flags (the register his spawner leaves).
 local LANCE: CountLance = { while_dimmed = true, warn_ticks = 0 }
 
--- The lances' search, by side, in the 3x3 around the middle (region
+-- The lances' search, of his side, in the 3x3 around the middle (region
 -- 0x0F): an enemy's body on a solid panel of the other side's area, then
--- the rest of that area's solid panels (two tables of flag pairs).
-local ENEMY_PANELS = { [0] = { 0x0400_0030, 0x3F40 }, [1] = { 0x0800_0010, 0x3F60 } }
-local OTHER_PANELS = { [0] = { 0x30, 0x0400_3F40 }, [1] = { 0x10, 0x0800_3F60 } }
+-- the rest of that area's solid panels (two tables of conditions by side),
+-- none cracked nor of a type of its own.
+local PLAIN: { PanelFlag } = { "cracked", "poison", "road", "grass", "ice", "volcano", "holy" }
+local ENEMY_PANELS: PanelCondition = { require = { "solid", "enemy_body", "enemy_area" }, forbid = PLAIN }
+local OTHER_PANELS: PanelCondition = {
+    require = { "solid", "enemy_area" },
+    forbid = { "cracked", "poison", "road", "grass", "ice", "volcano", "holy", "enemy_body" },
+}
 local MAX_LANCES = 3
 
 -- How long the rain lasts, how often its sound comes; the lances' gap.
@@ -176,12 +181,12 @@ end
 local function search(me: Object): { number }
     local at = MIDDLE[me.alliance]
     local dir = panels.side_direction(me.alliance)
-    local first = ENEMY_PANELS[me.alliance]
-    local found = panels.region(at[1], at[2], regions.square, dir, first[1], first[2])
+    local first = ENEMY_PANELS
+    local found = panels.region(at[1], at[2], regions.square, dir, first.require, first.forbid, me.alliance)
     local n = #found
     if n < MAX_LANCES then
-        local second = OTHER_PANELS[me.alliance]
-        local rest = panels.region(at[1], at[2], regions.square, dir, second[1], second[2])
+        local second = OTHER_PANELS
+        local rest = panels.region(at[1], at[2], regions.square, dir, second.require, second.forbid, me.alliance)
         if #rest > 0 then
             panels.shuffle(rest, #rest, #rest)
             for _, p in rest do

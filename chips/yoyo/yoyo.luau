@@ -254,7 +254,7 @@ local function tick(me: Object)
     c:remove()
     me:hit_spark()
     local s = me.state :: State
-    if c.hit_flags ~= 0 then
+    if c.hit then
         s.hit = 1
         c:set_region(nil)
     end

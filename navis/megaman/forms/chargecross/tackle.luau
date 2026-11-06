@@ -35,10 +35,6 @@ local CHARGE_TICKS = 0x78_0000 // SPEED + 1
 -- Ticks of slowing down once the hit is gone.
 local SLOWING_TICKS = 0xD
 
--- A panel's "solid" bit (the flags word), which the charge needs under it
--- unless it floats.
-local SOLID = 0x10
-
 -- Where the navi waits while off the field, 16.16.
 local OFF_FIELD_X = 0xB4_0000
 
@@ -121,7 +117,7 @@ end
 -- is there; once it is gone the navi slows down.
 local function charge(me: Object, s: State)
     local hitting = me.marker ~= 0
-    if not hitting or me.collision.hit_flags ~= 0 then
+    if not hitting or me.collision.hit then
         me.collision:set_region(nil)
     end
     if not hitting then
@@ -141,7 +137,7 @@ local function charge(me: Object, s: State)
     end
     me:update_collision_panels()
     local x, y = me.panel_x, me.panel_y
-    if not me:status("air_shoe") and not bit32.btest(field.flags(x, y), SOLID) then
+    if not me:status("air_shoe") and not field.solid(x, y) then
         return stop(me, s)
     end
     if not field.valid(x, y) then

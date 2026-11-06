@@ -134,7 +134,7 @@ local function strike(me: Object)
         end
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local lit = me.timer2 - 1
@@ -164,7 +164,7 @@ local function tick(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     if not (me.state :: State).while_dimmed and battle.dimmed() then

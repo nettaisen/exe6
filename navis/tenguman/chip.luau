@@ -26,9 +26,9 @@ local GUST_Z = 0x20_0000
 
 local BLOW_TICKS, RECOVER_TICKS = 0x1E, 0x14
 
--- Where tornadoes rise, by side (`byte_80F1B70`): the other side's bodies
--- and objects, and neutral objects.
-local TARGETS = { [0] = 0x0580_0000, 0x0A80_0000 }
+-- Where tornadoes rise, of his side (`byte_80F1B70`, by side): the other
+-- side's bodies and other bodies, and neutral objects.
+local TARGETS: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
 
 -- What a tornado's spawn finds in r3: the address of `byte_80F1B70`, which
 -- its spawner just read, whose low half its Z keeps.
@@ -40,7 +40,7 @@ local function tornadoes(me: Object)
     local element, damage = me.attack_element, link.damage_word(me)
     for y = 1, 3 do
         for x = 1, 6 do
-            if me.facing * (me.panel_x - x) < 0 and bit32.btest(field.flags(x, y), TARGETS[me.alliance]) then
+            if me.facing * (me.panel_x - x) < 0 and field.any(x, y, TARGETS, me.alliance) then
                 tornado.spawn(me, x, y, element, damage, Vec3.new(y, element, TORNADO_Z))
             end
         end

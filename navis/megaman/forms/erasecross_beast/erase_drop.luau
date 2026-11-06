@@ -31,9 +31,6 @@ local BACK, UP = 0x14_0000, 0x19_0000
 -- The actions, on its action byte.
 local FALLING, BLINKING = 0, 4
 
--- A panel's "solid" bit (the flags word).
-local SOLID = 0x10
-
 -- Where it appears, and its burst (a puff).
 local APPEAR = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 }
 local BURST = effects.puff
@@ -60,7 +57,7 @@ local function fall(me: Object)
     me.timer = 0xA
     me.action = BLINKING
     me.phase, me.phase_init = 0, 0
-    if not bit32.btest(field.flags(me.panel_x, me.panel_y), SOLID) then
+    if not field.solid(me.panel_x, me.panel_y) then
         me:set_lifecycle("destroy")
         battle.effect(me.pos, BURST)
     else

@@ -12,11 +12,11 @@ local panels = require("@exelib/panels")
 
 local targets = {}
 
--- The panels with an enemy's body on them, of the other side's area, by
--- `me`'s side: (require, forbid) (0x080C4198).
-local ENEMY_PANELS: { [number]: { number } } = { [0] = { 0x04010020, 0 }, [1] = { 0x08010000, 0x20 } }
+-- The panels with an enemy's body on them, of the other side's area, of
+-- `me`'s side (0x080C4198, by side).
+local ENEMY_PANELS: { PanelFlag } = { "enemy_body", "on_field", "enemy_area" }
 -- Every panel of the other side's area (0x080C41AC).
-local AREA_PANELS: { [number]: { number } } = { [0] = { 0x00010020, 0 }, [1] = { 0x00010000, 0x20 } }
+local AREA_PANELS: { PanelFlag } = { "on_field", "enemy_area" }
 -- Of sixteen draws, those that aim at an enemy's panel.
 local ENEMY_ODDS = 9
 
@@ -29,12 +29,13 @@ local function fresh(p: number, last_x: number, last_y: number): (number?, numbe
     return nil, nil
 end
 
--- The panels meeting (require, forbid), but `me`'s own, written over the
--- start of `buf` (the routine's stack buffer, which keeps what an earlier
--- list left past the new one's end): how many.
-local function list_into(me: Object, buf: { number }, filter: { number }): number
+-- The panels with every flag of `require` (of `me`'s side), but `me`'s own,
+-- written over the start of `buf` (the routine's stack buffer, which keeps
+-- what an earlier list left past the new one's end): how many.
+local function list_into(me: Object, buf: { number }, require: { PanelFlag }): number
     -- (Shuffled from its side's order, its first taken: docs/engine/side-symmetry.md.)
-    local list = panels.filtered_except(me, filter[1], filter[2], bit32.band(me.alliance, 1))
+    local side = bit32.band(me.alliance, 1)
+    local list = panels.filtered_except(me, require, nil, side, side)
     for i, p in list do
         buf[i] = p
     end
@@ -49,9 +50,8 @@ end
 -- odds when an enemy stands there, and two for each round of a shuffle
 -- (as many rounds as panels: `sub_8000C72`).
 function targets.pick(me: Object, last_x: number, last_y: number): (number?, number?)
-    local side = bit32.band(me.alliance, 1)
     local buf: { number } = {}
-    local n = list_into(me, buf, ENEMY_PANELS[side])
+    local n = list_into(me, buf, ENEMY_PANELS)
     if n ~= 0 and bit32.band(battle.rng_positive(), 0xF) < ENEMY_ODDS then
         panels.shuffle(buf, n, n)
         local x, y = fresh(buf[1], last_x, last_y)
@@ -65,7 +65,7 @@ function targets.pick(me: Object, last_x: number, last_y: number): (number?, num
             end
         end
     end
-    n = list_into(me, buf, AREA_PANELS[side])
+    n = list_into(me, buf, AREA_PANELS)
     if n == 0 then
         return nil, nil
     end

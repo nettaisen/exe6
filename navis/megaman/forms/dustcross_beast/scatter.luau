@@ -34,10 +34,11 @@ local RISE_SPEED, RISE_ACCELERATION = 0x6000, 0x3000
 
 -- The panels it picks from: the 3x3 block around the panel two ahead,
 -- facing right whatever the navi's side (`sub_80EF3F4` passes side 0;
--- nettai's by the side, `pick_targets`), with this panel bit set; bodies
--- on them come first.
+-- nettai's by the side, `pick_targets`), on the field; bodies (either
+-- side's) on them come first.
 local BLOCK = regions.square
-local PICKABLE, BODY = 0x1_0000, 0x0C00_0000
+local PICKABLE = "on_field"
+local BODY: { PanelFlag } = { "own_body", "enemy_body" }
 
 -- Throws, and the shuffles' rounds (`sub_8000C72`).
 local THROWS, SWAPS = 6, 10
@@ -73,7 +74,7 @@ local function pick_targets(me: Object, s: State)
     local count = 0
     for _, offset in BLOCK.panels :: { { number } } do
         local x, y = cx + offset[1] * sign, cy + offset[2]
-        if field.check(x, y, PICKABLE, 0) then
+        if field.check(x, y, PICKABLE) then
             count += 1
             found[count] = int.u8(x + y * 0x10)
         end
@@ -86,7 +87,7 @@ local function pick_targets(me: Object, s: State)
         local bodies = 0
         for i = 1, count do
             local p = found[i]
-            if bit32.btest(field.flags(bit32.band(p, 7), bit32.rshift(p, 4)), BODY) then
+            if field.any(bit32.band(p, 7), bit32.rshift(p, 4), BODY) then
                 bodies += 1
                 found[i], found[bodies] = found[bodies], found[i]
             end

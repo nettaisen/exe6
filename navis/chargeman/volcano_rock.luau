@@ -25,9 +25,9 @@ local AHEAD, HEIGHT = 0xA, 0x30
 -- quarter pixel a tick more each tick.
 local FLIGHT_TICKS, GRAVITY = 0x2D, -0x4000
 
--- What it bursts on, by side (`byte_80D5EA0`: the other side's bodies and
--- objects, neutral objects, and solid ground).
-local BURSTS_ON = { [0] = 0x1580_0010, 0x2A80_0010 }
+-- What it bursts on, of its side (`byte_80D5EA0`, by side: the other side's
+-- objects, bodies and other bodies, neutral objects, and solid ground).
+local BURSTS_ON: { PanelFlag } = { "solid", "enemy_object", "enemy_body", "enemy_other_body", "neutral" }
 
 -- Its burst's hit: a thrown attack at navis, fire spark, for 5 ticks.
 local HIT_TICKS, HIT_MOD = 5, 3
@@ -89,7 +89,7 @@ local function fly(me: Object)
     local t = me.timer - 1
     me.timer = t
     if t < 0 then
-        if bit32.btest(field.flags(me.panel_x, me.panel_y), BURSTS_ON[me.alliance]) then
+        if field.any(me.panel_x, me.panel_y, BURSTS_ON, me.alliance) then
             battle.play_sound(SOUND_LAND)
             battle.effect(me.pos, effects.explosion)
             hit(me)

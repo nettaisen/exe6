@@ -25,9 +25,6 @@ local SOUND = asset.sound("land")
 -- 1.5 pixels a tick more each tick.
 local JUMP_PANELS, JUMP_TICKS, GRAVITY = 3, 0x14, -0x1_8000
 
--- What he lands on to press, and where a flame can burn: a solid panel.
-local SOLID = 0x10
-
 -- The flames beside him (`byte_80F3824`: left, right, above, below, not
 -- turned to his side), and theirs: they wait a dimming out and burn for 60
 -- ticks, as attacks.
@@ -65,7 +62,7 @@ local function jump(me: Object, s: State)
     -- Landed: Z's whole part 0 (its fraction stays).
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
-    link.go(me, if bit32.btest(field.flags(me.panel_x, me.panel_y), SOLID) then PRESS else BACK)
+    link.go(me, if field.solid(me.panel_x, me.panel_y) then PRESS else BACK)
 end
 
 -- `sub_80F37D8`: a flame on each solid panel beside him. The registers its
@@ -75,7 +72,7 @@ local function flames(me: Object)
     local element, damage = me.attack_element, link.damage_word(me)
     for _, d in BESIDE do
         local x, y = me.panel_x + d[1], me.panel_y + d[2]
-        if bit32.btest(field.flags(x, y), SOLID) then
+        if field.solid(x, y) then
             flame.spawn(me, x, y, element, FLAME, damage, Vec3.new(y, element, y - 1))
         end
     end

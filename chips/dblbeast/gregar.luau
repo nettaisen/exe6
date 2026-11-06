@@ -53,7 +53,7 @@ local HITS: { [string]: DblBeastHit } = {
 -- row with an enemy body or a neutral object on it, 16 pixels up.
 local SHOT_SPARK = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 }
 local SHOT: DblBeastHit = { ahead = 0, region = regions.single, spark = SHOT_SPARK, is = collision.attack, damage = 5, z = 0x10_0000 }
-local SHOT_TARGET = { [0] = 0x05800000, [1] = 0x0A800000 }
+local SHOT_TARGET: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
 
 -- The bite's drill (attachment row 0x20: GroundCross's drill arm).
 local MOUTH = attachment.look { sprite = drill_arm_sprite, palette = 0, attach_point = 19 }
@@ -194,14 +194,13 @@ end
 
 -- `sub_80C20B4`: a shot at the first panel down the row with a target.
 local function shoot(me: Object)
-    local mask = SHOT_TARGET[me.alliance]
     local k = 1
     while true do
         local x = me.panel_x + me.facing * k
         if x < 1 or x > 6 then
             return
         end
-        if bit32.btest(field.flags(x, me.panel_y), mask) then
+        if field.any(x, me.panel_y, SHOT_TARGET, me.alliance) then
             beast.hit(me, SHOT, x)
             return
         end

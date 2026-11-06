@@ -66,12 +66,9 @@ local FADE_GRAY = 0x1F
 -- (his init sets it all).
 local SPAWNER_ADDRESS = 0x080B84ED
 
--- A panel he stands on must be solid (as a word).
-local SOLID = 0x10
-
 -- The column ScreenDivide looks for (`byte_80B8494`): all three of its
--- panels the enemy's (panel flag 0x20 set for side 0, clear for side 1).
-local ENEMY_COLUMN = { [0] = { 0x20, 0 }, { 0, 0x20 } }
+-- panels the enemy's.
+local ENEMY_COLUMN = "enemy_area"
 
 -- When his strike lands (the timer before its tick's count down).
 local STRIKE_TICK = 0x20
@@ -135,19 +132,18 @@ local function ready(me: Object)
     if left > 0 then
         return
     end
-    me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 8)
+    me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 8)
 end
 
 -- `sub_80B845C`: ScreenDivide's column: the first ahead wholly the
 -- enemy's. (The game searches on past the field forever if there is
 -- none.)
 local function enemy_column(me: Object): number
-    local want = ENEMY_COLUMN[me.alliance]
     local x = me.panel_x + me.facing
     while true do
         local n = 0
         for y = 1, 3 do
-            if field.check(x, y, want[1], want[2]) then
+            if field.check(x, y, ENEMY_COLUMN, nil, me.alliance) then
                 n += 1
             end
         end

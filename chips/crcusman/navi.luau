@@ -54,7 +54,7 @@ local IDENTITY = new.identity {
 local SPAWNER_ADDRESS = 0x080BA661
 
 -- An enemy navi's body by side (`off_80BA520`).
-local ENEMY_NAVI = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+local ENEMY_NAVI = "enemy_body"
 
 -- His actions.
 local APPEAR, STAND, CROUCH, LEAP, CATCH, SHOW, BOW, MISS, RISE, NO_FOOTING =
@@ -136,7 +136,7 @@ local function leap(me: Object)
     if left > 0 then
         return
     end
-    local caught = bit32.btest(field.flags(me.panel_x, me.panel_y), ENEMY_NAVI[me.alliance])
+    local caught = field.any(me.panel_x, me.panel_y, ENEMY_NAVI, me.alliance)
     me:set_action(if caught then CATCH else MISS)
 end
 

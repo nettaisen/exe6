@@ -21,8 +21,9 @@ local LIFETIME = 0x28
 local START, DAMAGE = 0x28, 0x32
 -- The field's cycle counts when the volcanos of the left side's columns (1 to 3) erupt, and the right side's.
 local LEFT_AT, RIGHT_AT = 0x8C, 0x46
--- Bodies on a panel (the flags word's: 0x03800000).
-local BODIES = 0x03800000
+-- Other bodies of either side and neutral objects on a panel (the flags
+-- word's 0x03800000).
+local BODIES: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
 
 local function state(me: Object): State
     return me.state :: State
@@ -70,11 +71,11 @@ local function tick(me: Object)
             me.timer = 3
         end
     else
-        ending = c.hit_flags ~= 0
+        ending = c.hit
     end
     if ending then
         c:set_region(nil)
-        if bit32.band(field.flags(x, y), BODIES) ~= 0 then
+        if field.any(x, y, BODIES) then
             me.visible = false
         end
     end

@@ -24,7 +24,7 @@ local HIT_PARAM = 0x8A
 local ELEC = 3
 
 -- The panels an enemy navi stands on, by side (`off_80F0B78`).
-local ENEMIES = { [0] = 0x0400_0000, 0x0800_0000 }
+local ENEMIES = "enemy_body"
 
 -- `sub_8012240`: 40 damage and 20 more per point of buster Attack (up to
 -- 5).
@@ -41,7 +41,7 @@ end
 -- and flip halfword, or the element if the pool was full.)
 local function bolts(me: Object)
     -- (In its side's order: docs/engine/side-symmetry.md.)
-    local found = panels.filtered_except(me, ENEMIES[me.alliance], 0, me.alliance)
+    local found = panels.filtered_except(me, ENEMIES, nil, me.alliance, me.alliance)
     local damage = link.damage_word(me)
     local r3 = 0
     for i = #found, 1, -1 do

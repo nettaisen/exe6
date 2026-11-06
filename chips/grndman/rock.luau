@@ -123,7 +123,7 @@ local function tick(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         break_up(me)
     end
     if s.while_dimmed or not battle.dimmed() then

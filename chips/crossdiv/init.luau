@@ -9,7 +9,7 @@ local regions = require("@exelib/regions")
 local colonel_effect_sprite = asset.sprite("colonel-effect")
 
 -- What it looks for (`byte_80B84E4`: an enemy navi's body).
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
+local ENEMY_NAVI = "enemy_body"
 
 -- Its two effects (0x36, 0x37).
 local CROSS = {
@@ -20,10 +20,9 @@ local CROSS = {
 -- `sub_80B84A4`: its panel: the first ahead in Colonel's row holding an
 -- enemy navi, or three columns ahead.
 local function enemy_panel(me: Object): number
-    local want = ENEMY_NAVI[me.alliance]
     local x = me.panel_x + me.facing
     while true do
-        if bit32.band(field.flags(x, me.panel_y), want) ~= 0 then
+        if field.any(x, me.panel_y, ENEMY_NAVI, me.alliance) then
             return x
         end
         x += me.facing

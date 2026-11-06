@@ -26,8 +26,8 @@ local SOUND_APPEAR = asset.sound("appear")
 -- What he wears (his overlay, `sub_8010F6A`): the link navi's own parts.
 local IDENTITY = heatman_navi.identity
 
--- Panel flags a flame needs (as one word).
-local CAN_HOLD = 0x10010
+-- Panel flags a flame needs.
+local CAN_HOLD: { PanelFlag } = { "solid", "on_field" }
 
 -- The controller calls his spawner through r3, which his position takes:
 -- its address with the Thumb bit, whose fraction his Z keeps.
@@ -100,7 +100,7 @@ end
 
 -- `sub_80B9288`: a flame on (x, y) if the panel can hold one.
 local function set_alight(me: Object, x: number, y: number)
-    if bit32.band(field.flags(x, y), CAN_HOLD) ~= CAN_HOLD then
+    if not field.check(x, y, CAN_HOLD) then
         return
     end
     local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))

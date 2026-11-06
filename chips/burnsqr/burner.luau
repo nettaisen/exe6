@@ -46,7 +46,6 @@ local ACROSS, DOWN = 0x28_0000, 0x18_0000
 -- ticks.
 local FIRE = 1
 local FLAME: HeatFlame = { while_dimmed = true, ticks = 0x1E, is = collision.attack }
-local SOLID = 0x10
 
 -- `sub_80BB23E`: the square's four corners at its panels' centers.
 local function draw(me: Object, s: State)
@@ -144,7 +143,7 @@ local function fire(me: Object, s: State)
     local z = if s.highlighted then s.y else battle.loop_register()
     local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
     for _, p in { { s.x, s.y }, { s.x + d, s.y }, { s.x + d, s.y + 1 }, { s.x, s.y + 1 } } do
-        if bit32.btest(field.flags(p[1], p[2]), SOLID) then
+        if field.solid(p[1], p[2]) then
             heat_flame.spawn(me, p[1], p[2], FIRE, FLAME, damage, Vec3.new(p[2], FIRE, z))
         end
     end

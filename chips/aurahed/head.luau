@@ -83,7 +83,7 @@ local function tick(me: Object)
     local s = me.state :: State
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         s.hit_panel = me.panel_x + me.panel_y * 0x100
         c:set_region(nil)
         if not s.has_hit then

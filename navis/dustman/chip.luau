@@ -33,7 +33,7 @@ local CRUSH_AT = 0x1E
 local CLOUD_ANIM = 0
 
 -- The other side's area in his row, by side (`byte_80F20E0`).
-local OTHER_SIDE = { [0] = { 0x20, 0 }, { 0, 0x20 } }
+local OTHER_SIDE = "enemy_area"
 
 -- The pull: no damage, no spark, of no side, hit modifier 0x10.
 local PULL_HIT_MOD = 0x10
@@ -43,9 +43,8 @@ local CRUSH_HIT_MOD = 3
 
 -- `sub_80F20A0`: the pull on each of the other side's panels in his row.
 local function pull(me: Object)
-    local cond = OTHER_SIDE[me.alliance]
     for x = 1, 6 do
-        if field.check(x, me.panel_y, cond[1], cond[2]) then
+        if field.check(x, me.panel_y, OTHER_SIDE, nil, me.alliance) then
             battle.hitbox(me, {
                 panel_x = x,
                 panel_y = me.panel_y,

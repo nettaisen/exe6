@@ -22,8 +22,8 @@ guard.STATE = { timer = "u16" }
 
 -- The shield sits at the navi's sprite attach point 6.
 local SHIELD_POINT = 6
--- A hit that breaks guards (the collision's hit flag 2).
-local BREAKS_GUARD = 0x2
+-- A hit that breaks guards (the collision's hit flag 2): a break.
+local BREAKS_GUARD = "break"
 
 -- The Beast forms whose head overlay mirrors the navi's animation: those
 -- that wear a beast's head (the Falzar beast's, its Crosses' and Beast
@@ -82,7 +82,7 @@ function guard.action(spec: ReflectorGuard): Action
         end
         local blocked = bit32.btest(me.collision.guard_dirs, bit32.lshift(1, me.flip))
         if not spec.heedless and blocked then
-            if bit32.btest(me.collision.hit_flags, BREAKS_GUARD) then
+            if me.collision:hit_any(BREAKS_GUARD) then
                 drop_shield(me)
             elseif me.marker == 0 then
                 me.marker = 1

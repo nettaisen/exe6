@@ -26,7 +26,7 @@ local APPEAR_SOUND, SHOT_SOUND = asset.sound("col-army"), asset.sound("col-army-
 local HIT_MOD = 3
 -- The other side's navis (by its own side), for its facing
 -- (`off_80C9F64`, `off_8109784`).
-local NAVIS = { [0] = 0x04000000, [1] = 0x08000000 }
+local NAVIS = "enemy_body"
 -- The shots: bullets (the bullet's row 0x11: the panel found and the one
 -- behind it, staggering, paralyzing for 150 ticks), three of them 10 ticks
 -- apart, at one of four heights (`dword_80C9E84`, in pixels).
@@ -46,9 +46,8 @@ local function navi_ahead(me: Object): boolean
     local step = me.facing
     local x, y = me.panel_x, me.panel_y
     local found = x
-    local require = NAVIS[me.alliance]
     while true do
-        if field.check(x, y, require, 0) then
+        if field.check(x, y, NAVIS, nil, me.alliance) then
             found = x
         end
         x += step
@@ -62,10 +61,9 @@ end
 -- `sub_810971A`: whether any of the other side's navis is on its row (one
 -- draw, picking one of them, if so).
 local function navi_on_row(me: Object): boolean
-    local require = NAVIS[me.alliance]
     local n = 0
     for x = 1, 6 do
-        if field.check(x, me.panel_y, require, 0) then
+        if field.check(x, me.panel_y, NAVIS, nil, me.alliance) then
             n += 1
         end
     end

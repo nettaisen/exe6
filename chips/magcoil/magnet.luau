@@ -18,8 +18,6 @@ export type State = {
 
 local SPRITE = asset.sprite("magnet")
 local HAND, PANEL = 0x1F, 0x28
--- An enemy of each side stands there (the other side's body bit).
-local ENEMY_BODY = { [0] = 0x0400_0000, 0x0800_0000 }
 -- The pulls from the row above and the row below (hit modifiers).
 local PULL_DOWN, PULL_UP = 0xE1, 0xD1
 -- Ticks between pulls, and the tick (second timer value) they come on.
@@ -30,7 +28,7 @@ local CYCLE, PULL_AT = 0x0F, 0x0B
 local function pull(me: Object, x: number, y: number, how: number)
     local dir = me.facing
     for _ = 1, 3 do
-        if bit32.btest(field.flags(x, y), ENEMY_BODY[me.alliance]) then
+        if field.any(x, y, "enemy_body", me.alliance) then
             battle.hitbox(me, {
                 panel_x = x,
                 panel_y = y,

@@ -41,8 +41,6 @@ local CLAW_FLIP, CLAW_PALETTE = 2, 6
 -- wide.
 local GREGAR_LOOK = asset.sprite("gregar-cybeast")
 local looks = require("@exelib/looks")
--- Bodies (of either side) on a panel.
-local BODIES = 0x0F80_0000
 
 -- The actions (the object's action byte).
 local RISE, STRIKE, LEAVE = 0, 4, 8
@@ -74,7 +72,7 @@ local function target(me: Object): (number?, number?)
     for i = #actors, 1, -1 do
         local a = actors[i]
         local x, y = in_front(a)
-        if bit32.band(field.flags(x, y), BODIES) == 0 then
+        if not field.any(x, y, "any_body") then
             table.insert(open, a)
         end
     end

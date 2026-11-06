@@ -35,7 +35,17 @@ export type State = {
 -- Collision: what it is and hits.
 local HIT = { is = collision.attack, hits = collision.hits_navis }
 -- What ends its hits (`dword_80DE540`).
-local BLOCKED = 0xFF80_0000
+local BLOCKED: { HitName } = {
+    "own_attack",
+    "enemy_attack",
+    "own_object",
+    "enemy_object",
+    "own_body",
+    "enemy_body",
+    "own_other_body",
+    "enemy_other_body",
+    "neutral",
+}
 -- Its swimming animations: the first, and which way they run, by leg
 -- (`dword_80DE608`, `byte_80DE610`).
 local SWIM_ANIM = { [0] = 2, 6 }
@@ -167,7 +177,7 @@ local function tick(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    if bit32.btest(c.hit_flags, BLOCKED) then
+    if c:hit_any(BLOCKED) then
         c:set_region(nil)
     end
     if not battle.dimmed() then

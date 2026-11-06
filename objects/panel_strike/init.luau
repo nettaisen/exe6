@@ -76,7 +76,7 @@ local function wait(me: Object)
     c:set_region(regions.single)
     if s.cracks then
         -- sub_8109794: crack it unless it is cracked already.
-        if bit32.band(field.flags(me.panel_x, me.panel_y), 0x40) == 0 then
+        if not field.any(me.panel_x, me.panel_y, "cracked") then
             field.crack(me.panel_x, me.panel_y)
         end
     end

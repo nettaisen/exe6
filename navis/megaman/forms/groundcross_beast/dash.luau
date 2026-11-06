@@ -100,7 +100,7 @@ end
 -- `sub_80EC2A4`: dash on, speeding up for 11 ticks; once off the field,
 -- wait out of sight.
 local function dash(me: Object, s: State)
-    if me.collision.hit_flags ~= 0 then
+    if me.collision.hit then
         me.collision:set_region(nil)
     end
     local p = me.pos

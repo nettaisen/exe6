@@ -32,9 +32,9 @@ local SPRITE = asset.sprite("spout-geyser")
 -- The owner's action a navi AI's geyser lasts through.
 local OWNER_ACTION = 0xB
 
--- What stops the search for its column, by side (`byte_80C6F48`): a panel
--- flags word any bit of which will do.
-local STOPS = { [0] = 0x0580_0000, 0x0A80_0000 }
+-- What stops the search for its column, of its side (`byte_80C6F48`): any
+-- of the other side's bodies and other bodies, or a neutral object.
+local STOPS: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
 
 -- (Its marks act while dimmed as it does: `byte_80C7028`, 1 for the navi
 -- chip's Param1 alone.)
@@ -46,11 +46,10 @@ local HIT_TICKS = 0x1E
 -- holding something of the other side's, or the target column, or the
 -- field's edge (the fifth if none).
 local function column(me: Object, target: number): number
-    local stops = STOPS[me.alliance]
     local x = me.panel_x
     for i = 1, 5 do
         x = me.panel_x + me.facing * i
-        if bit32.band(field.flags(x, me.panel_y), stops) ~= 0 or x == target or x <= 1 or x >= 6 then
+        if field.any(x, me.panel_y, STOPS, me.alliance) or x == target or x <= 1 or x >= 6 then
             return x
         end
     end

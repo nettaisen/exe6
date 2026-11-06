@@ -36,9 +36,9 @@ local HEIGHT = 0x40_0000
 -- the enemy.
 local DIVE_TICKS = 0x10
 
--- What its landing panel must have one of for the dive to hit (solid or
--- occupied: as one word).
-local HOLDS = 0x0F80_0010
+-- What its landing panel must have one of for the dive to hit: solid, or
+-- any body.
+local HOLDS: { PanelFlag } = { "any_body", "solid" }
 
 -- The region its dive hits, cracks and marks (the 3x3 around its panel).
 local DIVE_REGION = regions.square
@@ -206,7 +206,7 @@ local function dive(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     local x, y = me.panel_x, me.panel_y
-    if bit32.band(field.flags(x, y), HOLDS) == 0 then
+    if not field.any(x, y, HOLDS) then
         battle.effect(Vec3.new(p.x, p.y, 0x10_0000), effects.smoke)
     else
         battle.play_sound(SOUND_BURST)

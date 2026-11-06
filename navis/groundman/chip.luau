@@ -39,9 +39,13 @@ local SPEED, PANEL_WIDTH = 0x4_0000, 0x28_0000
 local FAR_COLUMN = { [0] = 6, 1 }
 local INVULNERABLE_TICKS = 0xFFFF
 
--- A panel he digs on through, by side (`byte_80F1D20`): solid ground, with
--- no enemy navi's body and no object of either side's or neutral.
-local DIGGABLE = { [0] = { 0x10, 0x0780_0000 }, { 0x10, 0x0B80_0000 } }
+-- A panel he digs on through, of his side (`byte_80F1D20`): solid ground,
+-- with no enemy navi's body and no other body of either side's or neutral
+-- object.
+local DIGGABLE: PanelCondition = {
+    require = "solid",
+    forbid = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" },
+}
 
 -- The hit on each panel he enters: a breaking attack at navis, with the
 -- breaking spark.
@@ -51,9 +55,9 @@ local DIG_HIT_MOD = 0x63
 local ROCKS, ROCK_TICKS = 9, 0x14
 local SHAKE, SHAKE_TICKS = 1, 0x14
 
--- Where a rock falls, by side (`off_80F1EF0`): a panel of the other side's
--- area with an enemy navi's body.
-local ROCK_TARGETS = { [0] = { 0x0400_0020, 0 }, { 0x0800_0000, 0x20 } }
+-- Where a rock falls, of his side (`off_80F1EF0`): a panel of the other
+-- side's area with an enemy navi's body.
+local ROCK_TARGETS: { PanelFlag } = { "enemy_body", "enemy_area" }
 
 -- His rocks: 10 ticks' warning, waiting a dimming out, not cracking the
 -- panel.
@@ -124,8 +128,7 @@ local function dig(me: Object, s: State)
     if px ~= column then
         dig_hit(me, px, py)
     end
-    local ok = DIGGABLE[me.alliance]
-    if not field.check(px, py, ok[1], ok[2]) then
+    if not field.check(px, py, DIGGABLE.require, DIGGABLE.forbid, me.alliance) then
         link.go(me, RISE)
         return
     end
@@ -141,8 +144,7 @@ end
 -- panel left out), picked with one draw; none without such a panel (and
 -- no draw).
 local function drop_rock(me: Object)
-    local want = ROCK_TARGETS[me.alliance]
-    local found = panels.filtered_except(me, want[1], want[2])
+    local found = panels.filtered_except(me, ROCK_TARGETS, nil, me.alliance)
     if #found == 0 then
         return
     end

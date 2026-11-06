@@ -34,12 +34,12 @@ local ANIM_WAIT, ANIM_FLY = 0xA, 0xB
 -- Its speed (16.16).
 local SPEED = 0x2_4000
 
--- What ends it when it hits, by side (`byte_80D7BA8`: the other side's body
--- or object, and neutral ones).
-local ENDS = { [0] = 0x0580_0000, [1] = 0x0A80_0000 }
+-- What ends it when it hits, of its side (`byte_80D7BA8`: the other side's
+-- body or other body, and neutral objects).
+local ENDS: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
 
--- Where it aims, by side (`off_80D7D44`: an enemy navi's body).
-local ENEMY = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+-- Where it aims, of its side (`off_80D7D44`: an enemy navi's body).
+local ENEMY = "enemy_body"
 
 -- Its actions.
 local WAIT, FLY = 0, 4
@@ -83,11 +83,10 @@ end
 -- first row with one; else past the far edge in its own row.
 local function find_target(me: Object): (number, number)
     local front = me.facing
-    local enemy = ENEMY[me.alliance]
     local back = if me.alliance == 0 then 1 else 6
     local x = back
     while true do
-        if field.check(x, me.panel_y, enemy, 0) then
+        if field.check(x, me.panel_y, ENEMY, nil, me.alliance) then
             return x, me.panel_y
         end
         x += front
@@ -98,7 +97,7 @@ local function find_target(me: Object): (number, number)
     x = back
     while true do
         for y = 1, 3 do
-            if field.check(x, y, enemy, 0) then
+            if field.check(x, y, ENEMY, nil, me.alliance) then
                 return x, y
             end
         end
@@ -223,7 +222,7 @@ local function fly(me: Object)
     end
     me:set_panel_from_coordinates()
     me:update_collision_panels()
-    if not bit32.btest(field.flags(me.panel_x, me.panel_y), 0x10) then
+    if not field.solid(me.panel_x, me.panel_y) then
         finish(me)
     end
 end
@@ -234,7 +233,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if battle.over() or bit32.btest(c.hit_flags, ENDS[me.alliance]) then
+    if battle.over() or c:hit_any(ENDS) then
         return finish(me)
     end
     local a = me.action

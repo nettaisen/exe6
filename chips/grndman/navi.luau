@@ -41,15 +41,15 @@ local IDENTITY = groundman_navi.identity
 -- How fast he backs off and drills (16.16).
 local BACK_SPEED, DRILL_SPEED = 0x8000, 0x8_0000
 
--- A panel his drill goes on through, by side (`byte_80BBD50`: solid, and
--- no body or object of the other side's, nor a neutral one).
-local DRILLABLE = { [0] = { 0x10, 0x0580_0000 }, [1] = { 0x10, 0x0A80_0000 } }
+-- A panel his drill goes on through, of his side (`byte_80BBD50`: solid,
+-- and no body or object of the other side's, nor a neutral one).
+local DRILLABLE: PanelCondition = { require = "solid", forbid = { "enemy_body", "enemy_other_body", "neutral" } }
 
--- Where rocks fall, by side: first choice (`off_80BBEE0`: an enemy body on
--- the other side's area) and second (`byte_80BBEF4`: the other side's
--- area), { require, forbid }.
-local ROCK_TARGETS = { [0] = { 0x0400_0020, 0 }, [1] = { 0x0800_0000, 0x20 } }
-local ROCK_FALLBACK = { [0] = { 0x20, 0 }, [1] = { 0, 0x20 } }
+-- Where rocks fall, of his side: first choice (`off_80BBEE0`: an enemy body
+-- on the other side's area) and second (`byte_80BBEF4`: the other side's
+-- area).
+local ROCK_TARGETS: { PanelFlag } = { "enemy_body", "enemy_area" }
+local ROCK_FALLBACK = "enemy_area"
 
 -- His rocks: 10 ticks' warning, falling while dimmed, cracking the panel.
 local ROCK: GroundRockDrop = { warning = 0x0A, while_dimmed = true, cracks = true, silent = false }
@@ -160,8 +160,7 @@ local function dig(me: Object)
     if me.panel_x ~= old then
         hit(me)
     end
-    local ok = DRILLABLE[me.alliance]
-    if not field.check(me.panel_x, me.panel_y, ok[1], ok[2]) then
+    if not field.check(me.panel_x, me.panel_y, DRILLABLE.require, DRILLABLE.forbid, me.alliance) then
         me:set_action(LEAVE)
         return
     end
@@ -179,11 +178,9 @@ local function drop_rock(me: Object)
     local s = me.state :: State
     local x, y = me.panel_x, me.panel_y
     me.panel_x, me.panel_y = s.rock_x, s.rock_y
-    local want = ROCK_TARGETS[me.alliance]
-    local found = panels.filtered_except(me, want[1], want[2])
+    local found = panels.filtered_except(me, ROCK_TARGETS, nil, me.alliance)
     if #found == 0 then
-        want = ROCK_FALLBACK[me.alliance]
-        found = panels.filtered_except(me, want[1], want[2])
+        found = panels.filtered_except(me, ROCK_FALLBACK, nil, me.alliance)
     end
     if #found > 0 then
         local i = int.tmod(battle.rng_positive(), #found)

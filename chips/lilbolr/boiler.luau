@@ -298,7 +298,7 @@ local function check_eruption(me: Object)
         return
     end
     if me.timer ~= 1 then
-        if s.erupting or me.collision.hit_flags == 0 then
+        if s.erupting or not me.collision.hit then
             return
         end
         local last = s.last_hp

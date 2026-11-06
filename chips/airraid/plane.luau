@@ -54,14 +54,11 @@ local TAKE_OFF_SOUND = asset.sound("take-off")
 -- Taking off: 30 ticks, rising 0.625 pixels a tick.
 local TAKE_OFF_TICKS, CLIMB = 0x1E, 0xA000
 local BOMB_PERIOD = 10
--- The other side's bodies (by its side: `off_80D3834`).
-local OTHER_BODY: { [number]: number } = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
--- The neighbor a bomb may stray to: the other side's panels, by side
--- (`byte_80D37E4`).
-local STRAY: { [number]: { require: number, forbid: number } } = {
-    [0] = { require = 0x0001_0020, forbid = 0 },
-    [1] = { require = 0x0001_0000, forbid = 0x20 },
-}
+-- The other side's bodies (of its side: `off_80D3834`).
+local OTHER_BODY = "enemy_body"
+-- The neighbor a bomb may stray to: the other side's panels, of its side
+-- (`byte_80D37E4`, by side).
+local STRAY: PanelCondition = { require = { "on_field", "enemy_area" } }
 -- A bomb's strike: highlighted 6 ticks, its hits unmodified, no crack,
 -- on any panel (its spawn parameters 0x20600).
 local STRIKE: PanelStrike = { warning = 6, hit_mod = 0 }
@@ -100,7 +97,7 @@ local function targets(me: Object): { number }
     end
     while true do
         for y = 1, 3 do
-            if field.check(x, y, OTHER_BODY[me.alliance], 0) then
+            if field.check(x, y, OTHER_BODY, nil, me.alliance) then
                 table.insert(list, x + y * 0x10)
             end
         end
@@ -134,8 +131,8 @@ local function bomb(me: Object)
         y = bit32.rshift(p, 4)
         if draw == 1 or draw == 5 then
             local dir = panels.side_direction(me.alliance)
-            local cond = STRAY[me.alliance]
-            local nx, ny = regions.random_panel(x, y, regions.neighbors, dir, cond.require, cond.forbid)
+            local cond = STRAY
+            local nx, ny = regions.random_panel(x, y, regions.neighbors, dir, cond.require, cond.forbid, me.alliance)
             if nx and ny then
                 x = nx
                 y = ny

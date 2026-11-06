@@ -58,7 +58,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags == 0 then
+    if not c.hit then
         local t = me.timer - 1
         me.timer = t
         if t > 0 then

@@ -17,14 +17,13 @@ export type State = {
 }
 
 local WAIT = 0x3C
--- `byte_80E5F68`: the panel in front must be free (both sides).
-local OCCUPIED = 0x0F88_0080
 
 -- `sub_80E5F10`.
 local function effect(me: Object)
     if me.phase_init == 0 then
         local x, y = me.panel_x + me.facing, me.panel_y
-        if field.check(x, y, 0, OCCUPIED) then
+        -- (`byte_80E5F68`: the panel in front must be free, both sides alike.)
+        if field.check(x, y, nil, "occupied") then
             local s = me.state :: State
             local word = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
             plane.spawn(me, x, y, s.plane, int.u32(word + s.bonus))

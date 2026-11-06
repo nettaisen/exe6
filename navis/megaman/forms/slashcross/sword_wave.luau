@@ -58,7 +58,7 @@ local function tick(me: Object)
         else
             me.visible = not bit32.btest(me.timer, 2)
         end
-    elseif c.hit_flags ~= 0 then
+    elseif c.hit then
         c:set_region(nil)
         me.timer = 10
         me.action = BLINKING

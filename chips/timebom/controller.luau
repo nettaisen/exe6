@@ -10,22 +10,18 @@ local dimming_chips = require("@exelib/dimming")
 
 export type State = { bonus: number, variant: CountdownVariant }
 
--- `off_80E3280`: where the bomb goes, by side: a solid enemy panel without
--- a body on it (side 0: flags 0x30, not 0x0F800000; side 1: 0x10, not
--- 0x0F800020).
-local TARGET: { [number]: PanelCondition } = {
-    [0] = { require = 0x30, forbid = 0x0F80_0000 },
-    [1] = { require = 0x10, forbid = 0x0F80_0020 },
-}
+-- `off_80E3280`: where the bomb goes, of its side: a solid enemy panel
+-- without a body on it.
+local TARGET: PanelCondition = { require = { "solid", "enemy_area" }, forbid = "any_body" }
 
 -- `sub_80E3264` (`object_getFirstPanelInDirectionFiltered`): from the
 -- controller's panel forward, the first panel meeting the side's
 -- condition, while the panels are on the field (nil: none).
 local function target_column(me: Object): number?
-    local cond = TARGET[me.alliance]
+    local cond = TARGET
     local x, y = me.panel_x, me.panel_y
     while true do
-        if field.check(x, y, cond.require, cond.forbid) then
+        if field.check(x, y, cond.require, cond.forbid, me.alliance) then
             return x
         end
         x += me.facing

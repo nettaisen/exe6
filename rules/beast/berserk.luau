@@ -8,7 +8,7 @@
 -- form's `berserk` effect starts over (`sub_802D310`).
 
 -- The step conditions, an opponent's panel, what ends the look behind an
--- opponent and the opposing player's panel flag, by side.
+-- opponent and the opposing player's panel flag, of the navi's side.
 local berserk_rules = require("../berserk")
 
 local berserk = {}
@@ -41,8 +41,7 @@ berserk.USE_CHIP, berserk.BUSTER, berserk.MOVE = USE_CHIP, BUSTER, MOVE
 -- `sub_80E7486`: the opposing player standing on (x, y) (the panel shows
 -- the other side's player flag and an alive actor's collision sits there).
 function berserk.opponent_on(x: number, y: number, alliance: number): Object?
-    local flag = berserk_rules.opposing_player[alliance + 1]
-    if bit32.band(field.flags(x, y), flag) == 0 then
+    if not field.any(x, y, berserk_rules.opposing_player, alliance) then
         return nil
     end
     for side = 0, 1 do
@@ -81,12 +80,12 @@ local function pack(x: number, y: number): number
     return bit32.bor(x, bit32.lshift(y, 4))
 end
 
--- `object_getPanelsInRowFiltered`: the panels of row `y` meeting `cond`,
--- left to right, packed.
-local function panels_in_row(y: number, cond: { require: number, forbid: number }): { number }
+-- `object_getPanelsInRowFiltered`: the panels of row `y` meeting `cond` (of
+-- side `side`), left to right, packed.
+local function panels_in_row(y: number, cond: PanelCondition, side: number): { number }
     local out = {}
     for x = 1, 6 do
-        if field.check(x, y, cond.require, cond.forbid) then
+        if field.check(x, y, cond.require, cond.forbid, side) then
             table.insert(out, pack(x, y))
         end
     end
@@ -96,27 +95,26 @@ end
 -- `sub_810971A`: an opponent's panel in row `y`, packed, picked at random
 -- among them (one RNG draw when there is one).
 function berserk.opponent_in_row(navi: Object, y: number): number?
-    return pick(panels_in_row(y, berserk_rules.opponent[navi.alliance + 1]))
+    return pick(panels_in_row(y, berserk_rules.opponent, navi.alliance))
 end
 
 -- `sub_8015CC0(x, y, cond, 0)`: from the opponent at `from` (packed), the
 -- panels behind it (toward the navi's side), up to the first one with a
--- neutral object or the navi side's other bodies, that meet `cond`; one at
+-- neutral object or the other side's other bodies, that meet `cond`; one at
 -- random, packed. None found: 0 if something blocked the way, else the row
 -- alone (x 0, the register the scan leaves).
-local function behind(navi: Object, from: number, cond: { require: number, forbid: number }): number
+local function behind(navi: Object, from: number, cond: PanelCondition): number
     local dir = if navi.alliance == 0 then -1 else 1
-    local blocking = berserk_rules.blocking[navi.alliance + 1]
     local y = bit32.rshift(from, 4)
     local x = bit32.band(from, 7) + dir
     local found = {}
     local blocked: boolean
     while true do
-        if bit32.band(field.flags(x, y), blocking) ~= 0 then
+        if field.any(x, y, berserk_rules.blocking, navi.alliance) then
             blocked = true
             break
         end
-        if field.check(x, y, cond.require, cond.forbid) then
+        if field.check(x, y, cond.require, cond.forbid, navi.alliance) then
             table.insert(found, pack(x, y))
         end
         x += dir
@@ -136,7 +134,7 @@ end
 -- behind it (toward the navi's side) that meets `cond`; if none of those
 -- turns up, any panel meeting `cond` in the rows with an opponent; if none,
 -- the navi's own panel. The navi's own panel counts as reserved meanwhile.
-local function choose_panel(navi: Object, cond: { require: number, forbid: number }): (number, number)
+local function choose_panel(navi: Object, cond: PanelCondition): (number, number)
     local ox, oy = navi.panel_x, navi.panel_y
     navi:reserve_panel(ox, oy)
     local entries: { number } = {}
@@ -155,7 +153,7 @@ local function choose_panel(navi: Object, cond: { require: number, forbid: numbe
         entries = {}
         for y = 1, 3 do
             if berserk.opponent_in_row(navi, y) ~= nil then
-                for _, p in panels_in_row(y, cond) do
+                for _, p in panels_in_row(y, cond, navi.alliance) do
                     table.insert(entries, p)
                 end
             end
@@ -212,8 +210,8 @@ end
 -- `sub_802D3CA`: step to a panel near an opponent (`sub_802D430`); a chip
 -- is next.
 function berserk.step_toward_opponent(navi: Object, s: State): "moved"
-    local conds = if navi:status("air_shoe") then berserk_rules.step.floor_free else berserk_rules.step.grounded
-    local tx, ty = choose_panel(navi, conds[navi.alliance + 1])
+    local cond = if navi:status("air_shoe") then berserk_rules.step.floor_free else berserk_rules.step.grounded
+    local tx, ty = choose_panel(navi, cond)
     navi:start_move_to(tx, ty, 8)
     s.controller_moves = (s.controller_moves + 1) % 0x10000
     s.controller_step = USE_CHIP

@@ -47,8 +47,8 @@ local STEPS = { [0] = { 1, -1 }, { 1, 0 }, { 1, 1 } }
 -- How long he aims at most, and the slash's segments last.
 local AIM_TICKS, SLASH_TICKS = 0x168, 0x3C
 
--- Panel flags he needs to stay (as one word).
-local CAN_STAND = 0x10010
+-- Panel flags he needs to stay.
+local CAN_STAND: { PanelFlag } = { "solid", "on_field" }
 
 -- His actions.
 local APPEAR, STAND, AIM, RAISE, SLASH, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14
@@ -138,7 +138,7 @@ local function appear(me: Object)
     if not ran_out(me) then
         return
     end
-    me:set_action(if field.check(me.panel_x, me.panel_y, CAN_STAND, 0) then STAND else LEAVE)
+    me:set_action(if field.check(me.panel_x, me.panel_y, CAN_STAND) then STAND else LEAVE)
 end
 
 -- `sub_80BB6E8`: 30 ticks standing.

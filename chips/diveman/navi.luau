@@ -40,10 +40,11 @@ local IDENTITY = new.identity {
 local SPAWNER_ADDRESS = 0x080B9B6F
 
 -- The waves: in each row, from the far column toward him, the first
--- panel of his side's color (`byte_80B9BF0`, { require, forbid }), if it
--- is solid with no non-navi body or neutral object (`byte_80B9C04`).
-local HIS_COLOR = { [0] = { 0, 0x20 }, [1] = { 0x20, 0 } }
-local WAVE_FLOOR, WAVE_FORBID = 0x10, 0x0380_0000
+-- panel of his side's color (`byte_80B9BF0`), if it is solid with no
+-- non-navi body or neutral object (`byte_80B9C04`).
+local HIS_COLOR = "own_area"
+local WAVE_FLOOR = "solid"
+local WAVE_FORBID: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
 
 -- His actions.
 local SURFACE, WAIT, DIVE, WAVES, RISE, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14
@@ -90,13 +91,12 @@ end
 -- row - 1 (what the last panel check leaves in r3). (The game also
 -- compares the column with his side's back column, to no effect.)
 local function raise_waves(me: Object)
-    local color = HIS_COLOR[me.alliance]
     local start = if me.alliance == 0 then 6 else 1
     local step = if me.alliance == 0 then -1 else 1
     local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
     for row = 1, 3 do
         local x = start
-        while field.valid(x, row) and not field.check(x, row, color[1], color[2]) do
+        while field.valid(x, row) and not field.check(x, row, HIS_COLOR, nil, me.alliance) do
             x += step
         end
         if field.valid(x, row) and field.check(x, row, WAVE_FLOOR, WAVE_FORBID) then

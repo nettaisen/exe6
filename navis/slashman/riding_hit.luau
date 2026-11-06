@@ -25,9 +25,9 @@ export type State = {
     action: Action?,
 }
 
--- What it counts as a body, by side (`byte_80D19B8`: the other side's
--- bodies and objects, and neutral objects).
-local BODIES = { [0] = 0x0580_0000, 0x0A80_0000 }
+-- What it counts as a body, of its side (`byte_80D19B8`, by side: the other
+-- side's bodies and other bodies, and neutral objects).
+local BODIES: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
 
 -- Its owner's position, and the panel under it.
 local function follow(me: Object)
@@ -65,7 +65,7 @@ local function tick(me: Object)
     if battle.over() or (me.related1 :: Object):navi_action() ~= s.action then
         return finish(me)
     end
-    if bit32.btest(c.hit_flags, BODIES[me.alliance]) then
+    if c:hit_any(BODIES) then
         if not s.keeps_going then
             return finish(me)
         end

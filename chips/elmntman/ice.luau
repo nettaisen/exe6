@@ -66,7 +66,7 @@ local function stand(me: Object)
         me.timer = (me.state :: State).ticks
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local left = me.timer - 1
@@ -89,9 +89,9 @@ local function tick(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
-        c.hit_flags = 0
+        c.hit = false
     end
     if not (me.state :: State).while_dimmed and battle.dimmed() then
         return

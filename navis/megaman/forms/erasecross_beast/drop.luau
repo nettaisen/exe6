@@ -28,10 +28,11 @@ local SOUND = asset.sound("justice-one")
 -- 8 (EraseCross Beast's raising and dropping animations' lengths).
 local RAISE_STEPS, DROP_STEPS = 3, 8
 
--- What marks a panel with an enemy on it, by the navi's side, alone and
--- with the panel bit the column search wants too (`byte_80ED080`).
-local ENEMY = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
-local ENEMY_COLUMN = { [0] = 0x0401_0000, [1] = 0x0801_0000 }
+-- What marks a panel with an enemy on it, of the navi's side, alone and
+-- with the flag the column search wants too (`byte_80ED080`: every panel on
+-- the field has it).
+local ENEMY = "enemy_body"
+local ENEMY_COLUMN: { PanelFlag } = { "enemy_body", "on_field" }
 
 -- The rows tried in the enemy's column, as steps from the navi's row
 -- (`byte_80EE904`): its own, above, below, two above, two below.
@@ -54,7 +55,6 @@ end
 local function enemy_column(me: Object): (number, boolean)
     local front = me.facing
     local x = me.panel_x
-    local want = ENEMY_COLUMN[me.alliance]
     while true do
         x += front
         if x == 0 or x >= 7 then
@@ -62,7 +62,7 @@ local function enemy_column(me: Object): (number, boolean)
         end
         -- object_getPanelsInColumnFiltered
         for y = 1, 3 do
-            if field.check(x, y, want, 0) then
+            if field.check(x, y, ENEMY_COLUMN, nil, me.alliance) then
                 return x, true
             end
         end
@@ -96,10 +96,9 @@ local function drop(me: Object, s: State)
     local tx, ty
     if found then
         local y = me.panel_y
-        local enemy = ENEMY[me.alliance]
         for _, step in ROW_STEPS do
             y += step
-            if bit32.btest(field.flags(x, y), enemy) then
+            if field.any(x, y, ENEMY, me.alliance) then
                 tx, ty = x, y
                 break
             end

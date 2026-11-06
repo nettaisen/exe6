@@ -29,10 +29,9 @@ export type State = {
 local SPRITE = asset.sprite("flash-bomb")
 local HIT_MOD, SET_HIT_MOD = 3, 3
 local FLIGHT_TICKS, GRAVITY = 0x28, -0x3000
--- What in its hits ends it at once: bodies and objects (0x0F800000).
-local CRUSHED = 0x0F800000
--- A body of its own side on the panel keeps it from setting down.
-local OWN_BODY = { [0] = 0x08000000, [1] = 0x04000000 }
+-- What in its hits ends it at once: bodies, other bodies and neutral
+-- objects (0x0F800000).
+local CRUSHED: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
 -- The flash: two ticks before the end, a palette flash (variant 1, 6
 -- ticks) and a sound; the hit covers the other side's area; strong
 -- variants hit with damage 0x14 and counter 0.
@@ -117,7 +116,8 @@ local function fly(me: Object, s: State)
         leave(me)
         return
     end
-    if not field.solid(x, y) or bit32.btest(field.flags(x, y), OWN_BODY[me.alliance]) then
+    -- (A body of its own side on the panel keeps it from setting down.)
+    if not field.solid(x, y) or field.any(x, y, "own_body", me.alliance) then
         battle.effect(me.pos, effects.splash)
         leave(me)
         return
@@ -168,7 +168,7 @@ local function tick(me: Object)
     local s = me.state :: State
     me.collision:remove()
     me:hit_spark()
-    if bit32.btest(me.collision.hit_flags, CRUSHED) then
+    if me.collision:hit_any(CRUSHED) then
         finish(me)
         return
     end

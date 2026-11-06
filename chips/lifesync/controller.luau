@@ -31,7 +31,7 @@ local SOUND_WARNING = asset.sound("err-select-91")
 local SOUND_UP = asset.sound("hub")
 local SOUND_DOWN = asset.sound("lifesync")
 -- `byte_80E74C4`: the other side's player navi stands there.
-local ENEMY_NAVI = { [0] = 0x00200000, [1] = 0x00400000 }
+local ENEMY_NAVI = "enemy_navi"
 -- The virus that LifeSync neither takes nor gives HP to: AI 13, all its
 -- versions (NameIDs 0x49 to 0x4E).
 local IMMUNE_AI = 13
@@ -46,7 +46,7 @@ end
 -- `sub_80E7486`: if the panel shows the other side's player navi, the
 -- first combatant (both sides' slots) whose collision is on it.
 local function combatant_on(x: number, y: number, side: number): Object?
-    if not bit32.btest(field.flags(x, y), ENEMY_NAVI[side]) then
+    if not field.any(x, y, ENEMY_NAVI, side) then
         return nil
     end
     for s = 0, 1 do

@@ -41,7 +41,8 @@ local HIT: RidingHit = { is = collision.slash, hits = collision.hits_navis, hit_
 
 -- What he rolls onto (`dword_80F0DE4`): on the field and solid, with no
 -- neutral object.
-local ROLL_REQUIRE, ROLL_FORBID = 0x0001_0010, 0x0080_0000
+local ROLL_REQUIRE: { PanelFlag } = { "solid", "on_field" }
+local ROLL_FORBID = "neutral"
 
 -- His row along the bottom.
 local BOTTOM_ROW = 3
@@ -67,8 +68,8 @@ local ROUTE: { [number]: { [number]: Leg } } = {
     },
 }
 
--- An enemy navi's body, by side (`off_80F0F98`).
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
+-- An enemy navi's body, of his side (`off_80F0F98`, by side).
+local ENEMY_NAVI = "enemy_body"
 
 -- The leg the route reads: the parameter word's low byte.
 local function leg(s: State): number
@@ -77,7 +78,7 @@ end
 
 -- `sub_80F0F78`: an enemy navi in his column.
 local function enemy_in_column(me: Object): boolean
-    return #panels.in_column(me.panel_x, ENEMY_NAVI[me.alliance], 0) ~= 0
+    return #panels.in_column(me.panel_x, ENEMY_NAVI, nil, me.alliance) ~= 0
 end
 
 -- `sub_80F0EC0`, at a panel's center: turn onto the next leg where this

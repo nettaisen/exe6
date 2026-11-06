@@ -28,7 +28,7 @@ local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CHARGE_MAN = asset.sound("charge-man")
 
 -- A car's panel: solid, and none of these (`dword_80BBB8C`).
-local CAR_REQUIRE, CAR_FORBID = 0x10, 0x0F80_0000
+local CAR_REQUIRE, CAR_FORBID = "solid", "any_body"
 
 -- His and his cars' speed (16.16), and how long the cars wait.
 local SPEED = 0x4_0000

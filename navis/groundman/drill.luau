@@ -37,9 +37,9 @@ local ANIM_WAIT, ANIM_FLY = { [false] = 0x15, [true] = 0x17 }, { [false] = 0x16,
 -- 16.16, and how far it flies: two panels' width.
 local HEIGHT, SPEED, REACH = 0x14, 0x8_0000, 2 * 0x28_0000
 
--- What stops it when hit (`byte_80DDEEC`), by side: an enemy's body or
--- object, or a neutral object.
-local STOPS = { [0] = 0x0580_0000, 0x0A80_0000 }
+-- What stops it when hit (`byte_80DDEEC`, by side): an enemy's body or
+-- other body, or a neutral object.
+local STOPS: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
 
 local HIT_MOD = 1
 -- The drilling: 30 ticks, a hit at 20 and at 10 left.
@@ -164,7 +164,7 @@ local function tick(me: Object)
         me.lifecycle = "destroy"
         return
     end
-    if bit32.btest(c.hit_flags, STOPS[me.alliance]) then
+    if c:hit_any(STOPS) then
         start_drilling(me)
     end
     if not battle.dimmed() then

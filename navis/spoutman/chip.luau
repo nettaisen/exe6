@@ -28,7 +28,7 @@ local WIND_UP_TICKS, READY_AT = 0x23, 0x1E
 -- Where he jumps: three panels ahead, solid ground with no body, object,
 -- hole or reservation on it (`dword_80F168C`).
 local JUMP_PANELS = 3
-local JUMP_REQUIRE, JUMP_FORBID = 0x10, 0x0F88_0080
+local JUMP_REQUIRE, JUMP_FORBID = "solid", "occupied"
 
 -- The jump takes 2 ticks; recovering without one 2 and 8.
 local JUMP_TICKS, STAY_TICKS, STAY_RECOVER_TICKS = 2, 2, 8

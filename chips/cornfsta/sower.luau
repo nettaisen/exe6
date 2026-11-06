@@ -34,7 +34,7 @@ local SHAKE, SHAKE_TICKS = 1, 0x14
 local AROUND = { { 0, 0 }, { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 }, { -1, -1 } }
 -- An enemy's body (`off_80DABFC`, by side), which the free panels lack
 -- (`dword_80DACB0`).
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
+local ENEMY_BODY = "enemy_body"
 -- An attack in the enemy's direction about 6 times in 16 (the low four
 -- bits of a draw).
 local AT_ENEMY = 6
@@ -58,7 +58,7 @@ local function enemy_near(me: Object, x: number, y: number): number?
     local found: { number } = {}
     for _, d in AROUND do
         local px, py = x + d[1] * dir, y + d[2]
-        if field.check(px, py, ENEMY_BODY[me.alliance], 0) then
+        if field.check(px, py, ENEMY_BODY, nil, me.alliance) then
             found[#found + 1] = panels.pack(px, py)
         end
     end
@@ -77,7 +77,7 @@ local function free_near(me: Object, s: State, x: number, y: number): number?
     local fresh: { number } = {}
     for _, d in AROUND do
         local px, py = x + d[1], y + d[2]
-        if field.check(px, py, 0, ENEMY_BODY[me.alliance]) then
+        if field.check(px, py, nil, ENEMY_BODY, me.alliance) then
             local p = panels.pack(px, py)
             all[#all + 1] = p
             if p ~= s.ring[1] and p ~= s.ring[2] and p ~= s.ring[3] then
@@ -109,7 +109,7 @@ end
 local function step(me: Object)
     local s = me.state :: State
     local c = me.collision
-    if c.hit_flags == 0 then
+    if not c.hit then
         me.panel_x = me.panel_x + me.vel.x
         me:set_coordinates_from_panel()
         me:update_collision_panels()

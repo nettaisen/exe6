@@ -93,8 +93,9 @@ local COMMAND_TICKS = 0x3C
 -- The slash's search, by side: an enemy's body; the panel in front of it
 -- solid, with no object on it (a navi's body may be); the rows tried at
 -- each column, nearest first.
-local ENEMY_BODY = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
-local STAND_ON, STAND_FORBID = 0x10, 0x0380_0000
+local ENEMY_BODY = "enemy_body"
+local STAND_ON = "solid"
+local STAND_FORBID: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
 local ROWS = { 0, -1, 1, -2, 2 }
 
 -- His actions.
@@ -304,7 +305,6 @@ local function find_target(me: Object): (number, number)
     local dir = panels.side_direction(me.alliance)
     local user = me.related1 :: Object
     local ux, uy = user.panel_x, user.panel_y
-    local enemy = ENEMY_BODY[me.alliance]
     for i = 0, 5 do
         local x = ux + dir * i
         for _, dy in ROWS do
@@ -312,7 +312,7 @@ local function find_target(me: Object): (number, number)
                 return 0, 0
             end
             local y = uy + dy
-            if field.check(x, y, enemy, 0) and field.check(x - dir, y, STAND_ON, STAND_FORBID) then
+            if field.check(x, y, ENEMY_BODY, nil, me.alliance) and field.check(x - dir, y, STAND_ON, STAND_FORBID) then
                 return x - dir, y
             end
         end

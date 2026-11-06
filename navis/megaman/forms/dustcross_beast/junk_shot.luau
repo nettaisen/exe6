@@ -26,9 +26,9 @@ local AHEAD, UP = 0x8_0000, 0x8_0000
 -- Its flight's ticks, and how far below the ground its arc aims, 16.16.
 local FLIGHT, DEPTH = 0xA, 0xD_0000
 
--- What it bursts on: the panel's solid bit, bodies, neutral objects and
--- blockers.
-local LANDS_ON = 0x0F80_0010
+-- What it bursts on: a solid panel, or any body on it (bodies, other
+-- bodies, neutral objects).
+local LANDS_ON: { PanelFlag } = { "any_body", "solid" }
 
 -- The burst.
 local BURST = effects.burst
@@ -61,7 +61,7 @@ local function fly(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     local x, y = me.panel_x, me.panel_y
-    if bit32.btest(field.flags(x, y), LANDS_ON) then
+    if field.any(x, y, LANDS_ON) then
         battle.effect(me.pos, BURST)
         battle.play_sound(SOUND_BURST)
         battle.shake_camera(1, 0xF)
