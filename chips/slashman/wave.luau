@@ -30,12 +30,14 @@ local HEIGHT = 0x14
 -- Its own hit's modifier, and its wind-up hits'.
 local HIT_MOD, EARLY_HIT_MOD = 3, 1
 
+local SLASHMAN_WAVE = schema.record_type("slashman-wave")
+
 -- A variant (the original's rows of `byte_80D0914`, the wind-up,
 -- `byte_80D0950`, the swing, and `byte_80D0A54`, the speed, 16.16), its
 -- user's: SlashMan's own AI's (navis/slashman/charge), the navi chip's
 -- (./navi).
 function wave.variant(v: SlashWave): SlashWave
-    return new.record("slashman-wave", v)
+    return new.record(SLASHMAN_WAVE, v)
 end
 
 -- Its actions.
@@ -126,7 +128,7 @@ local function steer(me: Object)
     if not s.variant.steers or s.steered then
         return
     end
-    if (me.related1 :: Object):held("b") then
+    if (me.related1 :: Object).held.b then
         s.steered = true
         battle.play_sound(SOUND_OK_8B)
     end
@@ -238,7 +240,7 @@ end
 wave.kind = new.kind {
     id = "slashman/wave",
     pool = "attack",
-    state = { variant = "record:slashman-wave", steered = "bool" },
+    state = { variant = SLASHMAN_WAVE, steered = schema.bool },
     -- `sub_80D07CC`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -42,7 +42,7 @@ local function step(me: Object): boolean
     end
     local navi = me.related1 :: Object
     for _, flag in HELD do
-        if navi:status(flag) then
+        if (navi.status :: any)[flag] then
             return false
         end
     end
@@ -127,7 +127,7 @@ end
 hole.kind = new.kind {
     id = "sandwrm/hole",
     pool = "actor",
-    state = { worm = "object" },
+    state = { worm = schema.object },
     -- `sub_80BC87C`: gone at once once the battle is over.
     update = function(me: Object)
         if battle.over() then

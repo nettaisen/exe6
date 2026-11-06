@@ -44,13 +44,13 @@ end
 
 -- `sub_80EE7EC`: once neither moving nor sliding, the beam.
 local function fire(me: Object, s: State)
-    if me:status("moving") or me:status("sliding") then
+    if me.status.moving or me.status.sliding then
         return
     end
     me:set_animation(0xF)
     me:open_counter_window()
-    me:set_status("using_action", true)
-    me:set_status("moving", true)
+    me.status.using_action = true
+    me.status.moving = true
     local beast = s.beast
     local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
     erase_ray.spawn(
@@ -77,13 +77,13 @@ local function hold(me: Object, s: State)
     if t >= 0 then
         return
     end
-    me:set_status("moving", false)
+    me.status.moving = false
     me:exit_attack()
 end
 
 charge.action = new.action {
     id = "erasecross/charge/action",
-    state = { timer = "u16", beast = "bool" },
+    state = { timer = schema.u16, beast = schema.bool },
     -- `sub_80EE7D0`.
     update = function(me: Object, s: State)
         local step = me.step

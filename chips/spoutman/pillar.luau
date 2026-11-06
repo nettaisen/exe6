@@ -149,7 +149,7 @@ end
 pillar.kind = new.kind {
     id = "spoutman/pillar",
     pool = "effect",
-    state = { slot_owner = "object", while_dimmed = "bool" },
+    state = { slot_owner = schema.object, while_dimmed = schema.bool },
     -- `sub_80E37F4`.
     update = function(me: Object)
         local l = me.lifecycle

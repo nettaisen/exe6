@@ -16,7 +16,7 @@ export type State = {
 }
 
 -- One state for every MoonBld action.
-action.STATE = { timer = "u16" }
+action.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local READY, SWING, DONE = 0x0, 0x4, 0x8
@@ -48,7 +48,7 @@ function action.action(spec: { id: string?, charged: ChargedSlash? }): Action
             me:set_animation(ANIM_SPIN)
             me:open_counter_window()
             battle.play_sound(SOUND)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = SWING_TICKS
             me.step_init = 4
         end

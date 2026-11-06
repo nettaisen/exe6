@@ -18,7 +18,7 @@ export type State = {
 }
 
 -- One state for every guard.
-guard.STATE = { timer = "u16" }
+guard.STATE = { timer = schema.u16 }
 
 -- The shield sits at the navi's sprite attach point 6.
 local SHIELD_POINT = 6
@@ -51,7 +51,7 @@ end
 local function drop_shield(me: Object)
     me.related1 = nil
     me.overlay = nil
-    me:set_status("guard", false)
+    me.status.guard = false
 end
 
 -- A guard (`ReflectorGuard`, types.d.luau).
@@ -71,8 +71,8 @@ function guard.action(spec: ReflectorGuard): Action
         if me.step_init == 0 then
             local x, z = me:attach_point(SHIELD_POINT)
             shield.spawn(me, Vec3.px(x, 0, z), spec.look)
-            me:set_status("guard", true)
-            me:set_status("using_action", true)
+            me.status.guard = true
+            me.status.using_action = true
             me:set_animation(0)
             set_head_animation(me, 0)
             me.marker = 0

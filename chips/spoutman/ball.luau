@@ -113,7 +113,7 @@ end
 ball.kind = new.kind {
     id = "spoutman/ball",
     pool = "attack",
-    state = { while_dimmed = "bool", cracks = "bool" },
+    state = { while_dimmed = schema.bool, cracks = schema.bool },
     -- `sub_80C853C`.
     update = function(me: Object)
         local l = me.lifecycle

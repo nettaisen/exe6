@@ -95,7 +95,7 @@ end
 riding_hit.kind = new.kind {
     id = "slashman/riding-hit",
     pool = "attack",
-    state = { is = "collision", hits = "collision", hit_mod = "u8", spark = "spark", keeps_going = "bool", action = "action" },
+    state = { is = schema.collision, hits = schema.collision, hit_mod = schema.u8, spark = schema.spark, keeps_going = schema.bool, action = schema.action },
     -- `sub_80D18D8`.
     update = function(me: Object)
         local l = me.lifecycle

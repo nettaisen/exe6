@@ -19,7 +19,7 @@ export type State = {
     overlay: Object?,
 }
 
-local STATE = { timer = "u16", cloud = "object", overlay = "object" }
+local STATE = { timer = schema.u16, cloud = schema.object, overlay = schema.object }
 
 local PULL, CRUSH, RECOVER = 0x0, 0x4, 0x8
 local ANIM_PULL, ANIM_CRUSH = 0x12, 0x14

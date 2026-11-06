@@ -245,7 +245,7 @@ local ACTIONS = {
 spoutman.kind = new.kind {
     id = "spoutman/navi",
     pool = "actor",
-    state = { controller = "object", pillar = "object" },
+    state = { controller = schema.object, pillar = schema.object },
     -- `sub_80B94BC`.
     update = function(me: Object)
         local l = me.lifecycle

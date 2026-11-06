@@ -241,7 +241,7 @@ local function check_command(me: Object)
         end
     end
     local key = COMMAND[s.presses]
-    if not (me.related1 :: Object):pressed(key) then
+    if not ((me.related1 :: Object).pressed :: any)[key] then
         return
     end
     s.presses += 1
@@ -402,13 +402,13 @@ django.kind = new.kind {
     id = "django/navi",
     pool = "actor",
     state = {
-        controller = "object",
-        slash_damage = "u8",
-        held = "object",
-        presses = "u8",
-        press_ticks = "u8",
-        command = "bool",
-        target = "bool",
+        controller = schema.object,
+        slash_damage = schema.u8,
+        held = schema.object,
+        presses = schema.u8,
+        press_ticks = schema.u8,
+        command = schema.bool,
+        target = schema.bool,
     },
     update = function(me: Object)
         local l = me.lifecycle

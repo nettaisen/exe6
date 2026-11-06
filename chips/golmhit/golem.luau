@@ -245,7 +245,7 @@ end
 golem.kind = new.kind {
     id = "golmhit/golem",
     pool = "effect",
-    state = { palette = "u8", own_panel = "bool", cracks = "bool", cracks_column = "bool" },
+    state = { palette = schema.u8, own_panel = schema.bool, cracks = schema.bool, cracks_column = schema.bool },
     -- `sub_80E4DB0`.
     update = function(me: Object)
         local l = me.lifecycle

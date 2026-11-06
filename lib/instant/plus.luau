@@ -19,9 +19,6 @@ local plus = {}
 
 local BONUS_SOUND = asset.sound("bonus")
 
--- The side's special chip bonuses (`battle.add_special_bonus`'s index).
-local ATTACK_BONUS, NAVI_BONUS = 0, 1
-
 -- The damage word's flag bits a modifier chip's bonus carries (the
 -- extra, its record's third and fourth parameter bytes): WhiCapsl's
 -- paralysis and Uninstll's uninstall.
@@ -33,7 +30,7 @@ plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel-poison"))
 
 -- `sub_8010488`: from a special source, the attack's damage plus `extra`
 -- into the side's bonus `bonus`; else the sparkle.
-local function effect(user: Object, bonus: number, extra: number)
+local function effect(user: Object, bonus: SpecialBonus, extra: number)
     if user.special_source ~= 0 then
         battle.add_special_bonus(user.alliance, bonus, user.attack_damage + extra)
         battle.play_sound(BONUS_SOUND)
@@ -44,19 +41,19 @@ end
 
 -- Atk+'s `instant` hook: the side's attack bonus.
 function plus.attack(user: Object, _spec: InstantChipSpec)
-    effect(user, ATTACK_BONUS, 0)
+    effect(user, "attack", 0)
 end
 
 -- Navi+'s `instant` hook: the side's navi bonus.
 function plus.navi(user: Object, _spec: InstantChipSpec)
-    effect(user, NAVI_BONUS, 0)
+    effect(user, "navi", 0)
 end
 
 -- A modifier chip's `instant` hook: the side's attack bonus, with the
 -- damage word's flag bits `flags` (`plus.PARALYZE`, `plus.UNINSTALL`).
 function plus.attack_with(flags: number): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, _spec: InstantChipSpec)
-        effect(user, ATTACK_BONUS, flags)
+        effect(user, "attack", flags)
     end
 end
 

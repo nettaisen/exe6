@@ -10,6 +10,7 @@
 -- (NaviStats+0x06, compat/records.toml's `barriers`), as the NaviCust's
 -- FirstBarrier and the patch cards set it.
 
+local common_controller = require("@exelib/barriers/controller")
 local visual = require("@self/visual")
 local aura_sprite = asset.sprite("aura")
 local barrier_sprite = asset.sprite("barrier")
@@ -19,7 +20,7 @@ local barriers = {}
 
 -- A barrier.
 function barriers.barrier(b: Barrier): Barrier
-    return new.record("barrier", b)
+    return new.record(common_controller.BARRIER, b)
 end
 
 local SPRITE, BUBBLE, AURA = barrier_sprite, bubble_sprite, aura_sprite

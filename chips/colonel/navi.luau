@@ -183,9 +183,11 @@ function colonel.at_back(me: Object): boolean
     return bit32.bxor(me.alliance, 1) * 5 + 1 == me.panel_x
 end
 
+local COLONEL_STRIKE = schema.record_type("colonel-strike")
+
 -- A chip's strike, as it lands.
 function colonel.strike(run: (me: Object) -> ()): Strike
-    return new.record("colonel-strike", { run = run })
+    return new.record(COLONEL_STRIKE, { run = run })
 end
 
 -- `sub_80B8512`: ScreenDivide, the Colonel chips' strike: an X over the
@@ -200,7 +202,7 @@ colonel.screen_divide = colonel.strike(function(me: Object)
     colonel.hit(me, x, y, SCREEN_DIVIDE)
     local cx, cy = field.center(x + me.facing, y)
     battle.effect(Vec3.new(cx, cy, 0), DIVIDE, me.alliance)
-    battle.palette_flash(0, 0x14, true, false)
+    battle.palette_flash("one_layer", 0x14, true, false)
 end)
 
 -- Action 4 (`sub_80B8376`): the strike.
@@ -302,11 +304,11 @@ colonel.kind = new.kind {
     id = "colonel/navi",
     pool = "actor",
     state = {
-        gray = "u8",
-        cape = "object",
-        controller = "object",
-        palette = "u8",
-        strike = "record:colonel-strike",
+        gray = schema.u8,
+        cape = schema.object,
+        controller = schema.object,
+        palette = schema.u8,
+        strike = COLONEL_STRIKE,
     },
     -- `sub_80B8210`.
     update = function(me: Object)

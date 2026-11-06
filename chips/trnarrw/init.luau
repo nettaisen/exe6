@@ -21,7 +21,7 @@ export type State = {
 
 
 -- One state for the three chips' draws.
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local DRAW, RECOVER = 0x0, 0x4
@@ -86,7 +86,7 @@ local function draw(me: Object, s: State)
         me.anim = 0x0A
         me:open_counter_window()
         attachment.attach(me, BOW, "overlay")
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 0
         me.step_init = 4
     end

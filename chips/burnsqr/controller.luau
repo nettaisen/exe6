@@ -32,7 +32,7 @@ end
 local kind = new.kind {
     id = "burnsqr/controller",
     pool = "effect",
-    state = { bonus = "u16", busy = "bool" },
+    state = { bonus = schema.u16, busy = schema.bool },
     -- `sub_80E702C`.
     update = dimming_chips.phases { name = "BurnSqr", effect = effect },
 }

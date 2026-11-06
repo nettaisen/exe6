@@ -130,7 +130,7 @@ end
 strike.kind = new.kind {
     id = "tomahawkman/strike",
     pool = "attack",
-    state = { delay = "u8", is = "collision", hits = "collision", spark = "spark" },
+    state = { delay = schema.u8, is = schema.collision, hits = schema.collision, spark = schema.spark },
     -- `sub_80D1A08`.
     update = function(me: Object)
         local l = me.lifecycle

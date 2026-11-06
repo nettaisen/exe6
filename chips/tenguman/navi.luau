@@ -268,7 +268,7 @@ end
 tenguman.kind = new.kind {
     id = "tenguman/navi",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- `sub_80B9C14`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -75,8 +75,8 @@ local function raise(me: Object)
     if me.step_init == 0 then
         me:set_animation(0x12)
         me:open_counter_window()
-        me:set_status("using_action", true)
-        me:set_status("moving", true)
+        me.status.using_action = true
+        me.status.moving = true
         me.step_init = 4
         return
     end
@@ -122,13 +122,13 @@ local function recover(me: Object, s: State)
     if left >= 0 then
         return
     end
-    me:set_status("moving", false)
+    me.status.moving = false
     me:exit_attack()
 end
 
 drop_weapon.action = new.action {
     id = "erasecross-beast/drop/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EE840`.
     update = function(me: Object, s: State)
         local step = me.step

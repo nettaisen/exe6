@@ -113,11 +113,11 @@ local function run(me: Object, s: State)
         me.step_init = 4
         me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
         me:reserve_panel(me.panel_x, me.panel_y)
-        me:set_status("moving", true)
-        me:set_status("using_action", true)
+        me.status.moving = true
+        me.status.using_action = true
         -- object_setInvulnerableTime(0xFFFF)
-        me:set_status_timer("invulnerable", 0xFFFF)
-        me:set_status("invulnerable", true)
+        me.status_timers.invulnerable = 0xFFFF
+        me.status.invulnerable = true
         -- sub_801A082
         me:reset_collision_types(collision.navi, collision.navi_target, 0)
         me.collision.self_damage = 0
@@ -182,11 +182,11 @@ local function back(me: Object, s: State)
         me:unreserve_panel(me.panel_x, me.panel_y)
         me:set_coordinates_from_panel()
         me:update_collision_panels()
-        me:set_status("moving", false)
-        me:set_status("using_action", false)
+        me.status.moving = false
+        me.status.using_action = false
         -- sub_800EB08
-        me:set_status_timer("invulnerable", 0)
-        me:set_status("invulnerable", false)
+        me.status_timers.invulnerable = 0
+        me.status.invulnerable = false
         -- sub_801A082, then his body's damage again (the game stores the
         -- damage's low byte as the counter byte).
         me:reset_collision_types(collision.navi, collision.navi_target, BODY_HIT_MOD)
@@ -214,7 +214,7 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [CHARGE] = run, [ST
 
 charge.action = new.action {
     id = "chargeman/charge/action",
-    state = { timer = "u16", cars = "u8", car1 = "object", car2 = "object" },
+    state = { timer = schema.u16, cars = schema.u8, car1 = schema.object, car2 = schema.object },
     -- `sub_80F1198` (`off_80F11AC`).
     update = function(me: Object, s: State)
         link.run(me, s, PHASES, "ChargeMan's charge (sub_80F1198)")

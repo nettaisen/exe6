@@ -15,7 +15,7 @@ export type State = {
     timer: number,
 }
 
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 local SOUND_VANISH = asset.sound("trap-vanish")
 local VANISH_ANIM = 4
@@ -30,8 +30,8 @@ local function vanish(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(VANISH_ANIM)
         me:unreserve_panel(me.future_panel_x, me.future_panel_y)
-        me:set_status("sliding", false)
-        me:set_status("moving", true)
+        me.status.sliding = false
+        me.status.moving = true
         me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
         me:reserve_panel(me.panel_x, me.panel_y)
         me.collision:set_region(nil)
@@ -72,8 +72,8 @@ local function back(me: Object, s: State)
         me:set_animation(0)
         me.collision:set_region(regions.single)
         me:unreserve_panel(me.future_panel_x, me.future_panel_y)
-        me:set_request("body_guard_triggered", false)
-        me:set_status("moving", false)
+        me.requests.body_guard_triggered = false
+        me.status.moving = false
         s.timer = 5
         me.step_init = 4
     end

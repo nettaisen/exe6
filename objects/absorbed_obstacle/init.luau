@@ -43,7 +43,7 @@ local PUFF_LIFT = 0x10_0000
 -- passes `obstacle.fly_to_absorber` (one of the original's obstacle kinds,
 -- the sprites of `byte_80E98C0`).
 function absorbed_obstacle.look(look: AbsorbedLook): AbsorbedLook
-    return new.record("absorbed-look", look)
+    return new.record(obstacle.absorbed_look, look)
 end
 
 -- `sub_80E9810`: the obstacle's look, and the flight toward its side's navi.
@@ -123,11 +123,11 @@ absorbed_obstacle.kind = new.kind {
     id = "absorbed-obstacle",
     pool = "effect",
     state = {
-        look = "record:absorbed-look",
-        side = "u8",
-        anim = "u8",
-        palette = "u8",
-        hidden_parts = "u32",
+        look = obstacle.absorbed_look,
+        side = schema.u8,
+        anim = schema.u8,
+        palette = schema.u8,
+        hidden_parts = schema.u32,
     },
     -- `sub_80E97F0`.
     update = function(me: Object)

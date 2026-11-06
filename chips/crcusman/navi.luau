@@ -285,7 +285,7 @@ local ACTIONS = {
 crcusman.kind = new.kind {
     id = "crcusman/navi",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- `sub_80BA364`.
     update = function(me: Object)
         local l = me.lifecycle

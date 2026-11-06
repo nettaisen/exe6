@@ -45,7 +45,7 @@ end
 controller.kind = new.kind {
     id = "snake/controller",
     pool = "effect",
-    state = { bonus = "u16", busy = "bool" },
+    state = { bonus = schema.u16, busy = schema.bool },
     -- `sub_80E5944`.
     update = dimming_chips.phases { name = "Snake", effect = effect },
 }

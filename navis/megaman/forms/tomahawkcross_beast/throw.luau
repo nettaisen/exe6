@@ -47,8 +47,8 @@ local function wind_up(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(0x17)
         me:open_counter_window()
-        me:set_status("using_action", true)
-        me:set_status("moving", true)
+        me.status.using_action = true
+        me.status.moving = true
         me.step_init = 4
         return
     end
@@ -85,14 +85,14 @@ local function swing(me: Object, s: State)
     local left = s.timer - 1
     s.timer = left
     if left < 0 then
-        me:set_status("moving", false)
+        me.status.moving = false
         me:exit_attack()
     end
 end
 
 throw.action = new.action {
     id = "tomahawkcross-beast/throw/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EF1EC`.
     update = function(me: Object, s: State)
         local step = me.step

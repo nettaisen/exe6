@@ -159,7 +159,7 @@ local ACTIONS = { [APPEAR] = appear, [STAND] = stand, [RAISE] = raise, [THUNDER]
 elecman.kind = new.kind {
     id = "elecman/navi",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- `sub_80B92B8`.
     update = function(me: Object)
         local l = me.lifecycle

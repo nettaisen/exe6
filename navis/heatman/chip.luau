@@ -15,7 +15,7 @@ local trajectory = require("../../lib/trajectory")
 
 export type State = { timer: number }
 
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 local JUMP, PRESS, BACK = 0x0, 0x4, 0x8
 local ANIM_JUMP = 0x12

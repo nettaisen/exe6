@@ -125,12 +125,12 @@ scanner.kind = new.kind {
     id = "sensor/scanner",
     pool = "attack",
     state = {
-        turret = "object",
-        aim = "u8",
-        stops_at_objects = "bool",
-        start_x = "u8",
-        start_y = "u8",
-        found = "bool",
+        turret = schema.object,
+        aim = schema.u8,
+        stops_at_objects = schema.bool,
+        start_x = schema.u8,
+        start_y = schema.u8,
+        found = schema.bool,
     },
     -- `sub_80D9154`.
     update = function(me: Object)

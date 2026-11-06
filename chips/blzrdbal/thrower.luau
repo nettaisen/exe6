@@ -74,7 +74,7 @@ end
 thrower.kind = new.kind {
     id = "blzrdbal/thrower",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- `sub_80B8A18`.
     update = function(me: Object)
         local l = me.lifecycle

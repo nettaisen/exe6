@@ -18,7 +18,7 @@ export type State = {
     axe: Object?,
 }
 
-local STATE = { timer = "u16", axe = "object" }
+local STATE = { timer = schema.u16, axe = schema.object }
 
 local RAISE, SWING, RECOVER = 0x0, 0x4, 0x8
 local ANIM_RAISE, ANIM_SWING, ANIM_RECOVER = 0x11, 0x12, 7

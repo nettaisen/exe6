@@ -110,8 +110,8 @@ local function rise(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(0x11)
         me:open_counter_window()
-        me:set_status("using_action", true)
-        me:set_status("moving", true)
+        me.status.using_action = true
+        me.status.moving = true
         local v = me.vel
         me.vel = Vec3.new(v.x, v.y, RISE_SPEED)
         s.timer = 0x10
@@ -173,13 +173,13 @@ local function land(me: Object, s: State)
     me.pos = Vec3.new(p.x, p.y, 0)
     me.collision:set_region(regions.single)
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
-    me:set_status("moving", false)
+    me.status.moving = false
     me:exit_attack()
 end
 
 scatter.action = new.action {
     id = "dustcross-beast/scatter/action",
-    state = { timer = "u16", targets = "u8[6]" },
+    state = { timer = schema.u16, targets = schema.array(schema.u8, 6) },
     -- `sub_80EF328`.
     update = function(me: Object, s: State)
         local step = me.step

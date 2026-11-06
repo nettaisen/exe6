@@ -158,16 +158,18 @@ local function update(me: Object)
     end
 end
 
+local SWORD_WAVE_VARIANT = schema.record_type("sword-wave-variant")
+
 sword_wave.kind = new.kind {
     id = "slashcross/sword-wave",
     pool = "attack",
-    state = { variant = "record:sword-wave-variant", started = "bool", reach = "u8", hidden = "bool" },
+    state = { variant = SWORD_WAVE_VARIANT, started = schema.bool, reach = schema.u8, hidden = schema.bool },
     update = update,
 }
 
 -- A wave's variant, as a record the wave keeps.
 function sword_wave.variant(v: SwordWaveVariant): SwordWaveVariant
-    return new.record("sword-wave-variant", v)
+    return new.record(SWORD_WAVE_VARIANT, v)
 end
 
 -- `sub_80D8222`: a wave of `variant` and `owner`'s on (x, y) with the

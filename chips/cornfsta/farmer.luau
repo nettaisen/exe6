@@ -93,7 +93,7 @@ end
 farmer.kind = new.kind {
     id = "cornfsta/farmer",
     pool = "actor",
-    state = { controller = "object", held = "object", sowing = "bool" },
+    state = { controller = schema.object, held = schema.object, sowing = schema.bool },
     -- `sub_80BCB50`: by state, then the sprite.
     update = function(me: Object)
         local l = me.lifecycle

@@ -92,7 +92,7 @@ end
 local function prepare(me: Object, s: State, seq: Sequence, current: FormDef)
     local crossing = seq == "cross" or seq == "beast_cross"
     if crossing then
-        me:set_navi_state("form_change_sprite_held", true)
+        me.navi_flags.form_change_sprite_held = true
     end
     me:snap_to_future_panel()
     navi_status.clear_invulnerable(me)
@@ -112,7 +112,7 @@ local function prepare(me: Object, s: State, seq: Sequence, current: FormDef)
             me.anim = 0
             me.related1 = nil
             me.overlay = nil
-            me:set_navi_state("form_change_sprite_held", false)
+            me.navi_flags.form_change_sprite_held = false
             overlays.keep_stepping(me)
         end
     elseif seq == "beast_cross" then
@@ -163,7 +163,7 @@ local function vanish(me: Object, s: State, seq: Sequence, target: FormDef)
         if not timer_ran_out(s) then
             return
         end
-        me:set_navi_state("form_change_sprite_held", true)
+        me.navi_flags.form_change_sprite_held = true
         local pos, alliance = me.pos, me.alliance
         local spawned: Object?
         if seq == "beast_over" then
@@ -280,7 +280,7 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
         end
         stats.form = target
         if seq == "beast_out" or seq == "cross_beast" or seq == "beast_over" then
-            battle.palette_flash(0, 14, true, true)
+            battle.palette_flash("one_layer", 14, true, true)
             battle.play_sound(BEAST_OUT)
         end
         -- `sub_8015B22`: the form's NameID (the navi's own, for a form
@@ -337,12 +337,12 @@ end
 -- which nothing sets), the reactive-defense requests are dropped, and the
 -- navi idles.
 local function finish(me: Object)
-    me:set_navi_state("form_change", false)
-    me:set_navi_state("form_change_sprite_held", false)
-    me:set_request("weakness_hit", false)
-    me:set_request("body_guard_triggered", false)
-    me:set_request("anti_sword_triggered", false)
-    me:set_request("anti_damage_triggered", false)
+    me.navi_flags.form_change = false
+    me.navi_flags.form_change_sprite_held = false
+    me.requests.weakness_hit = false
+    me.requests.body_guard_triggered = false
+    me.requests.anti_sword_triggered = false
+    me.requests.anti_damage_triggered = false
     me:exit_attack()
 end
 
@@ -367,7 +367,7 @@ function change.update(me: Object, s: State)
     local target = me:form_change_target()
     if target == nil then
         -- (A change to the base form is none.)
-        me:set_navi_state("form_change", false)
+        me.navi_flags.form_change = false
         return
     end
     local current = battle.navi(me.alliance).form
@@ -388,7 +388,7 @@ function change.update(me: Object, s: State)
     else
         error(string.format("form change step %#x runs off its table (sub_8014A38)", step))
     end
-    if not me:navi_state("form_change_sprite_held") then
+    if not me.navi_flags.form_change_sprite_held then
         me:step_sprite()
     end
 end

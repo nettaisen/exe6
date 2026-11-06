@@ -347,12 +347,12 @@ yoyo.kind = new.kind {
     id = "yoyo/yoyo",
     pool = "attack",
     state = {
-        panels = "u8",
-        rounds = "u8",
-        left = "i32",
+        panels = schema.u8,
+        rounds = schema.u8,
+        left = schema.i32,
         slot = { "related", "middle", "below", "above" },
-        hit = "u32",
-        back = "i32",
+        hit = schema.u32,
+        back = schema.i32,
     },
     -- `sub_80CE81C`.
     update = function(me: Object)
@@ -428,11 +428,11 @@ yoyo.controller = new.kind {
     id = "yoyo/great-yoyo",
     pool = "effect",
     state = {
-        panels = "u8",
-        rounds = "u8",
-        middle = "object",
-        below = "object",
-        above = "object",
+        panels = schema.u8,
+        rounds = schema.u8,
+        middle = schema.object,
+        below = schema.object,
+        above = schema.object,
     },
     -- `sub_80E857C`.
     update = function(me: Object)

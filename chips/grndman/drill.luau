@@ -62,7 +62,7 @@ end
 drill.kind = new.kind {
     id = "grndman/drill",
     pool = "effect",
-    state = { follows_action = "bool", action = "action" },
+    state = { follows_action = schema.bool, action = schema.action },
     -- `sub_80E7788`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -35,8 +35,10 @@ export type State = {
 
 local element_pillar = {}
 
+local ELEMENT_PILLAR_LOOK = schema.record_type("element-pillar-look")
+
 function element_pillar.look(look: ElementPillarLook): ElementPillarLook
-    return new.record("element-pillar-look", look)
+    return new.record(ELEMENT_PILLAR_LOOK, look)
 end
 
 -- `sub_80D0766`: once the owner's action is over, `after` more ticks; the
@@ -143,14 +145,14 @@ element_pillar.kind = new.kind {
     id = "element-pillar",
     pool = "attack",
     state = {
-        look = "record:element-pillar-look",
-        ticks = "u8",
-        after = "u8",
-        stands_back = "bool",
-        back = "u8",
-        follows_navi = "bool",
-        navi_action = "action",
-        owner_state = "u8",
+        look = ELEMENT_PILLAR_LOOK,
+        ticks = schema.u8,
+        after = schema.u8,
+        stands_back = schema.bool,
+        back = schema.u8,
+        follows_navi = schema.bool,
+        navi_action = schema.action,
+        owner_state = schema.u8,
     },
     update = update,
 }

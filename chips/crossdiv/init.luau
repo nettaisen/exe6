@@ -50,7 +50,7 @@ local CROSS_DIVIDE = colonel.strike(function(me: Object)
     local pos = Vec3.new(cx, cy, 0xC_0000)
     battle.effect(pos, CROSS[1], me.alliance)
     battle.effect(pos, CROSS[2], me.alliance)
-    battle.palette_flash(0, 0x28, true, false)
+    battle.palette_flash("one_layer", 0x28, true, false)
 end)
 
 local chip: Chip = {
@@ -66,7 +66,6 @@ local chip: Chip = {
     hit_param = 148,
     lockout = 0,
     flags = { "dimming", "has_damage", "library" },
-    extra_flags = { 8, 16 },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "crossdiv/controller",

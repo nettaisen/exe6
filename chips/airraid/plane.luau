@@ -70,9 +70,12 @@ local PANEL_TABLE_LOW_BYTE = 0xE0
 -- The actions (the object's action byte).
 local APPEAR, DESTROYED, TAKE_OFF, BOMB = 0, 2, 8, 9
 
+local AIRRAID_PLANE = schema.record_type("airraid-plane")
+plane.AIRRAID_PLANE = AIRRAID_PLANE
+
 -- A plane.
 function plane.plane(p: AirRaidPlane): AirRaidPlane
-    return new.record("airraid-plane", p)
+    return new.record(AIRRAID_PLANE, p)
 end
 
 -- Gone from the field's bookkeeping, hidden, and destroyed at the next
@@ -301,11 +304,11 @@ plane.kind = new.kind {
     id = "airraid/plane",
     pool = "attack",
     state = {
-        plane = "record:airraid-plane",
-        propeller = "object",
-        flame = "object",
-        bomb_in = "u32",
-        next_target = "u32",
+        plane = AIRRAID_PLANE,
+        propeller = schema.object,
+        flame = schema.object,
+        bomb_in = schema.u32,
+        next_target = schema.u32,
     },
     -- `sub_80D34CC`.
     update = function(me: Object)
@@ -339,7 +342,7 @@ function plane.spawn(owner: Object, x: number, y: number, p: AirRaidPlane, damag
     o.panel_x, o.panel_y = x, y
     o.alliance, o.flip = owner.alliance, owner.flip
     o.run_while_dimmed = true
-    obstacle.register(o, o.alliance, 1)
+    obstacle.register(o, o.alliance, "one_a_side")
     local s = o.state :: State
     s.plane = p
     return o

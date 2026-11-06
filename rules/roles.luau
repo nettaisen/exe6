@@ -286,7 +286,7 @@ local roles: RolesSpec = {
         end,
         -- An obstacle encased in ice or a bubble is done (`sub_801813A`'s
         -- end): no side's wind (`sub_80E544C`), then what it becomes.
-        encased = function(obstacle: Object, ice: boolean, class: number?)
+        encased = function(obstacle: Object, ice: boolean, class: ObstacleClass?)
             wind_registry.clear(exe6.wind, obstacle)
             encased_bubble.replace(obstacle, ice, class)
         end,

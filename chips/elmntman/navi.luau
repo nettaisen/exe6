@@ -147,7 +147,7 @@ local function cycle(me: Object)
         return
     end
     local user = me.related1 :: Object
-    if user:dimmed_pressed("a") then
+    if user.dimmed_pressed.a then
         battle.play_sound(SOUND_ELMNT_MAN_2)
         me:set_action(0xC)
         return
@@ -396,12 +396,12 @@ elmntman.kind = new.kind {
     id = "elmntman/navi",
     pool = "actor",
     state = {
-        element = "u8",
-        targets = "u8[18]",
-        controller = "object",
-        cycle_ticks = "u8",
-        count = "u8",
-        sent = "u8",
+        element = schema.u8,
+        targets = schema.array(schema.u8, 18),
+        controller = schema.object,
+        cycle_ticks = schema.u8,
+        count = schema.u8,
+        sent = schema.u8,
     },
     -- `sub_80BAA8C`.
     update = function(me: Object)

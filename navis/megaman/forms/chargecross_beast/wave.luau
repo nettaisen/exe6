@@ -70,8 +70,8 @@ local function wind_up(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(0x12)
         me:open_counter_window()
-        me:set_status("using_action", true)
-        me:set_status("moving", true)
+        me.status.using_action = true
+        me.status.moving = true
         field_hit(me)
         s.timer = 0x1E
         me.step_init = 4
@@ -100,13 +100,13 @@ local function recover(me: Object, s: State)
     if left >= 0 then
         return
     end
-    me:set_status("moving", false)
+    me.status.moving = false
     me:exit_attack()
 end
 
 wave.action = new.action {
     id = "chargecross-beast/wave/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EF282`.
     update = function(me: Object, s: State)
         local step = me.step

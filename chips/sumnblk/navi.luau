@@ -279,7 +279,7 @@ end
 navi.kind = new.kind {
     id = "sumnblk/navi",
     pool = "actor",
-    state = { holder = "object", palette = "u8", target_x = "u8", target_y = "u8" },
+    state = { holder = schema.object, palette = schema.u8, target_x = schema.u8, target_y = schema.u8 },
     -- `sub_80C1570`.
     update = function(me: Object)
         local l = me.lifecycle

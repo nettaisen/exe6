@@ -20,7 +20,7 @@ export type State = {
 
 -- One state for every DolThdr: a use continues the last one's attack
 -- variables, as the original's one action does.
-action.STATE = { timer = "u16" }
+action.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local RAISE, STRIKE, LOWER = 0x0, 0x4, 0x8
@@ -45,7 +45,7 @@ function action.action(spec: DollThunderSpec): Action
         me:set_animation(ANIM_RAISE)
         me:open_counter_window()
         attachment.attach(me, spec.held, "overlay", { anim = spec.held_anim })
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = RAISE_TICKS
         me.step = STRIKE
         me.step_init = 0

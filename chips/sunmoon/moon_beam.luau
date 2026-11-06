@@ -118,7 +118,7 @@ end
 moon_beam.kind = new.kind {
     id = "sunmoon/moon-beam",
     pool = "attack",
-    state = { ticks = "u8" },
+    state = { ticks = schema.u8 },
     -- `sub_80DC0E8`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -72,7 +72,7 @@ end
 flame.kind = new.kind {
     id = "gregar/flame",
     pool = "attack",
-    state = { ticks = "u8" },
+    state = { ticks = schema.u8 },
     -- `sub_80DF0A4`: by state (its end `object_genericDestroy`), then the
     -- sprite, stepping while dimmed.
     update = function(me: Object)

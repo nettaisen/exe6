@@ -250,7 +250,7 @@ end
 book.kind = new.kind {
     id = "judgeman/book",
     pool = "attack",
-    state = { turn = "u8", axis = "u8", judge = "object", target_x = "u32", target_y = "u32" },
+    state = { turn = schema.u8, axis = schema.u8, judge = schema.object, target_x = schema.u32, target_y = schema.u32 },
     -- `sub_80D7ACC`.
     update = function(me: Object)
         local l = me.lifecycle

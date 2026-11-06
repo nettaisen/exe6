@@ -14,7 +14,7 @@ export type State = {
 }
 
 -- One state for the three chips' blows.
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local BLOW, RECOVER = 0x0, 0x4
@@ -37,7 +37,7 @@ local function blow(spec: Blow): Action
             me:set_animation(0x0C)
             battle.play_sound(SOUND_BLOW)
             me:open_counter_window()
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0x0F
             me.step_init = 4
         end

@@ -307,7 +307,7 @@ local ACTIONS = {
 slashman.kind = new.kind {
     id = "slashman/navi",
     pool = "actor",
-    state = { controller = "object", wave_damage = "u8", column = "u8" },
+    state = { controller = schema.object, wave_damage = schema.u8, column = schema.u8 },
     -- `sub_80B9F44`.
     update = function(me: Object)
         local l = me.lifecycle

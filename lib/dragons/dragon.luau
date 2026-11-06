@@ -28,9 +28,12 @@ local HEIGHT = 0x24
 -- The legs of its path: down a column, then up one.
 dragon.DOWN, dragon.UP = 0, 1
 
+local DRAGON_VARIANT = schema.record_type("dragon-variant")
+dragon.DRAGON_VARIANT = DRAGON_VARIANT
+
 -- A dragon's variant.
 function dragon.variant(v: DragonVariant): DragonVariant
-    return new.record("dragon-variant", v)
+    return new.record(DRAGON_VARIANT, v)
 end
 
 -- Its look: the dragon sprite at animation `anim` in the variant's

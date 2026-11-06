@@ -499,12 +499,12 @@ heroes.kind = new.kind {
     id = "dblhero/heroes",
     pool = "actor",
     state = {
-        controller = "object",
-        protoman = "bool",
-        partner = "object",
-        held = "object",
-        held2 = "object",
-        white = "u8",
+        controller = schema.object,
+        protoman = schema.bool,
+        partner = schema.object,
+        held = schema.object,
+        held2 = schema.object,
+        white = schema.u8,
     },
     -- `sub_80BCD14`: by state, then the sprite.
     update = function(me: Object)

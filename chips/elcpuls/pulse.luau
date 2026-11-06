@@ -26,9 +26,11 @@ local SOUND = asset.sound("elec-pulse")
 local BACK = 0x28
 local HAND = 0x1C
 
+local ELEC_PULSE = schema.record_type("elec-pulse")
+
 -- A pulse.
 function pulse.variant(v: ElecPulse): ElecPulse
-    return new.record("elec-pulse", v)
+    return new.record(ELEC_PULSE, v)
 end
 
 -- Gone: its region cleared, and the objects linked to it told to end
@@ -108,7 +110,7 @@ end
 pulse.kind = new.kind {
     id = "elcpuls/pulse",
     pool = "attack",
-    state = { linked = "object[3]", pulse = "record:elec-pulse" },
+    state = { linked = schema.array(schema.object, 3), pulse = ELEC_PULSE },
     -- `sub_80D6A20`.
     update = function(me: Object)
         local l = me.lifecycle

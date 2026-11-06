@@ -208,7 +208,7 @@ end
 corn.kind = new.kind {
     id = "cornsht/corn",
     pool = "attack",
-    state = { probe = "bool", spreads = "bool", bursts = "u8", grassed = "bool", ticks = "u32", spread = "u8[3]", count = "u8" },
+    state = { probe = schema.bool, spreads = schema.bool, bursts = schema.u8, grassed = schema.bool, ticks = schema.u32, spread = schema.array(schema.u8, 3), count = schema.u8 },
     -- `sub_80C6580`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -60,7 +60,7 @@ end
 -- `sub_80EC210`: 6 ticks of wind-up; then the dash starts.
 local function wind_up(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me:set_animation(0x15)
         me:open_counter_window()
         s.timer = 5
@@ -74,8 +74,8 @@ local function wind_up(me: Object, s: State)
     end
     me.collision.self_damage = 0
     -- object_setInvulnerableTime(0xFFFF)
-    me:set_status_timer("invulnerable", 0xFFFF)
-    me:set_status("invulnerable", true)
+    me.status_timers.invulnerable = 0xFFFF
+    me.status.invulnerable = true
     local accel = me.facing * ACCELERATION
     local v = me.vel
     me.vel = Vec3.new(accel, v.y, v.z)
@@ -139,10 +139,10 @@ local function land(me: Object, s: State)
     me:update_collision_panels()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
-    me:set_status("using_action", false)
+    me.status.using_action = false
     -- sub_800EB08
-    me:set_status_timer("invulnerable", 0)
-    me:set_status("invulnerable", false)
+    me.status_timers.invulnerable = 0
+    me.status.invulnerable = false
     -- sub_80142C2
     if battle.link() then
         me.collision.self_damage = 10
@@ -153,7 +153,7 @@ end
 
 dash_weapon.action = new.action {
     id = "groundcross-beast/dash/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EC1F0`.
     update = function(me: Object, s: State)
         local step = me.step

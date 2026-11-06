@@ -19,7 +19,7 @@ export type State = {
 export type Spec = { id: string?, wave: ShockWaveVariant, three_rows: boolean? }
 
 -- One state for every strike.
-strike.STATE = { timer = "u16" }
+strike.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local STRIKE, RECOVER = 0x0, 0x4
@@ -41,7 +41,7 @@ function strike.action(spec: Spec): Action
             me:set_animation(0x0C)
             battle.play_sound(SOUND)
             me:open_counter_window()
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0x0F
             me.step_init = 4
         end

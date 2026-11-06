@@ -76,7 +76,7 @@ end
 whip.kind = new.kind {
     id = "judgeman/whip",
     pool = "effect",
-    state = { follows_action = "bool", action = "action" },
+    state = { follows_action = schema.bool, action = schema.action },
     -- `sub_80E70C8`.
     update = function(me: Object)
         local l = me.lifecycle

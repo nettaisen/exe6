@@ -49,7 +49,7 @@ local function wind_up(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(0x12)
         me:open_counter_window()
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 0xE
         me.step_init = 4
         return
@@ -115,7 +115,7 @@ end
 
 charge.action = new.action {
     id = "tomahawkcross/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EEC70`.
     update = function(me: Object, s: State)
         local step = me.step

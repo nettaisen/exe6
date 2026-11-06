@@ -18,7 +18,6 @@ local chip: Chip = {
     hit_param = 0,
     lockout = 0,
     flags = { "dimming", "library" },
-    extra_flags = { 1 },
     slot_in_limit = 1,
     dimming = statue.hook,
 }

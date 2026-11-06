@@ -420,7 +420,7 @@ local function slash(me: Object)
         local cx, cy = field.center(x, y)
         battle.effect(Vec3.new(cx, cy, 0x10_0000), BIG_SLASH, flip_of(me), 4)
         battle.shake_camera(2, 0x28)
-        battle.palette_flash(0, 0x1E, true, false)
+        battle.palette_flash("one_layer", 0x1E, true, false)
     end
     local t = me.timer + 1
     me.timer = t
@@ -565,7 +565,7 @@ end
 darkness.kind = new.kind {
     id = "darkness/navi",
     pool = "actor",
-    state = { bass = "bool", held = "object", controller = "object", leader = "object" },
+    state = { bass = schema.bool, held = schema.object, controller = schema.object, leader = schema.object },
     -- `sub_80BF6EC`.
     update = function(me: Object)
         local l = me.lifecycle

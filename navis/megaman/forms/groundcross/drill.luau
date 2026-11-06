@@ -91,7 +91,7 @@ end
 -- the body leaves the field; after 30, come up by the target.
 local function burrow(me: Object, s: State)
     if me.step_init == 0 then
-        if me:status("moving") or me:status("sliding") then
+        if me.status.moving or me.status.sliding then
             return
         end
         me.step_init = 1
@@ -99,7 +99,7 @@ local function burrow(me: Object, s: State)
         me:set_animation(0x16)
         me:reserve_panel(me.panel_x, me.panel_y)
         me.collision.region = nil
-        me:set_status("moving", true)
+        me.status.moving = true
     end
     if s.timer == 0x1B then
         local dust = battle.effect(me.pos, DUST)
@@ -156,7 +156,7 @@ end
 -- the drill a light one.)
 local function drill(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me:set_animation(0xA)
         attachment.attach(me, drill_object.arm, "overlay", { anim = drill_object.ARM_DRILLING })
         local damage = int.u32(bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16)) + me.extra)
@@ -213,8 +213,8 @@ local function return_(me: Object, s: State)
     if t > 0 then
         return
     end
-    me:set_status("using_action", false)
-    me:set_status("moving", false)
+    me.status.using_action = false
+    me.status.moving = false
     me.collision.region = regions.single
     me.panel_x, me.panel_y = me.future_panel_x, me.future_panel_y
     me:unreserve_panel(me.panel_x, me.panel_y)
@@ -225,7 +225,7 @@ end
 
 ground_drill.action = new.action {
     id = "groundcross/drill/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EEFDC`.
     update = function(me: Object, s: State)
         local step = me.step

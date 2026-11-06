@@ -156,7 +156,7 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = raise, [0xC] = swing, [0x10] 
 tmhkman.kind = new.kind {
     id = "tmhkman/navi",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- `sub_80B97C0`.
     update = function(me: Object)
         local l = me.lifecycle

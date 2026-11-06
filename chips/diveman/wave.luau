@@ -122,7 +122,7 @@ end
 wave.kind = new.kind {
     id = "diveman/wave",
     pool = "attack",
-    state = { while_dimmed = "bool" },
+    state = { while_dimmed = schema.bool },
     -- `sub_80CB0DC`.
     update = function(me: Object)
         local l = me.lifecycle

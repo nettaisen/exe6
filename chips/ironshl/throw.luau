@@ -16,7 +16,7 @@ export type State = {
 }
 
 -- One state for every throw.
-throw.STATE = { timer = "u16" }
+throw.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local THROW, RECOVER = 0x0, 0x4
@@ -31,7 +31,7 @@ function throw.action(spec: { id: string, shell: IronShell }): Action
         if me.step_init == 0 then
             me:set_animation(0x0C)
             me:open_counter_window()
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0x0F
             me.step_init = 4
         end

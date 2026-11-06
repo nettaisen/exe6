@@ -155,7 +155,7 @@ end
 doll.kind = new.kind {
     id = "dolthdr/doll",
     pool = "attack",
-    state = { columns = "object[6]", slot = slot.TYPE, registers = "bool", ticks = "u8" },
+    state = { columns = schema.array(schema.object, 6), slot = slot.TYPE, registers = schema.bool, ticks = schema.u8 },
     -- `sub_80D5740`.
     update = function(me: Object)
         local l = me.lifecycle

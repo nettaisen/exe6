@@ -27,7 +27,7 @@ export type State = {
     glow: Object?,
 }
 
-local STATE = { timer = "u16", glow = "object" }
+local STATE = { timer = schema.u16, glow = schema.object }
 
 local SLIDE, SLASH, RETURN, RECOVER = 0x0, 0x4, 0x8, 0xC
 local ANIM_SLIDE, ANIM_SLASH, ANIM_RETURN = 0x10, 0x11, 3
@@ -100,8 +100,8 @@ local function slide(me: Object, s: State)
         me.anim = ANIM_SLIDE
         me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
         me:reserve_panel(me.panel_x, me.panel_y)
-        me:set_status("moving", true)
-        me:set_status("using_action", true)
+        me.status.moving = true
+        me.status.using_action = true
         me.vel = Vec3.new(me.facing * SPEED, me.vel.y, me.vel.z)
         local cx, cy = field.center(me.panel_x, me.panel_y)
         s.glow = GLOW.spawn(me, Vec3.new(cx, cy, 0), me.alliance)
@@ -171,9 +171,9 @@ local function return_home(me: Object, s: State)
         me:unreserve_panel(me.panel_x, me.panel_y)
         me:set_coordinates_from_panel()
         me:update_collision_panels()
-        me:set_status("moving", false)
-        me:set_status("move_complete", true)
-        me:set_status("using_action", false)
+        me.status.moving = false
+        me.status.move_complete = true
+        me.status.using_action = false
         s.timer = RETURN_TICKS
         local glow = s.glow
         if glow then

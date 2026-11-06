@@ -17,7 +17,7 @@ export type State = {
     target_y: number,
 }
 
-local STATE = { timer = "u16", target_x = "u8", target_y = "u8" }
+local STATE = { timer = schema.u16, target_x = schema.u8, target_y = schema.u8 }
 
 local WIND_UP, JUMP, LAND, STAY, SPRAY, RISE, BACK = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14, 0x18
 local ANIM_WIND_UP, ANIM_READY, ANIM_RISE, ANIM_DOWN = 0x11, 0x12, 4, 3
@@ -69,7 +69,7 @@ local function jump(me: Object, s: State)
             me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
             me:reserve_panel(me.panel_x, me.panel_y)
             me.collision:set_region(nil)
-            me:set_status("moving", true)
+            me.status.moving = true
             s.timer = JUMP_TICKS
             link.go(me, LAND)
             return
@@ -123,7 +123,7 @@ local function rise(me: Object, s: State)
     if me.step_init == 0 then
         me.step_init = 4
         me.anim = ANIM_RISE
-        me:set_status("moving", true)
+        me.status.moving = true
         s.timer = RISE_TICKS
     elseif link.run_out(s) then
         link.go(me, BACK)
@@ -142,9 +142,9 @@ local function back(me: Object, s: State)
         me:set_coordinates_from_panel()
         me:update_collision_panels()
         me.collision:set_region(regions.single)
-        me:set_status("moving", false)
-        me:set_status("move_complete", true)
-        me:set_status("using_action", false)
+        me.status.moving = false
+        me.status.move_complete = true
+        me.status.using_action = false
         s.timer = BACK_TICKS
     elseif link.run_out(s) then
         me:exit_attack()

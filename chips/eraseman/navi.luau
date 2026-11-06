@@ -165,7 +165,7 @@ local function aim(me: Object)
         return
     end
     local user = me.related1 :: Object
-    if user:dimmed_pressed("a") or ran_out(me) then
+    if user.dimmed_pressed.a or ran_out(me) then
         me:set_action(RAISE)
         return
     end
@@ -231,7 +231,7 @@ local ACTIONS = { [APPEAR] = appear, [STAND] = stand, [AIM] = aim, [RAISE] = rai
 eraseman.kind = new.kind {
     id = "eraseman/navi",
     pool = "actor",
-    state = { cycle = "u8", aim = "u8", controller = "object", aim_ticks = "u8" },
+    state = { cycle = schema.u8, aim = schema.u8, controller = schema.object, aim_ticks = schema.u8 },
     -- `sub_80BB608`.
     update = function(me: Object)
         local l = me.lifecycle

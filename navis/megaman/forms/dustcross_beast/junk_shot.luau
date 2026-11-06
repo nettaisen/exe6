@@ -135,7 +135,7 @@ end
 junk_shot.kind = new.kind {
     id = "dustcross-beast/junk-shot",
     pool = "attack",
-    state = { target = "u8" },
+    state = { target = schema.u8 },
     -- `sub_80DDC10`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -87,7 +87,7 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [SLASH] = slash, [R
 
 charge.action = new.action {
     id = "slashman/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80F0C48` (`off_80F0C5C`).
     update = function(me: Object, s: State)
         link.run(me, s, PHASES, "SlashMan's charge (sub_80F0C48)")

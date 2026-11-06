@@ -115,7 +115,7 @@ end
 surge.kind = new.kind {
     id = "spoutcross-beast/surge",
     pool = "attack",
-    state = { ticks = "u8", beat = "u8" },
+    state = { ticks = schema.u8, beat = schema.u8 },
     -- `sub_80D385C`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -100,7 +100,7 @@ local function aim(me: Object, s: State)
             step(me, s)
             battle.play_sound(SOUND_STEP)
         end
-        if not (me.related1 :: Object):dimmed_pressed("a") then
+        if not (me.related1 :: Object).dimmed_pressed.a then
             return
         end
     end
@@ -196,12 +196,12 @@ burner.kind = new.kind {
     id = "burnsqr/burner",
     pool = "actor",
     state = {
-        controller = "object",
-        start_x = "u32",
-        turn_x = "u32",
-        x = "i32",
-        y = "i32",
-        highlighted = "bool",
+        controller = schema.object,
+        start_x = schema.u32,
+        turn_x = schema.u32,
+        x = schema.i32,
+        y = schema.i32,
+        highlighted = schema.bool,
     },
     -- `sub_80BAF50`.
     update = function(me: Object)

@@ -12,9 +12,9 @@ export type State = {
     flashes: number,
 }
 
--- The flash (`off_80E8934`): variant 1 (the screen and the objects) for 2
--- ticks, neither going on while dimmed nor while paused.
-local FLASH_VARIANT, FLASH_TICKS = 1, 2
+-- The flash (`off_80E8934`): over two layers (the screen and the objects)
+-- for 2 ticks, neither going on while dimmed nor while paused.
+local FLASH_VARIANT: PaletteFlashVariant, FLASH_TICKS = "two_layers", 2
 
 -- The flashes, and the ticks between them.
 local FLASHES, GAP = 3, 8
@@ -59,7 +59,7 @@ end
 hit_flash.kind = new.kind {
     id = "slashcross-beast/hit-flash",
     pool = "effect",
-    state = { flashes = "u8" },
+    state = { flashes = schema.u8 },
     -- `sub_80E88A0`.
     update = function(me: Object)
         local l = me.lifecycle

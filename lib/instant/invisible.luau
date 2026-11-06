@@ -16,8 +16,8 @@ local SOUND = asset.sound("invisible")
 -- `sub_8010474`: an `instant` hook that hides the user for `ticks` ticks.
 function invisible.instant(ticks: number): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, _spec: InstantChipSpec)
-        user:set_status_timer("flash", ticks)
-        user:set_status("invisible", true)
+        user.status_timers.flash = ticks
+        user.status.invisible = true
         battle.play_sound(SOUND)
     end
 end

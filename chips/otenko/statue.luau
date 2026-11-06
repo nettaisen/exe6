@@ -40,7 +40,7 @@ return common.make {
     lifetime = 0x708,
     -- One of its side's two field objects of class 0 (a third evicts the
     -- oldest).
-    class = 0,
+    class = "two_a_side",
     sounds = { appear = asset.sound("appear"), ["break"] = asset.sound("panel-poison") },
     -- Another body of its side.
     is = collision.own_body,

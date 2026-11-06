@@ -175,12 +175,12 @@ flame.kind = new.kind {
     id = "flame",
     pool = "attack",
     state = {
-        ticks = "u8",
-        spread = "u8",
-        cracks = "bool",
-        anim = "u8",
-        on_panel = "bool",
-        wide = "bool",
+        ticks = schema.u8,
+        spread = schema.u8,
+        cracks = schema.bool,
+        anim = schema.u8,
+        on_panel = schema.bool,
+        wide = schema.bool,
     },
     -- `sub_80C53C0`.
     update = function(me: Object)

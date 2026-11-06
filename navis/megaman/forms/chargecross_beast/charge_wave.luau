@@ -130,7 +130,7 @@ end
 charge_wave.kind = new.kind {
     id = "chargecross-beast/wave",
     pool = "attack",
-    state = { hit_panel = "u16", trail = "i32" },
+    state = { hit_panel = schema.u16, trail = schema.i32 },
     -- `sub_80DDA84`.
     update = function(me: Object)
         local l = me.lifecycle

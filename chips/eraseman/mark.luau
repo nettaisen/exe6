@@ -46,7 +46,7 @@ end
 mark.kind = new.kind {
     id = "eraseman/mark",
     pool = "effect",
-    state = { ticks = "u8" },
+    state = { ticks = schema.u8 },
     -- `sub_80E78BC`.
     update = function(me: Object)
         local l = me.lifecycle

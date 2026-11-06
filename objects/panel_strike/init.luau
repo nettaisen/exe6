@@ -119,7 +119,7 @@ end
 panel_strike.kind = new.kind {
     id = "panel-strike",
     pool = "attack",
-    state = { cracks = "bool", warning = "u8", hit_mod = "u8", solid_only = "bool" },
+    state = { cracks = schema.bool, warning = schema.u8, hit_mod = schema.u8, solid_only = schema.bool },
     -- `sub_80C5DDC`.
     update = function(me: Object)
         local l = me.lifecycle

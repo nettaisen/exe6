@@ -126,7 +126,7 @@ end
 eruption.kind = new.kind {
     id = "eruption",
     pool = "attack",
-    state = { lifetime = "u8" },
+    state = { lifetime = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

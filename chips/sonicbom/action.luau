@@ -19,7 +19,7 @@ export type State = {
     timer: number,
 }
 
-sonicbom.STATE = { timer = "u16" }
+sonicbom.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local COUNT, SLASH, RECOVER = 0x0, 0x4, 0x8
@@ -52,7 +52,7 @@ function sonicbom.action(id: string, boom: SonicBoom, charged: Charged?): Action
             me:open_counter_window()
             battle.play_sound(parts.swing)
             parts.hold(me, parts.blade, 0)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = SWING_TICKS
             me.step_init = 4
         end

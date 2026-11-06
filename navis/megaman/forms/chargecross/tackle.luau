@@ -65,8 +65,8 @@ end
 -- `sub_80EFA74`: 9 ticks of wind-up; then the charge starts.
 local function wind_up(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("using_action", true)
-        me:set_status("moving", true)
+        me.status.using_action = true
+        me.status.moving = true
         me:set_animation(0x14)
         me:open_counter_window()
         s.timer = 8
@@ -94,8 +94,8 @@ local function wind_up(me: Object, s: State)
     me.collision.hit_mod_base = 0
     battle.play_sound(SOUND)
     -- object_setInvulnerableTime(0xFFFF)
-    me:set_status_timer("invulnerable", 0xFFFF)
-    me:set_status("invulnerable", true)
+    me.status_timers.invulnerable = 0xFFFF
+    me.status.invulnerable = true
     me.step = CHARGE
     me.step_init = 0
 end
@@ -137,7 +137,7 @@ local function charge(me: Object, s: State)
     end
     me:update_collision_panels()
     local x, y = me.panel_x, me.panel_y
-    if not me:status("air_shoe") and not field.solid(x, y) then
+    if not me.status.air_shoe and not field.solid(x, y) then
         return stop(me, s)
     end
     if not field.valid(x, y) then
@@ -168,11 +168,11 @@ local function land(me: Object, s: State)
     me:update_collision_panels()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
-    me:set_status("using_action", false)
-    me:set_status("moving", false)
+    me.status.using_action = false
+    me.status.moving = false
     -- sub_800EB08
-    me:set_status_timer("invulnerable", 0)
-    me:set_status("invulnerable", false)
+    me.status_timers.invulnerable = 0
+    me.status.invulnerable = false
     -- sub_80142C2, then sub_8019F86(sub_80107C0()): the body's damage and
     -- hit modifier in link battles.
     if battle.link() then
@@ -185,7 +185,7 @@ end
 
 tackle.action = new.action {
     id = "chargecross/tackle/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EFA56`.
     update = function(me: Object, s: State)
         local step = me.step

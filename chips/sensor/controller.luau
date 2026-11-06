@@ -45,7 +45,7 @@ end
 controller.kind = new.kind {
     id = "sensor/controller",
     pool = "effect",
-    state = { palette = "u8", hp = "u8", bonus = "u16" },
+    state = { palette = schema.u8, hp = schema.u8, bonus = schema.u16 },
     update = dimming_chips.phases { name = "Sensor", effect = effect },
 }
 

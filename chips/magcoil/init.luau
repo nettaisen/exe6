@@ -15,7 +15,7 @@ export type State = {
     timer: number,
 }
 
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local RAISE, SET, LOWER = 0x0, 0x4, 0x8
@@ -43,7 +43,7 @@ local function mag_coil(spec: MagCoilSpec): Action
         me:set_animation(ANIM_RAISE)
         me:open_counter_window()
         attachment.attach(me, COIL, "overlay")
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 1
         me.step = SET
         me.step_init = 0

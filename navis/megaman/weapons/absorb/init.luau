@@ -46,8 +46,8 @@ local function pull(me: Object, s: State)
     if me.step_init == 0 then
         local beast = battle.navi(me.alliance).form.id == DUST_BEAST
         me:set_animation(if beast then 0x19 else 0x17)
-        me:set_status("using_action", true)
-        me:set_status("moving", true)
+        me.status.using_action = true
+        me.status.moving = true
         -- Behind the navi's feet, or its Beast form's claws.
         local back, down = 7, 4
         if beast then
@@ -83,13 +83,13 @@ local function recover(me: Object, s: State)
     if left > 0 then
         return
     end
-    me:set_status("moving", false)
+    me.status.moving = false
     me:exit_attack()
 end
 
 absorb.action = new.action {
     id = "megaman/absorb/action",
-    state = { timer = "u16", vortex = "object" },
+    state = { timer = schema.u16, vortex = schema.object },
     -- `sub_80EFCB4`: the phase, then the vortex lives on while this runs.
     update = function(me: Object, s: State)
         local step = me.step

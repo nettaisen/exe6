@@ -323,13 +323,13 @@ turret.kind = new.kind {
     id = "sensor/turret",
     pool = "attack",
     state = {
-        palette = "u8",
-        hp = "u8",
-        aim = "u8",
-        scanner = "object",
-        segments = "object[5]",
-        blinking = "bool",
-        restart = "bool",
+        palette = schema.u8,
+        hp = schema.u8,
+        aim = schema.u8,
+        scanner = schema.object,
+        segments = schema.array(schema.object, 5),
+        blinking = schema.bool,
+        restart = schema.bool,
     },
     -- `sub_80DA050`.
     update = function(me: Object)
@@ -360,7 +360,7 @@ function turret.spawn(owner: Object, x: number, y: number, element: number, dama
     o.element = element
     o.alliance, o.flip = owner.alliance, owner.flip
     o.run_while_dimmed = true
-    obstacle.register(o, o.alliance, 1)
+    obstacle.register(o, o.alliance, "one_a_side")
     local s = o.state :: State
     s.palette, s.hp = palette, hp
     return o

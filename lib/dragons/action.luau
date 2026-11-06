@@ -17,7 +17,7 @@ export type State = {
 
 -- One state for every dragon: a use continues the last one's attack
 -- variables, as the original's one action does.
-action.STATE = { timer = "u16" }
+action.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local SUMMON, RECOVER = 0x0, 0x4
@@ -39,7 +39,7 @@ function action.action(spec: DragonSpec): Action
         if me.step_init == 0 then
             me:set_animation(ANIM_RAISE)
             me:open_counter_window()
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = SUMMON_TICKS
             me.step_init = 4
         end

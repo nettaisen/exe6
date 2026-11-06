@@ -189,7 +189,7 @@ end
 sower.kind = new.kind {
     id = "cornfsta/sower",
     pool = "attack",
-    state = { steps = "i32", holder = "object", ring = "u8[3]", ring_next = "u8" },
+    state = { steps = schema.i32, holder = schema.object, ring = schema.array(schema.u8, 3), ring_next = schema.u8 },
     -- `sub_80DAA28`.
     update = function(me: Object)
         local l = me.lifecycle

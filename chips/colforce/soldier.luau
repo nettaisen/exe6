@@ -168,7 +168,7 @@ end
 soldier.kind = new.kind {
     id = "colforce/soldier",
     pool = "attack",
-    state = { delay = "u8" },
+    state = { delay = schema.u8 },
     -- `sub_80DF328`.
     update = function(me: Object)
         local l = me.lifecycle

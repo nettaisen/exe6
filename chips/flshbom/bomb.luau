@@ -43,9 +43,11 @@ local STRONG_DAMAGE = 0x140000
 -- 0x2E); each level adds 3 to its palette.
 flash_bomb.held = attachment.look { sprite = SPRITE, palette = 0 }
 
+local FLASH_BOMB_VARIANT = schema.record_type("flash-bomb-variant")
+
 -- A FlashBomb variant.
 function flash_bomb.variant(v: FlashBombVariant): FlashBombVariant
-    return new.record("flash-bomb-variant", v)
+    return new.record(FLASH_BOMB_VARIANT, v)
 end
 
 -- Done: hidden, off its panels, and freed at the next update.
@@ -146,7 +148,7 @@ end
 -- second hit for variants that have one.
 local function count_down(me: Object, v: FlashBombVariant)
     if me.timer == FLASH_AT then
-        battle.palette_flash(1, 6)
+        battle.palette_flash("two_layers", 6)
         battle.play_sound(SOUND_FLASH)
         flash(me, v, v.status, int.u32(me.damage + me.stamina * 0x10000))
     end
@@ -172,7 +174,7 @@ local function tick(me: Object)
         finish(me)
         return
     end
-    if me.action == 8 and hp.apply_damage(me, 0) == -1 then
+    if me.action == 8 and hp.apply_damage(me, "damage_sound") == "broken" then
         finish(me)
         return
     end
@@ -222,7 +224,7 @@ end
 flash_bomb.kind = new.kind {
     id = "flshbom/bomb",
     pool = "attack",
-    state = { variant = "record:flash-bomb-variant", target_x = "u8", target_y = "u8" },
+    state = { variant = FLASH_BOMB_VARIANT, target_x = schema.u8, target_y = schema.u8 },
     -- `sub_80D9A50`.
     update = function(me: Object)
         local l = me.lifecycle

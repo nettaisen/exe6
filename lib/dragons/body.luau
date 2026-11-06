@@ -150,13 +150,13 @@ body.kind = new.kind {
     id = "dragon-body",
     pool = "attack",
     state = {
-        count = "u8",
-        leg = "u8",
-        ticks_per_panel = "u8",
-        angle_step = "u8",
-        angle = "u8",
-        base_y = "i32",
-        variant = "record:dragon-variant",
+        count = schema.u8,
+        leg = schema.u8,
+        ticks_per_panel = schema.u8,
+        angle_step = schema.u8,
+        angle = schema.u8,
+        base_y = schema.i32,
+        variant = dragon.DRAGON_VARIANT,
     },
     -- `sub_80DE13C`.
     update = function(me: Object)

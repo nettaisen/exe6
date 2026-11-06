@@ -21,8 +21,10 @@ local dash_hit = {}
 -- original's second parameter, the marker's address; the dash's 0).
 export type Variant = { hit_mod: number, spark: Spark, reports: boolean }
 
+local MEGAMAN_DASH_HIT_VARIANT = schema.record_type("megaman-dash-hit-variant")
+
 function dash_hit.variant(v: Variant): Variant
-    return new.record("megaman-dash-hit-variant", v)
+    return new.record(MEGAMAN_DASH_HIT_VARIANT, v)
 end
 
 export type State = {
@@ -118,7 +120,7 @@ end
 dash_hit.kind = new.kind {
     id = "megaman/dash-hit",
     pool = "attack",
-    state = { hit_panel = "u16", reach = "u8", variant = "record:megaman-dash-hit-variant", action = "action" },
+    state = { hit_panel = schema.u16, reach = schema.u8, variant = MEGAMAN_DASH_HIT_VARIANT, action = schema.action },
     -- `sub_80DB570`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -246,12 +246,12 @@ judgeman.kind = new.kind {
     id = "judgeman/navi",
     pool = "actor",
     state = {
-        whip = "object",
-        books = "u8",
-        books_done = "u8",
-        book_panels = "u8[12]",
-        book_damage = "u8",
-        controller = "object",
+        whip = schema.object,
+        books = schema.u8,
+        books_done = schema.u8,
+        book_panels = schema.array(schema.u8, 12),
+        book_damage = schema.u8,
+        controller = schema.object,
     },
     -- `sub_80BA708`.
     update = function(me: Object)

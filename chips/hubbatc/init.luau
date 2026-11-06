@@ -45,9 +45,9 @@ local HUB_BATCH = navi_boost.change(function(me: Object)
         if not stats.back_special_weapon then
             stats.back_special_weapon = BACK_SPECIAL
         end
-        user:set_status("air_shoe", true)
-        user:set_status("float_shoe", true)
-        user:set_status("undershirt", true)
+        user.status.air_shoe = true
+        user.status.float_shoe = true
+        user.status.undershirt = true
         stats.float_shoes = true
         stats.air_shoes = true
         stats.undershirt = true

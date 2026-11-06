@@ -22,7 +22,7 @@ export type State = {
 -- roar's tick depends on it.)
 
 -- One state for every burn.
-burn.STATE = { timer = "u16" }
+burn.STATE = { timer = schema.u16 }
 
 -- The burner, its user's (FireBrn's and WideBrn's the original's attachment
 -- row 0x16, HeatCross's 0x1E), held in its animation 1.
@@ -48,7 +48,7 @@ function burn.action(spec: BurnSpec): Action
             me.anim = 0x0A
             me:open_counter_window()
             attachment.attach(me, spec.burner, "overlay", { anim = BURNER_ANIM })
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0
             me.step_init = 4
         end

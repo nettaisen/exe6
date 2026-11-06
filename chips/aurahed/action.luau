@@ -21,7 +21,7 @@ export type State = {
 
 -- One state for every AuraHed: a use continues the last one's attack
 -- variables, as the original's one action does.
-action.STATE = { timer = "u16", heads = "u8" }
+action.STATE = { timer = schema.u16, heads = schema.u8 }
 
 -- The phases, on the attack's step.
 local RAISE, FIRE, RECOIL = 0x0, 0x4, 0x8
@@ -47,7 +47,7 @@ function action.action(spec: AuraHeadSpec): Action
     local function raise(me: Object, s: State)
         me:set_animation(ANIM_RAISE)
         buster.raise_arm(me)
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.heads = spec.head.palette
         me.step = FIRE
         me.step_init = 0

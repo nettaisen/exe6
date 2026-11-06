@@ -16,7 +16,6 @@ local chip: Chip = {
     hit_param = 10,
     lockout = 20,
     flags = { "has_damage" },
-    extra_flags = { 16, 32 },
     slot_in_limit = 1,
     dark_substitute = atk_10,
     hp_bug = 4,

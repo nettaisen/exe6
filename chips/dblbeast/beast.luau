@@ -13,14 +13,14 @@ local beast = {}
 
 -- One state for both kinds.
 local STATE: StateSchema = {
-    controller = "object",
-    base = "u32",
-    next = "u8",
-    count = "u8",
-    missed = "bool",
-    targets = "u8[18]",
-    held = "object",
-    held2 = "object",
+    controller = schema.object,
+    base = schema.u32,
+    next = schema.u8,
+    count = schema.u8,
+    missed = schema.bool,
+    targets = schema.array(schema.u8, 18),
+    held = schema.object,
+    held2 = schema.object,
 }
 
 beast.STATE = STATE

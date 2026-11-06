@@ -406,15 +406,15 @@ boiler.kind = new.kind {
     id = "lilbolr/boiler",
     pool = "attack",
     state = {
-        palette = "u8",
-        body_damage = "u16",
-        target_x = "u8",
-        target_y = "u8",
-        angle = "u8",
-        hits = "u32",
-        last_hp = "u32",
-        erupting = "bool",
-        steam = "object",
+        palette = schema.u8,
+        body_damage = schema.u16,
+        target_x = schema.u8,
+        target_y = schema.u8,
+        angle = schema.u8,
+        hits = schema.u32,
+        last_hp = schema.u32,
+        erupting = schema.bool,
+        steam = schema.object,
     },
     -- `sub_80D75FC`.
     update = function(me: Object)
@@ -454,7 +454,7 @@ function boiler.thrower(palette: number, body_damage: number): Thrower
                 if user.flip ~= 0 then
                     error("LilBoiler thrown by a flipped user: setFieldBattleObject_800F614 registers it far past the field-object registry")
                 end
-                obstacle.register(o, user.alliance, 1)
+                obstacle.register(o, user.alliance, "one_a_side")
             end
             return o
         end,

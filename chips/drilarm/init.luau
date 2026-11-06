@@ -24,7 +24,7 @@ local SOUND = asset.sound("drilarm")
 -- `sub_80ED3B6`: the arm and the drills; draw back when the time is up.
 local function grind(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me:set_animation(0x0A)
         attachment.attach(me, drill.arm, "overlay", { anim = drill.ARM_DRILLING })
         -- The damage word (the hit parameter in its high half), plus the
@@ -78,7 +78,7 @@ local function draw_back(me: Object, s: State)
     if t > 0 then
         return
     end
-    me:set_status("using_action", false)
+    me.status.using_action = false
     me.related1 = nil
     me.overlay = nil
     me:exit_attack()
@@ -106,7 +106,7 @@ local chip: Chip = {
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.thunder },
-    action = new.action { state = { timer = "u16" }, update = update },
+    action = new.action { state = { timer = schema.u16 }, update = update },
 }
 
 return { drilarm = chip }

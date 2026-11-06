@@ -16,9 +16,12 @@ local sword_wave = require("./sword_wave")
 
 local slashes = {}
 
+local CHARGED_SLASH = schema.record_type("charged-slash")
+slashes.CHARGED_SLASH = CHARGED_SLASH
+
 -- A charged slash.
 function slashes.slash(s: ChargedSlash): ChargedSlash
-    return new.record("charged-slash", s)
+    return new.record(CHARGED_SLASH, s)
 end
 
 -- A sword wave of the rows' usual make (./sword_wave).

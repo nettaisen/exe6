@@ -374,10 +374,10 @@ local function slash(me: Object)
     if me.timer == 0xA then
         if slash_hit(me) then
             battle.shake_camera(3, 0x23)
-            battle.palette_flash(0, 0x28, true, false)
+            battle.palette_flash("one_layer", 0x28, true, false)
         else
             battle.shake_camera(1, 0x19)
-            battle.palette_flash(0, 0x1E, true, false)
+            battle.palette_flash("one_layer", 0x1E, true, false)
         end
     end
     local t = me.timer + 1
@@ -710,13 +710,13 @@ crosover.kind = new.kind {
     id = "crosover/navi",
     pool = "actor",
     state = {
-        django = "bool",
-        controller = "object",
-        partner = "object",
-        held = "object",
-        held2 = "object",
-        user_image = "bool",
-        in_position = "bool",
+        django = schema.bool,
+        controller = schema.object,
+        partner = schema.object,
+        held = schema.object,
+        held2 = schema.object,
+        user_image = schema.bool,
+        in_position = schema.bool,
     },
     -- `sub_80BDBA4`.
     update = function(me: Object)

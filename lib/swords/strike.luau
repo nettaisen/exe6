@@ -21,7 +21,7 @@ export type State = {
 }
 
 -- One state for every strike.
-strike.STATE = { timer = "u16" }
+strike.STATE = { timer = schema.u16 }
 
 local SWING, RECOVER = 0x0, 0x4
 
@@ -38,7 +38,7 @@ function strike.action(spec: StrikeSpec): Action
     -- `sub_80EEC08`: slash `target` if the sword finds it open.
     local function slash(me: Object, target: Object)
         local x, y = target.panel_x, target.panel_y
-        local open = (spec.finds ~= "on_element_panels" and target:status_timer("paralyze") ~= 0)
+        local open = (spec.finds ~= "on_element_panels" and target.status_timers.paralyze ~= 0)
             or (spec.finds ~= "paralyzed" and field.any(x, y, ELEMENT_PANELS))
         if not open then
             return
@@ -71,7 +71,7 @@ function strike.action(spec: StrikeSpec): Action
             me:set_animation(5)
             battle.play_sound(parts.swing)
             parts.hold(me, spec.blade, 0)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0x15
             me.step_init = 4
         end

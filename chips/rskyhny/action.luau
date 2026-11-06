@@ -20,7 +20,7 @@ export type State = {
 
 -- One state for every RskyHny: a use continues the last one's attack
 -- variables, as the original's one action does.
-action.STATE = { timer = "u16" }
+action.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local RAISE, RELEASE, WINDOWS = 0x0, 0x4, 0x8
@@ -58,8 +58,8 @@ function action.action(spec: HoneySpec): Action
         if me.step_init == 0 then
             me:set_animation(ANIM_RAISE)
             attachment.attach(me, HIVE, "overlay")
-            me:set_status("using_action", true)
-            me:set_navi_state("heat_trap", true)
+            me.status.using_action = true
+            me.navi_flags.heat_trap = true
             me.step_init = 4
             s.timer = 1
         end
@@ -109,7 +109,7 @@ function action.action(spec: HoneySpec): Action
         end
         me.related1 = nil
         me.overlay = nil
-        me:set_navi_state("heat_trap", false)
+        me.navi_flags.heat_trap = false
         me:exit_attack()
     end
 

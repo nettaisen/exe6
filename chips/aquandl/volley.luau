@@ -169,7 +169,7 @@ end
 volley.kind = new.kind {
     id = "aquandl/volley",
     pool = "effect",
-    state = { targets = "u8[3]", next = "u8", left = "u8", palette = "u8" },
+    state = { targets = schema.array(schema.u8, 3), next = schema.u8, left = schema.u8, palette = schema.u8 },
     -- `sub_80E50C4`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -22,7 +22,7 @@ export type State = {
 
 -- One state for every RlngLog: a use continues the last one's attack
 -- variables, as the original's one action does.
-action.STATE = { timer = "u16" }
+action.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local READY, THROW, RECOVER = 0x0, 0x4, 0x8
@@ -46,7 +46,7 @@ function action.action(spec: RollingLogSpec): Action
             me:set_animation(ANIM_THROW)
             me:open_counter_window()
             attachment.attach(me, THROWER, "overlay")
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me.step_init = 4
             s.timer = 1
         end

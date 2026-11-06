@@ -23,7 +23,7 @@ export type State = {
 
 -- One state for every WindRack: a use continues the last one's attack
 -- variables, as the original's one action does.
-action.STATE = { timer = "u16" }
+action.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local SWING, RECOVER = 0x0, 0x4
@@ -51,7 +51,7 @@ function action.action(spec: WindRackSpec): Action
             me:open_counter_window()
             battle.play_sound(SOUND)
             attachment.attach(me, spec.rack, "related", { anim = arm.anim(me) })
-            me:set_status("using_action", true)
+            me.status.using_action = true
             local flip = bit32.bxor(me.alliance, me.flip)
             local cx, cy = field.center(me.panel_x, me.panel_y)
             battle.effect(Vec3.new(cx, cy, HEIGHT), SWIRL, flip)

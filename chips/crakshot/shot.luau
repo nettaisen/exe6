@@ -118,7 +118,7 @@ end
 shot.kind = new.kind {
     id = "crakshot/shot",
     pool = "attack",
-    state = { centers = "u8" },
+    state = { centers = schema.u8 },
     -- `sub_80CA544`.
     update = function(me: Object)
         local l = me.lifecycle

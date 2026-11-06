@@ -185,7 +185,7 @@ local function tick(me: Object)
     end
     if me.action == BROKEN then
         to_broken(me)
-    elseif me:take_damage(0) == -1 then
+    elseif me:take_damage("damage_sound") == "broken" then
         local lift = if s.big then HEIGHT + BIG_HEIGHT else HEIGHT
         battle.effect(Vec3.new(me.pos.x, me.pos.y, lift * 0x10000), effects.explosion)
         battle.play_sound(SOUND_HIT_BOMB)
@@ -248,7 +248,7 @@ end
 log.kind = new.kind {
     id = "rlnglog/log",
     pool = "attack",
-    state = { last_hp = "u16", big = "bool", stop_ticks = "u8", thrown = "bool" },
+    state = { last_hp = schema.u16, big = schema.bool, stop_ticks = schema.u8, thrown = schema.bool },
     -- `sub_80D1218`.
     update = function(me: Object)
         local l = me.lifecycle

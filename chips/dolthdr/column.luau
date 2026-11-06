@@ -38,10 +38,12 @@ export type Owner = { columns: { Object? } }
 -- The height it stands at (its spawner's Z register).
 local HEIGHT = 0x10_0000
 
+local THUNDER_COLUMN_VARIANT = schema.record_type("thunder-column-variant")
+
 -- A column's variant (a row of `byte_80D6914`, its user's: DolThdr's plain
 -- hit, EraseCross's pull).
 function thunder_column.variant(v: Variant): Variant
-    return new.record("thunder-column-variant", v)
+    return new.record(THUNDER_COLUMN_VARIANT, v)
 end
 
 -- Its place in its owner's list: `me` there, or empty.
@@ -101,7 +103,7 @@ end
 thunder_column.kind = new.kind {
     id = "dolthdr/thunder-column",
     pool = "attack",
-    state = { owner = "object", link = "u8", variant = "record:thunder-column-variant" },
+    state = { owner = schema.object, link = schema.u8, variant = THUNDER_COLUMN_VARIANT },
     -- `sub_80D6924`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -118,7 +118,7 @@ end
 meteor.kind = new.kind {
     id = "elmntman/meteor",
     pool = "attack",
-    state = { while_dimmed = "bool" },
+    state = { while_dimmed = schema.bool },
     -- `sub_80D6BD4`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -113,7 +113,7 @@ local function aim(me: Object, s: State)
             step(me, s)
             battle.play_sound(SOUND_STEP)
         end
-        if not (me.related1 :: Object):dimmed_pressed("a") then
+        if not (me.related1 :: Object).dimmed_pressed.a then
             return
         end
     end
@@ -222,12 +222,12 @@ gunner.kind = new.kind {
     id = "magnum/gunner",
     pool = "actor",
     state = {
-        controller = "object",
-        far_x = "i32",
-        near_x = "i32",
-        x = "i32",
-        y = "i32",
-        fired_in_rows = "bool",
+        controller = schema.object,
+        far_x = schema.i32,
+        near_x = schema.i32,
+        x = schema.i32,
+        y = schema.i32,
+        fired_in_rows = schema.bool,
     },
     -- `sub_80BB2A0`.
     update = function(me: Object)

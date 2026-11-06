@@ -18,7 +18,7 @@ export type State = {
     timer: number,
 }
 
-cornsht.STATE = { timer = "u16" }
+cornsht.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local FIRE, RECOVER = 0x0, 0x4
@@ -44,7 +44,7 @@ function cornsht.action(id: string): Action
             me.anim = ANIM_HOLD
             me:open_counter_window()
             attachment.attach(me, GUN, "overlay")
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0
             me.step_init = 4
         end

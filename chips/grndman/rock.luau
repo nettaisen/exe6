@@ -170,7 +170,7 @@ end
 rock.kind = new.kind {
     id = "grndman/rock",
     pool = "attack",
-    state = { warning = "u8", while_dimmed = "bool", cracks = "bool", silent = "bool" },
+    state = { warning = schema.u8, while_dimmed = schema.bool, cracks = schema.bool, silent = schema.bool },
     -- `sub_80D535C`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -148,7 +148,7 @@ local ACTIONS = { [SURFACE] = surface, [WAIT] = wait, [DIVE] = dive, [WAVES] = w
 diveman.kind = new.kind {
     id = "diveman/navi",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- `sub_80B99C0`.
     update = function(me: Object)
         local l = me.lifecycle
