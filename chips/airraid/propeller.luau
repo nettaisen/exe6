@@ -24,11 +24,11 @@ local DY, DZ = 0x20_0000, 0x1F_0000
 -- The owner is held (bubbled, dragged, frozen, paralyzed or flinching:
 -- its status word has 0x80110C00).
 local function held(owner: Object): boolean
-    return owner:status("bubbled")
-        or owner:status("drag")
-        or owner:status("frozen")
-        or owner:status("paralyzed")
-        or owner:status("flinching")
+    return owner.status.bubbled
+        or owner.status.drag
+        or owner.status.frozen
+        or owner.status.paralyzed
+        or owner.status.flinching
 end
 
 -- `sub_80B8932`.

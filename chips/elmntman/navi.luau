@@ -147,7 +147,7 @@ local function cycle(me: Object)
         return
     end
     local user = me.related1 :: Object
-    if user:dimmed_pressed("a") then
+    if user.dimmed_pressed.a then
         battle.play_sound(SOUND_ELMNT_MAN_2)
         me:set_action(0xC)
         return

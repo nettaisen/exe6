@@ -376,10 +376,10 @@ local function slash(me: Object)
     if me.timer == 0xA then
         if slash_hit(me) then
             battle.shake_camera(3, 0x23)
-            battle.palette_flash(0, 0x28, true, false)
+            battle.palette_flash("one_layer", 0x28, true, false)
         else
             battle.shake_camera(1, 0x19)
-            battle.palette_flash(0, 0x1E, true, false)
+            battle.palette_flash("one_layer", 0x1E, true, false)
         end
     end
     local t = me.timer + 1

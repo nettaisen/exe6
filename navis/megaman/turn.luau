@@ -31,17 +31,17 @@ turn.action = new.action {
         -- for R's (`sub_800F2C6`: the sprite, and the HP number's place,
         -- which the engine doesn't draw); neither: as it stands.
         local flip: number? = nil
-        if me:request("turn_l") then
+        if me.requests.turn_l then
             flip = 0
-        elseif me:request("turn_r") then
+        elseif me.requests.turn_r then
             flip = 1
         end
         if flip then
             me.flip = flip
             me.sprite:set_flip(bit32.bxor(me.alliance, flip))
         end
-        me:set_request("turn_l", false)
-        me:set_request("turn_r", false)
+        me.requests.turn_l = false
+        me.requests.turn_r = false
         me:exit_attack()
     end,
 }

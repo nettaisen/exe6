@@ -153,7 +153,7 @@ local function launch(me: Object, s: State)
         me.collision:set_region(nil)
         me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
         me:reserve_panel(me.panel_x, me.panel_y)
-        me:set_status("moving", true)
+        me.status.moving = true
         me.anim = ANIM_ROLL
         s.hit = riding_hit.spawn(me, me.attack_element, HIT, link.damage_word(me))
         battle.play_sound(SOUND)
@@ -201,7 +201,7 @@ local function land(me: Object, s: State)
         me:unreserve_panel(me.panel_x, me.panel_y)
         me:set_coordinates_from_panel()
         me:update_collision_panels()
-        me:set_status("moving", false)
+        me.status.moving = false
         s.timer = LAND_TICKS
         local hit = s.hit
         if hit then

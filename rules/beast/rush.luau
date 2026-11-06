@@ -64,15 +64,15 @@ end
 -- `sub_80EADDC`: settle on the destination panel and reserve it; the navi
 -- counts as moving.
 local function hold(navi: Object, s: State)
-    navi:set_status("using_action", false)
+    navi.status.using_action = false
     navi:snap_to_future_panel()
-    navi:set_status("sliding", false)
-    navi:set_status("moving", false)
-    navi:set_request("slide", false)
+    navi.status.sliding = false
+    navi.status.moving = false
+    navi.requests.slide = false
     local x, y = navi.panel_x, navi.panel_y
     navi.future_panel_x, navi.future_panel_y = x, y
     navi:reserve_panel(x, y)
-    navi:set_status("moving", true)
+    navi.status.moving = true
     s.rush_chain = false
     s.rush_chain_block = CHAIN_BLOCK_TICKS
     set_phase(s, WARP)
@@ -85,7 +85,7 @@ end
 -- and failing those, the chip's.
 local function lockon_mode(navi: Object): Lockon?
     local over = kind.beast_over(navi.alliance)
-    if not over and (navi:status("blind") or navi:status("confused")) then
+    if not over and (navi.status.blind or navi.status.confused) then
         return nil
     end
     local action = navi:navi_action()
@@ -206,8 +206,8 @@ local function attack(navi: Object, s: State)
     end
     navi:reset_attack_links()
     navi:snap_to_future_panel()
-    navi:set_status("moving", false)
-    navi:set_status("move_complete", true)
+    navi.status.moving = false
+    navi.status.move_complete = true
     navi:exit_attack()
 end
 
@@ -230,7 +230,7 @@ local function update(navi: Object, _: any)
     end
     if s.rush_chain_block ~= 0 then
         s.rush_chain_block -= 1
-    elseif navi:pressed("a") then
+    elseif navi.pressed.a then
         s.rush_chain = true
     end
 end

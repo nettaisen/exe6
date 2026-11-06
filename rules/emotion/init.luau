@@ -81,7 +81,7 @@ local function navi_tick(side: number, navi: Object)
     if swung == 2 then
         -- sub_80143CE: anger, unless the mood is held.
         if not navi.mood_held then
-            navi:set_request("anger", true)
+            navi.requests.anger = true
         end
     elseif swung == 1 then
         -- sub_801443C

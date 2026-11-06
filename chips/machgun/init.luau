@@ -66,7 +66,7 @@ local function aim(me: Object, s: State)
     me.anim = ANIM_HOLD
     me:open_counter_window()
     attachment.attach(me, GUN, "overlay")
-    me:set_status("using_action", true)
+    me.status.using_action = true
     s.strikes = STRIKES
     s.sweep = -1
     me.step, me.step_init = FIRE, 0

@@ -113,7 +113,7 @@ local function aim(me: Object, s: State)
             step(me, s)
             battle.play_sound(SOUND_STEP)
         end
-        if not (me.related1 :: Object):dimmed_pressed("a") then
+        if not (me.related1 :: Object).dimmed_pressed.a then
             return
         end
     end
