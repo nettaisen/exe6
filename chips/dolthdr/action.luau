@@ -45,7 +45,7 @@ function action.action(spec: DollThunderSpec): Action
         me:set_animation(ANIM_RAISE)
         me:open_counter_window()
         attachment.attach(me, spec.held, "overlay", { anim = spec.held_anim })
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = RAISE_TICKS
         me.step = STRIKE
         me.step_init = 0

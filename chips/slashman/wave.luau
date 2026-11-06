@@ -127,7 +127,7 @@ local function steer(me: Object)
     if not s.variant.steers or s.steered then
         return
     end
-    if (me.related1 :: Object):held("b") then
+    if (me.related1 :: Object).held.b then
         s.steered = true
         battle.play_sound(SOUND_OK_8B)
     end

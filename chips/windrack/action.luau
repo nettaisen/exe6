@@ -51,7 +51,7 @@ function action.action(spec: WindRackSpec): Action
             me:open_counter_window()
             battle.play_sound(SOUND)
             attachment.attach(me, spec.rack, "related", { anim = arm.anim(me) })
-            me:set_status("using_action", true)
+            me.status.using_action = true
             local flip = bit32.bxor(me.alliance, me.flip)
             local cx, cy = field.center(me.panel_x, me.panel_y)
             battle.effect(Vec3.new(cx, cy, HEIGHT), SWIRL, flip)

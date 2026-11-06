@@ -129,7 +129,7 @@ local function setup(navi: Object): Action
 end
 
 local function moving_or_sliding(me: Object): boolean
-    return me:status("moving") or me:status("sliding")
+    return me.status.moving or me.status.sliding
 end
 
 -- `sub_80EE370`: for a dash with the navi still, dash two panels forward
@@ -141,7 +141,7 @@ local function dash(me: Object, s: State)
     if not s.dash or moving_or_sliding(me) then
         return
     end
-    me:set_status("moving", true)
+    me.status.moving = true
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
     me:reserve_panel(me.panel_x, me.panel_y)
     local x, y = me.panel_x + 2 * me.facing, me.panel_y
@@ -188,7 +188,7 @@ local function slash(me: Object, s: State)
             -- `sub_80EBB34`: the blade, in the first related slot.
             parts.hold(me, blade, parts.blade_palette(me))
         end
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 0x15
         me.step_init = 4
     end
@@ -240,7 +240,7 @@ end
 -- `sub_80EE532`: 6 ticks, then idle.
 local function finish(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("moving", false)
+        me.status.moving = false
         s.timer = 5
         me.step_init = 4
     end

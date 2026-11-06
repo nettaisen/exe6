@@ -240,7 +240,7 @@ local function check_command(me: Object)
         end
     end
     local key = COMMAND[s.presses]
-    if not (me.related1 :: Object):pressed(key) then
+    if not ((me.related1 :: Object).pressed :: any)[key] then
         return
     end
     s.presses += 1

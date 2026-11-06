@@ -67,7 +67,7 @@ local function apply(side: number)
     end
     local stats = battle.navi(side)
     if stats.navi.forms == nil then
-        battle.set_hud("emotion_window_glitch", bugged(stats), side)
+        battle.hud(side).emotion_window_glitch = bugged(stats)
         return
     end
     -- The block (`sub_8141B42`): the working HP and the slots, seeded from
@@ -148,7 +148,7 @@ local function apply(side: number)
     if written.chip_shuffle and slot.chip_shuffle then
         stats.number_open = false
     end
-    battle.set_hud("emotion_window_glitch", bugged(stats), side)
+    battle.hud(side).emotion_window_glitch = bugged(stats)
 end
 
 -- The most MB of cards a list holds.

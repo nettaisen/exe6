@@ -539,7 +539,7 @@ local function sword(me: Object)
         hit(me, x, y, 0, look.region)
         local cx, cy = field.center(x, y)
         battle.effect(Vec3.new(cx, cy, 0x10_0000), look.slash, flip_of(me), look.palette)
-        battle.palette_flash(0, 0xA, true, false)
+        battle.palette_flash("one_layer", 0xA, true, false)
     end
     local t = me.timer + 1
     me.timer = t
@@ -562,7 +562,7 @@ local function beam(me: Object)
         s.child = ray
         battle.play_sound(SOUND_BEAM)
         me.timer = 0x46
-        battle.palette_flash(0, 0xA, true, false)
+        battle.palette_flash("one_layer", 0xA, true, false)
         me.phase_init = 4
     end
     -- (Without a beam the game reads a byte of the BIOS, never its third
@@ -589,7 +589,7 @@ local function drill_out(me: Object)
         end
         me.timer = 0x1E
         battle.play_sound(SOUND_DRILL)
-        battle.palette_flash(0, 0xA, true, false)
+        battle.palette_flash("one_layer", 0xA, true, false)
         local p = me.pos
         me.pos = Vec3.new(p.x, p.y + 0x10000, p.z + 0x10000)
         me.phase_init = 4
@@ -639,7 +639,7 @@ local function fan(me: Object)
     end
     if me.timer == 0xC then
         hit(me, me.panel_x + me.facing, me.panel_y, 0x10_0000, regions.wide)
-        battle.palette_flash(0, 0xA, true, false)
+        battle.palette_flash("one_layer", 0xA, true, false)
     end
     if tick_down(me) < 0 then
         me.phase, me.phase_init = 4, 0
@@ -707,7 +707,7 @@ local function strike(me: Object)
         -- the BIOS. The bursts wait out the dimming.)
         panel_bursts.spawn(me, area, 2, 0, effects.explosion)
         battle.shake_camera(3, 0x1E)
-        battle.palette_flash(0, 0x23, true, false)
+        battle.palette_flash("one_layer", 0x23, true, false)
         battle.play_sound(SOUND_FINALE)
     end
     local t = me.timer + 1

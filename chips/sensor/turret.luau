@@ -360,7 +360,7 @@ function turret.spawn(owner: Object, x: number, y: number, element: number, dama
     o.element = element
     o.alliance, o.flip = owner.alliance, owner.flip
     o.run_while_dimmed = true
-    obstacle.register(o, o.alliance, 1)
+    obstacle.register(o, o.alliance, "one_a_side")
     local s = o.state :: State
     s.palette, s.hp = palette, hp
     return o

@@ -68,7 +68,7 @@ end
 local function leave(me: Object, s: State)
     if me.step_init == 0 then
         me.step_init = 1
-        me:set_status("moving", false)
+        me.status.moving = false
         s.timer = 3
         me:set_animation(4)
         me:reserve_panel(me.panel_x, me.panel_y)
@@ -98,7 +98,7 @@ local function appear(me: Object, s: State)
         return
     end
     s.timer = 0x14
-    me:set_status("using_action", true)
+    me.status.using_action = true
     me:set_animation(0x13)
     me.step = SLASH
     me.step_init = 0
@@ -152,7 +152,7 @@ local function come_back(me: Object, s: State)
     me:unreserve_panel(me.panel_x, me.panel_y)
     me:set_coordinates_from_panel()
     me:update_collision_panels()
-    me:set_status("moving", false)
+    me.status.moving = false
     me.step = RECOVER
     me.step_init = 0
     s.timer = 3
@@ -165,7 +165,7 @@ local function recover(me: Object, s: State)
     if left > 0 then
         return
     end
-    me:set_status("using_action", false)
+    me.status.using_action = false
     me:exit_attack()
 end
 

@@ -165,7 +165,7 @@ local function aim(me: Object)
         return
     end
     local user = me.related1 :: Object
-    if user:dimmed_pressed("a") or ran_out(me) then
+    if user.dimmed_pressed.a or ran_out(me) then
         me:set_action(RAISE)
         return
     end

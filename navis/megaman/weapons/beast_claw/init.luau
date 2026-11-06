@@ -62,7 +62,7 @@ end
 -- the slash effect and the hit a panel ahead.
 local function slash(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me.step_init = 1
         s.timer = 3
         me:set_animation(CLAW_ANIM)
@@ -123,7 +123,7 @@ local function recover(me: Object, s: State)
         me.step_init = 0
         return
     end
-    me:set_status("using_action", false)
+    me.status.using_action = false
     me:exit_attack()
 end
 

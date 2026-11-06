@@ -347,7 +347,7 @@ local function slash(me: Object)
         local cx, cy = field.center(x, y)
         battle.effect(Vec3.new(cx, cy, 0x10_0000), WIDE_SLASH, flip_of(me))
         battle.shake_camera(1, 0xA)
-        battle.palette_flash(0, 0xA, true, false)
+        battle.palette_flash("one_layer", 0xA, true, false)
     end
     if tick_down(me) <= 0 then
         me.phase, me.phase_init = 0, 0
@@ -484,7 +484,7 @@ local function strike(me: Object)
         end
         battle.play_sound(SOUND_STRIKE)
         battle.shake_camera(3, 0x23)
-        battle.palette_flash(0, 0x28, true, false)
+        battle.palette_flash("one_layer", 0x28, true, false)
         me.timer = 0x1E
         return
     end

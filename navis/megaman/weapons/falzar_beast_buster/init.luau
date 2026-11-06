@@ -157,7 +157,7 @@ local function shoot(me: Object, s: State)
         weapon.end_arm(me)
         me.overlay = nil
         buster.raise_arm(me)
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me.step_init = 4
         s.timer = 0
     end
@@ -213,10 +213,10 @@ local function recover(me: Object, s: State)
             return
         end
     end
-    if battle.navi(me.alliance).form.id == BEAST_OVER or me:request("alt_chip") or me.actor_type ~= "player" then
+    if battle.navi(me.alliance).form.id == BEAST_OVER or me.requests.alt_chip or me.actor_type ~= "player" then
         return finish(me)
     end
-    if not me:held("b") then
+    if not me.held.b then
         return finish(me)
     end
     me.marker = 4

@@ -63,7 +63,7 @@ local KEYS: { { key: Key, bit: number } } = {
 local function held_word(me: Object): number
     local w = 0
     for _, k in KEYS do
-        if me:held(k.key) then
+        if (me.held :: any)[k.key] then
             w += k.bit
         end
     end
@@ -107,8 +107,8 @@ local function become(me: Object, spec: Spec, i: number)
         error(string.format("the variable sword's pick %s has no action", chip.id :: string))
     end
     me.attack_chip = chip
-    me:set_attack(action, 0)
-    local lockon = if chip.beast ~= nil and chip.beast.rush ~= false then 1 else 0
+    me:set_attack(action, "plain")
+    local lockon = chip.beast ~= nil and chip.beast.rush ~= false
     if me.special_source ~= 0 then
         me.wrapped = lockon
         return
@@ -118,7 +118,7 @@ local function become(me: Object, spec: Spec, i: number)
         return
     end
     if chip ~= spec.no_charged and me.charged ~= 0 then
-        me:set_attack(slash_charge.of_action(me, action), 0)
+        me:set_attack(slash_charge.of_action(me, action), "plain")
     end
     if kind.beast(me.alliance) then
         me.wrapped = lockon

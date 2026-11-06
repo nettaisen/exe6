@@ -107,10 +107,10 @@ local function dig(me: Object, s: State)
         me.anim = ANIM_DIG
         me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
         me:reserve_panel(me.panel_x, me.panel_y)
-        me:set_status("moving", true)
-        me:set_status("using_action", true)
-        me:set_status_timer("invulnerable", INVULNERABLE_TICKS)
-        me:set_status("invulnerable", true)
+        me.status.moving = true
+        me.status.using_action = true
+        me.status_timers.invulnerable = INVULNERABLE_TICKS
+        me.status.invulnerable = true
         set_off(me, s)
         battle.play_sound(SOUND_DRILL)
         s.drill = drill.put_on_for_action(me)
@@ -190,10 +190,10 @@ local function home(me: Object, s: State)
         me:unreserve_panel(me.panel_x, me.panel_y)
         me:set_coordinates_from_panel()
         me:update_collision_panels()
-        me:set_status("moving", false)
-        me:set_status("using_action", false)
-        me:set_status_timer("invulnerable", 0)
-        me:set_status("invulnerable", false)
+        me.status.moving = false
+        me.status.using_action = false
+        me.status_timers.invulnerable = 0
+        me.status.invulnerable = false
         me.anim = ANIM_HOME
         s.timer = HOME_TICKS
     elseif link.run_out(s) then

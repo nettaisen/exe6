@@ -179,7 +179,7 @@ end
 local function use_chip(navi: Object, s: State): "nothing" | "chip"
     if s.controller_moves <= 3 then
         local t = berserk.locked_opponent(navi)
-        if t ~= nil and t:status("flashing") then
+        if t ~= nil and t.status.flashing then
             s.controller_step = BUSTER
             return "nothing"
         end
@@ -188,7 +188,7 @@ local function use_chip(navi: Object, s: State): "nothing" | "chip"
         s.controller_step = BUSTER
         return "nothing"
     end
-    navi:set_request("chip", true)
+    navi.requests.chip = true
     if not navi:use_chip() then
         s.controller_step = BUSTER
         return "nothing"
@@ -212,7 +212,7 @@ end
 -- `sub_802D3CA`: step to a panel near an opponent (`sub_802D430`); a chip
 -- is next.
 function berserk.step_toward_opponent(navi: Object, s: State): "moved"
-    local conds = if navi:status("air_shoe") then berserk_rules.step.floor_free else berserk_rules.step.grounded
+    local conds = if navi.status.air_shoe then berserk_rules.step.floor_free else berserk_rules.step.grounded
     local tx, ty = choose_panel(navi, conds[navi.alliance + 1])
     navi:start_move_to(tx, ty, 8)
     s.controller_moves = (s.controller_moves + 1) % 0x10000

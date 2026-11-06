@@ -39,7 +39,7 @@ function action.action(spec: DragonSpec): Action
         if me.step_init == 0 then
             me:set_animation(ANIM_RAISE)
             me:open_counter_window()
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = SUMMON_TICKS
             me.step_init = 4
         end

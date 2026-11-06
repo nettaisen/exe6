@@ -43,7 +43,7 @@ local function mag_coil(spec: MagCoilSpec): Action
         me:set_animation(ANIM_RAISE)
         me:open_counter_window()
         attachment.attach(me, COIL, "overlay")
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 1
         me.step = SET
         me.step_init = 0

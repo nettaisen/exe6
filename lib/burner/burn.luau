@@ -48,7 +48,7 @@ function burn.action(spec: BurnSpec): Action
             me.anim = 0x0A
             me:open_counter_window()
             attachment.attach(me, spec.burner, "overlay", { anim = BURNER_ANIM })
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0
             me.step_init = 4
         end

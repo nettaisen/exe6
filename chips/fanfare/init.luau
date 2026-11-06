@@ -15,8 +15,8 @@ local INVULNERABLE_TICKS = 4
 local function cheer(me: Object)
     for _, actor in battle.alive_actors(me.alliance) do
         if not kind.beast_over(actor.alliance) then
-            actor:set_status_timer("invulnerable", INVULNERABLE_TICKS)
-            actor:set_status("invulnerable", true)
+            actor.status_timers.invulnerable = INVULNERABLE_TICKS
+            actor.status.invulnerable = true
         end
     end
 end

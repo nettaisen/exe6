@@ -56,7 +56,7 @@ local function shoot(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(0x0E)
         buster.raise_arm(me)
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me.step_init = 4
         me.attack_count = 6 - 2
         s.timer = 0
@@ -114,10 +114,10 @@ local function next_shot(me: Object, s: State)
             return again(me, s)
         end
     end
-    if battle.navi(me.alliance).form.id == BEAST_OVER or me:request("alt_chip") or me.actor_type ~= "player" then
+    if battle.navi(me.alliance).form.id == BEAST_OVER or me.requests.alt_chip or me.actor_type ~= "player" then
         return me:exit_attack()
     end
-    if not me:held("b") then
+    if not me.held.b then
         return me:exit_attack()
     end
     again(me, s)

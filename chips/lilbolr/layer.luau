@@ -51,11 +51,11 @@ local HOLDING: { StatusFlag } = { "frozen", "drag", "paralyzed", "flinching" }
 
 local function holds(owner: Object): boolean
     for _, f in HOLDING do
-        if owner:status(f) then
+        if (owner.status :: any)[f] then
             return true
         end
     end
-    return owner:status("bubbled" :: StatusFlag)
+    return owner.status.bubbled
 end
 
 -- `sub_80C409C`: a row offset: its panel from its position; Y and Z down

@@ -66,7 +66,7 @@ function action.action(spec: GunDelSolSpec): Action
     -- `sub_80EDB14`: the gun comes out; 6 ticks later the beam lights up.
     local function wind_up(me: Object, s: State)
         if me.step_init == 0 then
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me:set_animation(ANIM_RAISE)
             me:open_counter_window()
             attachment.attach(me, spec.gun, "overlay")
@@ -130,7 +130,7 @@ function action.action(spec: GunDelSolSpec): Action
         if t >= 0 then
             return
         end
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me:set_animation(0)
         me.related1 = nil
         me.overlay = nil

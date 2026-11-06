@@ -36,7 +36,7 @@ local STORM_Z = 0
 local function raise(me: Object, s: State)
     me:set_animation(ANIM)
     me:open_counter_window()
-    me:set_status("using_action", true)
+    me.status.using_action = true
     s.timer = TICKS
     s.sound = 0x10
     local x = bit32.bxor(me.alliance, 1) * 3 + 2

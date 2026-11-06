@@ -41,7 +41,7 @@ local function shoot(me: Object, s: State)
         me:set_animation(0x0E)
         buster.raise_arm(me)
         me:open_counter_window()
-        me:set_status("using_action", true)
+        me.status.using_action = true
         battle.play_sound(SOUND)
         me.step_init = 4
         s.timer = 0

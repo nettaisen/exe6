@@ -42,8 +42,8 @@ local SOUND_START = asset.sound("elmnt-man-2")
 function cross_special.requested(side: number, navi: Object)
     local s = rules.state() :: State
     battle.take_over(side, TICKS)
-    navi:set_status_timer("invulnerable", 0xFFFF)
-    navi:set_status("invulnerable", true)
+    navi.status_timers.invulnerable = 0xFFFF
+    navi.status.invulnerable = true
     berserk.reset(s)
 end
 
@@ -78,7 +78,7 @@ local function special_chip(side: number, navi: Object, s: State): "nothing" | "
     end
     if s.controller_moves <= 3 then
         local t = berserk.locked_opponent(navi)
-        if t ~= nil and t:status("flashing") then
+        if t ~= nil and t.status.flashing then
             s.controller_step = berserk.BUSTER
             -- The game means 6 (2 in Beast Out) but stores the form's
             -- number (a register mixup), which is what a form's
@@ -99,9 +99,9 @@ local function special_chip(side: number, navi: Object, s: State): "nothing" | "
     if damage_of ~= nil then
         navi.attack_damage = record_damage(damage_of)
     end
-    navi:start_chip_attack(chip, 5)
+    navi:start_chip_attack(chip, "unspent_chip")
     local beast = chip.beast
-    navi.wrapped = if beast ~= nil and beast.rush ~= false then 1 else 0
+    navi.wrapped = beast ~= nil and beast.rush ~= false
     s.controller_step = berserk.MOVE
     return "own_chip"
 end
@@ -148,10 +148,10 @@ local function finish(me: Object, s: EndState)
             e.run_while_paused = true
         end
         for _, flag in { "bubbled", "frozen", "sliding", "paralyzed", "flinching", "moving" } :: { StatusFlag } do
-            me:set_status(flag, false)
+            (me.status :: any)[flag] = false
         end
-        me:set_request("slide", false)
-        me:set_navi_state("heat_trap", false)
+        me.requests.slide = false
+        me.navi_flags.heat_trap = false
         s.timer = TICKS_LANDING
         me.step_init = 4
     end
@@ -164,14 +164,14 @@ local function finish(me: Object, s: EndState)
     me.collision:set_region(regions.single)
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
     for _, r in { "mode9_a", "alt_chip", "back_special", "charged_chip", "chip", "buster", "forced_charged_shot" } :: { Request } do
-        me:set_request(r, false)
+        (me.requests :: any)[r] = false
     end
     -- sub_800EB08
-    me:set_status_timer("invulnerable", 0)
-    me:set_status("invulnerable", false)
+    me.status_timers.invulnerable = 0
+    me.status.invulnerable = false
     -- sub_801A66C: 120 ticks of flashing.
-    me:set_status_timer("flash", 0x78)
-    me:set_status("flashing", true)
+    me.status_timers.flash = 0x78
+    me.status.flashing = true
     local stats = battle.navi(me.alliance)
     stats.hp_drain = math.min(stats.hp_drain + 4, 7)
     me:exit_attack()
@@ -196,7 +196,7 @@ function cross_special.takeover(side: number, navi: Object): ("nothing" | "own_c
     end
     if battle.takeover_ticks(side) == 0 then
         battle.end_takeover(side)
-        navi:set_attack(cross_special.action, 0)
+        navi:set_attack(cross_special.action, "plain")
         return "nothing"
     end
     if s.controller_step == berserk.USE_CHIP then

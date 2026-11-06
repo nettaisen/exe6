@@ -206,7 +206,7 @@ colonel.screen_divide = colonel.strike(function(me: Object)
     colonel.hit(me, x, y, SCREEN_DIVIDE)
     local cx, cy = field.center(x + me.facing, y)
     battle.effect(Vec3.new(cx, cy, 0), DIVIDE, me.alliance)
-    battle.palette_flash(0, 0x14, true, false)
+    battle.palette_flash("one_layer", 0x14, true, false)
 end)
 
 -- Action 4 (`sub_80B8376`): the strike.

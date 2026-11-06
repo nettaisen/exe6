@@ -344,6 +344,8 @@ local rules: Rules = {
     pools = require("@self/pools"),
     reactions = require("@self/reactions"),
     roles = require("@self/roles"),
+    -- The slots of a side's statistics its content names (each the original's counter's).
+    side_stats = { recoveries = 5 },
     status = require("@self/status").rules,
 }
 

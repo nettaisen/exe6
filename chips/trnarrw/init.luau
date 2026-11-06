@@ -86,7 +86,7 @@ local function draw(me: Object, s: State)
         me.anim = 0x0A
         me:open_counter_window()
         attachment.attach(me, BOW, "overlay")
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 0
         me.step_init = 4
     end
