@@ -19,7 +19,7 @@ export type Variant = {
     collision: { is: CollisionType, hits: CollisionType },
     spark: Spark,
     region: Region,
-    hit_mod: number,
+    hit_mod: HitModifier,
     status: Status?,
     bug: number,
     bug_arg: number,
@@ -136,7 +136,7 @@ function thunder_column.spawn(
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = from.alliance, from.flip
         local s = o.state :: State
         s.owner = owner

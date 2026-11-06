@@ -23,14 +23,14 @@ local CHARGED = slashes.slash {
 local chip: Chip = {
     codes = { "B", "L", "P" },
     element = "null", family = "sword", class = "standard",
-    rarity = 2, mb = 28, damage = 160, hit_param = 20, lockout = 0,
+    rarity = 2, mb = 28, damage = 160, counter = 20, lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.gundelex },
     action = slash.action {
         blade = parts.blade,
-        hit = { region = regions.wide, collision = parts.slashes_navis, hit_mod = 3 },
+        hit = { region = regions.wide, collision = parts.slashes_navis, hit_mod = { flinch = true, flash = true } },
         effect = WIDE_SLASH,
         sound = parts.swing,
         step = true,

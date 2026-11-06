@@ -138,7 +138,7 @@ function pulse.spawn(owner: Object, x: number, y: number, element: number, v: El
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
         owner.related1 = o

@@ -110,7 +110,7 @@ end
 local function strike(me: Object, n: number)
     local direction = if me.alliance == 0 then 1 else -1
     local found = panels.region(me.panel_x, me.panel_y, REGION, direction, TARGETS[n], nil, me.alliance)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     -- r3: the search's, then each spawn's (the spawned bolt's side and
     -- flip halfword, or the element if the pool was full).
     local r3 = search_register(me, direction)

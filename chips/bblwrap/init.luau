@@ -8,7 +8,7 @@ local barriers = require("../lib/barriers")
 local chip: Chip = {
     codes = { "I", "Q", "Z" },
     element = "null", family = "aqua", class = "standard",
-    rarity = 2, mb = 58, damage = 0, hit_param = 0, lockout = 0,
+    rarity = 2, mb = 58, damage = 0, counter = 0, lockout = 0,
     flags = { "dimming", "standard_library", "library" },
     slot_in_limit = 1,
     dimming = barrier_chips.hook(barriers.bubble),

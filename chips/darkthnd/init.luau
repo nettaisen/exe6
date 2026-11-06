@@ -18,7 +18,7 @@ local chip: Chip = {
     rarity = 4,
     mb = 80,
     damage = 200,
-    hit_param = 20,
+    counter = 20,
     lockout = 0,
     flags = { "has_damage" },
     beast = { lockon = lockon.firebrn1 },

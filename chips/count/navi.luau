@@ -156,7 +156,7 @@ local function rain_down(me: Object)
     if me.phase == 0 then
         me.phase = 4
         local at = MIDDLE[me.alliance]
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         dust_storm.spawn(me, at[1], at[2], RAIN_Z, me.element, damage, RAIN)
         battle.play_sound(SOUND_RAIN)
         me.timer = RAIN_TICKS

@@ -27,7 +27,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 8,
     damage = 80,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.thunder },
@@ -35,7 +35,7 @@ local chip: Chip = {
     action = slash.action {
         id = "sword/action",
         blade = parts.blade,
-        hit = { region = regions.single, collision = parts.slashes_navis, hit_mod = 3 },
+        hit = { region = regions.single, collision = parts.slashes_navis, hit_mod = { flinch = true, flash = true } },
         effect = SWORD_SLASH,
         sound = parts.swing,
         charged = CHARGED,

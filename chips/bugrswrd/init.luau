@@ -12,7 +12,7 @@ local chip: Chip = {
     element = "null", family = "sword", class = "giga",
     -- The version whose saves hold it (rules/folder).
     version = "gregar",
-    rarity = 4, mb = 80, damage = 0, hit_param = 168, lockout = 0,
+    rarity = 4, mb = 80, damage = 0, counter = 40, cant_counter = true, lockout = 0,
     flags = { "dimming" },
     slot_in_limit = 1,
     dimming = navi_boost.bug(charge),

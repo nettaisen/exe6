@@ -192,7 +192,7 @@ function element_pillar.spawn(
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.alliance, o.flip = owner.alliance, owner.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.related1 = owner
     end
     return o
@@ -204,7 +204,7 @@ end
 function element_pillar.spawn_region(owner: Object, region: Region, pillar: ElementPillar)
     local front = owner.facing
     local x0, y0 = owner.panel_x + front, owner.panel_y
-    local damage = int.u32(owner.attack_damage + bit32.lshift(owner.hit_param, 16))
+    local damage = owner.attack_word
     for _, offset in region.panels or {} do
         local x, y = x0 + offset[1] * front, y0 + offset[2]
         if x >= 1 and x <= 6 and y >= 1 and y <= 3 then

@@ -164,9 +164,8 @@ local function claw(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.slash,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -310,7 +309,7 @@ function navi.spawn(controller: Object, x: number, y: number, element: number, p
     o.element = element
     o.alliance, o.flip = controller.alliance, controller.flip
     o.related1 = controller
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.palette = palette
     s.holder = controller

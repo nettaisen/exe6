@@ -22,7 +22,7 @@ local WIND_UP_TICKS, RECOVER_TICKS = 8, 0x1E
 -- The hits' counter byte and the attack's element, Fire; the flames: 30
 -- ticks (the original's first attack parameter), attacks that wait a
 -- dimming out.
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 local FIRE = 1
 local FLAME: HeatFlame = { while_dimmed = false, ticks = 0x1E, is = collision.attack }
 
@@ -32,8 +32,7 @@ local FLOOR: { PanelFlag } = { "solid", "on_field" }
 -- `sub_80121DC`: 20 damage and 20 more per point of buster Attack (up to
 -- 5).
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x14, 0x14)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x14, 0x14), counter = COUNTER, cant_counter = true }
     navi.attack_element = FIRE
     return charge.action
 end

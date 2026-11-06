@@ -23,18 +23,17 @@ local SOUND = asset.sound("tenguman-nose")
 
 -- The hits' counter byte, and their element: Null (the attack's element
 -- byte).
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 local NULL = 0
 
 -- The hits, one, two and three panels ahead (`byte_80F1B18`): their hit
 -- modifier and status.
-local HITS = { { hit_mod = 3, status = nil }, { hit_mod = 3, status = nil }, { hit_mod = 0, status = statuses.paralyze_90 } }
+local HITS = { { hit_mod = { flinch = true, flash = true }, status = nil }, { hit_mod = { flinch = true, flash = true }, status = nil }, { hit_mod = {}, status = statuses.paralyze_90 } }
 
 -- `sub_8012210`: 40 damage and 10 more per point of buster Attack (up to
 -- 5).
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x28, 0xA)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x28, 0xA), counter = COUNTER, cant_counter = true }
     navi.attack_element = NULL
     return charge.action
 end
@@ -51,8 +50,7 @@ local function hits(me: Object)
             hit_effect = nil,
             target = collision.nothing,
             self_type = collision.attack,
-            damage = link.damage(me),
-            stamina = link.stamina(me),
+            damage = link.damage_word(me),
             hit_mod = h.hit_mod,
             status = h.status,
         })

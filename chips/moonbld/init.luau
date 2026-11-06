@@ -33,7 +33,7 @@ local chip: Chip = {
     rarity = 2,
     mb = 35,
     damage = 130,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.moonbld },

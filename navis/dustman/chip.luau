@@ -36,10 +36,10 @@ local CLOUD_ANIM = 0
 local OTHER_SIDE = "enemy_area"
 
 -- The pull: no damage, no spark, of no side, hit modifier 0x10.
-local PULL_HIT_MOD = 0x10
+local PULL_HIT_MOD: HitModifier = { forward = true }
 
 -- The crush: a breaking hit on the panel ahead, with its spark.
-local CRUSH_HIT_MOD = 3
+local CRUSH_HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- `sub_80F20A0`: the pull on each of the other side's panels in his row.
 local function pull(me: Object)
@@ -54,8 +54,7 @@ local function pull(me: Object)
                 hit_effect = nil,
                 target = collision.hits_navis,
                 self_type = collision.pull,
-                damage = 0,
-                stamina = 0,
+                damage = damage_word.of { amount = 0, counter = 0 },
                 hit_mod = PULL_HIT_MOD,
             })
         end
@@ -89,8 +88,7 @@ local function crush_hit(me: Object)
         hit_effect = sparks.breaking,
         target = collision.hits_navis,
         self_type = collision.breaking,
-        damage = link.damage(me),
-        stamina = link.stamina(me),
+        damage = link.damage_word(me),
         hit_mod = CRUSH_HIT_MOD,
     })
 end
@@ -146,7 +144,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = { formula = "navi_level", base = 80, per_level = 30 },
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "library", "variable_damage" },
     slot_in_limit = 1,

@@ -50,7 +50,7 @@ function action.action(spec: DragonSpec): Action
             if not found then
                 x = me.panel_x + me.facing
             end
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             head.spawn(me, x, ROW, me.attack_element, spec.dragon, damage)
         end
         local t = s.timer - 1

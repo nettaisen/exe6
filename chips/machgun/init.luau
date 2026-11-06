@@ -36,7 +36,7 @@ local ANIM_HOLD, ANIM_FIRE = 0xA, 0xD
 local STRIKES, INTERVAL, START_ROW = 9, 8, 3
 -- The panel strike: no crack, after 6 ticks, hit modifier 1 (the chips'
 -- parameters, the third forced to 1).
-local PANEL_STRIKE: PanelStrike = { warning = 6, hit_mod = 1 }
+local PANEL_STRIKE: PanelStrike = { warning = 6, hit_mod = { flinch = true } }
 -- The reticle (effect 0x2F) over the target, for 6 ticks (the chips'
 -- second parameter).
 local RETICLE = new.effect { sprite = reticle_sprite, anim = 0, palette = 0, steps = 14 }
@@ -58,9 +58,8 @@ end
 -- `sub_80ECF48`: the Atk+ bonus goes into the damage word; aim at the
 -- bottom of the target column; the gun.
 local function aim(me: Object, s: State)
-    local word = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
-    me.attack_damage = bit32.band(word, 0xFFFF)
-    me.hit_param = bit32.rshift(word, 16)
+    local word = damage_word.plus(me.attack_word, me.extra)
+    me.attack_word = word
     s.column = target_column(me)
     s.row = START_ROW
     me.anim = ANIM_HOLD
@@ -86,7 +85,7 @@ local function fire(me: Object, s: State)
         end
         me.step_init = COUNTDOWN
         s.timer = INTERVAL
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+        local damage = me.attack_word
         panel_strike.spawn(me, s.column, s.row, me.attack_element, PANEL_STRIKE, damage, 0, false)
         local cx, cy = field.center(s.column, s.row)
         local reticle = battle.effect(Vec3.new(cx, cy, 0), RETICLE)
@@ -146,7 +145,7 @@ local chips: { [string]: Chip } = {
     machgun1 = {
         codes = { "A", "R", "T", "*" },
         element = "null", family = "cursor", class = "standard",
-        rarity = 0, mb = 12, damage = 30, hit_param = 30, lockout = 0,
+        rarity = 0, mb = 12, damage = 30, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         action = mach_gun(),
@@ -154,7 +153,7 @@ local chips: { [string]: Chip } = {
     machgun2 = {
         codes = { "E", "G", "S" },
         element = "null", family = "cursor", class = "standard",
-        rarity = 1, mb = 24, damage = 50, hit_param = 30, lockout = 0,
+        rarity = 1, mb = 24, damage = 50, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         action = mach_gun(),
@@ -162,7 +161,7 @@ local chips: { [string]: Chip } = {
     machgun3 = {
         codes = { "B", "F", "M" },
         element = "null", family = "cursor", class = "standard",
-        rarity = 2, mb = 36, damage = 70, hit_param = 30, lockout = 0,
+        rarity = 2, mb = 36, damage = 70, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         action = mach_gun(),

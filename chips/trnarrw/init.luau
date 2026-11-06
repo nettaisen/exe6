@@ -40,7 +40,7 @@ local SOUND_TWANG = asset.sound("twang")
 -- center, with the twang as it sets off after its wait.
 local ARROW = flying_shot.variant {
     collision = { is = collision.attack, hits = collision.hits_navis },
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     element = "aqua",
     spark = sparks.of_element(2),
     sprite = bow_sprite,
@@ -57,7 +57,7 @@ local ARROW = flying_shot.variant {
 local function arrow(me: Object, x: number, y: number, delay: number)
     local cx, cy = field.center(x, y)
     local _, az = me:attach_point(HAND)
-    local damage = me.attack_damage + me.hit_param * 0x10000
+    local damage = me.attack_word
     -- (The game passes the attack variables' address as the shot's word;
     -- an arrow doesn't read it.)
     local pos = Vec3.new(cx, int.i32(cy - 0x10000), int.shl(az, 16))
@@ -68,9 +68,8 @@ end
 local function draw(me: Object, s: State)
     if me.step_init == 0 then
         -- The Atk+ bonus goes into the attack's damage word.
-        local word = me.attack_damage + me.hit_param * 0x10000 + me.extra
-        me.attack_damage = bit32.band(word, 0xFFFF)
-        me.hit_param = bit32.rshift(word, 16)
+        local word = damage_word.plus(me.attack_word, me.extra)
+        me.attack_word = word
         local dir = me.facing
         local x, y = me.panel_x, me.panel_y
         local delay = 0x14
@@ -160,7 +159,7 @@ end
 local trnarrw1: Chip = {
     codes = { "A", "F", "K" },
     element = "aqua", family = "aqua", class = "standard",
-    rarity = 0, mb = 30, damage = 30, hit_param = 30, lockout = 0,
+    rarity = 0, mb = 30, damage = 30, counter = 30, lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -170,7 +169,7 @@ local trnarrw1: Chip = {
 local trnarrw2: Chip = {
     codes = { "G", "M", "Z" },
     element = "aqua", family = "aqua", class = "standard",
-    rarity = 1, mb = 36, damage = 40, hit_param = 30, lockout = 0,
+    rarity = 1, mb = 36, damage = 40, counter = 30, lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -180,7 +179,7 @@ local trnarrw2: Chip = {
 local trnarrw3: Chip = {
     codes = { "M", "S", "Y" },
     element = "aqua", family = "aqua", class = "standard",
-    rarity = 2, mb = 42, damage = 50, hit_param = 30, lockout = 0,
+    rarity = 2, mb = 42, damage = 50, counter = 30, lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).

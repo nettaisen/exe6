@@ -25,7 +25,7 @@ local function look(me: Object): number
     local side = me.alliance
     -- object_getEnemyDirection, the other way.
     local toward = -(1 - 2 * side)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     local n = 0
     local ahead = 1
     while true do
@@ -92,7 +92,7 @@ function force.instant(user: Object, spec: InstantChipSpec)
     if o then
         o.element = spec.element
         o.related1 = user
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         o.alliance, o.flip = user.alliance, user.flip
     end
 end

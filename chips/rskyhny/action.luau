@@ -43,7 +43,7 @@ function action.action(spec: HoneySpec): Action
     -- `sub_80EDE4A`: a bee on the panel ahead, with the attack's damage
     -- word (bonus included); the hive opens.
     local function release_bee(me: Object)
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         bee.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, spec.bee, damage)
         local hive = me.overlay
         if hive then

@@ -79,7 +79,7 @@ end
 -- do) and on the next panel if it is solid; then go.
 local function splash_down(me: Object)
     battle.play_sound(SOUND_SPOUT_BALL)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     local x, y = me.panel_x, me.panel_y
     -- r3 (1 << 8, then 0 << 8) becomes each splash's Z.
     local s = me.state :: State
@@ -143,7 +143,7 @@ function ball.spawn(owner: Object, x: number, y: number, element: number, what: 
         s.cracks = what.cracks == true
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

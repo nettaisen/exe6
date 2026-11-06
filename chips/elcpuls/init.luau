@@ -20,14 +20,14 @@ local elcpuls1: Chip = {
     rarity = 0,
     mb = 32,
     damage = 100,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.elcpuls1 },
     slot_in_limit = 3,
     action = action.action {
         id = "elcpuls1/action",
-        pulse = pulse.variant { hit_mod = 1, status = statuses.paralyze_90, ticks = TICKS, palette = 1 },
+        pulse = pulse.variant { hit_mod = { flinch = true }, status = statuses.paralyze_90, ticks = TICKS, palette = 1 },
         hold = HOLD,
     },
 }
@@ -40,14 +40,14 @@ local elcpuls2: Chip = {
     rarity = 1,
     mb = 36,
     damage = 120,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.elcpuls1 },
     slot_in_limit = 3,
     action = action.action {
         id = "elcpuls2/action",
-        pulse = pulse.variant { hit_mod = 0x51, status = nil, ticks = TICKS, palette = 2 },
+        pulse = pulse.variant { hit_mod = { flinch = true, forward = true, drag = true }, status = nil, ticks = TICKS, palette = 2 },
         hold = SHORT_HOLD,
     },
 }
@@ -60,7 +60,7 @@ local elcpuls3: Chip = {
     rarity = 2,
     mb = 40,
     damage = 140,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.elcpuls1 },
@@ -68,7 +68,7 @@ local elcpuls3: Chip = {
     action = action.action {
         id = "elcpuls3/action",
         -- Its hits carry bug 0x18 with argument 1.
-        pulse = pulse.variant { hit_mod = 3, status = nil, ticks = TICKS, palette = 0, bug = 0x18, bug_arg = 1 },
+        pulse = pulse.variant { hit_mod = { flinch = true, flash = true }, status = nil, ticks = TICKS, palette = 0, bug = 0x18, bug_arg = 1 },
         hold = HOLD,
     },
 }
@@ -81,7 +81,7 @@ local destpuls: Chip = {
     rarity = 0,
     mb = 5,
     damage = 400,
-    hit_param = 10,
+    counter = 10,
     lockout = 20,
     flags = { "has_damage", "library" },
     beast = { lockon = lockon.elcpuls1 },
@@ -95,7 +95,7 @@ local destpuls: Chip = {
     action = action.action {
         id = "destpuls/action",
         -- Its hits carry the HP bug 0xF6.
-        pulse = pulse.variant { hit_mod = 0, status = statuses.paralyze_150, ticks = TICKS, palette = 3, bug = 0xF6 },
+        pulse = pulse.variant { hit_mod = {}, status = statuses.paralyze_150, ticks = TICKS, palette = 3, bug = 0xF6 },
         hold = HOLD,
     },
 }

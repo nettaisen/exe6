@@ -13,7 +13,7 @@ local tornado = {}
 local SPRITE = asset.sprite("tengu-tornado")
 
 -- Its hits: pushing, reaching nothing by its target; no spark.
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 local HIT_EVERY, TICKS = 0x0C, 0x1E
 
 -- `sub_80D05EC`: a hit on its panel.
@@ -27,8 +27,7 @@ local function hit(me: Object)
         hit_effect = nil,
         target = collision.nothing,
         self_type = collision.pushing,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
 end
@@ -114,7 +113,7 @@ function tornado.spawn(owner: Object, x: number, y: number, element: number, dam
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

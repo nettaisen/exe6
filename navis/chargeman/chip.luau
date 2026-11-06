@@ -106,7 +106,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = { formula = "navi_level", base = 30, per_level = 10 },
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "library", "variable_damage" },
     slot_in_limit = 1,

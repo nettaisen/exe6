@@ -31,9 +31,9 @@ return common.make {
     -- anything can hit (`sub_80D4870`: hit modifier 3).
     is = collision.own_object,
     hits = collision.hit_by_other_side_or_blockers,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     spark = sparks.plain,
-    set_down = { is = collision.neutral_body, hits = collision.everything, hit_mod = 3 },
+    set_down = { is = collision.neutral_body, hits = collision.everything, hit_mod = { flinch = true, flash = true } },
     landing_panel = "poison",
     landing_sound = asset.sound("panel-poison"),
     puff = effects.puff,

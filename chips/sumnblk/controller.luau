@@ -36,7 +36,7 @@ local function effect(me: Object)
         dimming_chips.done(me)
         return
     end
-    local word = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local word = me.damage_word
     navi.spawn(me, x, y, me.element, s.palette, int.u32(word + s.bonus))
     me.phase_init = 4
 end

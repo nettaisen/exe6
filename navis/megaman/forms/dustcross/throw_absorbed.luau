@@ -31,9 +31,8 @@ function throw_absorbed.take(navi: Object): boolean
     -- absorbed list's byte, kind | animation << 4, and the kind's sprite in
     -- the high half): the obstacle's look and animation.
     s.thrown_look, s.thrown_anim = look, anim
-    navi.attack_damage = DAMAGE
+    navi.attack_word = damage_word.of { amount = DAMAGE, counter = 0 }
     -- (The game sets the hit parameter to 0x94 and then clears it.)
-    navi.hit_param = 0
     navi.attack_element = 0
     navi.charged = 0
     navi.extra = 0

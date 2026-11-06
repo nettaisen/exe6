@@ -17,7 +17,7 @@ local HIGH = 0x10_0000
 -- The bullet (its row 3): a flash over the 3x3 around the panel found.
 -- Their gun, at the navi's attach point 11.
 local GUN = attachment.look { sprite = spreader_sprite, palette = 0, attach_point = 11 }
-local BULLET = bullet.variant { region = regions.square, hit_mod = 0, effect = effects.flash, sound = asset.sound("h-burst") }
+local BULLET = bullet.variant { region = regions.square, hit_mod = {}, effect = effects.flash, sound = asset.sound("h-burst") }
 
 local function spreadr(id: string): Action
     return spreader.action { id = id, gun = GUN, z = HIGH, bullet = BULLET }
@@ -31,7 +31,7 @@ local spreadr1: Chip = {
     rarity = 0,
     mb = 10,
     damage = 30,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.cannon },
@@ -47,7 +47,7 @@ local spreadr2: Chip = {
     rarity = 1,
     mb = 18,
     damage = 60,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.cannon },
@@ -63,7 +63,7 @@ local spreadr3: Chip = {
     rarity = 2,
     mb = 26,
     damage = 90,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.cannon },

@@ -23,7 +23,7 @@ local DROP_Z = 0xFF_0000
 -- The shots: bullets (the bullet's row 0x12: the panel found and the one
 -- behind it, staggering, paralyzing for 90 ticks), three of them 10 ticks
 -- apart, at one of four heights (`dword_80DF484`, in pixels).
-local SHOT = bullet.variant { region = regions.long, hit_mod = 1, effect = bullet.hit, single = true, status = statuses.paralyze_90 }
+local SHOT = bullet.variant { region = regions.long, hit_mod = { flinch = true }, effect = bullet.hit, single = true, status = statuses.paralyze_90 }
 local SHOTS, SHOT_TICKS = 3, 0xA
 local HEIGHTS = { [0] = 0x08, 0x10, 0x18, 0x20 }
 
@@ -32,7 +32,7 @@ local WAIT, LAND, FIRE, AIM_DOWN, LEAVE = 0, 4, 8, 0xC, 0x10
 
 -- `sub_80C6ADA` and `sub_801155A`: a shot at (x, y), `z` up.
 local function shot(me: Object, x: number, y: number, z: number)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     bullet.fire(me, x, y, z, SHOT, me.element, damage)
 end
 
@@ -191,7 +191,7 @@ function soldier.spawn(owner: Object, x: number, y: number, element: number, del
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true;
         (o.state :: State).delay = delay

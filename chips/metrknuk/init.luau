@@ -11,7 +11,7 @@ local chip: Chip = {
     element = "null", family = "break", class = "giga",
     -- The version whose saves hold it (rules/folder).
     version = "falzar",
-    rarity = 4, mb = 90, damage = 100, hit_param = 148, lockout = 0,
+    rarity = 4, mb = 90, damage = 100, counter = 20, cant_counter = true, lockout = 0,
     flags = { "dimming", "has_damage", "library" },
     slot_in_limit = 1,
     dimming = controller.hook,

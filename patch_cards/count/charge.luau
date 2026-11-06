@@ -24,7 +24,7 @@ local ANIM = 0x0F
 local SOUND = asset.sound("drip-shower")
 -- The attack: 20 damage, hit parameter 0x8A; the storm's ticks (the
 -- parameter word's second byte, 0x3C).
-local DAMAGE, HIT_PARAM, TICKS = 0x14, 0x8A, 0x3C
+local DAMAGE, COUNTER, TICKS = 0x14, 10, 0x3C
 -- The storm's Z: the register the counter window's setup leaves, the
 -- navi's collision data's address, whose fraction the storm's init keeps
 -- (compat compares the storm's Z by whole pixels: kinds.toml's
@@ -40,7 +40,7 @@ local function raise(me: Object, s: State)
     s.timer = TICKS
     s.sound = 0x10
     local x = bit32.bxor(me.alliance, 1) * 3 + 2
-    local damage = me.attack_damage + me.hit_param * 0x10000
+    local damage = me.attack_word
     dust_storm.spawn(me, x, 2, STORM_Z, 0, damage, { ticks = TICKS, tied = charge.action })
     me.step = BLOW
     me.step_init = 0
@@ -89,8 +89,7 @@ charge.action = new.action {
 
 -- `sub_801244A`.
 local function setup(navi: Object): Action
-    navi.attack_damage = DAMAGE
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = DAMAGE, counter = COUNTER, cant_counter = true }
     return charge.action
 end
 

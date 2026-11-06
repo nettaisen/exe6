@@ -35,19 +35,18 @@ local SOUND = asset.sound("tomahawk-man")
 
 -- The hits' counter byte, and the slash's element: Wood (the attack's
 -- element byte).
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 local WOOD = 4
 
 -- The slash's hit modifier, and its effect 16 pixels up.
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 12 }
 local SLASH_Z = 0x10_0000
 
 -- `sub_8012258`: 100 damage and 20 more per point of buster Attack (up to
 -- 5).
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x64, 0x14)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x64, 0x14), counter = COUNTER, cant_counter = true }
     navi.attack_element = WOOD
     local s = navi:action_state(charge.action) :: State
     s.raise, s.recover = RAISE_TICKS, RECOVER_TICKS
@@ -68,8 +67,7 @@ local function slash(me: Object)
         hit_effect = nil,
         target = collision.nothing,
         self_type = collision.slash,
-        damage = bit32.band(word, 0xFFFF),
-        stamina = bit32.rshift(word, 16),
+        damage = word,
         hit_mod = HIT_MOD,
     })
     local cx, cy = field.center(x, y)

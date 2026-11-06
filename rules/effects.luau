@@ -16,15 +16,22 @@ return {
     hit_marker_steps = { weakness = 18, bug = 18 },
     bubble_pop_steps = 5,
     retype = "is_and_hits",
+    -- The damage word's flag bits of the game's own (the engine's, 0x8000, doubles the damage), which its
+    -- reading below and content name.
+    damage_word_bits = {
+        paralysis = 0x4000,
+        uninstall = 0x2000,
+        hp_bug = 0x1000,
+    },
     -- Its damage words (`sub_8019F44`): the damage the low 11 bits, doubled with 0x8000; then 0x4000 the paralysis with a
     -- flinch, then 0x2000 bug code 0xF8 and no more, else 0x1000 bug code 0xF7, each code's high byte the target lookup's
     -- row offset (what the lookup left in r1).
     damage_word = {
         damage = 0x7FF,
         flags = {
-            { bit = 0x4000, status = "damage_word_paralysis", hit_modifier = 1 },
-            { bit = 0x2000, bug = 0xF8, bug_high_row = true, stop = true },
-            { bit = 0x1000, bug = 0xF7, bug_high_row = true },
+            { flag = "paralysis", status = "damage_word_paralysis", hit_modifier = { flinch = true } },
+            { flag = "uninstall", bug = 0xF8, bug_high_row = true, stop = true },
+            { flag = "hp_bug", bug = 0xF7, bug_high_row = true },
         },
     },
     palette_flash = "mode_runs_through_pause",

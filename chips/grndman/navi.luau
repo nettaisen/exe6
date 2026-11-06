@@ -129,9 +129,8 @@ local function hit(me: Object)
         hit_effect = sparks.breaking,
         target = collision.hits_navis,
         self_type = collision.thrown_break,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -186,7 +185,7 @@ local function drop_rock(me: Object)
         local i = int.tmod(battle.rng_positive(), #found)
         local rx, ry = panels.x(found[i + 1]), panels.y(found[i + 1])
         s.rock_x, s.rock_y = rx, ry
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         rock.drop(me, rx, ry, me.element, damage, ROCK, 0)
     end
     me.panel_x, me.panel_y = x, y

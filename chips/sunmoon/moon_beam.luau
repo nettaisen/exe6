@@ -24,11 +24,11 @@ local ANIM = 4
 -- How far ahead of its panel it stands (whole pixels).
 local AHEAD = 0x28
 -- The uninstall's damage word (its flag alone), and the hits' modifiers.
-local UNINSTALL, UNINSTALL_HIT_MOD, HIT_MOD = 0x2000, 0, 3
+local UNINSTALL, UNINSTALL_HIT_MOD, HIT_MOD = 0x2000, {}, { flinch = true, flash = true }
 
 -- A hit on the panel three columns ahead that resolves while dimmed
 -- (`sub_80C53A6`).
-local function hit(me: Object, self_type: CollisionType, damage: number, hit_mod: number)
+local function hit(me: Object, self_type: CollisionType, damage: number, hit_mod: HitModifier)
     local box = battle.hitbox(me, {
         panel_x = me.panel_x + me.facing * 3,
         panel_y = me.panel_y,
@@ -38,8 +38,7 @@ local function hit(me: Object, self_type: CollisionType, damage: number, hit_mod
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = self_type,
-        damage = bit32.band(damage, 0xFFFF),
-        stamina = bit32.rshift(damage, 16),
+        damage = damage,
         hit_mod = hit_mod,
     })
     if box then
@@ -74,7 +73,7 @@ local function shine(me: Object)
     end
     local t = s.ticks + 1
     s.ticks = if t >= 8 then 0 else t
-    hit(me, collision.breaking_drain, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), HIT_MOD)
+    hit(me, collision.breaking_drain, me.damage_word, HIT_MOD)
     local left = me.timer - 1
     me.timer = left
     if left <= 0 then
@@ -140,7 +139,7 @@ function moon_beam.spawn(owner: Object, x: number, y: number, element: number, d
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

@@ -23,14 +23,14 @@ local APPEAR_SOUND, SHOT_SOUND = asset.sound("col-army"), asset.sound("col-army-
 -- Its collision: an object of its side that the other side's attacks,
 -- objects and bodies (and blockers) reach; hit modifier 3; the plain
 -- spark.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The other side's navis (by its own side), for its facing
 -- (`off_80C9F64`, `off_8109784`).
 local NAVIS = "enemy_body"
 -- The shots: bullets (the bullet's row 0x11: the panel found and the one
 -- behind it, staggering, paralyzing for 150 ticks), three of them 10 ticks
 -- apart, at one of four heights (`dword_80C9E84`, in pixels).
-local SHOT = bullet.variant { region = regions.long, hit_mod = 1, effect = bullet.hit, single = true, status = statuses.paralyze_150 }
+local SHOT = bullet.variant { region = regions.long, hit_mod = { flinch = true }, effect = bullet.hit, single = true, status = statuses.paralyze_150 }
 local SHOTS, SHOT_TICKS = 3, 0xA
 local HEIGHTS = { [0] = 0x08, 0x10, 0x18, 0x20 }
 local WAIT_TICKS, SHOW_AT = 0x30, 0x1E
@@ -88,7 +88,7 @@ end
 
 -- `sub_80C6ADA` and `sub_801155A`: a shot at (x, y), `z` up.
 local function shot(me: Object, x: number, y: number, z: number)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     bullet.fire(me, x, y, z, SHOT, me.element, damage)
 end
 
@@ -222,7 +222,7 @@ local function spawn(user: Object, x: number, y: number, element: number, damage
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.related1 = user
         o.run_while_dimmed = true
     end

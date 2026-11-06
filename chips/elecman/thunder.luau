@@ -28,7 +28,7 @@ local SPRITE = asset.sprite("lightning")
 local SOUND_BEAST_OVER_BURST = asset.sound("beast-over-burst")
 -- The hit modifier of its own hit and of the hits around it, and their
 -- status.
-local HIT_MOD, AROUND_HIT_MOD, AROUND_STATUS = 3, 1, statuses.paralyze_150
+local HIT_MOD, AROUND_HIT_MOD, AROUND_STATUS = { flinch = true, flash = true }, { flinch = true }, statuses.paralyze_150
 
 -- Its actions.
 local WARN, STRIKE = 0, 4
@@ -101,8 +101,7 @@ local function hit_around(me: Object)
             hit_effect = sparks.elec,
             target = collision.hits_navis,
             self_type = collision.thrown,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = AROUND_HIT_MOD,
             status = AROUND_STATUS,
         })
@@ -208,7 +207,7 @@ function thunder.spawn(owner: Object, x: number, y: number, element: number, wha
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         local s = o.state :: State

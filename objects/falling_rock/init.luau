@@ -23,7 +23,7 @@ falling_rock.kind = falling.make_kind {
     gravity = 0x2000,
     is = collision.thrown_break,
     hits = collision.hits_navis,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     spark = sparks.plain,
     puff = effects.puff,
     chips = chip,

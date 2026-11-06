@@ -50,7 +50,7 @@ local hit_sparks_sprite = asset.sprite("hit-sparks")
 local HITS = { is = collision.attack, hits = collision.hits_navis }
 local SHOT = flying_shot.variant {
     collision = HITS,
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.charged,
     sprite = SHOT_SPRITE,
@@ -59,7 +59,7 @@ local SHOT = flying_shot.variant {
 }
 local VOLLEY_SHOT = flying_shot.variant {
     collision = HITS,
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.charged,
     sprite = SHOT_SPRITE,
@@ -95,8 +95,7 @@ local REPEATS = 8
 -- NaviCust's buster-shot program in the attack's first parameter, which
 -- neither Beast buster reads.)
 function falzar_beast_buster.beast_setup(navi: Object, over: string, volleys: Volleys)
-    navi.attack_damage = math.min(navi:buster_damage(), 5)
-    navi.hit_param = 0
+    navi.attack_word = damage_word.of { amount = math.min(navi:buster_damage(), 5), counter = 0 }
     navi.attack_element = 0
     navi.charged = 0
     navi.extra = 0
@@ -170,7 +169,7 @@ local function shoot(me: Object, s: State)
             z += me.pos.z
         end
         -- The damage word plus the bonus.
-        local damage = int.u32(me.attack_damage + bit32.lshift(me.hit_param, 16) + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         shoot_volley(me, s, falls, z, damage)
         me.attack_count = 2
         local cycle = s.cycle + 1

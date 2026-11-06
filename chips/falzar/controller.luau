@@ -87,7 +87,7 @@ end
 -- (no bonus). (The spawner's Z register holds 0x100, the word's Param2
 -- byte as it was built.)
 local function send_feather(me: Object, x: number, y: number)
-    local word = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local word = me.damage_word
     feather.spawn(me, x, y, me.element, word, true, 0x100)
 end
 
@@ -127,7 +127,7 @@ local function send(me: Object)
     if me.phase_init == 0 then
         me.phase_init = 4
         local user = me.related1 :: Object
-        local word = int.u32(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)) + s.bonus)
+        local word = damage_word.plus(me.damage_word, s.bonus)
         for _, p in PIECES do
             summon.spawn(me, user, me.panel_x, me.panel_y, me.element, word, p.leads, p.anims, p.anims * 0x100)
         end

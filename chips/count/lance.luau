@@ -31,7 +31,7 @@ local WAITING_HEIGHT = 0x1000
 
 -- How long the strike lasts; its hit modifier.
 local STRIKE_TICKS = 0x1E
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- Its actions.
 local WARN, STRIKE = 0x0, 0x4
@@ -184,7 +184,7 @@ function lance.spawn(owner: Object, x: number, y: number, element: number, damag
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         local s = o.state :: State

@@ -66,7 +66,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.piercing_break, collision.hits_navis, 1)
+    me:setup_collision(collision.piercing_break, collision.hits_navis, { flinch = true })
     me.collision:set_hit_effect(SPARK)
     me.collision.status_base = STATUS
     me.collision:set_region(nil)
@@ -188,7 +188,7 @@ function laser.spawn(turret: Object, x: number, y: number, aim: number, slot: nu
     turret.state.segments[slot] = o
     o.panel_x, o.panel_y = x, y
     o.element = turret.element
-    o:set_damage_word(bit32.bor(turret.damage, bit32.lshift(turret.stamina, 16)))
+    o.damage_word = turret.damage_word
     o.alliance, o.flip = turret.alliance, turret.flip
     s.aim = aim
     o.run_while_dimmed = true

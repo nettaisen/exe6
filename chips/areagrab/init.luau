@@ -7,7 +7,7 @@ local grab = require("../lib/grab/controller")
 local chip: Chip = {
     codes = { "B", "F", "S", "*" },
     element = "null", family = "null", class = "standard",
-    rarity = 1, mb = 8, damage = 10, hit_param = 138, lockout = 0,
+    rarity = 1, mb = 8, damage = 10, counter = 10, cant_counter = true, lockout = 0,
     flags = { "dimming", "standard_library", "library" },
     slot_in_limit = 1,
     dimming = grab.area,

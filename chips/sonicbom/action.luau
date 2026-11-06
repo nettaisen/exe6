@@ -57,7 +57,7 @@ function sonicbom.action(id: string, boom: SonicBoom, charged: Charged?): Action
             me.step_init = 4
         end
         if s.timer == THROW_TICK then
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             sonic_boom.throw(me, me.panel_x + me.facing, me.panel_y, me.attack_element, damage, boom)
         end
         local t = s.timer - 1

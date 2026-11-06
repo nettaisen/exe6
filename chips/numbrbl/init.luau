@@ -13,7 +13,8 @@ local chip: Chip = {
     rarity = 4,
     mb = 69,
     damage = { formula = "hp_last_digits" },
-    hit_param = 138,
+    counter = 10,
+    cant_counter = true,
     lockout = 0,
     flags = {
         "dimming",

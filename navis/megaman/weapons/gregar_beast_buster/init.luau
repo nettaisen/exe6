@@ -65,7 +65,7 @@ local function shoot(me: Object, s: State)
         battle.play_sound(SOUND)
         local r = bit32.band(battle.rng_positive(), 3)
         local z = HEIGHTS[r] * 0x10000
-        local damage = int.u32(me.attack_damage + bit32.lshift(me.hit_param, 16) + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         -- `sub_800FAAC`: the projectile from the panel in front. (The
         -- game's spawner also stores what the caller left in r2, the
         -- bonus's low byte, as its element, which the projectile's init

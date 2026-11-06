@@ -9,7 +9,7 @@ local chips: { [string]: Chip } = {
     golmhit1 = {
         codes = { "I", "K", "Y" },
         element = "null", family = "break", class = "standard",
-        rarity = 0, mb = 17, damage = 140, hit_param = 30, lockout = 20,
+        rarity = 0, mb = 17, damage = 140, counter = 30, lockout = 20,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         instant = golem.instant { palette = 0 },
@@ -17,7 +17,7 @@ local chips: { [string]: Chip } = {
     golmhit2 = {
         codes = { "D", "P", "U" },
         element = "null", family = "break", class = "standard",
-        rarity = 1, mb = 27, damage = 190, hit_param = 30, lockout = 20,
+        rarity = 1, mb = 27, damage = 190, counter = 30, lockout = 20,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         instant = golem.instant { palette = 1 },
@@ -25,7 +25,7 @@ local chips: { [string]: Chip } = {
     golmhit3 = {
         codes = { "H", "M", "V" },
         element = "null", family = "break", class = "standard",
-        rarity = 2, mb = 37, damage = 250, hit_param = 30, lockout = 20,
+        rarity = 2, mb = 37, damage = 250, counter = 30, lockout = 20,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         instant = golem.instant { palette = 2 },

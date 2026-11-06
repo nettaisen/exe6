@@ -46,7 +46,7 @@ local COLUMN = { { 0, 0 }, { 0, -1 }, { 0, 1 } }
 local ROW = { { 0, 0 }, { 1, 0 }, { -1, 0 } }
 -- Each panel's hit (`dword_80BB5F4`): thrown, hitting navis, hit modifier
 -- 3, a heavy spark.
-local HIT_IS, HIT_HITS, HIT_MOD = collision.thrown, collision.hits_navis, 3
+local HIT_IS, HIT_HITS, HIT_MOD = collision.thrown, collision.hits_navis, { flinch = true, flash = true }
 
 -- `sub_800D5F0`: how many panels of column `x` aren't `side`'s.
 local function foreign_panels(x: number, side: number): number
@@ -135,8 +135,7 @@ local function shoot(me: Object, s: State)
             hit_effect = sparks.heavy,
             target = HIT_HITS,
             self_type = HIT_IS,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = HIT_MOD,
         })
         if h then

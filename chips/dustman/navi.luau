@@ -118,7 +118,7 @@ end
 -- every 20 ticks, until 20 more ticks than pieces have passed.
 local function throw(me: Object)
     local s = me.state :: State
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     if me.phase == 0 then
         me.phase = 4
         junk_ball.spawn(me, me.panel_x, me.panel_y, me.element, damage, true)

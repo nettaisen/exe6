@@ -141,7 +141,7 @@ local function fire(me: Object, s: State)
     -- on the way sets it).
     local d = me.facing
     local z = if s.highlighted then s.y else battle.loop_register()
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     for _, p in { { s.x, s.y }, { s.x + d, s.y }, { s.x + d, s.y + 1 }, { s.x, s.y + 1 } } do
         if field.solid(p[1], p[2]) then
             heat_flame.spawn(me, p[1], p[2], FIRE, FLAME, damage, Vec3.new(p[2], FIRE, z))

@@ -7,7 +7,7 @@ local gauge_speed = require("../lib/gauge_speed/controller")
 local chip: Chip = {
     codes = { "E", "M", "R", "*" },
     element = "null", family = "null", class = "standard",
-    rarity = 2, mb = 48, damage = 0, hit_param = 0, lockout = 0,
+    rarity = 2, mb = 48, damage = 0, counter = 0, lockout = 0,
     flags = { "dimming", "standard_library", "library" },
     slot_in_limit = 1,
     dimming = gauge_speed.fast,

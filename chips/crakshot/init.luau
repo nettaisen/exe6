@@ -45,7 +45,7 @@ local function dig(region: Region): Action
             local dir = me.facing
             -- The damage word (the hit parameter in its high half), plus
             -- the Atk+ bonus.
-            local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+            local damage = damage_word.plus(me.attack_word, me.extra)
             local x, y = me.panel_x + dir, me.panel_y
             for _, p in region.panels or {} do
                 shot.spawn(me, x + dir * p[1], y + p[2], me.attack_element, damage, CENTERS)
@@ -88,7 +88,7 @@ local chips: { [string]: Chip } = {
     crakshot = {
         codes = { "A", "G", "T", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 0, mb = 4, damage = 60, hit_param = 30, lockout = 0,
+        rarity = 0, mb = 4, damage = 60, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -98,7 +98,7 @@ local chips: { [string]: Chip } = {
     dublshot = {
         codes = { "C", "R", "U", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 1, mb = 8, damage = 60, hit_param = 30, lockout = 0,
+        rarity = 1, mb = 8, damage = 60, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -108,7 +108,7 @@ local chips: { [string]: Chip } = {
     trplshot = {
         codes = { "J", "L", "V", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 2, mb = 12, damage = 100, hit_param = 30, lockout = 0,
+        rarity = 2, mb = 12, damage = 100, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).

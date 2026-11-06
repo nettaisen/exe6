@@ -33,7 +33,7 @@ local ROLL, BURST = 0, 4
 
 -- Its hit: a thrown attack that breaks, at navis, with the breaking
 -- spark.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- `sub_80DB6D4`: in front of its panel, on the ground.
 local function init(me: Object)
@@ -124,8 +124,7 @@ local function hit(me: Object)
         hit_effect = sparks.breaking,
         target = collision.hits_navis,
         self_type = collision.thrown_break,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
     if box and (me.state :: State).while_dimmed then
@@ -209,7 +208,7 @@ function junk_ball.spawn(owner: Object, x: number, y: number, element: number, d
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

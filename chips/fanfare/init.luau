@@ -24,7 +24,7 @@ end
 local chip: Chip = {
     codes = { "P", "S", "Z", "*" },
     element = "null", family = "summon", class = "standard",
-    rarity = 1, mb = 20, damage = 0, hit_param = 0, lockout = 0,
+    rarity = 1, mb = 20, damage = 0, counter = 0, lockout = 0,
     flags = { "dimming", "standard_library", "library" },
     slot_in_limit = 3,
     -- `byte_80D4078` row 0.

@@ -31,7 +31,7 @@ local chip: Chip = {
     rarity = 2,
     mb = 32,
     damage = 160,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.widesht },
@@ -40,7 +40,7 @@ local chip: Chip = {
     action = slash.action {
         id = "aquaswrd/action",
         blade = AQUA_BLADE,
-        hit = { region = regions.wide, collision = parts.slashes_navis, hit_mod = 3 },
+        hit = { region = regions.wide, collision = parts.slashes_navis, hit_mod = { flinch = true, flash = true } },
         effect = WIDE_SLASH,
         effect_palette = 2,
         sound = parts.swing,

@@ -112,7 +112,7 @@ end
 
 -- 0x080C4490: the whirlwind on the panel in front, with its damage word.
 local function blow(me: Object)
-    local word = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local word = me.damage_word
     tornado.spawn(me, me.panel_x + me.facing, me.panel_y, me.element, word, WHIRLWIND_TICKS)
 end
 
@@ -236,7 +236,7 @@ function summon.spawn(
     o.element = element
     o.related1 = user
     o.alliance, o.flip = user.alliance, user.flip
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.leads, s.anims = leads, anims
     s.controller = controller

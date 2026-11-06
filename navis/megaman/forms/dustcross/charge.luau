@@ -18,15 +18,13 @@ local charge = {}
 local SHOOT, RECOVER = 0x0, 0x4
 
 -- Break (secondary element 0x10), and the hit's counter byte.
-local BREAK, HIT_PARAM = 0x10, 0x94
-
+local BREAK, COUNTER = 0x10, 20
 local SOUND = asset.sound("junk-shot")
 
 -- `sub_8011F64`: 50 damage and 10 more per point of buster Attack (up to 5)
 -- (`sub_8012642`), Break.
 local function setup(navi: Object): Action
-    navi.attack_damage = 0x32 + 10 * math.min(navi:buster_damage(), 5)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = 0x32 + 10 * math.min(navi:buster_damage(), 5), counter = COUNTER, cant_counter = true }
     navi.attack_element = BREAK
     navi.charged = 0
     navi.extra = 0
@@ -47,7 +45,7 @@ local function shoot(me: Object, s: State)
         s.timer = 0
     end
     if s.timer == 1 then
-        local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+        local damage = me.attack_word
         junk_ball.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, damage)
     end
     s.timer += 1

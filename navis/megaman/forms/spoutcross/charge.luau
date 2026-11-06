@@ -24,17 +24,15 @@ local SHOT = spreader.action {
     -- The water cannon, at the navi's attach point 25.
     gun = attachment.look { sprite = water_cannon_sprite, palette = 0, attach_point = 25 },
     z = 0,
-    bullet = bullet.variant { region = regions.long, hit_mod = 3, effect = bullet.splash, sound = bullet.splash_sound },
+    bullet = bullet.variant { region = regions.long, hit_mod = { flinch = true, flash = true }, effect = bullet.splash, sound = bullet.splash_sound },
 }
 
 -- The attack's element (Aqua) and hit parameter.
-local AQUA, HIT_PARAM = 2, 0x94
-
+local AQUA, COUNTER = 2, 20
 -- `sub_8011C5E`.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x14, 0x0A)
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x14, 0x0A), counter = COUNTER, cant_counter = true }
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
     navi.attack_element = AQUA
     return SHOT
 end

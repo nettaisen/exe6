@@ -52,7 +52,7 @@ function flame.spawn(owner: Object, x: number, y: number, element: number, damag
         s.cracks, s.anim, s.on_panel = spec.cracks or false, spec.anim or 0, spec.on_panel or false
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end
@@ -63,7 +63,7 @@ end
 -- left, with one spread less, and this one's owner.
 local function spread_to(me: Object, x: number, y: number)
     local s = me.state :: State
-    local damage = me.damage + me.stamina * 0x10000
+    local damage = me.damage_word
     local spec: Spec = { ticks = s.ticks, spread = s.spread, cracks = s.cracks, anim = s.anim, on_panel = s.on_panel }
     local o = flame.spawn(me, x, y, me.element, damage, spec)
     if o then
@@ -154,7 +154,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, 3)
+    me:setup_collision(collision.thrown, collision.hits_navis, { flinch = true, flash = true })
     local c = me.collision
     c:set_region(regions.single)
     c:set_hit_effect(sparks.fire)

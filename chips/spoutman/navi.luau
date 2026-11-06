@@ -80,7 +80,7 @@ local function countdown(me: Object, ticks: number): boolean
 end
 
 local function damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    return me.damage_word
 end
 
 -- `sub_80B954C`: he appears with his layer; 6 ticks; on to standing, or

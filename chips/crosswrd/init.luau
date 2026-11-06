@@ -24,14 +24,14 @@ local CHARGED = slashes.slash {
 local chip: Chip = {
     codes = { "E", "L", "S", "*" },
     element = "null", family = "sword", class = "special",
-    rarity = 0, mb = 8, damage = 80, hit_param = 30, lockout = 0,
+    rarity = 0, mb = 8, damage = 80, counter = 30, lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.crosswrd },
     action = slash.action {
         blade = parts.blade,
-        hit = { region = regions.x, collision = parts.slashes_navis, hit_mod = 3 },
+        hit = { region = regions.x, collision = parts.slashes_navis, hit_mod = { flinch = true, flash = true } },
         effect = CROSS_SLASH,
         sound = parts.swing,
         second_hit = slash.CROSS_HIT,

@@ -8,7 +8,7 @@ local panel_chips = require("../lib/panel_chips/controller")
 local chip: Chip = {
     codes = { "*" },
     element = "null", family = "null", class = "standard",
-    rarity = 1, mb = 14, damage = 0, hit_param = 0, lockout = 0,
+    rarity = 1, mb = 14, damage = 0, counter = 0, lockout = 0,
     flags = { "dimming", "standard_library", "library" },
     extra_flags = { "free_slot_in" },
     slot_in_limit = 1,

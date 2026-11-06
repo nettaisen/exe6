@@ -24,14 +24,13 @@ local SLASH_TICKS, RECOVER_TICKS = 0xF, 0x1E
 
 -- The hits' counter byte, and the waves' element: Null (the attack's
 -- element byte).
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 local NULL = 0
 
 -- `sub_8012228`: 10 damage and 10 more per point of buster Attack (up to
 -- 5).
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0xA, 0xA)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0xA, 0xA), counter = COUNTER, cant_counter = true }
     navi.attack_element = NULL
     return charge.action
 end

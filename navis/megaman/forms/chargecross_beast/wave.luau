@@ -22,8 +22,7 @@ local wave = {}
 local WIND_UP, RECOVER = 0x0, 0x4
 
 -- Fire, the hit's counter byte.
-local FIRE, HIT_PARAM = 1, 0x9E
-
+local FIRE, COUNTER = 1, 30
 local SOUND = asset.sound("ground-beast-dash-2")
 
 -- How high the wave rolls, 16.16.
@@ -39,8 +38,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = weapon.charge_damage(navi, 0x46, 0x1E)
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x46, 0x1E), counter = COUNTER, cant_counter = true }
     navi.attack_element = FIRE
     return wave.action
 end
@@ -57,9 +55,8 @@ local function field_hit(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.guard_breaking,
-        damage = 0,
-        stamina = 0,
-        hit_mod = 0,
+        damage = damage_word.of { amount = 0, counter = 0 },
+        hit_mod = {},
         status = FIELD_STATUS,
     })
 end
@@ -85,7 +82,7 @@ local function wind_up(me: Object, s: State)
         return
     end
     me:set_animation(0x13)
-    local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+    local damage = me.attack_word
     charge_wave.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, damage, WAVE_Z)
     battle.play_sound(SOUND)
     s.timer = 0x32

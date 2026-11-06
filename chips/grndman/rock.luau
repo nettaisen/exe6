@@ -160,7 +160,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown_break, collision.hits_navis, 3)
+    me:setup_collision(collision.thrown_break, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_hit_effect(sparks.breaking)
     me.collision:set_region(nil)
     me.collision:present()
@@ -198,7 +198,7 @@ function rock.drop(owner: Object, x: number, y: number, element: number, damage:
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         local s = o.state :: State

@@ -44,7 +44,7 @@ local function blow(spec: Blow): Action
         if s.timer == BLOW_AT then
             -- The damage word (the hit parameter in its high half), plus
             -- the Atk+ bonus.
-            local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+            local damage = damage_word.plus(me.attack_word, me.extra)
             star.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, damage, spec.speed, spec.palette)
             battle.play_sound(SOUND_STAR)
         end
@@ -85,7 +85,7 @@ local chips: { [string]: Chip } = {
     bblstar1 = {
         codes = { "B", "E", "T" },
         element = "aqua", family = "aqua", class = "standard",
-        rarity = 0, mb = 30, damage = 60, hit_param = 30, lockout = 0,
+        rarity = 0, mb = 30, damage = 60, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -95,7 +95,7 @@ local chips: { [string]: Chip } = {
     bblstar2 = {
         codes = { "C", "L", "V" },
         element = "aqua", family = "aqua", class = "standard",
-        rarity = 1, mb = 38, damage = 80, hit_param = 30, lockout = 0,
+        rarity = 1, mb = 38, damage = 80, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -105,7 +105,7 @@ local chips: { [string]: Chip } = {
     bblstar3 = {
         codes = { "G", "R", "S" },
         element = "aqua", family = "aqua", class = "standard",
-        rarity = 2, mb = 46, damage = 100, hit_param = 30, lockout = 0,
+        rarity = 2, mb = 46, damage = 100, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).

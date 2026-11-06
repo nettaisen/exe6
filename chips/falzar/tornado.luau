@@ -26,7 +26,7 @@ local SPRITE = asset.sprite("whirlwind")
 -- Forty pixels ahead of its panel.
 local AHEAD = 0x28_0000
 -- Its hits' modifier.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- A blow's hits (`off_80DF2CC`, three entries of eight bytes each, an
 -- entry's second byte zero when it has none): panels ahead, and the
@@ -51,8 +51,7 @@ local function blow(me: Object, n: number)
             hit_effect = sparks.heavy,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = HIT_MOD,
         })
         if o then
@@ -136,7 +135,7 @@ function tornado.spawn(owner: Object, x: number, y: number, element: number, dam
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         ;(o.state :: State).ticks = ticks

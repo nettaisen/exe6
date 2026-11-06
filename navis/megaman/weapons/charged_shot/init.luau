@@ -40,7 +40,7 @@ function charged_shot.setup(navi: Object): Action
     if battle.emotion(side) == "worn_out" then
         base = 1
     end
-    navi.attack_damage = base * 10
+    navi.attack_word = damage_word.with_damage(navi.attack_word, base * 10)
     -- The projectile: the charged-shot program's (a projectile variant the
     -- navi's stats name) on a lucky draw, else the plain charged shot. (A
     -- program that is the plain charged shot draws nothing.)

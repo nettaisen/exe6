@@ -59,11 +59,10 @@ function buster.setup(navi: Object): Action
     elseif shot == "charged" then
         return charged_shot.setup(navi)
     end
-    navi.attack_damage = navi:buster_damage()
+    navi.attack_word = damage_word.of { amount = navi:buster_damage(), counter = 0 }
     navi.attack_element = 0
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
     navi.attack_lockout = 0
     -- The buster-shot program (a projectile variant the navi's stats
     -- name), on a lucky draw: 1 in 8 for one that says it is rare (the
@@ -85,7 +84,7 @@ end
 -- panel, looking as the obstacle does.
 local THROWN = flying_shot.variant {
     collision = { is = collision.breaking, hits = collision.hits_navis },
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     element = "null",
     secondary = { "break" },
     spark = sparks.breaking,

@@ -15,7 +15,7 @@ local function energy_throw(): Action
         held_anim = 2,
         thrower = bomb.thrower(bomb.variant {
             collision = { is = collision.thrown, hits = collision.hits_navis },
-            hit_mod = 1,
+            hit_mod = { flinch = true },
             palette = 0,
             anim = 3,
             after = burst.leave,
@@ -27,7 +27,7 @@ local chips: { [string]: Chip } = {
     energbom = {
         codes = { "C", "K", "V", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 1, mb = 11, damage = 40, hit_param = 10, lockout = 0,
+        rarity = 1, mb = 11, damage = 40, counter = 10, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -37,7 +37,7 @@ local chips: { [string]: Chip } = {
     megenbom = {
         codes = { "G", "M", "O", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 2, mb = 27, damage = 60, hit_param = 10, lockout = 0,
+        rarity = 2, mb = 27, damage = 60, counter = 10, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).

@@ -220,9 +220,8 @@ local function dive(me: Object)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.thrown,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 3,
+            damage = me.damage_word,
+            hit_mod = { flinch = true, flash = true },
         })
         if box then
             box.run_while_dimmed = true
@@ -324,7 +323,7 @@ function sunmoon.summon(user: Object, controller: Object, spec: NaviChipSpec): O
     end
     o.panel_x, o.panel_y = spec.panel_x, spec.panel_y
     o.element = spec.element
-    o:set_damage_word(spec.damage)
+    o.damage_word = spec.damage
     o.related1 = user
     local s = o.state :: State
     s.controller = controller

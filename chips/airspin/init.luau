@@ -10,7 +10,7 @@ local chips: { [string]: Chip } = {
     airspin1 = {
         codes = { "F", "G", "R" },
         element = "null", family = "wind", class = "standard",
-        rarity = 1, mb = 22, damage = 50, hit_param = 10, lockout = 0,
+        rarity = 1, mb = 22, damage = 50, counter = 10, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         action = action.action { whirlwind = top.sender(0, 2) },
@@ -18,7 +18,7 @@ local chips: { [string]: Chip } = {
     airspin2 = {
         codes = { "A", "L", "T" },
         element = "null", family = "wind", class = "standard",
-        rarity = 2, mb = 29, damage = 50, hit_param = 10, lockout = 0,
+        rarity = 2, mb = 29, damage = 50, counter = 10, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         action = action.action { whirlwind = top.sender(4, 3) },
@@ -26,7 +26,7 @@ local chips: { [string]: Chip } = {
     airspin3 = {
         codes = { "N", "O", "T" },
         element = "null", family = "wind", class = "standard",
-        rarity = 3, mb = 36, damage = 50, hit_param = 10, lockout = 0,
+        rarity = 3, mb = 36, damage = 50, counter = 10, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         action = action.action { whirlwind = top.sender(8, 4) },

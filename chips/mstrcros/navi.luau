@@ -209,9 +209,8 @@ local function hit(me: Object, x: number, y: number, z: number, region: Region)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -265,7 +264,7 @@ end
 -- leader's panel with his damage word, his acting flag set.
 local function bring(me: Object, entry: Entry, i: number): Object?
     local s = me.state :: State
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     local spec = { panel_x = me.panel_x, panel_y = me.panel_y, element = entry.element, damage = damage }
     local o = navi_chips.spawn(mstrcros.kind, me, spec, 0)
     if not o then
@@ -553,7 +552,7 @@ local function beam(me: Object)
     local s = me.state :: State
     if me.phase_init == 0 then
         me.anim = 0xF
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         local ray = erase_ray.spawn(me, me.panel_x + me.facing, me.panel_y, me.element, 0, { ahead = 0x3C_0000, held = true }, damage)
         if ray then
             ray.run_while_dimmed = true
@@ -581,7 +580,7 @@ local function drill_out(me: Object)
     if me.phase_init == 0 then
         me.anim = 0xA
         attachment.attach(me, DRILL_ARM, "held", { anim = 1, while_dimmed = true })
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         local d = drill.spawn(me, me.element, 0x10_0000, damage, { ticks = 0x1E, light = true }, "child")
         if d then
             d.run_while_dimmed = true

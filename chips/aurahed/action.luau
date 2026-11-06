@@ -67,7 +67,7 @@ function action.action(spec: AuraHeadSpec): Action
                 far = what.far,
             }
         end
-        local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+        local damage = damage_word.plus(me.attack_word, me.extra)
         head.spawn(me, me.panel_x, me.panel_y, me.attack_element, what, damage)
         s.timer = if streaming(s) then STREAM_TICKS else RECOIL_TICKS
         me.vel = Vec3.new(RECOIL_SPEED, me.vel.y, me.vel.z)

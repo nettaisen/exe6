@@ -42,7 +42,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.breaking, collision.hits_navis, 3)
+    me:setup_collision(collision.breaking, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_hit_effect(sparks.breaking)
     me.collision:present()
     me:set_lifecycle("update")
@@ -126,7 +126,7 @@ function junk.throw(owner: Object, x: number, y: number, element: number, damage
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         (o.state :: State).look = look

@@ -14,7 +14,7 @@ local fist = require("../firehit/fist")
 local ELEMENT = 1
 local DAMAGE = 0x64
 -- The fists' hit modifier.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- `sub_8011EAC`: its effect is the weapon's `instant`, which the instant
 -- chips' action runs.

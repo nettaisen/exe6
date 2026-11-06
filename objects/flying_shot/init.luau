@@ -251,7 +251,7 @@ function flying_shot.launch(owner: Object, pos: Vec3, shot: FlyingShot): Object?
         s.palette = shot.palette or 0
         s.obstacle = shot.obstacle
         s.obstacle_anim = shot.obstacle_anim or 0
-        o:set_damage_word(shot.damage)
+        o.damage_word = shot.damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

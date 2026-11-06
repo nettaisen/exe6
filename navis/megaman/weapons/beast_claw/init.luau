@@ -27,8 +27,7 @@ local SLASH, RECOVER = 0x0, 0x4
 local CLAW_ANIM = 0x0C
 
 -- The hit's counter byte.
-local HIT_PARAM = 0x9E
-
+local COUNTER = 30
 -- Per slash, first and second (by 2 - slashes): the slash effect
 -- (`byte_80EF606`), the hit's region (`byte_80EF5FC`'s records: the panel
 -- and the one ahead, then the column) and hit modifier (`byte_80EF604`),
@@ -39,7 +38,7 @@ local LOOKS = {
     [1] = new.effect { sprite = CLAWS, anim = 0, palette = 0, steps = 11 },
 }
 local REGIONS = { [0] = regions.long, [1] = regions.wide }
-local HIT_MODS = { [0] = 1, [1] = 3 }
+local HIT_MODS: { [number]: HitModifier } = { [0] = { flinch = true }, [1] = { flinch = true, flash = true } }
 local FIRST_SOUND, SECOND_SOUND = asset.sound("beast-claw"), asset.sound("beast-claw-2")
 
 -- The hit: no spark, an attack at navis.
@@ -51,8 +50,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = weapon.charge_damage(navi, 0x32, 0xA)
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x32, 0xA), counter = COUNTER, cant_counter = true }
     navi.attack_element = 0
     navi.attack_count = 2
     return beast_claw.action
@@ -103,8 +101,7 @@ local function slash(me: Object, s: State)
         hit_effect = HIT_EFFECT,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.attack_damage,
-        stamina = me.hit_param,
+        damage = me.attack_word,
         hit_mod = hit_mod,
     })
 end

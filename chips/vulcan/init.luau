@@ -11,11 +11,11 @@ local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 
 -- The Vulcans' bullet (the bullet's row 0xC): the panel found and the one
 -- behind it, staggering, its hit shown once at the bullet.
-local SHOT = bullet.variant { region = regions.long, hit_mod = 1, effect = bullet.hit, single = true }
+local SHOT = bullet.variant { region = regions.long, hit_mod = { flinch = true }, effect = bullet.hit, single = true }
 -- SuprVulc's (row 0x10): the same, its hit brighter.
 local SUPER_SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 1, steps = 10 },
     single = true,
 }
@@ -24,7 +24,7 @@ local chips: { [string]: Chip } = {
     vulcan1 = {
         codes = { "B", "D", "S", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 0, mb = 5, damage = 10, hit_param = 10, lockout = 0,
+        rarity = 0, mb = 5, damage = 10, counter = 10, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -34,7 +34,7 @@ local chips: { [string]: Chip } = {
     vulcan2 = {
         codes = { "D", "F", "L" },
         element = "null", family = "null", class = "standard",
-        rarity = 1, mb = 18, damage = 15, hit_param = 10, lockout = 0,
+        rarity = 1, mb = 18, damage = 15, counter = 10, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -44,7 +44,7 @@ local chips: { [string]: Chip } = {
     vulcan3 = {
         codes = { "A", "G", "R" },
         element = "null", family = "null", class = "standard",
-        rarity = 2, mb = 30, damage = 20, hit_param = 10, lockout = 0,
+        rarity = 2, mb = 30, damage = 20, counter = 10, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -54,7 +54,7 @@ local chips: { [string]: Chip } = {
     suprvulc = {
         codes = { "V" },
         element = "null", family = "null", class = "standard",
-        rarity = 3, mb = 75, damage = 20, hit_param = 4, lockout = 0,
+        rarity = 3, mb = 75, damage = 20, counter = 4, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).

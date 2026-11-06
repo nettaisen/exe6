@@ -240,7 +240,7 @@ local function fire(me: Object)
     local n = s.sent
     local p = s.targets[n + 1]
     local x, y = panels.x(p), panels.y(p)
-    meteor.spawn(me, x, y, 1, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), true)
+    meteor.spawn(me, x, y, 1, me.damage_word, true)
     n += 1
     s.sent = n
     if n >= s.count then
@@ -255,7 +255,7 @@ end
 local function aqua(me: Object)
     if me.phase_init == 0 then
         me.phase_init = 4
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         for dy = -1, 1 do
             local x, y = me.panel_x + me.facing, me.panel_y + dy
             -- r3 (1 << 16) becomes the ice's Z.
@@ -297,7 +297,7 @@ local function wood(me: Object)
     if field.solid(x, y) then
         -- r3, left by the solidity check (`_object_getPanelDataOffset`),
         -- becomes its Z: the row minus 1.
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         grown = vine.spawn(me, x, y, 4, damage, y - 1)
     end
     if not grown then
@@ -329,7 +329,7 @@ local function elec(me: Object)
         return
     end
     local n = s.sent
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     bolt.spawn(me, me.panel_x + me.facing * 3, n + 1, 3, damage)
     n += 1
     s.sent = n

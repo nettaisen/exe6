@@ -24,7 +24,7 @@ local EXE6: ThunderBallLook = {
     big_steps = { flight = 14, burst = 5 },
     is = collision.attack,
     target = collision.hits_navis,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     spark = sparks.elec,
     sound = asset.sound("erase-man-2"),
 }

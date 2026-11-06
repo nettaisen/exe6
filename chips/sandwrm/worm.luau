@@ -47,7 +47,7 @@ local EMERGE_SOUND, DIVE_SOUND = asset.sound("sand-worm"), asset.sound("sand-wor
 local REQUIRE = "on_field"
 local FORBID: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
 -- Its collision: a thrown attack that hits navis, hit modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The arc's length (`byte_80DEA50`) and the holes' timers (`byte_80DEA70`),
 -- the same for every level.
 local LENGTH = 0x10
@@ -296,7 +296,7 @@ function worm.spawn(
         o.related1 = owner
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         local s = o.state :: State
         s.palette = palette

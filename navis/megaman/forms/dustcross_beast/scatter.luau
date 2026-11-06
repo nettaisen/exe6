@@ -27,8 +27,7 @@ local scatter = {}
 local RISE, THROW, LAND = 0x0, 0x4, 0x8
 
 -- Break (secondary element 0x10), the hit's counter byte.
-local BREAK, HIT_PARAM = 0x10, 0x9E
-
+local BREAK, COUNTER = 0x10, 30
 -- The rise: its first speed and acceleration, 16.16.
 local RISE_SPEED, RISE_ACCELERATION = 0x6000, 0x3000
 
@@ -49,8 +48,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = weapon.charge_damage(navi, 0x50, 0x14)
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x50, 0x14), counter = COUNTER, cant_counter = true }
     navi.attack_element = BREAK
     return scatter.action
 end
@@ -149,7 +147,7 @@ local function throw(me: Object, s: State)
     s.timer = 0xA
     local t = s.targets[me.attack_count]
     if t ~= 0 then
-        local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+        local damage = me.attack_word
         junk_shot.spawn(me, me.panel_x, me.panel_y, me.attack_element, damage, me.pos.z, t)
     end
     local throws = me.attack_count - 1

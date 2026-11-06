@@ -20,7 +20,7 @@ local CHARGED = slashes.slash {
 -- Its boom goes through (hit modifier 1). Charged in SlashCross it becomes
 -- the charged slash its record's bytes read as (subtype 1, first parameter
 -- 1): WideSwrd's after a dash.
-local ACTION = sonic.action("sprsonic/action", { hit_mod = 1, pierces = true }, { charged = CHARGED, step = true })
+local ACTION = sonic.action("sprsonic/action", { hit_mod = { flinch = true }, pierces = true }, { charged = CHARGED, step = true })
 
 local chip: Chip = {
     codes = { "E", "L", "S", "*" },
@@ -30,7 +30,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 8,
     damage = 80,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "library" },
     beast = { rush = false, lockon = lockon.sprsonic },

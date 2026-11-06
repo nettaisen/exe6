@@ -146,7 +146,7 @@ local function roll(me: Object)
         else
             x, y = me.panel_x + me.facing, me.panel_y
         end
-        wave.spawn(me, x, y, s.variant, me.damage + me.stamina * 0x10000, s.turned)
+        wave.spawn(me, x, y, s.variant, me.damage_word, s.turned)
         me.action = 4
     end
     local steps = s.variant.steps
@@ -228,7 +228,7 @@ local function init(me: Object)
         return
     end
     -- One that marks its panel breaks things too.
-    me:setup_collision(if v.panel == nil then collision.attack else collision.thrown, collision.hits_navis, 3)
+    me:setup_collision(if v.panel == nil then collision.attack else collision.thrown, collision.hits_navis, { flinch = true, flash = true })
     local c = me.collision
     c:set_region(regions.single)
     c:set_hit_effect(nil)
@@ -270,7 +270,7 @@ function wave.spawn(from: Object, x: number, y: number, variant: Variant, damage
         s.variant, s.turned = variant, turned or 0
         o.panel_x, o.panel_y = x, y
         o.element = 0
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = from.alliance, from.flip
         o.related1 = from
     end

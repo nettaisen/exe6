@@ -25,21 +25,20 @@ local SOUND = asset.sound("spin")
 
 -- The hits' counter byte, and the slash's element: Null (the attack's
 -- element byte).
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 local NULL = 0
 
 -- The slash: how far ahead, its hit's modifier, and its effect (the
 -- swords' wide slash in his color) 24 pixels up.
 local AHEAD = 2
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 6, steps = 13 }
 local SLASH_Z = 0x18_0000
 
 -- `sub_8012292`: 50 damage and 20 more per point of buster Attack (up to
 -- 5).
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x32, 0x14)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x32, 0x14), counter = COUNTER, cant_counter = true }
     navi.attack_element = NULL
     return charge.action
 end
@@ -57,8 +56,7 @@ local function slash(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.slash,
-        damage = link.damage(me),
-        stamina = link.stamina(me),
+        damage = link.damage_word(me),
         hit_mod = HIT_MOD,
     })
     local cx, cy = field.center(x, y)

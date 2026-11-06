@@ -32,7 +32,7 @@ local START = 0xC0_0000
 local SPEED, DIVE_TICKS = 0xC_0000, 0x10
 -- Its hit (0x0A050701): on its panel, an impact spark, thrown, with hit
 -- modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The landing's spark (effect 7) and the camera's shake.
 local SHAKE, SHAKE_TICKS = 2, 0x0F
 
@@ -49,8 +49,7 @@ local function hit(me: Object, s: State)
         hit_effect = sparks.impact,
         target = collision.hits_navis,
         self_type = collision.thrown,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
     if o and s.while_dimmed then
@@ -157,7 +156,7 @@ function feather.spawn(owner: Object, x: number, y: number, element: number, dam
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         ;(o.state :: State).while_dimmed = while_dimmed

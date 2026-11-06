@@ -10,7 +10,7 @@ local sparks = require("../lib/sparks")
 local chip: Chip = {
     codes = { "G", "R", "T" },
     element = "fire", family = "fire", class = "standard",
-    rarity = 2, mb = 40, damage = 140, hit_param = 30, lockout = 0,
+    rarity = 2, mb = 40, damage = 140, counter = 30, lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     slot_in_limit = 3,
     -- No Beast rush; its lock-on mode (rules/lockon).
@@ -19,7 +19,7 @@ local chip: Chip = {
         dragon = dragon.variant {
             speed = 0x4_0000,
             palette = 0,
-            hit_mod = 3,
+            hit_mod = { flinch = true, flash = true },
             spark = sparks.fire,
             panel = false,
             delays = { 3, 6, 9, 12 },

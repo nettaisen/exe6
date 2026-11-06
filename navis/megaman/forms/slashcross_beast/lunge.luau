@@ -25,8 +25,7 @@ local lunge = {}
 local LEAVE, APPEAR, SLASH, RETURN, RECOVER = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- Sword (secondary element 0x80), the hit's counter byte.
-local SWORD, HIT_PARAM = 0x80, 0x9E
-
+local SWORD, COUNTER = 0x80, 30
 -- The lock-on searches: beside a target in the navi's row, and in the
 -- navi's row otherwise.
 local SAME_ROW, OWN_ROW = lockon.thunder, lockon.beast_lunge
@@ -43,8 +42,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = weapon.charge_damage(navi, 0x32, 0x1E)
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x32, 0x1E), counter = COUNTER, cant_counter = true }
     navi.attack_element = SWORD
     return lunge.action
 end
@@ -111,7 +109,7 @@ local function slash(me: Object, s: State)
         local x, y = me.panel_x + me.facing, me.panel_y
         local cx, cy = field.center(x, y)
         battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH_EFFECT)
-        local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+        local damage = me.attack_word
         lunge_slash.spawn(me, x, y, me.attack_element, damage)
         battle.hitbox(me, {
             panel_x = x,
@@ -122,9 +120,8 @@ local function slash(me: Object, s: State)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = me.attack_damage,
-            stamina = me.hit_param,
-            hit_mod = 3,
+            damage = me.attack_word,
+            hit_mod = { flinch = true, flash = true },
         })
         me:open_counter_window()
         battle.play_sound(SOUND)

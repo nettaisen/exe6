@@ -59,9 +59,8 @@ local function field_hit(me: Object)
         hit_effect = nil,
         target = collision.navi_target,
         self_type = collision.navi,
-        damage = 0,
-        stamina = 0,
-        hit_mod = 0,
+        damage = damage_word.of { amount = 0, counter = 0 },
+        hit_mod = {},
     })
 end
 
@@ -104,7 +103,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = { formula = "navi_level", base = 10, per_level = 10 },
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "library", "variable_damage" },
     slot_in_limit = 1,

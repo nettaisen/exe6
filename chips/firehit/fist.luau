@@ -25,13 +25,13 @@ fist.kind = common.make_kind("firehit/fist", EXE6)
 
 -- `sub_80CFDF2` and `sub_801155A`: a fist of `owner`'s on (x, y); of
 -- `kind`, EXE6's by default.
-function fist.spawn(owner: Object, x: number, y: number, element: number, z: number, hit_mod: number, damage: number, kind: Kind?): Object?
+function fist.spawn(owner: Object, x: number, y: number, element: number, z: number, hit_mod: HitModifier, damage: number, kind: Kind?): Object?
     return common.spawn(kind or fist.kind, owner, x, y, element, z, hit_mod, damage)
 end
 
 -- `sub_80CFE08`, instant chip effect 8: an `instant` hook whose fists (of
 -- `kind`, EXE6's by default) hit with modifier `hit_mod`.
-function fist.instant(hit_mod: number, kind: Kind?): (user: Object, spec: InstantChipSpec) -> ()
+function fist.instant(hit_mod: HitModifier, kind: Kind?): (user: Object, spec: InstantChipSpec) -> ()
     return common.instant(hit_mod, kind or fist.kind)
 end
 

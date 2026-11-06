@@ -25,8 +25,7 @@ local tackle = {}
 local WIND_UP, CHARGE, LAND = 0x0, 0x4, 0x8
 
 -- Fire, the hit's counter byte.
-local FIRE, HIT_PARAM = 1, 0x94
-
+local FIRE, COUNTER = 1, 20
 -- The charge's speed, 16.16, and its ticks: 120 pixels' worth, and one
 -- more (the game divides 0x780000 by the speed).
 local SPEED = 0xC_0000
@@ -44,7 +43,7 @@ local HIT_Z, EFFECT_Z = 0x18_0000, 0x10_0000
 local SOUND = asset.sound("iron-shell")
 -- Its hit: harder (hit modifier 3), with a fire spark; it reports in the
 -- marker word and ends after its first hit.
-local HIT = dash_hit.variant { hit_mod = 3, spark = sparks.fire, reports = true }
+local HIT = dash_hit.variant { hit_mod = { flinch = true, flash = true }, spark = sparks.fire, reports = true }
 
 -- The puff where it stops, and the dust it lands in.
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
@@ -53,8 +52,7 @@ local LANDING_DUST = new.effect { sprite = puff_sprite, anim = 1, palette = 0, s
 -- `sub_8011F44`: 30 damage and 20 more per point of buster Attack (up to
 -- 5), Fire.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x1E, 0x14)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x1E, 0x14), counter = COUNTER, cant_counter = true }
     navi.attack_element = FIRE
     navi.charged = 0
     navi.extra = 0
@@ -87,11 +85,11 @@ local function wind_up(me: Object, s: State)
     me.pos = Vec3.new(p.x, p.y + 0x1_0000, p.z)
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
     me:reserve_panel(me.panel_x, me.panel_y)
-    local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+    local damage = me.attack_word
     dash_hit.spawn(me, me.attack_element, damage, 0, HIT, HIT_Z)
     me.collision.self_damage = 0
     -- sub_8019F86(0)
-    me.collision.hit_mod_base = 0
+    me.collision.hit_mod_base = {}
     battle.play_sound(SOUND)
     -- object_setInvulnerableTime(0xFFFF)
     me.status_timers.invulnerable = 0xFFFF
@@ -178,7 +176,7 @@ local function land(me: Object, s: State)
     if battle.link() then
         me.collision.self_damage = 10
     end
-    me.collision.hit_mod_base = if battle.link() then 3 else 0
+    me.collision.hit_mod_base = if battle.link() then { flinch = true, flash = true } else {}
     me.collision:set_region(regions.single)
     me:exit_attack()
 end

@@ -192,7 +192,7 @@ function sword_wave.spawn(
         s.hidden = hidden == true
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end
@@ -227,7 +227,7 @@ function sword_wave.wave(v: {
     sprite: SpriteAsset,
     anim: number,
     palette: number?,
-    hit_mod: number?,
+    hit_mod: HitModifier?,
     status: Status?,
     reach: number?,
     animates: number?,

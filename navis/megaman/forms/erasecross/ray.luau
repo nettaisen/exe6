@@ -29,7 +29,7 @@ local PULL = thunder_column.variant {
     collision = { is = collision.piercing, hits = collision.hits_navis },
     spark = sparks.plain,
     region = regions.single,
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     status = nil,
     bug = 0,
     bug_arg = 0,
@@ -65,7 +65,7 @@ local MAX_ZONES = 5
 -- `sub_80D8F66`: a zone on (x, its row), with its timer and whether it
 -- runs while dimmed.
 local function lay(me: Object, x: number, slot: number)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     local z = thunder_column.spawn(me, x, me.panel_y, me.element, PULL, damage, me, slot + 1)
     if z then
         z.run_while_dimmed = me.run_while_dimmed
@@ -198,7 +198,7 @@ function erase_ray.spawn(owner: Object, x: number, y: number, element: number, z
         end
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.related1 = owner
         o.alliance, o.flip = owner.alliance, owner.flip
     end

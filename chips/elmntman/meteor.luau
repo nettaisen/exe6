@@ -61,9 +61,8 @@ local function hit(me: Object)
         hit_effect = sparks.fire,
         target = collision.hits_navis,
         self_type = collision.thrown,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box and (me.state :: State).while_dimmed then
         box.run_while_dimmed = true
@@ -147,7 +146,7 @@ function meteor.spawn(owner: Object, x: number, y: number, element: number, dama
         s.while_dimmed = while_dimmed
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

@@ -27,7 +27,7 @@ export type State = {
 
 -- `sub_8011504`: sprite `flash-bomb` with a ground shadow, animation 0.
 local SPRITE = asset.sprite("flash-bomb")
-local HIT_MOD, SET_HIT_MOD = 3, 3
+local HIT_MOD, SET_HIT_MOD = { flinch = true, flash = true }, { flinch = true, flash = true }
 local FLIGHT_TICKS, GRAVITY = 0x28, -0x3000
 -- What in its hits ends it at once: bodies, other bodies and neutral
 -- objects (0x0F800000).
@@ -69,7 +69,7 @@ end
 -- word `damage` (a paralyzing status, the original's 0x10..0x15, comes
 -- without the hit modifier).
 local function flash(me: Object, v: FlashBombVariant, status: Status, damage: number)
-    local hit_mod = if status.timer == "paralyze" then 0 else 1
+    local hit_mod = if status.timer == "paralyze" then {} else { flinch = true }
     if v.strong then
         damage = STRONG_DAMAGE
     end
@@ -85,8 +85,7 @@ local function flash(me: Object, v: FlashBombVariant, status: Status, damage: nu
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.piercing,
-        damage = bit32.band(damage, 0xFFFF),
-        stamina = bit32.rshift(damage, 16),
+        damage = damage,
         hit_mod = hit_mod,
         status = status,
     })
@@ -150,7 +149,7 @@ local function count_down(me: Object, v: FlashBombVariant)
     if me.timer == FLASH_AT then
         battle.palette_flash("two_layers", 6)
         battle.play_sound(SOUND_FLASH)
-        flash(me, v, v.status, int.u32(me.damage + me.stamina * 0x10000))
+        flash(me, v, v.status, me.damage_word)
     end
     local t = me.timer - 1
     me.timer = t
@@ -256,7 +255,7 @@ function flash_bomb.thrower(variant: FlashBombVariant): Thrower
                 s.target_x = user.panel_x + 3 * user.facing
                 s.target_y = user.panel_y
                 o.alliance, o.flip = user.alliance, user.flip
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 o.element = 0
                 o.related1 = user
             end

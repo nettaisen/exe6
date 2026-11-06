@@ -41,7 +41,7 @@ local function fire(me: Object)
     if t < FIRE_TICKS then
         return
     end
-    sower.spawn(me, me.panel_x + me.facing, me.panel_y, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), me)
+    sower.spawn(me, me.panel_x + me.facing, me.panel_y, me.damage_word, me)
     local gun = (me.state :: State).held
     if gun then
         gun.anim += 1

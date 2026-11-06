@@ -20,8 +20,7 @@ local drop_weapon = {}
 local RAISE, DROP, RECOVER = 0x0, 0x4, 0x8
 
 -- Cursor (secondary element 0x40), the hit's counter byte.
-local CURSOR, HIT_PARAM = 0x40, 0x9E
-
+local CURSOR, COUNTER = 0x40, 30
 local SOUND = asset.sound("justice-one")
 
 -- The navi raises its arms over 3 of its sprite's steps, and drops over
@@ -44,8 +43,7 @@ local FALL_TICKS = 3
 -- `sub_8011D20`: 70 damage and 30 more per point of buster Attack (up to
 -- 5), Cursor.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x46, 0x1E)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x46, 0x1E), counter = COUNTER, cant_counter = true }
     navi.attack_element = CURSOR
     return drop_weapon.action
 end
@@ -107,7 +105,7 @@ local function drop(me: Object, s: State)
     if tx == nil then
         tx, ty = me.panel_x + me.facing * 3, me.panel_y
     end
-    local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+    local damage = me.attack_word
     erase_drop.spawn(me, tx :: number, ty :: number, FALL_TICKS, damage)
     battle.play_sound(SOUND)
     s.timer = 0x14

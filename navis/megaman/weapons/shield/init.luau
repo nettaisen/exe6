@@ -69,8 +69,7 @@ local function raise(navi: Object, damage: number)
     navi.attack_element = 0
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
-    navi.attack_damage = damage
+    navi.attack_word = damage_word.of { amount = damage, counter = 0 }
     navi.attack_lockout = LOCKOUT
 end
 

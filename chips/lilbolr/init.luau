@@ -18,7 +18,7 @@ local chips: { [string]: Chip } = {
     lilbolr1 = {
         codes = { "F", "K", "L" },
         element = "null", family = "summon", class = "standard",
-        rarity = 0, mb = 18, damage = 100, hit_param = 30, lockout = 0,
+        rarity = 0, mb = 18, damage = 100, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         action = boiler_throw(0, 50),
@@ -26,7 +26,7 @@ local chips: { [string]: Chip } = {
     lilbolr2 = {
         codes = { "E", "M", "V" },
         element = "null", family = "summon", class = "standard",
-        rarity = 1, mb = 23, damage = 140, hit_param = 30, lockout = 0,
+        rarity = 1, mb = 23, damage = 140, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         action = boiler_throw(6, 70),
@@ -34,7 +34,7 @@ local chips: { [string]: Chip } = {
     lilbolr3 = {
         codes = { "G", "S", "Z" },
         element = "null", family = "summon", class = "standard",
-        rarity = 2, mb = 28, damage = 180, hit_param = 30, lockout = 0,
+        rarity = 2, mb = 28, damage = 180, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         action = boiler_throw(9, 90),

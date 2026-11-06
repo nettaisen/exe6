@@ -9,7 +9,7 @@ local chips: { [string]: Chip } = {
     sensor1 = {
         codes = { "J", "O", "W" },
         element = "elec", family = "elec", class = "standard",
-        rarity = 0, mb = 32, damage = 100, hit_param = 30, lockout = 0,
+        rarity = 0, mb = 32, damage = 100, counter = 30, lockout = 0,
         flags = { "dimming", "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         dimming = controller.hook { palette = 0, hp = 20 },
@@ -17,7 +17,7 @@ local chips: { [string]: Chip } = {
     sensor2 = {
         codes = { "N", "U", "Y" },
         element = "elec", family = "elec", class = "standard",
-        rarity = 1, mb = 35, damage = 130, hit_param = 30, lockout = 0,
+        rarity = 1, mb = 35, damage = 130, counter = 30, lockout = 0,
         flags = { "dimming", "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         dimming = controller.hook { palette = 3, hp = 30 },
@@ -25,7 +25,7 @@ local chips: { [string]: Chip } = {
     sensor3 = {
         codes = { "I", "K", "Q" },
         element = "elec", family = "elec", class = "standard",
-        rarity = 2, mb = 38, damage = 160, hit_param = 30, lockout = 0,
+        rarity = 2, mb = 38, damage = 160, counter = 30, lockout = 0,
         flags = { "dimming", "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         dimming = controller.hook { palette = 6, hp = 40 },

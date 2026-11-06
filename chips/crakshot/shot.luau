@@ -108,7 +108,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 1)
+    me:setup_collision(collision.attack, collision.hits_navis, { flinch = true })
     me.collision:set_hit_effect(sparks.charged)
     me.collision:present()
     me:set_lifecycle("update")
@@ -147,7 +147,7 @@ function shot.spawn(owner: Object, x: number, y: number, element: number, damage
         (o.state :: State).centers = centers
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

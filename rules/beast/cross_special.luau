@@ -97,7 +97,7 @@ local function special_chip(side: number, navi: Object, s: State): "nothing" | "
     navi.hit_param = bit32.bor(chip.hit_param or 0, 0x80)
     -- (The last rows' LifeSrd strikes with VarSwrd's damage.)
     if damage_of ~= nil then
-        navi.attack_damage = record_damage(damage_of)
+        navi.attack_word = damage_word.with_damage(navi.attack_word, record_damage(damage_of))
     end
     navi:start_chip_attack(chip, "unspent_chip")
     local beast = chip.beast

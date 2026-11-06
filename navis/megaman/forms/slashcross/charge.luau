@@ -44,8 +44,7 @@ local DASH, COUNT, SLASH, RETURN, FINISH = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- The charged shot's attack: Sword (secondary element 0x80) and its hit
 -- parameter.
-local SWORD, HIT_PARAM = 0x80, 0x94
-
+local SWORD, COUNTER = 0x80, 20
 -- The panels a dash may end on (`sub_8015B00`, two ahead): on the field
 -- (0x10000), with no body on it (0xF800000).
 local DASH_REQUIRE, DASH_FORBID = "on_field", "any_body"
@@ -121,8 +120,7 @@ local OWN = slashes.slash {
 -- `sub_8011CD6`: 60 damage and 20 more per point of buster Attack (up to
 -- 5), a Sword attack: the charge's own slash, no dash.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x3C, 0x14)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x3C, 0x14), counter = COUNTER, cant_counter = true }
     navi.attack_element = SWORD
     navi.extra = 0
     return slash_charge.begin(navi, OWN, false)
@@ -195,7 +193,7 @@ local function slash(me: Object, s: State)
     if s.timer == WAVE_TICK then
         local slash = s.slash
         local x, y = me.panel_x + me.facing, me.panel_y
-        local damage = int.u32(bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16)) + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         sword_wave.spawn(me, slash.wave, x, y, me.attack_element, damage)
         if slash.hidden_wave then
             sword_wave.spawn(me, slash.hidden_wave, x, y, me.attack_element, damage, true)

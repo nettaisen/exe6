@@ -62,7 +62,7 @@ function action.action(spec: DollThunderSpec): Action
             step_held(me, 1)
             me.attack_count = HOLD_TICKS
             me.step_init = 4
-            local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+            local damage = damage_word.plus(me.attack_word, me.extra)
             -- (The game hands the doll the navi's attack variables as its
             -- slot; DolThdr's first parameter is 0, so it never registers.)
             doll.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, spec.ticks, damage, nil)

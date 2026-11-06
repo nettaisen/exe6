@@ -21,13 +21,12 @@ local charge = {}
 local WIND_UP, SWING, END = 0x0, 0x4, 0x8
 
 -- The hit parameter the setup gives the attack.
-local HIT_PARAM = 0x9E
-
+local COUNTER = 30
 local SOUND = asset.sound("tomahawk-man")
 
 -- The swing's hit: Wood, a slash at navis over two columns, no spark; the
 -- swipe effect.
-local WOOD, HIT_MOD = 4, 1
+local WOOD, HIT_MOD = 4, { flinch = true }
 local SWIPE = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 12 }
 
 -- The swing's tick (of its count down from 21) the hit lands on.
@@ -39,8 +38,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = weapon.charge_damage(navi, 0x28, 0x14)
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x28, 0x14), counter = COUNTER, cant_counter = true }
     return charge.action
 end
 
@@ -79,8 +77,7 @@ local function swing(me: Object, s: State)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = me.attack_damage,
-            stamina = me.hit_param,
+            damage = me.attack_word,
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(x, y)

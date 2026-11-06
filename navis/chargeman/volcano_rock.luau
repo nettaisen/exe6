@@ -30,7 +30,7 @@ local FLIGHT_TICKS, GRAVITY = 0x2D, -0x4000
 local BURSTS_ON: { PanelFlag } = { "solid", "enemy_object", "enemy_body", "enemy_other_body", "neutral" }
 
 -- Its burst's hit: a thrown attack at navis, fire spark, for 5 ticks.
-local HIT_TICKS, HIT_MOD = 5, 3
+local HIT_TICKS, HIT_MOD = 5, { flinch = true, flash = true }
 
 -- `sub_80D5D78`: on its thrower's panel, ahead and up; with a ground
 -- shadow.
@@ -65,8 +65,7 @@ local function hit(me: Object)
         hit_effect = sparks.fire,
         target = collision.hits_navis,
         self_type = collision.thrown,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
     if h then
@@ -152,7 +151,7 @@ function volcano_rock.spawn(owner: Object, x: number, y: number, element: number
         o.future_panel_x, o.future_panel_y = x, y
         o.panel_x, o.panel_y = owner.panel_x, owner.panel_y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

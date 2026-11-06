@@ -56,7 +56,7 @@ local MIN_HP = 3001
 -- Thrown at 0x2C000 a tick along the ground, falling 0x2800 a tick.
 local SPEED, GRAVITY = 0x2C000, -0x2800
 -- Its body's counter byte, its hit modifier.
-local COUNTER, HIT_MOD = 0x1E, 3
+local COUNTER, HIT_MOD = 0x1E, { flinch = true, flash = true }
 local SOUND_LAND, SOUND_HIT_BOMB = asset.sound("land"), asset.sound("hit-bomb-1")
 local SOUND_ERUPT, SOUND_STEAM = asset.sound("boiler-erupt"), asset.sound("boiler-steam")
 -- The eruption: its animation and the steam's; the ticks to the hit; the
@@ -64,7 +64,7 @@ local SOUND_ERUPT, SOUND_STEAM = asset.sound("boiler-erupt"), asset.sound("boile
 -- tick; its effect over the panels (effect 0x32).
 local ANIM_ERUPT, ANIM_STEAM = 5, 9
 local ERUPT_TICKS, HIT_TICK, STEAM_TICK = 0x20, 8, 0x14
-local AQUA, ERUPTION_HIT_MOD = 2, 3
+local AQUA, ERUPTION_HIT_MOD = 2, { flinch = true, flash = true }
 local ERUPTION = new.effect { sprite = SPRITE, anim = 10, palette = 0, steps = 20 }
 -- Its kind among absorbed obstacles.
 -- How it looks absorbed (the original's obstacle kind's sprite: its own).
@@ -220,7 +220,7 @@ local function erupt(me: Object)
             -- lifetime is clear.
             local t = me.timer2
             if t == HIT_TICK then
-                local word = int.u32(me.damage + me.stamina * 0x10000)
+                local word = me.damage_word
                 battle.hitbox(me, {
                     panel_x = me.panel_x,
                     panel_y = me.panel_y,
@@ -230,8 +230,7 @@ local function erupt(me: Object)
                     hit_effect = nil,
                     target = collision.hits_navis,
                     self_type = collision.attack,
-                    damage = bit32.band(word, 0xFFFF),
-                    stamina = bit32.rshift(word, 16),
+                    damage = word,
                     hit_mod = ERUPTION_HIT_MOD,
                 })
                 battle.region_effects(me.panel_x, me.panel_y, regions.ring, bit32.bxor(me.alliance, me.flip), ERUPTION, 0)
@@ -449,7 +448,7 @@ function boiler.thrower(palette: number, body_damage: number): Thrower
                 s.palette, s.body_damage = palette, body_damage
                 s.target_x = bit32.band(xy, 0xFF)
                 s.target_y = bit32.rshift(xy, 8)
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 o.alliance, o.flip = user.alliance, user.flip
                 if user.flip ~= 0 then
                     error("LilBoiler thrown by a flipped user: setFieldBattleObject_800F614 registers it far past the field-object registry")

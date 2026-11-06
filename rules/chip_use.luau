@@ -7,10 +7,16 @@
 return {
     leave_on_use = false,
     anti_navi_sparkle = { dy = 16, z = 32 },
+    -- A hand entry's marks of the game's own (the engine's, 0x01, the folder's Regular chip), which the
+    -- rules below and content name.
+    mark_bits = {
+        paralyze = 0x02,
+        uninstall = 0x04,
+    },
     -- What a hand entry's marks add to the damage word at the chip's use, by the mark's bit (`sub_8012C34`): 0x02
     -- (WhiCapsl folded in) its 0x4000, paralysis; 0x04 (Uninstll) its 0x2000. No mark heals.
-    mark_damage = { 0, 0x4000, 0x2000, 0, 0, 0, 0, 0 },
-    mark_heals = 0,
+    mark_damage = { paralyze = "paralysis", uninstall = "uninstall" },
+    mark_heals = {},
     -- Beat takes any Mega or Giga chip, dark or not.
     beat_spares_dark = false,
     -- A navi's idle, its attacks and a dimming's start hide the chip window on the navi's own console only

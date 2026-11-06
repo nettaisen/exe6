@@ -8,7 +8,7 @@ local plus = require("../lib/instant/plus")
 local chip: Chip = {
     codes = { "*" },
     element = "null", family = "plus", class = "standard",
-    rarity = 2, mb = 36, damage = 20, hit_param = 0, lockout = 20,
+    rarity = 2, mb = 36, damage = 20, counter = 0, lockout = 20,
     flags = { "standard_library", "library" },
     extra_flags = { "modifier" },
     slot_in_limit = 1,

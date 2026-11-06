@@ -126,7 +126,7 @@ local function setup(me: Object): boolean
     if not me:create_collision() then
         return false
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 0)
+    me:setup_collision(collision.attack, collision.hits_navis, {})
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     return true
 end
@@ -197,7 +197,7 @@ function star.spawn(
         s.speed, s.palette = speed, palette
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

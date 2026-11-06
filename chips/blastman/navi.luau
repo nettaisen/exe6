@@ -83,7 +83,7 @@ end
 -- `sub_80B903A`: a fire blast along each valid row of his three, from
 -- behind his side's edge toward the other.
 local function blast(me: Object)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     for dy = -1, 1 do
         local y = me.panel_y + dy
         if field.valid(me.panel_x, y) then

@@ -28,7 +28,7 @@ local SOUND_OK_8B = asset.sound("ok-8b")
 -- Its height (a halfword store over Z's whole part).
 local HEIGHT = 0x14
 -- Its own hit's modifier, and its wind-up hits'.
-local HIT_MOD, EARLY_HIT_MOD = 3, 1
+local HIT_MOD, EARLY_HIT_MOD = { flinch = true, flash = true }, { flinch = true }
 
 local SLASHMAN_WAVE = schema.record_type("slashman-wave")
 
@@ -95,8 +95,7 @@ local function hit(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = EARLY_HIT_MOD,
     })
 end
@@ -268,7 +267,7 @@ function wave.spawn(owner: Object, x: number, y: number, element: number, varian
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         local s = o.state :: State

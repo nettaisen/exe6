@@ -21,7 +21,7 @@ lance.kind = common.make_kind("lance/lance", {
 
 -- Lance's hit (`dword_80D25C8`'s row 0): one panel, the wood spark, an
 -- attack against attacks, hit modifier 0x51.
-local HIT = common.hit { is = collision.attack, hits = collision.attack, spark = sparks.wood, hit_mod = 0x51 }
+local HIT = common.hit { is = collision.attack, hits = collision.attack, spark = sparks.wood, hit_mod = { flinch = true, forward = true, drag = true } }
 
 -- Lance's: Param1 0.
 lance.instant = common.instant_of(lance.kind, 0, HIT)

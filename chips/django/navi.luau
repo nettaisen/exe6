@@ -83,7 +83,7 @@ local SMOKE_HEIGHT = 0x10_0000
 
 -- The hits: the ride's on his panel (a breaking attack), the slash's on
 -- the panel ahead (an attack); no spark; hit modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- The command, a key at a time (`word_80BD71C`, JP Falzar), with 60
 -- ticks from its first to put in the rest.

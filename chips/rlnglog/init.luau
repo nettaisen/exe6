@@ -13,7 +13,7 @@ local chips: { [string]: Chip } = {
     rlnglog1 = {
         codes = { "I", "K", "P" },
         element = "wood", family = "wood", class = "standard",
-        rarity = 0, mb = 14, damage = 50, hit_param = 30, lockout = 0,
+        rarity = 0, mb = 14, damage = 50, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -23,7 +23,7 @@ local chips: { [string]: Chip } = {
     rlnglog2 = {
         codes = { "E", "Q", "Z" },
         element = "wood", family = "wood", class = "standard",
-        rarity = 1, mb = 26, damage = 70, hit_param = 30, lockout = 0,
+        rarity = 1, mb = 26, damage = 70, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -33,7 +33,7 @@ local chips: { [string]: Chip } = {
     rlnglog3 = {
         codes = { "F", "N", "W" },
         element = "wood", family = "wood", class = "standard",
-        rarity = 2, mb = 38, damage = 90, hit_param = 30, lockout = 0,
+        rarity = 2, mb = 38, damage = 90, counter = 30, lockout = 0,
         flags = { "has_damage", "standard_library", "library" },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).

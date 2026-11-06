@@ -114,7 +114,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.hitbox, collision.hits_both_sides, 1)
+    me:setup_collision(collision.hitbox, collision.hits_both_sides, { flinch = true })
     local c = me.collision
     c:set_hit_effect(sparks.fire)
     c:set_region(nil)

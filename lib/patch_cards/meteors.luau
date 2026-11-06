@@ -23,7 +23,7 @@ local CAST, RECOVER = 0x0, 0x4
 -- The tick (timer value) the shower starts.
 local SHOWER_AT = 0x0D
 -- The attack: 30 damage, hit parameter 0x94.
-local DAMAGE, HIT_PARAM = 0x1E, 0x94
+local DAMAGE, COUNTER = 0x1E, 20
 -- Where the shower spawns: the registers the action leaves (`sub_80F00B0`'s
 -- address in X, 0 in Y, BattleState's address in Z, what the attack
 -- update's caller left). compat/games.toml has the X in the other ROMs.
@@ -40,7 +40,7 @@ local function cast(me: Object, s: State)
         me.step_init = 4
     end
     if s.timer == SHOWER_AT then
-        meteor_shower.spawn(me, AT, s.drops, me.attack_damage + me.hit_param * 0x10000)
+        meteor_shower.spawn(me, AT, s.drops, me.attack_word)
     end
     local t = s.timer - 1
     s.timer = t
@@ -85,8 +85,7 @@ function meteors.weapon(spec: { id: string, drops: number, charge_ticks: { numbe
         id = spec.id,
         charge_ticks = spec.charge_ticks,
         setup = function(navi: Object): Action
-            navi.attack_damage = DAMAGE
-            navi.hit_param = HIT_PARAM
+            navi.attack_word = damage_word.of { amount = DAMAGE, counter = COUNTER, cant_counter = true }
             local s = navi:action_state(meteors.action) :: State
             s.drops = spec.drops
             return meteors.action

@@ -162,7 +162,7 @@ function scanner.spawn(turret: Object, x: number, y: number, aim: number, stops_
     s.start_x, s.start_y = x, y
     s.aim, s.stops_at_objects = aim, stops_at_objects
     o.element = turret.element
-    o:set_damage_word(0)
+    o.damage_word = 0
     o.alliance, o.flip = turret.alliance, turret.flip
     o.run_while_dimmed = true
     return o

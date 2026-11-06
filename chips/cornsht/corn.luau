@@ -36,7 +36,7 @@ local BURSTS = 2
 -- goes on (Timer2: it counts down through both bursts, so it reaches 0
 -- once).
 local BURST_TICKS, SPREAD_TICKS = 0xC, 0xC
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 local EFFECT = new.effect { sprite = energy_burst_sprite, anim = 0, palette = 1, steps = 32 }
 local SOUND = asset.sound("hit-bomb-1")
 -- The other side's body on a panel (`off_80C6764`, by side).
@@ -77,7 +77,7 @@ end
 -- `sub_80C6774`: a corn of the next generation (a spreading burst) on each
 -- panel found, last first, unless one stands there.
 local function spread(me: Object, s: State)
-    local damage = int.u32(me.damage + me.stamina * 0x10000)
+    local damage = me.damage_word
     for i = s.count, 1, -1 do
         local p = s.spread[i]
         local x, y = panels.x(p), panels.y(p)
@@ -190,7 +190,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.probe, collision.hits_navis, 0)
+    me:setup_collision(collision.probe, collision.hits_navis, {})
     me.collision.element = 0
     me.collision:present()
     local s = me.state :: State
@@ -242,7 +242,7 @@ function corn.spawn(
         s.probe, s.spreads = probe, spreads
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

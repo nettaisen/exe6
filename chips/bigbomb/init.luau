@@ -11,7 +11,7 @@ local throw = require("../lib/bombs/throw")
 local chip: Chip = {
     codes = { "O", "P", "V" },
     element = "null", family = "null", class = "standard",
-    rarity = 3, mb = 32, damage = 140, hit_param = 30, lockout = 0,
+    rarity = 3, mb = 32, damage = 140, counter = 30, lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -21,7 +21,7 @@ local chip: Chip = {
         held_palette = 3,
         thrower = bomb.thrower(bomb.variant {
             collision = { is = collision.thrown, hits = collision.hits_navis },
-            hit_mod = 3,
+            hit_mod = { flinch = true, flash = true },
             palette = 3,
             anim = 1,
             blast = regions.square,

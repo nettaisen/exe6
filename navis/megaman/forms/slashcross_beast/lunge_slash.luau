@@ -15,7 +15,7 @@ local lunge_slash = {}
 local BODY: { HitName } = { "own_body", "enemy_body" }
 
 -- Its hit: a slash at navis, no spark.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- Done: its region, its collision, and the slot go.
 local function finish(me: Object)
@@ -89,7 +89,7 @@ function lunge_slash.spawn(owner: Object, x: number, y: number, element: number,
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
     end
     return o

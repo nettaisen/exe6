@@ -22,7 +22,7 @@ local PALETTE = 4
 -- Eight pixels up.
 local Z = 0x8_0000
 -- Its hit modifier.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- `sub_80DF132`: resolve its hits; a hit closes its region (it burns on
 -- without hitting); at the end of its time it goes.
@@ -97,7 +97,7 @@ function flame.spawn(owner: Object, x: number, y: number, element: number, damag
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         ;(o.state :: State).ticks = ticks

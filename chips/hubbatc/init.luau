@@ -53,7 +53,7 @@ local HUB_BATCH = navi_boost.change(function(me: Object)
         stats.undershirt = true
         -- sub_80107C0: bodies' hit modifier (3 in link battles); the body
         -- floats now (`sub_801A082`).
-        local hit_mod = if battle.link() then 3 else 0
+        local hit_mod = if battle.link() then { flinch = true, flash = true } else {}
         user:reset_collision_types(collision.floating_navi, collision.navi_target, hit_mod)
     end
     navi_boost.wait(me, LOG_IN_AT)
@@ -66,7 +66,7 @@ local chip: Chip = {
     element = "null", family = "null", class = "giga",
     -- The version whose saves hold it (rules/folder).
     version = "falzar",
-    rarity = 4, mb = 99, damage = 0, hit_param = 148, lockout = 0,
+    rarity = 4, mb = 99, damage = 0, counter = 20, cant_counter = true, lockout = 0,
     flags = { "dimming", "library" },
     slot_in_limit = 1,
     dimming = navi_boost.hook(HUB_BATCH),

@@ -17,7 +17,7 @@ local chip: Chip = {
     rarity = 2,
     mb = 19,
     damage = 60,
-    hit_param = 5,
+    counter = 5,
     lockout = 50,
     flags = { "has_damage", "standard_library", "library" },
     beast = { lockon = lockon.thunder },
