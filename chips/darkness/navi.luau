@@ -74,7 +74,7 @@ local AURA = attachment.look { sprite = dark_aura_sprite, palette = 0, attach_po
 -- through his own action 4), fire, 6 pixels up, by wave (`off_80BFD68`: the
 -- panels from his, dx toward the front); they last 0x5A ticks and 8 per
 -- wave still to come, then 8 once he is done.
-local FLAME_ELEMENT, FLAME_Z, FLAME_TICKS = 1, 0x6_0000, 0x5A
+local FLAME_ELEMENT, FLAME_Z, FLAME_TICKS = Element.fire, 0x6_0000, 0x5A
 -- Their look: flames (the pillar's first parameter 4: hit modifier 3, the
 -- fire spark).
 local FLAME_LOOK = element_pillar.look {
@@ -122,11 +122,6 @@ local function count(me: Object, ticks: number): number
         me.phase_init = 4
     end
     return tick_down(me)
-end
-
--- The game's flip value for his sprite.
-local function flip_of(me: Object): number
-    return bit32.bxor(me.alliance, me.flip)
 end
 
 -- `sub_80B8E70`: the held attachment's animation, from its start.
@@ -267,7 +262,7 @@ end
 local function bring_bass(me: Object)
     if me.phase_init == 0 then
         local damage = me.damage_word
-        local spec = { panel_x = me.panel_x, panel_y = me.panel_y, element = 0, damage = damage }
+        local spec = { panel_x = me.panel_x, panel_y = me.panel_y, element = Element.null, damage = damage }
         local bass = navi_chips.spawn(darkness.kind, me.related1 :: Object, spec, 0)
         if bass then
             bass.run_while_dimmed = true
@@ -304,18 +299,18 @@ local APPEAR_PHASES: { [number]: (me: Object) -> () } = { [0] = fade_in, [4] = a
 local function afterimages(me: Object, anim: number)
     local p = me.pos
     local at = Vec3.new(p.x, p.y - 0x10000, p.z - 0x10000)
-    local flip = flip_of(me)
+    local flip = me.facing_side
     battle.afterimage(me, at, {
         sprite = BASS_SPRITE,
         anim = 0x14 + anim,
-        flip = flip,
+        facing = flip,
         lifetime = AFTERIMAGE_TICKS,
         color_shader = AFTERIMAGE_SHADER,
     })
     battle.afterimage(me, at, {
         sprite = BASS_SPRITE,
         anim = anim,
-        flip = flip,
+        facing = flip,
         lifetime = AFTERIMAGE_TICKS,
         color_shader = AFTERIMAGE_SHADER,
         shadow = "ground",
@@ -417,7 +412,7 @@ local function slash(me: Object)
             box.run_while_dimmed = true
         end
         local cx, cy = field.center(x, y)
-        battle.effect(Vec3.new(cx, cy, 0x10_0000), BIG_SLASH, flip_of(me), 4)
+        battle.effect(Vec3.new(cx, cy, 0x10_0000), BIG_SLASH, me.facing_side, 4)
         battle.shake_camera(2, 0x28)
         battle.palette_flash("one_layer", 0x1E, true, false)
     end
@@ -532,7 +527,7 @@ local function init(me: Object)
     me:set_panel_from_coordinates()
     me.pos = Vec3.new(p.x, p.y, 0)
     me.visible = true
-    sprite:set_flip(flip_of(me))
+    sprite:face(me)
     if s.bass then
         me:add_parts(BASS, 1)
     else

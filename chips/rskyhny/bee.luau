@@ -122,7 +122,7 @@ local function destination(me: Object): (number, number)
     if x then
         return x, y
     end
-    return bit32.bxor(me.alliance, 1) * 7, 2
+    return battle.other_side(me.alliance) * 7, 2
 end
 
 -- `sub_80D3496`: one more turn taken; whether turns had run out.
@@ -175,8 +175,8 @@ local function steer(me: Object)
     local vx = me.vel.x
     if vx ~= 0 then
         local enemy_way = 1 - 2 * me.alliance
-        me.flip = if (enemy_way < 0) == (vx < 0) then 0 else 1
-        me.sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        me.flip = (enemy_way < 0) ~= (vx < 0)
+        me.sprite:face(me)
     end
 end
 
@@ -324,7 +324,7 @@ local function init(me: Object): boolean
         return false
     end
     me:setup_collision(HIT.is, HIT.hits, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me.collision:set_hit_effect(sparks.wood)
     sprite.palette = s.palette
@@ -361,8 +361,8 @@ bee.kind = new.kind {
 -- `damage`. It runs while dimmed (but stands still). Its position is the
 -- spawner's registers (the panel's row, the element and 16 pixels up)
 -- until its init places it; only the height lasts.
-function bee.spawn(owner: Object, x: number, y: number, element: number, what: HoneyBee, damage: number): Object?
-    local o = battle.spawn(bee.kind, Vec3.new(y, element, 0x10_0000))
+function bee.spawn(owner: Object, x: number, y: number, element: Element, what: HoneyBee, damage: number): Object?
+    local o = battle.spawn(bee.kind, Vec3.new(y, element.byte, 0x10_0000))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

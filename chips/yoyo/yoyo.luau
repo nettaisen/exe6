@@ -293,7 +293,7 @@ local function setup(me: Object): boolean
         return false
     end
     me:setup_collision(collision.slash, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     return true
 end
 
@@ -375,13 +375,13 @@ function yoyo.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     z: number,
     damage: number,
     spec: Spec,
     slot: YoyoSlot
 ): Object?
-    local o = battle.spawn(yoyo.kind, Vec3.new(y, element, z))
+    local o = battle.spawn(yoyo.kind, Vec3.new(y, element.byte, z))
     if o then
         local s = o.state :: State
         s.panels, s.rounds = spec.panels, spec.rounds
@@ -458,12 +458,12 @@ function yoyo.spawn_controller(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     z: number,
     damage: number,
     spec: Spec
 ): Object?
-    local o = battle.spawn(yoyo.controller, Vec3.new(y, element, z))
+    local o = battle.spawn(yoyo.controller, Vec3.new(y, element.byte, z))
     if o then
         local s = o.state :: ControllerState
         s.panels, s.rounds = spec.panels, spec.rounds
@@ -480,7 +480,7 @@ end
 -- first related object: YoYo's.
 function yoyo.one(spec: Spec): (me: Object, x: number, y: number, z: number, damage: number) -> Object?
     return function(me: Object, x: number, y: number, z: number, damage: number): Object?
-        return yoyo.spawn(me, x, y, 0, z, damage, spec, "related")
+        return yoyo.spawn(me, x, y, Element.null, z, damage, spec, "related")
     end
 end
 
@@ -488,7 +488,7 @@ end
 -- GreatYo's.
 function yoyo.three(spec: Spec): (me: Object, x: number, y: number, z: number, damage: number) -> Object?
     return function(me: Object, x: number, y: number, z: number, damage: number): Object?
-        return yoyo.spawn_controller(me, x, y, 0, z, damage, spec)
+        return yoyo.spawn_controller(me, x, y, Element.null, z, damage, spec)
     end
 end
 

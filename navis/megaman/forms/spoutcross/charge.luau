@@ -28,7 +28,7 @@ local SHOT = spreader.action {
 }
 
 -- The attack's element (Aqua) and hit parameter.
-local AQUA, COUNTER = 2, 20
+local AQUA, COUNTER = Element.aqua, 20
 -- `sub_8011C5E`.
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x14, 0x0A), counter = COUNTER, cant_counter = true }

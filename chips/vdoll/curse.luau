@@ -65,7 +65,7 @@ local function strike(me: Object, packed: number)
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.single,
         hit_effect = sparks.heavy,
@@ -92,7 +92,7 @@ local function effect(me: Object)
         -- the undim. Their panels marked for 60 ticks.
         if me.phase_init == 0 then
             local n = 0
-            for _, o in battle.alive_actors(bit32.bxor(me.alliance, 1)) do
+            for _, o in battle.alive_actors(battle.other_side(me.alliance)) do
                 n += 1
                 s.targets[n] = bit32.band(o.panel_x + o.panel_y * 0x10, 0xFF)
             end
@@ -164,7 +164,7 @@ function curse.spawn(doll: Object, damage: number): Object?
     local o = battle.spawn(curse.kind, Vec3.new(doll.panel_y, 0, 0))
     if o then
         o.panel_x, o.panel_y = doll.panel_x, doll.panel_y
-        o.element = 0
+        o.element = Element.null
         o.related1 = doll
         o.alliance = doll.alliance
         o.damage_word = damage

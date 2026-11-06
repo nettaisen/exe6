@@ -80,7 +80,7 @@ function guard.action(spec: ReflectorGuard): Action
             s.timer = 0
             return
         end
-        local blocked = bit32.btest(me.collision.guard_dirs, bit32.lshift(1, me.flip))
+        local blocked = me.collision:guarded_from(me.flip)
         if not spec.heedless and blocked then
             if me.collision:hit_any(BREAKS_GUARD) then
                 drop_shield(me)

@@ -45,7 +45,7 @@ local function init(me: Object)
     me.anim_loaded = 1
     sprite:set_animation(1)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -135,7 +135,7 @@ ball.kind = new.kind {
 -- `sub_80C86B0`: a ball from (x, y) with `element`, the damage word and
 -- what it is. (Its position is the spawner's registers, all of which its
 -- init overwrites.)
-function ball.spawn(owner: Object, x: number, y: number, element: number, what: WaterBall, damage: number): Object?
+function ball.spawn(owner: Object, x: number, y: number, element: Element, what: WaterBall, damage: number): Object?
     local o = battle.spawn(ball.kind, Vec3.zero)
     if o then
         local s = o.state :: State

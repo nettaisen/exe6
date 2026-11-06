@@ -35,7 +35,7 @@ local WIND_UP_TICKS, RECOVER_TICKS = 6, 10
 local BEAM_AHEAD = 0x50
 -- The hits: element 5, two panels ahead, a drain, 2 damage (4 in the
 -- sun).
-local ELEMENT, AHEAD = 5, 2
+local ELEMENT, AHEAD = Element.drain, 2
 local HIT = { is = collision.drain, hits = collision.hits_navis }
 local DAMAGE, SUN_DAMAGE = 2, 4
 

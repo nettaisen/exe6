@@ -22,6 +22,6 @@ return common.make {
     burst_on_fist = false,
     self_type = collision.thrown_break,
     target = collision.hits_navis,
-    spark = sparks.of_element(0),
+    spark = sparks.of_element(Element.null),
     ends_with_battle = false,
 }

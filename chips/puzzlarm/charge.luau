@@ -14,7 +14,7 @@ local statuses = require("../../rules/status")
 local puzzlarm = {}
 
 -- The attack's element byte: Elec.
-local ELEMENT = 3
+local ELEMENT = Element.elec
 local DAMAGE = 0x64
 -- The pulse's ticks; the navi holds it out 5 less.
 local TICKS = 0x3C

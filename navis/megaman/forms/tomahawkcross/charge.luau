@@ -26,7 +26,7 @@ local SOUND = asset.sound("tomahawk-man")
 
 -- The swing's hit: Wood, a slash at navis over two columns, no spark; the
 -- swipe effect.
-local WOOD, HIT_MOD = 4, { flinch = true }
+local WOOD, HIT_MOD = Element.wood, { flinch = true }
 local SWIPE = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 12 }
 
 -- The swing's tick (of its count down from 21) the hit lands on.
@@ -81,7 +81,7 @@ local function swing(me: Object, s: State)
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(x, y)
-        battle.effect(Vec3.new(cx, cy, 0x10_0000), SWIPE, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(cx, cy, 0x10_0000), SWIPE, me.facing_side)
     end
     local t = s.timer - 1
     s.timer = t

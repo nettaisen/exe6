@@ -31,7 +31,7 @@ return common.make {
     -- `sub_80C5F4A`: a panel strike running while dimmed (outlasting the
     -- battle's end).
     shoot = function(me: Object, x: number, y: number, damage: number)
-        panel_strike.spawn(me, x, y, 0, SHOT, damage, 0, true)
+        panel_strike.spawn(me, x, y, Element.null, SHOT, damage, 0, true)
     end,
     -- A shot's flash at his hand (effect 0x57).
     flash = new.effect { sprite = hit_sparks_sprite, anim = 8, palette = 0, steps = 4 },

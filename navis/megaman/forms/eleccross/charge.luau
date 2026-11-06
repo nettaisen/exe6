@@ -19,7 +19,7 @@ local charge = {}
 local THUNDER = dolthdr.action { id = "eleccross/charge/thunder", ticks = 0x0F, held = buster.arm, held_anim = 0x19 }
 
 -- The attack's element (Elec) and hit parameter.
-local ELEC, COUNTER = 3, 20
+local ELEC, COUNTER = Element.elec, 20
 -- `sub_8011C38`.
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x28, 0x14), counter = COUNTER, cant_counter = true }

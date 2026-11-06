@@ -28,7 +28,7 @@ local heat_beast_charge = {}
 local WIND_UP, BURN = 0x0, 0x4
 
 -- Fire (the attack's element) and the hits' counter byte.
-local FIRE, COUNTER = 1, 10
+local FIRE, COUNTER = Element.fire, 10
 -- The pillars: flames (the pillar's first parameter 0: hit modifier 3, the
 -- fire spark), 90 ticks, 4 once the navi stops, on the panel in front and
 -- the two columns past it.

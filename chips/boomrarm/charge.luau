@@ -11,7 +11,7 @@ local boomer_chips = require("../boomer")
 local charge = require("../../lib/navi_boost/charge")
 
 -- The attack's element byte: Wood.
-local ELEMENT = 4
+local ELEMENT = Element.wood
 local DAMAGE = 0x64
 
 -- `sub_8011F10`: its effect is the weapon's `instant`, which the instant

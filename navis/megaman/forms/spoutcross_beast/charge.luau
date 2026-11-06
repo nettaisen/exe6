@@ -19,7 +19,7 @@ local charge = {}
 local WIND_UP, HOLD = 0x0, 0x4
 
 -- Aqua (the attack's element) and the hits' counter byte.
-local AQUA, COUNTER = 2, 6
+local AQUA, COUNTER = Element.aqua, 6
 local SOUND_SURGE, SOUND_WATER = asset.sound("spout-beast-charge"), asset.sound("aqua-surge")
 
 -- The surge: 60 ticks, its region back every 12.

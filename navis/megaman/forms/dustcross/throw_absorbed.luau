@@ -33,7 +33,7 @@ function throw_absorbed.take(navi: Object): boolean
     s.thrown_look, s.thrown_anim = look, anim
     navi.attack_word = damage_word.of { amount = DAMAGE, counter = 0 }
     -- (The game sets the hit parameter to 0x94 and then clears it.)
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = 0

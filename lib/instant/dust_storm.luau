@@ -139,8 +139,8 @@ dust_storm.kind = new.kind {
 -- `damage`, blowing as `storm` says; it runs while dimmed. (It spawns at
 -- the registers' values, the row, the element and `z`, which its init
 -- replaces but for Z's fraction.)
-function dust_storm.spawn(user: Object, x: number, y: number, z: number, element: number, damage: number, storm_: Storm): Object?
-    local o = battle.spawn(dust_storm.kind, Vec3.new(y, element, z))
+function dust_storm.spawn(user: Object, x: number, y: number, z: number, element: Element, damage: number, storm_: Storm): Object?
+    local o = battle.spawn(dust_storm.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

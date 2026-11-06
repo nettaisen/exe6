@@ -186,7 +186,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
     tick(me)
 end
@@ -220,12 +220,12 @@ function geyser.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     what: Geyser,
     damage: number,
     z: number
 ): Object?
-    local o = battle.spawn(geyser.kind, Vec3.new(y, element, z))
+    local o = battle.spawn(geyser.kind, Vec3.new(y, element.byte, z))
     if o then
         local s = o.state :: State
         s.while_dimmed = what.while_dimmed == true

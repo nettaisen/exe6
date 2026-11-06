@@ -33,7 +33,7 @@ local function hit(me: Object, self_type: CollisionType, damage: number, hit_mod
     local box = battle.hitbox(me, {
         panel_x = me.panel_x + me.facing * 3,
         panel_y = me.panel_y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.single,
         hit_effect = nil,
@@ -105,7 +105,7 @@ local function init(me: Object)
     sprite:set_animation(ANIM)
     sprite:step()
     sprite.shadow = "with_sprite"
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x + me.facing * AHEAD * 0x10000, p.y, 0)
@@ -135,7 +135,7 @@ moon_beam.kind = new.kind {
 -- `sub_80DC22C`: moonlight on (x, y) with `element` and the damage word,
 -- on `owner`'s side. It runs while dimmed. (Its position is the spawner's
 -- registers, which its init overwrites.)
-function moon_beam.spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
+function moon_beam.spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
     local o = battle.spawn(moon_beam.kind, Vec3.zero)
     if o then
         o.panel_x, o.panel_y = x, y

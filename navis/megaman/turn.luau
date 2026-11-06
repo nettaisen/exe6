@@ -30,15 +30,15 @@ turn.action = new.action {
         -- Turned to face its own side's way for L's request, the other way
         -- for R's (`sub_800F2C6`: the sprite, and the HP number's place,
         -- which the engine doesn't draw); neither: as it stands.
-        local flip: number? = nil
+        local flip: boolean? = nil
         if me.requests.turn_l then
-            flip = 0
+            flip = false
         elseif me.requests.turn_r then
-            flip = 1
+            flip = true
         end
-        if flip then
+        if flip ~= nil then
             me.flip = flip
-            me.sprite:set_flip(bit32.bxor(me.alliance, flip))
+            me.sprite:face(me)
         end
         me.requests.turn_l = false
         me.requests.turn_r = false

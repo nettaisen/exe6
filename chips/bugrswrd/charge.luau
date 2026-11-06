@@ -12,7 +12,7 @@ local drksword = require("../drksword").drksword
 local sword = require("../sword").sword
 
 -- The attack's element byte: Null, with the Sword bit.
-local ELEMENT = 0x80
+local ELEMENT = Element.new("null", { sword = true })
 local BUG_DAMAGE, PLAIN_DAMAGE = 0xC8, 0x50
 
 -- `sub_8011E40`.

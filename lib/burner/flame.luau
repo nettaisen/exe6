@@ -44,8 +44,8 @@ local SPREAD_AT = 4
 -- `sub_80C5578`: a flame for `owner` on (x, y) with the damage word
 -- `damage`, burning as `spec` says. Its position is the spawner's
 -- registers (the panel Y, the element and 0) until its init places it.
-function flame.spawn(owner: Object, x: number, y: number, element: number, damage: number, spec: Spec): Object?
-    local o = battle.spawn(flame.kind, Vec3.new(y, element, 0))
+function flame.spawn(owner: Object, x: number, y: number, element: Element, damage: number, spec: Spec): Object?
+    local o = battle.spawn(flame.kind, Vec3.new(y, element.byte, 0))
     if o then
         local s = o.state :: State
         s.ticks, s.spread, s.wide = spec.ticks, spec.spread, spec.wide or false
@@ -134,7 +134,7 @@ local function init(me: Object)
     me.anim_loaded = anim
     sprite:set_animation(anim)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     -- (On its panel, `byte_80C54D0`'s offset is 0.)

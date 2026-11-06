@@ -37,7 +37,7 @@ function falling_meteor.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     damage: number,
     while_dimmed: boolean,
     pos: Vec3?

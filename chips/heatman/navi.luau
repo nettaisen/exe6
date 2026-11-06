@@ -106,7 +106,7 @@ local function set_alight(me: Object, x: number, y: number)
     local damage = me.damage_word
     -- The registers (the row, the element and r3, 0 << 16) are its
     -- position until its init.
-    flame.spawn(me, x, y, me.element, FLAME, damage, Vec3.new(y, me.element, 0))
+    flame.spawn(me, x, y, me.element, FLAME, damage, Vec3.new(y, me.element.byte, 0))
 end
 
 -- `sub_80B9240`: the cone: one, three, then five panels wide.

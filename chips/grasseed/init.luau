@@ -15,7 +15,7 @@ local chip: Chip = {
         held = seed.held(2),
         held_anim = 8,
         thrower = seed.thrower(seed.variant {
-            element = 4,
+            element = Element.wood,
             palette = 2,
             panel = "grass",
             -- Its green sprout (effect 0x3C).

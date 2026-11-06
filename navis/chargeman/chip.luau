@@ -61,7 +61,7 @@ local function erupt(me: Object)
     for i = 1, math.min(#targets, ROCKS) do
         local p = targets[i]
         local rock = volcano_rock.spawn(me, panels.x(p), panels.y(p), element, damage, z)
-        z = if rock then me.alliance + me.flip * 0x100 else element
+        z = if rock then me.alliance + (if me.flip then 0x100 else 0) else element.byte
     end
 end
 

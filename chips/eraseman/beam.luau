@@ -56,7 +56,7 @@ local function init(me: Object)
     me.anim_loaded = anim
     sprite:set_animation(anim)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -128,7 +128,7 @@ beam.kind = new.kind {
 -- `sub_80DDA5A`: a segment on (x, y) for `owner`, with the damage word
 -- `damage`. It runs while dimmed. `pos` is where the spawner's registers
 -- leave it (only its Z fraction lasts past its init); EraseMan's is zero.
-function beam.spawn(owner: Object, x: number, y: number, element: number, spec: Spec, damage: number, pos: Vec3?): Object?
+function beam.spawn(owner: Object, x: number, y: number, element: Element, spec: Spec, damage: number, pos: Vec3?): Object?
     local o = battle.spawn(beam.kind, pos or Vec3.zero)
     if o then
         o.panel_x, o.panel_y = x, y

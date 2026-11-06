@@ -33,7 +33,7 @@ local CROSS_MERGE = asset.sound("cross-merge")
 
 -- `object_getFlipDirection`: +1 when facing right, -1 when facing left.
 local function facing(o: Object): number
-    return if bit32.bxor(o.alliance, o.flip) == 0 then 1 else -1
+    return if o.facing_side == 0 then 1 else -1
 end
 
 -- `sub_80BC670`: the navi's sprite, ahead of MegaMan by a full swing.
@@ -48,7 +48,7 @@ local function init(me: Object, s: State)
     -- (sprite_forceWhitePalette at the end of the init).
     me.sprite.shadow = "hidden"
     me.sprite.palette = 4
-    me.sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    me.sprite:face(me)
     me.sprite.white = true
     me.no_sprite_update = false
     me.visible = true

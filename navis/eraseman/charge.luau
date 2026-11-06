@@ -26,7 +26,7 @@ local SOUND = asset.sound("spin")
 -- The hits' counter byte, and the slash's element: Null (the attack's
 -- element byte).
 local COUNTER = 10
-local NULL = 0
+local NULL = Element.null
 
 -- The slash: how far ahead, its hit's modifier, and its effect (the
 -- swords' wide slash in his color) 24 pixels up.
@@ -60,7 +60,7 @@ local function slash(me: Object)
         hit_mod = HIT_MOD,
     })
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, link.flip(me))
+    battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, me.facing_side)
 end
 
 -- `sub_80F0FD4`: he draws back; 20 ticks.

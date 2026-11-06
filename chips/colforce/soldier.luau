@@ -136,7 +136,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -186,8 +186,8 @@ soldier.kind = new.kind {
 -- `sub_80DF4D4`: a soldier of `owner`'s (the force) on (x, y), waiting
 -- `delay` ticks, with the damage word `damage`; it runs while dimmed. (It
 -- spawns at the registers' values, which its init replaces.)
-function soldier.spawn(owner: Object, x: number, y: number, element: number, delay: number, damage: number): Object?
-    local o = battle.spawn(soldier.kind, Vec3.new(y, element, 0))
+function soldier.spawn(owner: Object, x: number, y: number, element: Element, delay: number, damage: number): Object?
+    local o = battle.spawn(soldier.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

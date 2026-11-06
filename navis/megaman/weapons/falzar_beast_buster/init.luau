@@ -96,7 +96,7 @@ local REPEATS = 8
 -- neither Beast buster reads.)
 function falzar_beast_buster.beast_setup(navi: Object, over: string, volleys: Volleys)
     navi.attack_word = damage_word.of { amount = math.min(navi:buster_damage(), 5), counter = 0 }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = 0

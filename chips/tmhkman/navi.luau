@@ -109,7 +109,7 @@ local function strike(me: Object)
         box.run_while_dimmed = true
     end
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, 0x10_0000), EARTH, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0x10_0000), EARTH, me.facing_side)
     battle.play_sound(SOUND_TOMAHAWK_MAN)
     battle.shake_camera(1, 0x1E)
 end

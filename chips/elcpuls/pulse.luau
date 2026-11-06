@@ -79,7 +79,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = v.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.timer = v.ticks
     me:set_coordinates_from_panel()
     local p = me.pos
@@ -133,8 +133,8 @@ pulse.kind = new.kind {
 -- `damage`, stored in the owner's first related slot (the game passes the
 -- slot; ElcPuls's is that one). Its position is the spawner's registers
 -- (y, the element, 0) until its init places it.
-function pulse.spawn(owner: Object, x: number, y: number, element: number, v: ElecPulse, damage: number): Object?
-    local o = battle.spawn(pulse.kind, Vec3.new(y, element, 0))
+function pulse.spawn(owner: Object, x: number, y: number, element: Element, v: ElecPulse, damage: number): Object?
+    local o = battle.spawn(pulse.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

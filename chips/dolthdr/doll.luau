@@ -132,7 +132,7 @@ local function init(me: Object)
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = 0
     me.timer = s.ticks
     me:set_coordinates_from_panel()
@@ -175,8 +175,8 @@ doll.kind = new.kind {
 -- with the damage word `damage`; `which` is the user's slot it registers
 -- in, if it registers. Its position is the spawner's registers (y, the
 -- element, 0) until its init places it.
-function doll.spawn(user: Object, x: number, y: number, element: number, ticks: number, damage: number, which: Slot?): Object?
-    local o = battle.spawn(doll.kind, Vec3.new(y, element, 0))
+function doll.spawn(user: Object, x: number, y: number, element: Element, ticks: number, damage: number, which: Slot?): Object?
+    local o = battle.spawn(doll.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

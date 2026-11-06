@@ -25,7 +25,7 @@ local SPLASH = new.effect { sprite = spout_man_effect_sprite, anim = 0, palette 
 -- The hits' counter byte, and the ball's element: Aqua (the attack's
 -- element byte).
 local COUNTER = 10
-local AQUA = 2
+local AQUA = Element.aqua
 
 -- `sub_80121F8`: 20 damage and 20 more per point of buster Attack (up to
 -- 5).
@@ -44,7 +44,7 @@ local function wind_up(me: Object, s: State)
     elseif link.run_out(s) then
         me.anim = ANIM_THROW
         ball.spawn(me, me.panel_x, me.panel_y, me.attack_element, { cracks = true }, link.damage_word(me))
-        battle.effect(Vec3.new(me.pos.x, me.pos.y, 0), SPLASH, link.flip(me))
+        battle.effect(Vec3.new(me.pos.x, me.pos.y, 0), SPLASH, me.facing_side)
         battle.play_sound(SOUND)
         link.go(me, RECOVER)
     end

@@ -28,7 +28,7 @@ striker.kind = common.make_kind {
 
 -- `sub_80E8396`: the striker with `element` and the damage word, of
 -- `user`'s side.
-function striker.spawn(user: Object, element: number, damage: number): Object?
+function striker.spawn(user: Object, element: Element, damage: number): Object?
     return common.spawn(striker.kind, user, element, damage)
 end
 

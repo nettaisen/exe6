@@ -25,7 +25,7 @@ local lunge = {}
 local LEAVE, APPEAR, SLASH, RETURN, RECOVER = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- Sword (secondary element 0x80), the hit's counter byte.
-local SWORD, COUNTER = 0x80, 30
+local SWORD, COUNTER = Element.new("null", { sword = true }), 30
 -- The lock-on searches: beside a target in the navi's row, and in the
 -- navi's row otherwise.
 local SAME_ROW, OWN_ROW = lockon.thunder, lockon.beast_lunge

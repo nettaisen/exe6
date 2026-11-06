@@ -144,7 +144,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     -- (Without a time of its own, its timer is -1: the halfword's most.)
     me.timer = if s.ticks ~= 0 then s.ticks else -1
     me:set_coordinates_from_panel()
@@ -184,7 +184,7 @@ erase_ray.kind = new.kind {
 -- with the damage word `damage`. A ray its navi's action shuts follows the
 -- action `owner` is running. (Its X and Y are its spawner's registers
 -- until its init places it.)
-function erase_ray.spawn(owner: Object, x: number, y: number, element: number, z: number, ray: Ray, damage: number): Object?
+function erase_ray.spawn(owner: Object, x: number, y: number, element: Element, z: number, ray: Ray, damage: number): Object?
     local o = battle.spawn(erase_ray.kind, Vec3.new(0, 0, z))
     if o then
         local s = o.state :: State

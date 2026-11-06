@@ -103,7 +103,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -130,8 +130,8 @@ tornado.kind = new.kind {
 -- damage word, blowing `ticks` ticks, acting while dimmed (flag 0x10).
 -- (Spawned at the registers: the row, the element and whatever the third
 -- holds; its init places it.)
-function tornado.spawn(owner: Object, x: number, y: number, element: number, damage: number, ticks: number): Object?
-    local o = battle.spawn(tornado.kind, Vec3.new(y, element, 0))
+function tornado.spawn(owner: Object, x: number, y: number, element: Element, damage: number, ticks: number): Object?
+    local o = battle.spawn(tornado.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

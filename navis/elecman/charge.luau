@@ -21,7 +21,7 @@ local CALL_TICKS, RECOVER_TICKS = 0x14, 0x1E
 -- The hits' counter byte, and the bolts' element: Elec (the attack's
 -- element byte).
 local COUNTER = 10
-local ELEC = 3
+local ELEC = Element.elec
 
 -- The panels an enemy navi stands on, by side (`off_80F0B78`).
 local ENEMIES = "enemy_body"
@@ -45,7 +45,7 @@ local function bolts(me: Object)
     local r3 = 0
     for i = #found, 1, -1 do
         local bolt = thunder.spawn(me, panels.x(found[i]), panels.y(found[i]), me.attack_element, { cracks = true }, damage, bit32.band(r3, 0xFFFF))
-        r3 = if bolt then bit32.bor(me.alliance, bit32.lshift(me.flip, 8)) else me.attack_element
+        r3 = if bolt then bit32.bor(me.alliance, if me.flip then 0x100 else 0) else me.attack_element.byte
     end
 end
 

@@ -112,7 +112,7 @@ riding_hit.kind = new.kind {
 -- `sub_80D19D4`: a riding hit for `owner`, in the action he is running,
 -- with `element` and the damage word `damage`. It runs while dimmed; its
 -- position is its owner's once its init runs.
-function riding_hit.spawn(owner: Object, element: number, spec: Spec, damage: number): Object?
+function riding_hit.spawn(owner: Object, element: Element, spec: Spec, damage: number): Object?
     local o = battle.spawn(riding_hit.kind, Vec3.zero)
     if o then
         local s = o.state :: State

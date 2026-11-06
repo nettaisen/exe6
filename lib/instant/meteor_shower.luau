@@ -24,7 +24,7 @@ export type State = {
     drops: number,
 }
 
-local FIRE = 1
+local FIRE = Element.fire
 local DROP_TICKS = 0x14
 -- `sub_80E5A8A`: one of the other side's navis still standing, at random;
 -- `sub_80E5AD6`: the target's panel, or a neighbor (@exelib/meteors/shower).
@@ -35,7 +35,7 @@ meteor_shower.aim = shower.aim
 -- values, which its init replaces.)
 local function meteor(me: Object, x: number, y: number)
     local damage = me.damage_word
-    falling_meteor.spawn(falling_meteor.row, me, x, y, me.element, damage, false, Vec3.new(y, me.element, 0))
+    falling_meteor.spawn(falling_meteor.row, me, x, y, me.element, damage, false, Vec3.new(y, me.element.byte, 0))
 end
 
 -- `sub_80E5A22`.
@@ -104,7 +104,7 @@ end
 -- user's of `drops` meteors (at the instant chips' action's registers).
 function meteor_shower.instant(drops: number): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, spec: InstantChipSpec)
-        meteor_shower.spawn(user, Vec3.new(spec.panel_y, spec.element, spec.z), drops, spec.damage)
+        meteor_shower.spawn(user, Vec3.new(spec.panel_y, spec.element.byte, spec.z), drops, spec.damage)
     end
 end
 

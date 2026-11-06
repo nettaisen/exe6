@@ -42,7 +42,7 @@ local function init(me: Object)
     me.anim_loaded = 1
     sprite:set_animation(1)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -132,13 +132,13 @@ function ice.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     ticks: number,
     while_dimmed: boolean,
     damage: number,
     z: number
 ): Object?
-    local o = battle.spawn(ice.kind, Vec3.new(y, element, z))
+    local o = battle.spawn(ice.kind, Vec3.new(y, element.byte, z))
     if o then
         local s = o.state :: State
         s.ticks = ticks

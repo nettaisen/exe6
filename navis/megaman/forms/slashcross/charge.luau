@@ -44,7 +44,7 @@ local DASH, COUNT, SLASH, RETURN, FINISH = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- The charged shot's attack: Sword (secondary element 0x80) and its hit
 -- parameter.
-local SWORD, COUNTER = 0x80, 20
+local SWORD, COUNTER = Element.new("null", { sword = true }), 20
 -- The panels a dash may end on (`sub_8015B00`, two ahead): on the field
 -- (0x10000), with no body on it (0xF800000).
 local DASH_REQUIRE, DASH_FORBID = "on_field", "any_body"
@@ -154,7 +154,7 @@ local function dash(me: Object, s: State)
     -- on the ground (the lifetime word's bytes 2 and 3 set).
     battle.afterimage(me, me.pos, {
         anim = 0,
-        flip = bit32.bxor(me.alliance, me.flip),
+        facing = me.facing_side,
         lifetime = AFTERIMAGE_TICKS,
         color_shader = AFTERIMAGE_SHADER,
         shadow = "ground",

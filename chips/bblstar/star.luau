@@ -127,7 +127,7 @@ local function setup(me: Object): boolean
         return false
     end
     me:setup_collision(collision.attack, collision.hits_navis, {})
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     return true
 end
 
@@ -186,12 +186,12 @@ function star.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     damage: number,
     speed: number,
     palette: number
 ): Object?
-    local o = battle.spawn(star.kind, Vec3.new(y, element, 0))
+    local o = battle.spawn(star.kind, Vec3.new(y, element.byte, 0))
     if o then
         local s = o.state :: State
         s.speed, s.palette = speed, palette

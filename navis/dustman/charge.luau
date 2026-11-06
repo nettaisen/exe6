@@ -22,7 +22,7 @@ local SOUND = asset.sound("junk-shot")
 -- The hits' counter byte, and the ball's element: Null (the attack's
 -- element byte).
 local COUNTER = 10
-local NULL = 0
+local NULL = Element.null
 
 -- `sub_80122C2`: 60 damage and 20 more per point of buster Attack (up to
 -- 5).

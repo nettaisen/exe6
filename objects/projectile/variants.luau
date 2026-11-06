@@ -35,7 +35,7 @@ variants.air = v {
     collision = { is = collision.pushing, hits = collision.hits_navis },
     hit_mod = { flinch = true, back = true, drag = true },
     element = "null",
-    secondary = { "wind" },
+    secondary = { wind = true },
     spark = sparks.impact,
 }
 -- The charged shot.
@@ -60,7 +60,7 @@ variants.breaking = v {
     collision = { is = collision.breaking, hits = collision.hits_navis },
     hit_mod = {},
     element = "null",
-    secondary = { "break" },
+    secondary = { ["break"] = true },
     spark = sparks.breaking,
 }
 -- Shots that change the panel they hit on: cracked, poison, grass, ice.

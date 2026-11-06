@@ -13,7 +13,7 @@ gun.spawn_kind = common.spawn_kind
 gun.kind = common.make_kind("circgun/gun", shot.look, shot.kind)
 
 -- EXE6's gun.
-function gun.spawn(controller: Object, variant: CircGunVariant, x: number, y: number, element: number, damage: number): Object?
+function gun.spawn(controller: Object, variant: CircGunVariant, x: number, y: number, element: Element, damage: number): Object?
     return common.spawn_kind(gun.kind, controller, variant, x, y, element, damage)
 end
 

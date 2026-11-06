@@ -131,7 +131,7 @@ local function throw(me: Object)
         me.anim = 0x14
         ball.spawn(me, me.panel_x, me.panel_y, me.element, BALL, me.damage_word)
         local p = me.pos
-        battle.effect(Vec3.new(p.x, p.y, 0), THROW, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(p.x, p.y, 0), THROW, me.facing_side)
         battle.play_sound(SOUND_BUBBLE)
         me.timer = 0x3C
         return

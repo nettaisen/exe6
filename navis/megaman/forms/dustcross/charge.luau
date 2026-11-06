@@ -18,7 +18,7 @@ local charge = {}
 local SHOOT, RECOVER = 0x0, 0x4
 
 -- Break (secondary element 0x10), and the hit's counter byte.
-local BREAK, COUNTER = 0x10, 20
+local BREAK, COUNTER = Element.new("null", { ["break"] = true }), 20
 local SOUND = asset.sound("junk-shot")
 
 -- `sub_8011F64`: 50 damage and 10 more per point of buster Attack (up to 5)

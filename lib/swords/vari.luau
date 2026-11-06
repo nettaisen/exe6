@@ -27,7 +27,7 @@ local vari = {}
 
 -- One state for both actions (the original's two handlers share the
 -- attack variables' layout).
-vari.STATE = { flip = schema.u8, progress = schema.array(schema.u8, 5) }
+vari.STATE = { flip = schema.bool, progress = schema.array(schema.u8, 5) }
 
 -- Ticks to enter a sequence.
 local COUNTDOWN = 0x30
@@ -45,47 +45,53 @@ end
 local function navi_plain(stats: Navi): boolean
     return ((stats.navi :: any) :: Exe6NaviFields).var_sword_plain == true
 end
--- The joypad bits, as the game's JoypadHeld word has them.
-local KEYS: { { key: Key, bit: number } } = {
-    { key = "a", bit = 0x001 },
-    { key = "b", bit = 0x002 },
-    { key = "select", bit = 0x004 },
-    { key = "start", bit = 0x008 },
-    { key = "right", bit = 0x010 },
-    { key = "left", bit = 0x020 },
-    { key = "up", bit = 0x040 },
-    { key = "down", bit = 0x080 },
-    { key = "r", bit = 0x100 },
-    { key = "l", bit = 0x200 },
-}
+-- The joypad's buttons (the game's JoypadHeld word, & 0x3FF).
+local KEYS: { Key } = { "a", "b", "select", "start", "right", "left", "up", "down", "r", "l" }
 
--- The held buttons as a joypad word (JoypadHeld & 0x3FF).
-local function held_word(me: Object): number
-    local w = 0
+-- The buttons held are the step's and no other (the game compares the whole joypad word).
+local function holds(me: Object, step: KeySet): boolean
     for _, k in KEYS do
-        if (me.held :: any)[k.key] then
-            w += k.bit
+        if ((me.held :: any)[k] == true) ~= ((step :: any)[k] == true) then
+            return false
         end
     end
-    return w
+    return true
 end
 
--- `sub_8012792`: advance every sequence whose next step is `held`, last
--- first; the first one already complete is the pick. (After a step the
--- game also tests the word at the new position for zero, reading it as an
--- unaligned word; in these tables it never is, so a sequence shows
--- complete on the tick after its last step.)
-local function advance(s: State, sequences: { { number } }, held: number): number?
+-- The sequences for a navi turned or not.
+local function by_turn(spec: Spec, turned: boolean): { { KeySet } }?
+    return if turned then spec.sequences.turned else spec.sequences.unturned
+end
+
+-- A sequence's steps are sets of buttons, each held (true) or not: a name not a button or a value not true or false
+-- is an error.
+local function check(spec: Spec)
+    for _, set in { spec.sequences.unturned, spec.sequences.turned or {} } do
+        for _, sequence in set do
+            for _, step in sequence do
+                for k, v in step :: any do
+                    if table.find(KEYS, k) == nil or type(v) ~= "boolean" then
+                        error(string.format("%s: a sequence's step is buttons held (a = true), not %s = %s", spec.id or "VarSwrd", tostring(k), tostring(v)))
+                    end
+                end
+            end
+        end
+    end
+end
+
+-- `sub_8012792`: advance every sequence whose next step is held, last
+-- first; the first one already complete (past its last step: the game's 0)
+-- is the pick. (After a step the game also tests the word at the new
+-- position for zero, reading it as an unaligned word; in these tables it
+-- never is, so a sequence shows complete on the tick after its last step.)
+local function advance(me: Object, s: State, sequences: { { KeySet } }): number?
     for i = #sequences, 1, -1 do
         local at = s.progress[i]
         local want = sequences[i][at // 2 + 1]
         if want == nil then
-            error(string.format("sequence %d reads past its table at %d", i - 1, at))
-        end
-        if want == 0 then
             return i
         end
-        if held == want then
+        if holds(me, want) then
             s.progress[i] = at + 2
         end
     end
@@ -138,14 +144,13 @@ local function pick(me: Object, s: State, spec: Spec)
     if left == 0 then
         return become(me, spec, 0)
     end
-    local held = held_word(me)
-    if not bit32.btest(held, 0x001) then
+    if not me.held.a then
         if navi_plain(stats) or form_waits(stats) then
             return
         end
         return become(me, spec, 0)
     end
-    local i = advance(s, spec.sequences[s.flip], held)
+    local i = advance(me, s, by_turn(spec, s.flip) :: { { KeySet } })
     if i == nil then
         return
     end
@@ -158,8 +163,8 @@ end
 local function start(me: Object, s: State, spec: Spec)
     me.attack_count = COUNTDOWN
     local flip = me.flip
-    if spec.sequences[flip] == nil then
-        error(string.format("direction flip %d reads past the sequence tables", flip))
+    if by_turn(spec, flip) == nil then
+        error("a turned navi's sequences read past the sequence tables")
     end
     s.flip = flip
     for i = 1, 5 do
@@ -173,6 +178,7 @@ end
 
 -- A variable sword: its sequences and what they give.
 function vari.action(spec: Spec): Action
+    check(spec)
     -- `sub_80EF62E` / `sub_80EF7E2`: set up, then wait for the pick.
     local function update(me: Object, s: State)
         local step = me.step

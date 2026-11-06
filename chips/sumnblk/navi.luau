@@ -35,8 +35,8 @@ local RISE_STEPS, RAISE_STEPS, STRIKE_STEPS = 35, 41, 26
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 local ARRIVE = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 }
 local CLAW = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
--- The claw drawn upside down (flip bit 1) and in palette +6.
-local CLAW_FLIP, CLAW_PALETTE = 2, 6
+-- The claw's palette +6 (it is drawn upside down too).
+local CLAW_PALETTE = 6
 -- Gregar the Cybeast's sheet: an actor whose look is it stands two panels
 -- wide.
 local GREGAR_LOOK = asset.sprite("gregar-cybeast")
@@ -49,7 +49,7 @@ local RISE, STRIKE, LEAVE = 0, 4, 8
 -- turned its way.
 local function puff(me: Object, x: number, y: number, arrive: boolean)
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, 0), if arrive then ARRIVE else PUFF, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0), if arrive then ARRIVE else PUFF, me.facing_side)
 end
 
 -- The panel in front of `actor` (two ahead for Gregar the Cybeast).
@@ -64,7 +64,7 @@ end
 -- one in the top row (the last on a tie). The panel in front of it, or
 -- nil.
 local function target(me: Object): (number?, number?)
-    local actors = battle.alive_actors(bit32.bxor(me.alliance, 1))
+    local actors = battle.alive_actors(battle.other_side(me.alliance))
     if #actors == 0 then
         return nil, nil
     end
@@ -153,7 +153,7 @@ end
 local function claw(me: Object)
     local x, y = me.panel_x + me.facing, me.panel_y
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, 0), CLAW, bit32.bor(CLAW_FLIP, bit32.bxor(me.alliance, me.flip)), CLAW_PALETTE)
+    battle.effect(Vec3.new(cx, cy, 0), CLAW, me.facing_side, CLAW_PALETTE, nil, true)
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
@@ -268,7 +268,7 @@ local function init(me: Object)
     sprite:set_animation(0)
     me:set_coordinates_from_panel()
     me.pos = Vec3.new(me.pos.x, me.pos.y, 0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = s.palette
     me.visible = false
     me:set_lifecycle("update")
@@ -300,7 +300,7 @@ navi.kind = new.kind {
 -- `sub_80C17F4`: the navi in `palette` on panel (`x`, `y`) for
 -- `controller` (its side and facing), with `element` and the damage word;
 -- the controller is busy until it is gone.
-function navi.spawn(controller: Object, x: number, y: number, element: number, palette: number, damage: number): Object?
+function navi.spawn(controller: Object, x: number, y: number, element: Element, palette: number, damage: number): Object?
     local o = battle.spawn(navi.kind, Vec3.zero)
     if not o then
         return nil

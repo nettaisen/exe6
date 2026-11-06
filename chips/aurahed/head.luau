@@ -142,7 +142,7 @@ local function init(me: Object)
         return fizzle(me)
     end
     me:setup_collision(collision.breaking, collision.hits_navis, if s.strong then STRONG_HIT_MOD else HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     sprite.palette = s.palette
     local speed = s.speed
@@ -154,7 +154,7 @@ local function init(me: Object)
     local panels = SHORT
     if s.far then
         -- To the far edge: column 7 for side 0, column 0 for side 1.
-        panels = math.abs(bit32.bxor(me.alliance, 1) * 7 - me.panel_x)
+        panels = math.abs(battle.other_side(me.alliance) * 7 - me.panel_x)
     end
     me.timer = int.tdiv(PANEL * panels - speed - speed, speed) + 1
     me.collision:present()
@@ -189,8 +189,8 @@ head.kind = new.kind {
 
 -- `sub_80D75D4`: `what` for `user` on (x, y), with the damage word
 -- `damage`. It starts 12 pixels down (the spawner's Z register).
-function head.spawn(user: Object, x: number, y: number, element: number, what: AuraHead, damage: number): Object?
-    local o = battle.spawn(head.kind, Vec3.new(y, element, -0xC_0000))
+function head.spawn(user: Object, x: number, y: number, element: Element, what: AuraHead, damage: number): Object?
+    local o = battle.spawn(head.kind, Vec3.new(y, element.byte, -0xC_0000))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

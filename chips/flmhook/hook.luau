@@ -22,7 +22,7 @@ local SPAWNER_ADDRESS = 0x080EA11D
 
 local made = common.make {
     id = "flmhook/hook",
-    flame = function(owner: Object, x: number, y: number, element: number, damage: number, swing: number, flames: Flames): Object?
+    flame = function(owner: Object, x: number, y: number, element: Element, damage: number, swing: number, flames: Flames): Object?
         return fire.swing(owner, x, y, element, damage, { swing = swing, variant = flames.variant, spark = flames.spark })
     end,
     keeps_element = true,

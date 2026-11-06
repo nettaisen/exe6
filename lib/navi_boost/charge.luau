@@ -13,7 +13,7 @@ local LOCKOUT = 0x14
 local COUNTER = 20
 -- The attack's variables every one of them sets, with its `element` (the
 -- attack's element byte) and `damage`.
-function charge.prepare(navi: Object, element: number, damage: number)
+function charge.prepare(navi: Object, element: Element, damage: number)
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = LOCKOUT

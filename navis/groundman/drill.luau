@@ -60,7 +60,7 @@ local function init(me: Object)
     me.anim_loaded = anim
     sprite:set_animation(anim)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -202,8 +202,8 @@ drill.kind = new.kind {
 -- `sub_80DDFB6`: a drill for `owner` on (x, y) with `element` and the
 -- damage word, following the action `owner` runs. `z` is the spawner's
 -- register that becomes its Z, whose fraction it keeps.
-function drill.spawn(owner: Object, x: number, y: number, element: number, side: boolean, wait_ticks: number, damage: number, z: number): Object?
-    local o = battle.spawn(drill.kind, Vec3.new(y, element, z))
+function drill.spawn(owner: Object, x: number, y: number, element: Element, side: boolean, wait_ticks: number, damage: number, z: number): Object?
+    local o = battle.spawn(drill.kind, Vec3.new(y, element.byte, z))
     if o then
         local s = o.state :: State
         s.side, s.wait = side, wait_ticks

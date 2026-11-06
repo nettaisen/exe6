@@ -23,7 +23,7 @@ local WIND_UP_TICKS, RECOVER_TICKS = 8, 0x1E
 -- ticks (the original's first attack parameter), attacks that wait a
 -- dimming out.
 local COUNTER = 10
-local FIRE = 1
+local FIRE = Element.fire
 local FLAME: HeatFlame = { while_dimmed = false, ticks = 0x1E, is = collision.attack }
 
 -- Where a flame can burn: a panel of the field with a floor.
@@ -45,11 +45,11 @@ local function flames(me: Object)
     if not field.check(x, y, FLOOR) then
         return
     end
-    flame.spawn(me, x, y, me.attack_element, FLAME, damage, Vec3.new(y, me.attack_element, 0))
+    flame.spawn(me, x, y, me.attack_element, FLAME, damage, Vec3.new(y, me.attack_element.byte, 0))
     x += me.facing
     for row = y - 1, y + 1 do
         if field.check(x, row, FLOOR) then
-            flame.spawn(me, x, row, me.attack_element, FLAME, damage, Vec3.new(row, me.attack_element, 0))
+            flame.spawn(me, x, row, me.attack_element, FLAME, damage, Vec3.new(row, me.attack_element.byte, 0))
         end
     end
 end

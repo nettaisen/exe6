@@ -92,7 +92,7 @@ local function init(me: Object)
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x + me.facing * AHEAD, p.y, 0)
@@ -132,8 +132,8 @@ surge.kind = new.kind {
 -- `sub_80D398E`: a surge from `owner` on (x, y) with `element` and the
 -- damage word. It takes the owner's side (not its facing). Its position is
 -- the registers (y, the element, 0) until its init places it.
-function surge.spawn(owner: Object, x: number, y: number, element: number, spec: Spec, damage: number): Object?
-    local o = battle.spawn(surge.kind, Vec3.new(y, element, 0))
+function surge.spawn(owner: Object, x: number, y: number, element: Element, spec: Spec, damage: number): Object?
+    local o = battle.spawn(surge.kind, Vec3.new(y, element.byte, 0))
     if o then
         local s = o.state :: State
         s.ticks, s.beat = spec.ticks, spec.beat

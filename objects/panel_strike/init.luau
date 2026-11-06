@@ -72,7 +72,7 @@ local function wait(me: Object)
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     c:set_region(regions.single)
     if s.cracks then
         -- sub_8109794: crack it unless it is cracked already.
@@ -141,13 +141,13 @@ function panel_strike.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     what: PanelStrike,
     damage: number,
     z: number,
     while_dimmed: boolean
 ): Object?
-    local o = battle.spawn(panel_strike.kind, Vec3.new(y, element, z))
+    local o = battle.spawn(panel_strike.kind, Vec3.new(y, element.byte, z))
     if o then
         local s = o.state :: State
         s.cracks = what.cracks == true

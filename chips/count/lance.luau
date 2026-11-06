@@ -57,7 +57,7 @@ local function init(me: Object)
     me.anim_loaded = ANIM
     sprite:set_animation(ANIM)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -179,8 +179,8 @@ lance.kind = new.kind {
 -- while dimmed (its own check stops the other kind). Its position is what
 -- the spawner's registers held: the row, the element and `z`, of which its
 -- init keeps the fraction.
-function lance.spawn(owner: Object, x: number, y: number, element: number, damage: number, z: number, spec: Spec): Object?
-    local o = battle.spawn(lance.kind, Vec3.new(y, element, z))
+function lance.spawn(owner: Object, x: number, y: number, element: Element, damage: number, z: number, spec: Spec): Object?
+    local o = battle.spawn(lance.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

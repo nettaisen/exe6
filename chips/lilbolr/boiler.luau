@@ -64,7 +64,7 @@ local SOUND_ERUPT, SOUND_STEAM = asset.sound("boiler-erupt"), asset.sound("boile
 -- tick; its effect over the panels (effect 0x32).
 local ANIM_ERUPT, ANIM_STEAM = 5, 9
 local ERUPT_TICKS, HIT_TICK, STEAM_TICK = 0x20, 8, 0x14
-local AQUA, ERUPTION_HIT_MOD = 2, { flinch = true, flash = true }
+local AQUA, ERUPTION_HIT_MOD = Element.aqua, { flinch = true, flash = true }
 local ERUPTION = new.effect { sprite = SPRITE, anim = 10, palette = 0, steps = 20 }
 -- Its kind among absorbed obstacles.
 -- How it looks absorbed (the original's obstacle kind's sprite: its own).
@@ -235,7 +235,7 @@ local function erupt(me: Object)
                     damage = word,
                     hit_mod = ERUPTION_HIT_MOD,
                 })
-                battle.region_effects(me.panel_x, me.panel_y, regions.ring, bit32.bxor(me.alliance, me.flip), ERUPTION, 0)
+                battle.region_effects(me.panel_x, me.panel_y, regions.ring, me.facing_side, ERUPTION, 0)
                 layer.finish(s.steam)
             end
             if t == STEAM_TICK then
@@ -357,7 +357,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.shadow = "ground"
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = s.palette
     me.identity = IDENTITY
     local x, y = s.target_x, s.target_y
@@ -452,7 +452,7 @@ function boiler.thrower(palette: number, body_damage: number): Thrower
                 s.target_y = bit32.rshift(xy, 8)
                 o.damage_word = damage
                 o.alliance, o.flip = user.alliance, user.flip
-                if user.flip ~= 0 then
+                if user.flip then
                     error("LilBoiler thrown by a flipped user: setFieldBattleObject_800F614 registers it far past the field-object registry")
                 end
                 obstacle.register(o, user.alliance, "one_a_side")

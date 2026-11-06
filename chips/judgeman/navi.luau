@@ -176,7 +176,7 @@ local function place_books(me: Object)
     local i = 0
     repeat
         local p = s.book_panels[i + 1]
-        book.place(me, panels.x(p), panels.y(p), i, 0, damage, flags)
+        book.place(me, panels.x(p), panels.y(p), i, Element.null, damage, flags)
         i += 1
     until i >= s.books
 end

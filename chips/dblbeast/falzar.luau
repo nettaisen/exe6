@@ -59,7 +59,7 @@ local LIST_TICKS, LEAVE_TICKS = 0x3C, 3
 -- the beast's way.
 local function effect_ahead(me: Object, fx: Effect)
     local cx, cy = field.center(me.panel_x + me.facing, me.panel_y)
-    battle.effect(Vec3.new(cx, cy, 0x10_0000), fx, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0x10_0000), fx, me.facing_side)
 end
 
 -- The attack ends: no miss, the next action.
@@ -248,7 +248,7 @@ falzar.kind = new.kind {
 }
 
 -- `sub_80C24D2`: Falzar's beast for `user`.
-function falzar.spawn(controller: Object, user: Object, element: number, base: number): Object?
+function falzar.spawn(controller: Object, user: Object, element: Element, base: number): Object?
     return beast.spawn(falzar.kind, controller, user, element, base, "falzar_out")
 end
 

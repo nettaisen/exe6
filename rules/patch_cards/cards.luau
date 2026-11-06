@@ -82,8 +82,6 @@ patch_cards.CHOICE = {
     hit_status = "status",
 } :: { [string]: string }
 
--- The element bytes of the bodies (NaviStats+0x10).
-patch_cards.BODY = { null = 0, fire = 1, aqua = 2, elec = 3, wood = 4 } :: { [string]: number }
 -- What a step leaves behind, by the panel the effect names (the trail
 -- byte, NaviStats+0x12: `byte_814291C`'s rows; water and magnet panels,
 -- which EXE6 doesn't have, leave the normal panel's 2).
@@ -149,7 +147,6 @@ patch_cards.bug_stopper = effects.bug_stopper
 patch_cards.GAME = {
     rank = patch_cards.RANK,
     choice = patch_cards.CHOICE,
-    bodies = patch_cards.BODY,
     hit_status = patch_cards.HIT_STATUS,
 } :: PatchCardsGame
 

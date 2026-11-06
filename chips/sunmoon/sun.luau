@@ -87,7 +87,7 @@ local function meteors(me: Object)
         return
     end
     me.timer = 0xF
-    meteor.spawn(me, me.panel_x, me.panel_y, 1, meteor.fire, flagged(me, METEOR_DAMAGE), me.pos.z)
+    meteor.spawn(me, me.panel_x, me.panel_y, Element.fire, meteor.fire, flagged(me, METEOR_DAMAGE), me.pos.z)
     left = me.timer2 - 1
     me.timer2 = left
     if left > 0 then
@@ -147,7 +147,7 @@ local function moonlight(me: Object)
         me.timer = 0x64
         me.anim = 3
         me.sprite.palette = 0
-        moon_beam.spawn(me, me.panel_x, me.panel_y, 0, flagged(me, MOONLIGHT_DAMAGE))
+        moon_beam.spawn(me, me.panel_x, me.panel_y, Element.null, flagged(me, MOONLIGHT_DAMAGE))
         me.phase_init = 4
     end
     local left = me.timer - 1
@@ -214,7 +214,7 @@ local function dive(me: Object)
         local box = battle.hitbox(me, {
             panel_x = x,
             panel_y = y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = DIVE_REGION,
             hit_effect = nil,
@@ -277,7 +277,7 @@ local function init(me: Object)
     sprite.shadow = "ground"
     me.anim = 0
     me.anim_loaded = 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, HEIGHT)

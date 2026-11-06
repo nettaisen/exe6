@@ -36,7 +36,7 @@ local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x28, 0x14), counter = COUNTER, cant_counter = true }
     local s = navi:action_state(charge.action) :: State
     s.beast = ((battle.navi(navi.alliance).form :: any) :: Exe6FormFields).plain_erase_beam ~= true
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     return charge.action
 end
 

@@ -48,7 +48,7 @@ local function pull(me: Object)
             battle.hitbox(me, {
                 panel_x = x,
                 panel_y = me.panel_y,
-                element = 0,
+                element = Element.null,
                 z = 0,
                 region = regions.single,
                 hit_effect = nil,

@@ -21,7 +21,7 @@ shot.kind = common.make_kind {
 
 -- `sub_80C6548`: a grab shot for `owner`'s side onto (x, y), with the
 -- damage word `damage`.
-function shot.spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
+function shot.spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
     return common.spawn(shot.kind, owner, x, y, element, damage)
 end
 

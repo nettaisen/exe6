@@ -48,7 +48,7 @@ local function init(me: Object)
     me.anim_loaded = 0x19
     sprite:set_animation(0x19)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -201,7 +201,7 @@ junk_ball.kind = new.kind {
 -- word `damage`; DustMan's (`while_dimmed`) runs on while dimmed. Its
 -- header runs while dimmed either way. (Its Z is the spawner's register
 -- garbage, of which the init keeps the fraction.)
-function junk_ball.spawn(owner: Object, x: number, y: number, element: number, damage: number, while_dimmed: boolean?): Object?
+function junk_ball.spawn(owner: Object, x: number, y: number, element: Element, damage: number, while_dimmed: boolean?): Object?
     local o = battle.spawn(junk_ball.kind, Vec3.zero)
     if o then
         (o.state :: State).while_dimmed = while_dimmed or false

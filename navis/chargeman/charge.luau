@@ -35,7 +35,7 @@ local SOUND = asset.sound("charge-train")
 -- The hits' counter byte, and his hits' element: Fire (the attack's
 -- element byte).
 local COUNTER = 10
-local FIRE = 1
+local FIRE = Element.fire
 
 local SPEED = 0x6_0000
 local PANEL_WIDTH = 0x28_0000
@@ -72,7 +72,7 @@ local function add_car(me: Object, s: State)
         me,
         me.future_panel_x,
         me.future_panel_y,
-        0,
+        Element.null,
         { hit_mod = { flinch = true }, place = n, wait = 0 },
         link.damage_word(me),
         SPEED,

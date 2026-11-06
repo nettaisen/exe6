@@ -141,7 +141,7 @@ local function strike(me: Object)
         status = SLASH_HIT.status,
     })
     local cx, cy = field.center(me.panel_x + me.facing, me.panel_y)
-    battle.effect(Vec3.new(cx, cy, SLASH_Z), WIDE_SLASH, link.flip(me), SLASH_PALETTE)
+    battle.effect(Vec3.new(cx, cy, SLASH_Z), WIDE_SLASH, me.facing_side, SLASH_PALETTE)
 end
 
 -- `sub_80F0A7A`: the slash; 20 ticks.

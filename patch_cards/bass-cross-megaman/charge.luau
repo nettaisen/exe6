@@ -19,7 +19,7 @@ local COUNTER = 20
 -- `sub_8012144`.
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = (battle.navi(navi.alliance).attack + 1) * 10, counter = COUNTER, cant_counter = true }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.extra = 0
     return SPIN
 end

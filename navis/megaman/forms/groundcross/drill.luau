@@ -27,7 +27,7 @@ local ground_drill = {}
 local BURROW, EMERGE, DRILL, SINK, RETURN = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- The attack: Break (secondary element 0x10) and its hit parameter.
-local BREAK, COUNTER = 0x10, 20
+local BREAK, COUNTER = Element.new("null", { ["break"] = true }), 20
 -- The drill's time (the original's parameter word 0x1800), and how long
 -- the navi stands after it.
 local DRILL_TICKS, AFTER = 0x18, 0xA
@@ -119,7 +119,7 @@ local function burrow(me: Object, s: State)
         if me.alliance > 1 then
             error(string.format("side %d reads past byte_80EF0A4 (sub_80EF004)", me.alliance))
         end
-        x = panels.closest_in_row(bit32.bxor(me.alliance, 1), y, ENEMY_PANEL, nil, me.alliance)
+        x = panels.closest_in_row(battle.other_side(me.alliance), y, ENEMY_PANEL, nil, me.alliance)
     end
     me.panel_x, me.panel_y = lockon.panel(me, x, y, LOCKON)
     me:set_coordinates_from_panel()

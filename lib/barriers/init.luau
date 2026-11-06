@@ -25,7 +25,6 @@ end
 
 local SPRITE, BUBBLE, AURA = barrier_sprite, bubble_sprite, aura_sprite
 local SOUND, BUBBLE_SOUND, BUBBLE_POP = asset.sound("barrier"), asset.sound("bubble"), asset.sound("bubble-pop")
-local NO_TIMER = 0xFFFF
 
 -- Type 1: 10 HP.
 barriers.barrier_10 = barriers.barrier {
@@ -33,8 +32,7 @@ barriers.barrier_10 = barriers.barrier {
     behavior = "plain",
     hp = 10,
     threshold = 0,
-    timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 0, attach_point = 2, hidden_parts = 0, up_steps = 16, down_steps = 21 },
+    look = { sprite = SPRITE, anim = 0, palette = 0, attach_point = 2, hidden_parts = {}, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -44,8 +42,7 @@ barriers.barrier_100 = barriers.barrier {
     behavior = "plain",
     hp = 100,
     threshold = 0,
-    timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 3, attach_point = 2, hidden_parts = 0, up_steps = 16, down_steps = 21 },
+    look = { sprite = SPRITE, anim = 0, palette = 3, attach_point = 2, hidden_parts = {}, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -55,8 +52,7 @@ barriers.barrier_200 = barriers.barrier {
     behavior = "plain",
     hp = 200,
     threshold = 0,
-    timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 6, attach_point = 2, hidden_parts = 0, up_steps = 16, down_steps = 21 },
+    look = { sprite = SPRITE, anim = 0, palette = 6, attach_point = 2, hidden_parts = {}, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -67,8 +63,7 @@ barriers.bubble = barriers.barrier {
     behavior = "bubble",
     hp = 1,
     threshold = 0,
-    timer = NO_TIMER,
-    look = { sprite = BUBBLE, anim = 0, palette = 0, attach_point = 0x15, hidden_parts = 0, up_steps = 46, down_steps = 5 },
+    look = { sprite = BUBBLE, anim = 0, palette = 0, attach_point = 0x15, hidden_parts = {}, up_steps = 46, down_steps = 5 },
     sound = BUBBLE_SOUND,
     down_sound = BUBBLE_POP,
 }
@@ -80,7 +75,7 @@ barriers.life_aura = barriers.barrier {
     hp = 1,
     threshold = 200,
     timer = 3000,
-    look = { sprite = AURA, anim = 0, palette = 0, attach_point = 1, hidden_parts = 0, up_steps = 9, down_steps = 19 },
+    look = { sprite = AURA, anim = 0, palette = 0, attach_point = 1, hidden_parts = {}, up_steps = 9, down_steps = 19 },
     hidden_unless_local_megaman = true,
     sound = SOUND,
 }

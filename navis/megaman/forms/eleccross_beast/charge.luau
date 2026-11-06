@@ -27,7 +27,7 @@ local elec_beast_charge = {}
 local WIND_UP, STRIKE = 0x0, 0x4
 
 -- Elec (the attack's element) and the hits' counter byte.
-local ELEC, COUNTER = 3, 10
+local ELEC, COUNTER = Element.elec, 10
 -- The pillars: lightning (the pillar's first parameter 1: hit modifier 1,
 -- the elec spark, paralysis, its panel cracked), 90 ticks, 9 once the navi
 -- stops, on the panel in front and the two columns past it.

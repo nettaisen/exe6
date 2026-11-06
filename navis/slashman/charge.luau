@@ -25,7 +25,7 @@ local SLASH_TICKS, RECOVER_TICKS = 0xF, 0x1E
 -- The hits' counter byte, and the waves' element: Null (the attack's
 -- element byte).
 local COUNTER = 10
-local NULL = 0
+local NULL = Element.null
 
 -- `sub_8012228`: 10 damage and 10 more per point of buster Attack (up to
 -- 5).
@@ -54,7 +54,7 @@ local function waves(me: Object, r3: number)
         local x, y = me.panel_x + d[1] * me.facing, me.panel_y + d[2]
         if field.valid(x, y) then
             local o = wave.spawn(me, x, y, me.attack_element, WAVE, damage, bit32.band(r3, 0xFFFF))
-            r3 = if o then bit32.bor(me.alliance, bit32.lshift(me.flip, 8)) else me.attack_element
+            r3 = if o then bit32.bor(me.alliance, if me.flip then 0x100 else 0) else me.attack_element.byte
         end
     end
 end

@@ -299,7 +299,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = ANIM_STAND, 0
     sprite:set_animation(ANIM_STAND)
     sprite:step()
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     me.pos = Vec3.new(me.pos.x, me.pos.y, 0)
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
@@ -350,7 +350,7 @@ turret.kind = new.kind {
 -- facing, with `element`, the damage word, and the chip's look and HP:
 -- one of the side's field objects (the side's previous instrument, plane
 -- or turret breaks). It acts while dimmed.
-function turret.spawn(owner: Object, x: number, y: number, element: number, damage: number, palette: number, hp: number): Object?
+function turret.spawn(owner: Object, x: number, y: number, element: Element, damage: number, palette: number, hp: number): Object?
     local o = battle.spawn(turret.kind, Vec3.zero)
     if not o then
         return nil

@@ -36,7 +36,7 @@ local TRAIL_BUGGED = 3
 -- `sub_80D9FC2`: a bug its target's side doesn't have yet, at random (one
 -- RNG draw), or any of the four when it has them all.
 local function pick_bug(me: Object)
-    local target = battle.navi(bit32.bxor(me.alliance, 1))
+    local target = battle.navi(battle.other_side(me.alliance))
     local choices = {}
     if target.hp_drain == 0 then
         table.insert(choices, 0)

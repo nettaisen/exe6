@@ -27,7 +27,7 @@ local dash_weapon = {}
 local WIND_UP, DASH, LAND = 0x0, 0x4, 0x8
 
 -- Break (secondary element 0x10), the hit's counter byte.
-local BREAK, COUNTER = 0x10, 10
+local BREAK, COUNTER = Element.new("null", { ["break"] = true }), 10
 -- The dash's first speed and its acceleration, 16.16 (the acceleration
 -- kept in the attack's marker word, AIAttackVars+0x30).
 local ACCELERATION = 0x1_0000
@@ -90,7 +90,7 @@ local function wind_up(me: Object, s: State)
     dash_hit.spawn(me, me.attack_element, damage, 0, HIT, HIT_Z)
     -- (The second's height is what the first spawn left in its register:
     -- the attack's element byte, a fraction of a pixel.)
-    dash_hit.spawn(me, me.attack_element, damage, 1, HIT, me.attack_element)
+    dash_hit.spawn(me, me.attack_element, damage, 1, HIT, me.attack_element.byte)
     me.step = DASH
     me.step_init = 0
 end

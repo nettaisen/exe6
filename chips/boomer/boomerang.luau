@@ -24,7 +24,7 @@ boomerang.kind = common.make_kind {
 
 -- `sub_80CA4D8`: a boomerang of `owner`'s on (x, y), thrown as `throw`
 -- says, with the damage word `damage`.
-function boomerang.spawn(owner: Object, x: number, y: number, element: number, z: number, throw: BoomerangThrow, damage: number): Object?
+function boomerang.spawn(owner: Object, x: number, y: number, element: Element, z: number, throw: BoomerangThrow, damage: number): Object?
     return common.spawn(boomerang.kind, owner, x, y, element, z, throw, damage)
 end
 

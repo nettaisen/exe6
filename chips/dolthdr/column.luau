@@ -126,13 +126,13 @@ function thunder_column.spawn(
     from: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     variant: Variant,
     damage: number,
     owner: Object,
     link: number
 ): Object?
-    local o = battle.spawn(thunder_column.kind, Vec3.new(y, element, HEIGHT))
+    local o = battle.spawn(thunder_column.kind, Vec3.new(y, element.byte, HEIGHT))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

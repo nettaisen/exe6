@@ -184,7 +184,7 @@ drip_shower.kind = new.kind {
 -- the damage word `damage`. It runs while dimmed (and stands still).
 -- `pos` is where its spawner's registers leave it (its row, the element
 -- and a Z), of which its init keeps the Z's fraction.
-function drip_shower.spawn(owner: Object, x: number, y: number, element: number, spec: Spec, damage: number, pos: Vec3): Object?
+function drip_shower.spawn(owner: Object, x: number, y: number, element: Element, spec: Spec, damage: number, pos: Vec3): Object?
     local o = battle.spawn(drip_shower.kind, pos)
     if o then
         o.panel_x, o.panel_y = x, y

@@ -112,7 +112,7 @@ local function init(me: Object)
     if not s.hidden then
         me.visible = true
     end
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     s.reach = v.reach
     me:set_panel_from_coordinates()
     me.vel = Vec3.new(int.mul32(me.facing, v.speed), me.vel.y, me.vel.z)
@@ -181,7 +181,7 @@ function sword_wave.spawn(
     variant: SwordWaveVariant,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     damage: number,
     hidden: boolean?
 ): Object?
@@ -205,7 +205,7 @@ function sword_wave.spawn_while_dimmed(
     variant: SwordWaveVariant,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     damage: number,
     hidden: boolean?
 ): Object?

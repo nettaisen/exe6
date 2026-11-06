@@ -37,7 +37,7 @@ local function tick(me: Object)
     local s = me.state :: State
     if me.phase_init == START then
         me.timer = 1
-        s.scan_x = 6 - 5 * bit32.bxor(me.alliance, me.flip)
+        s.scan_x = 6 - 5 * me.facing_side
         s.scan_y = 1
         me.phase_init = SCANNING
     end

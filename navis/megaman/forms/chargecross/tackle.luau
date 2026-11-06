@@ -25,7 +25,7 @@ local tackle = {}
 local WIND_UP, CHARGE, LAND = 0x0, 0x4, 0x8
 
 -- Fire, the hit's counter byte.
-local FIRE, COUNTER = 1, 20
+local FIRE, COUNTER = Element.fire, 20
 -- The charge's speed, 16.16, and its ticks: 120 pixels' worth, and one
 -- more (the game divides 0x780000 by the speed).
 local SPEED = 0xC_0000

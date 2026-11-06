@@ -60,7 +60,7 @@ function buster.setup(navi: Object): Action
         return charged_shot.setup(navi)
     end
     navi.attack_word = damage_word.of { amount = navi:buster_damage(), counter = 0 }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = 0
@@ -86,7 +86,7 @@ local THROWN = flying_shot.variant {
     collision = { is = collision.breaking, hits = collision.hits_navis },
     hit_mod = { flinch = true, flash = true },
     element = "null",
-    secondary = { "break" },
+    secondary = { ["break"] = true },
     spark = sparks.breaking,
     sprite = beast_shot_sprite,
     speed = 0xA_0000,

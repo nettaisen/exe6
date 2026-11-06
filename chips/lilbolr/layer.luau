@@ -92,7 +92,7 @@ local function tick(me: Object)
     looks.copy(sprite, look, "white", "mosaic")
     if not s.own_flip then
         me.flip = owner.flip
-        sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        sprite:face(me)
     end
     looks.copy(sprite, look, "alpha")
     if s.row_offset then
@@ -119,7 +119,7 @@ local function init(me: Object)
     sprite:set_animation(s.anim)
     local owner = me.related1 :: Object
     sprite.palette = if s.own_palette then s.palette else owner.sprite.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
     tick(me)
 end
