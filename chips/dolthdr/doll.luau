@@ -45,7 +45,7 @@ local PLAIN = thunder_column.variant {
     collision = { is = collision.attack, hits = collision.hits_navis },
     spark = sparks.elec,
     region = regions.single,
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     status = nil,
     bug = 0,
     bug_arg = 0,
@@ -69,7 +69,7 @@ local function strike(me: Object)
             me.panel_y,
             me.element,
             PLAIN,
-            me.damage + me.stamina * 0x10000,
+            me.damage_word,
             me,
             link
         )
@@ -181,7 +181,7 @@ function doll.spawn(user: Object, x: number, y: number, element: Element, ticks:
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.related1 = user
         local s = o.state :: State
         s.ticks = ticks

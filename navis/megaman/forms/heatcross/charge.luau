@@ -23,12 +23,10 @@ local FLAME = burn.action {
 }
 
 -- The attack's element (Fire) and hit parameter.
-local FIRE, HIT_PARAM = Element.fire, 0x94
-
+local FIRE, COUNTER = Element.fire, 20
 -- `sub_8011BA2`.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x1E, 0x14)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x1E, 0x14), counter = COUNTER, cant_counter = true }
     navi.attack_element = FIRE
     navi.charged = 0
     navi.extra = 0

@@ -103,7 +103,7 @@ local function set_alight(me: Object, x: number, y: number)
     if not field.check(x, y, CAN_HOLD) then
         return
     end
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     -- The registers (the row, the element and r3, 0 << 16) are its
     -- position until its init.
     flame.spawn(me, x, y, me.element, FLAME, damage, Vec3.new(y, me.element.byte, 0))

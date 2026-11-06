@@ -22,7 +22,7 @@ local SOUND = asset.sound("drill-launch")
 
 -- The hits' counter byte, and the drills' element: Null (the attack's
 -- element byte).
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 local NULL = Element.null
 
 -- The drills, upper row first (`byte_80F1E48`): the row, whether it is a
@@ -32,8 +32,7 @@ local DRILLS = { { dy = -1, side = true, wait = 0xC }, { dy = 0, side = false, w
 -- `sub_80122DA`: 10 damage and 10 more per point of buster Attack (up to
 -- 5).
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0xA, 0xA)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0xA, 0xA), counter = COUNTER, cant_counter = true }
     navi.attack_element = NULL
     return charge.action
 end

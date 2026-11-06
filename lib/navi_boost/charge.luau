@@ -10,17 +10,15 @@ local exe6 = require("../../rules/api")
 local charge = {}
 
 local LOCKOUT = 0x14
-local HIT_PARAM = 0x14
-
+local COUNTER = 20
 -- The attack's variables every one of them sets, with its `element` (the
 -- attack's element byte) and `damage`.
 function charge.prepare(navi: Object, element: Element, damage: number)
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = LOCKOUT
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = damage, counter = COUNTER }
     navi.attack_element = element
-    navi.attack_damage = damage
 end
 
 -- `sub_800F4A8`, `sub_800F4B2`: a bug frag of the navi's side goes, if it

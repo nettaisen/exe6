@@ -36,7 +36,7 @@ seed.kind = common.make_kind("seed", {
     anim = 9,
     is = collision.attack,
     hits = collision.hits_navis,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     spark = sparks.of_element,
     splash = effects.splash,
     puff = effects.puff,

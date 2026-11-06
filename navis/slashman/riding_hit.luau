@@ -18,7 +18,7 @@ type Spec = RidingHit
 export type State = {
     is: CollisionType,
     hits: CollisionType,
-    hit_mod: number,
+    hit_mod: HitModifierByte,
     spark: Spark?,
     keeps_going: boolean,
     -- The action its owner was in when it came (ExtraVars+8).
@@ -116,10 +116,10 @@ function riding_hit.spawn(owner: Object, element: Element, spec: Spec, damage: n
     local o = battle.spawn(riding_hit.kind, Vec3.zero)
     if o then
         local s = o.state :: State
-        s.is, s.hits, s.hit_mod, s.spark, s.keeps_going = spec.is, spec.hits, spec.hit_mod, spec.spark, spec.keeps_going
+        s.is, s.hits, s.hit_mod, s.spark, s.keeps_going = spec.is, spec.hits, hit_modifier.byte(spec.hit_mod), spec.spark, spec.keeps_going
         s.action = owner:navi_action() :: Action
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
         o.run_while_dimmed = true

@@ -21,7 +21,7 @@ local chips: { [string]: Chip } = {
     gundels1 = {
         codes = { "C", "M", "T", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 1, mb = 15, damage = 0, hit_param = 0, lockout = 0,
+        rarity = 1, mb = 15, damage = 0, counter = 0, lockout = 0,
         flags = { standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -37,7 +37,7 @@ local chips: { [string]: Chip } = {
     gundels2 = {
         codes = { "B", "E", "R" },
         element = "null", family = "null", class = "standard",
-        rarity = 2, mb = 30, damage = 0, hit_param = 0, lockout = 0,
+        rarity = 2, mb = 30, damage = 0, counter = 0, lockout = 0,
         flags = { standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -53,7 +53,7 @@ local chips: { [string]: Chip } = {
     gundels3 = {
         codes = { "N", "Q", "W" },
         element = "null", family = "null", class = "standard",
-        rarity = 3, mb = 38, damage = 0, hit_param = 0, lockout = 0,
+        rarity = 3, mb = 38, damage = 0, counter = 0, lockout = 0,
         flags = { standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
@@ -73,7 +73,7 @@ local chips: { [string]: Chip } = {
     gundelex = {
         codes = { "G" },
         element = "null", family = "null", class = "standard",
-        rarity = 4, mb = 80, damage = 0, hit_param = 0, lockout = 0,
+        rarity = 4, mb = 80, damage = 0, counter = 0, lockout = 0,
         flags = { library = true },
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).

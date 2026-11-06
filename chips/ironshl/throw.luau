@@ -38,7 +38,7 @@ function throw.action(spec: { id: string, shell: IronShell }): Action
         if s.timer == THROW_AT then
             -- The damage word (the hit parameter in its high half), plus
             -- the Atk+ bonus.
-            local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+            local damage = damage_word.plus(me.attack_word, me.extra)
             local element = me.attack_element
             spec.shell.variant.throw(me, function(x: number, y: number)
                 shell.spawn(me, x, y, element, damage, spec.shell)

@@ -46,7 +46,7 @@ local IDENTITY = new.identity {
 }
 local FLAME = asset.sprite("jet-flame")
 -- Its collision: another body of its side, reached by the other side.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- How it looks absorbed (the original's obstacle kind 6: its own sprite).
 local ABSORBED = absorbed_obstacle.look { sprite = SPRITE }
 local APPEAR_SOUND, BREAK_SOUND = asset.sound("appear"), asset.sound("hit-bomb-1")
@@ -61,7 +61,7 @@ local OTHER_BODY: PanelCondition = { enemy_body = true }
 local STRAY: PanelCondition = { on_field = true, enemy_area = true }
 -- A bomb's strike: highlighted 6 ticks, its hits unmodified, no crack,
 -- on any panel (its spawn parameters 0x20600).
-local STRIKE: PanelStrike = { warning = 6, hit_mod = 0 }
+local STRIKE: PanelStrike = { warning = 6, hit_mod = {} }
 -- With no neighbor to stray to, the game strikes column 0 of a row it
 -- leaves in a register: the low byte of the panel table's address
 -- (`ePanelData`) when the last neighbor it tried is on the field.
@@ -148,7 +148,7 @@ local function bomb(me: Object)
             end
         end
     end
-    panel_strike.spawn(me, x, y, Element.null, STRIKE, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), 0, false)
+    panel_strike.spawn(me, x, y, Element.null, STRIKE, me.damage_word, 0, false)
 end
 
 -- `sub_80D35E0`: the appearing sound, then it takes off.
@@ -338,7 +338,7 @@ function plane.spawn(owner: Object, x: number, y: number, p: AirRaidPlane, damag
     if not o then
         return nil
     end
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.panel_x, o.panel_y = x, y
     o.alliance, o.flip = owner.alliance, owner.flip
     o.run_while_dimmed = true

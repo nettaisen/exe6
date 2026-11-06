@@ -27,14 +27,13 @@ local elec_beast_charge = {}
 local WIND_UP, STRIKE = 0x0, 0x4
 
 -- Elec (the attack's element) and the hits' counter byte.
-local ELEC, HIT_PARAM = Element.elec, 0x8A
-
+local ELEC, COUNTER = Element.elec, 10
 -- The pillars: lightning (the pillar's first parameter 1: hit modifier 1,
 -- the elec spark, paralysis, its panel cracked), 90 ticks, 9 once the navi
 -- stops, on the panel in front and the two columns past it.
 local LIGHTNING = element_pillar.look {
     sprite = element_pillar_lightning_sprite,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     spark = sparks.elec,
     status = statuses.paralyze_150,
     cracks = true,
@@ -51,8 +50,7 @@ local CRACKLE = asset.sound("beast-over")
 -- `sub_8011C00`: 40 damage and 30 more per point of buster Attack (up to
 -- 5), Elec.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x28, 0x1E)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x28, 0x1E), counter = COUNTER, cant_counter = true }
     navi.attack_element = ELEC
     return elec_beast_charge.action
 end

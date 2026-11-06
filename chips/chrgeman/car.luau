@@ -25,7 +25,7 @@ export type State = {
     -- It acts while the battle is dimmed, and its hit's modifier (Param1
     -- set: the navi chip's, 3).
     while_dimmed: boolean,
-    hit_mod: number,
+    hit_mod: HitModifierByte,
     -- Its place in the train (Param2) and the ticks it waits (Param3; 0:
     -- it rolls at once).
     place: number,
@@ -98,8 +98,7 @@ local function hit(me: Object)
         hit_effect = sparks.breaking,
         target = collision.hits_navis,
         self_type = collision.breaking,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = s.hit_mod,
     })
     if box and s.while_dimmed then
@@ -225,11 +224,11 @@ function car.spawn(
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         local s = o.state :: State
         s.speed = speed
         s.while_dimmed = what.while_dimmed == true
-        s.hit_mod = what.hit_mod
+        s.hit_mod = hit_modifier.byte(what.hit_mod)
         s.place = what.place
         s.wait = what.wait
         s.owner_action = what.owner_action or UNTIED

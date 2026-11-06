@@ -31,7 +31,7 @@ local function effect(me: Object)
         -- (`byte_80E7C98`: the panel in front must be free, both sides alike.)
         if field.check(x, y, NOT_OCCUPIED) then
             local s = me.state :: State
-            local word = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+            local word = me.damage_word
             turret.spawn(me, x, y, me.element, int.u32(word + s.bonus), s.palette, s.hp)
         end
         me.timer = WAIT

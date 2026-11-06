@@ -13,7 +13,7 @@
 -- effect when its range runs out.
 export type FlyingShotVariant = {
     collision: { is: CollisionType, hits: CollisionType },
-    hit_mod: number,
+    hit_mod: HitModifier,
     element: ElementName,
     secondary: SecondaryElements?,
     spark: Spark?,
@@ -110,7 +110,7 @@ export type FlashBombVariant = {
 -- its hit's modifier, spark and status, and whether it cracks its panel
 -- (the flames': 3, fire, none, no; the lightning's: 1, elec, paralysis,
 -- yes).
-export type ElementPillarLook = { sprite: SpriteAsset, hit_mod: number, spark: Spark, status: Status?, cracks: boolean }
+export type ElementPillarLook = { sprite: SpriteAsset, hit_mod: HitModifier, spark: Spark, status: Status?, cracks: boolean }
 
 export type ElementPillar = {
     look: ElementPillarLook,
@@ -232,7 +232,7 @@ export type WindRackSpec = {
 -- An electric pulse (chips/elcpuls/pulse): its hit modifier and status,
 -- its ticks, its palette and the bug its hits carry (none by default).
 export type ElecPulse = {
-    hit_mod: number,
+    hit_mod: HitModifier,
     status: Status?,
     ticks: number,
     palette: number,
@@ -279,7 +279,7 @@ export type MagCoilSpec = {
 export type DragonVariant = {
     speed: number,
     palette: number,
-    hit_mod: number,
+    hit_mod: HitModifier,
     spark: Spark,
     panel: PanelType | false,
     delays: { number },
@@ -391,7 +391,7 @@ export type SlashWave = {
 -- action it is tied to (none: it never checks).
 export type ChargeCar = {
     while_dimmed: boolean?,
-    hit_mod: number,
+    hit_mod: HitModifier,
     place: number,
     wait: number,
     owner_action: number?,
@@ -431,7 +431,7 @@ export type FireBlast = {
 export type PanelStrike = {
     cracks: boolean?,
     warning: number,
-    hit_mod: number,
+    hit_mod: HitModifier,
     solid_only: boolean?,
 }
 
@@ -453,7 +453,7 @@ export type HeatFlame = {
 export type RidingHit = {
     is: CollisionType,
     hits: CollisionType,
-    hit_mod: number,
+    hit_mod: HitModifier,
     spark: Spark?,
     keeps_going: boolean,
 }

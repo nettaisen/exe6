@@ -33,7 +33,7 @@ local FLAME: HeatFlame = { while_dimmed = false, ticks = 0x3C, is = collision.at
 
 -- The press's hit on his panel, for 60 ticks.
 local PRESS_TICKS = 0x3C
-local PRESS_HIT_MOD = 3
+local PRESS_HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- `sub_80F0798`: the jump. Its entry aims the arc; each tick after moves
 -- along it while the timer, counted down, stays at 0 or more. Then he is
@@ -94,8 +94,7 @@ local function press(me: Object, s: State)
             hit_effect = sparks.fire,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = link.damage(me),
-            stamina = link.stamina(me),
+            damage = link.damage_word(me),
             hit_mod = PRESS_HIT_MOD,
         })
         if hit then
@@ -128,7 +127,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = { formula = "navi_level", base = 50, per_level = 20 },
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,

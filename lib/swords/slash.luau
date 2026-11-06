@@ -20,7 +20,7 @@ slash.STATE = common.STATE
 local CROSS_HIT: SwordHit = {
     region = regions.single,
     collision = { is = collision.slash, hits = collision.hits_navis },
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
 }
 
 slash.CROSS_HIT = CROSS_HIT

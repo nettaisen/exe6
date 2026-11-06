@@ -196,7 +196,7 @@ local function slash(me: Object)
         me.phase = 4
         me.anim = 0x12
         local s = me.state :: State
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         each_panel(me, function(x, y)
             beam.spawn(me, x, y, me.element, { aim = s.aim, ticks = SLASH_TICKS, while_dimmed = true, tied = false }, damage)
         end)
@@ -262,7 +262,7 @@ function eraseman.summon(args: Summon): (user: Object, controller: Object, spec:
         o.element = spec.element
         o.related1 = user
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         local s = o.state :: State
         s.controller = controller
         s.aim_ticks = args.aim_ticks

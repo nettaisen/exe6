@@ -26,7 +26,7 @@ local chips: { [string]: Chip } = {
     rflectr1 = {
         codes = { "A", "C", "P", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 0, mb = 7, damage = 60, hit_param = 20, lockout = 0,
+        rarity = 0, mb = 7, damage = 60, counter = 20, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         action = guard.action { ticks = 60, look = RFLECTR1, counter = wave },
@@ -34,7 +34,7 @@ local chips: { [string]: Chip } = {
     rflectr2 = {
         codes = { "B", "G", "Y", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 1, mb = 16, damage = 120, hit_param = 20, lockout = 0,
+        rarity = 1, mb = 16, damage = 120, counter = 20, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         action = guard.action { ticks = 60, look = RFLECTR2, counter = wave },
@@ -42,7 +42,7 @@ local chips: { [string]: Chip } = {
     rflectr3 = {
         codes = { "E", "F", "O", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 2, mb = 25, damage = 200, hit_param = 20, lockout = 0,
+        rarity = 2, mb = 25, damage = 200, counter = 20, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         action = guard.action { ticks = 60, look = RFLECTR3, counter = wave },

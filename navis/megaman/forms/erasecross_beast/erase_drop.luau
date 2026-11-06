@@ -40,7 +40,7 @@ local CURSOR = Element.new("null", { cursor = true })
 
 -- Its hit: piercing, at navis, with the plain spark and a bug (code 0x18,
 -- argument 1).
-local HIT_Z, HIT_MOD, BUG, BUG_ARG = 0x10_0000, 3, 0x18, 1
+local HIT_Z, HIT_MOD, BUG, BUG_ARG = 0x10_0000, { flinch = true, flash = true }, 0x18, 1
 
 -- The camera's shake when it lands.
 local SHAKE, SHAKE_TICKS = 2, 0x18
@@ -72,8 +72,7 @@ local function fall(me: Object)
         hit_effect = sparks.plain,
         target = collision.hits_navis,
         self_type = collision.piercing,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
         status = nil,
         bug = BUG,
@@ -171,7 +170,7 @@ function erase_drop.spawn(owner: Object, x: number, y: number, ticks: number, da
         s.ticks, s.x, s.y = ticks, int.u8(x), int.u8(y)
         o.alliance, o.flip = owner.alliance, owner.flip
         o.element = CURSOR
-        o:set_damage_word(damage)
+        o.damage_word = damage
     end
     return o
 end

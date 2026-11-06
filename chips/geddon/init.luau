@@ -18,7 +18,7 @@ local BREAK = quake.change {
 local chip: Chip = {
     codes = { "A", "L", "R", "*" },
     element = "null", family = "null", class = "standard",
-    rarity = 2, mb = 47, damage = 0, hit_param = 0, lockout = 0,
+    rarity = 2, mb = 47, damage = 0, counter = 0, lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 1,
     dimming = controller.hook(BREAK),

@@ -24,13 +24,11 @@ local GUST = windrack.action {
 }
 
 -- The attack's element (Wind, secondary element 0x20) and hit parameter.
-local WIND, HIT_PARAM = Element.new("null", { wind = true }), 0x94
-
+local WIND, COUNTER = Element.new("null", { wind = true }), 20
 -- `sub_8011C88`.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x28, 0x14)
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x28, 0x14), counter = COUNTER, cant_counter = true }
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
     navi.attack_element = WIND
     return GUST
 end

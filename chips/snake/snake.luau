@@ -31,9 +31,9 @@ snake.kind = common.make_kind("snake/snake", {
     wait = 0x14,
     -- Its strike (`sub_80C53A6`, 0x04050501): an attack hitting navis with
     -- hit modifier 3.
-    strike_element = 0,
+    strike_element = Element.null,
     strike_spark = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
-    strike_hit_mod = 3,
+    strike_hit_mod = { flinch = true, flash = true },
     is = collision.attack,
     hits = collision.hits_navis,
     joined = function(me: Object)

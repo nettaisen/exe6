@@ -12,7 +12,7 @@ local chip: Chip = {
     element = "elec", family = "elec", class = "giga",
     -- The version whose saves hold it (rules/folder).
     version = "falzar",
-    rarity = 4, mb = 80, damage = 0, hit_param = 138, lockout = 0,
+    rarity = 4, mb = 80, damage = 0, counter = 10, cant_counter = true, lockout = 0,
     flags = { dimming = true, library = true },
     slot_in_limit = 1,
     dimming = navi_boost.bug(charge.weapon),

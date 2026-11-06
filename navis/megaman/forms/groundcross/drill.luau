@@ -27,8 +27,7 @@ local ground_drill = {}
 local BURROW, EMERGE, DRILL, SINK, RETURN = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- The attack: Break (secondary element 0x10) and its hit parameter.
-local BREAK, HIT_PARAM = Element.new("null", { ["break"] = true }), 0x94
-
+local BREAK, COUNTER = Element.new("null", { ["break"] = true }), 20
 -- The drill's time (the original's parameter word 0x1800), and how long
 -- the navi stands after it.
 local DRILL_TICKS, AFTER = 0x18, 0xA
@@ -57,8 +56,7 @@ local LOCKON = lockon.beast_claw
 -- `sub_8011D74`: 10 damage and 10 more per point of buster Attack (up to
 -- 5), Break.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x0A, 0x0A)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x0A, 0x0A), counter = COUNTER, cant_counter = true }
     navi.attack_element = BREAK
     navi.charged = 0
     navi.extra = 0
@@ -159,7 +157,7 @@ local function drill(me: Object, s: State)
         me.status.using_action = true
         me:set_animation(0xA)
         attachment.attach(me, drill_object.arm, "overlay", { anim = drill_object.ARM_DRILLING })
-        local damage = int.u32(bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16)) + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         drill_object.spawn(me, me.attack_element, 0x10_0000, damage, { ticks = DRILL_TICKS })
         me:open_counter_window()
         s.timer = DRILL_TICKS + AFTER

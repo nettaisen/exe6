@@ -9,7 +9,7 @@ local chips: { [string]: Chip } = {
     colorpt = {
         codes = { "*" },
         element = "null", family = "plus", class = "standard",
-        rarity = 1, mb = 31, damage = 0, hit_param = 0, lockout = 0,
+        rarity = 1, mb = 31, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         slot_in_limit = 1,
         dimming = controller.hook { palette = 0, bonus = 10 },
@@ -17,7 +17,7 @@ local chips: { [string]: Chip } = {
     dblpoint = {
         codes = { "*" },
         element = "null", family = "plus", class = "standard",
-        rarity = 3, mb = 50, damage = 0, hit_param = 0, lockout = 0,
+        rarity = 3, mb = 50, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         slot_in_limit = 1,
         dimming = controller.hook { palette = 4, bonus = 20 },

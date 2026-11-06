@@ -28,7 +28,7 @@ local function spread(me: Object)
     if t ~= 0 then
         return
     end
-    local damage = int.u32(me.damage + me.stamina * 0x10000)
+    local damage = me.damage_word
     shot.spawn(me, me.panel_x + me.facing, me.panel_y, me.pos.z, damage)
     me.action = FADING
 end
@@ -87,7 +87,7 @@ local function init(me: Object): boolean
         me:free()
         return false
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 0)
+    me:setup_collision(collision.attack, collision.hits_navis, {})
     me.collision:set_region(regions.single)
     me.collision:set_hit_effect(nil)
     me.collision:present()
@@ -123,7 +123,7 @@ function shot.spawn(spawner: Object, x: number, y: number, z: number, damage: nu
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = Element.null
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = spawner.alliance, spawner.flip
         o.related1 = spawner
     end

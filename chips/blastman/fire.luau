@@ -24,7 +24,7 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("blast-fire")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- By direction: its step (`byte_80C846C`), how far it goes (16.16,
 -- `byte_80C8488`), its animation (`dword_80C8480`) and flip
@@ -145,7 +145,7 @@ function fire.spawn(owner: Object, x: number, y: number, element: Element, what:
         s.while_dimmed = what.while_dimmed == true
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

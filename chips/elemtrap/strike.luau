@@ -27,23 +27,23 @@ local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0, s
 -- the hit spark, hit modifier and status; every one a single panel's, an
 -- attack that reaches navis) and the bursts' look (`byte_80E371E`).
 local STRIKES: { [PrimaryElement]: ElemTrapStrike } = {
-    null = { sound = nil, spark = sparks.breaking, hit_mod = 3, status = nil, burst = effects.shell_burst },
+    null = { sound = nil, spark = sparks.breaking, hit_mod = { flinch = true, flash = true }, status = nil, burst = effects.shell_burst },
     fire = {
         sound = asset.sound("target-move"),
         spark = sparks.fire,
-        hit_mod = 3,
+        hit_mod = { flinch = true, flash = true },
         status = nil,
         burst = effects.shell_burst,
     },
-    aqua = { sound = asset.sound("spout-ball"), spark = sparks.aqua, hit_mod = 3, status = nil, burst = SPLASH },
+    aqua = { sound = asset.sound("spout-ball"), spark = sparks.aqua, hit_mod = { flinch = true, flash = true }, status = nil, burst = SPLASH },
     elec = {
         sound = asset.sound("beast-over-burst"),
         spark = sparks.elec,
-        hit_mod = 1,
+        hit_mod = { flinch = true },
         status = statuses.paralyze_90,
         burst = LIGHTNING,
     },
-    wood = { sound = asset.sound("junk-shot"), spark = sparks.wood, hit_mod = 1, status = statuses.confuse_480, burst = LEAVES },
+    wood = { sound = asset.sound("junk-shot"), spark = sparks.wood, hit_mod = { flinch = true }, status = statuses.confuse_480, burst = LEAVES },
 }
 -- EXE6's look: the strikes by element, what the hits are and reach, and the
 -- bursts' kind.

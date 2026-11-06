@@ -19,7 +19,7 @@ local HEIGHT = 0x30_0000
 local DUST = new.effect { sprite = dust_2_sprite, anim = 0, palette = 0, steps = 14 }
 -- Its hit lasts 15 less 5 ticks.
 local HIT_TICKS = 0x0F - 5
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local WAIT, STRIKE = 0x0, 0x4
 
 -- What it counts as having hit (`sub_801A100`: an object, a body, another
@@ -151,7 +151,7 @@ function strike.spawn(owner: Object, x: number, y: number, element: Element, spe
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         local s = o.state :: State

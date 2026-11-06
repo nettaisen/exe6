@@ -114,7 +114,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.hitbox, collision.hits_both_sides, 1)
+    me:setup_collision(collision.hitbox, collision.hits_both_sides, { flinch = true })
     local c = me.collision
     c:set_hit_effect(sparks.fire)
     c:set_region(nil)
@@ -155,8 +155,7 @@ function eruption.volcano(x: number, y: number)
     end
     o.panel_x, o.panel_y = x, y
     o.element = Element.null
-    o.damage = DAMAGE
-    o.stamina = 0
+    o.damage_word = DAMAGE
     state(o).lifetime = START
 end
 

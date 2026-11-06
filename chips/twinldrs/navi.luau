@@ -168,9 +168,8 @@ local function hit(me: Object, x: number, y: number, element: Element, z: number
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -648,7 +647,7 @@ local function init(me: Object)
         me:add_parts(look.identity, 1)
     end
     if not s.colonel then
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         local spec = { panel_x = me.panel_x, panel_y = me.panel_y, element = me.element, damage = damage }
         local colonel = spawn(me.related1 :: Object, spec, nil, true, nil)
         if colonel then

@@ -21,7 +21,7 @@ local panel_strike = {}
 export type State = {
     cracks: boolean,
     warning: number,
-    hit_mod: number,
+    hit_mod: HitModifierByte,
     solid_only: boolean,
 }
 
@@ -154,11 +154,11 @@ function panel_strike.spawn(
         local s = o.state :: State
         s.cracks = what.cracks == true
         s.warning = what.warning
-        s.hit_mod = what.hit_mod
+        s.hit_mod = hit_modifier.byte(what.hit_mod)
         s.solid_only = what.solid_only == true
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         if while_dimmed then
             o.run_while_dimmed = true

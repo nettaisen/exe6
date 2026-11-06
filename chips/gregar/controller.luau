@@ -73,7 +73,7 @@ local function send(me: Object)
     if me.phase_init == 0 then
         me.phase_init = 4
         local user = me.related1 :: Object
-        local word = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local word = me.damage_word
         for piece = 0, PIECES - 1 do
             summon.spawn(me, user, me.panel_x - me.facing, me.panel_y, me.element, word, s.bonus, piece, s.rock_damage)
         end

@@ -38,9 +38,8 @@ function cornsht.action(id: string): Action
     -- next animation, the sound.
     local function fire(me: Object, s: State)
         if me.step_init == 0 then
-            local word = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
-            me.attack_damage = bit32.band(word, 0xFFFF)
-            me.hit_param = bit32.rshift(word, 16)
+            local word = damage_word.plus(me.attack_word, me.extra)
+            me.attack_word = word
             me.anim = ANIM_HOLD
             me:open_counter_window()
             attachment.attach(me, GUN, "overlay")
@@ -53,7 +52,7 @@ function cornsht.action(id: string): Action
         if t < FIRE_TICKS then
             return
         end
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+        local damage = me.attack_word
         -- Its generation is the chips' first parameter, 0: the probe.
         corn.spawn(me, me.panel_x, me.panel_y, 0, me.attack_element, damage, true, true)
         local gun = me.overlay

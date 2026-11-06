@@ -49,7 +49,7 @@ local SOUND = asset.sound("iron-shell")
 -- A panel's width, 16.16.
 local PANEL_WIDTH = 0x28_0000
 -- The hit modifiers.
-local PUSHES, STILL = 3, 1
+local PUSHES: HitModifier, STILL: HitModifier = { flinch = true, flash = true }, { flinch = true }
 
 -- The actions.
 local SLIDE, BUMP, FLY = 0, 4, 8
@@ -169,7 +169,7 @@ end
 
 -- `sub_8011504`: the sprite with a ground shadow, then collision with hit
 -- modifier `hit_mod` (false when no slot was free).
-local function setup(me: Object, hit_mod: number): boolean
+local function setup(me: Object, hit_mod: HitModifier): boolean
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
@@ -248,7 +248,7 @@ function shell.spawn(owner: Object, x: number, y: number, element: Element, dama
         s.palette, s.speed, s.bumps, s.variant = spec.palette, spec.speed, spec.bumps, spec.variant
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

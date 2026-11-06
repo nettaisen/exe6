@@ -92,7 +92,7 @@ function action.action(spec: RollingLogSpec): Action
         end
         -- The damage word (the hit parameter in its high half), plus the
         -- Atk+ bonus.
-        local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+        local damage = damage_word.plus(me.attack_word, me.extra)
         log.spawn(me, me.panel_x + me.facing, row, me.attack_element, spec.log, damage)
         battle.play_sound(SOUND_THROW)
         battle.play_sound(SOUND_ROLL)

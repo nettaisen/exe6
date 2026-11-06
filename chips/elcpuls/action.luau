@@ -66,7 +66,7 @@ function action.action(spec: ElecPulseSpec): Action
             step_coil(me, 1)
             me.attack_count = spec.hold
             me.step_init = 4
-            local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+            local damage = damage_word.plus(me.attack_word, me.extra)
             pulse.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, v, damage)
         end
         local h = me.attack_count - 1

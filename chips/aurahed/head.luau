@@ -32,7 +32,7 @@ export type State = {
 -- `sub_8011504`'s words: the sprite (animation 4, a ground shadow), and
 -- the collision (a breaking attack, hit modifier 3 or 1 by its strength).
 local SPRITE, ANIM = aura_head_sprite, 4
-local STRONG_HIT_MOD, HIT_MOD = 3, 1
+local STRONG_HIT_MOD, HIT_MOD = { flinch = true, flash = true }, { flinch = true }
 local SOUND = asset.sound("set-down")
 -- A panel's width, 16.16.
 local PANEL = 0x28_0000
@@ -194,7 +194,7 @@ function head.spawn(user: Object, x: number, y: number, element: Element, what: 
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = user.alliance, user.flip
         o.related1 = user
         local s = o.state :: State

@@ -79,7 +79,7 @@ local FLAME_ELEMENT, FLAME_Z, FLAME_TICKS = Element.fire, 0x6_0000, 0x5A
 -- fire spark).
 local FLAME_LOOK = element_pillar.look {
     sprite = element_pillar_flames_sprite,
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     spark = sparks.fire,
     cracks = false,
 }
@@ -190,7 +190,7 @@ end
 
 -- `sub_80BFD02(wave)`: the wave's dark flames (they run while dimmed).
 local function dark_flames(me: Object, wave: number)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     local flames: ElementPillar = {
         look = FLAME_LOOK,
         ticks = (2 - wave) * 8 + FLAME_TICKS,
@@ -261,7 +261,7 @@ end
 -- FuturePanelX the flag Bass clears when he goes); once Bass is gone, on.
 local function bring_bass(me: Object)
     if me.phase_init == 0 then
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         local spec = { panel_x = me.panel_x, panel_y = me.panel_y, element = Element.null, damage = damage }
         local bass = navi_chips.spawn(darkness.kind, me.related1 :: Object, spec, 0)
         if bass then
@@ -405,9 +405,8 @@ local function slash(me: Object)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 3,
+            damage = me.damage_word,
+            hit_mod = { flinch = true, flash = true },
         })
         if box then
             box.run_while_dimmed = true

@@ -19,7 +19,7 @@ local dash_hit = {}
 -- A user's hit: its hit modifier and spark, and whether it reports in its
 -- owner's marker word, ending after its first hit (the tackle's: the
 -- original's second parameter, the marker's address; the dash's 0).
-export type Variant = { hit_mod: number, spark: Spark, reports: boolean }
+export type Variant = { hit_mod: HitModifier, spark: Spark, reports: boolean }
 
 local MEGAMAN_DASH_HIT_VARIANT = schema.record_type("megaman-dash-hit-variant")
 
@@ -150,7 +150,7 @@ function dash_hit.spawn(owner: Object, element: Element, damage: number, reach: 
         end
         s.action = action :: Action
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

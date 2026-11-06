@@ -8,7 +8,7 @@ local strike = require("../lib/swords/strike")
 local chip: Chip = {
     codes = { "N", "R", "Y" },
     element = "null", family = "null", class = "standard",
-    rarity = 2, mb = 50, damage = 240, hit_param = 30, lockout = 0,
+    rarity = 2, mb = 50, damage = 240, counter = 30, lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = strike.action { blade = parts.blade, finds = "either", effect_palette = 9 },

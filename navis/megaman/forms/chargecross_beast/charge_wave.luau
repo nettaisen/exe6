@@ -33,7 +33,7 @@ local TRAIL_SHADER, TRAIL_LIFETIME = 0xCA8F, 0x14
 local HIT_FLASH = new.effect { sprite = hit_sparks_sprite, anim = 1, palette = 6, steps = 8 }
 
 -- Its hit: an attack at navis, no spark.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- The actions, on its action byte.
 local ROLLING = 0
@@ -153,7 +153,7 @@ function charge_wave.spawn(owner: Object, x: number, y: number, element: Element
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
     end
     return o

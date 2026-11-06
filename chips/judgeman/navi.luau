@@ -118,9 +118,8 @@ local function lash_hits(me: Object)
             hit_effect = sparks.elec,
             target = collision.hits_navis,
             self_type = collision.curse,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 1,
+            damage = me.damage_word,
+            hit_mod = { flinch = true },
             status = LASH_STATUS,
         })
         if box then
@@ -172,8 +171,8 @@ end
 -- flag bits.
 local function place_books(me: Object)
     local s = me.state :: State
-    local flags = bit32.band(me.damage, 0xF000)
-    local damage = bit32.bor(bit32.lshift(me.stamina, 16), s.book_damage, flags)
+    local flags = damage_word.flag_word(me.damage_word)
+    local damage = damage_word.with_damage(me.damage_word, bit32.bor(s.book_damage, flags))
     local i = 0
     repeat
         local p = s.book_panels[i + 1]

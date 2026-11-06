@@ -11,7 +11,7 @@ local chips: { [string]: Chip } = {
     airraid1 = {
         codes = { "G", "K", "R" },
         element = "null", family = "summon", class = "standard",
-        rarity = 0, mb = 26, damage = 10, hit_param = 158, lockout = 0,
+        rarity = 0, mb = 26, damage = 10, counter = 30, cant_counter = true, lockout = 0,
         flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- `byte_80D34C0` row 0.
@@ -20,7 +20,7 @@ local chips: { [string]: Chip } = {
     airraid2 = {
         codes = { "O", "T", "Y" },
         element = "null", family = "summon", class = "standard",
-        rarity = 1, mb = 32, damage = 10, hit_param = 158, lockout = 0,
+        rarity = 1, mb = 32, damage = 10, counter = 30, cant_counter = true, lockout = 0,
         flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- `byte_80D34C0` row 1.
@@ -29,7 +29,7 @@ local chips: { [string]: Chip } = {
     airraid3 = {
         codes = { "N", "U", "Z" },
         element = "null", family = "summon", class = "standard",
-        rarity = 2, mb = 39, damage = 10, hit_param = 158, lockout = 0,
+        rarity = 2, mb = 39, damage = 10, counter = 30, cant_counter = true, lockout = 0,
         flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- `byte_80D34C0` row 2.

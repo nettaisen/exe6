@@ -26,7 +26,7 @@ local SPRITE = asset.sprite("elmnt-ice")
 -- Its height, in whole pixels (a halfword store over Z's whole part).
 local HEIGHT = 8
 -- Its hit: its modifier, and the status it gives (freezing).
-local HIT_MOD, STATUS = 3, statuses.freeze_150
+local HIT_MOD, STATUS = { flinch = true, flash = true }, statuses.freeze_150
 
 -- `sub_80D6DB0`: on its panel at its height; collision on, its region
 -- off until it acts.
@@ -145,7 +145,7 @@ function ice.spawn(
         s.while_dimmed = while_dimmed
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

@@ -30,7 +30,7 @@ local SOUND_TENGU_MAN = asset.sound("tengu-man")
 
 -- His body's hit region while he sweeps, and his hit's modifier.
 local REGION = regions.wide
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- The controller calls his spawner through r3, which his position takes:
 -- its address with the Thumb bit, whose fraction his Z keeps.

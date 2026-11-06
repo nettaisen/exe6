@@ -32,7 +32,7 @@ local SPRITE = asset.sprite("whirlwind")
 local AHEAD = 0x28_0000
 
 -- The height of its hits, 16.16, and their hit modifier.
-local HIT_Z, HIT_MOD = 0x10_0000, 1
+local HIT_Z, HIT_MOD = 0x10_0000, { flinch = true }
 
 -- The last panels it sweeps: the column two panels ahead.
 local SWEEP = regions.wide
@@ -66,8 +66,7 @@ local function strike(me: Object, h: Hit)
         hit_effect = sparks.plain,
         target = collision.hits_navis,
         self_type = collision.pushing,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
     if box then
@@ -183,7 +182,7 @@ function whirlwind.spawn(owner: Object, x: number, y: number, element: Element, 
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.alliance, o.flip = owner.alliance, owner.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.related1 = owner
     end
     return o

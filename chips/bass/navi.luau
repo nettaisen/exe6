@@ -16,7 +16,7 @@ local bass_anly_sprite = asset.sprite("bass-anly")
 local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 -- His shots: 20 ticks of warning, hit modifier 3, on solid panels only.
-local SHOT: PanelStrike = { warning = 0x14, hit_mod = 3, solid_only = true }
+local SHOT: PanelStrike = { warning = 0x14, hit_mod = { flinch = true, flash = true }, solid_only = true }
 
 return common.make {
     id = "bass/navi",

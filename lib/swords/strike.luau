@@ -43,7 +43,7 @@ function strike.action(spec: StrikeSpec): Action
         if not open then
             return
         end
-        local word = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local word = damage_word.plus(me.attack_word, me.extra)
         battle.hitbox(me, {
             panel_x = x,
             panel_y = y,
@@ -53,9 +53,8 @@ function strike.action(spec: StrikeSpec): Action
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = bit32.band(word, 0xFFFF),
-            stamina = bit32.rshift(word, 16),
-            hit_mod = 3,
+            damage = word,
+            hit_mod = { flinch = true, flash = true },
         })
         -- The slash, flipped by the user's side (not its facing), in the
         -- sword's colors.

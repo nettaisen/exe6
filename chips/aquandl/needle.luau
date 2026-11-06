@@ -28,7 +28,7 @@ local SOUND_LAND = asset.sound("aqua-needle")
 local SPEED, FLIGHT, LANDED_Z = 0xC_0000, 12, 0x4_0000
 -- Ticks it blinks out over once landed.
 local FADE = 0x0C
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 local CRACKED: PanelFlags = { cracked = true }
 
@@ -185,7 +185,7 @@ function needle.spawn(from: Object, x: number, y: number, element: Element, pale
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.alliance, o.flip = from.alliance, from.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         local s = o.state :: State
         s.palette = palette
         s.cracks = cracks

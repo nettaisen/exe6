@@ -9,7 +9,7 @@ local chips: { [string]: Chip } = {
     barrier = {
         codes = { "A", "F", "R", "*" },
         element = "null", family = "null", class = "standard",
-        rarity = 1, mb = 7, damage = 0, hit_param = 0, lockout = 0,
+        rarity = 1, mb = 7, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         extra_flags = { free_slot_in = true },
         slot_in_limit = 1,
@@ -18,7 +18,7 @@ local chips: { [string]: Chip } = {
     barr100 = {
         codes = { "H", "O", "Y" },
         element = "null", family = "null", class = "standard",
-        rarity = 2, mb = 30, damage = 0, hit_param = 0, lockout = 0,
+        rarity = 2, mb = 30, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         slot_in_limit = 1,
         dimming = barrier_chips.hook(barriers.barrier_100),
@@ -26,7 +26,7 @@ local chips: { [string]: Chip } = {
     barr200 = {
         codes = { "K", "U", "W" },
         element = "null", family = "null", class = "standard",
-        rarity = 3, mb = 52, damage = 0, hit_param = 0, lockout = 0,
+        rarity = 3, mb = 52, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         slot_in_limit = 1,
         dimming = barrier_chips.hook(barriers.barrier_200),

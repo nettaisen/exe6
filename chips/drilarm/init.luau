@@ -29,7 +29,7 @@ local function grind(me: Object, s: State)
         attachment.attach(me, drill.arm, "overlay", { anim = drill.ARM_DRILLING })
         -- The damage word (the hit parameter in its high half), plus the
         -- Atk+ bonus.
-        local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+        local damage = damage_word.plus(me.attack_word, me.extra)
         drill.spawn(me, me.attack_element, HEIGHT, damage, { ticks = DRILL_TICKS })
         me:open_counter_window()
         s.timer = DRILL_TICKS + 0x0A
@@ -101,7 +101,7 @@ end
 local chip: Chip = {
     codes = { "G", "M", "W" },
     element = "null", family = "break", class = "standard",
-    rarity = 2, mb = 32, damage = 70, hit_param = 10, lockout = 0,
+    rarity = 2, mb = 32, damage = 70, counter = 10, lockout = 0,
     flags = { has_damage = true, library = true },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).

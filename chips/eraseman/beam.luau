@@ -61,7 +61,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.piercing_break, collision.hits_navis, 1)
+    me:setup_collision(collision.piercing_break, collision.hits_navis, { flinch = true })
     me.collision.status_base = STATUS
     me.collision:set_hit_effect(sparks.erase)
     me.collision:present()
@@ -134,7 +134,7 @@ function beam.spawn(owner: Object, x: number, y: number, element: Element, spec:
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
         local s = o.state :: State

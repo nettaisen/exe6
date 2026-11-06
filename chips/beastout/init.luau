@@ -12,7 +12,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = 10,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     slot_in_limit = 1,
     -- It goes with any selection on the custom screen, and leaves the

@@ -15,12 +15,10 @@ local SPIN = airspin.action {
     whirlwind = whirl.sender,
 }
 
-local HIT_PARAM = 0x94
-
+local COUNTER = 20
 -- `sub_8012144`.
 local function setup(navi: Object): Action
-    navi.attack_damage = (battle.navi(navi.alliance).attack + 1) * 10
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = (battle.navi(navi.alliance).attack + 1) * 10, counter = COUNTER, cant_counter = true }
     navi.attack_element = Element.null
     navi.extra = 0
     return SPIN

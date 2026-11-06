@@ -27,7 +27,7 @@ local chip: Chip = {
     rarity = 2,
     mb = 25,
     damage = 100,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.firebrn1 },
@@ -35,7 +35,7 @@ local chip: Chip = {
     action = slash.action {
         id = "longswrd/action",
         blade = parts.blade,
-        hit = { region = regions.long, collision = parts.slashes_navis, hit_mod = 3 },
+        hit = { region = regions.long, collision = parts.slashes_navis, hit_mod = { flinch = true, flash = true } },
         effect = LONG_SLASH,
         sound = parts.swing,
         charged = CHARGED,

@@ -83,7 +83,7 @@ local SMOKE_HEIGHT = 0x10_0000
 
 -- The hits: the ride's on his panel (a breaking attack), the slash's on
 -- the panel ahead (an attack); no spark; hit modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- The command, a key at a time (`word_80BD71C`, JP Falzar), with 60
 -- ticks from its first to put in the rest.
@@ -178,7 +178,7 @@ local function smoke(me: Object)
 end
 
 -- A hit on (x, y), landing while dimmed (`sub_80C53A6`).
-local function hit(me: Object, x: number, y: number, is: CollisionType, damage: number, stamina: number)
+local function hit(me: Object, x: number, y: number, is: CollisionType, damage: number)
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
@@ -189,7 +189,6 @@ local function hit(me: Object, x: number, y: number, is: CollisionType, damage: 
         target = collision.hits_navis,
         self_type = is,
         damage = damage,
-        stamina = stamina,
         hit_mod = HIT_MOD,
     })
     if box then
@@ -284,7 +283,7 @@ local function ride(me: Object)
     me:set_panel_from_coordinates()
     if field.solid(me.panel_x, me.panel_y) then
         if me.panel_x ~= from then
-            hit(me, me.panel_x, me.panel_y, collision.breaking, me.damage, me.stamina)
+            hit(me, me.panel_x, me.panel_y, collision.breaking, me.damage_word)
         end
     elseif field.valid(me.panel_x, me.panel_y) then
         smoke(me)
@@ -365,8 +364,8 @@ local function slash(me: Object)
     me.timer = left
     if left == 0x14 then
         local s = me.state :: State
-        local damage = bit32.bor(s.slash_damage, bit32.band(me.damage, 0xF000))
-        hit(me, me.panel_x + panels.side_direction(me.alliance), me.panel_y, collision.attack, damage, 0)
+        local damage = bit32.bor(s.slash_damage, damage_word.flag_word(me.damage_word))
+        hit(me, me.panel_x + panels.side_direction(me.alliance), me.panel_y, collision.attack, damage)
         battle.play_sound(SOUND_SWING)
         return
     end

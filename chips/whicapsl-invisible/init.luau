@@ -14,7 +14,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 30,
     damage = 0,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { dimming = true },
     extra_flags = { rush_cancels = true },

@@ -144,11 +144,11 @@ end
 local function waves(me: Object, x: number)
     local user = me.related1 :: Object
     local w = WAVE_PANEL
-    local damage = bit32.bor((me.state :: State).wave_damage, bit32.band(me.damage, 0xF000))
+    local damage = bit32.bor((me.state :: State).wave_damage, damage_word.flag_word(me.damage_word))
     for y = 1, 3 do
         if field.check(x, y, w, me.alliance) then
             -- r3 (his damage's flag bits) becomes its Z.
-            wave.spawn(user, x, y, Element.null, WAVE, damage, bit32.band(me.damage, 0xF000))
+            wave.spawn(user, x, y, Element.null, WAVE, damage, damage_word.flag_word(me.damage_word))
         end
     end
 end
@@ -249,9 +249,8 @@ local function slash(me: Object)
         hit_effect = nil,
         target = collision.nothing,
         self_type = collision.slash,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true

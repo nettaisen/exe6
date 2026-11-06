@@ -22,7 +22,7 @@ local TICKS = 0x3C
 -- The pulse (the original's parameter bytes 0, 0x10, 0x3C, 0).
 puzzlarm.action = action.action {
     id = "puzzlarm/charge/action",
-    pulse = pulse.variant { hit_mod = 0, status = statuses.paralyze_90, ticks = TICKS, palette = 1 },
+    pulse = pulse.variant { hit_mod = {}, status = statuses.paralyze_90, ticks = TICKS, palette = 1 },
     hold = TICKS - 5,
 }
 

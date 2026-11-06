@@ -20,7 +20,7 @@ local CALL_TICKS, RECOVER_TICKS = 0x14, 0x1E
 
 -- The hits' counter byte, and the bolts' element: Elec (the attack's
 -- element byte).
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 local ELEC = Element.elec
 
 -- The panels an enemy navi stands on, by side (`off_80F0B78`).
@@ -29,8 +29,7 @@ local ENEMIES: PanelCondition = { enemy_body = true }
 -- `sub_8012240`: 40 damage and 20 more per point of buster Attack (up to
 -- 5).
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x28, 0x14)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x28, 0x14), counter = COUNTER, cant_counter = true }
     navi.attack_element = ELEC
     return charge.action
 end

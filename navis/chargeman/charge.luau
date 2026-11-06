@@ -34,7 +34,7 @@ local SOUND = asset.sound("charge-train")
 
 -- The hits' counter byte, and his hits' element: Fire (the attack's
 -- element byte).
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 local FIRE = Element.fire
 
 local SPEED = 0x6_0000
@@ -42,15 +42,14 @@ local PANEL_WIDTH = 0x28_0000
 -- The column he charges toward, by side.
 local EDGE = { [0] = 7, 0 }
 local MAX_CARS = 2
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 -- His body's hit modifier once he is back.
-local BODY_HIT_MOD = 3
+local BODY_HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- `sub_80122AA`: 20 damage and 10 more per point of buster Attack (up to
 -- 5).
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x14, 0xA)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x14, 0xA), counter = COUNTER, cant_counter = true }
     navi.attack_element = FIRE
     return charge.action
 end
@@ -74,7 +73,7 @@ local function add_car(me: Object, s: State)
         me.future_panel_x,
         me.future_panel_y,
         Element.null,
-        { hit_mod = 1, place = n, wait = 0 },
+        { hit_mod = { flinch = true }, place = n, wait = 0 },
         link.damage_word(me),
         SPEED,
         SPEED
@@ -98,8 +97,7 @@ local function hit(me: Object)
         hit_effect = sparks.breaking,
         target = collision.hits_navis,
         self_type = collision.breaking,
-        damage = link.damage(me),
-        stamina = link.stamina(me),
+        damage = link.damage_word(me),
         hit_mod = HIT_MOD,
     })
 end
@@ -119,9 +117,9 @@ local function run(me: Object, s: State)
         me.status_timers.invulnerable = 0xFFFF
         me.status.invulnerable = true
         -- sub_801A082
-        me:reset_collision_types(collision.navi, collision.navi_target, 0)
+        me:reset_collision_types(collision.navi, collision.navi_target, {})
         me.collision.self_damage = 0
-        me.collision.counter_byte = 0
+        me.collision.counter, me.collision.cant_counter = 0, false
         me.anim = ANIM_CHARGE
         s.cars = 0
         s.car1, s.car2 = nil, nil
@@ -188,10 +186,12 @@ local function back(me: Object, s: State)
         me.status_timers.invulnerable = 0
         me.status.invulnerable = false
         -- sub_801A082, then his body's damage again (the game stores the
-        -- damage's low byte as the counter byte).
+        -- damage's low byte as the counter byte: its low seven bits the
+        -- counter strength, its eighth can't-counter).
         me:reset_collision_types(collision.navi, collision.navi_target, BODY_HIT_MOD)
-        me.collision.self_damage = me.damage
-        me.collision.counter_byte = bit32.band(me.damage, 0xFF)
+        local damage = damage_word.damage(me.damage_word)
+        me.collision.self_damage = damage
+        me.collision.counter, me.collision.cant_counter = damage % 0x80, damage % 0x100 >= 0x80
         me.anim = ANIM_BACK
         s.timer = BACK_TICKS
     elseif link.run_out(s) then

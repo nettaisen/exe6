@@ -30,7 +30,7 @@ local MARK_TICKS, WAIT_TICKS, HIT_TICKS = 0x3C, 0xA, 0x1E
 local MARK_SOUND = asset.sound("err-select-91")
 -- The hit on each panel (`sub_80E621C`: region 1, spark 6, a curse that
 -- hits navis, hit modifier 3, null).
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The panel flag that says something of the other side's stands there
 -- (`byte_80E74C4`, by the controller's side): its player navi.
 local OCCUPIED: PanelCondition = { enemy_navi = true }
@@ -61,7 +61,7 @@ end
 -- sparkles over whoever stands there.
 local function strike(me: Object, packed: number)
     local x, y = bit32.band(packed, 7), bit32.rshift(packed, 4)
-    local word = int.u32(me.damage + me.stamina * 0x10000)
+    local word = me.damage_word
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
@@ -71,8 +71,7 @@ local function strike(me: Object, packed: number)
         hit_effect = sparks.heavy,
         target = collision.hits_navis,
         self_type = collision.curse,
-        damage = bit32.band(word, 0xFFFF),
-        stamina = bit32.rshift(word, 16),
+        damage = word,
         hit_mod = HIT_MOD,
     })
     if box then
@@ -168,7 +167,7 @@ function curse.spawn(doll: Object, damage: number): Object?
         o.element = Element.null
         o.related1 = doll
         o.alliance = doll.alliance
-        o:set_damage_word(damage)
+        o.damage_word = damage
     end
     return o
 end

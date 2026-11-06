@@ -100,7 +100,7 @@ local function breathe(me: Object)
     local s = me.state :: State
     local dir = me.facing
     local x0, y0 = me.panel_x + dir * FLAMES_AHEAD, me.panel_y
-    local damage = int.u32(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)) + s.bonus)
+    local damage = damage_word.plus(me.damage_word, s.bonus)
     for _, p in regions.deep_fan.panels :: { { number } } do
         local x, y = x0 + p[1] * dir, y0 + p[2]
         if valid(x, y) then
@@ -114,8 +114,8 @@ end
 -- (The spawner's Z register holds those flag bits.)
 local function drop_rock(me: Object, x: number, y: number)
     local s = me.state :: State
-    local flags = bit32.band(me.damage, 0xF000)
-    local word = bit32.bor(int.u32(bit32.bor(s.rock_damage, bit32.lshift(me.stamina, 16)) + s.bonus), flags)
+    local flags = damage_word.flag_word(me.damage_word)
+    local word = bit32.bor(damage_word.plus(damage_word.with_damage(me.damage_word, s.rock_damage), s.bonus), flags)
     rock.drop(me, x, y, me.element, word, ROCK, flags)
 end
 
@@ -316,7 +316,7 @@ function summon.spawn(
     o.element = element
     o.related1 = user
     o.alliance, o.flip = user.alliance, user.flip
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.piece, s.rock_damage, s.bonus = piece, rock_damage, bonus
     s.controller = controller

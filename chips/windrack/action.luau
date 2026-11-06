@@ -38,7 +38,7 @@ local SWING_TICKS, HIT_AT = 0x15, 0x0C
 local RECOVER_TICKS = 5
 -- The hit: the column, no spark, a pushing hit with hit modifier 0x49,
 -- for 10 ticks.
-local HIT_MOD, HIT_TICKS = 0x49, 0x0A
+local HIT_MOD, HIT_TICKS = { flinch = true, back_far = true, drag = true }, 0x0A
 -- The gusts: unseen, blowing anywhere (their first parameter, 0x80).
 local UNSEEN: GustHow = { unseen = true }
 
@@ -62,7 +62,7 @@ function action.action(spec: WindRackSpec): Action
             local x = me.panel_x + me.facing
             -- The damage word (the hit parameter in its high half), plus
             -- the Atk+ bonus.
-            local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+            local damage = damage_word.plus(me.attack_word, me.extra)
             local hit = battle.hitbox(me, {
                 panel_x = x,
                 panel_y = me.panel_y,
@@ -74,7 +74,6 @@ function action.action(spec: WindRackSpec): Action
                 target = collision.hits_navis,
                 self_type = collision.pushing,
                 damage = damage,
-                stamina = bit32.rshift(damage, 16),
                 hit_mod = HIT_MOD,
             })
             if hit then

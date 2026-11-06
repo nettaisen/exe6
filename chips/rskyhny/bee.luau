@@ -29,7 +29,7 @@ export type State = {
 local SPRITE = asset.sprite("honey-bee")
 -- What it is and hits (`dword_80D34A8`).
 local HIT = { is = collision.attack, hits = collision.hits_navis }
-local HIT_MOD = 0x01
+local HIT_MOD: HitModifier = { flinch = true }
 -- A panel's width, 16.16.
 local PANEL_WIDTH = 0x28_0000
 -- It gives up turning after this many turns (`sub_80D3496`).
@@ -366,7 +366,7 @@ function bee.spawn(owner: Object, x: number, y: number, element: Element, what: 
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
         o.run_while_dimmed = true

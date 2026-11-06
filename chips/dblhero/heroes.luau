@@ -71,7 +71,7 @@ local PROTOMAN_LEAVES = 4
 -- (`byte_80BD2CC`, by the panels to the far edge: one to six; none for
 -- none or seven).
 local NO_SPARK: Spark? = nil
-local SHOT_HIT_MOD = 3
+local SHOT_HIT_MOD: HitModifier = { flinch = true, flash = true }
 local SHOT_REGIONS: { [number]: Region? } = {
     [1] = regions.single,
     [2] = regions.long,
@@ -131,8 +131,7 @@ local function shoot(me: Object)
             hit_effect = NO_SPARK,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = SHOT_HIT_MOD,
         })
         if h then
@@ -446,7 +445,7 @@ local function spawn(user: Object, x: number, y: number, element: Element, damag
     end
     o.panel_x, o.panel_y = x, y
     o.element = element
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.related1 = user
     o.alliance, o.flip = user.alliance, user.flip
     o.identity = user.identity
@@ -485,7 +484,7 @@ local function init(me: Object)
     overlays.add_parts_of(me, me, false, true)
     dimming.hide_user(user)
     if not s.protoman then
-        local proto = spawn(user, me.panel_x, me.panel_y, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), true)
+        local proto = spawn(user, me.panel_x, me.panel_y, me.element, me.damage_word, true)
         if proto then
             (proto.state :: State).partner = me
         end

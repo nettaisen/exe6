@@ -70,7 +70,7 @@ local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 -- The slash: a wide hit on the panel ahead (toward the enemy's side), elec
 -- spark, paralyzing; its effect (the wide sword's slash, 16 pixels up,
 -- palette 3) over the panel ahead (his facing's).
-local SLASH_HIT = { is = collision.slash, hits = collision.hits_navis, hit_mod = 1, status = statuses.paralyze_90 }
+local SLASH_HIT = { is = collision.slash, hits = collision.hits_navis, hit_mod = { flinch = true }, status = statuses.paralyze_90 }
 local SLASH_Z, SLASH_PALETTE = 0x10_0000, 3
 
 local SLASH_TICKS, RETURN_TICKS, RECOVER_TICKS = 0x14, 3, 0x1E
@@ -138,8 +138,7 @@ local function strike(me: Object)
         hit_effect = sparks.elec,
         target = SLASH_HIT.hits,
         self_type = SLASH_HIT.is,
-        damage = link.damage(me),
-        stamina = link.stamina(me),
+        damage = link.damage_word(me),
         hit_mod = SLASH_HIT.hit_mod,
         status = SLASH_HIT.status,
     })
@@ -216,7 +215,7 @@ local chip: Chip = {
     rarity = 1,
     mb = 99,
     damage = { formula = "navi_level", base = 40, per_level = 20 },
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 3,

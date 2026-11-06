@@ -19,7 +19,7 @@ falling_meteor.spawn_kind = common.spawn_kind
 -- EXE6's meteor row (`byte_80CF3AC`'s rows 0 to 2, alike: Meteors drops row
 -- 1, the shower rows 0 and 2): thrown, hitting navis, hit modifier 3; a
 -- shake of 1; the panel left as it is.
-falling_meteor.row = common.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = 3, shake = 1, panel = "none" }
+falling_meteor.row = common.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = { flinch = true, flash = true }, shake = 1, panel = "none" }
 
 falling_meteor.kind = common.make_kind("meteors/falling-meteor", {
     sprite = meteor_sprite,

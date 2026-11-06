@@ -19,8 +19,7 @@ local charge = {}
 local WIND_UP, HOLD = 0x0, 0x4
 
 -- Aqua (the attack's element) and the hits' counter byte.
-local AQUA, HIT_PARAM = Element.aqua, 0x86
-
+local AQUA, COUNTER = Element.aqua, 6
 local SOUND_SURGE, SOUND_WATER = asset.sound("spout-beast-charge"), asset.sound("aqua-surge")
 
 -- The surge: 60 ticks, its region back every 12.
@@ -29,8 +28,7 @@ local SURGE: AquaSurge = { ticks = 0x3C, beat = 0x0C }
 -- `sub_8011BE8`: 10 damage and 10 more per point of buster Attack (up to
 -- 5), Aqua.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0xA, 0xA)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0xA, 0xA), counter = COUNTER, cant_counter = true }
     navi.attack_element = AQUA
     return charge.action
 end
@@ -51,7 +49,7 @@ local function wind_up(me: Object, s: State)
     if t >= 0 then
         return
     end
-    local damage = int.u32(me.attack_damage + bit32.lshift(me.hit_param, 16))
+    local damage = me.attack_word
     surge.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, SURGE, damage)
     battle.play_sound(SOUND_SURGE)
     battle.play_sound(SOUND_WATER)

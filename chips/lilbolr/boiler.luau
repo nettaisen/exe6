@@ -56,7 +56,7 @@ local MIN_HP = 3001
 -- Thrown at 0x2C000 a tick along the ground, falling 0x2800 a tick.
 local SPEED, GRAVITY = 0x2C000, -0x2800
 -- Its body's counter byte, its hit modifier.
-local COUNTER, HIT_MOD = 0x1E, 3
+local COUNTER, HIT_MOD = 0x1E, { flinch = true, flash = true }
 local SOUND_LAND, SOUND_HIT_BOMB = asset.sound("land"), asset.sound("hit-bomb-1")
 local SOUND_ERUPT, SOUND_STEAM = asset.sound("boiler-erupt"), asset.sound("boiler-steam")
 -- The eruption: its animation and the steam's; the ticks to the hit; the
@@ -64,13 +64,15 @@ local SOUND_ERUPT, SOUND_STEAM = asset.sound("boiler-erupt"), asset.sound("boile
 -- tick; its effect over the panels (effect 0x32).
 local ANIM_ERUPT, ANIM_STEAM = 5, 9
 local ERUPT_TICKS, HIT_TICK, STEAM_TICK = 0x20, 8, 0x14
-local AQUA, ERUPTION_HIT_MOD = Element.aqua, 3
+local AQUA, ERUPTION_HIT_MOD = Element.aqua, { flinch = true, flash = true }
 local ERUPTION = new.effect { sprite = SPRITE, anim = 10, palette = 0, steps = 20 }
 -- Its kind among absorbed obstacles.
 -- How it looks absorbed (the original's obstacle kind's sprite: its own).
 local ABSORBED = absorbed_obstacle.look { sprite = SPRITE }
--- Its damage word's flags: doubled (0x8000), and the bits kept (0x7000).
-local DOUBLED, FLAGS, AMOUNT = 0x8000, 0x7000, 0xFFF
+-- (Its damage word's flags it keeps: its flag nibble but the doubling, 0x7000.)
+local function kept_flags(w: number): number
+    return damage_word.flag_word(damage_word.without(w, { double = true }))
+end
 
 -- The actions (the object's action byte).
 local ERUPTING_OR_DESTROYED, SET = 2, 9
@@ -220,7 +222,7 @@ local function erupt(me: Object)
             -- lifetime is clear.
             local t = me.timer2
             if t == HIT_TICK then
-                local word = int.u32(me.damage + me.stamina * 0x10000)
+                local word = me.damage_word
                 battle.hitbox(me, {
                     panel_x = me.panel_x,
                     panel_y = me.panel_y,
@@ -230,8 +232,7 @@ local function erupt(me: Object)
                     hit_effect = nil,
                     target = collision.hits_navis,
                     self_type = collision.attack,
-                    damage = bit32.band(word, 0xFFFF),
-                    stamina = bit32.rshift(word, 16),
+                    damage = word,
                     hit_mod = ERUPTION_HIT_MOD,
                 })
                 battle.region_effects(me.panel_x, me.panel_y, regions.ring, me.facing_side, ERUPTION, 0)
@@ -312,7 +313,7 @@ local function check_eruption(me: Object)
         end
     end
     s.erupting = true
-    me.damage = bit32.bor(int.u16(me.max_hp - me.hp), bit32.band(me.damage, FLAGS))
+    me.damage_word = damage_word.with_damage(me.damage_word, bit32.bor(int.u16(me.max_hp - me.hp), kept_flags(me.damage_word)))
     me.action = ERUPTING_OR_DESTROYED
     me.phase, me.phase_init = 0, 0
 end
@@ -339,7 +340,7 @@ local function tick(me: Object)
     end
     check_eruption(me)
     if s.erupting then
-        local hp = me.max_hp - bit32.band(me.damage, AMOUNT)
+        local hp = me.max_hp - damage_word.amount(me.damage_word)
         me.hp = int.u16(hp)
         s.last_hp = int.u32(hp)
     end
@@ -376,12 +377,12 @@ local function init(me: Object)
         me:destroy()
         return
     end
-    local damage = me.damage
-    if bit32.band(damage, DOUBLED) ~= 0 then
-        me.damage = bit32.bor(bit32.band(damage, FLAGS), bit32.band(damage, AMOUNT) * 2)
+    local w = me.damage_word
+    if damage_word.flags(w).double then
+        me.damage_word = damage_word.with_damage(w, bit32.bor(kept_flags(w), damage_word.amount(w) * 2))
     end
     me.max_hp = MAX_HP
-    local hp = MAX_HP - bit32.band(me.damage, AMOUNT)
+    local hp = MAX_HP - damage_word.amount(me.damage_word)
     me.hp = int.u16(hp)
     s.last_hp = int.u32(hp)
     me.timer = LIFETIME
@@ -393,7 +394,7 @@ local function init(me: Object)
     end
     me:setup_collision(collision.neutral_object, collision.everything, HIT_MOD)
     me.collision.self_damage = s.body_damage
-    me.collision.counter_byte = COUNTER
+    me.collision.counter, me.collision.cant_counter = COUNTER, false
     me.collision:set_region(nil)
     me.collision:set_hit_effect(sparks.breaking)
     me.collision:present()
@@ -449,7 +450,7 @@ function boiler.thrower(palette: number, body_damage: number): Thrower
                 s.palette, s.body_damage = palette, body_damage
                 s.target_x = bit32.band(xy, 0xFF)
                 s.target_y = bit32.rshift(xy, 8)
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 o.alliance, o.flip = user.alliance, user.flip
                 if user.flip then
                     error("LilBoiler thrown by a flipped user: setFieldBattleObject_800F614 registers it far past the field-object registry")

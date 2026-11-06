@@ -34,7 +34,7 @@ local SOUND = asset.sound("drip-shower")
 local SOUND_EVERY = 0x10
 
 -- Its hits: aqua spark, an attack at navis.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- The two panels of each quarter (`byte_80C93B0`), not turned to its side;
 -- the quarter each turn sprays, by side (`byte_80C93C4`); and its
@@ -81,8 +81,7 @@ local function splash(me: Object, turn: number, ticks: number)
                 hit_effect = sparks.aqua,
                 target = collision.hits_navis,
                 self_type = collision.attack,
-                damage = me.damage,
-                stamina = me.stamina,
+                damage = me.damage_word,
                 hit_mod = HIT_MOD,
             })
             if hit then
@@ -190,7 +189,7 @@ function drip_shower.spawn(owner: Object, x: number, y: number, element: Element
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.related1 = owner
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true

@@ -19,10 +19,11 @@ local plus = {}
 
 local BONUS_SOUND = asset.sound("bonus")
 
--- The damage word's flag bits a modifier chip's bonus carries (the
--- extra, its record's third and fourth parameter bytes): WhiCapsl's
+-- The damage word's flags a modifier chip's bonus carries (the extra, its
+-- record's third and fourth parameter bytes: 0x4000 and 0x2000): WhiCapsl's
 -- paralysis and Uninstll's uninstall.
-plus.PARALYZE, plus.UNINSTALL = 0x4000, 0x2000
+plus.PARALYZE = { paralysis = true } :: { [string]: boolean }
+plus.UNINSTALL = { uninstall = true } :: { [string]: boolean }
 
 -- `loc_80104B6` (shared with `sub_80104E0`): a sparkle by the navi's
 -- panel, on the enemy's side of it.
@@ -30,9 +31,11 @@ plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel-poison"))
 
 -- `sub_8010488`: from a special source, the attack's damage plus `extra`
 -- into the side's bonus `bonus`; else the sparkle.
-local function effect(user: Object, bonus: SpecialBonus, extra: number)
+local function effect(user: Object, bonus: SpecialBonus, flags: { [string]: boolean })
     if user.special_source ~= 0 then
-        battle.add_special_bonus(user.alliance, bonus, user.attack_damage + extra)
+        -- (Added: the flags' bits on the damage.)
+        local extra = damage_word.of { flags = flags }
+        battle.add_special_bonus(user.alliance, bonus, damage_word.damage(user.attack_word) + extra)
         battle.play_sound(BONUS_SOUND)
         return
     end
@@ -41,17 +44,17 @@ end
 
 -- Atk+'s `instant` hook: the side's attack bonus.
 function plus.attack(user: Object, _spec: InstantChipSpec)
-    effect(user, "attack", 0)
+    effect(user, "attack", {})
 end
 
 -- Navi+'s `instant` hook: the side's navi bonus.
 function plus.navi(user: Object, _spec: InstantChipSpec)
-    effect(user, "navi", 0)
+    effect(user, "navi", {})
 end
 
 -- A modifier chip's `instant` hook: the side's attack bonus, with the
 -- damage word's flag bits `flags` (`plus.PARALYZE`, `plus.UNINSTALL`).
-function plus.attack_with(flags: number): (user: Object, spec: InstantChipSpec) -> ()
+function plus.attack_with(flags: { [string]: boolean }): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, _spec: InstantChipSpec)
         effect(user, "attack", flags)
     end

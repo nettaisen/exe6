@@ -34,7 +34,7 @@ meteor_shower.aim = shower.aim
 -- `sub_80CF594`: a meteor on (x, y). (Its X and Y are the registers'
 -- values, which its init replaces.)
 local function meteor(me: Object, x: number, y: number)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     falling_meteor.spawn(falling_meteor.row, me, x, y, me.element, damage, false, Vec3.new(y, me.element.byte, 0))
 end
 
@@ -92,7 +92,7 @@ function meteor_shower.spawn(user: Object, pos: Vec3, drops: number, damage: num
     if o then
         o.alliance, o.flip = user.alliance, user.flip
         o.related1 = user
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.element = FIRE
         o.run_while_dimmed = false;
         (o.state :: State).drops = drops

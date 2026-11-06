@@ -34,7 +34,7 @@ local LANDS_ON: PanelFlags = { any_body = true, solid = true }
 local BURST = effects.burst
 
 -- Its hit: a thrown attack that breaks, at navis.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- The actions, on its action byte.
 local FLYING, GONE = 0, 4
@@ -159,7 +159,7 @@ function junk_shot.spawn(owner: Object, x: number, y: number, element: Element, 
         (o.state :: State).target = target
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
     end
     return o

@@ -23,7 +23,7 @@ local SOUND = asset.sound("aqua-surge")
 local AHEAD = 0x14_0000
 
 -- Its hits: an attack at navis, on its panel and the one ahead, no spark.
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 local REGION = regions.long
 
 -- The end: no region, hidden, destroyed.
@@ -140,7 +140,7 @@ function surge.spawn(owner: Object, x: number, y: number, element: Element, spec
         o.element = element
         o.panel_x, o.panel_y = x, y
         o.timer = spec.ticks
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
     end
     return o

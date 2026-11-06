@@ -31,7 +31,7 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("rolling-log")
-local HIT_MOD = 0x01
+local HIT_MOD: HitModifier = { flinch = true }
 -- Its arc (thrown): ticks, gravity (16.16 per tick); then its speed.
 local ARC_TICKS, GRAVITY, ARC_ROLL_SPEED = 0x0D, -0x8000, 0x3_0000
 -- Dropping in: its speed forward and down.
@@ -282,7 +282,7 @@ function log.spawn(owner: Object, x: number, y: number, element: Element, what: 
     if o then
         o.element = element
         o.panel_x, o.panel_y = x, y
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = nil
         o.run_while_dimmed = true

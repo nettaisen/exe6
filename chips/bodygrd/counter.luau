@@ -54,7 +54,7 @@ end
 local function strike(me: Object, s: State)
     me.visible = false
     if me.step_init == 0 then
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         striker.spawn(me, me.attack_element, damage)
         s.timer = 0x1E
         me.step_init = 4

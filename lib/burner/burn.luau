@@ -41,9 +41,8 @@ function burn.action(spec: BurnSpec): Action
     local function burning(me: Object, s: State)
         if me.step_init == 0 then
             -- The Atk+ bonus goes into the attack's damage word.
-            local word = me.attack_damage + me.hit_param * 0x10000 + me.extra
-            me.attack_damage = bit32.band(word, 0xFFFF)
-            me.hit_param = bit32.rshift(word, 16)
+            local word = damage_word.plus(me.attack_word, me.extra)
+            me.attack_word = word
             flame.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, word, spec.flame)
             me.anim = 0x0A
             me:open_counter_window()

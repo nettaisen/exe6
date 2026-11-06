@@ -13,12 +13,12 @@ local firehit1: Chip = {
     rarity = 0,
     mb = 12,
     damage = 60,
-    hit_param = 20,
+    counter = 20,
     lockout = 20,
     flags = { has_damage = true, library = true },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
-    instant = fist.instant(3),
+    instant = fist.instant({ flinch = true, flash = true }),
 }
 
 local firehit2: Chip = {
@@ -29,12 +29,12 @@ local firehit2: Chip = {
     rarity = 1,
     mb = 22,
     damage = 120,
-    hit_param = 20,
+    counter = 20,
     lockout = 20,
     flags = { has_damage = true, library = true },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
-    instant = fist.instant(3),
+    instant = fist.instant({ flinch = true, flash = true }),
 }
 
 local firehit3: Chip = {
@@ -45,12 +45,12 @@ local firehit3: Chip = {
     rarity = 2,
     mb = 32,
     damage = 180,
-    hit_param = 20,
+    counter = 20,
     lockout = 20,
     flags = { has_damage = true, library = true },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
-    instant = fist.instant(3),
+    instant = fist.instant({ flinch = true, flash = true }),
 }
 
 return { firehit1 = firehit1, firehit2 = firehit2, firehit3 = firehit3 }

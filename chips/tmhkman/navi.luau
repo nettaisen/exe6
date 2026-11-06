@@ -102,9 +102,8 @@ local function strike(me: Object)
         hit_effect = nil,
         target = collision.nothing,
         self_type = collision.slash,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 1,
+        damage = me.damage_word,
+        hit_mod = { flinch = true },
     })
     if box then
         box.run_while_dimmed = true

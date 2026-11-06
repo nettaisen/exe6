@@ -92,7 +92,7 @@ end
 local function raise_waves(me: Object)
     local start = if me.alliance == 0 then 6 else 1
     local step = if me.alliance == 0 then -1 else 1
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     for row = 1, 3 do
         local x = start
         while field.valid(x, row) and not field.check(x, row, HIS_COLOR, me.alliance) do

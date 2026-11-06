@@ -41,7 +41,7 @@ local HEIGHT, SPEED, REACH = 0x14, 0x8_0000, 2 * 0x28_0000
 -- other body, or a neutral object.
 local STOPS: HitNames = { enemy_body = true, enemy_other_body = true, neutral = true }
 
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 -- The drilling: 30 ticks, a hit at 20 and at 10 left.
 local DRILL_TICKS, FIRST_HIT, SECOND_HIT = 0x1E, 0x14, 0xA
 
@@ -130,8 +130,7 @@ local function hit(me: Object)
         hit_effect = sparks.breaking,
         target = collision.hits_navis,
         self_type = collision.breaking,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
 end
@@ -216,7 +215,7 @@ function drill.spawn(owner: Object, x: number, y: number, element: Element, side
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

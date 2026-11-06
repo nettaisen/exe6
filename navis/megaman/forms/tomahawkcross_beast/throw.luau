@@ -21,8 +21,7 @@ local throw = {}
 local WIND_UP, SWING = 0x0, 0x4
 
 -- Wood, and the hit's counter byte.
-local WOOD, HIT_PARAM = Element.wood, 0x9E
-
+local WOOD, COUNTER = Element.wood, 30
 -- The swing's length, and when the tomahawks fly (on row 1, then row 3).
 local SWING_TICKS = 0x5F
 local ROW_1_AT, ROW_3_AT = 0x5D, 0x53
@@ -36,8 +35,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = 0x32 + 0x14 * math.min(navi:buster_damage(), 5)
+    navi.attack_word = damage_word.of { amount = 0x32 + 0x14 * math.min(navi:buster_damage(), 5), counter = COUNTER, cant_counter = true }
     navi.attack_element = WOOD
     return throw.action
 end
@@ -78,7 +76,7 @@ local function swing(me: Object, s: State)
     local t = s.timer
     local row = if t == ROW_1_AT then 1 elseif t == ROW_3_AT then 3 else nil
     if row then
-        local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+        local damage = me.attack_word
         local x = me.alliance * 5 + 1
         boomerang.spawn(me, x, row, me.attack_element, 0x10_0000, { variant = TOMAHAWK }, damage)
     end

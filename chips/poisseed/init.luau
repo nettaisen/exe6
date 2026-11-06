@@ -13,7 +13,7 @@ local chip: Chip = {
     rarity = 2,
     mb = 37,
     damage = 10,
-    hit_param = 10,
+    counter = 10,
     lockout = 10,
     flags = { standard_library = true, library = true },
     slot_in_limit = 3,

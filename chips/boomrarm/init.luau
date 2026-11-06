@@ -16,7 +16,7 @@ local PALETTE = 3
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "null", family = "null", class = "standard",
-    rarity = 4, mb = 50, damage = 0, hit_param = 10, lockout = 20,
+    rarity = 4, mb = 50, damage = 0, counter = 10, lockout = 20,
     slot_in_limit = 1,
     dimming = navi_boost.arm(charge, PALETTE),
 }

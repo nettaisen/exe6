@@ -39,7 +39,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, 3)
+    me:setup_collision(collision.thrown, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_hit_effect(sparks.aqua)
     me.collision:present()
     me:set_lifecycle("update")
@@ -133,7 +133,7 @@ function splash.spawn(
         s.cracks = what.cracks == true
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

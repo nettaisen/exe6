@@ -211,9 +211,8 @@ local function slash_hit(me: Object): boolean
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     return cross
 end
@@ -471,9 +470,8 @@ local function drain(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.thrown_piercing_break,
-        damage = DRAIN_DAMAGE,
-        stamina = 0,
-        hit_mod = 0,
+        damage = damage_word.of { amount = DRAIN_DAMAGE, counter = 0 },
+        hit_mod = {},
     })
     if tick_down(me) > 0 then
         return
@@ -664,7 +662,7 @@ local function init_megaman(me: Object)
     if dx == 0 then
         return
     end
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     local spec = { panel_x = dx, panel_y = dy, element = me.element, damage = damage }
     local django = spawn(user, spec, ty, true, nil)
     if django then

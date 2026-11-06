@@ -37,7 +37,7 @@ local CURL_TICKS, LAUNCH_TICKS, LAND_TICKS = 0x14, 0x0A, 0x14
 
 -- The riding hit: a slash at navis, hit modifier 3, no spark; it goes on
 -- after hitting a body.
-local HIT: RidingHit = { is = collision.slash, hits = collision.hits_navis, hit_mod = 3, spark = nil, keeps_going = true }
+local HIT: RidingHit = { is = collision.slash, hits = collision.hits_navis, hit_mod = { flinch = true, flash = true }, spark = nil, keeps_going = true }
 
 -- What he rolls onto (`dword_80F0DE4`): on the field and solid, with no
 -- neutral object.
@@ -222,7 +222,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = { formula = "navi_level", base = 80, per_level = 20 },
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,

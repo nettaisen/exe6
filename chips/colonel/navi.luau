@@ -169,9 +169,8 @@ function colonel.hit(me: Object, x: number, y: number, region: Region)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.slash,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -335,7 +334,7 @@ function colonel.summon(args: Summon): (user: Object, controller: Object, spec: 
         o.element = spec.element
         o.alliance, o.flip = user.alliance, user.flip
         o.related1 = user
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         local s = o.state :: State
         s.controller = controller
         s.palette = args.palette

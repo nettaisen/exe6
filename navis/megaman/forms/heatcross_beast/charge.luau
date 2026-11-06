@@ -28,14 +28,13 @@ local heat_beast_charge = {}
 local WIND_UP, BURN = 0x0, 0x4
 
 -- Fire (the attack's element) and the hits' counter byte.
-local FIRE, HIT_PARAM = Element.fire, 0x8A
-
+local FIRE, COUNTER = Element.fire, 10
 -- The pillars: flames (the pillar's first parameter 0: hit modifier 3, the
 -- fire spark), 90 ticks, 4 once the navi stops, on the panel in front and
 -- the two columns past it.
 local FLAMES = element_pillar.look {
     sprite = element_pillar_flames_sprite,
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     spark = sparks.fire,
     cracks = false,
 }
@@ -51,8 +50,7 @@ local HUM = asset.sound("roar")
 -- `sub_8011BD0`: 50 damage and 30 more per point of buster Attack (up to
 -- 5), Fire.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x32, 0x1E)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x32, 0x1E), counter = COUNTER, cant_counter = true }
     navi.attack_element = FIRE
     return heat_beast_charge.action
 end

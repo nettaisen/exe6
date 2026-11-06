@@ -12,11 +12,10 @@ local variants = require("../../objects/projectile/variants")
 -- `sub_80125D0`.
 local function setup(navi: Object): Action
     local stats = battle.navi(navi.alliance)
-    navi.attack_damage = (stats.attack + 1) * 10
+    navi.attack_word = damage_word.of { amount = (stats.attack + 1) * 10, counter = 0 }
     navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
     navi.attack_lockout = 0
     local s = navi:action_state(charged_shot.action) :: { projectile: ProjectileVariant? }
     s.projectile = stats.charge_shot_kind or variants.charged

@@ -140,7 +140,7 @@ local function tick(me: Object)
         local p = s.targets[i + 1]
         -- (The needles never crack their panels: the volley passes its
         -- first parameter alone.)
-        needle.spawn(me, bit32.band(p, 7), bit32.rshift(p, 4), me.element, s.palette, false, me.damage + me.stamina * 0x10000)
+        needle.spawn(me, bit32.band(p, 7), bit32.rshift(p, 4), me.element, s.palette, false, me.damage_word)
         me.timer = INTERVAL
     end
     local t = me.timer - 1
@@ -191,7 +191,7 @@ function volley.spawn(user: Object, element: Element, palette: number, damage: n
         o.related1 = user
         o.element = element
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.run_while_dimmed = false
         local s = o.state :: State
         s.palette = palette

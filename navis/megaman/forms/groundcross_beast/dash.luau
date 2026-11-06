@@ -14,7 +14,7 @@ local puff_sprite = asset.sprite("puff")
 
 -- Its hits: hit modifier 1, the plain spark; each hits again on the next
 -- panel.
-local HIT = dash_hit.variant { hit_mod = 1, spark = sparks.plain, reports = false }
+local HIT = dash_hit.variant { hit_mod = { flinch = true }, spark = sparks.plain, reports = false }
 
 export type State = {
     -- AIAttackVars+0x10: ticks of the phase, then of acceleration.
@@ -27,8 +27,7 @@ local dash_weapon = {}
 local WIND_UP, DASH, LAND = 0x0, 0x4, 0x8
 
 -- Break (secondary element 0x10), the hit's counter byte.
-local BREAK, HIT_PARAM = Element.new("null", { ["break"] = true }), 0x8A
-
+local BREAK, COUNTER = Element.new("null", { ["break"] = true }), 10
 -- The dash's first speed and its acceleration, 16.16 (the acceleration
 -- kept in the attack's marker word, AIAttackVars+0x30).
 local ACCELERATION = 0x1_0000
@@ -51,8 +50,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = weapon.charge_damage(navi, 0x5A, 0x14)
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x5A, 0x14), counter = COUNTER, cant_counter = true }
     navi.attack_element = BREAK
     return dash_weapon.action
 end
@@ -88,7 +86,7 @@ local function wind_up(me: Object, s: State)
     me.pos = Vec3.new(p.x, p.y + 0x1_0000, p.z)
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
     me:reserve_panel(me.panel_x, me.panel_y)
-    local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+    local damage = me.attack_word
     dash_hit.spawn(me, me.attack_element, damage, 0, HIT, HIT_Z)
     -- (The second's height is what the first spawn left in its register:
     -- the attack's element byte, a fraction of a pixel.)

@@ -43,7 +43,7 @@ local AT_ENEMY = 6
 -- `sub_80C67D8` (with flags |= 0x10): a burst on (x, y) that doesn't
 -- spread (Param1 0xFF), running while dimmed; the camera shakes.
 local function burst(me: Object, x: number, y: number)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     local o = corn.spawn(me, x, y, 0, me.element, damage, false, false)
     if o then
         o.run_while_dimmed = true
@@ -175,7 +175,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.probe, collision.hits_navis, 0)
+    me:setup_collision(collision.probe, collision.hits_navis, {})
     me.collision.element = Element.null
     me.collision:present()
     local s = me.state :: State
@@ -221,7 +221,7 @@ function sower.spawn(spawner: Object, x: number, y: number, damage: number, hold
     end
     o.panel_x, o.panel_y = x, y
     o.element = spawner.element
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.alliance, o.flip = spawner.alliance, spawner.flip
     o.related1 = spawner
     ;(o.state :: State).holder = holder

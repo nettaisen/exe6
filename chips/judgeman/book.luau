@@ -72,7 +72,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 1)
+    me:setup_collision(collision.attack, collision.hits_navis, { flinch = true })
     me.collision:set_hit_effect(sparks.heavy)
     me.collision:present()
     me:set_lifecycle("update")
@@ -281,7 +281,7 @@ function book.place(judge: Object, x: number, y: number, turn: number, element: 
     o.panel_x, o.panel_y = x, y
     o.element = element
     o.related1 = judge
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.alliance, o.flip = judge.alliance, judge.flip
     o.run_while_dimmed = true
     local s = o.state :: State

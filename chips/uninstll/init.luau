@@ -12,7 +12,7 @@ local chip: Chip = {
     rarity = 3,
     mb = 60,
     damage = 0,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { library = true },
     extra_flags = { modifier = true },

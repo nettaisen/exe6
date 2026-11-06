@@ -46,7 +46,7 @@ local IDENTITY = new.identity {
 }
 local LIFETIME = 0x2D0
 -- Its collision: another body of its side, reached by the other side.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- How it looks absorbed (the original's obstacle kind's sprite: its own).
 local ABSORBED = absorbed_obstacle.look { sprite = SPRITE }
 local APPEAR_SOUND, BREAK_SOUND = asset.sound("appear"), asset.sound("hit-bomb-1")
@@ -355,7 +355,7 @@ function turret.spawn(owner: Object, x: number, y: number, element: Element, dam
     if not o then
         return nil
     end
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.panel_x, o.panel_y = x, y
     o.element = element
     o.alliance, o.flip = owner.alliance, owner.flip

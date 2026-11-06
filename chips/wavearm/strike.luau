@@ -31,7 +31,7 @@ function strike.action(spec: Spec): Action
     -- `sub_80ED6CA`: a wave from (dx, dy) off the navi's panel, with the
     -- chip's damage.
     local function send(me: Object, dx: number, dy: number)
-        local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+        local damage = damage_word.plus(me.attack_word, me.extra)
         wave.spawn(me, me.panel_x + dx, me.panel_y + dy, spec.wave, damage)
     end
 

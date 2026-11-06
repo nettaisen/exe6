@@ -46,7 +46,7 @@ local HOP_2_BACK, HOP_2_UP, HOP_2_VX, HOP_2_VZ = 0xA_0000, 0x1E_0000, 0x5_0000, 
 local HOP_TICKS = 2
 -- The landing's hits (`dword_80E50BC`): one panel, no spark, a thrown
 -- breaking attack that hits navis, hit modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local NO_SPARK: Spark? = nil
 -- Effects: the dust where it lands (effect 0x34), and where it can't (0x15).
 local DUST = new.effect { sprite = dust_2_sprite, anim = 0, palette = 0, steps = 14 }
@@ -102,8 +102,7 @@ local function hit(me: Object, x: number, y: number)
         hit_effect = NO_SPARK,
         target = collision.hits_navis,
         self_type = collision.thrown_break,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
 end
@@ -269,7 +268,7 @@ function golem.instant(leap_: Leap): (user: Object, spec: InstantChipSpec) -> ()
             o.panel_x, o.panel_y = spec.panel_x, spec.panel_y
             o.element = spec.element
             o.alliance, o.flip = user.alliance, user.flip
-            o:set_damage_word(spec.damage)
+            o.damage_word = spec.damage
             local s = o.state :: State
             s.palette = leap_.palette
             s.own_panel = leap_.own_panel == true

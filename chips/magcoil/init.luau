@@ -109,7 +109,7 @@ end
 local chip: Chip = {
     codes = { "*" },
     element = "null", family = "null", class = "standard",
-    rarity = 0, mb = 14, damage = 0, hit_param = 30, lockout = 0,
+    rarity = 0, mb = 14, damage = 0, counter = 30, lockout = 0,
     flags = { standard_library = true, library = true },
     extra_flags = { free_slot_in = true },
     slot_in_limit = 3,

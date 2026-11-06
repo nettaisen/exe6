@@ -57,7 +57,7 @@ export type ControllerState = {
 
 local SPRITE = asset.sprite("yoyo")
 local SOUND = asset.sound("set-down")
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 -- Its speed, 16.16 per tick, and the ticks per panel or round.
 local SPEED, ROUND = 0x5_0000, 8
 -- The actions: out, spinning, back.
@@ -387,7 +387,7 @@ function yoyo.spawn(
         s.panels, s.rounds = spec.panels, spec.rounds
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
         s.slot = slot
@@ -400,7 +400,7 @@ end
 -- `slot`.
 local function send(me: Object, y: number, slot: "middle" | "below" | "above"): Object?
     local c = me.state :: ControllerState
-    local damage = me.damage + me.stamina * 0x10000
+    local damage = me.damage_word
     local spec: YoyoSpec = { panels = c.panels, rounds = c.rounds }
     return yoyo.spawn(me, me.panel_x, y, me.element, me.pos.z, damage, spec, slot)
 end
@@ -469,7 +469,7 @@ function yoyo.spawn_controller(
         s.panels, s.rounds = spec.panels, spec.rounds
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

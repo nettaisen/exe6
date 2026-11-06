@@ -22,8 +22,7 @@ local charge = {}
 local FIRE, HOLD = 0x0, 0x4
 
 -- Its hit parameter.
-local HIT_PARAM = 0x94
-
+local COUNTER = 20
 local SOUND = asset.sound("moon-beam")
 
 -- How much lower the Beast form's beam is, 16.16.
@@ -34,8 +33,7 @@ local BEAST_Z = -0x4_0000
 -- `plain_erase_beam`: EraseCross), or in any other (its Beast form) the
 -- second.
 local function setup(navi: Object): Action
-    navi.attack_damage = weapon.charge_damage(navi, 0x28, 0x14)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x28, 0x14), counter = COUNTER, cant_counter = true }
     local s = navi:action_state(charge.action) :: State
     s.beast = ((battle.navi(navi.alliance).form :: any) :: Exe6FormFields).plain_erase_beam ~= true
     navi.attack_element = Element.null
@@ -52,7 +50,7 @@ local function fire(me: Object, s: State)
     me.status.using_action = true
     me.status.moving = true
     local beast = s.beast
-    local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+    local damage = me.attack_word
     erase_ray.spawn(
         me,
         me.panel_x + me.facing,

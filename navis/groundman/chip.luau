@@ -52,7 +52,7 @@ local DIGGABLE: PanelCondition = {
 
 -- The hit on each panel he enters: a breaking attack at navis, with the
 -- breaking spark.
-local DIG_HIT_MOD = 0x63
+local DIG_HIT_MOD: HitModifier = { flinch = true, flash = true, back = true, drag = true }
 
 -- The rockfall: nine rocks, 20 ticks apart, the camera shaking for each.
 local ROCKS, ROCK_TICKS = 9, 0x14
@@ -98,8 +98,7 @@ local function dig_hit(me: Object, x: number, y: number)
         hit_effect = sparks.breaking,
         target = collision.hits_navis,
         self_type = collision.breaking,
-        damage = link.damage(me),
-        stamina = link.stamina(me),
+        damage = link.damage_word(me),
         hit_mod = DIG_HIT_MOD,
     })
 end
@@ -227,7 +226,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = { formula = "navi_level", base = 30, per_level = 10 },
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,

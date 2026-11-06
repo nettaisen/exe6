@@ -27,7 +27,7 @@ local chip: Chip = {
     rarity = 3,
     mb = 77,
     damage = { formula = "hp_lost" },
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, damage_shown_variable = true, library = true, variable_damage = true },
     -- (The custom screen shows its damage as "???" only on an A, which it
@@ -38,7 +38,7 @@ local chip: Chip = {
     action = slash.action {
         id = "muramasa/action",
         blade = parts.blade,
-        hit = { region = regions.long, collision = parts.slashes_navis, hit_mod = 3 },
+        hit = { region = regions.long, collision = parts.slashes_navis, hit_mod = { flinch = true, flash = true } },
         effect = MURAMASA_SLASH,
         sound = parts.swing,
         charged = CHARGED,

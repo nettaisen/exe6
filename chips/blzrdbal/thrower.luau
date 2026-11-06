@@ -42,7 +42,7 @@ local function throw(me: Object)
         return
     end
     local p = me.pos
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     ball.spawn(me, int.i32(p.x + AHEAD * me.facing), p.y, me.element, damage)
     battle.play_sound(SOUND_THROW)
     me.timer = AFTER

@@ -155,7 +155,7 @@ end
 -- panels in front, of its element, turned the way the beast faces, its
 -- damage on top of the base word, with hit modifier 3, resolving while
 -- dimmed.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 function beast.hit(me: Object, h: DblBeastHit, x: number?)
     local s = me.state :: DblBeastState
     local word = int.u32(h.damage + s.base)
@@ -168,8 +168,7 @@ function beast.hit(me: Object, h: DblBeastHit, x: number?)
         hit_effect = h.spark,
         target = collision.hits_navis,
         self_type = h.is,
-        damage = bit32.band(word, 0xFFFF),
-        stamina = bit32.rshift(word, 16),
+        damage = word,
         hit_mod = HIT_MOD,
     })
     if o then
