@@ -18,7 +18,7 @@ local firehit1: Chip = {
     flags = { "has_damage", "library" },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
-    instant = fist.instant(3),
+    instant = fist.instant({ flinch = true, flash = true }),
 }
 
 local firehit2: Chip = {
@@ -34,7 +34,7 @@ local firehit2: Chip = {
     flags = { "has_damage", "library" },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
-    instant = fist.instant(3),
+    instant = fist.instant({ flinch = true, flash = true }),
 }
 
 local firehit3: Chip = {
@@ -50,7 +50,7 @@ local firehit3: Chip = {
     flags = { "has_damage", "library" },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
-    instant = fist.instant(3),
+    instant = fist.instant({ flinch = true, flash = true }),
 }
 
 return { firehit1 = firehit1, firehit2 = firehit2, firehit3 = firehit3 }
