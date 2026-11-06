@@ -10,7 +10,7 @@ local aquandl_chips = require("../aquandl")
 local charge = require("../../lib/navi_boost/charge")
 
 -- The attack's element byte: Aqua.
-local ELEMENT = 2
+local ELEMENT = Element.aqua
 local DAMAGE = 0x28
 
 -- `sub_8011ED0`.

@@ -120,7 +120,7 @@ local function strike(me: Object, n: number)
     for i = #found, 1, -1 do
         local x, y = panels.x(found[i]), panels.y(found[i])
         local bolt = thunder.spawn(me, x, y, me.element, BOLTS[n], damage, bit32.band(r3, 0xFFFF))
-        r3 = if bolt then bit32.bor(me.alliance, bit32.lshift(me.flip, 8)) else me.element
+        r3 = if bolt then bit32.bor(me.alliance, if me.flip then 0x100 else 0) else me.element.byte
     end
 end
 

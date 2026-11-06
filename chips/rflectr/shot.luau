@@ -81,7 +81,7 @@ local function init(me: Object): boolean
     me.timer = SPREAD_TICKS
     me.timer2 = 0
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     if not me:create_collision() then
         me:free()
@@ -122,7 +122,7 @@ function shot.spawn(spawner: Object, x: number, y: number, z: number, damage: nu
     local o = battle.spawn(shot.kind, Vec3.new(y, 0, z))
     if o then
         o.panel_x, o.panel_y = x, y
-        o.element = 0
+        o.element = Element.null
         o:set_damage_word(damage)
         o.alliance, o.flip = spawner.alliance, spawner.flip
         o.related1 = spawner

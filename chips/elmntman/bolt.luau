@@ -31,7 +31,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -102,8 +102,8 @@ bolt.kind = new.kind {
 }
 
 -- `sub_80DC4B8`: a bolt on (x, y) with `element` and the damage word.
-function bolt.spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(bolt.kind, Vec3.new(y, element, 0))
+function bolt.spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(bolt.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

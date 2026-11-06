@@ -74,7 +74,7 @@ local function init(me: Object)
     me.anim_loaded = anim
     sprite:set_animation(anim)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
     tick(me)
 end

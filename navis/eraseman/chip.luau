@@ -44,7 +44,7 @@ local function beams(me: Object)
             return
         end
         local element = me.attack_element
-        beam.spawn(me, x, y, element, BEAM, link.damage_word(me), Vec3.new(y, element, 0x1_0000))
+        beam.spawn(me, x, y, element, BEAM, link.damage_word(me), Vec3.new(y, element.byte, 0x1_0000))
     end
 end
 

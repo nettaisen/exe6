@@ -135,7 +135,7 @@ local function init(me: Object)
     local p = me.pos
     me.vel = Vec3.new(vx, me.vel.y, SPEED)
     me.pos = Vec3.new(p.x - vx * FLIGHT, p.y, SPEED * FLIGHT + LANDED_Z)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -179,8 +179,8 @@ needle.kind = new.kind {
 -- cracking its panel if `cracks`, with the damage word `damage`. Its
 -- position is the spawner's registers (y, the element, 0) until its init
 -- places it.
-function needle.spawn(from: Object, x: number, y: number, element: number, palette: number, cracks: boolean, damage: number): Object?
-    local o = battle.spawn(needle.kind, Vec3.new(y, element, 0))
+function needle.spawn(from: Object, x: number, y: number, element: Element, palette: number, cracks: boolean, damage: number): Object?
+    local o = battle.spawn(needle.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

@@ -101,7 +101,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.timer = s.ticks
     me:set_coordinates_from_panel()
     if s.stands_back then
@@ -164,12 +164,12 @@ function element_pillar.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     pillar: ElementPillar,
     damage: number,
     z: number?
 ): Object?
-    local o = battle.spawn(element_pillar.kind, Vec3.new(y, element, z or 0))
+    local o = battle.spawn(element_pillar.kind, Vec3.new(y, element.byte, z or 0))
     if o then
         local s = o.state :: State
         s.look = pillar.look

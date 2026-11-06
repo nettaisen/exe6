@@ -31,7 +31,7 @@ drill.kind = exe6_kind
 -- navi chip's navi, whose kind has that field).
 function drill.spawn(
     owner: Object,
-    element: number,
+    element: Element,
     z: number,
     damage: number,
     spec: { ticks: number, light: boolean? },

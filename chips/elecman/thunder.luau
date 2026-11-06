@@ -54,7 +54,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -203,8 +203,8 @@ thunder.kind = new.kind {
 -- `sub_80D0F0C`: a thunderbolt on (x, y) from `owner` with `element`, the
 -- damage word and what it is. `z` is the spawner's register that becomes
 -- its Z, whose fraction it keeps.
-function thunder.spawn(owner: Object, x: number, y: number, element: number, what: Thunderbolt, damage: number, z: number): Object?
-    local o = battle.spawn(thunder.kind, Vec3.new(y, element, z))
+function thunder.spawn(owner: Object, x: number, y: number, element: Element, what: Thunderbolt, damage: number, z: number): Object?
+    local o = battle.spawn(thunder.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

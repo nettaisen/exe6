@@ -69,7 +69,7 @@ local function fall(me: Object)
         me.phase = 4
         me.collision:set_region(regions.single)
         local cx, cy = field.center(me.panel_x, me.panel_y)
-        battle.effect(Vec3.new(cx, cy, 0), DUST, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(cx, cy, 0), DUST, me.facing_side)
         field.break_panel(me.panel_x, me.panel_y)
         me.timer = HIT_TICKS
         return
@@ -146,7 +146,7 @@ strike.kind = new.kind {
 
 -- `sub_80D1B22`: a strike on (x, y) from `owner`, with `element` and the
 -- damage word `damage`. It runs while dimmed (and waits).
-function strike.spawn(owner: Object, x: number, y: number, element: number, spec: Spec, damage: number): Object?
+function strike.spawn(owner: Object, x: number, y: number, element: Element, spec: Spec, damage: number): Object?
     local o = battle.spawn(strike.kind, Vec3.zero)
     if o then
         o.panel_x, o.panel_y = x, y

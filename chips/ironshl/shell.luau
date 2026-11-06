@@ -67,7 +67,7 @@ end
 
 -- The opponent's back column.
 local function far_column(me: Object): number
-    return bit32.bxor(me.alliance, 1) * 5 + 1
+    return battle.other_side(me.alliance) * 5 + 1
 end
 
 -- `sub_80CA834`: slide; at the far column the push goes; stop when the
@@ -180,7 +180,7 @@ local function setup(me: Object, hit_mod: number): boolean
         return false
     end
     me:setup_collision(collision.breaking, collision.hits_navis, hit_mod)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     return true
 end
 
@@ -201,7 +201,7 @@ local function init(me: Object)
         return
     end
     me.visible = true
-    me.sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    me.sprite:face(me)
     me.sprite.palette = s.palette
     local v = me.vel
     me.vel = Vec3.new(me.facing * s.speed, v.y, v.z)
@@ -241,8 +241,8 @@ shell.kind = new.kind {
 -- `sub_80CA90E`: a shell for `owner` on (x, y), with the damage word
 -- `damage`, sliding as `spec` says. Its position is the spawner's
 -- registers (the panel Y, the element and 0) until its init places it.
-function shell.spawn(owner: Object, x: number, y: number, element: number, damage: number, spec: Spec): Object?
-    local o = battle.spawn(shell.kind, Vec3.new(y, element, 0))
+function shell.spawn(owner: Object, x: number, y: number, element: Element, damage: number, spec: Spec): Object?
+    local o = battle.spawn(shell.kind, Vec3.new(y, element.byte, 0))
     if o then
         local s = o.state :: State
         s.palette, s.speed, s.bumps, s.variant = spec.palette, spec.speed, spec.bumps, spec.variant

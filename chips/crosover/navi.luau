@@ -70,7 +70,7 @@ local SHOTS, SHOT_TICKS = 0xC, 0xA
 -- pixels ahead of him, and its drain on the target's column: element 5, 3
 -- damage, under it for 120 ticks.
 local BEAM: SunBeam = { sprite = sun_beam_sprite, palette = 0 }
-local DRAIN_ELEMENT, DRAIN_DAMAGE, DRAIN_TICKS = 5, 3, 0x78
+local DRAIN_ELEMENT, DRAIN_DAMAGE, DRAIN_TICKS = Element.drain, 3, 0x78
 
 -- The slashes: a plain one, or half of an X when the other stands in
 -- place too (effects 0x18 and 0x36).
@@ -105,11 +105,6 @@ local function tick_down(me: Object): number
     local left = me.timer - 1
     me.timer = left
     return left
-end
-
--- The game's flip value for his sprite.
-local function flip_of(me: Object): number
-    return bit32.bxor(me.alliance, me.flip)
 end
 
 -- `sub_80B8E58` on what he holds: it goes (its lifecycle word to destroy);
@@ -206,7 +201,7 @@ local function slash_hit(me: Object): boolean
     local kind = if cross then CROSS_HALF else SLASH
     local x, y = me.panel_x + me.facing, me.panel_y
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, 0x10_0000), kind.effect, flip_of(me))
+    battle.effect(Vec3.new(cx, cy, 0x10_0000), kind.effect, me.facing_side)
     hit(me, x, y, {
         panel_x = x,
         panel_y = y,
@@ -661,7 +656,7 @@ local function init_megaman(me: Object)
     me.pos = user.pos
     me:set_panel_from_coordinates()
     me.visible = true
-    me.sprite:set_flip(flip_of(me))
+    me.sprite:face(me)
     overlays.add_parts_of(me, me, false, true)
     s.partner = nil
     local dx, dy, tx, ty = search(me)
@@ -675,7 +670,7 @@ local function init_megaman(me: Object)
     if django then
         (django.state :: State).partner = me
         django.future_panel_x, django.future_panel_y = tx, ty
-        django.flip = 1
+        django.flip = true
     end
     s.partner = django
 end
@@ -692,7 +687,7 @@ local function init(me: Object)
         me.anim_loaded = 0xFF
         me:set_coordinates_from_panel()
         me.visible = true
-        sprite:set_flip(flip_of(me))
+        sprite:face(me)
     else
         init_megaman(me)
     end

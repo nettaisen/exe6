@@ -54,7 +54,7 @@ end
 -- then follows it (back to the first after the last). A candidate on the
 -- user's panel is remembered: with nothing free, the user's panel (facing
 -- the enemy) if one was. Else nil.
-function beast.attack_panel(me: Object, pattern: DblBeastPattern): (number?, number, number)
+function beast.attack_panel(me: Object, pattern: DblBeastPattern): (number?, number, boolean)
     local s = me.state :: DblBeastState
     local user = me.related1 :: Object
     -- object_getEnemyDirection: the side's forward.
@@ -70,7 +70,7 @@ function beast.attack_panel(me: Object, pattern: DblBeastPattern): (number?, num
             if field.check(x, y, FREE) then
                 i += 1
                 s.next = if i >= s.count then 0 else i
-                return x, y, e[1]
+                return x, y, e[1] ~= 0
             end
             if x == user.panel_x and y == user.panel_y then
                 on_user = true
@@ -80,9 +80,9 @@ function beast.attack_panel(me: Object, pattern: DblBeastPattern): (number?, num
     until i >= s.count
     if on_user then
         s.next = 0
-        return user.panel_x, user.panel_y, 0
+        return user.panel_x, user.panel_y, false
     end
-    return nil, 0, 0
+    return nil, 0, false
 end
 
 -- An attack's start: the last attack's panel let go (all but the first
@@ -100,7 +100,7 @@ function beast.take_panel(me: Object, pattern: DblBeastPattern, drop_last: boole
     me.flip = flip
     me.panel_x, me.panel_y = x, y
     me:set_coordinates_from_panel()
-    me.sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    me.sprite:face(me)
     me.future_panel_x, me.future_panel_y = x, y
     me:reserve_panel(x, y)
     return true
@@ -200,7 +200,7 @@ function beast.init(me: Object, sprite: SpriteAsset, ahead: boolean, identity: I
     me.anim, me.anim_loaded = 0, 0
     sp:set_animation(0)
     sp.palette = 0
-    sp:set_flip(bit32.bxor(me.alliance, me.flip))
+    sp:face(me)
     me.identity = identity
     local s = me.state :: DblBeastState
     s.missed = false
@@ -210,7 +210,7 @@ end
 -- side and facing, with `controller` waiting on it (the flag `flag` set)
 -- and the damage word `base`. (Spawned at the registers; its init places
 -- it.)
-function beast.spawn(kind: Kind, controller: Object, user: Object, element: number, base: number, flag: "gregar_out" | "falzar_out"): Object?
+function beast.spawn(kind: Kind, controller: Object, user: Object, element: Element, base: number, flag: "gregar_out" | "falzar_out"): Object?
     local o = battle.spawn(kind, Vec3.zero)
     if not o then
         return nil

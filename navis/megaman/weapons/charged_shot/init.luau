@@ -56,7 +56,7 @@ function charged_shot.setup(navi: Object): Action
     end
     local s = navi:action_state(charged_shot.action) :: State
     s.projectile = shot
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.hit_param = 0

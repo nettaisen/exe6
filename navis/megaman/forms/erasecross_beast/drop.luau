@@ -20,7 +20,7 @@ local drop_weapon = {}
 local RAISE, DROP, RECOVER = 0x0, 0x4, 0x8
 
 -- Cursor (secondary element 0x40), the hit's counter byte.
-local CURSOR, HIT_PARAM = 0x40, 0x9E
+local CURSOR, HIT_PARAM = Element.new("null", { cursor = true }), 0x9E
 
 local SOUND = asset.sound("justice-one")
 

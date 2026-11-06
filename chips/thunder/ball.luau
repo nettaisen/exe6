@@ -33,7 +33,7 @@ ball.kind = common.make_kind("thunder/ball", EXE6)
 
 -- `sub_80C954C`: a thunder ball for `owner` on (x, y) with the damage word
 -- `damage`. (A game's own kind of it: `kind`.)
-function ball.spawn(owner: Object, x: number, y: number, element: number, damage: number, spec: ThunderBall, kind: Kind?): Object?
+function ball.spawn(owner: Object, x: number, y: number, element: Element, damage: number, spec: ThunderBall, kind: Kind?): Object?
     return common.spawn(kind or ball.kind, owner, x, y, element, damage, spec)
 end
 

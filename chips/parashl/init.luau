@@ -26,8 +26,8 @@ local PARA = shell.variant {
     done = function(me: Object)
         local v = me.vel
         me.vel = Vec3.new(-v.x, v.y, v.z)
-        me.flip = bit32.bxor(me.flip, 1)
-        me.sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        me.flip = not me.flip
+        me.sprite:face(me)
     end,
 }
 

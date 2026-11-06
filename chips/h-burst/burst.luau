@@ -22,7 +22,7 @@ burst.kind = common.make_kind("h-burst/burst", {
 
 -- `sub_80D9130`: a shot on (x, y) for `owner` that bursts `bursts` times,
 -- with the element and the damage word `damage`.
-function burst.spawn(owner: Object, x: number, y: number, element: number, bursts: number, damage: number): Object?
+function burst.spawn(owner: Object, x: number, y: number, element: Element, bursts: number, damage: number): Object?
     return common.spawn(burst.kind, owner, x, y, element, bursts, damage)
 end
 

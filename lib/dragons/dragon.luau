@@ -47,7 +47,7 @@ function dragon.place(me: Object, v: DragonVariant, anim: number)
     me.anim_loaded = anim
     sprite:set_animation(anim)
     sprite.palette = v.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, p.z - HEIGHT * 0x10000)
@@ -85,7 +85,7 @@ function dragon.splash(me: Object, leg: number)
         return
     end
     local p = me.pos
-    battle.effect(Vec3.new(p.x, p.y, 0), effects.ripple, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(p.x, p.y, 0), effects.ripple, me.facing_side)
 end
 
 return dragon

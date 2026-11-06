@@ -97,7 +97,7 @@ local REPEATS = 8
 function falzar_beast_buster.beast_setup(navi: Object, over: string, volleys: Volleys)
     navi.attack_damage = math.min(navi:buster_damage(), 5)
     navi.hit_param = 0
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = 0

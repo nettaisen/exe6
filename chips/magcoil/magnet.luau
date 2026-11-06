@@ -34,7 +34,7 @@ local function pull(me: Object, x: number, y: number, how: number)
             battle.hitbox(me, {
                 panel_x = x,
                 panel_y = y,
-                element = 0,
+                element = Element.null,
                 region = regions.single,
                 -- None.
                 hit_effect = nil,
@@ -90,7 +90,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.timer = (me.state :: State).ticks
     me:set_coordinates_from_panel()
     local user = me.related1 :: Object
@@ -124,8 +124,8 @@ magnet.kind = new.kind {
 -- the user's first related slot (the game passes the slot; MagCoil's is
 -- that one). Its position is the spawner's registers (y, the element, 0)
 -- until its init places it.
-function magnet.spawn(user: Object, x: number, y: number, element: number, ticks: number): Object?
-    local o = battle.spawn(magnet.kind, Vec3.new(y, element, 0))
+function magnet.spawn(user: Object, x: number, y: number, element: Element, ticks: number): Object?
+    local o = battle.spawn(magnet.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

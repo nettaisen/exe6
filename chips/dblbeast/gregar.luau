@@ -77,7 +77,7 @@ local LIST_TICKS, LEAVE_TICKS = 0x1E, 3
 -- An effect on the panel in front, 16 pixels up, facing the beast's way.
 local function effect_ahead(me: Object, fx: Effect)
     local cx, cy = field.center(me.panel_x + me.facing, me.panel_y)
-    battle.effect(Vec3.new(cx, cy, 0x10_0000), fx, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0x10_0000), fx, me.facing_side)
 end
 
 -- The attack ends: no miss, the next action.
@@ -358,7 +358,7 @@ gregar.kind = new.kind {
 }
 
 -- `sub_80C1EAC`: Gregar's beast for `user`.
-function gregar.spawn(controller: Object, user: Object, element: number, base: number): Object?
+function gregar.spawn(controller: Object, user: Object, element: Element, base: number): Object?
     return beast.spawn(gregar.kind, controller, user, element, base, "gregar_out")
 end
 

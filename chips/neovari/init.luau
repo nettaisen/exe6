@@ -25,19 +25,19 @@ local chip: Chip = {
     traits = { no_chain = true },
     action = vari.action {
         id = "neovari/action",
-        -- The sequences (`off_80EF824`), facing right (flip 0) and mirrored
-        -- (the up-down one is the same both ways), as joypad words with A
-        -- held.
+        -- The sequences (`off_80EF824`, joypad words each ending in 0),
+        -- not turned (facing right on side 0) and turned (the up-down one
+        -- is the same both ways), each step the buttons held, A among them.
         sequences = {
-            [0] = {
-                { 0x81, 0x11, 0x41, 0 },
-                { 0x21, 0x11, 0x21, 0x03, 0 },
-                { 0x41, 0x03, 0x81, 0x03, 0x41, 0x03, 0 },
+            unturned = {
+                { { a = true, down = true }, { a = true, right = true }, { a = true, up = true } },
+                { { a = true, left = true }, { a = true, right = true }, { a = true, left = true }, { a = true, b = true } },
+                { { a = true, up = true }, { a = true, b = true }, { a = true, down = true }, { a = true, b = true }, { a = true, up = true }, { a = true, b = true } },
             },
-            [1] = {
-                { 0x81, 0x21, 0x41, 0 },
-                { 0x11, 0x21, 0x11, 0x03, 0 },
-                { 0x41, 0x03, 0x81, 0x03, 0x41, 0x03, 0 },
+            turned = {
+                { { a = true, down = true }, { a = true, left = true }, { a = true, up = true } },
+                { { a = true, right = true }, { a = true, left = true }, { a = true, right = true }, { a = true, b = true } },
+                { { a = true, up = true }, { a = true, b = true }, { a = true, down = true }, { a = true, b = true }, { a = true, up = true }, { a = true, b = true } },
             },
         },
         -- CrosSwrd, SprSonic, DblDream (`byte_80EF958`).

@@ -47,8 +47,8 @@ end
 local function afterimage(me: Object)
     local p = me.pos
     local pos = Vec3.new(p.x, p.y - 0x1_0000, p.z - 0x1_0000)
-    local flip = bit32.bxor(me.alliance, me.flip)
-    battle.afterimage(me, pos, { sprite = SPRITE, flip = flip, lifetime = TRAIL_LIFETIME, color_shader = TRAIL_SHADER })
+    local flip = me.facing_side
+    battle.afterimage(me, pos, { sprite = SPRITE, facing = flip, lifetime = TRAIL_LIFETIME, color_shader = TRAIL_SHADER })
 end
 
 -- `sub_80DDB98`: roll on.
@@ -107,7 +107,7 @@ local function init(me: Object)
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     local front = me.facing
     local v = me.vel
     me.vel = Vec3.new(front * SPEED, v.y, v.z)
@@ -148,8 +148,8 @@ charge_wave.kind = new.kind {
 -- `sub_80DDBAC`: a wave for `owner` from in front of (x, y), with `element`
 -- and the damage word `damage`, at height `z`. (Its X and Y are the
 -- spawner's registers, Y and the element, until its init places it.)
-function charge_wave.spawn(owner: Object, x: number, y: number, element: number, damage: number, z: number): Object?
-    local o = battle.spawn(charge_wave.kind, Vec3.new(y, element, z))
+function charge_wave.spawn(owner: Object, x: number, y: number, element: Element, damage: number, z: number): Object?
+    local o = battle.spawn(charge_wave.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

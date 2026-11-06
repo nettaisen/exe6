@@ -23,7 +23,7 @@ local FLAME = burn.action {
 }
 
 -- The attack's element (Fire) and hit parameter.
-local FIRE, HIT_PARAM = 1, 0x94
+local FIRE, HIT_PARAM = Element.fire, 0x94
 
 -- `sub_8011BA2`.
 local function setup(navi: Object): Action

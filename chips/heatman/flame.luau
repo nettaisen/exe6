@@ -37,7 +37,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -148,7 +148,7 @@ flame.kind = new.kind {
 -- damage word `damage`. It runs while dimmed. `pos` is where the spawner's
 -- registers leave it (its panel's row, the element and its Z), of which
 -- its init keeps the Z's fraction.
-function flame.spawn(owner: Object, x: number, y: number, element: number, spec: Spec, damage: number, pos: Vec3): Object?
+function flame.spawn(owner: Object, x: number, y: number, element: Element, spec: Spec, damage: number, pos: Vec3): Object?
     local o = battle.spawn(flame.kind, pos)
     if o then
         o.panel_x, o.panel_y = x, y

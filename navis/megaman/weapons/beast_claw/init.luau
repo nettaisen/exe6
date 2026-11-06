@@ -53,7 +53,7 @@ local function setup(navi: Object): Action
     navi.extra = 0
     navi.hit_param = HIT_PARAM
     navi.attack_damage = weapon.charge_damage(navi, 0x32, 0xA)
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.attack_count = 2
     return beast_claw.action
 end
@@ -97,7 +97,7 @@ local function slash(me: Object, s: State)
     battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = region,
         hit_effect = HIT_EFFECT,

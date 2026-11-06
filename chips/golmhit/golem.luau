@@ -79,7 +79,7 @@ local function dust(me: Object, anim: number, dy: number)
     battle.afterimage(me, Vec3.new(p.x, p.y + dy, p.z), {
         sprite = SPRITE,
         anim = anim,
-        flip = bit32.bxor(me.alliance, me.flip),
+        facing = me.facing_side,
         lifetime = AFTERIMAGE_TICKS,
         color_shader = AFTERIMAGE_SHADER,
     })
@@ -214,12 +214,12 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite.shadow = "with_sprite"
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not (me.state :: State).own_panel then
         local side = me.alliance
         -- `object_getClosestPanelMatchingRowFiltered` (@exelib/panels):
         -- from column 6 when side ^ flip is 1, else from column 1.
-        local from = bit32.bxor(bit32.bxor(side, me.flip), 1)
+        local from = battle.other_side(me.facing_side)
         local x = panels.closest_in_row(from, me.panel_y, TARGET, side)
         if x == 0 then
             x = me.panel_x + me.facing
@@ -264,7 +264,7 @@ golem.kind = new.kind {
 -- the registers' values, which its init replaces but for Z.)
 function golem.instant(leap_: Leap): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, spec: InstantChipSpec)
-        local o = battle.spawn(golem.kind, Vec3.new(spec.panel_y, spec.element, spec.z))
+        local o = battle.spawn(golem.kind, Vec3.new(spec.panel_y, spec.element.byte, spec.z))
         if o then
             o.panel_x, o.panel_y = spec.panel_x, spec.panel_y
             o.element = spec.element

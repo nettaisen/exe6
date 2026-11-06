@@ -35,7 +35,7 @@ local STATUS = statuses.paralyze_90
 -- once).
 local DELAY = 0
 -- Hit effect 3: an elec attack's spark.
-local SPARK = sparks.of_element(3)
+local SPARK = sparks.of_element(Element.elec)
 
 -- The actions (the object's action byte).
 local WAIT, ARMED, SPENT, ENDED = 0, 4, 8, 0xC
@@ -57,7 +57,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = anim, anim
     sprite:set_animation(anim)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         local turret = s.turret
         if turret then

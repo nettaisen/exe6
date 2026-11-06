@@ -15,7 +15,7 @@ local chip: Chip = {
         held = seed.held(1),
         held_anim = 8,
         thrower = seed.thrower(seed.variant {
-            element = 2,
+            element = Element.aqua,
             palette = 1,
             panel = "ice",
             -- Its sprout (effect 0x3B).

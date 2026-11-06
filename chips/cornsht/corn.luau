@@ -46,7 +46,7 @@ local ENEMY_BODY: PanelCondition = { enemy_body = true }
 -- enemy's body on them, in the region's order.
 local function find_spread(me: Object, s: State)
     local x, y = me.panel_x + me.facing, me.panel_y
-    local dir = panels.side_direction(bit32.bxor(me.alliance, me.flip))
+    local dir = panels.side_direction(me.facing_side)
     local n = 0
     for _, p in regions.wide.panels or {} do
         local px, py = x + p[1] * dir, y + p[2]
@@ -116,8 +116,7 @@ local function burst(me: Object, s: State)
         end
     end
     me:reset_collision_types(collision.attack, collision.hits_navis, HIT_MOD)
-    me.collision.element = bit32.band(me.element, 0xF)
-    me.collision.secondary_element = bit32.band(me.element, 0xF0)
+    me.collision.element = me.element
     me.collision:set_region(regions.single)
     battle.effect(me.pos, EFFECT)
     battle.play_sound(SOUND)
@@ -191,7 +190,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.probe, collision.hits_navis, 0)
-    me.collision.element = 0
+    me.collision.element = Element.null
     me.collision:present()
     local s = me.state :: State
     s.bursts = BURSTS
@@ -231,7 +230,7 @@ function corn.spawn(
     x: number,
     y: number,
     z: number,
-    element: number,
+    element: Element,
     damage: number,
     probe: boolean,
     spreads: boolean

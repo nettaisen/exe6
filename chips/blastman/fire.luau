@@ -28,12 +28,13 @@ local HIT_MOD = 3
 
 -- By direction: its step (`byte_80C846C`), how far it goes (16.16,
 -- `byte_80C8488`), its animation (`dword_80C8480`) and flip
--- (`dword_80C8478`).
-local WAYS: { [FireBlastDirection]: { step: { number }, distance: number, anim: number, flip: number } } = {
-    left = { step = { -1, 0 }, distance = 0x118_0000, anim = 0x11, flip = 1 },
-    right = { step = { 1, 0 }, distance = 0x118_0000, anim = 0x11, flip = 0 },
-    up = { step = { 0, -1 }, distance = 0x78_0000, anim = 0x12, flip = 2 },
-    down = { step = { 0, 1 }, distance = 0x78_0000, anim = 0x12, flip = 0 },
+-- (`dword_80C8478`: mirrored going left, upside down going up).
+type Way = { step: { number }, distance: number, anim: number, mirrored: boolean?, upside_down: boolean? }
+local WAYS: { [FireBlastDirection]: Way } = {
+    left = { step = { -1, 0 }, distance = 0x118_0000, anim = 0x11, mirrored = true },
+    right = { step = { 1, 0 }, distance = 0x118_0000, anim = 0x11 },
+    up = { step = { 0, -1 }, distance = 0x78_0000, anim = 0x12, upside_down = true },
+    down = { step = { 0, 1 }, distance = 0x78_0000, anim = 0x12 },
 }
 
 -- `sub_80C83B8`: on its panel, on the ground, moving; collision on.
@@ -55,7 +56,7 @@ local function init(me: Object)
     me.anim_loaded = anim
     sprite:set_animation(anim)
     sprite.palette = 0
-    sprite:set_flip(way.flip)
+    sprite.hflip, sprite.vflip = way.mirrored == true, way.upside_down == true
     if not me:create_collision() then
         me:free()
         return
@@ -135,7 +136,7 @@ fire.kind = new.kind {
 -- `sub_80C8514`: a flame on (x, y) from `owner` with `element`, the damage
 -- word and what it is. (Its position is the spawner's registers, all of
 -- which its init overwrites.)
-function fire.spawn(owner: Object, x: number, y: number, element: number, what: FireBlast, damage: number): Object?
+function fire.spawn(owner: Object, x: number, y: number, element: Element, what: FireBlast, damage: number): Object?
     local o = battle.spawn(fire.kind, Vec3.zero)
     if o then
         local s = o.state :: State

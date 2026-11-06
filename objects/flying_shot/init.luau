@@ -10,7 +10,6 @@
 -- It may wait some ticks before it sets off, and wear a palette.
 -- See docs/engine/objects-and-player.md §B8a.
 
-local element = require("@exelib/element")
 
 local flying_shot = {}
 
@@ -182,10 +181,10 @@ local function init(me: Object)
     if not keeps_facing then
         -- (`sub_8002EAC` otherwise: its parts keep their own facing, and
         -- the sprite itself is not flipped. Drawn only.)
-        look:set_flip(bit32.bxor(me.alliance, me.flip))
+        look:face(me)
     end
     look.palette = s.palette
-    me.element = element.byte(v.element, v.secondary)
+    me.element = Element.new(v.element, v.secondary)
     s.range = v.range
     me:set_panel_from_coordinates()
     me.vel = Vec3.new(me.facing * v.speed, me.vel.y, me.vel.z)

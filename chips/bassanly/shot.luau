@@ -26,7 +26,7 @@ function shot.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     what: DarkBall,
     damage: number,
     z: number

@@ -25,7 +25,7 @@ fist.kind = common.make_kind("firehit/fist", EXE6)
 
 -- `sub_80CFDF2` and `sub_801155A`: a fist of `owner`'s on (x, y); of
 -- `kind`, EXE6's by default.
-function fist.spawn(owner: Object, x: number, y: number, element: number, z: number, hit_mod: number, damage: number, kind: Kind?): Object?
+function fist.spawn(owner: Object, x: number, y: number, element: Element, z: number, hit_mod: number, damage: number, kind: Kind?): Object?
     return common.spawn(kind or fist.kind, owner, x, y, element, z, hit_mod, damage)
 end
 

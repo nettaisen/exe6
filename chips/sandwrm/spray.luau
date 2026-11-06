@@ -36,7 +36,7 @@ local WAIT, ARC, DONE = 0, 4, 8
 
 -- `sub_80DF016`: turned toward the user; the arc to the panel behind.
 local function aim(me: Object, s: State)
-    me.flip = 1
+    me.flip = true
     s.target_x = me.panel_x + me.facing
     s.target_y = me.panel_y
     local n = LENGTH
@@ -130,7 +130,7 @@ local function init(me: Object)
     sprite:set_animation(a)
     sprite.palette = s.palette
     aim(me, s)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
     tick(me)
 end

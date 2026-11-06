@@ -36,7 +36,7 @@ local SOUND = asset.sound("tomahawk-man")
 -- The hits' counter byte, and the slash's element: Wood (the attack's
 -- element byte).
 local HIT_PARAM = 0x8A
-local WOOD = 4
+local WOOD = Element.wood
 
 -- The slash's hit modifier, and its effect 16 pixels up.
 local HIT_MOD = 1
@@ -73,7 +73,7 @@ local function slash(me: Object)
         hit_mod = HIT_MOD,
     })
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, link.flip(me))
+    battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, me.facing_side)
 end
 
 -- `sub_80F17E4`: the axe goes up.

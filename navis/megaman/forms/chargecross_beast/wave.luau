@@ -22,7 +22,7 @@ local wave = {}
 local WIND_UP, RECOVER = 0x0, 0x4
 
 -- Fire, the hit's counter byte.
-local FIRE, HIT_PARAM = 1, 0x9E
+local FIRE, HIT_PARAM = Element.fire, 0x9E
 
 local SOUND = asset.sound("ground-beast-dash-2")
 
@@ -31,7 +31,7 @@ local WAVE_Z = 0x18_0000
 
 -- The wind-up's hit over the field: no damage, element 5, a guard-breaking
 -- attack at navis with status 0x46, no spark.
-local FIELD_ELEMENT, FIELD_STATUS = 5, statuses.immobilize_30
+local FIELD_ELEMENT, FIELD_STATUS = Element.drain, statuses.immobilize_30
 
 -- `sub_8011DDC`: 70 damage and 30 more per point of buster Attack (up to
 -- 5), Fire.

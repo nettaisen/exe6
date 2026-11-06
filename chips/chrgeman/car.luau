@@ -64,7 +64,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     visibility.update(me)
     me.lifecycle = "update"
     me:set_action(if s.wait ~= 0 then 0 else 4)
@@ -214,13 +214,13 @@ function car.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     what: ChargeCar,
     damage: number,
     speed: number,
     z: number
 ): Object?
-    local o = battle.spawn(car.kind, Vec3.new(y, element, z))
+    local o = battle.spawn(car.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

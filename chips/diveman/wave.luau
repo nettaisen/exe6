@@ -59,7 +59,7 @@ local function splash(me: Object, ahead: number)
         return
     end
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, 0), SPLASH, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0), SPLASH, me.facing_side)
 end
 
 -- `sub_80CB10C`: on its panel, on the ground (Z's whole part cleared: the
@@ -76,7 +76,7 @@ local function init(me: Object)
     me.anim_loaded = ANIM
     sprite:set_animation(ANIM)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     battle.play_sound(SOUND)
     me:set_lifecycle("update")
 end
@@ -144,8 +144,8 @@ wave.kind = new.kind {
 -- `sub_80CB1E2`: a wave of `owner`'s on (x, y) with `element` and the
 -- damage word (flag 0x10: it runs while dimmed). `z` is the spawner's
 -- register that becomes its Z, of which the init keeps the fraction.
-function wave.raise(owner: Object, x: number, y: number, element: number, damage: number, while_dimmed: boolean, z: number): Object?
-    local o = battle.spawn(wave.kind, Vec3.new(y, element, z))
+function wave.raise(owner: Object, x: number, y: number, element: Element, damage: number, while_dimmed: boolean, z: number): Object?
+    local o = battle.spawn(wave.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

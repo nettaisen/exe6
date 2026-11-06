@@ -90,7 +90,7 @@ end
 -- `sub_80DECBC`: turned toward the user; the arc to the panel behind.
 local function aim(me: Object, s: State)
     s.start_timer, s.end_timer = START_HOLE_TICKS, END_HOLE_TICKS
-    me.flip = 1
+    me.flip = true
     s.target_x = me.panel_x + me.facing
     s.target_y = me.panel_y
     s.duration = LENGTH
@@ -130,7 +130,7 @@ local function init(me: Object)
     c:set_hit_effect(nil)
     c:present()
     aim(me, s)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
     return true
 end
@@ -285,12 +285,12 @@ function worm.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     z: number,
     palette: number,
     damage: number
 ): Object?
-    local o = battle.spawn(worm.kind, Vec3.new(y, element, z))
+    local o = battle.spawn(worm.kind, Vec3.new(y, element.byte, z))
     if o then
         o.related1 = owner
         o.panel_x, o.panel_y = x, y
@@ -310,7 +310,7 @@ end
 function worm.instant(palette: number): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, spec: InstantChipSpec)
         local side = user.alliance
-        for _, target in battle.alive_actors(bit32.bxor(side, 1)) do
+        for _, target in battle.alive_actors(battle.other_side(side)) do
             local x = user.facing + target.panel_x
             local y = target.panel_y
             if field.check(x, y, COMES_OUT, side) then

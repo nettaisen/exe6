@@ -20,7 +20,7 @@ local WIND_UP, HOLD = 0x0, 0x4
 
 -- Wind (the attack's element: secondary element 0x20) and the hits'
 -- counter byte.
-local WIND, HIT_PARAM = 0x20, 0x8A
+local WIND, HIT_PARAM = Element.new("null", { wind = true }), 0x8A
 
 local SOUND = asset.sound("aqua-surge")
 

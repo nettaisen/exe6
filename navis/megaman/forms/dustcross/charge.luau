@@ -18,7 +18,7 @@ local charge = {}
 local SHOOT, RECOVER = 0x0, 0x4
 
 -- Break (secondary element 0x10), and the hit's counter byte.
-local BREAK, HIT_PARAM = 0x10, 0x94
+local BREAK, HIT_PARAM = Element.new("null", { ["break"] = true }), 0x94
 
 local SOUND = asset.sound("junk-shot")
 

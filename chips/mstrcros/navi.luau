@@ -107,36 +107,36 @@ local BAMBOO = sword_look { blade = BAMBOO_BLADE, region = regions.wide, slash =
 -- A wave's Cross: his form, move and sword (none: not a sword), which side
 -- of his target he stands on (`beside`: 1 in front of it, 0 behind it),
 -- his element.
-type Entry = { form: FormDef, move: Move, sword: Sword?, beside: number, element: number }
+type Entry = { form: FormDef, move: Move, sword: Sword?, beside: number, element: Element }
 
 -- The first wave (`byte_80BE91C`, `byte_80BE936`) and the finale
 -- (`byte_80BE9D8`, `byte_80BE9F3`), by the user's game.
 local FIRST_WAVE: { [string]: { Entry } } = {
     gregar = {
-        { form = CHARGECROSS, move = "sword", sword = PLAIN, beside = 1, element = 0 },
-        { form = HEATCROSS, move = "sword", sword = FIRE, beside = 0, element = 1 },
-        { form = ELECCROSS, move = "sword", sword = ELEC, beside = 1, element = 3 },
-        { form = SLASHCROSS, move = "sword", sword = WIDE, beside = 0, element = 0 },
-        { form = ERASECROSS, move = "beam", beside = 1, element = 0 },
+        { form = CHARGECROSS, move = "sword", sword = PLAIN, beside = 1, element = Element.null },
+        { form = HEATCROSS, move = "sword", sword = FIRE, beside = 0, element = Element.fire },
+        { form = ELECCROSS, move = "sword", sword = ELEC, beside = 1, element = Element.elec },
+        { form = SLASHCROSS, move = "sword", sword = WIDE, beside = 0, element = Element.null },
+        { form = ERASECROSS, move = "beam", beside = 1, element = Element.null },
     },
     falzar = {
-        { form = DUSTCROSS, move = "sword", sword = PLAIN, beside = 1, element = 0 },
-        { form = SPOUTCROSS, move = "sword", sword = AQUA, beside = 0, element = 2 },
-        { form = TOMAHAWKCROSS, move = "sword", sword = BAMBOO, beside = 1, element = 4 },
-        { form = TENGUCROSS, move = "fan", beside = 0, element = 0 },
-        { form = GROUNDCROSS, move = "drill", beside = 1, element = 0 },
+        { form = DUSTCROSS, move = "sword", sword = PLAIN, beside = 1, element = Element.null },
+        { form = SPOUTCROSS, move = "sword", sword = AQUA, beside = 0, element = Element.aqua },
+        { form = TOMAHAWKCROSS, move = "sword", sword = BAMBOO, beside = 1, element = Element.wood },
+        { form = TENGUCROSS, move = "fan", beside = 0, element = Element.null },
+        { form = GROUNDCROSS, move = "drill", beside = 1, element = Element.null },
     },
 }
 local FINALE: { [string]: { Entry } } = {
     gregar = {
-        { form = CHARGECROSS, move = "charge", beside = 1, element = 0 },
-        { form = HEATCROSS, move = "charge", beside = 1, element = 1 },
-        { form = ELECCROSS, move = "charge", beside = 1, element = 3 },
+        { form = CHARGECROSS, move = "charge", beside = 1, element = Element.null },
+        { form = HEATCROSS, move = "charge", beside = 1, element = Element.fire },
+        { form = ELECCROSS, move = "charge", beside = 1, element = Element.elec },
     },
     falzar = {
-        { form = DUSTCROSS, move = "charge", beside = 1, element = 0 },
-        { form = SPOUTCROSS, move = "charge", beside = 1, element = 2 },
-        { form = TOMAHAWKCROSS, move = "charge", beside = 1, element = 4 },
+        { form = DUSTCROSS, move = "charge", beside = 1, element = Element.null },
+        { form = SPOUTCROSS, move = "charge", beside = 1, element = Element.aqua },
+        { form = TOMAHAWKCROSS, move = "charge", beside = 1, element = Element.wood },
     },
 }
 
@@ -193,11 +193,6 @@ local function count(me: Object, ticks: number): number
     return tick_down(me)
 end
 
--- The game's flip value for his sprite.
-local function flip_of(me: Object): number
-    return bit32.bxor(me.alliance, me.flip)
-end
-
 -- A hit (`sub_80C53A6`: it runs while dimmed).
 local function hit(me: Object, x: number, y: number, z: number, region: Region)
     local box = battle.hitbox(me, {
@@ -244,7 +239,7 @@ local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
 -- of it, 0 behind it, as the leader faces) that is his user's or a free
 -- solid one, at random (one draw when there is one); none: column 0.
 local function beside_enemy(me: Object, beside: number): (number, number)
-    local d = 1 - 2 * bit32.bxor(me.alliance, bit32.bxor(me.flip, beside))
+    local d = 1 - 2 * bit32.bxor(me.facing_side, beside)
     local user = me.related1 :: Object
     local found: { number } = {}
     for _, p in panels.filtered(ENEMY_NAVI, me.alliance) do
@@ -455,9 +450,9 @@ local function arrive(me: Object)
         me.panel_x, me.panel_y = me.future_panel_x, me.future_panel_y
         me:set_coordinates_from_panel()
         if (me.state :: State).turn then
-            me.flip = bit32.bxor(me.flip, 1)
+            me.flip = not me.flip
         end
-        me.sprite:set_flip(flip_of(me))
+        me.sprite:face(me)
         me.anim = 3
         me.visible = true
     end
@@ -539,7 +534,7 @@ local function sword(me: Object)
         local x, y = me.panel_x + me.facing, me.panel_y
         hit(me, x, y, 0, look.region)
         local cx, cy = field.center(x, y)
-        battle.effect(Vec3.new(cx, cy, 0x10_0000), look.slash, flip_of(me), look.palette)
+        battle.effect(Vec3.new(cx, cy, 0x10_0000), look.slash, me.facing_side, look.palette)
         battle.palette_flash("one_layer", 0xA, true, false)
     end
     local t = me.timer + 1
@@ -634,7 +629,7 @@ local function fan(me: Object)
         battle.play_sound(SOUND_FAN)
         attachment.attach(me, FAN, "held", { anim = 0, while_dimmed = true })
         local cx, cy = field.center(me.panel_x, me.panel_y)
-        battle.effect(Vec3.new(cx, cy, 0x10_0000), GUST, flip_of(me))
+        battle.effect(Vec3.new(cx, cy, 0x10_0000), GUST, me.facing_side)
         me.timer = 0x15
         me.phase_init = 4
     end
@@ -809,7 +804,7 @@ local function init(me: Object)
         me:set_coordinates_from_panel()
         local p = me.pos
         me.pos = Vec3.new(p.x, p.y, 0)
-        me.sprite:set_flip(flip_of(me))
+        me.sprite:face(me)
         overlays.add_parts_of(me, me, false, true)
     end
     me:set_lifecycle("update")

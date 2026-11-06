@@ -38,7 +38,7 @@ local function setup(navi: Object): Action
     navi.hit_param = HIT_PARAM
     local s = navi:action_state(charge.action) :: State
     s.beast = ((battle.navi(navi.alliance).form :: any) :: Exe6FormFields).plain_erase_beam ~= true
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     return charge.action
 end
 

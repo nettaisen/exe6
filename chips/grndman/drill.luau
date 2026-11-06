@@ -32,7 +32,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     visibility.copy(me, owner)
     me:set_lifecycle("update")
 end
@@ -52,7 +52,7 @@ local function tick(me: Object)
     local sprite, look = me.sprite, owner.sprite
     looks.copy(sprite, look, "palette", "color_shader", "white", "mosaic")
     me.flip = owner.flip
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     looks.copy(sprite, look, "alpha")
     if s.follows_action and owner:navi_action() ~= s.action then
         me:set_lifecycle("destroy")

@@ -25,7 +25,7 @@ local tackle = {}
 local WIND_UP, CHARGE, LAND = 0x0, 0x4, 0x8
 
 -- Fire, the hit's counter byte.
-local FIRE, HIT_PARAM = 1, 0x94
+local FIRE, HIT_PARAM = Element.fire, 0x94
 
 -- The charge's speed, 16.16, and its ticks: 120 pixels' worth, and one
 -- more (the game divides 0x780000 by the speed).

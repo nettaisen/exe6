@@ -66,7 +66,7 @@ local function init(me: Object)
     me.anim_loaded = ANIM_WAIT
     sprite:set_animation(ANIM_WAIT)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         count((me.state :: State).judge)
         me:free()
@@ -114,9 +114,9 @@ end
 local function face(me: Object)
     local vx = me.vel.x
     if vx > 0 then
-        me.sprite:set_flip(0)
+        me.sprite:face_side(0)
     elseif vx < 0 then
-        me.sprite:set_flip(1)
+        me.sprite:face_side(1)
     end
 end
 
@@ -272,8 +272,8 @@ book.kind = new.kind {
 -- done in `judge`'s state (at once if it can't spawn). `z` is the
 -- spawner's register that becomes its Z, of which the init keeps the
 -- fraction.
-function book.place(judge: Object, x: number, y: number, turn: number, element: number, damage: number, z: number): Object?
-    local o = battle.spawn(book.kind, Vec3.new(y, element, z))
+function book.place(judge: Object, x: number, y: number, turn: number, element: Element, damage: number, z: number): Object?
+    local o = battle.spawn(book.kind, Vec3.new(y, element.byte, z))
     if not o then
         count(judge)
         return nil

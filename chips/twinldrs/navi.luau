@@ -124,11 +124,6 @@ local function tick_down(me: Object): number
     return left
 end
 
--- The game's flip value for his sprite.
-local function flip_of(me: Object): number
-    return bit32.bxor(me.alliance, me.flip)
-end
-
 -- `sub_80B8E58`: the sword he holds goes (its lifecycle word goes to
 -- destroy); the slot keeps it, as the game's ExtraVars[2] does.
 local function sword_off(me: Object)
@@ -141,12 +136,12 @@ end
 -- `sub_80BDA7C(anim)`: ProtoMan's afterimages: with `anim` 5 his sword's
 -- first, then his own holding `anim`.
 local function afterimages(me: Object, anim: number)
-    local flip = flip_of(me)
+    local flip = me.facing_side
     if anim == 5 then
         battle.afterimage(me, me.pos, {
             sprite = parts.blade.sprite,
             anim = 0xB,
-            flip = flip,
+            facing = flip,
             lifetime = AFTERIMAGE_TICKS,
             color_shader = AFTERIMAGE_SHADER,
         })
@@ -154,7 +149,7 @@ local function afterimages(me: Object, anim: number)
     battle.afterimage(me, me.pos, {
         sprite = PROTOMAN.sprite,
         anim = anim,
-        flip = flip,
+        facing = flip,
         lifetime = AFTERIMAGE_TICKS,
         color_shader = AFTERIMAGE_SHADER,
         shadow = "ground",
@@ -163,7 +158,7 @@ end
 
 -- A hit on (x, y) for this navi's damage word (`sub_80C53A6`: it runs
 -- while dimmed).
-local function hit(me: Object, x: number, y: number, element: number, z: number, region: Region)
+local function hit(me: Object, x: number, y: number, element: Element, z: number, region: Region)
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
@@ -345,7 +340,7 @@ local function slash(me: Object)
         local x, y = me.panel_x + me.facing, me.panel_y
         hit(me, x, y, me.element, 0x10_0000, regions.wide)
         local cx, cy = field.center(x, y)
-        battle.effect(Vec3.new(cx, cy, 0x10_0000), WIDE_SLASH, flip_of(me))
+        battle.effect(Vec3.new(cx, cy, 0x10_0000), WIDE_SLASH, me.facing_side)
         battle.shake_camera(1, 0xA)
         battle.palette_flash("one_layer", 0xA, true, false)
     end
@@ -377,7 +372,7 @@ local function come_back(me: Object)
     if me.phase_init == 0 then
         if s.count ~= 0 then
             me.anim = 7
-            me.sprite:set_flip(bit32.bxor(flip_of(me), 1))
+            me.sprite:face_side(battle.other_side(me.facing_side))
         else
             me.anim = 3
         end
@@ -475,8 +470,8 @@ local function strike(me: Object)
         me.anim = 5
         attachment.attach(me, COLONEL_SWORD, "held", { anim = 0x1C, while_dimmed = true })
         local x, y = target(me)
-        hit(me, x, y, 0, 0, regions.rising)
-        hit(me, x, y, 0, 0, regions.falling)
+        hit(me, x, y, Element.null, 0, regions.rising)
+        hit(me, x, y, Element.null, 0, regions.falling)
         local cx, cy = field.center(x, y)
         for _, e in CROSS do
             battle.effect(Vec3.new(cx, cy, 0), e, me.alliance)
@@ -648,7 +643,7 @@ local function init(me: Object)
     me:set_panel_from_coordinates()
     me.pos = Vec3.new(x, y, 0)
     me.visible = true
-    sprite:set_flip(flip_of(me))
+    sprite:face(me)
     if look.identity then
         me:add_parts(look.identity, 1)
     end

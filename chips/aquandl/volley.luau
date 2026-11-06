@@ -82,7 +82,7 @@ end
 
 -- `sub_80E5174`: pick the three targets and sort them.
 local function aim(me: Object, s: State)
-    local side = bit32.bxor(me.alliance, 1)
+    local side = battle.other_side(me.alliance)
     local found: { Object } = {}
     enemies_named(side, is_virus, found)
     enemies_named(side, is_navi, found)
@@ -110,7 +110,7 @@ local function aim(me: Object, s: State)
         local o = picks[i]
         t[i] = bit32.band(bit32.bor(o.panel_x, bit32.lshift(o.panel_y, 4)), 0xFF)
     end
-    local right = bit32.bxor(me.alliance, me.flip) == 0
+    local right = me.facing_side == 0
     for i = 1, NEEDLES - 1 do
         for j = i + 1, NEEDLES do
             t[i], t[j] = ordered(t[i], t[j], right)
@@ -185,7 +185,7 @@ volley.kind = new.kind {
 
 -- `sub_80E5150`: a volley for `user`'s side, with the damage word `damage`
 -- and its needles' `palette`. It doesn't run while dimmed.
-function volley.spawn(user: Object, element: number, palette: number, damage: number): Object?
+function volley.spawn(user: Object, element: Element, palette: number, damage: number): Object?
     local o = battle.spawn(volley.kind, Vec3.zero)
     if o then
         o.related1 = user

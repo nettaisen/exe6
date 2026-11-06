@@ -105,7 +105,7 @@ local function init(me: Object)
     me.anim_loaded = 0xFF
     sprite.palette = 0
     me.visible = true
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.vel = Vec3.new(me.facing * SPEED, me.vel.y, RISE)
     me.timer = 2
     if not me:create_collision() then
@@ -145,8 +145,8 @@ shot.kind = new.kind {
 -- `damage`, flying across at most `centers` panel centers. Its position
 -- is the spawner's registers (the panel Y, the element and 0) until its
 -- init places it.
-function shot.spawn(owner: Object, x: number, y: number, element: number, damage: number, centers: number): Object?
-    local o = battle.spawn(shot.kind, Vec3.new(y, element, 0))
+function shot.spawn(owner: Object, x: number, y: number, element: Element, damage: number, centers: number): Object?
+    local o = battle.spawn(shot.kind, Vec3.new(y, element.byte, 0))
     if o then
         (o.state :: State).centers = centers
         o.panel_x, o.panel_y = x, y

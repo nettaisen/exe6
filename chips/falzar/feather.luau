@@ -120,7 +120,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -152,8 +152,8 @@ feather.kind = new.kind {
 -- damage word, running while dimmed (flag 0x10; its own gate holds it
 -- unless it acts while dimmed). (Spawned at the registers: the row, the
 -- element and `z`; its init places it.)
-function feather.spawn(owner: Object, x: number, y: number, element: number, damage: number, while_dimmed: boolean, z: number): Object?
-    local o = battle.spawn(feather.kind, Vec3.new(y, element, z))
+function feather.spawn(owner: Object, x: number, y: number, element: Element, damage: number, while_dimmed: boolean, z: number): Object?
+    local o = battle.spawn(feather.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

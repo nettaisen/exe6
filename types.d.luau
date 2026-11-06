@@ -14,8 +14,8 @@
 export type FlyingShotVariant = {
     collision: { is: CollisionType, hits: CollisionType },
     hit_mod: number,
-    element: string,
-    secondary: { string }?,
+    element: ElementName,
+    secondary: SecondaryElements?,
     spark: Spark?,
     sprite: SpriteAsset,
     anim: number?,
@@ -47,8 +47,8 @@ export type FlyingShot = {
 
 -- The state of VarSwrd's and NeoVari's actions (lib/swords/vari.luau).
 export type VariSwordState = {
-    -- The sequences as the navi faces: its direction flip.
-    flip: number,
+    -- The sequences as the navi faces: turned or not.
+    flip: boolean,
     -- How far into each sequence the navi is, in bytes (two per step).
     progress: { number },
 }
@@ -57,9 +57,9 @@ export type VariSwordState = {
 export type VariSwordSpec = {
     -- The action's key when no chip definition holds it (its compat key).
     id: string?,
-    -- The sequences by direction flip (0, 1), each a list of joypad words
-    -- ending in 0.
-    sequences: { [number]: { { number } } },
+    -- The sequences for a navi not turned and turned, each a list of steps,
+    -- the buttons held.
+    sequences: { unturned: { { KeySet } }, turned: { { KeySet } }? },
     -- The chip each sequence gives, and Sword (what A let go of, or the
     -- time running out, gives): the attack becomes the pick's (its chip,
     -- which the Beast rush reads for its lock-on, and its action).

@@ -42,7 +42,7 @@ local function step(me: Object): boolean
         return true
     end
     local dir = me.facing
-    local edge = bit32.bxor(me.alliance, 1) * 5 + 1 + dir
+    local edge = battle.other_side(me.alliance) * 5 + 1 + dir
     local x = me.panel_x + dir
     if x == edge then
         return true
@@ -93,7 +93,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     local s = me.state :: State
     s.found = false
     battle.play_sound(STEP_SOUND)
