@@ -181,7 +181,7 @@ end
 thunder.kind = new.kind {
     id = "elecman/thunder",
     pool = "attack",
-    state = { while_dimmed = "bool", cracks = "bool", spreads = "bool" },
+    state = { while_dimmed = schema.bool, cracks = schema.bool, spreads = schema.bool },
     -- `sub_80D0D7C`.
     update = function(me: Object)
         local l = me.lifecycle

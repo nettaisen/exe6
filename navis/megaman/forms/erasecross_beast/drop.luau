@@ -129,7 +129,7 @@ end
 
 drop_weapon.action = new.action {
     id = "erasecross-beast/drop/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EE840`.
     update = function(me: Object, s: State)
         local step = me.step

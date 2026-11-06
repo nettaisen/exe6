@@ -64,7 +64,7 @@ end
 meteor_shower.kind = new.kind {
     id = "meteor-shower",
     pool = "effect",
-    state = { target = "object", drops = "u8" },
+    state = { target = schema.object, drops = schema.u8 },
     -- `sub_80E59E8`.
     update = function(me: Object)
         local l = me.lifecycle

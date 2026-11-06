@@ -125,7 +125,7 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = wind_up, [0xC] = attack, [0x1
 blastman.kind = new.kind {
     id = "blastman/navi",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- `sub_80B8EA0`.
     update = function(me: Object)
         local l = me.lifecycle

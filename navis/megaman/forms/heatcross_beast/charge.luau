@@ -95,7 +95,7 @@ end
 
 heat_beast_charge.action = new.action {
     id = "heatcross-beast/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80ED8C4`.
     update = function(me: Object, s: State)
         local step = me.step

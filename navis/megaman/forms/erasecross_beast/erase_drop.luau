@@ -148,7 +148,7 @@ end
 erase_drop.kind = new.kind {
     id = "erasecross-beast/drop",
     pool = "attack",
-    state = { ticks = "u8", x = "u8", y = "u8" },
+    state = { ticks = schema.u8, x = schema.u8, y = schema.u8 },
     -- `sub_80D96A4`.
     update = function(me: Object)
         local l = me.lifecycle

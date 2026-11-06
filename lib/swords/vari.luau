@@ -27,7 +27,7 @@ local vari = {}
 
 -- One state for both actions (the original's two handlers share the
 -- attack variables' layout).
-vari.STATE = { flip = "u8", progress = "u8[5]" }
+vari.STATE = { flip = schema.u8, progress = schema.array(schema.u8, 5) }
 
 -- Ticks to enter a sequence.
 local COUNTDOWN = 0x30

@@ -11,8 +11,10 @@ local sp_chips = {}
 -- What an SP chip says of its damage (the rules' extension, ./init).
 type Sp = { by_time: { number } }
 
+local SP_DELETION_TIMES = schema.record_type("sp-deletion-times")
+
 -- The deletion times at which an SP chip's damage steps down.
-sp_chips.DELETION_TIMES = new.record("sp-deletion-times", {
+sp_chips.DELETION_TIMES = new.record(SP_DELETION_TIMES, {
     0x00001000,
     0x00001200,
     0x00001400,

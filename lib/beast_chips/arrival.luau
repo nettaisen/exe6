@@ -56,7 +56,7 @@ end
 arrival.kind = new.kind {
     id = "beast-chips/arrival",
     pool = "effect",
-    state = { look = "sprite", anim = "u8", ticks = "u8" },
+    state = { look = schema.sprite, anim = schema.u8, ticks = schema.u8 },
     -- 0x080EE300: by state (its end `object_freeMemory`), then the sprite,
     -- stepping while dimmed.
     update = function(me: Object)

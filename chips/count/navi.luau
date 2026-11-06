@@ -277,7 +277,7 @@ local ACTIONS: { [number]: (me: Object) -> () } = {
 count.kind = new.kind {
     id = "count/navi",
     pool = "actor",
-    state = { controller = "object", lance_damage = "u8", targets = "u8[3]", count = "u8", next = "u8" },
+    state = { controller = schema.object, lance_damage = schema.u8, targets = schema.array(schema.u8, 3), count = schema.u8, next = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

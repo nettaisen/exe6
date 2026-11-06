@@ -28,8 +28,10 @@ local navi_boost = {}
 -- What a chip changes: the controller's effect, its chip's own.
 export type Change = { run: (me: Object) -> () }
 
+local NAVI_BOOST_CHANGE = schema.record_type("navi-boost-change")
+
 function navi_boost.change(run: (me: Object) -> ()): Change
-    return new.record("navi-boost-change", { run = run })
+    return new.record(NAVI_BOOST_CHANGE, { run = run })
 end
 
 export type State = {
@@ -87,7 +89,7 @@ end
 navi_boost.kind = new.kind {
     id = "navi-boost",
     pool = "effect",
-    state = { change = "record:navi-boost-change" },
+    state = { change = NAVI_BOOST_CHANGE },
     -- `sub_80E9570`, its effect `sub_80E95B4`.
     update = dimming_chips.phases {
         name = "a navi-changing chip",

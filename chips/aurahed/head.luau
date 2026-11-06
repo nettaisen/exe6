@@ -167,12 +167,12 @@ head.kind = new.kind {
     id = "aurahed/head",
     pool = "attack",
     state = {
-        hit_panel = "u32",
-        has_hit = "bool",
-        palette = "u8",
-        speed = "i32",
-        strong = "bool",
-        far = "bool",
+        hit_panel = schema.u32,
+        has_hit = schema.bool,
+        palette = schema.u8,
+        speed = schema.i32,
+        strong = schema.bool,
+        far = schema.bool,
     },
     -- `sub_80D7400`.
     update = function(me: Object)

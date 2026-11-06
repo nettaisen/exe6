@@ -189,7 +189,7 @@ local ACTIONS = { [0] = appear, [4] = hitch, [8] = charge, [0xC] = leave, [0x10]
 chrgeman.kind = new.kind {
     id = "chrgeman/navi",
     pool = "actor",
-    state = { controller = "object", cars = "u32" },
+    state = { controller = schema.object, cars = schema.u32 },
     -- `sub_80BB914`.
     update = function(me: Object)
         local l = me.lifecycle

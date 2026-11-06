@@ -129,7 +129,7 @@ end
 
 beast_claw.action = new.action {
     id = "megaman/beast-claw/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EF534`.
     update = function(me: Object, s: State)
         local step = me.step

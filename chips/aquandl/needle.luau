@@ -155,7 +155,7 @@ end
 needle.kind = new.kind {
     id = "aquandl/needle",
     pool = "attack",
-    state = { palette = "u8", cracks = "bool" },
+    state = { palette = schema.u8, cracks = schema.bool },
     -- `sub_80CE530`.
     update = function(me: Object)
         local l = me.lifecycle

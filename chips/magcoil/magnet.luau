@@ -104,7 +104,7 @@ end
 magnet.kind = new.kind {
     id = "magcoil/magnet",
     pool = "attack",
-    state = { ticks = "u8" },
+    state = { ticks = schema.u8 },
     -- `sub_80D7DE4`.
     update = function(me: Object)
         local l = me.lifecycle

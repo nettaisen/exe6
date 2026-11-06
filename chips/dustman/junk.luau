@@ -101,7 +101,7 @@ end
 junk.kind = new.kind {
     id = "dustman/junk",
     pool = "attack",
-    state = { look = "identity" },
+    state = { look = schema.identity },
     -- `sub_80DBB40`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -151,7 +151,7 @@ end
 whirlwind.kind = new.kind {
     id = "tengucross-beast/whirlwind",
     pool = "attack",
-    state = { at_once = "bool", ticks = "u8", anim = "u8", action = "action" },
+    state = { at_once = schema.bool, ticks = schema.u8, anim = schema.u8, action = schema.action },
     -- `sub_80D5580`.
     update = function(me: Object)
         local l = me.lifecycle

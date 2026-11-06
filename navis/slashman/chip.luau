@@ -26,7 +26,7 @@ export type State = {
     leg: number,
 }
 
-local STATE = { timer = "u16", hit = "object", speed = "i32", leg = "u32" }
+local STATE = { timer = schema.u16, hit = schema.object, speed = schema.i32, leg = schema.u32 }
 
 local CURL, LAUNCH, ROLL, LAND = 0x0, 0x4, 0x8, 0xC
 local ANIM_CURL, ANIM_ROLL, ANIM_LAND = 0x12, 0x13, 7

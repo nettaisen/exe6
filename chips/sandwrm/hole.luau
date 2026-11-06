@@ -127,7 +127,7 @@ end
 hole.kind = new.kind {
     id = "sandwrm/hole",
     pool = "actor",
-    state = { worm = "object" },
+    state = { worm = schema.object },
     -- `sub_80BC87C`: gone at once once the battle is over.
     update = function(me: Object)
         if battle.over() then

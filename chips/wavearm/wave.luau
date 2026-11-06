@@ -25,11 +25,13 @@ export type State = {
     turned: number,
 }
 
+local SHOCK_WAVE_VARIANT = schema.record_type("shock-wave-variant")
+
 -- A shock wave variant (a row of `byte_80C6B00`): its animation and the
 -- steps it loops over, its ticks on a panel, what it does to the panels it
 -- passes, and whether it is quick or steers.
 function wave.variant(v: Variant): Variant
-    return new.record("shock-wave-variant", v)
+    return new.record(SHOCK_WAVE_VARIANT, v)
 end
 
 local SPRITE = asset.sprite("shock-wave")
@@ -239,7 +241,7 @@ end
 wave.kind = new.kind {
     id = "wavearm/wave",
     pool = "attack",
-    state = { variant = "record:shock-wave-variant", turned = "u8" },
+    state = { variant = SHOCK_WAVE_VARIANT, turned = schema.u8 },
     -- `sub_80C6B40`.
     update = function(me: Object)
         local l = me.lifecycle

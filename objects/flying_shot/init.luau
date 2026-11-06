@@ -38,11 +38,13 @@ local PANEL_SPARK_Z = 0x10_0000
 -- unless the first bit is set too.
 local SPARKS, NO_SPARK = 0x3F800000, 1
 
+local FLYING_SHOT_VARIANT = schema.record_type("flying-shot-variant")
+
 -- A flying shot variant (a row of `byte_80C6038`, 16 bytes: its collision,
 -- hit modifier, element, spark, look, highlight, range, shadow, status and
 -- speed), which its user defines where it fires it.
 function flying_shot.variant(v: FlyingShotVariant): FlyingShotVariant
-    return new.record("flying-shot-variant", v)
+    return new.record(FLYING_SHOT_VARIANT, v)
 end
 
 -- Its end: not drawn, its hit region cleared (`object_clearCollisionRegion`);
@@ -200,13 +202,13 @@ flying_shot.kind = new.kind {
     id = "flying-shot",
     pool = "attack",
     state = {
-        variant = "record:flying-shot-variant",
-        wait = "u8",
-        falls = "bool",
-        palette = "u8",
-        range = "u8",
-        obstacle = "record:absorbed-look",
-        obstacle_anim = "u8",
+        variant = FLYING_SHOT_VARIANT,
+        wait = schema.u8,
+        falls = schema.bool,
+        palette = schema.u8,
+        range = schema.u8,
+        obstacle = obstacle.absorbed_look,
+        obstacle_anim = schema.u8,
     },
     -- `sub_80C60A8`.
     update = function(me: Object)

@@ -153,7 +153,7 @@ end
 
 dash_weapon.action = new.action {
     id = "groundcross-beast/dash/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EC1F0`.
     update = function(me: Object, s: State)
         local step = me.step

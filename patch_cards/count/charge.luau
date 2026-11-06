@@ -83,7 +83,7 @@ end
 
 charge.action = new.action {
     id = "patch-cards/count/charge/action",
-    state = { timer = "u16", sound = "u16" },
+    state = { timer = schema.u16, sound = schema.u16 },
     update = update,
 }
 

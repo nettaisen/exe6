@@ -178,7 +178,7 @@ end
 
 scatter.action = new.action {
     id = "dustcross-beast/scatter/action",
-    state = { timer = "u16", targets = "u8[6]" },
+    state = { timer = schema.u16, targets = schema.array(schema.u8, 6) },
     -- `sub_80EF328`.
     update = function(me: Object, s: State)
         local step = me.step

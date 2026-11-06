@@ -185,7 +185,7 @@ end
 drill.kind = new.kind {
     id = "groundman/drill",
     pool = "attack",
-    state = { side = "bool", wait = "u8", action = "action" },
+    state = { side = schema.bool, wait = schema.u8, action = schema.action },
     -- `sub_80DDDF0`.
     update = function(me: Object)
         local l = me.lifecycle

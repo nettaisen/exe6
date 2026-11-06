@@ -15,7 +15,7 @@ export type State = {
     timer: number,
 }
 
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local RAISE, SET, LOWER = 0x0, 0x4, 0x8

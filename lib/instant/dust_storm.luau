@@ -118,7 +118,7 @@ end
 dust_storm.kind = new.kind {
     id = "dust-storm",
     pool = "attack",
-    state = { ticks = "u16", tied = "action" },
+    state = { ticks = schema.u16, tied = schema.action },
     -- `sub_80C6280`.
     update = function(me: Object)
         local l = me.lifecycle

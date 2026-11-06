@@ -111,7 +111,7 @@ end
 tornado.kind = new.kind {
     id = "falzar/tornado",
     pool = "attack",
-    state = { ticks = "u8", every = "u32", blows = "u32" },
+    state = { ticks = schema.u8, every = schema.u32, blows = schema.u32 },
     -- `sub_80DF188`: by state (its end `object_genericDestroy`), then the
     -- sprite, stepping while dimmed.
     update = function(me: Object)

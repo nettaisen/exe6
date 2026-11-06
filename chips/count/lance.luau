@@ -156,7 +156,7 @@ end
 lance.kind = new.kind {
     id = "count/lance",
     pool = "attack",
-    state = { while_dimmed = "bool", warn_ticks = "u8" },
+    state = { while_dimmed = schema.bool, warn_ticks = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

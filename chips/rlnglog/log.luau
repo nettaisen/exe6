@@ -249,7 +249,7 @@ end
 log.kind = new.kind {
     id = "rlnglog/log",
     pool = "attack",
-    state = { last_hp = "u16", big = "bool", stop_ticks = "u8", thrown = "bool" },
+    state = { last_hp = schema.u16, big = schema.bool, stop_ticks = schema.u8, thrown = schema.bool },
     -- `sub_80D1218`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -165,7 +165,7 @@ end
 drip_shower.kind = new.kind {
     id = "spoutman/drip-shower",
     pool = "attack",
-    state = { turns = "u8", quarter_ticks = "u8", action = "action", quarter = "u32", sound = "i32" },
+    state = { turns = schema.u8, quarter_ticks = schema.u8, action = schema.action, quarter = schema.u32, sound = schema.i32 },
     -- `sub_80C91A0`.
     update = function(me: Object)
         local l = me.lifecycle

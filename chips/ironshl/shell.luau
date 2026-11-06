@@ -24,8 +24,10 @@ local shell = {}
 -- How a shell slides (`IronShell`, types.d.luau).
 export type Spec = IronShell
 
+local IRONSHL_SHELL_VARIANT = schema.record_type("ironshl-shell-variant")
+
 function shell.variant(v: IronShellVariant): IronShellVariant
-    return new.record("ironshl-shell-variant", v)
+    return new.record(IRONSHL_SHELL_VARIANT, v)
 end
 
 export type State = {
@@ -217,12 +219,12 @@ shell.kind = new.kind {
     id = "ironshl/shell",
     pool = "attack",
     state = {
-        palette = "u8",
-        speed = "i32",
-        bumps = "u8",
-        variant = "record:ironshl-shell-variant",
-        hit_panel = "u32",
-        softened = "bool",
+        palette = schema.u8,
+        speed = schema.i32,
+        bumps = schema.u8,
+        variant = IRONSHL_SHELL_VARIANT,
+        hit_panel = schema.u32,
+        softened = schema.bool,
     },
     -- `sub_80CA6B8`.
     update = function(me: Object)

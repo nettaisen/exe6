@@ -179,7 +179,7 @@ end
 
 cross_special.action = new.action {
     id = "beast/cross-special-end",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     update = function(me: Object, s: any)
         finish(me, s :: EndState)
     end,

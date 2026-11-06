@@ -119,7 +119,7 @@ end
 controller.kind = new.kind {
     id = "gregar/controller",
     pool = "effect",
-    state = { bonus = "u16", rock_damage = "u8", gregar_out = "bool" },
+    state = { bonus = schema.u16, rock_damage = schema.u8, gregar_out = schema.bool },
     -- 0x080EDCC8: the dimming's phases (0x080EDCE8, by action:
     -- 0x080EDD0C, `object_drawChipName`, the effect, `sub_800BCF6`).
     update = dimming_chips.phases {

@@ -66,7 +66,7 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [WIND_UP] = wind_up
 
 charge.action = new.action {
     id = "spoutman/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80F153C` (`off_80F1550`).
     update = function(me: Object, s: State)
         link.run(me, s, PHASES, "SpoutMan's charge (sub_80F153C)")

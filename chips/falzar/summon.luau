@@ -196,7 +196,7 @@ end
 summon.kind = new.kind {
     id = "falzar/summon",
     pool = "actor",
-    state = { leads = "bool", anims = "u8", controller = "object" },
+    state = { leads = schema.bool, anims = schema.u8, controller = schema.object },
     -- 0x080C4268: by state (its end `object_freeMemory`), then the sprite,
     -- stepping while dimmed.
     update = function(me: Object)

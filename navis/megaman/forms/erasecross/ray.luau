@@ -158,13 +158,13 @@ erase_ray.kind = new.kind {
     id = "erasecross/ray",
     pool = "attack",
     state = {
-        columns = "object[5]",
-        count = "u8",
-        ahead = "i32",
-        ticks = "u8",
-        held = "bool",
-        shut = "bool",
-        action = "action",
+        columns = schema.array(schema.object, 5),
+        count = schema.u8,
+        ahead = schema.i32,
+        ticks = schema.u8,
+        held = schema.bool,
+        shut = schema.bool,
+        action = schema.action,
     },
     -- `sub_80D8E10`.
     update = function(me: Object)

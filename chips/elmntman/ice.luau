@@ -106,7 +106,7 @@ end
 ice.kind = new.kind {
     id = "elmntman/ice",
     pool = "attack",
-    state = { ticks = "u8", while_dimmed = "bool" },
+    state = { ticks = schema.u8, while_dimmed = schema.bool },
     -- `sub_80D6D80`.
     update = function(me: Object)
         local l = me.lifecycle

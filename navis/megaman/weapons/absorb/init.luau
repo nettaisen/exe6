@@ -89,7 +89,7 @@ end
 
 absorb.action = new.action {
     id = "megaman/absorb/action",
-    state = { timer = "u16", vortex = "object" },
+    state = { timer = schema.u16, vortex = schema.object },
     -- `sub_80EFCB4`: the phase, then the vortex lives on while this runs.
     update = function(me: Object, s: State)
         local step = me.step

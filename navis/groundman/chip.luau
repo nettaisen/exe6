@@ -25,7 +25,7 @@ export type State = {
     drill: Object?,
 }
 
-local STATE = { timer = "u16", rocks = "u8", drill = "object" }
+local STATE = { timer = schema.u16, rocks = schema.u8, drill = schema.object }
 
 local READY, DIG, ROCKFALL, RISE, HOME, REST = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14
 local ANIM_READY, ANIM_DIG, ANIM_RISE, ANIM_HOME = 0x11, 0x12, 4, 3

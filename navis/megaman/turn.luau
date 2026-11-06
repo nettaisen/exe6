@@ -15,7 +15,7 @@ local WAIT = 1
 
 turn.action = new.action {
     id = "megaman/turn",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     update = function(me: Object, s: State)
         if me.step == 0 then
             s.timer = WAIT

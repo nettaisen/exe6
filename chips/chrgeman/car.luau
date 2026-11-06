@@ -184,12 +184,12 @@ car.kind = new.kind {
     id = "chrgeman/car",
     pool = "attack",
     state = {
-        speed = "u32",
-        while_dimmed = "bool",
-        hit_mod = "u8",
-        place = "u8",
-        wait = "u8",
-        owner_action = "u8",
+        speed = schema.u32,
+        while_dimmed = schema.bool,
+        hit_mod = schema.u8,
+        place = schema.u8,
+        wait = schema.u8,
+        owner_action = schema.u8,
     },
     -- `sub_80DAE94`.
     update = function(me: Object)

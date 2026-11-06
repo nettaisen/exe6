@@ -21,7 +21,7 @@ export type State = {
 
 -- One state for every AuraHed: a use continues the last one's attack
 -- variables, as the original's one action does.
-action.STATE = { timer = "u16", heads = "u8" }
+action.STATE = { timer = schema.u16, heads = schema.u8 }
 
 -- The phases, on the attack's step.
 local RAISE, FIRE, RECOIL = 0x0, 0x4, 0x8

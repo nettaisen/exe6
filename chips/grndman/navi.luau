@@ -246,7 +246,7 @@ local ACTIONS = { [APPEAR] = appear, [BACK_OFF] = back_off, [DIG] = dig, [ROCKFA
 grndman.kind = new.kind {
     id = "grndman/navi",
     pool = "actor",
-    state = { drill = "object", rock_x = "u32", rock_y = "u32", controller = "object" },
+    state = { drill = schema.object, rock_x = schema.u32, rock_y = schema.u32, controller = schema.object },
     -- `sub_80BBB98`.
     update = function(me: Object)
         local l = me.lifecycle

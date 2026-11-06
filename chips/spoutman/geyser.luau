@@ -196,7 +196,7 @@ end
 geyser.kind = new.kind {
     id = "spoutman/geyser",
     pool = "attack",
-    state = { while_dimmed = "bool", ticks = "u8", target = "u8", column = "u8" },
+    state = { while_dimmed = schema.bool, ticks = schema.u8, target = schema.u8, column = schema.u8 },
     -- `sub_80C6DCC`.
     update = function(me: Object)
         local l = me.lifecycle

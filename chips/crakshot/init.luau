@@ -17,7 +17,7 @@ export type State = {
 }
 
 -- One state for the three chips' digs.
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local DIG, RECOVER = 0x0, 0x4

@@ -92,7 +92,7 @@ end
 
 throw.action = new.action {
     id = "tomahawkcross-beast/throw/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EF1EC`.
     update = function(me: Object, s: State)
         local step = me.step

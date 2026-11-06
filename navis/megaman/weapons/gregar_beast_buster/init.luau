@@ -138,7 +138,7 @@ end
 
 gregar_beast_buster.action = new.action {
     id = "megaman/gregar-beast-buster/action",
-    state = { timer = "u16", repeats = "u8", cycle = "u8" },
+    state = { timer = schema.u16, repeats = schema.u8, cycle = schema.u8 },
     update = update,
 }
 

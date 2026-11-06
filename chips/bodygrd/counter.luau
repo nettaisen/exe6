@@ -15,7 +15,7 @@ export type State = {
     timer: number,
 }
 
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 local SOUND_VANISH = asset.sound("trap-vanish")
 local VANISH_ANIM = 4

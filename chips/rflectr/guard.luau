@@ -18,7 +18,7 @@ export type State = {
 }
 
 -- One state for every guard.
-guard.STATE = { timer = "u16" }
+guard.STATE = { timer = schema.u16 }
 
 -- The shield sits at the navi's sprite attach point 6.
 local SHIELD_POINT = 6

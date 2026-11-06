@@ -135,7 +135,7 @@ end
 numberman.kind = new.kind {
     id = "numbrbl/numberman",
     pool = "actor",
-    state = { controller = "object", balls = "u8", held = "object" },
+    state = { controller = schema.object, balls = schema.u8, held = schema.object },
     -- `sub_80C3000`: by state, then the sprite (stepping while dimmed).
     update = function(me: Object)
         local l = me.lifecycle

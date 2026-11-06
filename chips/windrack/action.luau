@@ -23,7 +23,7 @@ export type State = {
 
 -- One state for every WindRack: a use continues the last one's attack
 -- variables, as the original's one action does.
-action.STATE = { timer = "u16" }
+action.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local SWING, RECOVER = 0x0, 0x4

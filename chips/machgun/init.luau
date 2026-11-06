@@ -24,7 +24,7 @@ export type State = {
     sweep: number,
 }
 
-local STATE = { timer = "u16", strikes = "u8", column = "u8", row = "u8", sweep = "i8" }
+local STATE = { timer = schema.u16, strikes = schema.u8, column = schema.u8, row = schema.u8, sweep = schema.i8 }
 
 -- The phases, on the attack's step.
 local AIM, FIRE = 0x0, 0x4

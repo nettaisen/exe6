@@ -82,7 +82,7 @@ end
 axe.kind = new.kind {
     id = "tomahawkman/axe",
     pool = "effect",
-    state = { action = "action" },
+    state = { action = schema.action },
     -- `sub_80E3FD0`: its sprite steps unless the battle is paused.
     update = function(me: Object)
         local l = me.lifecycle

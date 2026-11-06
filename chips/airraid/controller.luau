@@ -42,7 +42,7 @@ end
 controller.kind = new.kind {
     id = "airraid/controller",
     pool = "effect",
-    state = { plane = "record:airraid-plane", bonus = "u16" },
+    state = { plane = plane.AIRRAID_PLANE, bonus = schema.u16 },
     update = dimming_chips.phases { name = "AirRaid", effect = effect },
 }
 

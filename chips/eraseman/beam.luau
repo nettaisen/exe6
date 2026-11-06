@@ -106,7 +106,7 @@ end
 beam.kind = new.kind {
     id = "eraseman/beam",
     pool = "attack",
-    state = { aim = "u8", ticks = "u8", while_dimmed = "bool", tied = "bool", action = "action" },
+    state = { aim = schema.u8, ticks = schema.u8, while_dimmed = schema.bool, tied = schema.bool, action = schema.action },
     -- `sub_80DD940`.
     update = function(me: Object)
         local l = me.lifecycle

@@ -197,12 +197,12 @@ burner.kind = new.kind {
     id = "burnsqr/burner",
     pool = "actor",
     state = {
-        controller = "object",
-        start_x = "u32",
-        turn_x = "u32",
-        x = "i32",
-        y = "i32",
-        highlighted = "bool",
+        controller = schema.object,
+        start_x = schema.u32,
+        turn_x = schema.u32,
+        x = schema.i32,
+        y = schema.i32,
+        highlighted = schema.bool,
     },
     -- `sub_80BAF50`.
     update = function(me: Object)

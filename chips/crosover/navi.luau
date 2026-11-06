@@ -712,13 +712,13 @@ crosover.kind = new.kind {
     id = "crosover/navi",
     pool = "actor",
     state = {
-        django = "bool",
-        controller = "object",
-        partner = "object",
-        held = "object",
-        held2 = "object",
-        user_image = "bool",
-        in_position = "bool",
+        django = schema.bool,
+        controller = schema.object,
+        partner = schema.object,
+        held = schema.object,
+        held2 = schema.object,
+        user_image = schema.bool,
+        in_position = schema.bool,
     },
     -- `sub_80BDBA4`.
     update = function(me: Object)

@@ -106,7 +106,7 @@ local chip: Chip = {
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.thunder },
-    action = new.action { state = { timer = "u16" }, update = update },
+    action = new.action { state = { timer = schema.u16 }, update = update },
 }
 
 return { drilarm = chip }

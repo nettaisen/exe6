@@ -59,7 +59,7 @@ end
 hit_flash.kind = new.kind {
     id = "slashcross-beast/hit-flash",
     pool = "effect",
-    state = { flashes = "u8" },
+    state = { flashes = schema.u8 },
     -- `sub_80E88A0`.
     update = function(me: Object)
         local l = me.lifecycle

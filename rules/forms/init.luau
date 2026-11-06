@@ -25,7 +25,7 @@ local forms = {}
 -- The change, as the pause handler runs it.
 forms.action = new.action {
     id = "forms/change",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     update = change.update,
 }
 

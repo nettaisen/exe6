@@ -153,10 +153,10 @@ laser.kind = new.kind {
     id = "sensor/laser",
     pool = "attack",
     state = {
-        turret = "object",
-        slot = "u8",
-        aim = "u8",
-        was_paused = "bool",
+        turret = schema.object,
+        slot = schema.u8,
+        aim = schema.u8,
+        was_paused = schema.bool,
     },
     -- `sub_80D9350`.
     update = function(me: Object)

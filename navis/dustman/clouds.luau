@@ -77,7 +77,7 @@ end
 clouds.cloud = new.kind {
     id = "dustman/cloud",
     pool = "effect",
-    state = { anim = "u8", action = "action" },
+    state = { anim = schema.u8, action = schema.action },
     -- `sub_80E8794`.
     update = update(CLOUD_SPRITE, nil),
 }
@@ -85,7 +85,7 @@ clouds.cloud = new.kind {
 clouds.overlay = new.kind {
     id = "dustman/overlay",
     pool = "effect",
-    state = { anim = "u8", action = "action" },
+    state = { anim = schema.u8, action = schema.action },
     -- `sub_80E8688`.
     update = update(DUSTMAN_SPRITE, DUSTMAN_ANIM),
 }

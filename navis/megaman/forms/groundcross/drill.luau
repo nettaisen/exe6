@@ -227,7 +227,7 @@ end
 
 ground_drill.action = new.action {
     id = "groundcross/drill/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EEFDC`.
     update = function(me: Object, s: State)
         local step = me.step

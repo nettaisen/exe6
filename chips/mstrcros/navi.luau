@@ -90,8 +90,10 @@ local FIRE_BLADE = attachment.look { sprite = fire_sword_sprite, palette = 0 }
 -- look's color, the look's palette less one from look 2).
 type Sword = { blade: AttachmentLook, region: Region, slash: Effect, palette: number }
 
+local MSTRCROS_SWORD = schema.record_type("mstrcros-sword")
+
 local function sword_look(v: Sword): Sword
-    return new.record("mstrcros-sword", v)
+    return new.record(MSTRCROS_SWORD, v)
 end
 
 -- The looks, `byte_80BEDC6`'s 0 to 5.
@@ -820,16 +822,16 @@ mstrcros.kind = new.kind {
     id = "mstrcros/navi",
     pool = "actor",
     state = {
-        form = "form",
+        form = schema.form,
         move = MOVE_TYPE,
-        sword = "record:mstrcros-sword",
-        place = "u8",
-        controller = "object",
-        acting = "bool[8]",
-        leader = "object",
-        turn = "bool",
-        held = "object",
-        child = "object",
+        sword = MSTRCROS_SWORD,
+        place = schema.u8,
+        controller = schema.object,
+        acting = schema.array(schema.bool, 8),
+        leader = schema.object,
+        turn = schema.bool,
+        held = schema.object,
+        child = schema.object,
     },
     -- `sub_80BE798`.
     update = function(me: Object)

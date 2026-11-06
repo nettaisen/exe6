@@ -127,7 +127,7 @@ end
 feather.kind = new.kind {
     id = "falzar/feather",
     pool = "attack",
-    state = { while_dimmed = "bool" },
+    state = { while_dimmed = schema.bool },
     -- `sub_80DCB1C`: by state (its end `object_genericDestroy`), then the
     -- sprite: stepping while dimmed if it acts while dimmed, else while
     -- paused only.

@@ -125,7 +125,7 @@ end
 flame.kind = new.kind {
     id = "heatman/flame",
     pool = "attack",
-    state = { while_dimmed = "bool", ticks = "u8", is = "collision" },
+    state = { while_dimmed = schema.bool, ticks = schema.u8, is = schema.collision },
     -- `sub_80C8C74`.
     update = function(me: Object)
         local l = me.lifecycle

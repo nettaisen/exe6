@@ -27,7 +27,7 @@ export type State = {
     glow: Object?,
 }
 
-local STATE = { timer = "u16", glow = "object" }
+local STATE = { timer = schema.u16, glow = schema.object }
 
 local SLIDE, SLASH, RETURN, RECOVER = 0x0, 0x4, 0x8, 0xC
 local ANIM_SLIDE, ANIM_SLASH, ANIM_RETURN = 0x10, 0x11, 3

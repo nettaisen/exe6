@@ -189,7 +189,7 @@ end
 
 tackle.action = new.action {
     id = "chargecross/tackle/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EFA56`.
     update = function(me: Object, s: State)
         local step = me.step

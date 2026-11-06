@@ -160,7 +160,7 @@ local ACTIONS = { [APPEAR] = appear, [STAND] = stand, [INHALE] = inhale, [FIRE] 
 heatman.kind = new.kind {
     id = "heatman/navi",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- `sub_80B9078`.
     update = function(me: Object)
         local l = me.lifecycle

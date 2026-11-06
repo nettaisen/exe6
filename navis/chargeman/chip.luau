@@ -12,7 +12,7 @@ local volcano_rock = require("./volcano_rock")
 
 export type State = { timer: number }
 
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 local ERUPT, RECOVER = 0x0, 0x4
 local ANIM_ERUPT = 6

@@ -19,7 +19,7 @@ export type State = {
 export type Spec = { id: string?, wave: ShockWaveVariant, three_rows: boolean? }
 
 -- One state for every strike.
-strike.STATE = { timer = "u16" }
+strike.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local STRIKE, RECOVER = 0x0, 0x4

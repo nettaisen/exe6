@@ -331,7 +331,7 @@ end
 bee.kind = new.kind {
     id = "rskyhny/bee",
     pool = "attack",
-    state = { speed = "i32", turn_speed = "i32", target = "object", palette = "u8", turns = "u8" },
+    state = { speed = schema.i32, turn_speed = schema.i32, target = schema.object, palette = schema.u8, turns = schema.u8 },
     -- `sub_80D30D0`.
     update = function(me: Object)
         local l = me.lifecycle

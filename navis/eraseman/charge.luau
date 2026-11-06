@@ -109,7 +109,7 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [DRAW] = draw, [SWI
 
 charge.action = new.action {
     id = "eraseman/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80F0FB4` (`off_80F0FC8`).
     update = function(me: Object, s: State)
         link.run(me, s, PHASES, "EraseMan's charge (sub_80F0FB4)")

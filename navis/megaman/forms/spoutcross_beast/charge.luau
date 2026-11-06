@@ -72,7 +72,7 @@ end
 
 charge.action = new.action {
     id = "spoutcross-beast/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EDE7E`.
     update = function(me: Object, s: State)
         local step = me.step

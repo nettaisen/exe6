@@ -323,13 +323,13 @@ turret.kind = new.kind {
     id = "sensor/turret",
     pool = "attack",
     state = {
-        palette = "u8",
-        hp = "u8",
-        aim = "u8",
-        scanner = "object",
-        segments = "object[5]",
-        blinking = "bool",
-        restart = "bool",
+        palette = schema.u8,
+        hp = schema.u8,
+        aim = schema.u8,
+        scanner = schema.object,
+        segments = schema.array(schema.object, 5),
+        blinking = schema.bool,
+        restart = schema.bool,
     },
     -- `sub_80DA050`.
     update = function(me: Object)

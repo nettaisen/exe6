@@ -69,7 +69,7 @@ end
 propeller.kind = new.kind {
     id = "airraid/propeller",
     pool = "actor",
-    state = { keeps_flip = "bool" },
+    state = { keeps_flip = schema.bool },
     -- `sub_80B88D0`.
     update = function(me: Object)
         local l = me.lifecycle

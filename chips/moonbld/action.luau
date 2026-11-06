@@ -16,7 +16,7 @@ export type State = {
 }
 
 -- One state for every MoonBld action.
-action.STATE = { timer = "u16" }
+action.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local READY, SWING, DONE = 0x0, 0x4, 0x8

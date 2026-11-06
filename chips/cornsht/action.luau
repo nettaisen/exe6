@@ -18,7 +18,7 @@ export type State = {
     timer: number,
 }
 
-cornsht.STATE = { timer = "u16" }
+cornsht.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local FIRE, RECOVER = 0x0, 0x4

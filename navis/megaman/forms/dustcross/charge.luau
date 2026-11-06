@@ -74,7 +74,7 @@ end
 
 charge.action = new.action {
     id = "dustcross/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80EFC1C`.
     update = function(me: Object, s: State)
         local step = me.step

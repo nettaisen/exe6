@@ -74,7 +74,7 @@ end
 
 meteors.action = new.action {
     id = "patch-cards/meteors",
-    state = { timer = "u16", drops = "u8" },
+    state = { timer = schema.u16, drops = schema.u8 },
     update = update,
 }
 

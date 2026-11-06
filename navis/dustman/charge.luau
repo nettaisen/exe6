@@ -62,7 +62,7 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [ROLL] = roll, [REC
 
 charge.action = new.action {
     id = "dustman/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- `sub_80F1F18` (`off_80F1F2C`).
     update = function(me: Object, s: State)
         link.run(me, s, PHASES, "DustMan's charge (sub_80F1F18)")

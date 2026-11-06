@@ -565,7 +565,7 @@ end
 darkness.kind = new.kind {
     id = "darkness/navi",
     pool = "actor",
-    state = { bass = "bool", held = "object", controller = "object", leader = "object" },
+    state = { bass = schema.bool, held = schema.object, controller = schema.object, leader = schema.object },
     -- `sub_80BF6EC`.
     update = function(me: Object)
         local l = me.lifecycle

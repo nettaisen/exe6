@@ -83,7 +83,7 @@ end
 
 charge.action = new.action {
     id = "erasecross/charge/action",
-    state = { timer = "u16", beast = "bool" },
+    state = { timer = schema.u16, beast = schema.bool },
     -- `sub_80EE7D0`.
     update = function(me: Object, s: State)
         local step = me.step

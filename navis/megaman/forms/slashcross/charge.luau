@@ -256,7 +256,7 @@ end
 
 slash_charge.action = new.action {
     id = "slashcross/charge/action",
-    state = { timer = "u16", slash = "record:charged-slash", dash = "bool" },
+    state = { timer = schema.u16, slash = slashes.CHARGED_SLASH, dash = schema.bool },
     -- `sub_80EE34A`.
     update = function(me: Object, s: State)
         local step = me.step

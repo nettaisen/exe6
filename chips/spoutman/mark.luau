@@ -82,7 +82,7 @@ end
 mark.kind = new.kind {
     id = "spoutman/mark",
     pool = "effect",
-    state = { column = "bool", ticks = "u8", while_dimmed = "bool" },
+    state = { column = schema.bool, ticks = schema.u8, while_dimmed = schema.bool },
     -- `sub_80E39A0`.
     update = function(me: Object)
         local l = me.lifecycle

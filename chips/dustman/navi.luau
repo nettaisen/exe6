@@ -168,7 +168,7 @@ local ACTIONS = { [APPEAR] = appear, [TAKE] = suck, [WIND_UP] = wind_up, [THROW]
 dustman.kind = new.kind {
     id = "dustman/navi",
     pool = "actor",
-    state = { taken = "identity[8]", count = "u8", thrown = "u8", controller = "object" },
+    state = { taken = schema.array(schema.identity, 8), count = schema.u8, thrown = schema.u8, controller = schema.object },
     -- `sub_80BBF0C`.
     update = function(me: Object)
         local l = me.lifecycle

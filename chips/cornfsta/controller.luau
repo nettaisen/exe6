@@ -34,7 +34,7 @@ end
 controller.kind = new.kind {
     id = "cornfsta/controller",
     pool = "effect",
-    state = { bonus = "u16", busy = "bool" },
+    state = { bonus = schema.u16, busy = schema.bool },
     -- `sub_80E7E9C`.
     update = dimming_chips.phases { name = "CornFsta", effect = effect },
 }

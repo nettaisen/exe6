@@ -214,7 +214,7 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [CHARGE] = run, [ST
 
 charge.action = new.action {
     id = "chargeman/charge/action",
-    state = { timer = "u16", cars = "u8", car1 = "object", car2 = "object" },
+    state = { timer = schema.u16, cars = schema.u8, car1 = schema.object, car2 = schema.object },
     -- `sub_80F1198` (`off_80F11AC`).
     update = function(me: Object, s: State)
         link.run(me, s, PHASES, "ChargeMan's charge (sub_80F1198)")

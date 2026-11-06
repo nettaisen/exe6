@@ -17,7 +17,7 @@ export type State = {
     target_y: number,
 }
 
-local STATE = { timer = "u16", target_x = "u8", target_y = "u8" }
+local STATE = { timer = schema.u16, target_x = schema.u8, target_y = schema.u8 }
 
 local WIND_UP, JUMP, LAND, STAY, SPRAY, RISE, BACK = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14, 0x18
 local ANIM_WIND_UP, ANIM_READY, ANIM_RISE, ANIM_DOWN = 0x11, 0x12, 4, 3

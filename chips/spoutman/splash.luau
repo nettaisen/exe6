@@ -95,7 +95,7 @@ end
 splash.kind = new.kind {
     id = "spoutman/splash",
     pool = "attack",
-    state = { while_dimmed = "bool", cracks = "bool" },
+    state = { while_dimmed = schema.bool, cracks = schema.bool },
     -- `loc_80C86D8`.
     update = function(me: Object)
         local l = me.lifecycle

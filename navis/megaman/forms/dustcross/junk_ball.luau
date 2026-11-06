@@ -179,7 +179,7 @@ end
 junk_ball.kind = new.kind {
     id = "dustcross/junk-ball",
     pool = "attack",
-    state = { while_dimmed = "bool" },
+    state = { while_dimmed = schema.bool },
     -- `sub_80DB6A4`.
     update = function(me: Object)
         local l = me.lifecycle

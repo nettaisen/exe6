@@ -299,7 +299,7 @@ end
 sunmoon.kind = new.kind {
     id = "sunmoon/sun",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- `sub_80BF260`.
     update = function(me: Object)
         local l = me.lifecycle

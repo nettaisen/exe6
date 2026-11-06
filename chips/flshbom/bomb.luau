@@ -44,9 +44,11 @@ local STRONG_DAMAGE = 0x140000
 -- 0x2E); each level adds 3 to its palette.
 flash_bomb.held = attachment.look { sprite = SPRITE, palette = 0 }
 
+local FLASH_BOMB_VARIANT = schema.record_type("flash-bomb-variant")
+
 -- A FlashBomb variant.
 function flash_bomb.variant(v: FlashBombVariant): FlashBombVariant
-    return new.record("flash-bomb-variant", v)
+    return new.record(FLASH_BOMB_VARIANT, v)
 end
 
 -- Done: hidden, off its panels, and freed at the next update.
@@ -222,7 +224,7 @@ end
 flash_bomb.kind = new.kind {
     id = "flshbom/bomb",
     pool = "attack",
-    state = { variant = "record:flash-bomb-variant", target_x = "u8", target_y = "u8" },
+    state = { variant = FLASH_BOMB_VARIANT, target_x = schema.u8, target_y = schema.u8 },
     -- `sub_80D9A50`.
     update = function(me: Object)
         local l = me.lifecycle

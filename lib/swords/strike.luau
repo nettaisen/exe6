@@ -21,7 +21,7 @@ export type State = {
 }
 
 -- One state for every strike.
-strike.STATE = { timer = "u16" }
+strike.STATE = { timer = schema.u16 }
 
 local SWING, RECOVER = 0x0, 0x4
 

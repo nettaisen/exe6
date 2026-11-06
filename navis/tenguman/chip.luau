@@ -14,7 +14,7 @@ local swirl_sprite = asset.sprite("swirl")
 
 export type State = { timer: number }
 
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 local BLOW, RECOVER = 0x0, 0x4
 local ANIM_BLOW, ANIM_RECOVER = 0x10, 7

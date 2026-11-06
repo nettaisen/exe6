@@ -74,7 +74,7 @@ end
 nest.kind = new.kind {
     id = "snake/nest",
     pool = "attack",
-    state = { scan_x = "u8", scan_y = "u8", snakes = "u8", holder = "object" },
+    state = { scan_x = schema.u8, scan_y = schema.u8, snakes = schema.u8, holder = schema.object },
     -- `sub_80D2BDC`.
     update = function(me: Object)
         local l = me.lifecycle

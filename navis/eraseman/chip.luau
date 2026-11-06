@@ -11,7 +11,7 @@ local link = require("../../lib/link_chips")
 
 export type State = { timer: number }
 
-local STATE = { timer = "u16" }
+local STATE = { timer = schema.u16 }
 
 local RAISE, SLASH, RECOVER = 0x0, 0x4, 0x8
 local ANIM_RAISE, ANIM_SLASH = 0x11, 0x12

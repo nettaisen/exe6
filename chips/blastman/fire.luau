@@ -107,12 +107,12 @@ fire.kind = new.kind {
     id = "blastman/fire",
     pool = "attack",
     state = {
-        speed = "u32",
+        speed = schema.u32,
         direction = { "left",
         "right",
         "up",
         "down" },
-        while_dimmed = "bool",
+        while_dimmed = schema.bool,
     },
     -- `sub_80C8388`.
     update = function(me: Object)

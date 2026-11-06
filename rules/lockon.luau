@@ -8,8 +8,10 @@
 
 local lockon_search = require("./lockon_search")
 
+local LOCKON = schema.record_type("lockon")
+
 local function record(spec: Lockon): Lockon
-    return new.record("lockon", spec)
+    return new.record(LOCKON, spec)
 end
 
 local lockon = {
@@ -216,11 +218,14 @@ local lockon = {
         prefers_middle_row = false,
     }),
 }
+lockon.LOCKON = LOCKON
+
+local LOCKON_SEARCH = schema.record_type("lockon-search")
 
 -- The column shifts toward the user tried, in order, when no panel next to the target fits (`byte_8026735`), and
 -- what every panel between the chosen one and the target must be for the modes that need a clear path, by alliance
 -- (`byte_8026544`).
-lockon.search = new.record("lockon-search", {
+lockon.search = new.record(LOCKON_SEARCH, {
     column_shifts = { -1, -2, -3, -4 },
     clear_path = {
         { require = 0x00000000, forbid = 0x05800000 },

@@ -77,7 +77,7 @@ end
 mote.kind = new.kind {
     id = "dust-storm-mote",
     pool = "effect",
-    state = { tied = "action" },
+    state = { tied = schema.action },
     -- `sub_80E2080`.
     update = function(me: Object)
         -- (Read before a free: the sprite steps by it either way.)

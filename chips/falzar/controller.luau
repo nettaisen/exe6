@@ -182,7 +182,7 @@ end
 controller.kind = new.kind {
     id = "falzar/controller",
     pool = "effect",
-    state = { bonus = "u16", falzar_out = "bool", last_x = "u32", last_y = "u32" },
+    state = { bonus = schema.u16, falzar_out = schema.bool, last_x = schema.u32, last_y = schema.u32 },
     -- 0x080EDE8C: the dimming's phases (0x080EDEAC, by action:
     -- 0x080EDED0, `object_drawChipName`, the effect, `sub_800BCF6`).
     update = dimming_chips.phases {

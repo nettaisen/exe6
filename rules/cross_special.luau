@@ -27,9 +27,11 @@ local varswrd = require("../chips/varswrd").varswrd
 local vulcan_chips = require("../chips/vulcan")
 local wideswrd = require("../chips/wideswrd").wideswrd
 
+local CROSS_SPECIAL = schema.record_type("cross-special")
+
 -- (rules/beast's data, which its Cross special reads: a record of
 -- type "cross-special", not a rule section the engine reads.)
-return new.record("cross-special", {
+return new.record(CROSS_SPECIAL, {
     rows = {
         { cannon_chips.cannon, minibomb, wideswrd },
         -- EnergBom.

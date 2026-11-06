@@ -396,12 +396,12 @@ elmntman.kind = new.kind {
     id = "elmntman/navi",
     pool = "actor",
     state = {
-        element = "u8",
-        targets = "u8[18]",
-        controller = "object",
-        cycle_ticks = "u8",
-        count = "u8",
-        sent = "u8",
+        element = schema.u8,
+        targets = schema.array(schema.u8, 18),
+        controller = schema.object,
+        cycle_ticks = schema.u8,
+        count = schema.u8,
+        sent = schema.u8,
     },
     -- `sub_80BAA8C`.
     update = function(me: Object)
