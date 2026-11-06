@@ -49,7 +49,7 @@ local function hud(shown: boolean)
         then { "level_gauge", "emotion_window" }
         else { "gauge", "emotion_window" }
     for _, part in parts do
-        battle.set_hud(part, shown)
+        (battle.hud() :: any)[part] = shown
     end
 end
 

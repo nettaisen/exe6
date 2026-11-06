@@ -20,12 +20,12 @@ end
 
 -- A move cutting a shot short (`object_canMove`, `sub_800FA54`,
 -- `sub_800F964`): the direction to step in, if the navi can.
-function weapon.move_input(navi: Object): number?
+function weapon.move_input(navi: Object): StepDirection?
     if not navi:can_move() then
         return nil
     end
     local dir = navi:held_direction()
-    if dir == 0 or navi:step_target(dir) == nil then
+    if dir == nil or navi:step_target(dir) == nil then
         return nil
     end
     return dir

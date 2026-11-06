@@ -62,8 +62,8 @@ local function wind_up(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(0x12)
         me:open_counter_window()
-        me:set_status("using_action", true)
-        me:set_status("moving", true)
+        me.status.using_action = true
+        me.status.moving = true
         me.step_init = 4
         return
     end
@@ -88,7 +88,7 @@ local function burn(me: Object, s: State)
     local t = s.timer - 1
     s.timer = t
     if t < 0 then
-        me:set_status("moving", false)
+        me.status.moving = false
         me:exit_attack()
     end
 end

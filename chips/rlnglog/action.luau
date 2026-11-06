@@ -46,7 +46,7 @@ function action.action(spec: RollingLogSpec): Action
             me:set_animation(ANIM_THROW)
             me:open_counter_window()
             attachment.attach(me, THROWER, "overlay")
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me.step_init = 4
             s.timer = 1
         end

@@ -454,7 +454,7 @@ function boiler.thrower(palette: number, body_damage: number): Thrower
                 if user.flip ~= 0 then
                     error("LilBoiler thrown by a flipped user: setFieldBattleObject_800F614 registers it far past the field-object registry")
                 end
-                obstacle.register(o, user.alliance, 1)
+                obstacle.register(o, user.alliance, "one_a_side")
             end
             return o
         end,

@@ -47,7 +47,7 @@ function action.action(spec: AuraHeadSpec): Action
     local function raise(me: Object, s: State)
         me:set_animation(ANIM_RAISE)
         buster.raise_arm(me)
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.heads = spec.head.palette
         me.step = FIRE
         me.step_init = 0

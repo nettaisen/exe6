@@ -146,7 +146,7 @@ end
 -- second hit for variants that have one.
 local function count_down(me: Object, v: FlashBombVariant)
     if me.timer == FLASH_AT then
-        battle.palette_flash(1, 6)
+        battle.palette_flash("two_layers", 6)
         battle.play_sound(SOUND_FLASH)
         flash(me, v, v.status, int.u32(me.damage + me.stamina * 0x10000))
     end
@@ -172,7 +172,7 @@ local function tick(me: Object)
         finish(me)
         return
     end
-    if me.action == 8 and hp.apply_damage(me, 0) == -1 then
+    if me.action == 8 and hp.apply_damage(me, "damage_sound") == "broken" then
         finish(me)
         return
     end

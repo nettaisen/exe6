@@ -72,13 +72,13 @@ function beast.chip_used(side: number, navi: Object, chip: Chip, weapon: Weapon?
     if weapon ~= nil then
         local action = navi:navi_action()
         if action == beast_claw.action or (action == slash_charge.action and sword_rush(side)) then
-            navi.wrapped = 1
+            navi.wrapped = true
         end
         return
     end
     if navi.special_source ~= 0 or kind.beast(side) then
         local rush_of = chip.beast
-        navi.wrapped = if rush_of ~= nil and rush_of.rush ~= false then 1 else 0
+        navi.wrapped = rush_of ~= nil and rush_of.rush ~= false
     end
 end
 
@@ -108,7 +108,7 @@ function beast.round_setup(side: number)
             and not battle.own_gauges()
             and not bit32.btest(battle.effects(), RANDOM)
         )
-    battle.set_hud("window_count", shown, side)
+    battle.hud(side).window_count = shown
 end
 
 function beast.form_reverted(side: number, navi: Object)
@@ -166,7 +166,7 @@ function beast.turn_check(side: number)
         revert = kind.beast(side)
     end
     if revert then
-        navi:set_request("revert_form", true)
+        navi.requests.revert_form = true
     end
 end
 

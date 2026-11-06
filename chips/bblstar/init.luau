@@ -37,7 +37,7 @@ local function blow(spec: Blow): Action
             me:set_animation(0x0C)
             battle.play_sound(SOUND_BLOW)
             me:open_counter_window()
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0x0F
             me.step_init = 4
         end

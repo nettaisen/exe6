@@ -342,7 +342,7 @@ function plane.spawn(owner: Object, x: number, y: number, p: AirRaidPlane, damag
     o.panel_x, o.panel_y = x, y
     o.alliance, o.flip = owner.alliance, owner.flip
     o.run_while_dimmed = true
-    obstacle.register(o, o.alliance, 1)
+    obstacle.register(o, o.alliance, "one_a_side")
     local s = o.state :: State
     s.plane = p
     return o
