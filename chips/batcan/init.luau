@@ -22,7 +22,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
-        action = batcan { shots = { 3 } },
+        action = batcan { shots = { { flinch = true, flash = true } } },
     },
     batcan2 = {
         codes = { "S" },
@@ -32,7 +32,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
-        action = batcan { shots = { 3 } },
+        action = batcan { shots = { { flinch = true, flash = true } } },
     },
     batcan3 = {
         codes = { "R" },
@@ -42,7 +42,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
-        action = batcan { shots = { 3 } },
+        action = batcan { shots = { { flinch = true, flash = true } } },
     },
     batcan4 = {
         codes = { "Z" },
@@ -52,7 +52,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
-        action = batcan { shots = { 1, 1, 3 } },
+        action = batcan { shots = { { flinch = true }, { flinch = true }, { flinch = true, flash = true } } },
     },
 }
 

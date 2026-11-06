@@ -74,7 +74,6 @@ function action.action(spec: WindRackSpec): Action
                 target = collision.hits_navis,
                 self_type = collision.pushing,
                 damage = damage,
-                stamina = bit32.rshift(damage, 16),
                 hit_mod = HIT_MOD,
             })
             if hit then

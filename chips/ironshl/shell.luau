@@ -49,7 +49,7 @@ local SOUND = asset.sound("iron-shell")
 -- A panel's width, 16.16.
 local PANEL_WIDTH = 0x28_0000
 -- The hit modifiers.
-local PUSHES, STILL = 3, 1
+local PUSHES: HitModifier, STILL: HitModifier = { flinch = true, flash = true }, { flinch = true }
 
 -- The actions.
 local SLIDE, BUMP, FLY = 0, 4, 8

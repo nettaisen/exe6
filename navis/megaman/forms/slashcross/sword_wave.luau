@@ -130,7 +130,7 @@ local function init(me: Object)
     end
     local bug = v.bug
     if bug then
-        c.bugs = bug + (v.bug_arg or 0) * 0x100
+        c.bug, c.bug_arg = bug, v.bug_arg or 0
     end
     c:present()
     me:update_sprite()
@@ -237,7 +237,7 @@ function sword_wave.wave(v: {
 }): SwordWaveVariant
     return sword_wave.variant {
         collision = SLASH,
-        hit_mod = v.hit_mod or 3,
+        hit_mod = v.hit_mod or { flinch = true, flash = true },
         region = v.region,
         sprite = v.sprite,
         anim = v.anim,

@@ -99,7 +99,7 @@ local function init(me: Object)
     end
     local bug = v.bug
     if bug then
-        c.bugs = bug + (v.bug_arg or 0) * 0x100
+        c.bug, c.bug_arg = bug, v.bug_arg or 0
     end
     c:present()
     battle.play_sound(SOUND)

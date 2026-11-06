@@ -23,8 +23,9 @@ local ANIM = 4
 
 -- How far ahead of its panel it stands (whole pixels).
 local AHEAD = 0x28
--- The uninstall's damage word (its flag alone), and the hits' modifiers.
-local UNINSTALL, UNINSTALL_HIT_MOD, HIT_MOD = 0x2000, {}, { flinch = true, flash = true }
+-- The uninstall's damage word's flags (its flag alone, 0x2000), and the hits' modifiers.
+local UNINSTALL: { [string]: boolean } = { uninstall = true }
+local UNINSTALL_HIT_MOD: HitModifier, HIT_MOD: HitModifier = {}, { flinch = true, flash = true }
 
 -- A hit on the panel three columns ahead that resolves while dimmed
 -- (`sub_80C53A6`).
@@ -65,7 +66,7 @@ local function shine(me: Object)
     if me.phase_init == 0 then
         me.timer = 0x64
         me.timer2 = 0
-        hit(me, collision.thrown_piercing_break, UNINSTALL, UNINSTALL_HIT_MOD)
+        hit(me, collision.thrown_piercing_break, damage_word.of { flags = UNINSTALL }, UNINSTALL_HIT_MOD)
         me.phase_init = 4
     end
     if s.ticks == 0 then

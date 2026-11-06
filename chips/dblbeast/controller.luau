@@ -49,7 +49,7 @@ local function beasts(me: Object)
     if me.phase_init == 0 then
         me.phase_init = 4
         local user = me.related1 :: Object
-        local base = bit32.bor(s.bonus, bit32.lshift(me.stamina, 16))
+        local base = damage_word.with_damage(me.damage_word, s.bonus)
         gregar.spawn(me, user, me.element, base)
         falzar.spawn(me, user, me.element, base)
     end

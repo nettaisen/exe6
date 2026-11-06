@@ -155,8 +155,7 @@ function eruption.volcano(x: number, y: number)
     end
     o.panel_x, o.panel_y = x, y
     o.element = 0
-    o.damage = DAMAGE
-    o.stamina = 0
+    o.damage_word = DAMAGE
     state(o).lifetime = START
 end
 

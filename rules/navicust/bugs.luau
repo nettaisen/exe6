@@ -52,12 +52,12 @@ navicust_bugs.navi_bug = bugs.navi_bug(GAME)
 -- The rules' `hit_bug`: `sub_801A6B4`, then `sub_801A720`.
 function navicust_bugs.hit_bug(side: number, navi: Object)
     local c = navi.collision
-    local code = bit32.band(c.inflicted_bugs, 0xFF)
+    local code = c.inflicted_bug
     local s = battle.navi(side)
     if code == 0xF4 or code == 0xF7 then
         -- The HP bug up one (to at most 7); 0xF7 only on an HP with a 4 among its decimal digits, else it is gone.
         if code == 0xF7 and not string.find(tostring(navi.hp), "4", 1, true) then
-            c.inflicted_bugs = bit32.band(c.inflicted_bugs, 0xFF00)
+            c.inflicted_bug = 0
         else
             s.hp_drain = math.min(s.hp_drain + 1, 7)
         end
@@ -71,13 +71,13 @@ function navicust_bugs.hit_bug(side: number, navi: Object)
         if not (identity and identity.bug_blind_immune) then
             navi:take_status(statuses.blind_1200)
         end
-        c.inflicted_bugs = bit32.band(c.inflicted_bugs, 0xFF00)
+        c.inflicted_bug = 0
     end
 end
 
 -- The rules' `bug_mark`: the HP bug's codes.
 function navicust_bugs.bug_mark(_side: number, navi: Object): boolean
-    local code = bit32.band(navi.collision.inflicted_bugs, 0xFF)
+    local code = navi.collision.inflicted_bug
     return code == 0xF4 or code == 0xF7
 end
 

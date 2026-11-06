@@ -114,8 +114,8 @@ end
 -- (The spawner's Z register holds those flag bits.)
 local function drop_rock(me: Object, x: number, y: number)
     local s = me.state :: State
-    local flags = bit32.band(me.damage, 0xF000)
-    local word = bit32.bor(int.u32(bit32.bor(s.rock_damage, bit32.lshift(me.stamina, 16)) + s.bonus), flags)
+    local flags = damage_word.flag_word(me.damage_word)
+    local word = bit32.bor(damage_word.plus(damage_word.with_damage(me.damage_word, s.rock_damage), s.bonus), flags)
     rock.drop(me, x, y, me.element, word, ROCK, flags)
 end
 

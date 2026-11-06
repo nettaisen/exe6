@@ -92,7 +92,7 @@ local function init(me: Object)
         c.status_base = v.status
     end
     if v.bug ~= 0 then
-        c.bugs = v.bug + v.bug_arg * 0x100
+        c.bug, c.bug_arg = v.bug, v.bug_arg
     end
     register(me, me)
     c:present()

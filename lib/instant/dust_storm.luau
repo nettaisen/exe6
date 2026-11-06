@@ -35,7 +35,7 @@ local AROUND = { { 0, 0 }, { -1, -1 }, { 0, -1 }, { 1, -1 }, { -1, 0 }, { 1, 0 }
 -- The hit (`dword_80C6410`): the 3x3 around it, no spark, an attack whose
 -- target reaches nothing (it learns nothing of its hits; the navis there
 -- react to it and take them), hit modifier 1; every 12 ticks.
-local NO_SPARK: Spark?, HIT_MOD = nil, 1
+local NO_SPARK: Spark?, HIT_MOD: HitModifier = nil, { flinch = true }
 local HIT_TICKS = 0xC
 
 -- `sub_80C6358`: motes on the panels around, on the field.

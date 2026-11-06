@@ -119,7 +119,7 @@ local function run(me: Object, s: State)
         -- sub_801A082
         me:reset_collision_types(collision.navi, collision.navi_target, {})
         me.collision.self_damage = 0
-        me.collision.counter_byte = 0
+        me.collision.counter, me.collision.cant_counter = 0, false
         me.anim = ANIM_CHARGE
         s.cars = 0
         s.car1, s.car2 = nil, nil
@@ -186,10 +186,12 @@ local function back(me: Object, s: State)
         me.status_timers.invulnerable = 0
         me.status.invulnerable = false
         -- sub_801A082, then his body's damage again (the game stores the
-        -- damage's low byte as the counter byte).
+        -- damage's low byte as the counter byte: its low seven bits the
+        -- counter strength, its eighth can't-counter).
         me:reset_collision_types(collision.navi, collision.navi_target, BODY_HIT_MOD)
-        me.collision.self_damage = me.damage
-        me.collision.counter_byte = bit32.band(me.damage, 0xFF)
+        local damage = damage_word.damage(me.damage_word)
+        me.collision.self_damage = damage
+        me.collision.counter, me.collision.cant_counter = damage % 0x80, damage % 0x100 >= 0x80
         me.anim = ANIM_BACK
         s.timer = BACK_TICKS
     elseif link.run_out(s) then

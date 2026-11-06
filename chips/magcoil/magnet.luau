@@ -18,14 +18,16 @@ export type State = {
 
 local SPRITE = asset.sprite("magnet")
 local HAND, PANEL = 0x1F, 0x28
--- The pulls from the row above and the row below (hit modifiers).
-local PULL_DOWN, PULL_UP = 0xE1, 0xD1
+-- The pulls from the row above and the row below (hit modifiers: a dragging flinch a panel back or forward, the rows
+-- turned, down and up).
+local PULL_DOWN: HitModifier = { flinch = true, back = true, drag = true, vertical = true }
+local PULL_UP: HitModifier = { flinch = true, forward = true, drag = true, vertical = true }
 -- Ticks between pulls, and the tick (second timer value) they come on.
 local CYCLE, PULL_AT = 0x0F, 0x0B
 
 -- `sub_80D7EF6`: pull whoever stands in the three panels from (x, y)
 -- ahead with modifier `how`.
-local function pull(me: Object, x: number, y: number, how: number)
+local function pull(me: Object, x: number, y: number, how: HitModifier)
     local dir = me.facing
     for _ = 1, 3 do
         if field.any(x, y, "enemy_body", me.alliance) then

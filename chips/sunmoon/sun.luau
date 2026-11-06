@@ -48,7 +48,7 @@ local METEOR_DAMAGE, MOONLIGHT_DAMAGE = 0x32, 2
 
 -- The damage word's flag bits (0xF000 of the damage) with `damage`.
 local function flagged(me: Object, damage: number): number
-    return bit32.bor(damage, bit32.band(me.damage, 0xF000))
+    return bit32.bor(damage, damage_word.flag_word(me.damage_word))
 end
 
 -- Enter the phase with a timer, or count it down; true once it is 0 or

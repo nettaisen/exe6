@@ -93,8 +93,7 @@ local function special_chip(side: number, navi: Object, s: State): "nothing" | "
     navi.attack_chip = chip
     -- (The original copies the record's subtype and parameter bytes too:
     -- a chip has neither here; what its action needs is its definition's.)
-    navi.attack_damage = record_damage(chip)
-    navi.hit_param = bit32.bor(chip.hit_param or 0, 0x80)
+    navi.attack_word = damage_word.of { amount = record_damage(chip), counter = chip.counter or 0, cant_counter = true }
     -- (The last rows' LifeSrd strikes with VarSwrd's damage.)
     if damage_of ~= nil then
         navi.attack_word = damage_word.with_damage(navi.attack_word, record_damage(damage_of))

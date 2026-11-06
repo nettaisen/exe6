@@ -79,10 +79,6 @@ local function countdown(me: Object, ticks: number): boolean
     return left <= 0
 end
 
-local function damage_word(me: Object): number
-    return me.damage_word
-end
-
 -- `sub_80B954C`: he appears with his layer; 6 ticks; on to standing, or
 -- straight to leaving if his panel can't hold him.
 local function appear(me: Object)
@@ -133,7 +129,7 @@ local function throw(me: Object)
     if me.phase == 0 then
         me.phase = 4
         me.anim = 0x14
-        ball.spawn(me, me.panel_x, me.panel_y, me.element, BALL, damage_word(me))
+        ball.spawn(me, me.panel_x, me.panel_y, me.element, BALL, me.damage_word)
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, 0), THROW, bit32.bxor(me.alliance, me.flip))
         battle.play_sound(SOUND_BUBBLE)
@@ -198,7 +194,7 @@ local function erupt(me: Object)
         local target = target_column(me)
         -- r3 (4, the geyser's Param1) becomes its Z.
         local what: Geyser = { while_dimmed = true, ticks = GEYSER_TICKS, target = target }
-        geyser.spawn(me, me.panel_x, me.panel_y, me.element, what, damage_word(me), 4)
+        geyser.spawn(me, me.panel_x, me.panel_y, me.element, what, me.damage_word, 4)
         return
     end
     local left = me.timer - 1

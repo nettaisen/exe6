@@ -69,8 +69,10 @@ local ERUPTION = new.effect { sprite = SPRITE, anim = 10, palette = 0, steps = 2
 -- Its kind among absorbed obstacles.
 -- How it looks absorbed (the original's obstacle kind's sprite: its own).
 local ABSORBED = absorbed_obstacle.look { sprite = SPRITE }
--- Its damage word's flags: doubled (0x8000), and the bits kept (0x7000).
-local DOUBLED, FLAGS, AMOUNT = 0x8000, 0x7000, 0xFFF
+-- (Its damage word's flags it keeps: its flag nibble but the doubling, 0x7000.)
+local function kept_flags(w: number): number
+    return damage_word.flag_word(damage_word.without(w, { double = true }))
+end
 
 -- The actions (the object's action byte).
 local ERUPTING_OR_DESTROYED, SET = 2, 9
@@ -311,7 +313,7 @@ local function check_eruption(me: Object)
         end
     end
     s.erupting = true
-    me.damage = bit32.bor(int.u16(me.max_hp - me.hp), bit32.band(me.damage, FLAGS))
+    me.damage_word = damage_word.with_damage(me.damage_word, bit32.bor(int.u16(me.max_hp - me.hp), kept_flags(me.damage_word)))
     me.action = ERUPTING_OR_DESTROYED
     me.phase, me.phase_init = 0, 0
 end
@@ -338,7 +340,7 @@ local function tick(me: Object)
     end
     check_eruption(me)
     if s.erupting then
-        local hp = me.max_hp - bit32.band(me.damage, AMOUNT)
+        local hp = me.max_hp - damage_word.amount(me.damage_word)
         me.hp = int.u16(hp)
         s.last_hp = int.u32(hp)
     end
@@ -375,12 +377,12 @@ local function init(me: Object)
         me:destroy()
         return
     end
-    local damage = me.damage
-    if bit32.band(damage, DOUBLED) ~= 0 then
-        me.damage = bit32.bor(bit32.band(damage, FLAGS), bit32.band(damage, AMOUNT) * 2)
+    local w = me.damage_word
+    if damage_word.flags(w).double then
+        me.damage_word = damage_word.with_damage(w, bit32.bor(kept_flags(w), damage_word.amount(w) * 2))
     end
     me.max_hp = MAX_HP
-    local hp = MAX_HP - bit32.band(me.damage, AMOUNT)
+    local hp = MAX_HP - damage_word.amount(me.damage_word)
     me.hp = int.u16(hp)
     s.last_hp = int.u32(hp)
     me.timer = LIFETIME
@@ -392,7 +394,7 @@ local function init(me: Object)
     end
     me:setup_collision(collision.neutral_object, collision.everything, HIT_MOD)
     me.collision.self_damage = s.body_damage
-    me.collision.counter_byte = COUNTER
+    me.collision.counter, me.collision.cant_counter = COUNTER, false
     me.collision:set_region(nil)
     me.collision:set_hit_effect(sparks.breaking)
     me.collision:present()

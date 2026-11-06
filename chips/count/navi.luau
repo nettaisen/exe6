@@ -206,7 +206,7 @@ end
 -- bits), no hit parameter; its Z the flags too (the register left).
 local function drop_lance(me: Object, p: number)
     local s = me.state :: State
-    local flags = bit32.band(me.damage, 0xF000)
+    local flags = damage_word.flag_word(me.damage_word)
     lance.spawn(me, panels.x(p), panels.y(p), me.element, bit32.bor(s.lance_damage, flags), flags, LANCE)
 end
 

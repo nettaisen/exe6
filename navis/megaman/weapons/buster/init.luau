@@ -108,7 +108,7 @@ local THROW = common.throw(function(me: Object)
     local x, y = field.center(me.panel_x + me.facing, me.panel_y)
     flying_shot.launch(me, Vec3.new(x, y, THROW_Z), {
         variant = THROWN,
-        damage = common.damage_word(me),
+        damage = me.attack_word,
         obstacle = thrown.thrown_look,
         obstacle_anim = thrown.thrown_anim,
     })

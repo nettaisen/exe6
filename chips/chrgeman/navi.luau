@@ -40,10 +40,6 @@ local function init(me: Object)
     me:set_lifecycle("update")
 end
 
-local function damage_word(me: Object): number
-    return me.damage_word
-end
-
 -- `sub_80BB99C`: he appears; 3 ticks; on, or straight to leaving if his
 -- panel can't hold him.
 local function appear(me: Object)
@@ -73,7 +69,7 @@ local function cars(me: Object): number
             return n
         end
         -- r3 (0xFF << 24) becomes the car's Z.
-        car.spawn(me, x, y, me.element, { while_dimmed = true, hit_mod = { flinch = true, flash = true }, place = n, wait = CAR_WAIT }, damage_word(me), SPEED, 0xFF00_0000)
+        car.spawn(me, x, y, me.element, { while_dimmed = true, hit_mod = { flinch = true, flash = true }, place = n, wait = CAR_WAIT }, me.damage_word, SPEED, 0xFF00_0000)
         n += 1
     end
     return n

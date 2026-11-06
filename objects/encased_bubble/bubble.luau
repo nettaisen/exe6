@@ -26,7 +26,7 @@ local made = common.make {
     is = collision.neutral_body,
     hits = collision.everything,
     -- A push hit (hit modifier bits 0x3C).
-    pushes = 0x3C,
+    pushes = { forward_far = true, back_far = true, forward = true, back = true },
     debris = debris.kind,
     -- Effect 2 (bubbles) as it bursts, 0x14 (a puff) off solid ground.
     effects = { burst = effects.bubbles, puff = effects.puff },
