@@ -11,7 +11,7 @@ local chip: Chip = {
     codes = { "G", "S", "U", "*" },
     element = "null", family = "null", class = "standard",
     rarity = 2, mb = 42, damage = 240, hit_param = 158, lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     slot_in_limit = 1,
     dimming = traps.hook(traps.trap { set = trap.set }),
 }

@@ -86,7 +86,7 @@ local chips: { [string]: Chip } = {
         codes = { "B", "E", "T" },
         element = "aqua", family = "aqua", class = "standard",
         rarity = 0, mb = 30, damage = 60, hit_param = 30, lockout = 0,
-        flags = { "has_damage", "standard_library", "library" },
+        flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
@@ -96,7 +96,7 @@ local chips: { [string]: Chip } = {
         codes = { "C", "L", "V" },
         element = "aqua", family = "aqua", class = "standard",
         rarity = 1, mb = 38, damage = 80, hit_param = 30, lockout = 0,
-        flags = { "has_damage", "standard_library", "library" },
+        flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
@@ -106,7 +106,7 @@ local chips: { [string]: Chip } = {
         codes = { "G", "R", "S" },
         element = "aqua", family = "aqua", class = "standard",
         rarity = 2, mb = 46, damage = 100, hit_param = 30, lockout = 0,
-        flags = { "has_damage", "standard_library", "library" },
+        flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },

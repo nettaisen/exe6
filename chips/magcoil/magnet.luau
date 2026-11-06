@@ -23,12 +23,14 @@ local PULL_DOWN, PULL_UP = 0xE1, 0xD1
 -- Ticks between pulls, and the tick (second timer value) they come on.
 local CYCLE, PULL_AT = 0x0F, 0x0B
 
+local ENEMY_BODY: PanelFlags = { enemy_body = true }
+
 -- `sub_80D7EF6`: pull whoever stands in the three panels from (x, y)
 -- ahead with modifier `how`.
 local function pull(me: Object, x: number, y: number, how: number)
     local dir = me.facing
     for _ = 1, 3 do
-        if field.any(x, y, "enemy_body", me.alliance) then
+        if field.any(x, y, ENEMY_BODY, me.alliance) then
             battle.hitbox(me, {
                 panel_x = x,
                 panel_y = y,

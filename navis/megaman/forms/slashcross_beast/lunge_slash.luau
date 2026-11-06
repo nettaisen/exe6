@@ -12,7 +12,7 @@ local regions = require("@exelib/regions")
 local lunge_slash = {}
 
 -- What its hit struck that flashes: a body of either side.
-local BODY: { HitName } = { "own_body", "enemy_body" }
+local BODY: HitNames = { own_body = true, enemy_body = true }
 
 -- Its hit: a slash at navis, no spark.
 local HIT_MOD = 3

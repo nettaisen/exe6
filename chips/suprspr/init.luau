@@ -19,7 +19,7 @@ local chip: Chip = {
     damage = 150,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 1,
     program_advances = { { order = 16, code_run = { chip = widesht, count = 3 } } },
     action = shot.action { id = "suprspr/action", wave = WAVE, waves = 3 },

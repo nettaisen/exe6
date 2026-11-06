@@ -8,7 +8,7 @@ local chip: Chip = {
     codes = { "H", "L", "Q" },
     element = "null", family = "null", class = "standard",
     rarity = 0, mb = 37, damage = 200, hit_param = 30, lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = strike.action { blade = parts.blade, finds = "paralyzed", effect_palette = 7 },
 }

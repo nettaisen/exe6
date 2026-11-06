@@ -16,7 +16,7 @@ local chip: Chip = {
     damage = 100,
     hit_param = 130,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     slot_in_limit = 1,
     program_advances = {
         { order = 11, sequence = { django_chips.django, django_chips.django2, django_chips.django3 } },

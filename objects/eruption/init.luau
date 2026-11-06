@@ -23,7 +23,7 @@ local START, DAMAGE = 0x28, 0x32
 local LEFT_AT, RIGHT_AT = 0x8C, 0x46
 -- Other bodies of either side and neutral objects on a panel (the flags
 -- word's 0x03800000).
-local BODIES: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
+local BODIES: PanelFlags = { own_other_body = true, enemy_other_body = true, neutral = true }
 
 local function state(me: Object): State
     return me.state :: State

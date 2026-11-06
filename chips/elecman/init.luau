@@ -16,7 +16,7 @@ local elecman: Chip = {
     damage = 120,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "elecman/controller",
@@ -34,7 +34,7 @@ local elecman_ex: Chip = {
     damage = 140,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "elecman-ex/controller",
@@ -53,7 +53,7 @@ local elecman_sp: Chip = {
     damage = sp_chips.damage,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "elecman-sp/controller",

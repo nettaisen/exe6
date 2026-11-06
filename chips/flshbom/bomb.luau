@@ -31,7 +31,13 @@ local HIT_MOD, SET_HIT_MOD = 3, 3
 local FLIGHT_TICKS, GRAVITY = 0x28, -0x3000
 -- What in its hits ends it at once: bodies, other bodies and neutral
 -- objects (0x0F800000).
-local CRUSHED: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+local CRUSHED: HitNames = {
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
+}
 -- The flash: two ticks before the end, a palette flash (variant 1, 6
 -- ticks) and a sound; the hit covers the other side's area; strong
 -- variants hit with damage 0x14 and counter 0.
@@ -92,6 +98,8 @@ local function flash(me: Object, v: FlashBombVariant, status: Status, damage: nu
     })
 end
 
+local OWN_BODY: PanelFlags = { own_body = true }
+
 -- `sub_80D9B2C`: fly to the target panel; on the last tick, set down if
 -- the panel is solid and has no body of its own side.
 local function fly(me: Object, s: State)
@@ -119,7 +127,7 @@ local function fly(me: Object, s: State)
         return
     end
     -- (A body of its own side on the panel keeps it from setting down.)
-    if not field.solid(x, y) or field.any(x, y, "own_body", me.alliance) then
+    if not field.solid(x, y) or field.any(x, y, OWN_BODY, me.alliance) then
         battle.effect(me.pos, effects.splash)
         leave(me)
         return

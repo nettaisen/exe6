@@ -18,7 +18,7 @@ local chip: Chip = {
     damage = 200,
     hit_param = 168,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     slot_in_limit = 1,
     program_advances = { { order = 8, sequence = { meteors, atk, uninstll } } },
     navi = navi_chips.make {

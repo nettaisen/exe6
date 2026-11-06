@@ -41,8 +41,7 @@ local HIT: RidingHit = { is = collision.slash, hits = collision.hits_navis, hit_
 
 -- What he rolls onto (`dword_80F0DE4`): on the field and solid, with no
 -- neutral object.
-local ROLL_REQUIRE: { PanelFlag } = { "solid", "on_field" }
-local ROLL_FORBID = "neutral"
+local ROLL_SET: PanelCondition = { solid = true, on_field = true, neutral = false }
 
 -- His row along the bottom.
 local BOTTOM_ROW = 3
@@ -69,7 +68,7 @@ local ROUTE: { [number]: { [number]: Leg } } = {
 }
 
 -- An enemy navi's body, of his side (`off_80F0F98`, by side).
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 
 -- The leg the route reads: the parameter word's low byte.
 local function leg(s: State): number
@@ -78,7 +77,7 @@ end
 
 -- `sub_80F0F78`: an enemy navi in his column.
 local function enemy_in_column(me: Object): boolean
-    return #panels.in_column(me.panel_x, ENEMY_NAVI, nil, me.alliance) ~= 0
+    return #panels.in_column(me.panel_x, ENEMY_NAVI, me.alliance) ~= 0
 end
 
 -- `sub_80F0EC0`, at a panel's center: turn onto the next leg where this
@@ -175,7 +174,7 @@ local function roll(me: Object, s: State)
     local x, y = int.i32(old.x + v.x), int.i32(old.y + v.y)
     me.pos = Vec3.new(x, y, old.z)
     local px, py = link.panel_at(x, y, me.alliance)
-    if not field.check(px, py, ROLL_REQUIRE, ROLL_FORBID) then
+    if not field.check(px, py, ROLL_SET) then
         link.go(me, LAND)
         return
     end
@@ -225,7 +224,7 @@ local chip: Chip = {
     damage = { formula = "navi_level", base = 80, per_level = 20 },
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     -- `sub_80F0CB0` (`off_80F0CC4`).
     action = new.action {

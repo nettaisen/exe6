@@ -64,8 +64,8 @@ local GLOW_SLASH_ANIM = 0x10
 -- What stops him (`sub_80F0BD2`): on the next panel, another body of
 -- either side or a neutral object; after it, no field; or an enemy navi's
 -- body on the wide slash's panels around the next (`off_80F0C24`, by side).
-local BLOCKED: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
-local ENEMY_NAVI = "enemy_body"
+local BLOCKED: PanelFlags = { own_other_body = true, enemy_other_body = true, neutral = true }
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 
 -- The slash: a wide hit on the panel ahead (toward the enemy's side), elec
 -- spark, paralyzing; its effect (the wide sword's slash, 16 pixels up,
@@ -75,6 +75,8 @@ local SLASH_Z, SLASH_PALETTE = 0x10_0000, 3
 
 local SLASH_TICKS, RETURN_TICKS, RECOVER_TICKS = 0x14, 3, 0x1E
 
+local ON_FIELD: PanelFlags = { on_field = true }
+
 -- `sub_80F0BD2`: whether to stop and slash from here. The last check draws
 -- the RNG once, when it finds an enemy.
 local function stop_here(me: Object): boolean
@@ -82,10 +84,10 @@ local function stop_here(me: Object): boolean
     if field.any(x, y, BLOCKED) then
         return true
     end
-    if not field.any(x + me.facing, y, "on_field") then
+    if not field.any(x + me.facing, y, ON_FIELD) then
         return true
     end
-    local found = panels.random_in(x, y, ENEMY_NAVI, nil, regions.wide, panels.side_direction(me.alliance), me.alliance)
+    local found = panels.random_in(x, y, ENEMY_NAVI, regions.wide, panels.side_direction(me.alliance), me.alliance)
     return found ~= nil
 end
 
@@ -216,7 +218,7 @@ local chip: Chip = {
     damage = { formula = "navi_level", base = 40, per_level = 20 },
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 3,
     action = action,
 }

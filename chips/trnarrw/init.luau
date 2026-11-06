@@ -34,7 +34,7 @@ local BOW = attachment.look { sprite = bow_sprite, palette = 0, attach_point = 0
 local HAND = 0x17
 -- Panels an arrow passes over, of its side (`byte_80ECEAC`): on the field,
 -- and none of the other side's bodies or other bodies, nor a neutral one.
-local PASSES: PanelCondition = { require = "on_field", forbid = { "enemy_body", "enemy_other_body", "neutral" } }
+local PASSES: PanelCondition = { on_field = true, enemy_body = false, enemy_other_body = false, neutral = false }
 local SOUND_TWANG = asset.sound("twang")
 -- The arrow (the flying shot's row 2): aqua, sparking over its panel's
 -- center, with the twang as it sets off after its wait.
@@ -78,7 +78,7 @@ local function draw(me: Object, s: State)
         while true do
             x += dir
             delay -= 4
-            if not field.check(x, y, passes.require, passes.forbid, me.alliance) then
+            if not field.check(x, y, passes, me.alliance) then
                 break
             end
             arrow(me, x, y, bit32.band(delay, 0xFF))
@@ -161,7 +161,7 @@ local trnarrw1: Chip = {
     codes = { "A", "F", "K" },
     element = "aqua", family = "aqua", class = "standard",
     rarity = 0, mb = 30, damage = 30, hit_param = 30, lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.trnarrw1 },
@@ -171,7 +171,7 @@ local trnarrw2: Chip = {
     codes = { "G", "M", "Z" },
     element = "aqua", family = "aqua", class = "standard",
     rarity = 1, mb = 36, damage = 40, hit_param = 30, lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.trnarrw1 },
@@ -181,7 +181,7 @@ local trnarrw3: Chip = {
     codes = { "M", "S", "Y" },
     element = "aqua", family = "aqua", class = "standard",
     rarity = 2, mb = 42, damage = 50, hit_param = 30, lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.trnarrw1 },

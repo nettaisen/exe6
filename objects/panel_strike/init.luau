@@ -47,6 +47,8 @@ local function init(me: Object)
     me:set_lifecycle("update")
 end
 
+local CRACKED: PanelFlags = { cracked = true }
+
 -- `sub_80C5E84`: the highlight, then the burst and its hit (and a crack),
 -- or, where it wants a solid panel and there is none, nothing.
 local function wait(me: Object)
@@ -76,7 +78,7 @@ local function wait(me: Object)
     c:set_region(regions.single)
     if s.cracks then
         -- sub_8109794: crack it unless it is cracked already.
-        if not field.any(me.panel_x, me.panel_y, "cracked") then
+        if not field.any(me.panel_x, me.panel_y, CRACKED) then
             field.crack(me.panel_x, me.panel_y)
         end
     end

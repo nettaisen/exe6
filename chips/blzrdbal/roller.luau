@@ -11,18 +11,24 @@ local roller = {}
 roller.kind = common.make_kind {
     id = "blzrdbal/roller",
     self_type = new.collision {
-        flags = { "own_attack", "enemy_attack", "reaches_set_objects", "no_guard_spark", "reaches_float_shoe" },
+        flags = {
+            own_attack = true,
+            enemy_attack = true,
+            reaches_set_objects = true,
+            no_guard_spark = true,
+            reaches_float_shoe = true,
+        },
         row_offset = 0x2C0,
     },
     target = new.collision {
         flags = {
-            "own_object",
-            "enemy_object",
-            "own_body",
-            "enemy_body",
-            "own_other_body",
-            "enemy_other_body",
-            "neutral",
+            own_object = true,
+            enemy_object = true,
+            own_body = true,
+            enemy_body = true,
+            own_other_body = true,
+            enemy_other_body = true,
+            neutral = true,
         },
         row_offset = 0x248,
     },

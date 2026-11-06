@@ -227,7 +227,7 @@ local LOCKON_SEARCH = schema.record_type("lockon-search")
 -- navi's side (`byte_8026544`, by alliance): none of the other side's bodies and other bodies, nor a neutral object.
 lockon.search = new.record(LOCKON_SEARCH, {
     column_shifts = { -1, -2, -3, -4 },
-    clear_path = { forbid = { "enemy_body", "enemy_other_body", "neutral" } },
+    clear_path = { enemy_body = false, enemy_other_body = false, neutral = false },
 })
 
 -- `ho_8026554`: the panel `navi` attacks (x, y) from in lock-on `mode` (its own for no mode or a target off the

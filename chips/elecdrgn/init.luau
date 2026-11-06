@@ -11,7 +11,7 @@ local chip: Chip = {
     codes = { "A", "L", "V" },
     element = "elec", family = "elec", class = "standard",
     rarity = 2, mb = 40, damage = 150, hit_param = 30, lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     -- No Beast rush; its lock-on mode (rules/lockon).
     beast = { rush = false, lockon = lockon.cannon },

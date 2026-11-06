@@ -16,7 +16,7 @@ local slashman: Chip = {
     damage = 80,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "slashman/controller",
@@ -34,7 +34,7 @@ local slashmn_ex: Chip = {
     damage = 100,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "slashmn-ex/controller",
@@ -53,7 +53,7 @@ local slashmn_sp: Chip = {
     damage = sp_chips.damage,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "slashmn-sp/controller",

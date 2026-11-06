@@ -15,8 +15,8 @@ local chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
-    extra_flags = { "rush_cancels", "free_slot_in" },
+    flags = { dimming = true, standard_library = true, library = true },
+    extra_flags = { rush_cancels = true, free_slot_in = true },
     slot_in_limit = 3,
     dimming = invisible.hook(360),
 }

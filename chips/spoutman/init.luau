@@ -16,7 +16,7 @@ local spoutman: Chip = {
     damage = 50,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "spoutman/controller",
@@ -34,7 +34,7 @@ local spoutmn_ex: Chip = {
     damage = 60,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "spoutmn-ex/controller",
@@ -53,7 +53,7 @@ local spoutmn_sp: Chip = {
     damage = sp_chips.damage,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "spoutmn-sp/controller",

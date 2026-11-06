@@ -20,7 +20,7 @@ local chip: Chip = {
     rarity = 0, mb = 6, damage = 0, hit_param = 0, lockout = 0,
     slot_in_limit = 1,
     -- (The other side can't cut in on its dimming.)
-    traits = { "no_cut_in" },
+    traits = { no_cut_in = true },
     dimming = controller.hook(CRACK),
 }
 

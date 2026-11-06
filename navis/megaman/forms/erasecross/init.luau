@@ -24,7 +24,7 @@ local form: FormDef = {
     breaks_to = base,
     sprite = megaman_sprite,
     element = "null",
-    weakness = { "wind" },
+    weakness = { wind = true },
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
     palette = 13,
@@ -36,7 +36,7 @@ local form: FormDef = {
     chip_bonus = { family = "cursor", damage = 30, dimming_chips = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 4,
-    traits = { "erases" },
+    traits = { erases = true },
     -- The buster arm it raises (lib/buster).
     buster_arm = { anim = 4 },
     identity = new.identity {

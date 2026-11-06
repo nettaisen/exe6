@@ -13,7 +13,7 @@ local chip: Chip = {
     -- The version whose saves hold it (rules/folder).
     version = "gregar",
     rarity = 4, mb = 80, damage = 0, hit_param = 168, lockout = 0,
-    flags = { "dimming" },
+    flags = { dimming = true },
     slot_in_limit = 1,
     dimming = navi_boost.bug(charge),
 }

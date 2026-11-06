@@ -41,7 +41,7 @@ local chip: Chip = {
     damage = 350,
     hit_param = 10,
     lockout = 20,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 1,
     program_advances = {
         { order = 37, code_run = { chip = ironshl_chips.ironshl1, count = 3 } },

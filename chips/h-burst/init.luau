@@ -16,7 +16,7 @@ local chip: Chip = {
     damage = 60,
     hit_param = 5,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     beast = { lockon = lockon.cannon },
     slot_in_limit = 1,
     program_advances = {

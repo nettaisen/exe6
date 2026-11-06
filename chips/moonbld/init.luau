@@ -35,7 +35,7 @@ local chip: Chip = {
     damage = 130,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.moonbld },
     slot_in_limit = 3,
     -- (SlashCross's A-charge sends its ring as a sword wave.)

@@ -9,7 +9,7 @@ local regions = require("@exelib/regions")
 local colonel_effect_sprite = asset.sprite("colonel-effect")
 
 -- What it looks for (`byte_80B84E4`: an enemy navi's body).
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelFlags = { enemy_body = true }
 
 -- Its two effects (0x36, 0x37).
 local CROSS = {
@@ -65,7 +65,7 @@ local chip: Chip = {
     damage = 250,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "crossdiv/controller",

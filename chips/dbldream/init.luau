@@ -31,7 +31,7 @@ local chip: Chip = {
     codes = { "E", "L", "S", "*" },
     element = "null", family = "sword", class = "special",
     rarity = 0, mb = 8, damage = 80, hit_param = 30, lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 1,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.drksword },

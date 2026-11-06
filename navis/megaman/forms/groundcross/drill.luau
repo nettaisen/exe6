@@ -48,8 +48,8 @@ local AWAY = 0xB4_0000
 -- The panel it comes up in front of: one with the other side's navi
 -- (`off_8109784`, by side), or else the other side's first panel in the
 -- row (`byte_80EF0A4`, by side).
-local ENEMY = "enemy_body"
-local ENEMY_PANEL = "enemy_area"
+local ENEMY: PanelCondition = { enemy_body = true }
+local ENEMY_PANEL: PanelCondition = { enemy_area = true }
 
 -- The Beast Out lock-on mode it uses (the Beast claw's).
 local LOCKON = lockon.beast_claw
@@ -74,7 +74,7 @@ local function enemy_ahead(me: Object): number
     end
     local x = me.panel_x + me.facing
     while true do
-        if field.check(x, me.panel_y, ENEMY, nil, me.alliance) then
+        if field.check(x, me.panel_y, ENEMY, me.alliance) then
             return x
         end
         x += me.facing
@@ -121,7 +121,7 @@ local function burrow(me: Object, s: State)
         if me.alliance > 1 then
             error(string.format("side %d reads past byte_80EF0A4 (sub_80EF004)", me.alliance))
         end
-        x = panels.closest_in_row(bit32.bxor(me.alliance, 1), y, ENEMY_PANEL, nil, me.alliance)
+        x = panels.closest_in_row(bit32.bxor(me.alliance, 1), y, ENEMY_PANEL, me.alliance)
     end
     me.panel_x, me.panel_y = lockon.panel(me, x, y, LOCKON)
     me:set_coordinates_from_panel()

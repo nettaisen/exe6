@@ -92,6 +92,8 @@ local function armed(me: Object)
     me.collision:set_region(regions.single)
 end
 
+local OCCUPIED: PanelFlags = { occupied = true }
+
 -- `sub_80D94C2`: spent, it arms again once its panel is free (and the
 -- battle wasn't paused at its last update).
 local function spent(me: Object)
@@ -100,7 +102,7 @@ local function spent(me: Object)
     end
     me.collision:set_region(nil)
     -- (Its panel must be free of bodies and objects to arm again.)
-    if not field.any(me.panel_x, me.panel_y, "occupied") then
+    if not field.any(me.panel_x, me.panel_y, OCCUPIED) then
         me.action = ARMED
     end
 end

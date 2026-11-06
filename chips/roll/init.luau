@@ -15,7 +15,7 @@ local roll: Chip = {
     damage = 20,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     -- (AntiRecv springs on her heal; she brings her user back herself.)
     navi = navi_chips.make {
@@ -36,7 +36,7 @@ local roll2: Chip = {
     damage = 40,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     -- (AntiRecv springs on her heal; she brings her user back herself.)
     navi = navi_chips.make {
@@ -57,7 +57,7 @@ local roll3: Chip = {
     damage = 60,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     -- (AntiRecv springs on her heal; she brings her user back herself.)
     navi = navi_chips.make {

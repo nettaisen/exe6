@@ -107,7 +107,7 @@ local SPAWNER_ADDRESS = 0x080BD9A3
 -- What ProtoMan looks for (an enemy navi's body, `off_80BD63C`; Colonel's
 -- `off_80BDA68` is the same). A panel he lands on must be solid, with no
 -- body on it (`can_land`).
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 
 -- Where Colonel strikes when no enemy navi is in his row (`dword_80BDA70`),
 -- by side.
@@ -247,6 +247,8 @@ local function appear(me: Object)
     me.sprite.color_shader = (me.state :: State).gray * 0x421
 end
 
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
+
 -- The panel in front of an enemy navi at (x, y) will hold him: his
 -- user's or a free solid one. (After his first slash his user is gone
 -- from his first related slot, and the game reads the user's panel
@@ -258,7 +260,7 @@ local function can_land(me: Object, x: number, y: number): boolean
     if user and lx == user.panel_x and y == user.panel_y then
         return true
     end
-    return field.check(lx, y, "solid", "any_body")
+    return field.check(lx, y, SOLID_NOT_ANY_BODY)
 end
 
 -- `sub_80BD5A8`: the next enemy navi, from the last one's next row (or
@@ -270,7 +272,7 @@ local function search(me: Object)
         y = if s.fresh then 1 else y + 1
         while true do
             while y <= 3 do
-                if field.check(x, y, ENEMY_NAVI, nil, me.alliance) and can_land(me, x, y) then
+                if field.check(x, y, ENEMY_NAVI, me.alliance) and can_land(me, x, y) then
                     me.future_panel_x, me.future_panel_y = x, y
                     s.fresh = false
                     s.count += 1

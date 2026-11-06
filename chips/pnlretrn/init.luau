@@ -9,8 +9,8 @@ local chip: Chip = {
     codes = { "*" },
     element = "null", family = "null", class = "standard",
     rarity = 1, mb = 14, damage = 0, hit_param = 0, lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { dimming = true, standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 1,
     dimming = panel_chips.hook(panel_changer.change {
         panel = "normal",

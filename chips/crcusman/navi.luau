@@ -54,7 +54,7 @@ local IDENTITY = new.identity {
 local SPAWNER_ADDRESS = 0x080BA661
 
 -- An enemy navi's body by side (`off_80BA520`).
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelFlags = { enemy_body = true }
 
 -- His actions.
 local APPEAR, STAND, CROUCH, LEAP, CATCH, SHOW, BOW, MISS, RISE, NO_FOOTING =

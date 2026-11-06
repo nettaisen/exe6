@@ -31,7 +31,7 @@ local SOUND_WARNING = asset.sound("err-select-91")
 local SOUND_UP = asset.sound("hub")
 local SOUND_DOWN = asset.sound("lifesync")
 -- `byte_80E74C4`: the other side's player navi stands there.
-local ENEMY_NAVI = "enemy_navi"
+local ENEMY_NAVI: PanelFlags = { enemy_navi = true }
 -- The virus that LifeSync neither takes nor gives HP to: AI 13, all its
 -- versions (NameIDs 0x49 to 0x4E).
 local IMMUNE_AI = 13

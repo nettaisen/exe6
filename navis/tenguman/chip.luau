@@ -28,7 +28,7 @@ local BLOW_TICKS, RECOVER_TICKS = 0x1E, 0x14
 
 -- Where tornadoes rise, of his side (`byte_80F1B70`, by side): the other
 -- side's bodies and other bodies, and neutral objects.
-local TARGETS: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
+local TARGETS: PanelFlags = { enemy_body = true, enemy_other_body = true, neutral = true }
 
 -- What a tornado's spawn finds in r3: the address of `byte_80F1B70`, which
 -- its spawner just read, whose low half its Z keeps.
@@ -106,7 +106,7 @@ local chip: Chip = {
     damage = { formula = "navi_level", base = 10, per_level = 10 },
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     -- `sub_80F1A46` (`off_80F1A58`).
     action = new.action {

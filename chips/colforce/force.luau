@@ -14,8 +14,13 @@ local force = {}
 
 -- What a soldier's panel must be (`byte_80E955C`, by side): a solid panel
 -- of its own side's, with no other body or neutral object on it.
-local REQUIRE: { PanelFlag } = { "solid", "own_area" }
-local FORBID: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
+local SOLDIER_PANEL: PanelCondition = {
+    solid = true,
+    own_area = true,
+    own_other_body = false,
+    enemy_other_body = false,
+    neutral = false,
+}
 local LOOK_TICKS = 0x32
 local SOLDIER_DELAY = 0xA
 
@@ -34,7 +39,7 @@ local function look(me: Object): number
             if x < 1 or x > 6 then
                 return n
             end
-            if field.check(x, y, REQUIRE, FORBID, side) then
+            if field.check(x, y, SOLDIER_PANEL, side) then
                 soldier.spawn(me, x, y, me.element, SOLDIER_DELAY * n, damage)
                 n += 1
             end

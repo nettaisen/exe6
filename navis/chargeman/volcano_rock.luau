@@ -27,7 +27,13 @@ local FLIGHT_TICKS, GRAVITY = 0x2D, -0x4000
 
 -- What it bursts on, of its side (`byte_80D5EA0`, by side: the other side's
 -- objects, bodies and other bodies, neutral objects, and solid ground).
-local BURSTS_ON: { PanelFlag } = { "solid", "enemy_object", "enemy_body", "enemy_other_body", "neutral" }
+local BURSTS_ON: PanelFlags = {
+    solid = true,
+    enemy_object = true,
+    enemy_body = true,
+    enemy_other_body = true,
+    neutral = true,
+}
 
 -- Its burst's hit: a thrown attack at navis, fire spark, for 5 ticks.
 local HIT_TICKS, HIT_MOD = 5, 3

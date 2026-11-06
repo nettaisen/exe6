@@ -48,7 +48,7 @@ local STEPS = { [0] = { 1, -1 }, { 1, 0 }, { 1, 1 } }
 local AIM_TICKS, SLASH_TICKS = 0x168, 0x3C
 
 -- Panel flags he needs to stay.
-local CAN_STAND: { PanelFlag } = { "solid", "on_field" }
+local CAN_STAND: PanelCondition = { solid = true, on_field = true }
 
 -- His actions.
 local APPEAR, STAND, AIM, RAISE, SLASH, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14

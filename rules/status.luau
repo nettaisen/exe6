@@ -93,7 +93,10 @@ local status = {
         -- while the battle is paused; the custom screen's while the side's screen is up (`sub_80102AC`: the status's
         -- bits 5, `byte_80102F8`).
         hp_drain = { periods = { 0, 40, 35, 30, 25, 20, 15, 10 }, stops_while_paused = true },
-        custom_drain = { periods = { 0, 40, 30, 20, 10, 5, 3, 2 }, status = { "selecting", "custom_screen" } },
+        custom_drain = {
+            periods = { 0, 40, 30, 20, 10, 5, 3, 2 },
+            status = { selecting = true, custom_screen = true },
+        },
         form_tick = true,
         form_keeps_back_special = false,
         -- The mercy flash hides the navi while its timer's bit 1 is set (`sub_8016934`).
@@ -120,8 +123,18 @@ local status = {
         anti_traps = {
             damage_min = 10,
             armed_swallows_below = true,
-            sword_spares = { "guard_spark" },
-            drops_requests = { "flash", "flinch", "slide", "drag", "paralyze", "confuse", "blind", "freeze", "bubble" },
+            sword_spares = { guard_spark = true },
+            drops_requests = {
+                flash = true,
+                flinch = true,
+                slide = true,
+                drag = true,
+                paralyze = true,
+                confuse = true,
+                blind = true,
+                freeze = true,
+                bubble = true,
+            },
         },
         -- A chip-destroying hit (hit flag 0x10: `sub_801A2CC`) takes a player's next chip alone: the hand's cursor steps
         -- past it. (A chip request pending then uses the chip after it; with none left EXE6's uses chip 0xFFFF's record,

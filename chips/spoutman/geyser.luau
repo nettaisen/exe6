@@ -34,7 +34,7 @@ local OWNER_ACTION = 0xB
 
 -- What stops the search for its column, of its side (`byte_80C6F48`): any
 -- of the other side's bodies and other bodies, or a neutral object.
-local STOPS: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
+local STOPS: PanelFlags = { enemy_body = true, enemy_other_body = true, neutral = true }
 
 -- (Its marks act while dimmed as it does: `byte_80C7028`, 1 for the navi
 -- chip's Param1 alone.)

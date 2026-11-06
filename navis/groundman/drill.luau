@@ -39,7 +39,7 @@ local HEIGHT, SPEED, REACH = 0x14, 0x8_0000, 2 * 0x28_0000
 
 -- What stops it when hit (`byte_80DDEEC`, by side): an enemy's body or
 -- other body, or a neutral object.
-local STOPS: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
+local STOPS: HitNames = { enemy_body = true, enemy_other_body = true, neutral = true }
 
 local HIT_MOD = 1
 -- The drilling: 30 ticks, a hit at 20 and at 10 left.

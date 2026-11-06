@@ -58,6 +58,8 @@ local function in_front(actor: Object): (number, number)
     return actor.panel_x + actor.facing * step, actor.panel_y
 end
 
+local ANY_BODY: PanelFlags = { any_body = true }
+
 -- `sub_80C18B0`: of the other side's actors, those with no body on the
 -- panel in front of them; of those, the ones at least two columns ahead
 -- of the user (the controller's column), the nearest kept; of those, the
@@ -72,7 +74,7 @@ local function target(me: Object): (number?, number?)
     for i = #actors, 1, -1 do
         local a = actors[i]
         local x, y = in_front(a)
-        if not field.any(x, y, "any_body") then
+        if not field.any(x, y, ANY_BODY) then
             table.insert(open, a)
         end
     end

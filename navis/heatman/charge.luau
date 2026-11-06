@@ -27,7 +27,7 @@ local FIRE = 1
 local FLAME: HeatFlame = { while_dimmed = false, ticks = 0x1E, is = collision.attack }
 
 -- Where a flame can burn: a panel of the field with a floor.
-local FLOOR: { PanelFlag } = { "solid", "on_field" }
+local FLOOR: PanelCondition = { solid = true, on_field = true }
 
 -- `sub_80121DC`: 20 damage and 20 more per point of buster Attack (up to
 -- 5).

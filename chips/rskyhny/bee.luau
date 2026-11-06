@@ -37,20 +37,20 @@ local TURNS = 2
 -- Collision results: something that ends it (attacks, objects, other bodies
 -- and neutral objects, of either side), and a body it stays on (either
 -- side's) (`dword_80D34B0`, `byte_80D34B4`).
-local ENDS_IT: { HitName } = {
-    "own_attack",
-    "enemy_attack",
-    "own_object",
-    "enemy_object",
-    "own_other_body",
-    "enemy_other_body",
-    "neutral",
+local ENDS_IT: HitNames = {
+    own_attack = true,
+    enemy_attack = true,
+    own_object = true,
+    enemy_object = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
 }
-local BODIES: { HitName } = { "own_body", "enemy_body" }
+local BODIES: HitNames = { own_body = true, enemy_body = true }
 -- A body of the other side on a panel, of its own side (`off_80D33F4`).
-local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY: PanelCondition = { enemy_body = true }
 -- The other side's navi on a panel, of its own side (`byte_80E74C4`).
-local ENEMY_NAVI = "enemy_navi"
+local ENEMY_NAVI: PanelFlags = { enemy_navi = true }
 -- Stings, and the ticks between them.
 local STINGS, STING_TICKS = 5, 5
 -- Its puff, 16 pixels up, when it can't start.
@@ -82,7 +82,7 @@ local function nearest_in_columns(me: Object, x: number, step: number): (number?
     while true do
         local rows = {}
         for y = 1, 3 do
-            if field.check(x, y, ENEMY_BODY, nil, me.alliance) then
+            if field.check(x, y, ENEMY_BODY, me.alliance) then
                 table.insert(rows, y)
             end
         end

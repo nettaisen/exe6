@@ -69,11 +69,29 @@ local LANCE: CountLance = { while_dimmed = true, warn_ticks = 0 }
 -- 0x0F): an enemy's body on a solid panel of the other side's area, then
 -- the rest of that area's solid panels (two tables of conditions by side),
 -- none cracked nor of a type of its own.
-local PLAIN: { PanelFlag } = { "cracked", "poison", "road", "grass", "ice", "volcano", "holy" }
-local ENEMY_PANELS: PanelCondition = { require = { "solid", "enemy_body", "enemy_area" }, forbid = PLAIN }
+local ENEMY_PANELS: PanelCondition = {
+    solid = true,
+    enemy_body = true,
+    enemy_area = true,
+    cracked = false,
+    poison = false,
+    road = false,
+    grass = false,
+    ice = false,
+    volcano = false,
+    holy = false,
+}
 local OTHER_PANELS: PanelCondition = {
-    require = { "solid", "enemy_area" },
-    forbid = { "cracked", "poison", "road", "grass", "ice", "volcano", "holy", "enemy_body" },
+    solid = true,
+    enemy_area = true,
+    cracked = false,
+    poison = false,
+    road = false,
+    grass = false,
+    ice = false,
+    volcano = false,
+    holy = false,
+    enemy_body = false,
 }
 local MAX_LANCES = 3
 
@@ -182,11 +200,11 @@ local function search(me: Object): { number }
     local at = MIDDLE[me.alliance]
     local dir = panels.side_direction(me.alliance)
     local first = ENEMY_PANELS
-    local found = panels.region(at[1], at[2], regions.square, dir, first.require, first.forbid, me.alliance)
+    local found = panels.region(at[1], at[2], regions.square, dir, first, me.alliance)
     local n = #found
     if n < MAX_LANCES then
         local second = OTHER_PANELS
-        local rest = panels.region(at[1], at[2], regions.square, dir, second.require, second.forbid, me.alliance)
+        local rest = panels.region(at[1], at[2], regions.square, dir, second, me.alliance)
         if #rest > 0 then
             panels.shuffle(rest, #rest, #rest)
             for _, p in rest do

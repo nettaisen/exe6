@@ -41,10 +41,10 @@ local chip: Chip = {
     damage = 120,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.widesht },
     slot_in_limit = 3,
-    traits = { "element_sword" },
+    traits = { element_sword = true },
     action = slash.action {
         id = "elecswrd/action",
         blade = ELEC_BLADE,

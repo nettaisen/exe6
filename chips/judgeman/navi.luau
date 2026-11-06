@@ -50,7 +50,7 @@ local SPAWNER_ADDRESS = 0x080BA921
 local COLUMNS = { [0] = { 5, 4, 3, 2 }, [1] = { 2, 3, 4, 5 } }
 
 -- A panel for a book: solid, nothing on it, not reserved.
-local BOOK_FLOOR, BOOK_FORBID = "solid", "occupied"
+local BOOK_FLOOR: PanelCondition = { solid = true, occupied = false }
 
 -- The lash: paralyzing (status 0x11).
 local LASH_STATUS = statuses.paralyze_120
@@ -136,7 +136,7 @@ local function book_panels(me: Object): number
     local n = 0
     for _, x in COLUMNS[me.alliance] do
         for y = 1, 3 do
-            if taken(x, y, me.alliance) and field.check(x, y, BOOK_FLOOR, BOOK_FORBID) then
+            if taken(x, y, me.alliance) and field.check(x, y, BOOK_FLOOR) then
                 s.book_panels[n + 1] = panels.pack(x, y)
                 n += 1
             end

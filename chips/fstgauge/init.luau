@@ -8,7 +8,7 @@ local chip: Chip = {
     codes = { "E", "M", "R", "*" },
     element = "null", family = "null", class = "standard",
     rarity = 2, mb = 48, damage = 0, hit_param = 0, lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 1,
     dimming = gauge_speed.fast,
 }

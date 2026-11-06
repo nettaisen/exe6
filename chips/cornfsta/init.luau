@@ -16,7 +16,7 @@ local chip: Chip = {
     damage = 40,
     hit_param = 10,
     lockout = 20,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     slot_in_limit = 1,
     program_advances = {
         { order = 34, code_run = { chip = cornsht_chips.cornsht1, count = 3 } },

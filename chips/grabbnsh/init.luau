@@ -15,7 +15,7 @@ local grabbnsh: Chip = {
     damage = 20,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 1,
     dimming = controller.hook,
 }
@@ -30,7 +30,7 @@ local grabrvng: Chip = {
     damage = 40,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 1,
     dimming = controller.hook,
 }

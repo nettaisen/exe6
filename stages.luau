@@ -20,7 +20,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-2"] = {
@@ -33,7 +33,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-3"] = {
@@ -46,7 +46,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -64,7 +64,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -82,7 +82,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -100,7 +100,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -118,7 +118,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -136,7 +136,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -154,7 +154,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-10"] = {
@@ -167,7 +167,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-11"] = {
@@ -180,7 +180,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-12"] = {
@@ -193,7 +193,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-13"] = {
@@ -206,7 +206,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-14"] = {
@@ -219,7 +219,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-15"] = {
@@ -232,7 +232,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-16"] = {
@@ -245,7 +245,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-17"] = {
@@ -258,7 +258,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-18"] = {
@@ -271,7 +271,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-19"] = {
@@ -284,7 +284,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-20"] = {
@@ -297,7 +297,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-21"] = {
@@ -310,7 +310,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-22"] = {
@@ -323,7 +323,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-23"] = {
@@ -336,7 +336,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -354,7 +354,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -372,7 +372,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -390,7 +390,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -408,7 +408,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -426,7 +426,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -444,7 +444,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-30"] = {
@@ -457,7 +457,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-31"] = {
@@ -470,7 +470,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-32"] = {
@@ -483,7 +483,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-33"] = {
@@ -496,7 +496,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-34"] = {
@@ -509,7 +509,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-35"] = {
@@ -522,7 +522,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-36"] = {
@@ -535,7 +535,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-37"] = {
@@ -548,7 +548,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-38"] = {
@@ -561,7 +561,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-39"] = {
@@ -574,7 +574,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-40"] = {
@@ -587,7 +587,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-41"] = {
@@ -600,7 +600,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -618,7 +618,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -636,7 +636,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -654,7 +654,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -672,7 +672,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -690,7 +690,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -708,7 +708,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-48"] = {
@@ -721,7 +721,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-49"] = {
@@ -734,7 +734,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-50"] = {
@@ -747,7 +747,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-51"] = {
@@ -760,7 +760,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-52"] = {
@@ -773,7 +773,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-53"] = {
@@ -786,7 +786,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-54"] = {
@@ -799,7 +799,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-55"] = {
@@ -812,7 +812,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-56"] = {
@@ -825,7 +825,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-57"] = {
@@ -838,7 +838,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-58"] = {
@@ -851,7 +851,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-59"] = {
@@ -864,7 +864,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-60"] = {
@@ -877,7 +877,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-61"] = {
@@ -890,7 +890,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-62"] = {
@@ -903,7 +903,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-63"] = {
@@ -916,7 +916,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-64"] = {
@@ -929,7 +929,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-65"] = {
@@ -942,7 +942,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-66"] = {
@@ -955,7 +955,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-67"] = {
@@ -968,7 +968,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-68"] = {
@@ -981,7 +981,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-69"] = {
@@ -994,7 +994,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-70"] = {
@@ -1007,7 +1007,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-71"] = {
@@ -1020,7 +1020,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-72"] = {
@@ -1033,7 +1033,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-73"] = {
@@ -1042,7 +1042,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-74"] = {
@@ -1051,7 +1051,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-75"] = {
@@ -1064,7 +1064,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-76"] = {
@@ -1077,7 +1077,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-77"] = {
@@ -1090,7 +1090,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-78"] = {
@@ -1103,7 +1103,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-79"] = {
@@ -1116,7 +1116,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-80"] = {
@@ -1129,7 +1129,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-81"] = {
@@ -1138,7 +1138,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -1152,7 +1152,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -1166,7 +1166,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -1180,7 +1180,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -1198,7 +1198,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -1216,7 +1216,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -1234,7 +1234,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-88"] = {
@@ -1247,7 +1247,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-89"] = {
@@ -1260,7 +1260,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-90"] = {
@@ -1273,7 +1273,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-91"] = {
@@ -1286,7 +1286,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-92"] = {
@@ -1299,7 +1299,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-93"] = {
@@ -1312,7 +1312,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -1330,7 +1330,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -1348,7 +1348,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -1366,7 +1366,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder" },
+        effects = { full_hp = true, link = true, shuffled_folder = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -1384,7 +1384,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-98"] = {
@@ -1397,7 +1397,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-99"] = {
@@ -1410,7 +1410,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -1428,7 +1428,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -1446,7 +1446,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -1464,7 +1464,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -1482,7 +1482,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -1500,7 +1500,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -1518,7 +1518,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-106"] = {
@@ -1531,7 +1531,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-107"] = {
@@ -1544,7 +1544,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-108"] = {
@@ -1557,7 +1557,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-109"] = {
@@ -1570,7 +1570,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-110"] = {
@@ -1583,7 +1583,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-111"] = {
@@ -1596,7 +1596,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-112"] = {
@@ -1609,7 +1609,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-113"] = {
@@ -1622,7 +1622,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-114"] = {
@@ -1635,7 +1635,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-115"] = {
@@ -1648,7 +1648,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-116"] = {
@@ -1661,7 +1661,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-117"] = {
@@ -1674,7 +1674,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-118"] = {
@@ -1687,7 +1687,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-119"] = {
@@ -1700,7 +1700,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -1718,7 +1718,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -1736,7 +1736,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -1754,7 +1754,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -1772,7 +1772,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -1790,7 +1790,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -1808,7 +1808,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-126"] = {
@@ -1821,7 +1821,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-127"] = {
@@ -1834,7 +1834,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-128"] = {
@@ -1847,7 +1847,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-129"] = {
@@ -1860,7 +1860,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-130"] = {
@@ -1873,7 +1873,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-131"] = {
@@ -1886,7 +1886,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-132"] = {
@@ -1899,7 +1899,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-133"] = {
@@ -1912,7 +1912,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-134"] = {
@@ -1925,7 +1925,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-135"] = {
@@ -1938,7 +1938,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-136"] = {
@@ -1951,7 +1951,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-137"] = {
@@ -1964,7 +1964,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -1982,7 +1982,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -2000,7 +2000,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -2018,7 +2018,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -2036,7 +2036,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 1, y = 2 },
             { place = "navi", side = 1, x = 6, y = 2 },
@@ -2054,7 +2054,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 6, y = 2 },
             { place = "navi", side = 0, x = 1, y = 2 },
@@ -2072,7 +2072,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-144"] = {
@@ -2085,7 +2085,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-145"] = {
@@ -2098,7 +2098,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-146"] = {
@@ -2111,7 +2111,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-147"] = {
@@ -2124,7 +2124,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-148"] = {
@@ -2137,7 +2137,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-149"] = {
@@ -2150,7 +2150,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-150"] = {
@@ -2163,7 +2163,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-151"] = {
@@ -2176,7 +2176,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-152"] = {
@@ -2189,7 +2189,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-153"] = {
@@ -2202,7 +2202,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-154"] = {
@@ -2215,7 +2215,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-155"] = {
@@ -2228,7 +2228,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-156"] = {
@@ -2241,7 +2241,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-157"] = {
@@ -2254,7 +2254,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-158"] = {
@@ -2267,7 +2267,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-159"] = {
@@ -2280,7 +2280,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-160"] = {
@@ -2293,7 +2293,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-161"] = {
@@ -2306,7 +2306,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-162"] = {
@@ -2319,7 +2319,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-163"] = {
@@ -2332,7 +2332,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-164"] = {
@@ -2345,7 +2345,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-165"] = {
@@ -2358,7 +2358,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-166"] = {
@@ -2371,7 +2371,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-167"] = {
@@ -2384,7 +2384,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-168"] = {
@@ -2397,7 +2397,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-169"] = {
@@ -2406,7 +2406,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-170"] = {
@@ -2415,7 +2415,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-171"] = {
@@ -2428,7 +2428,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-172"] = {
@@ -2441,7 +2441,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-173"] = {
@@ -2454,7 +2454,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-174"] = {
@@ -2467,7 +2467,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-175"] = {
@@ -2480,7 +2480,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
     },
     ["netbattle-176"] = {
@@ -2493,7 +2493,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
     },
     ["netbattle-177"] = {
@@ -2502,7 +2502,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -2516,7 +2516,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -2530,7 +2530,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -2544,7 +2544,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -2562,7 +2562,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -2580,7 +2580,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -2598,7 +2598,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-184"] = {
@@ -2611,7 +2611,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-185"] = {
@@ -2624,7 +2624,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-186"] = {
@@ -2637,7 +2637,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-187"] = {
@@ -2650,7 +2650,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
     },
     ["netbattle-188"] = {
@@ -2663,7 +2663,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
     },
     ["netbattle-189"] = {
@@ -2676,7 +2676,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -2694,7 +2694,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },
@@ -2712,7 +2712,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 0, x = 2, y = 2 },
             { place = "navi", side = 1, x = 5, y = 2 },
@@ -2730,7 +2730,7 @@ local stages: { [string]: StageDef } = {
         music = asset.sound("virus-battle"),
         mode = 0,
         battle_number = 0,
-        effects = { "full_hp", "link", "shuffled_folder", "karma_changes", "random" },
+        effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
             { place = "navi", side = 1, x = 5, y = 2 },
             { place = "navi", side = 0, x = 2, y = 2 },

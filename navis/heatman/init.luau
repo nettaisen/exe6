@@ -79,7 +79,7 @@ local navi: NaviDef = {
                 behind = { { 0x15, 0x17 }, { 0x22, 0x23 }, { 0x3B, 0x4F }, { 0x64, 0x8B }, { 0x9F, 0x9F } },
             },
         },
-        overlay_hooks = { "death", "refresh", "flinch" },
+        overlay_hooks = { death = true, refresh = true, flinch = true },
         attach_points = {
             { 0, 8 },
             { 0, 8 },

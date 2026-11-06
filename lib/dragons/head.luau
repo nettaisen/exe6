@@ -35,16 +35,16 @@ export type State = {
 -- Collision: what it is and hits.
 local HIT = { is = collision.attack, hits = collision.hits_navis }
 -- What ends its hits (`dword_80DE540`).
-local BLOCKED: { HitName } = {
-    "own_attack",
-    "enemy_attack",
-    "own_object",
-    "enemy_object",
-    "own_body",
-    "enemy_body",
-    "own_other_body",
-    "enemy_other_body",
-    "neutral",
+local BLOCKED: HitNames = {
+    own_attack = true,
+    enemy_attack = true,
+    own_object = true,
+    enemy_object = true,
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
 }
 -- Its swimming animations: the first, and which way they run, by leg
 -- (`dword_80DE608`, `byte_80DE610`).

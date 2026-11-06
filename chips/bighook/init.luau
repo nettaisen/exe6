@@ -37,7 +37,7 @@ local chip: Chip = {
     damage = 240,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage" },
+    flags = { dimming = true, has_damage = true },
     slot_in_limit = 1,
     -- (Its user stays on the field while the hook strikes.)
     navi = navi_chips.make {

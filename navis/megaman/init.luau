@@ -84,7 +84,7 @@ local navi: NaviDef = {
         ice = "medium",
         -- He wears what his form does: his death hook takes it off, and an animation
         -- change, a flinch and a drag restart it.
-        overlay_hooks = { "death", "refresh", "flinch", "drag" },
+        overlay_hooks = { death = true, refresh = true, flinch = true, drag = true },
         attach_points = {
             { 2, 0 },
             { 2, 0 },

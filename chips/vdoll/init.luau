@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 10,
     hit_param = 10,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     slot_in_limit = 3,
     action = throw.action { id = "vdoll/action", held = bomb.held, thrower = doll.thrower() },
 }

@@ -30,7 +30,13 @@ local FALL_TICKS = 0x11
 
 -- What it bursts on, of its side (`byte_80D6D08`, by side): a panel with
 -- any of these.
-local TARGETS: { PanelFlag } = { "solid", "enemy_object", "enemy_body", "enemy_other_body", "neutral" }
+local TARGETS: PanelFlags = {
+    solid = true,
+    enemy_object = true,
+    enemy_body = true,
+    enemy_other_body = true,
+    neutral = true,
+}
 
 -- `sub_80D6C04`: high above, behind its panel.
 local function init(me: Object)

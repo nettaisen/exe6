@@ -20,7 +20,7 @@ local chip: Chip = {
     damage = 100,
     hit_param = 5,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 1,
     program_advances = { { order = 26, code_run = { chip = airhocky, count = 3 } } },
     action = flick.action { id = "pithocky/action", puck = PUCK, down = true },

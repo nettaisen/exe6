@@ -87,8 +87,14 @@ local SPAWNER_ADDRESS = 0x080BE3E9
 -- An enemy navi's body (`off_80BE4C8`); a panel Django or MegaMan's target
 -- search stands them on (solid, with no body or object); the panel MegaMan
 -- closes in on (solid, with no body but his own side's navi's).
-local ENEMY_NAVI = "enemy_body"
-local CLOSE_IN_FORBID: { PanelFlag } = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+local ENEMY_NAVI: PanelFlags = { enemy_body = true }
+local CLOSE_IN: PanelCondition = {
+    solid = true,
+    enemy_body = false,
+    own_other_body = false,
+    enemy_other_body = false,
+    neutral = false,
+}
 
 -- MegaMan's actions (`off_80BDD24`); Django's (`off_80BDD34`).
 local APPEAR, WAIT, SHOOT, SLASHES = 0x0, 0x4, 0x8, 0xC
@@ -136,6 +142,8 @@ local function gone(me: Object)
     me:set_lifecycle("destroy")
 end
 
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
+
 -- `sub_80BE434`: along MegaMan's row ahead, the first enemy navi is the
 -- target; Django stands two panels beyond it, else on the far column of
 -- the row, else nowhere (0, 0). Off the field first: no target (0, 0).
@@ -152,7 +160,7 @@ local function search(me: Object): (number, number, number, number)
         if field.any(x, y, ENEMY_NAVI, me.alliance) then
             tx, ty = x, y
             local dx = x + 2 * front
-            if field.check(dx, y, "solid", "any_body") then
+            if field.check(dx, y, SOLID_NOT_ANY_BODY) then
                 return dx, y, tx, ty
             end
             break
@@ -160,7 +168,7 @@ local function search(me: Object): (number, number, number, number)
         x += front
     end
     local far = if front < 0 then 1 else 6
-    if field.check(far, y, "solid", "any_body") then
+    if field.check(far, y, SOLID_NOT_ANY_BODY) then
         return far, y, tx, ty
     end
     return 0, 0, tx, ty
@@ -339,7 +347,7 @@ local function close_in(me: Object)
     if me.phase_init == 0 then
         me.anim = 3
         local x, y = me.future_panel_x - me.facing, me.future_panel_y
-        if field.check(x, y, "solid", CLOSE_IN_FORBID, me.alliance) then
+        if field.check(x, y, CLOSE_IN, me.alliance) then
             me.panel_x, me.panel_y = x, y
             me:set_coordinates_from_panel()
             s.in_position = true
@@ -514,7 +522,7 @@ local function django_close_in(me: Object)
     if me.phase_init == 0 then
         me.anim = 1
         local x, y = me.future_panel_x - me.facing, me.future_panel_y
-        if not field.check(x, y, "solid", "any_body") then
+        if not field.check(x, y, SOLID_NOT_ANY_BODY) then
             gone(me)
             return
         end

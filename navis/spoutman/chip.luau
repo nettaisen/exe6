@@ -28,7 +28,7 @@ local WIND_UP_TICKS, READY_AT = 0x23, 0x1E
 -- Where he jumps: three panels ahead, solid ground with no body, object,
 -- hole or reservation on it (`dword_80F168C`).
 local JUMP_PANELS = 3
-local JUMP_REQUIRE, JUMP_FORBID = "solid", "occupied"
+local JUMP_SET: PanelCondition = { solid = true, occupied = false }
 
 -- The jump takes 2 ticks; recovering without one 2 and 8.
 local JUMP_TICKS, STAY_TICKS, STAY_RECOVER_TICKS = 2, 2, 8
@@ -63,7 +63,7 @@ end
 local function jump(me: Object, s: State)
     if me:can_move() then
         local x, y = me.panel_x + me.facing * JUMP_PANELS, me.panel_y
-        if field.check(x, y, JUMP_REQUIRE, JUMP_FORBID) then
+        if field.check(x, y, JUMP_SET) then
             s.target_x, s.target_y = x, y
             me:reserve_panel(x, y)
             me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
@@ -171,7 +171,7 @@ local chip: Chip = {
     damage = { formula = "navi_level", base = 20, per_level = 10 },
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     -- `sub_80F15CE` (`off_80F15E0`).
     action = new.action {

@@ -23,7 +23,13 @@ local OPEN_STEPS, CLOSE_STEPS = 24, 19
 local OPEN, WAIT, CLOSE = 0, 4, 8
 
 -- What holds its navi still (and the hole's sprite with it).
-local HELD: { StatusFlag } = { "bubbled", "drag", "frozen", "paralyzed", "flinching" }
+local HELD: { [StatusFlag]: boolean } = {
+    bubbled = true,
+    drag = true,
+    frozen = true,
+    paralyzed = true,
+    flinching = true,
+}
 
 -- `sub_80BC9BE`: close `h`, if there is one and it isn't closing.
 function hole.close(h: Object?)
@@ -41,8 +47,8 @@ local function step(me: Object): boolean
         return false
     end
     local navi = me.related1 :: Object
-    for _, flag in HELD do
-        if (navi.status :: any)[flag] then
+    for flag, on in HELD do
+        if on and (navi.status :: any)[flag] then
             return false
         end
     end

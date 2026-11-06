@@ -16,7 +16,7 @@ local chip: Chip = {
     damage = 150,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     dimming = controller.hook(controller.variant { period = 2, shots = 4, palette = 0, hit = collision.thrown }),
 }

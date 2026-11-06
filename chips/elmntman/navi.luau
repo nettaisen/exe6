@@ -78,7 +78,7 @@ local FIRE, AQUA, ELEC, WOOD = 0, 1, 2, 3
 local ICE_TICKS = 0x1E
 
 -- The panels Fire aims at, by side (`off_80BAE58`: an enemy navi's body).
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 
 -- `sub_80BAAB0`: on his panel, on the ground, with his parts.
 local function init(me: Object)
@@ -218,7 +218,7 @@ local function fire(me: Object)
     if me.phase_init == 0 then
         me.phase_init = 4
         -- (In its side's order: docs/engine/side-symmetry.md.)
-        local found = panels.filtered_except(me, ENEMY_NAVI, nil, me.alliance, me.alliance)
+        local found = panels.filtered_except(me, ENEMY_NAVI, me.alliance, me.alliance)
         if #found == 0 then
             me:set_action(0x14)
             return

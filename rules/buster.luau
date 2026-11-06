@@ -11,5 +11,5 @@ return {
         { 2, 4, 6, 8, 10, 12 },
         { 2, 3, 4, 5, 6, 7 },
     },
-    empty_hand = { null_family = false, fire = false, flags = { "damage_shown_variable", "dark" } },
+    empty_hand = { null_family = false, fire = false, flags = { damage_shown_variable = true, dark = true } },
 }

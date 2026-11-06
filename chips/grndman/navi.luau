@@ -43,13 +43,13 @@ local BACK_SPEED, DRILL_SPEED = 0x8000, 0x8_0000
 
 -- A panel his drill goes on through, of his side (`byte_80BBD50`: solid,
 -- and no body or object of the other side's, nor a neutral one).
-local DRILLABLE: PanelCondition = { require = "solid", forbid = { "enemy_body", "enemy_other_body", "neutral" } }
+local DRILLABLE: PanelCondition = { solid = true, enemy_body = false, enemy_other_body = false, neutral = false }
 
 -- Where rocks fall, of his side: first choice (`off_80BBEE0`: an enemy body
 -- on the other side's area) and second (`byte_80BBEF4`: the other side's
 -- area).
-local ROCK_TARGETS: { PanelFlag } = { "enemy_body", "enemy_area" }
-local ROCK_FALLBACK = "enemy_area"
+local ROCK_TARGETS: PanelCondition = { enemy_body = true, enemy_area = true }
+local ROCK_FALLBACK: PanelCondition = { enemy_area = true }
 
 -- His rocks: 10 ticks' warning, falling while dimmed, cracking the panel.
 local ROCK: GroundRockDrop = { warning = 0x0A, while_dimmed = true, cracks = true, silent = false }
@@ -160,7 +160,7 @@ local function dig(me: Object)
     if me.panel_x ~= old then
         hit(me)
     end
-    if not field.check(me.panel_x, me.panel_y, DRILLABLE.require, DRILLABLE.forbid, me.alliance) then
+    if not field.check(me.panel_x, me.panel_y, DRILLABLE, me.alliance) then
         me:set_action(LEAVE)
         return
     end
@@ -178,9 +178,9 @@ local function drop_rock(me: Object)
     local s = me.state :: State
     local x, y = me.panel_x, me.panel_y
     me.panel_x, me.panel_y = s.rock_x, s.rock_y
-    local found = panels.filtered_except(me, ROCK_TARGETS, nil, me.alliance)
+    local found = panels.filtered_except(me, ROCK_TARGETS, me.alliance)
     if #found == 0 then
-        found = panels.filtered_except(me, ROCK_FALLBACK, nil, me.alliance)
+        found = panels.filtered_except(me, ROCK_FALLBACK, me.alliance)
     end
     if #found > 0 then
         local i = int.tmod(battle.rng_positive(), #found)

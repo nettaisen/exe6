@@ -27,7 +27,7 @@ export type State = {
 
 -- What it counts as a body, of its side (`byte_80D19B8`, by side: the other
 -- side's bodies and other bodies, and neutral objects).
-local BODIES: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
+local BODIES: HitNames = { enemy_body = true, enemy_other_body = true, neutral = true }
 
 -- Its owner's position, and the panel under it.
 local function follow(me: Object)

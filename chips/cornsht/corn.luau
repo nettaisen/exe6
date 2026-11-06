@@ -40,7 +40,7 @@ local HIT_MOD = 1
 local EFFECT = new.effect { sprite = energy_burst_sprite, anim = 0, palette = 1, steps = 32 }
 local SOUND = asset.sound("hit-bomb-1")
 -- The other side's body on a panel (`off_80C6764`, by side).
-local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY: PanelCondition = { enemy_body = true }
 
 -- `sub_80C673A`: the panels of the column around the one ahead with an
 -- enemy's body on them, in the region's order.
@@ -50,7 +50,7 @@ local function find_spread(me: Object, s: State)
     local n = 0
     for _, p in regions.wide.panels or {} do
         local px, py = x + p[1] * dir, y + p[2]
-        if field.check(px, py, ENEMY_BODY, nil, me.alliance) then
+        if field.check(px, py, ENEMY_BODY, me.alliance) then
             n += 1
             s.spread[n] = panels.pack(px, py)
         end

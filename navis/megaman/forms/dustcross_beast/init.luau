@@ -23,7 +23,7 @@ local form: FormDef = {
     breaks_to = falzar_beast,
     sprite = dustcross_beast_sprite,
     element = "null",
-    weakness = { "cursor" },
+    weakness = { cursor = true },
     buster_bonus = 0,
     weapons = {
         buster = throw_absorbed.weapon,
@@ -37,12 +37,17 @@ local form: FormDef = {
     -- The chips A charges.
     charged_chips = { { family = "null", damaging = false } },
     -- What its status reset gives the navi (`sub_8014536`).
-    status_reset = { "air_shoes", "float_shoes", "floating_body", "target_marker" },
+    status_reset = { air_shoes = true, float_shoes = true, floating_body = true, target_marker = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 22,
     -- The target marker shows, its afterimages stay, and a Null chip's A charge times by the
     -- alternative routine (`sub_80E1566`, `sub_80E341E`, `sub_8012F62`).
-    traits = { "special_holds_buster", "shows_target_marker", "afterimages_stay", "alt_charge_time" },
+    traits = {
+        special_holds_buster = true,
+        shows_target_marker = true,
+        afterimages_stay = true,
+        alt_charge_time = true,
+    },
     -- The custom screen has the scrap button (rules/cross's, `sub_8027F10`).
     scrap_button = true,
     -- The buster arm it raises (lib/buster).

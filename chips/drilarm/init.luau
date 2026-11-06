@@ -102,7 +102,7 @@ local chip: Chip = {
     codes = { "G", "M", "W" },
     element = "null", family = "break", class = "standard",
     rarity = 2, mb = 32, damage = 70, hit_param = 10, lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.thunder },

@@ -14,7 +14,7 @@ local navi: NaviDef = {
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 5, hold = 2 },
     element = "null",
-    weakness = { "cursor" },
+    weakness = { cursor = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("groundman-win"), lose = asset.banner("groundman-deleted") },

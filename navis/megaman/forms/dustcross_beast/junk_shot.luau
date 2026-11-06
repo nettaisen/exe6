@@ -28,7 +28,7 @@ local FLIGHT, DEPTH = 0xA, 0xD_0000
 
 -- What it bursts on: a solid panel, or any body on it (bodies, other
 -- bodies, neutral objects).
-local LANDS_ON: { PanelFlag } = { "any_body", "solid" }
+local LANDS_ON: PanelFlags = { any_body = true, solid = true }
 
 -- The burst.
 local BURST = effects.burst

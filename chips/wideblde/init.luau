@@ -29,7 +29,7 @@ local chip: Chip = {
     damage = 150,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.widesht },
     slot_in_limit = 3,
     action = slash.action {

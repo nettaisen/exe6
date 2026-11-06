@@ -16,7 +16,7 @@ local form: FormDef = {
     beast_shot_palette = 4,
     -- The target marker shows, its afterimages stay, and a Null chip's A charge times by the
     -- alternative routine (`sub_80E1566`, `sub_80E341E`, `sub_8012F62`).
-    traits = { "shows_target_marker", "afterimages_stay", "alt_charge_time" },
+    traits = { shows_target_marker = true, afterimages_stay = true, alt_charge_time = true },
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
     version = "falzar",
@@ -25,7 +25,7 @@ local form: FormDef = {
     breaks_to = falzar_beast,
     sprite = groundcross_beast_sprite,
     element = "null",
-    weakness = { "cursor" },
+    weakness = { cursor = true },
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, a_charge = rock_barrage, alt_a_charge = dash.weapon },
     mugshot = asset.mugshot("groundcross-beast"),
@@ -36,7 +36,13 @@ local form: FormDef = {
     -- The chips A charges.
     charged_chips = { { family = "break", damaging = true }, { family = "null", damaging = false } },
     -- What its status reset gives the navi (`sub_8014536`).
-    status_reset = { "super_armor", "air_shoes", "float_shoes", "floating_body", "target_marker" },
+    status_reset = {
+        super_armor = true,
+        air_shoes = true,
+        float_shoes = true,
+        floating_body = true,
+        target_marker = true,
+    },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 21,
     -- The buster arm it raises (lib/buster).

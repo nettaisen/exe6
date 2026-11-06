@@ -20,7 +20,7 @@ local chip: Chip = {
     damage = 100,
     hit_param = 133,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     slot_in_limit = 1,
     program_advances = { { order = 3, sequence = { antinavi, antiswrd, antidmg } } },
     trap = "body_guard",

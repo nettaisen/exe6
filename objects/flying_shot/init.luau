@@ -37,14 +37,14 @@ local PANEL_SPARK_Z = 0x10_0000
 -- Collision results that show a hit spark (`object_spawnCollisionEffect`:
 -- an object, a body, another body of either side, or a neutral object),
 -- unless a guard turned the hit aside.
-local SPARKS: { HitName } = {
-    "own_object",
-    "enemy_object",
-    "own_body",
-    "enemy_body",
-    "own_other_body",
-    "enemy_other_body",
-    "neutral",
+local SPARKS: HitNames = {
+    own_object = true,
+    enemy_object = true,
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
 }
 
 local FLYING_SHOT_VARIANT = schema.record_type("flying-shot-variant")
@@ -74,7 +74,7 @@ end
 -- (`sub_800E258`), 16 pixels up (one RNG draw when it shows).
 local function panel_spark(me: Object, v: FlyingShotVariant)
     local c = me.collision
-    if not c:hit_any(SPARKS) or c:hit_any("guarded") or v.spark == nil then
+    if not c:hit_any(SPARKS) or c.hit_by.guarded or v.spark == nil then
         return
     end
     local p = me.pos

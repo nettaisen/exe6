@@ -38,7 +38,13 @@ local ARC_TICKS, GRAVITY, ARC_ROLL_SPEED = 0x0D, -0x8000, 0x3_0000
 local DROP_ROLL_SPEED, DROP_FALL = 0x1_C000, -0x2_0000
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 -- Hits that make it burst: bodies and neutral objects.
-local BURSTING: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+local BURSTING: HitNames = {
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
+}
 -- Ticks it lingers, hidden, after it breaks.
 local BREAK_TICKS = 0x14
 -- How high it is drawn, and its explosion: 16 pixels up, 12 more for a

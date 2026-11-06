@@ -20,7 +20,7 @@ local wavearm1: Chip = {
     damage = 80,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = strike.action { id = "wavearm1/action", wave = WAVE },
 }
@@ -35,7 +35,7 @@ local wavearm2: Chip = {
     damage = 120,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = strike.action { id = "wavearm2/action", wave = WAVE },
 }
@@ -50,7 +50,7 @@ local wavearm3: Chip = {
     damage = 160,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = strike.action { id = "wavearm3/action", wave = WAVE },
 }

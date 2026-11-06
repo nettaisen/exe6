@@ -23,7 +23,7 @@ local form: FormDef = {
     breaks_to = base,
     sprite = megaman_sprite,
     element = "null",
-    weakness = { "sword" },
+    weakness = { sword = true },
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon, back_special = tengu_wind.weapon },
     palette = 11,
@@ -33,7 +33,7 @@ local form: FormDef = {
     -- The damage it adds to its family's damaging chips.
     chip_bonus = { family = "wind", damage = 10 },
     -- What its status reset gives the navi (`sub_8014536`).
-    status_reset = { "air_shoes" },
+    status_reset = { air_shoes = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 8,
     -- The buster arm it raises (lib/buster).

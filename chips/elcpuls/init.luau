@@ -22,7 +22,7 @@ local elcpuls1: Chip = {
     damage = 100,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.elcpuls1 },
     slot_in_limit = 3,
     action = action.action {
@@ -42,7 +42,7 @@ local elcpuls2: Chip = {
     damage = 120,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.elcpuls1 },
     slot_in_limit = 3,
     action = action.action {
@@ -62,7 +62,7 @@ local elcpuls3: Chip = {
     damage = 140,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.elcpuls1 },
     slot_in_limit = 3,
     action = action.action {
@@ -83,7 +83,7 @@ local destpuls: Chip = {
     damage = 400,
     hit_param = 10,
     lockout = 20,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     beast = { lockon = lockon.elcpuls1 },
     slot_in_limit = 1,
     program_advances = {

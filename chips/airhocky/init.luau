@@ -19,7 +19,7 @@ local chip: Chip = {
     damage = 60,
     hit_param = 5,
     lockout = 50,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.thunder },
     slot_in_limit = 3,
     action = flick.action { id = "airhocky/action", puck = PUCK, down = true },

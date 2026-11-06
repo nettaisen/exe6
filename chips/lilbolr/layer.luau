@@ -47,11 +47,11 @@ export type LayerSpec = {
 local PIXEL = 0x1_0000
 -- The owner's statuses that hold its sprite: bubbled, drag, frozen,
 -- paralyzed, flinching (0x80110C00).
-local HOLDING: { StatusFlag } = { "frozen", "drag", "paralyzed", "flinching" }
+local HOLDING: { [StatusFlag]: boolean } = { frozen = true, drag = true, paralyzed = true, flinching = true }
 
 local function holds(owner: Object): boolean
-    for _, f in HOLDING do
-        if (owner.status :: any)[f] then
+    for f, on in HOLDING do
+        if on and (owner.status :: any)[f] then
             return true
         end
     end

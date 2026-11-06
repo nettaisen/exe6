@@ -16,8 +16,8 @@ local rockcube: Chip = {
     damage = 200,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { dimming = true, standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 3,
     dimming = cube.places { variant = rock.variants.cube },
 }
@@ -34,7 +34,7 @@ local icecube: Chip = {
     lockout = 0,
     slot_in_limit = 1,
     -- (The other side can't cut in on its dimming.)
-    traits = { "no_cut_in" },
+    traits = { no_cut_in = true },
     dimming = cube.places { variant = rock.variants.ice },
 }
 

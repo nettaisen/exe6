@@ -48,13 +48,13 @@ local APPEAR, STAND, AIM, WAVES, REST, LEAP, STRIKE, LEAVE = 0x0, 0x4, 0x8, 0xC,
 
 -- Of his side: a column worth sending waves to (`byte_80BA228`) and a panel
 -- a wave goes on (`byte_80BA284`): his side's, with nothing on it.
-local TARGET_COLUMN: PanelCondition = { require = { "on_field", "own_area" }, forbid = "occupied" }
-local WAVE_PANEL: PanelCondition = { require = "own_area", forbid = "occupied" }
+local TARGET_COLUMN: PanelCondition = { on_field = true, own_area = true, occupied = false }
+local WAVE_PANEL: PanelCondition = { own_area = true, occupied = false }
 
 -- What he leaps at (`off_80BA308`: an enemy navi's body), and the panel he
 -- lands on (`dword_80BA314`: solid, unoccupied).
-local ENEMY_NAVI = "enemy_body"
-local LAND_REQUIRE, LAND_FORBID = "solid", "occupied"
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
+local LAND: PanelCondition = { solid = true, occupied = false }
 
 -- `sub_80B9F68`: on his panel, on the ground.
 local function init(me: Object)
@@ -106,7 +106,7 @@ local function first_column(me: Object): number
     local x = if me.alliance == 0 then 6 else 1
     local t = TARGET_COLUMN
     while x ~= me.panel_x do
-        if #panels.in_column(x, t.require, t.forbid, me.alliance) ~= 0 then
+        if #panels.in_column(x, t, me.alliance) ~= 0 then
             return x
         end
         x += back
@@ -146,7 +146,7 @@ local function waves(me: Object, x: number)
     local w = WAVE_PANEL
     local damage = bit32.bor((me.state :: State).wave_damage, bit32.band(me.damage, 0xF000))
     for y = 1, 3 do
-        if field.check(x, y, w.require, w.forbid, me.alliance) then
+        if field.check(x, y, w, me.alliance) then
             -- r3 (his damage's flag bits) becomes its Z.
             wave.spawn(user, x, y, 0, WAVE, damage, bit32.band(me.damage, 0xF000))
         end
@@ -192,11 +192,11 @@ local function landing(me: Object): (number?, number?)
         if not field.valid(x, 1) then
             return nil, nil
         end
-        local found = panels.in_column(x, ENEMY_NAVI, nil, me.alliance)
+        local found = panels.in_column(x, ENEMY_NAVI, me.alliance)
         if #found ~= 0 then
             local fx, fy = panels.x(found[1]), panels.y(found[1])
             local lx = fx - me.facing
-            if field.check(lx, fy, LAND_REQUIRE, LAND_FORBID) then
+            if field.check(lx, fy, LAND) then
                 return lx, fy
             end
             if lx == me.panel_x and fy == me.panel_y then

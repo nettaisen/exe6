@@ -31,14 +31,14 @@ local form: FormDef = {
     -- The A charge builds up the next Fire chip's damage, up to this much.
     fire_charge = 100,
     -- What its status reset gives the navi (`sub_8014536`).
-    status_reset = { "super_armor", "target_marker", "invulnerable", "controller_restart" },
+    status_reset = { super_armor = true, target_marker = true, invulnerable = true, controller_restart = true },
     -- After a NaviCust change only the SuperArmor comes back (`sub_801469C`).
-    ability_refresh = { "super_armor" },
+    ability_refresh = { super_armor = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 17,
     -- The target marker shows, its afterimages stay, and a Null chip's A charge times by the
     -- alternative routine (`sub_80E1566`, `sub_80E341E`, `sub_8012F62`).
-    traits = { "shows_target_marker", "afterimages_stay", "alt_charge_time" },
+    traits = { shows_target_marker = true, afterimages_stay = true, alt_charge_time = true },
     -- The custom screen deals one more chip for each screen spent in it, up to three (the
     -- rules/cross's, `sub_802A49C`).
     extra_chips = true,

@@ -23,7 +23,7 @@ local form: FormDef = {
     breaks_to = base,
     sprite = megaman_sprite,
     element = "null",
-    weakness = { "cursor" },
+    weakness = { cursor = true },
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = drill.weapon, a_charge = rock_barrage },
     palette = 15,
@@ -35,7 +35,7 @@ local form: FormDef = {
     -- The chips A charges.
     charged_chips = { { family = "break", damaging = true } },
     -- What its status reset gives the navi (`sub_8014536`).
-    status_reset = { "super_armor" },
+    status_reset = { super_armor = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 9,
     -- A change into a Cross that finds the drill rising (its animation) lets go of it.

@@ -20,9 +20,9 @@ local chip: Chip = {
     damage = 220,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 1,
-    traits = { "no_chain" },
+    traits = { no_chain = true },
     action = vari.action {
         id = "neovari/action",
         -- The sequences (`off_80EF824`), facing right (flip 0) and mirrored

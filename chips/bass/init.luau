@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 60,
     hit_param = 133,
     lockout = 0,
-    flags = { "dimming", "has_damage" },
+    flags = { dimming = true, has_damage = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "bass/controller",

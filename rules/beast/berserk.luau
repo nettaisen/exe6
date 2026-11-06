@@ -85,7 +85,7 @@ end
 local function panels_in_row(y: number, cond: PanelCondition, side: number): { number }
     local out = {}
     for x = 1, 6 do
-        if field.check(x, y, cond.require, cond.forbid, side) then
+        if field.check(x, y, cond, side) then
             table.insert(out, pack(x, y))
         end
     end
@@ -114,7 +114,7 @@ local function behind(navi: Object, from: number, cond: PanelCondition): number
             blocked = true
             break
         end
-        if field.check(x, y, cond.require, cond.forbid, navi.alliance) then
+        if field.check(x, y, cond, navi.alliance) then
             table.insert(found, pack(x, y))
         end
         x += dir

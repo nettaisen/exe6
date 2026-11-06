@@ -28,7 +28,7 @@ local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CHARGE_MAN = asset.sound("charge-man")
 
 -- A car's panel: solid, and none of these (`dword_80BBB8C`).
-local CAR_REQUIRE, CAR_FORBID = "solid", "any_body"
+local CAR: PanelCondition = { solid = true, any_body = false }
 
 -- His and his cars' speed (16.16), and how long the cars wait.
 local SPEED = 0x4_0000
@@ -69,7 +69,7 @@ local function cars(me: Object): number
     local n = 0
     while n <= 4 do
         local x, y = me.panel_x - me.facing * (n + 1), me.panel_y
-        if not field.check(x, y, CAR_REQUIRE, CAR_FORBID) then
+        if not field.check(x, y, CAR) then
             return n
         end
         -- r3 (0xFF << 24) becomes the car's Z.

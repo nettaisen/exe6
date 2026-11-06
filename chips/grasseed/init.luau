@@ -9,7 +9,7 @@ local chip: Chip = {
     codes = { "A", "F", "S", "*" },
     element = "wood", family = "wood", class = "standard",
     rarity = 1, mb = 19, damage = 10, hit_param = 10, lockout = 10,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     slot_in_limit = 3,
     action = throw.action {
         held = seed.held(2),

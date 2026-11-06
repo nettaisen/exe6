@@ -18,7 +18,7 @@ return {
     },
     -- The facts a build never states: every build plays at the most the game allows, so these are always the rules'
     -- defaults (the most HP and Regular memory, the sun, a link navi's last level, every SP navi deleted in no time).
-    at_defaults = { "hp", "reg_up", "sun", "level", "sp_times" },
+    at_defaults = { hp = true, reg_up = true, sun = true, level = true, sp_times = true },
     -- A new build is its group's forms, with this. (EXE6's builds have no other choice of presets: its MegaMan is
     -- neither light nor dark.)
     new = {

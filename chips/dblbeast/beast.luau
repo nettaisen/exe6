@@ -29,9 +29,11 @@ beast.STATE = STATE
 beast.TICKS = 0x1E
 
 -- A panel to attack from: on the field, nothing on it or reserved.
-local FREE_REQUIRE, FREE_FORBID = "on_field", "occupied"
+local FREE: PanelCondition = { on_field = true, occupied = false }
 -- At most this many of a pattern's entries are tried.
 local MAX_TRIED = 6
+
+local ENEMY_BODY: PanelCondition = { enemy_body = true }
 
 -- `sub_80C1ECE` / `sub_80C24F4`: the panels with an enemy body on them
 -- (`off_80C1EEC`, by the beast's side) but its own (rows 3 to 1, columns 6
@@ -39,7 +41,7 @@ local MAX_TRIED = 6
 function beast.list_targets(me: Object)
     local s = me.state :: DblBeastState
     -- (In its side's order: docs/engine/side-symmetry.md.)
-    local list = panels.filtered_except(me, "enemy_body", nil, me.alliance, me.alliance)
+    local list = panels.filtered_except(me, ENEMY_BODY, me.alliance, me.alliance)
     for i, p in list do
         s.targets[i] = p
     end
@@ -65,7 +67,7 @@ function beast.attack_panel(me: Object, pattern: DblBeastPattern): (number?, num
         for n = 1, math.min(#pattern, MAX_TRIED) do
             local e = pattern[n]
             local x, y = tx + e[2] * dir, ty + e[3]
-            if field.check(x, y, FREE_REQUIRE, FREE_FORBID) then
+            if field.check(x, y, FREE) then
                 i += 1
                 s.next = if i >= s.count then 0 else i
                 return x, y, e[1]

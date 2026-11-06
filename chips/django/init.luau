@@ -22,7 +22,7 @@ local django: Chip = {
     damage = 130,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "django/controller",
@@ -40,7 +40,7 @@ local django2: Chip = {
     damage = 180,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "django2/controller",
@@ -58,7 +58,7 @@ local django3: Chip = {
     damage = 260,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "django3/controller",

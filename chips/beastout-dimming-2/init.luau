@@ -19,10 +19,10 @@ local CRACK = quake.change {
 local chip: Chip = {
     element = "null", family = "special", class = "special",
     rarity = 0, mb = 99, damage = 0, hit_param = 0, lockout = 0,
-    flags = { "dimming" },
+    flags = { dimming = true },
     slot_in_limit = 1,
     -- (The other side can't cut in on its dimming.)
-    traits = { "no_cut_in" },
+    traits = { no_cut_in = true },
     dimming = controller.hook(CRACK),
 }
 

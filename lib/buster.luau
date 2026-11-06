@@ -26,6 +26,13 @@ return common.make {
     -- What stops a shot's panel count (`byte_800FB4C`, by side): bodies,
     -- neutral objects, blockers and reservations, but its own side's other
     -- bodies.
-    closed = { "reserved", "own_body", "enemy_body", "enemy_other_body", "neutral", "blocker" },
+    closed = {
+        reserved = true,
+        own_body = true,
+        enemy_body = true,
+        enemy_other_body = true,
+        neutral = true,
+        blocker = true,
+    },
     attachment = attachment.kind,
 }

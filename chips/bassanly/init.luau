@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 160,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "bassanly/controller",

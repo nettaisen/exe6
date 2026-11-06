@@ -31,8 +31,8 @@ local RAISE_STEPS, DROP_STEPS = 3, 8
 -- What marks a panel with an enemy on it, of the navi's side, alone and
 -- with the flag the column search wants too (`byte_80ED080`: every panel on
 -- the field has it).
-local ENEMY = "enemy_body"
-local ENEMY_COLUMN: { PanelFlag } = { "enemy_body", "on_field" }
+local ENEMY: PanelFlags = { enemy_body = true }
+local ENEMY_COLUMN: PanelCondition = { enemy_body = true, on_field = true }
 
 -- The rows tried in the enemy's column, as steps from the navi's row
 -- (`byte_80EE904`): its own, above, below, two above, two below.
@@ -62,7 +62,7 @@ local function enemy_column(me: Object): (number, boolean)
         end
         -- object_getPanelsInColumnFiltered
         for y = 1, 3 do
-            if field.check(x, y, ENEMY_COLUMN, nil, me.alliance) then
+            if field.check(x, y, ENEMY_COLUMN, me.alliance) then
                 return x, true
             end
         end

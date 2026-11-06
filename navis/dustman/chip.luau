@@ -33,7 +33,7 @@ local CRUSH_AT = 0x1E
 local CLOUD_ANIM = 0
 
 -- The other side's area in his row, by side (`byte_80F20E0`).
-local OTHER_SIDE = "enemy_area"
+local OTHER_SIDE: PanelCondition = { enemy_area = true }
 
 -- The pull: no damage, no spark, of no side, hit modifier 0x10.
 local PULL_HIT_MOD = 0x10
@@ -44,7 +44,7 @@ local CRUSH_HIT_MOD = 3
 -- `sub_80F20A0`: the pull on each of the other side's panels in his row.
 local function pull(me: Object)
     for x = 1, 6 do
-        if field.check(x, me.panel_y, OTHER_SIDE, nil, me.alliance) then
+        if field.check(x, me.panel_y, OTHER_SIDE, me.alliance) then
             battle.hitbox(me, {
                 panel_x = x,
                 panel_y = me.panel_y,
@@ -148,7 +148,7 @@ local chip: Chip = {
     damage = { formula = "navi_level", base = 80, per_level = 30 },
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     -- `sub_80F1FA0` (`off_80F1FB4`).
     action = new.action {

@@ -19,11 +19,11 @@ gust.kind = common.make_kind("gust", {
     is = collision.pull,
     hits = collision.hits_navis,
     -- A hit that stops it: a neutral object's.
-    stopped_by = "neutral",
+    stopped_by = { neutral = true },
     weak_when_unseen = false,
     -- The panels it can blow over (`byte_80CD478`, by side: the other side's area; its third row, read for a side of
     -- 2, is code: require 0xB427B500, forbid 0xF7352049).
-    panels = { require = "enemy_area" },
+    panels = { enemy_area = true },
 })
 
 -- `sub_80CD488`: a gust on (x, y) for side `alliance` and flip `flip`

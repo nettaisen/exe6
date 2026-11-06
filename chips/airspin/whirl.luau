@@ -13,5 +13,5 @@ return common.make {
     sound = asset.sound("bass-anly-shot"),
     attack = collision.attack,
     hits = collision.hits_navis,
-    hidden = { "invisible", "submerged" },
+    hidden = { invisible = true, submerged = true },
 }

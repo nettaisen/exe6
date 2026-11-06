@@ -20,7 +20,7 @@ export type State = {
 }
 
 -- `dword_80E91E0`: a solid panel, or a body on it.
-local NOT_A_FREE_HOLE: { PanelFlag } = { "any_body", "solid" }
+local NOT_A_FREE_HOLE: PanelFlags = { any_body = true, solid = true }
 
 -- `sub_80E9164`.
 local function effect(me: Object)

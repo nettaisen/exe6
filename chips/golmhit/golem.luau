@@ -39,7 +39,7 @@ local LEAP_SOUND, LAND_SOUND, HIT_SOUND = asset.sound("golem-2"), asset.sound("l
 
 -- The nearest target's column (`byte_80E4E74`, by side): a panel of the
 -- other side's area.
-local TARGET: { PanelFlag } = { "on_field", "enemy_area" }
+local TARGET: PanelCondition = { on_field = true, enemy_area = true }
 -- The hops: how far short and how high each starts, and its speeds, 16.16.
 local HOP_1_BACK, HOP_1_UP, HOP_1_VX, HOP_1_VZ = 0x5F_0000, 0x28_0000, 0x20_8000, 0xC_8000
 local HOP_2_BACK, HOP_2_UP, HOP_2_VX, HOP_2_VZ = 0xA_0000, 0x1E_0000, 0x5_0000, 0xF_0000
@@ -220,7 +220,7 @@ local function init(me: Object)
         -- `object_getClosestPanelMatchingRowFiltered` (@exelib/panels):
         -- from column 6 when side ^ flip is 1, else from column 1.
         local from = bit32.bxor(bit32.bxor(side, me.flip), 1)
-        local x = panels.closest_in_row(from, me.panel_y, TARGET, nil, side)
+        local x = panels.closest_in_row(from, me.panel_y, TARGET, side)
         if x == 0 then
             x = me.panel_x + me.facing
         end

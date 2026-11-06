@@ -68,7 +68,7 @@ local SPAWNER_ADDRESS = 0x080B84ED
 
 -- The column ScreenDivide looks for (`byte_80B8494`): all three of its
 -- panels the enemy's.
-local ENEMY_COLUMN = "enemy_area"
+local ENEMY_COLUMN: PanelCondition = { enemy_area = true }
 
 -- When his strike lands (the timer before its tick's count down).
 local STRIKE_TICK = 0x20
@@ -143,7 +143,7 @@ local function enemy_column(me: Object): number
     while true do
         local n = 0
         for y = 1, 3 do
-            if field.check(x, y, ENEMY_COLUMN, nil, me.alliance) then
+            if field.check(x, y, ENEMY_COLUMN, me.alliance) then
                 n += 1
             end
         end

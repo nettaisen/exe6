@@ -16,7 +16,7 @@ local chip: Chip = {
     damage = 50,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
     action = throw.action { id = "yoyo/action", throw = yoyo.one { panels = 2, rounds = 2 } },

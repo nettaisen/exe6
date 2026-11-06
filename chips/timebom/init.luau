@@ -57,7 +57,7 @@ local timebom1: Chip = {
     damage = 150,
     hit_param = 148,
     lockout = 30,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     dimming = controller.hook(BOMB),
 }
@@ -72,7 +72,7 @@ local timebom2: Chip = {
     damage = 190,
     hit_param = 148,
     lockout = 30,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     dimming = controller.hook(BOMB),
 }
@@ -87,7 +87,7 @@ local timebom3: Chip = {
     damage = 230,
     hit_param = 148,
     lockout = 30,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     dimming = controller.hook(BOMB),
 }
@@ -102,7 +102,7 @@ local timebom: Chip = {
     damage = 700,
     hit_param = 168,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     slot_in_limit = 1,
     program_advances = {
         { order = 28, code_run = { chip = timebom1, count = 3 } },

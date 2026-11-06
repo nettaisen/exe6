@@ -25,8 +25,8 @@ local ERUPT_AT = 0xB
 -- The panels he aims at first, of his side (`off_80F1434`, by side: an
 -- enemy navi's body on the other side's area), then the other side's panels
 -- without one (`byte_80F1448`).
-local ENEMIES: PanelCondition = { require = { "enemy_body", "enemy_area" } }
-local EMPTY: PanelCondition = { require = "enemy_area", forbid = "enemy_body" }
+local ENEMIES: PanelCondition = { enemy_body = true, enemy_area = true }
+local EMPTY: PanelCondition = { enemy_area = true, enemy_body = false }
 
 -- Last, the column off the field's far edge (`dword_80F145C`, by side),
 -- rows 1 to 3.
@@ -44,8 +44,8 @@ local FIRST_Z = 4
 local function erupt(me: Object)
     local side = me.alliance
     -- (In its side's order, and shuffled: docs/engine/side-symmetry.md.)
-    local targets = panels.filtered_except(me, ENEMIES.require, ENEMIES.forbid, side, side)
-    local empty = panels.filtered_except(me, EMPTY.require, EMPTY.forbid, side, side)
+    local targets = panels.filtered_except(me, ENEMIES, side, side)
+    local empty = panels.filtered_except(me, EMPTY, side, side)
     if #empty > 0 then
         panels.shuffle(empty, #empty, #empty)
     end
@@ -108,7 +108,7 @@ local chip: Chip = {
     damage = { formula = "navi_level", base = 30, per_level = 10 },
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     -- `sub_80F1334` (`off_80F1348`).
     action = new.action {

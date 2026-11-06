@@ -14,9 +14,9 @@ local targets = {}
 
 -- The panels with an enemy's body on them, of the other side's area, of
 -- `me`'s side (0x080C4198, by side).
-local ENEMY_PANELS: { PanelFlag } = { "enemy_body", "on_field", "enemy_area" }
+local ENEMY_PANELS: PanelCondition = { enemy_body = true, on_field = true, enemy_area = true }
 -- Every panel of the other side's area (0x080C41AC).
-local AREA_PANELS: { PanelFlag } = { "on_field", "enemy_area" }
+local AREA_PANELS: PanelCondition = { on_field = true, enemy_area = true }
 -- Of sixteen draws, those that aim at an enemy's panel.
 local ENEMY_ODDS = 9
 
@@ -29,13 +29,13 @@ local function fresh(p: number, last_x: number, last_y: number): (number?, numbe
     return nil, nil
 end
 
--- The panels with every flag of `require` (of `me`'s side), but `me`'s own,
--- written over the start of `buf` (the routine's stack buffer, which keeps
--- what an earlier list left past the new one's end): how many.
-local function list_into(me: Object, buf: { number }, require: { PanelFlag }): number
+-- The panels that meet `cond` (of `me`'s side), but `me`'s own, written
+-- over the start of `buf` (the routine's stack buffer, which keeps what an
+-- earlier list left past the new one's end): how many.
+local function list_into(me: Object, buf: { number }, cond: PanelCondition): number
     -- (Shuffled from its side's order, its first taken: docs/engine/side-symmetry.md.)
     local side = bit32.band(me.alliance, 1)
-    local list = panels.filtered_except(me, require, nil, side, side)
+    local list = panels.filtered_except(me, cond, side, side)
     for i, p in list do
         buf[i] = p
     end

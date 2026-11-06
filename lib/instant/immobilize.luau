@@ -11,7 +11,7 @@ local immobilizer = require("./immobilizer")
 local immobilize = {}
 
 -- An enemy body on the panel, of the user's side (`off_8015AF8`).
-local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY: PanelFlags = { enemy_body = true }
 
 -- `sub_8015AA6`: an `instant` hook.
 function immobilize.instant(user: Object, spec: InstantChipSpec)

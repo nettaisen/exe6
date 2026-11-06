@@ -26,7 +26,7 @@ strike.STATE = { timer = schema.u16 }
 local SWING, RECOVER = 0x0, 0x4
 
 -- Grass, ice and volcano panels' flags.
-local ELEMENT_PANELS: { PanelFlag } = { "grass", "ice", "volcano" }
+local ELEMENT_PANELS: PanelFlags = { grass = true, ice = true, volcano = true }
 
 local function set_step(me: Object, step: number)
     me.step = step

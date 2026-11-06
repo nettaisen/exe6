@@ -108,7 +108,7 @@ local chip: Chip = {
     damage = { formula = "navi_level", base = 100, per_level = 30 },
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     -- `sub_80F18AC` (`off_80F18C0`).
     action = new.action {

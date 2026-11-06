@@ -15,7 +15,7 @@ local chip: Chip = {
     damage = 10,
     hit_param = 10,
     lockout = 10,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     slot_in_limit = 3,
     action = throw.action {
         id = "poisseed/action",

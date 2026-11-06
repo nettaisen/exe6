@@ -28,7 +28,7 @@ return {
         float_shoe_needs_self_bit = true,
         bubbled_as_submerged = false,
         elec_reaches_submerged = false,
-        guard_breaks_to = { "break" },
+        guard_breaks_to = { ["break"] = true },
         guard_before_untouchable = false,
         guard_marks_direction = true,
     },
@@ -58,18 +58,18 @@ return {
     -- drag's (0x1000043F) the anti-sword trigger too. A cut-in's ask clears the chip's and the charged chip's requests
     -- with itself (`sub_8017AB4`, 0x08017B5E: 0x80C).
     request_clears = {
-        attack = { "mode9_a" },
-        paralysis = { "mode9_a" },
-        flinch = { "anti_sword_triggered", "mode9_a" },
-        drag = { "anti_sword_triggered", "mode9_a" },
-        cut_in = { "chip", "charged_chip" },
+        attack = { mode9_a = true },
+        paralysis = { mode9_a = true },
+        flinch = { anti_sword_triggered = true, mode9_a = true },
+        drag = { anti_sword_triggered = true, mode9_a = true },
+        cut_in = { chip = true, charged_chip = true },
     },
     -- What a navi's statuses' end clears (`sub_801A264`): the six statuses' flags (0x8001E800), the requests 0x300E8
     -- and the six timers.
     status_end = {
-        flags = { "paralyzed", "blind", "immobilized", "confused", "frozen", "bubbled" },
-        requests = { "paralyze", "confuse", "blind", "immobilize", "freeze", "bubble" },
-        timers = { "paralyze", "confuse", "blind", "immobilize", "freeze", "bubble" },
+        flags = { paralyzed = true, blind = true, immobilized = true, confused = true, frozen = true, bubbled = true },
+        requests = { paralyze = true, confuse = true, blind = true, immobilize = true, freeze = true, bubble = true },
+        timers = { paralyze = true, confuse = true, blind = true, immobilize = true, freeze = true, bubble = true },
     },
     push = {
         { dx = 1, dy = 0, panels = 6 },

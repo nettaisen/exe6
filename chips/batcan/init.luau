@@ -18,7 +18,7 @@ local chips: { [string]: Chip } = {
         codes = { "*" },
         element = "null", family = "null", class = "standard",
         rarity = 0, mb = 5, damage = 40, hit_param = 30, lockout = 0,
-        flags = { "has_damage" },
+        flags = { has_damage = true },
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
@@ -28,7 +28,7 @@ local chips: { [string]: Chip } = {
         codes = { "S" },
         element = "null", family = "null", class = "standard",
         rarity = 0, mb = 5, damage = 40, hit_param = 30, lockout = 0,
-        flags = { "has_damage" },
+        flags = { has_damage = true },
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
@@ -38,7 +38,7 @@ local chips: { [string]: Chip } = {
         codes = { "R" },
         element = "null", family = "null", class = "standard",
         rarity = 0, mb = 5, damage = 40, hit_param = 30, lockout = 0,
-        flags = { "has_damage" },
+        flags = { has_damage = true },
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
@@ -48,7 +48,7 @@ local chips: { [string]: Chip } = {
         codes = { "Z" },
         element = "null", family = "null", class = "standard",
         rarity = 0, mb = 5, damage = 40, hit_param = 30, lockout = 0,
-        flags = { "has_damage" },
+        flags = { has_damage = true },
         slot_in_limit = 1,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },

@@ -10,8 +10,8 @@ local chip: Chip = {
     codes = { "*" },
     element = "null", family = "wind", class = "standard",
     rarity = 1, mb = 4, damage = 20, hit_param = 20, lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { has_damage = true, standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.cannon },

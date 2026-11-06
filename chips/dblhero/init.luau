@@ -19,7 +19,7 @@ local chip: Chip = {
     damage = 60,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     slot_in_limit = 1,
     program_advances = { { order = 5, sequence = { wideblde, longblde, protoman_chips["protomn-sp"] } } },
     dimming = controller.hook,

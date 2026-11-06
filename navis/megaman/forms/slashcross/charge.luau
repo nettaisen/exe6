@@ -48,7 +48,7 @@ local SWORD, HIT_PARAM = 0x80, 0x94
 
 -- The panels a dash may end on (`sub_8015B00`, two ahead): on the field
 -- (0x10000), with no body on it (0xF800000).
-local DASH_REQUIRE, DASH_FORBID = "on_field", "any_body"
+local DASH_SET: PanelCondition = { on_field = true, any_body = false }
 
 -- The dash's afterimage: its color shader and lifetime.
 local AFTERIMAGE_SHADER, AFTERIMAGE_TICKS = 0xFFE0, 0x14
@@ -145,7 +145,7 @@ local function dash(me: Object, s: State)
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
     me:reserve_panel(me.panel_x, me.panel_y)
     local x, y = me.panel_x + 2 * me.facing, me.panel_y
-    if not field.check(x, y, DASH_REQUIRE, DASH_FORBID) then
+    if not field.check(x, y, DASH_SET) then
         me:set_animation(NO_DASH)
         me.step = RETURN
         me.step_init = 0

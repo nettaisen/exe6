@@ -12,7 +12,7 @@ local chip: Chip = {
     -- The version whose saves hold it (rules/folder).
     version = "gregar",
     rarity = 4, mb = 90, damage = 30, hit_param = 138, lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     slot_in_limit = 1,
     instant = force.instant,
 }

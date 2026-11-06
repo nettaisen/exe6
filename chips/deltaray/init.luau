@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 260,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage" },
+    flags = { dimming = true, has_damage = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "deltaray/controller",

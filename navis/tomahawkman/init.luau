@@ -61,7 +61,7 @@ local navi: NaviDef = {
     charged_chips = { family = "wood", damaging = true, when = by_level.from(11) },
     charge_doubles = { element = "wood" },
     -- A hit's status doesn't take.
-    traits = { "status_immune" },
+    traits = { status_immune = true },
     identity = new.identity {
         class = "player",
         version = 0,

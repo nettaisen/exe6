@@ -37,8 +37,8 @@ local RISE_SPEED, RISE_ACCELERATION = 0x6000, 0x3000
 -- nettai's by the side, `pick_targets`), on the field; bodies (either
 -- side's) on them come first.
 local BLOCK = regions.square
-local PICKABLE = "on_field"
-local BODY: { PanelFlag } = { "own_body", "enemy_body" }
+local PICKABLE: PanelCondition = { on_field = true }
+local BODY: PanelFlags = { own_body = true, enemy_body = true }
 
 -- Throws, and the shuffles' rounds (`sub_8000C72`).
 local THROWS, SWAPS = 6, 10

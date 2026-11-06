@@ -28,7 +28,7 @@ local chips: { [string]: Chip } = {
         codes = { "C", "K", "V", "*" },
         element = "null", family = "null", class = "standard",
         rarity = 1, mb = 11, damage = 40, hit_param = 10, lockout = 0,
-        flags = { "has_damage", "standard_library", "library" },
+        flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.yoyo },
@@ -38,7 +38,7 @@ local chips: { [string]: Chip } = {
         codes = { "G", "M", "O", "*" },
         element = "null", family = "null", class = "standard",
         rarity = 2, mb = 27, damage = 60, hit_param = 10, lockout = 0,
-        flags = { "has_damage", "standard_library", "library" },
+        flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.yoyo },

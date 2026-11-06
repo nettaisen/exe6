@@ -18,7 +18,7 @@ local chips: { [string]: Chip } = {
         codes = { "B", "G", "S" },
         element = "wood", family = "wood", class = "standard",
         rarity = 0, mb = 21, damage = 10, hit_param = 30, lockout = 0,
-        flags = { "has_damage", "standard_library", "library" },
+        flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
@@ -28,7 +28,7 @@ local chips: { [string]: Chip } = {
         codes = { "C", "R", "V" },
         element = "wood", family = "wood", class = "standard",
         rarity = 1, mb = 28, damage = 15, hit_param = 30, lockout = 0,
-        flags = { "has_damage", "standard_library", "library" },
+        flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
         beast = { lockon = lockon.cannon },
@@ -44,7 +44,7 @@ local chips: { [string]: Chip } = {
         damage = 20,
         hit_param = 30,
         lockout = 0,
-        flags = { "has_damage", "standard_library", "library" },
+        flags = { has_damage = true, standard_library = true, library = true },
         beast = { lockon = lockon.cannon },
         slot_in_limit = 3,
         action = action.action { id = "rskyhny3/action", bee = BEE3 },

@@ -24,9 +24,9 @@ local chip: Chip = {
     damage = 160,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
-    traits = { "no_chain" },
+    traits = { no_chain = true },
     action = vari.action {
         id = "varswrd/action",
         -- The sequences (`off_80EF670`), facing right (flip 0) and

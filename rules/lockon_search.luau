@@ -17,7 +17,7 @@ local function path_clear(navi: Object, x: number, y: number, target_x: number, 
     local cond = search.clear_path
     local side = bit32.band(navi.alliance, 1)
     while true do
-        if x < 0 or x > 0xFF or not field.check(x, y, cond.require, cond.forbid, side) then
+        if x < 0 or x > 0xFF or not field.check(x, y, cond, side) then
             return false
         end
         x += front

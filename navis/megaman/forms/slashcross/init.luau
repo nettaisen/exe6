@@ -25,7 +25,7 @@ local form: FormDef = {
     breaks_to = base,
     sprite = megaman_sprite,
     element = "null",
-    weakness = { "break" },
+    weakness = { ["break"] = true },
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon, a_charge = slash_a_charge.weapon },
     palette = 9,

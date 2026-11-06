@@ -19,7 +19,7 @@ local form: FormDef = {
     breaks_to = gregar_beast,
     sprite = erasecross_beast_sprite,
     element = "null",
-    weakness = { "wind" },
+    weakness = { wind = true },
     buster_bonus = 0,
     weapons = { buster = gregar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = drop.weapon },
     -- Its face in the emotion window (`byte_801E700`): the Falzar ROM has no
@@ -32,14 +32,14 @@ local form: FormDef = {
     -- The chips A charges.
     charged_chips = { { family = "null", damaging = false } },
     -- What its status reset gives the navi (`sub_8014536`).
-    status_reset = { "super_armor", "target_marker", "invulnerable", "controller_restart" },
+    status_reset = { super_armor = true, target_marker = true, invulnerable = true, controller_restart = true },
     -- After a NaviCust change only the SuperArmor comes back (`sub_801469C`).
-    ability_refresh = { "super_armor" },
+    ability_refresh = { super_armor = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 16,
     -- The target marker shows, its afterimages stay, and a Null chip's A charge times by the
     -- alternative routine (`sub_80E1566`, `sub_80E341E`, `sub_8012F62`).
-    traits = { "erases", "shows_target_marker", "afterimages_stay", "alt_charge_time" },
+    traits = { erases = true, shows_target_marker = true, afterimages_stay = true, alt_charge_time = true },
     -- The buster arm it raises (lib/buster).
     buster_arm = { anim = 16, palette_add = 8 },
     identity = new.identity {

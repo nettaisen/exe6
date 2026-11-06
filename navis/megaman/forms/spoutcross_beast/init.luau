@@ -16,7 +16,7 @@ local form: FormDef = {
     beast_shot_palette = 1,
     -- The target marker shows, its afterimages stay, and a Null chip's A charge times by the
     -- alternative routine (`sub_80E1566`, `sub_80E341E`, `sub_8012F62`).
-    traits = { "shows_target_marker", "afterimages_stay", "alt_charge_time" },
+    traits = { shows_target_marker = true, afterimages_stay = true, alt_charge_time = true },
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
     version = "falzar",
@@ -36,7 +36,7 @@ local form: FormDef = {
     charge_doubles = { element = "aqua" },
     chip_heals = { element = "aqua" },
     -- What its status reset gives the navi (`sub_8014536`).
-    status_reset = { "air_shoes", "float_shoes", "floating_body", "target_marker" },
+    status_reset = { air_shoes = true, float_shoes = true, floating_body = true, target_marker = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 18,
     -- The buster arm it raises (lib/buster).

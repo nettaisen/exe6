@@ -16,10 +16,10 @@ local chip: Chip = {
     damage = 0,
     hit_param = 50,
     lockout = 0,
-    flags = { "dimming" },
-    extra_flags = { "rush_cancels" },
+    flags = { dimming = true },
+    extra_flags = { rush_cancels = true },
     slot_in_limit = 1,
-    traits = { "no_cut_in" },
+    traits = { no_cut_in = true },
     dimming = invisible.hook(120),
 }
 

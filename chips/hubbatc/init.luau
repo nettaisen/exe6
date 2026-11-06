@@ -67,7 +67,7 @@ local chip: Chip = {
     -- The version whose saves hold it (rules/folder).
     version = "falzar",
     rarity = 4, mb = 99, damage = 0, hit_param = 148, lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     slot_in_limit = 1,
     dimming = navi_boost.hook(HUB_BATCH),
 }

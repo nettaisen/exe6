@@ -44,8 +44,7 @@ local EMERGE_SOUND, DIVE_SOUND = asset.sound("sand-worm"), asset.sound("sand-wor
 -- Where it can come out (`byte_80DEE44`, by side; of its side here): an
 -- open panel, not the other side's body or other body's, nor a neutral
 -- object's.
-local REQUIRE = "on_field"
-local FORBID: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
+local COMES_OUT: PanelCondition = { on_field = true, enemy_body = false, enemy_other_body = false, neutral = false }
 -- Its collision: a thrown attack that hits navis, hit modifier 3.
 local HIT_MOD = 3
 -- The arc's length (`byte_80DEA50`) and the holes' timers (`byte_80DEA70`),
@@ -66,16 +65,16 @@ local SPRAYS = {
 -- The arc's height, in units of the sine table (`byte_80DEE58`).
 local HEIGHT = 0x16
 -- A hit registered by something (`dword_80DEB6C`).
-local HIT: { HitName } = {
-    "own_attack",
-    "enemy_attack",
-    "own_object",
-    "enemy_object",
-    "own_body",
-    "enemy_body",
-    "own_other_body",
-    "enemy_other_body",
-    "neutral",
+local HIT: HitNames = {
+    own_attack = true,
+    enemy_attack = true,
+    own_object = true,
+    enemy_object = true,
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
 }
 
 -- The actions.
@@ -314,7 +313,7 @@ function worm.instant(palette: number): (user: Object, spec: InstantChipSpec) ->
         for _, target in battle.alive_actors(bit32.bxor(side, 1)) do
             local x = user.facing + target.panel_x
             local y = target.panel_y
-            if field.check(x, y, REQUIRE, FORBID, side) then
+            if field.check(x, y, COMES_OUT, side) then
                 worm.spawn(user, x, y, spec.element, spec.z, palette, spec.damage)
             end
         end

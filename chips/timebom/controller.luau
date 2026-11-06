@@ -12,7 +12,7 @@ export type State = { bonus: number, variant: CountdownVariant }
 
 -- `off_80E3280`: where the bomb goes, of its side: a solid enemy panel
 -- without a body on it.
-local TARGET: PanelCondition = { require = { "solid", "enemy_area" }, forbid = "any_body" }
+local TARGET: PanelCondition = { solid = true, enemy_area = true, any_body = false }
 
 -- `sub_80E3264` (`object_getFirstPanelInDirectionFiltered`): from the
 -- controller's panel forward, the first panel meeting the side's
@@ -21,7 +21,7 @@ local function target_column(me: Object): number?
     local cond = TARGET
     local x, y = me.panel_x, me.panel_y
     while true do
-        if field.check(x, y, cond.require, cond.forbid, me.alliance) then
+        if field.check(x, y, cond, me.alliance) then
             return x
         end
         x += me.facing

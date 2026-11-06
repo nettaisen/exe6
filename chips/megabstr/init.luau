@@ -14,7 +14,7 @@ local chip: Chip = {
     damage = 1,
     hit_param = 0,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     slot_in_limit = 1,
     instant = plus.attack,
 }

@@ -27,7 +27,7 @@ local SOUND_APPEAR = asset.sound("appear")
 local IDENTITY = heatman_navi.identity
 
 -- Panel flags a flame needs.
-local CAN_HOLD: { PanelFlag } = { "solid", "on_field" }
+local CAN_HOLD: PanelCondition = { solid = true, on_field = true }
 
 -- The controller calls his spawner through r3, which his position takes:
 -- its address with the Thumb bit, whose fraction his Z keeps.

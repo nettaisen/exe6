@@ -33,7 +33,7 @@ local MARK_SOUND = asset.sound("err-select-91")
 local HIT_MOD = 3
 -- The panel flag that says something of the other side's stands there
 -- (`byte_80E74C4`, by the controller's side): its player navi.
-local OCCUPIED = "enemy_navi"
+local OCCUPIED: PanelCondition = { enemy_navi = true }
 -- The sparkles over whoever is hit: 32 ticks of effect 0x24.
 -- (Its length, `dword_80E19F0`'s row 2, the curse's first parameter.)
 local SPARKLES_TICKS = 0x20
@@ -43,7 +43,7 @@ local SPARKLE = new.effect { sprite = explosion_sprite, anim = 0, palette = 1, s
 -- collision stands on (x, y), when the panel says one of `side`'s
 -- opponents is there.
 local function occupant(x: number, y: number, side: number): Object?
-    if not field.check(x, y, OCCUPIED, nil, side) then
+    if not field.check(x, y, OCCUPIED, side) then
         return nil
     end
     for s = 0, 1 do

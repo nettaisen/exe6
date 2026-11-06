@@ -45,11 +45,11 @@ local WIND_UP, SWING, FLY = 0, 4, 8
 
 -- What ends it when hit (`byte_80D08C4`, by side): any of the other side's
 -- bodies and other bodies, or a neutral object.
-local ENDS: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
+local ENDS: HitNames = { enemy_body = true, enemy_other_body = true, neutral = true }
 
 -- What it steers toward (`off_80D0A3C`): an enemy navi's body, of its side;
 -- the rows it tries, nearest first (`byte_80D0A48`).
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 local ROWS = { 0, -1, 1, -2, 2 }
 
 -- `sub_80D07FC`: over its panel; collision on, region off.
@@ -152,18 +152,17 @@ local function swing(me: Object)
 end
 
 -- `object_getFirstPanelInDirectionFiltered`: from (x, y) along `step`, the
--- first column whose panel meets (require, forbid) (`field.check`, of side
+-- first column whose panel meets `cond` (`field.check`, of side
 -- `of`), while on the field; 0 if none.
 local function first_in_direction(
     x: number,
     y: number,
     step: number,
-    require: PanelFlags?,
-    forbid: PanelFlags?,
+    cond: PanelCondition?,
     of: number
 ): number
     while true do
-        if field.check(x, y, require, forbid, of) then
+        if field.check(x, y, cond, of) then
             return x
         end
         x += step
@@ -183,7 +182,7 @@ local function aim(me: Object)
     if s.steered then
         local front = me.facing
         for _, dy in ROWS do
-            local found = first_in_direction(me.panel_x + front, me.panel_y + dy, front, ENEMY_NAVI, nil, me.alliance)
+            local found = first_in_direction(me.panel_x + front, me.panel_y + dy, front, ENEMY_NAVI, me.alliance)
             if found ~= 0 then
                 local ticks = int.tdiv(int.mul32(math.abs(found - me.panel_x), 0x28_0000), speed)
                 vy = int.tdiv(int.mul32(0x18_0000, dy), ticks)

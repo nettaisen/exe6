@@ -33,7 +33,7 @@ local chip: Chip = {
     codes = { "*" },
     element = "null", family = "plus", class = "standard",
     rarity = 1, mb = 11, damage = 0, hit_param = 0, lockout = 20,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     slot_in_limit = 3,
     instant = raise(1),
 }

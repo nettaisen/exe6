@@ -10,8 +10,8 @@ local stages = require("../stages")
 local function match_stages(): { StageDef }
     local out: { StageDef } = {}
     for _, s in stages :: { [string]: StageDef } do
-        local effects = s.effects or {}
-        if table.find(effects, "link") ~= nil and table.find(effects, "random") == nil then
+        local effects = s.effects
+        if effects and effects.link and not effects.random then
             table.insert(out, s)
         end
     end

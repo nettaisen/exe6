@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 100,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 1,
     program_advances = { { order = 27, code_run = { chip = yoyo_chip, count = 3 } } },
     action = throw.action { id = "greatyo/action", throw = yoyo.three { panels = 4, rounds = 5 } },

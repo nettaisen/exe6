@@ -43,8 +43,11 @@ local INVULNERABLE_TICKS = 0xFFFF
 -- with no enemy navi's body and no other body of either side's or neutral
 -- object.
 local DIGGABLE: PanelCondition = {
-    require = "solid",
-    forbid = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" },
+    solid = true,
+    enemy_body = false,
+    own_other_body = false,
+    enemy_other_body = false,
+    neutral = false,
 }
 
 -- The hit on each panel he enters: a breaking attack at navis, with the
@@ -57,7 +60,7 @@ local SHAKE, SHAKE_TICKS = 1, 0x14
 
 -- Where a rock falls, of his side (`off_80F1EF0`): a panel of the other
 -- side's area with an enemy navi's body.
-local ROCK_TARGETS: { PanelFlag } = { "enemy_body", "enemy_area" }
+local ROCK_TARGETS: PanelCondition = { enemy_body = true, enemy_area = true }
 
 -- His rocks: 10 ticks' warning, waiting a dimming out, not cracking the
 -- panel.
@@ -128,7 +131,7 @@ local function dig(me: Object, s: State)
     if px ~= column then
         dig_hit(me, px, py)
     end
-    if not field.check(px, py, DIGGABLE.require, DIGGABLE.forbid, me.alliance) then
+    if not field.check(px, py, DIGGABLE, me.alliance) then
         link.go(me, RISE)
         return
     end
@@ -144,7 +147,7 @@ end
 -- panel left out), picked with one draw; none without such a panel (and
 -- no draw).
 local function drop_rock(me: Object)
-    local found = panels.filtered_except(me, ROCK_TARGETS, nil, me.alliance)
+    local found = panels.filtered_except(me, ROCK_TARGETS, me.alliance)
     if #found == 0 then
         return
     end
@@ -226,7 +229,7 @@ local chip: Chip = {
     damage = { formula = "navi_level", base = 30, per_level = 10 },
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     -- `sub_80F1C1C` (`off_80F1C30`).
     action = new.action {

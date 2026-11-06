@@ -17,7 +17,7 @@ local chip: Chip = {
     slot_in_limit = 1,
     -- It goes with any selection on the custom screen, and leaves the
     -- selection's rules alone (`sub_8028E4C`).
-    traits = { "goes_with_any" },
+    traits = { goes_with_any = true },
     instant = plus.sparkle_alone,
 }
 

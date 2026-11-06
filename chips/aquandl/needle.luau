@@ -30,9 +30,11 @@ local SPEED, FLIGHT, LANDED_Z = 0xC_0000, 12, 0x4_0000
 local FADE = 0x0C
 local HIT_MOD = 3
 
+local CRACKED: PanelFlags = { cracked = true }
+
 -- `sub_8109794`: crack (x, y) unless it is already cracked.
 local function crack(x: number, y: number)
-    if not field.any(x, y, "cracked") then
+    if not field.any(x, y, CRACKED) then
         field.crack(x, y)
     end
 end

@@ -34,10 +34,10 @@ local form: FormDef = {
     -- A charged Wood chip hits twice as hard.
     charge_doubles = { element = "wood" },
     -- What its status reset gives the navi (`sub_8014536`).
-    status_reset = { "clear_statuses" },
+    status_reset = { clear_statuses = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 7,
-    traits = { "status_immune" },
+    traits = { status_immune = true },
     -- The buster arm it raises (lib/buster).
     buster_arm = { anim = 7 },
     identity = new.identity {

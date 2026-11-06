@@ -161,7 +161,7 @@ local SOUND_FINALE = asset.sound("burst")
 local ANGLES = { [0] = 0, 0x55, 0xAA, 0x78, 0xC8 }
 
 -- An enemy navi's body (`off_80BF224`).
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 
 -- The controller calls the leader's spawner (`sub_80BF160`) through r3,
 -- which his position takes.
@@ -238,6 +238,8 @@ end
 
 -- ---- The leader -------------------------------------------------------------
 
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
+
 -- `sub_80BF192(beside)`: a panel beside an enemy navi (`beside` 1 in front
 -- of it, 0 behind it, as the leader faces) that is his user's or a free
 -- solid one, at random (one draw when there is one); none: column 0.
@@ -245,10 +247,10 @@ local function beside_enemy(me: Object, beside: number): (number, number)
     local d = 1 - 2 * bit32.bxor(me.alliance, bit32.bxor(me.flip, beside))
     local user = me.related1 :: Object
     local found: { number } = {}
-    for _, p in panels.filtered(ENEMY_NAVI, nil, me.alliance) do
+    for _, p in panels.filtered(ENEMY_NAVI, me.alliance) do
         local x, y = panels.x(p) + d, panels.y(p)
         -- (A panel a Cross stands on: solid, with no body on it.)
-        if (x == user.panel_x and y == user.panel_y) or field.check(x, y, "solid", "any_body") then
+        if (x == user.panel_x and y == user.panel_y) or field.check(x, y, SOLID_NOT_ANY_BODY) then
             found[#found + 1] = panels.pack(x, y)
         end
     end

@@ -53,7 +53,7 @@ local HITS: { [string]: DblBeastHit } = {
 -- row with an enemy body or a neutral object on it, 16 pixels up.
 local SHOT_SPARK = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 }
 local SHOT: DblBeastHit = { ahead = 0, region = regions.single, spark = SHOT_SPARK, is = collision.attack, damage = 5, z = 0x10_0000 }
-local SHOT_TARGET: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
+local SHOT_TARGET: PanelFlags = { enemy_body = true, enemy_other_body = true, neutral = true }
 
 -- The bite's drill (attachment row 0x20: GroundCross's drill arm).
 local MOUTH = attachment.look { sprite = drill_arm_sprite, palette = 0, attach_point = 19 }

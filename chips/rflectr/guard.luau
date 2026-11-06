@@ -23,7 +23,7 @@ guard.STATE = { timer = schema.u16 }
 -- The shield sits at the navi's sprite attach point 6.
 local SHIELD_POINT = 6
 -- A hit that breaks guards (the collision's hit flag 2): a break.
-local BREAKS_GUARD = "break"
+local BREAKS_GUARD: HitNames = { ["break"] = true }
 
 -- The Beast forms whose head overlay mirrors the navi's animation: those
 -- that wear a beast's head (the Falzar beast's, its Crosses' and Beast

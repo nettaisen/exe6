@@ -18,10 +18,10 @@ local aurahed1: Chip = {
     damage = 130,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
-    traits = { "aura_bonus" },
+    traits = { aura_bonus = true },
     action = action.action {
         id = "aurahed1/action",
         head = { palette = 0, speed = SPEED, strong = true, far = false },
@@ -38,10 +38,10 @@ local aurahed2: Chip = {
     damage = 150,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
-    traits = { "aura_bonus" },
+    traits = { aura_bonus = true },
     action = action.action {
         id = "aurahed2/action",
         head = { palette = 1, speed = SPEED, strong = true, far = false },
@@ -58,10 +58,10 @@ local aurahed3: Chip = {
     damage = 170,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.yoyo },
     slot_in_limit = 3,
-    traits = { "aura_bonus" },
+    traits = { aura_bonus = true },
     action = action.action {
         id = "aurahed3/action",
         head = { palette = 2, speed = SPEED, strong = true, far = false },
@@ -78,7 +78,7 @@ local streamhd: Chip = {
     damage = 150,
     hit_param = 5,
     lockout = 20,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     beast = { lockon = lockon.cannon },
     slot_in_limit = 1,
     program_advances = {
@@ -86,7 +86,7 @@ local streamhd: Chip = {
         { order = 41, code_run = { chip = aurahed2, count = 3 } },
         { order = 42, code_run = { chip = aurahed3, count = 3 } },
     },
-    traits = { "aura_bonus" },
+    traits = { aura_bonus = true },
     -- Five heads to the far edge, the last one strong.
     action = action.action {
         id = "streamhd/action",

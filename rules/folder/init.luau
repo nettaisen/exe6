@@ -29,17 +29,13 @@ local folder_rules = require("@exelib/folder_rules")
 
 local FOLDER_CLASSES: { [string]: boolean } = { standard = true, mega = true, giga = true }
 
-local function has(list: any, x: any): boolean
-    return list ~= nil and table.find(list, x) ~= nil
-end
-
 local RULES: FolderRules = {
     size = 30,
     in_pack = function(c: Chip): boolean
         return FOLDER_CLASSES[c.class or ""] == true
             and c.codes ~= nil
             and #c.codes > 0
-            and (has(c.flags, "library") or (c :: any).version ~= nil or (c :: any).collectible == true)
+            and (c.flags and c.flags.library or (c :: any).version ~= nil or (c :: any).collectible == true)
     end,
     copies = function(c: Chip): number
         local mb = c.mb or 0

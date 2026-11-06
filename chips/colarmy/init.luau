@@ -8,7 +8,7 @@ local chip: Chip = {
     codes = { "B", "G", "R", "*" },
     element = "null", family = "null", class = "standard",
     rarity = 2, mb = 25, damage = 40, hit_param = 30, lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     instant = army.instant,
 }

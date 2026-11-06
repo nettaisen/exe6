@@ -24,14 +24,14 @@ local WAIT, STRIKE = 0x0, 0x4
 
 -- What it counts as having hit (`sub_801A100`: an object, a body, another
 -- body of either side, or a neutral object).
-local HIT_SOMETHING: { HitName } = {
-    "own_object",
-    "enemy_object",
-    "own_body",
-    "enemy_body",
-    "own_other_body",
-    "enemy_other_body",
-    "neutral",
+local HIT_SOMETHING: HitNames = {
+    own_object = true,
+    enemy_object = true,
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
 }
 
 -- `sub_801A100`: after a hit on something (not guarded), its spark over the
@@ -39,7 +39,7 @@ local HIT_SOMETHING: { HitName } = {
 local function panel_spark(me: Object)
     local c = me.collision
     local spark = (me.state :: State).spark
-    if not c:hit_any(HIT_SOMETHING) or c:hit_any("guarded") or spark == nil then
+    if not c:hit_any(HIT_SOMETHING) or c.hit_by.guarded or spark == nil then
         return
     end
     local px, py = int.tdiv(int.asr(me.pos.x, 16) + 0xA0, 0x28), int.tdiv(int.asr(me.pos.y, 16) + 0x20, 0x18)

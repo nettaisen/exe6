@@ -12,7 +12,13 @@ local form: FormDef = {
     -- The target marker shows, its afterimages stay, a Null chip's A charge times by the claw,
     -- and its damaging Null chips deal double (`sub_80E1566`, `sub_80E341E`, `sub_8012F62`,
     -- `sub_8012ABC`); rules/beast's berserk decides its idle (`sub_802D322`).
-    traits = { "controlled", "shows_target_marker", "afterimages_stay", "alt_charge_time", "doubles_null" },
+    traits = {
+        controlled = true,
+        shows_target_marker = true,
+        afterimages_stay = true,
+        alt_charge_time = true,
+        doubles_null = true,
+    },
     -- It glows (`sub_8016A38`, `byte_8016A68`): the navi's color shader by the battle time, a tick each.
     glow = {
         0x0000, 0x0000, 0x0041, 0x0461, 0x0881, 0x0CC2, 0x10E2, 0x1102, 0x1543,
@@ -33,7 +39,7 @@ local form: FormDef = {
     -- Gregar Beast Over face, and shows Falzar Beast Over's.
     mugshot = asset.mugshot("gregar-beast-over"),
     -- What its status reset gives the navi (`sub_8014536`).
-    status_reset = { "super_armor", "target_marker", "invulnerable", "controller_restart" },
+    status_reset = { super_armor = true, target_marker = true, invulnerable = true, controller_restart = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 23,
     -- The buster arm it raises (lib/buster).

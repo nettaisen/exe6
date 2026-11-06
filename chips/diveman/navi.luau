@@ -42,9 +42,8 @@ local SPAWNER_ADDRESS = 0x080B9B6F
 -- The waves: in each row, from the far column toward him, the first
 -- panel of his side's color (`byte_80B9BF0`), if it is solid with no
 -- non-navi body or neutral object (`byte_80B9C04`).
-local HIS_COLOR = "own_area"
-local WAVE_FLOOR = "solid"
-local WAVE_FORBID: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
+local HIS_COLOR: PanelCondition = { own_area = true }
+local WAVE_FLOOR: PanelCondition = { solid = true, own_other_body = false, enemy_other_body = false, neutral = false }
 
 -- His actions.
 local SURFACE, WAIT, DIVE, WAVES, RISE, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14
@@ -96,10 +95,10 @@ local function raise_waves(me: Object)
     local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
     for row = 1, 3 do
         local x = start
-        while field.valid(x, row) and not field.check(x, row, HIS_COLOR, nil, me.alliance) do
+        while field.valid(x, row) and not field.check(x, row, HIS_COLOR, me.alliance) do
             x += step
         end
-        if field.valid(x, row) and field.check(x, row, WAVE_FLOOR, WAVE_FORBID) then
+        if field.valid(x, row) and field.check(x, row, WAVE_FLOOR) then
             wave.raise(me, x, row, me.element, damage, true, row - 1)
         end
     end

@@ -28,8 +28,8 @@ local ROW_STEP: { [number]: number } = { [0] = -1, [1] = 0, [2] = 1 }
 -- The other side's bodies, of its side (`off_80D9340`, `off_80D9344`);
 -- the other side's other bodies and neutral objects (`dword_80D9348`,
 -- `dword_80D934C`).
-local OTHER_BODY = "enemy_body"
-local BLOCKERS: { PanelFlag } = { "enemy_other_body", "neutral" }
+local OTHER_BODY: PanelFlags = { enemy_body = true }
+local BLOCKERS: PanelFlags = { enemy_other_body = true, neutral = true }
 
 -- `sub_80D9298`: a step along its aim (true if blocked): with
 -- `stops_at_objects`, not off a panel holding a blocker nor onto one; not

@@ -39,7 +39,7 @@ local SWAY = 0x18
 -- What it does to what it hits: a bubble.
 local STATUS = statuses.bubble_150
 -- A hit on this bursts it: a neutral object's.
-local BURSTS = "neutral"
+local BURSTS: HitNames = { neutral = true }
 
 -- The puff it bursts in, 16 pixels above it.
 local function puff(me: Object)

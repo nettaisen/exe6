@@ -12,7 +12,7 @@ local chips: { [string]: Chip } = {
         codes = { "G", "K", "R" },
         element = "null", family = "summon", class = "standard",
         rarity = 0, mb = 26, damage = 10, hit_param = 158, lockout = 0,
-        flags = { "dimming", "has_damage", "standard_library", "library" },
+        flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- `byte_80D34C0` row 0.
         dimming = controller.hook(plane.plane { lifetime = 150, bombs = 10, palette = 0, hp = 30 }),
@@ -21,7 +21,7 @@ local chips: { [string]: Chip } = {
         codes = { "O", "T", "Y" },
         element = "null", family = "summon", class = "standard",
         rarity = 1, mb = 32, damage = 10, hit_param = 158, lockout = 0,
-        flags = { "dimming", "has_damage", "standard_library", "library" },
+        flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- `byte_80D34C0` row 1.
         dimming = controller.hook(plane.plane { lifetime = 190, bombs = 14, palette = 1, hp = 40 }),
@@ -30,7 +30,7 @@ local chips: { [string]: Chip } = {
         codes = { "N", "U", "Z" },
         element = "null", family = "summon", class = "standard",
         rarity = 2, mb = 39, damage = 10, hit_param = 158, lockout = 0,
-        flags = { "dimming", "has_damage", "standard_library", "library" },
+        flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- `byte_80D34C0` row 2.
         dimming = controller.hook(plane.plane { lifetime = 230, bombs = 18, palette = 2, hp = 50 }),

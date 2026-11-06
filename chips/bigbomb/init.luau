@@ -12,7 +12,7 @@ local chip: Chip = {
     codes = { "O", "P", "V" },
     element = "null", family = "null", class = "standard",
     rarity = 3, mb = 32, damage = 140, hit_param = 30, lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     -- The Beast rush, and its lock-on mode (rules/lockon).
     beast = { lockon = lockon.bigbomb },

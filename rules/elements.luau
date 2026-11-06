@@ -33,9 +33,9 @@ return {
     },
     non_elemental = "null",
     family_elements = {
-        sword = { "sword" },
-        cursor = { "cursor" },
-        wind = { "wind" },
-        ["break"] = { "break" },
+        sword = { sword = true },
+        cursor = { cursor = true },
+        wind = { wind = true },
+        ["break"] = { ["break"] = true },
     },
 }

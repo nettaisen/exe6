@@ -20,7 +20,7 @@ local chip: Chip = {
     damage = 200,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     beast = { lockon = lockon.firebrn1 },
     slot_in_limit = 1,
     dark_substitute = thunder,

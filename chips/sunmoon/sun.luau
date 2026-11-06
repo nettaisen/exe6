@@ -38,7 +38,7 @@ local DIVE_TICKS = 0x10
 
 -- What its landing panel must have one of for the dive to hit: solid, or
 -- any body.
-local HOLDS: { PanelFlag } = { "any_body", "solid" }
+local HOLDS: PanelFlags = { any_body = true, solid = true }
 
 -- The region its dive hits, cracks and marks (the 3x3 around its panel).
 local DIVE_REGION = regions.square

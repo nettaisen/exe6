@@ -13,7 +13,13 @@ local form: FormDef = {
     -- The target marker shows, its afterimages stay, a Null chip's A charge times by the claw,
     -- and its damaging Null chips deal double (`sub_80E1566`, `sub_80E341E`, `sub_8012F62`,
     -- `sub_8012ABC`); rules/beast's berserk decides its idle (`sub_802D322`).
-    traits = { "controlled", "shows_target_marker", "afterimages_stay", "alt_charge_time", "doubles_null" },
+    traits = {
+        controlled = true,
+        shows_target_marker = true,
+        afterimages_stay = true,
+        alt_charge_time = true,
+        doubles_null = true,
+    },
     -- It glows (`sub_8016A38`, `byte_8016A9C`): the navi's color shader by the battle time, a tick each.
     glow = {
         0x0000, 0x0000, 0x0402, 0x0423, 0x0444, 0x0866, 0x0887, 0x0888, 0x0CAA,
@@ -33,9 +39,23 @@ local form: FormDef = {
     mugshot = asset.mugshot("falzar-beast-over"),
     -- What its status reset gives the navi (`sub_8014536`): untouchable, with AirShoe and FloatShoe (one
     -- literal, 0x08000030), so no hit reaches it.
-    status_reset = { "untouchable", "air_shoes", "float_shoes", "floating_body", "target_marker", "controller_restart" },
+    status_reset = {
+        untouchable = true,
+        air_shoes = true,
+        float_shoes = true,
+        floating_body = true,
+        target_marker = true,
+        controller_restart = true,
+    },
     -- After a NaviCust change (`sub_801469C`), which no hit can bring, it is invulnerable as well.
-    ability_refresh = { "air_shoes", "float_shoes", "floating_body", "untouchable", "invulnerable", "controller_restart" },
+    ability_refresh = {
+        air_shoes = true,
+        float_shoes = true,
+        floating_body = true,
+        untouchable = true,
+        invulnerable = true,
+        controller_restart = true,
+    },
     -- It floats 20 pixels up.
     hover = 0x14,
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.

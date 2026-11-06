@@ -36,10 +36,10 @@ local SPEED = 0x2_4000
 
 -- What ends it when it hits, of its side (`byte_80D7BA8`: the other side's
 -- body or other body, and neutral objects).
-local ENDS: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
+local ENDS: HitNames = { enemy_body = true, enemy_other_body = true, neutral = true }
 
 -- Where it aims, of its side (`off_80D7D44`: an enemy navi's body).
-local ENEMY = "enemy_body"
+local ENEMY: PanelCondition = { enemy_body = true }
 
 -- Its actions.
 local WAIT, FLY = 0, 4
@@ -86,7 +86,7 @@ local function find_target(me: Object): (number, number)
     local back = if me.alliance == 0 then 1 else 6
     local x = back
     while true do
-        if field.check(x, me.panel_y, ENEMY, nil, me.alliance) then
+        if field.check(x, me.panel_y, ENEMY, me.alliance) then
             return x, me.panel_y
         end
         x += front
@@ -97,7 +97,7 @@ local function find_target(me: Object): (number, number)
     x = back
     while true do
         for y = 1, 3 do
-            if field.check(x, y, ENEMY, nil, me.alliance) then
+            if field.check(x, y, ENEMY, me.alliance) then
                 return x, y
             end
         end

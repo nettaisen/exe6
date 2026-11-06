@@ -35,7 +35,7 @@ local chip: Chip = {
     damage = 1,
     hit_param = 128,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     slot_in_limit = 1,
     program_advances = { { order = 2, sequence = { poisseed, poisseed, anubis } } },
     dimming = controller.hook(STATUE),

@@ -9,10 +9,10 @@ local BERSERK = schema.record_type("berserk")
 
 return new.record(BERSERK, {
     step = {
-        grounded = { require = { "solid", "own_area" }, forbid = "occupied" },
-        floor_free = { require = "own_area", forbid = "occupied" },
+        grounded = { solid = true, own_area = true, occupied = false },
+        floor_free = { own_area = true, occupied = false },
     },
-    opponent = { require = "enemy_body" },
-    blocking = { "enemy_other_body", "neutral" },
-    opposing_player = "enemy_navi",
+    opponent = { enemy_body = true },
+    blocking = { enemy_other_body = true, neutral = true },
+    opposing_player = { enemy_navi = true },
 })

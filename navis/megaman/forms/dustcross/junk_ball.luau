@@ -26,7 +26,7 @@ local AHEAD, SPEED = 0x12_0000, 0x6_0000
 
 -- What stops it (`byte_80DB888`, by side): the other side's bodies and
 -- other bodies, and neutral objects.
-local STOPS: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
+local STOPS: PanelFlags = { enemy_body = true, enemy_other_body = true, neutral = true }
 
 -- The phases, on its action.
 local ROLL, BURST = 0, 4
