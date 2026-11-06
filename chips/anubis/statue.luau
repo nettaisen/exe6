@@ -21,10 +21,7 @@ local anubis_sprite = asset.sprite("anubis")
 local statue = {}
 
 -- The drain's self type (`byte_80CF31C`'s row 0x52).
-local DRAIN_IS = new.collision {
-    flags = { own_attack = true, breaks_guard = true, reaches_float_shoe = true },
-    row_offset = 0x290,
-}
+local DRAIN_IS = new.collision { flags = { own_attack = true, breaks_guard = true, reaches_float_shoe = true } }
 
 local made = common.make {
     id = "anubis/statue",

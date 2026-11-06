@@ -18,7 +18,6 @@ roller.kind = common.make_kind {
             no_guard_spark = true,
             reaches_float_shoe = true,
         },
-        row_offset = 0x2C0,
     },
     target = new.collision {
         flags = {
@@ -30,7 +29,6 @@ roller.kind = common.make_kind {
             enemy_other_body = true,
             neutral = true,
         },
-        row_offset = 0x248,
     },
 }
 

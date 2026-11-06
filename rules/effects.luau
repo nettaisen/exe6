@@ -24,14 +24,14 @@ return {
         hp_bug = 0x1000,
     },
     -- Its damage words (`sub_8019F44`): the damage the low 11 bits, doubled with 0x8000; then 0x4000 the paralysis with a
-    -- flinch, then 0x2000 bug code 0xF8 and no more, else 0x1000 bug code 0xF7, each code's high byte the target lookup's
-    -- row offset (what the lookup left in r1).
+    -- flinch, then 0x2000 bug code 0xF8 and no more, else 0x1000 bug code 0xF7. (The original's argument of those two
+    -- codes is what its caller left in r1, which no routine reads: here none.)
     damage_word = {
         damage = 0x7FF,
         flags = {
             { flag = "paralysis", status = "damage_word_paralysis", hit_modifier = { flinch = true } },
-            { flag = "uninstall", bug = 0xF8, bug_high_row = true, stop = true },
-            { flag = "hp_bug", bug = 0xF7, bug_high_row = true },
+            { flag = "uninstall", bug = 0xF8, stop = true },
+            { flag = "hp_bug", bug = 0xF7 },
         },
     },
     palette_flash = "mode_runs_through_pause",
