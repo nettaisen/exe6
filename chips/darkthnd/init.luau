@@ -21,7 +21,6 @@ local chip: Chip = {
     hit_param = 20,
     lockout = 0,
     flags = { "has_damage" },
-    extra_flags = { 16, 32 },
     beast = { lockon = lockon.firebrn1 },
     slot_in_limit = 1,
     dark_substitute = thunder,

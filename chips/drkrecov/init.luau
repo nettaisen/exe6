@@ -14,7 +14,6 @@ local chip: Chip = {
     damage = 0,
     hit_param = 49,
     lockout = 0,
-    extra_flags = { 16, 32 },
     slot_in_limit = 1,
     dark_substitute = recov_chips.recov10,
     hp_bug = 7,

@@ -90,9 +90,6 @@ beast.takeover_requested = cross_special.requested
 beast.takeover = cross_special.takeover
 -- `sub_80158CC`: outside battle mode 1, reverting spends a Beast Out
 -- and exhausts a Beast Over.
--- The battle effect of a random battle (effects 0x200000).
-local RANDOM = 0x200000
-
 -- `sub_801D814`: whether the emotion window shows the Beast Out count (else its empty box), which the round's setup
 -- says (the HUD's `window_count`, a presentation): always in battle mode 5, never in mode 1, and otherwise while the
 -- player's save has Beast Out (event flag 0xE0: the setup's `beast_out`) and no navi code sealed it (0x163: the
@@ -106,7 +103,7 @@ function beast.round_setup(side: number)
             and setup.beast_out
             and setup.level == nil
             and not battle.own_gauges()
-            and not bit32.btest(battle.effects(), RANDOM)
+            and not battle.random()
         )
     battle.hud(side).window_count = shown
 end

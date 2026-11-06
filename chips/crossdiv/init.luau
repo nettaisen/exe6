@@ -67,7 +67,6 @@ local chip: Chip = {
     hit_param = 148,
     lockout = 0,
     flags = { "dimming", "has_damage", "library" },
-    extra_flags = { 8, 16 },
     slot_in_limit = 1,
     navi = navi_chips.make {
         id = "crossdiv/controller",

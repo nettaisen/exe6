@@ -25,7 +25,6 @@ local chip: Chip = {
     hit_param = 50,
     lockout = 0,
     flags = { "dimming" },
-    extra_flags = { 16, 32 },
     slot_in_limit = 1,
     dark_substitute = invisibl,
     dimming = navi_boost.hook(CROSS_SPECIAL),

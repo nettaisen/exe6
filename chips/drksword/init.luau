@@ -31,7 +31,6 @@ local chip: Chip = {
     hit_param = 40,
     lockout = 0,
     flags = { "has_damage" },
-    extra_flags = { 16, 32 },
     beast = { lockon = lockon.drksword },
     slot_in_limit = 1,
     dark_substitute = sword,

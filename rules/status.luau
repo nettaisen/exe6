@@ -8,83 +8,70 @@ local status = {
     -- Paralysis.
     paralyze_90 = new.status {
         id = "paralyze-90",
-        requests = 0x00000008,
         duration = 90,
         timer = "paralyze",
     },
     paralyze_120 = new.status {
         id = "paralyze-120",
-        requests = 0x00000008,
         duration = 120,
         timer = "paralyze",
     },
     paralyze_150 = new.status {
         id = "paralyze-150",
-        requests = 0x00000008,
         duration = 150,
         timer = "paralyze",
     },
     -- Confusion.
     confuse_480 = new.status {
         id = "confuse-480",
-        requests = 0x00000080,
         duration = 480,
         timer = "confuse",
     },
     confuse_960 = new.status {
         id = "confuse-960",
-        requests = 0x00000080,
         duration = 960,
         timer = "confuse",
     },
     confuse_4 = new.status {
         id = "confuse-4",
-        requests = 0x00000080,
         duration = 4,
         timer = "confuse",
     },
     -- Blindness.
     blind_480 = new.status {
         id = "blind-480",
-        requests = 0x00000020,
         duration = 480,
         timer = "blind",
     },
     blind_1200 = new.status {
         id = "blind-1200",
-        requests = 0x00000020,
         duration = 1200,
         timer = "blind",
     },
     blind_4 = new.status {
         id = "blind-4",
-        requests = 0x00000020,
         duration = 4,
         timer = "blind",
     },
     -- Immobilization.
     immobilize_120 = new.status {
         id = "immobilize-120",
-        requests = 0x00000040,
         duration = 120,
         timer = "immobilize",
     },
     immobilize_4 = new.status {
         id = "immobilize-4",
-        requests = 0x00000040,
         duration = 4,
         timer = "immobilize",
     },
     immobilize_30 = new.status {
         id = "immobilize-30",
-        requests = 0x00000040,
         duration = 30,
         timer = "immobilize",
     },
     -- Freezing: the hit that lands one doesn't flinch.
     freeze_150 = new.status {
         id = "freeze-150",
-        requests = 0x00010000,
         duration = 150,
         timer = "freeze",
         cancels_flinch = true,
@@ -92,7 +79,6 @@ local status = {
     -- Bubbling: a counter hit that lands one keeps it.
     bubble_150 = new.status {
         id = "bubble-150",
-        requests = 0x00020000,
         duration = 150,
         timer = "bubble",
         survives_counter = true,
@@ -107,7 +93,7 @@ local status = {
         -- while the battle is paused; the custom screen's while the side's screen is up (`sub_80102AC`: the status's
         -- bits 5, `byte_80102F8`).
         hp_drain = { periods = { 0, 40, 35, 30, 25, 20, 15, 10 }, stops_while_paused = true },
-        custom_drain = { periods = { 0, 40, 30, 20, 10, 5, 3, 2 }, status = 0x5 },
+        custom_drain = { periods = { 0, 40, 30, 20, 10, 5, 3, 2 }, status = { "selecting", "custom_screen" } },
         form_tick = true,
         form_keeps_back_special = false,
         -- The mercy flash hides the navi while its timer's bit 1 is set (`sub_8016934`).
@@ -131,7 +117,12 @@ local status = {
         -- Its defensive chips (`sub_802CEF4`): AntiDmg catches a hit of 10 or more, the trap the navi's status arms any
         -- hit (one of none swallowed all the same); AntiSwrd a sword's hit without the hit flags 0x20000. A caught hit
         -- drops the navi's pending requests 0x301BE (a panel's slide among them).
-        anti_traps = { damage_min = 10, armed_swallows_below = true, sword_spares = 0x20000, drops_requests = 0x301BE },
+        anti_traps = {
+            damage_min = 10,
+            armed_swallows_below = true,
+            sword_spares = 0x20000,
+            drops_requests = { "flash", "flinch", "slide", "drag", "paralyze", "confuse", "blind", "freeze", "bubble" },
+        },
         -- A chip-destroying hit (hit flag 0x10: `sub_801A2CC`) takes a player's next chip alone: the hand's cursor steps
         -- past it. (A chip request pending then uses the chip after it; with none left EXE6's uses chip 0xFFFF's record,
         -- past the chip table: the engine ends the request instead, docs/engine/chips.md §2.9.)
