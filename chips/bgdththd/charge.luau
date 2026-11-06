@@ -15,7 +15,7 @@ local thunder = require("../thunder").thunder
 local bgdththd = {}
 
 -- The attack's element byte: Elec.
-local ELEMENT = 3
+local ELEMENT = Element.elec
 local BUG_DAMAGE, PLAIN_DAMAGE = 0xC8, 0x28
 
 -- The shot with a bug frag (the original's parameter bytes 2, 12, 0x10): a

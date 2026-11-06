@@ -148,7 +148,7 @@ local function waves(me: Object, x: number)
     for y = 1, 3 do
         if field.check(x, y, w.require, w.forbid, me.alliance) then
             -- r3 (his damage's flag bits) becomes its Z.
-            wave.spawn(user, x, y, 0, WAVE, damage, bit32.band(me.damage, 0xF000))
+            wave.spawn(user, x, y, Element.null, WAVE, damage, bit32.band(me.damage, 0xF000))
         end
     end
 end
@@ -257,7 +257,7 @@ local function slash(me: Object)
         box.run_while_dimmed = true
     end
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, 0x10_0000), SLASH, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0x10_0000), SLASH, me.facing_side)
 end
 
 -- `sub_80BA152`: the slash; 30 ticks.

@@ -26,7 +26,7 @@ gust.kind = common.make_kind("gust", {
     panels = { require = "enemy_area" },
 })
 
--- `sub_80CD488`: a gust on (x, y) for side `alliance` and flip `flip`
+-- `sub_80CD488`: a gust on (x, y) for side `alliance`, turned or not (`flip`)
 -- (the spawner's halfword), blowing as `how` says, with the damage word
 -- `damage`, and the spawner that tracks it by `holder.state.gusts[slot]`
 -- (which becomes 1), if any.
@@ -34,7 +34,7 @@ function gust.spawn(
     x: number,
     y: number,
     alliance: number,
-    flip: number,
+    flip: boolean,
     how: GustHow,
     damage: number,
     holder: Object?,

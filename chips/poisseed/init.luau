@@ -22,7 +22,7 @@ local chip: Chip = {
         held = seed.held(3),
         held_anim = 8,
         thrower = seed.thrower(seed.variant {
-            element = 0,
+            element = Element.null,
             palette = 3,
             panel = "poison",
             -- Its sprout (effect 0x3B).

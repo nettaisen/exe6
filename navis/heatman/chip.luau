@@ -73,7 +73,7 @@ local function flames(me: Object)
     for _, d in BESIDE do
         local x, y = me.panel_x + d[1], me.panel_y + d[2]
         if field.solid(x, y) then
-            flame.spawn(me, x, y, element, FLAME, damage, Vec3.new(y, element, y - 1))
+            flame.spawn(me, x, y, element, FLAME, damage, Vec3.new(y, element.byte, y - 1))
         end
     end
 end

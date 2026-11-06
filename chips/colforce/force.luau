@@ -88,7 +88,7 @@ force.kind = new.kind {
 -- `sub_80E94DC`, instant chip effect 15: the force of the user's. (It
 -- spawns at the registers' values; its init sets its column.)
 function force.instant(user: Object, spec: InstantChipSpec)
-    local o = battle.spawn(force.kind, Vec3.new(spec.panel_y, spec.element, spec.z))
+    local o = battle.spawn(force.kind, Vec3.new(spec.panel_y, spec.element.byte, spec.z))
     if o then
         o.element = spec.element
         o.related1 = user

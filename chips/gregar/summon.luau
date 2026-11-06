@@ -260,7 +260,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = a, a
     sprite:set_animation(a)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     s.last_x, s.last_y = 0, 0
     me:set_lifecycle("update")
 end
@@ -302,13 +302,13 @@ function summon.spawn(
     user: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     damage: number,
     bonus: number,
     piece: number,
     rock_damage: number
 ): Object?
-    local o = battle.spawn(summon.kind, Vec3.new(y, element, bonus))
+    local o = battle.spawn(summon.kind, Vec3.new(y, element.byte, bonus))
     if not o then
         return nil
     end

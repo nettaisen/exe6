@@ -74,16 +74,16 @@ local function navi_on_row(me: Object): boolean
     return true
 end
 
--- `sub_80C9F18`: which way it faces; the sprite's flip.
-local function face(me: Object): number
-    local flip = 0
+-- `sub_80C9F18`: which way it faces (turned or not); the sprite turned so.
+local function face(me: Object)
+    local flip = false
     if not navi_ahead(me) then
-        if navi_on_row(me) or bit32.bxor(me.alliance, 1) * 5 + 1 == me.panel_x then
-            flip = 1
+        if navi_on_row(me) or battle.other_side(me.alliance) * 5 + 1 == me.panel_x then
+            flip = true
         end
     end
     me.flip = flip
-    return bit32.bxor(flip, me.alliance)
+    me.sprite:face(me)
 end
 
 -- `sub_80C6ADA` and `sub_801155A`: a shot at (x, y), `z` up.
@@ -175,7 +175,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite.shadow = "with_sprite"
-    sprite:set_flip(face(me))
+    face(me)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
@@ -216,8 +216,8 @@ army.kind = new.kind {
 -- `sub_80C9EA6`: a soldier of `user`'s on (x, y), with the damage word
 -- `damage`; it runs while dimmed. (It spawns at the registers' values,
 -- which its init replaces.)
-local function spawn(user: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(army.kind, Vec3.new(y, element, 0))
+local function spawn(user: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(army.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

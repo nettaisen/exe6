@@ -139,8 +139,8 @@ dash_hit.kind = new.kind {
 -- in front of it, of `variant`. Its Y is the element (the spawner's
 -- registers) and its X register garbage, until its init places it; Z is
 -- `z`.
-function dash_hit.spawn(owner: Object, element: number, damage: number, reach: number, variant: Variant, z: number): Object?
-    local o = battle.spawn(dash_hit.kind, Vec3.new(0, element, z))
+function dash_hit.spawn(owner: Object, element: Element, damage: number, reach: number, variant: Variant, z: number): Object?
+    local o = battle.spawn(dash_hit.kind, Vec3.new(0, element.byte, z))
     if o then
         local s = o.state :: State
         s.reach, s.variant = reach, variant

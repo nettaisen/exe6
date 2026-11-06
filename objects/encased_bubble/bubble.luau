@@ -22,7 +22,7 @@ local made = common.make {
     -- Sheet 10-00 (`sub_80D9870`).
     sprite = rock_cubes_sprite,
     sounds = { form = asset.sound("place"), burst = asset.sound("falling-rock") },
-    spark = sparks.of_element(2),
+    spark = sparks.of_element(Element.aqua),
     is = collision.neutral_body,
     hits = collision.everything,
     -- A push hit (hit modifier bits 0x3C).

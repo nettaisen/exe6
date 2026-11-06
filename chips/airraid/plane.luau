@@ -120,7 +120,7 @@ local function bomb(me: Object)
     local x: number
     local y: number
     if #list == 0 then
-        x = bit32.bxor(me.alliance, 1) * 5 + 1
+        x = battle.other_side(me.alliance) * 5 + 1
         y = me.panel_y
     else
         local i = s.next_target
@@ -148,7 +148,7 @@ local function bomb(me: Object)
             end
         end
     end
-    panel_strike.spawn(me, x, y, 0, STRIKE, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), 0, false)
+    panel_strike.spawn(me, x, y, Element.null, STRIKE, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), 0, false)
 end
 
 -- `sub_80D35E0`: the appearing sound, then it takes off.
@@ -281,7 +281,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite:step()
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     me.pos = Vec3.new(me.pos.x, me.pos.y, 0)
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y

@@ -110,7 +110,7 @@ local function spray(me: Object, s: State)
         me.step_init = 4
         link.add_bonus(me)
         local element = me.attack_element
-        drip_shower.spawn(me, me.panel_x, me.panel_y, element, SHOWER, link.damage_word(me), Vec3.new(me.panel_y, element, SHOWER_Z))
+        drip_shower.spawn(me, me.panel_x, me.panel_y, element, SHOWER, link.damage_word(me), Vec3.new(me.panel_y, element.byte, SHOWER_Z))
         local q = SHOWER.quarter_ticks
         s.timer = q * 4 * SHOWER.turns + q
     elseif link.run_out(s) then

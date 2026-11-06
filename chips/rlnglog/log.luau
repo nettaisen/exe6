@@ -230,7 +230,7 @@ local function init(me: Object, hp: number)
         return
     end
     me:setup_collision(collision.own_object, collision.hit_by_other_side_or_blockers, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me.anim = if s.big then 3 else 1
     local c = me.collision
@@ -271,8 +271,8 @@ log.kind = new.kind {
 -- `damage`. It runs while dimmed. Its position is the spawner's registers
 -- (the row, the element and a height of 16 pixels) until its init places
 -- it; the height stays.
-function log.spawn(owner: Object, x: number, y: number, element: number, what: RollingLog, damage: number): Object?
-    local o = battle.spawn(log.kind, Vec3.new(y, element, HEIGHT * 0x10000))
+function log.spawn(owner: Object, x: number, y: number, element: Element, what: RollingLog, damage: number): Object?
+    local o = battle.spawn(log.kind, Vec3.new(y, element.byte, HEIGHT * 0x10000))
     if o then
         o.element = element
         o.panel_x, o.panel_y = x, y

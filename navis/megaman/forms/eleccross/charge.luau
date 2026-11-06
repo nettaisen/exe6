@@ -19,7 +19,7 @@ local charge = {}
 local THUNDER = dolthdr.action { id = "eleccross/charge/thunder", ticks = 0x0F, held = buster.arm, held_anim = 0x19 }
 
 -- The attack's element (Elec) and hit parameter.
-local ELEC, HIT_PARAM = 3, 0x94
+local ELEC, HIT_PARAM = Element.elec, 0x94
 
 -- `sub_8011C38`.
 local function setup(navi: Object): Action

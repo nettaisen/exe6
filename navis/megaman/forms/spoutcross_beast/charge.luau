@@ -19,7 +19,7 @@ local charge = {}
 local WIND_UP, HOLD = 0x0, 0x4
 
 -- Aqua (the attack's element) and the hits' counter byte.
-local AQUA, HIT_PARAM = 2, 0x86
+local AQUA, HIT_PARAM = Element.aqua, 0x86
 
 local SOUND_SURGE, SOUND_WATER = asset.sound("spout-beast-charge"), asset.sound("aqua-surge")
 

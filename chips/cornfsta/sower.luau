@@ -175,7 +175,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.probe, collision.hits_navis, 0)
-    me.collision.element = 0
+    me.collision.element = Element.null
     me.collision:present()
     local s = me.state :: State
     s.ring_next = 0

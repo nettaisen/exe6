@@ -33,7 +33,7 @@ local function put_on(me: Object, sprite_asset: SpriteAsset, anim: number)
     me.anim_loaded = anim
     sprite:set_animation(anim)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -50,7 +50,7 @@ local function follow(me: Object)
     local look, worn = me.sprite, owner.sprite
     looks.copy(look, worn, "palette", "color_shader", "white", "mosaic")
     me.flip = owner.flip
-    look:set_flip(bit32.bxor(me.alliance, me.flip))
+    look:face(me)
     looks.copy(look, worn, "alpha")
     if owner:navi_action() ~= (me.state :: State).action then
         me:set_lifecycle("destroy")

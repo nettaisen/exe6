@@ -138,7 +138,7 @@ local function init(me: Object)
     me.anim = anim
     me.anim_loaded = anim
     sprite:set_animation(anim)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = 0
     me.timer = s.ticks
     me:set_coordinates_from_panel()
@@ -170,8 +170,8 @@ whirlwind.kind = new.kind {
 -- stays in the action he is running, with `element` and the damage word.
 -- Its position is the registers (y, the element, 0) until its init places
 -- it.
-function whirlwind.spawn(owner: Object, x: number, y: number, element: number, spec: Spec, damage: number): Object?
-    local o = battle.spawn(whirlwind.kind, Vec3.new(y, element, 0))
+function whirlwind.spawn(owner: Object, x: number, y: number, element: Element, spec: Spec, damage: number): Object?
+    local o = battle.spawn(whirlwind.kind, Vec3.new(y, element.byte, 0))
     if o then
         local s = o.state :: State
         s.at_once, s.ticks, s.anim = spec.at_once, spec.ticks, spec.anim

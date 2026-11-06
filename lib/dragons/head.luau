@@ -266,8 +266,8 @@ head.kind = new.kind {
 -- `sub_80DE660`: dragon `v` in column x for `owner`, with the damage word
 -- `damage`. Its position is the spawner's registers (the row, the element
 -- and z) until its init places it.
-function head.spawn(owner: Object, x: number, y: number, element: number, v: DragonVariant, damage: number): Object?
-    local o = battle.spawn(head.kind, Vec3.new(y, element, 0))
+function head.spawn(owner: Object, x: number, y: number, element: Element, v: DragonVariant, damage: number): Object?
+    local o = battle.spawn(head.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

@@ -57,7 +57,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = PALETTE
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -92,8 +92,8 @@ flame.kind = new.kind {
 -- `owner`'s on (x, y) with `element` and the damage word, burning `ticks`
 -- ticks, acting while dimmed (flag 0x10). (Spawned at the registers: the
 -- row, the element and `z`, the summon's bonus.)
-function flame.spawn(owner: Object, x: number, y: number, element: number, damage: number, ticks: number, z: number): Object?
-    local o = battle.spawn(flame.kind, Vec3.new(y, element, z))
+function flame.spawn(owner: Object, x: number, y: number, element: Element, damage: number, ticks: number, z: number): Object?
+    local o = battle.spawn(flame.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

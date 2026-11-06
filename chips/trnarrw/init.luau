@@ -42,7 +42,7 @@ local ARROW = flying_shot.variant {
     collision = { is = collision.attack, hits = collision.hits_navis },
     hit_mod = 1,
     element = "aqua",
-    spark = sparks.of_element(2),
+    spark = sparks.of_element(Element.aqua),
     sprite = bow_sprite,
     anim = 3,
     speed = 0x6_0000,

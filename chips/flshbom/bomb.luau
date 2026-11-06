@@ -80,7 +80,7 @@ local function flash(me: Object, v: FlashBombVariant, status: Status, damage: nu
         panel_y = me.panel_y,
         element = me.element,
         z = 0,
-        region = regions.area[bit32.bxor(side, 1)],
+        region = regions.area[battle.other_side(side)],
         -- None.
         hit_effect = nil,
         target = collision.hits_navis,
@@ -211,7 +211,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.thrown, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.collision:set_hit_effect(sparks.of_element(me.element))
     me.collision:set_region(nil)
     me.collision:present()
@@ -257,7 +257,7 @@ function flash_bomb.thrower(variant: FlashBombVariant): Thrower
                 s.target_y = user.panel_y
                 o.alliance, o.flip = user.alliance, user.flip
                 o:set_damage_word(damage)
-                o.element = 0
+                o.element = Element.null
                 o.related1 = user
             end
             return o

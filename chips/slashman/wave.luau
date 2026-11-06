@@ -65,7 +65,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -262,8 +262,8 @@ wave.kind = new.kind {
 -- `sub_80D0996`: a wave on (x, y) for `owner` (the navi chip's user) with
 -- `element`, the damage word and its variant. `z` is the spawner's
 -- register that becomes its Z, whose fraction it keeps.
-function wave.spawn(owner: Object, x: number, y: number, element: number, variant: SlashWave, damage: number, z: number): Object?
-    local o = battle.spawn(wave.kind, Vec3.new(y, element, z))
+function wave.spawn(owner: Object, x: number, y: number, element: Element, variant: SlashWave, damage: number, z: number): Object?
+    local o = battle.spawn(wave.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

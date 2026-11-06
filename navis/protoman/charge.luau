@@ -11,7 +11,7 @@ local charge = {}
 
 -- The attack's element byte: WideSwrd's (Null, with its family's Sword
 -- bit), and the hits' counter byte.
-local SWORD, HIT_PARAM = 0x80, 0x8A
+local SWORD, HIT_PARAM = Element.new("null", { sword = true }), 0x8A
 
 -- `sub_801206E`: WideSwrd as the attack's chip (its lockout, none; no
 -- bonus; not charged), with 60 damage and 20 more per point of buster

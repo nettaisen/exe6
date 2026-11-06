@@ -14,8 +14,8 @@ local EXE6: SonicBoomLook = {
     sprite = sword_slash_sprite,
     z = 0x10_0000,
     piercing_palette = 0xB,
-    palettes = { [0] = 0, 1, 2, 3, 4, 0, 0, 0 },
-    element_mask = 0xF,
+    palettes = { null = 0, fire = 1, aqua = 2, elec = 3, wood = 4, drain = 0 },
+    whole_byte = false,
     is = collision.slash,
     hits = collision.hits_navis,
 }
@@ -28,7 +28,7 @@ sonic_boom.kind = common.make_kind("sonic-boom", EXE6)
 -- `sub_80CF91E`: a sonic boom from `owner` on panel (x, y), with
 -- `element`, the damage word and what it is. (A game's own kind of it:
 -- `kind`.)
-function sonic_boom.throw(owner: Object, x: number, y: number, element: number, damage: number, boom: SonicBoom, kind: Kind?): Object?
+function sonic_boom.throw(owner: Object, x: number, y: number, element: Element, damage: number, boom: SonicBoom, kind: Kind?): Object?
     return common.throw(kind or sonic_boom.kind, owner, x, y, element, damage, boom)
 end
 

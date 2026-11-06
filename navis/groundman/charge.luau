@@ -23,7 +23,7 @@ local SOUND = asset.sound("drill-launch")
 -- The hits' counter byte, and the drills' element: Null (the attack's
 -- element byte).
 local HIT_PARAM = 0x8A
-local NULL = 0
+local NULL = Element.null
 
 -- The drills, upper row first (`byte_80F1E48`): the row, whether it is a
 -- side drill, the ticks it waits.

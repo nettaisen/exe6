@@ -24,7 +24,7 @@ shuriken.kind = common.make_kind {
 
 -- `sub_80D006E`: a shuriken onto (x, y) from `owner` with `element`,
 -- `hit_mod` and the damage word, of its side and facing.
-function shuriken.spawn(owner: Object, x: number, y: number, element: number, hit_mod: number, damage: number): Object?
+function shuriken.spawn(owner: Object, x: number, y: number, element: Element, hit_mod: number, damage: number): Object?
     return common.spawn(shuriken.kind, owner, x, y, element, hit_mod, damage)
 end
 

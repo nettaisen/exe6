@@ -43,7 +43,7 @@ local function follow(me: Object)
     looks.copy(look, worn, "color_shader", "white", "mosaic")
     if not (me.state :: State).keeps_flip then
         me.flip = owner.flip
-        look:set_flip(bit32.bxor(me.alliance, me.flip))
+        look:face(me)
     end
     looks.copy(look, worn, "alpha")
     if battle.dimmed() or held(owner) then
@@ -62,7 +62,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 

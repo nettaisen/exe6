@@ -161,7 +161,7 @@ local function flash(me: Object)
     end
     local p = list[battle.rng_positive() % #list + 1]
     local cx, cy = field.center(p[1], p[2])
-    battle.effect(Vec3.new(cx, cy, 0), FLASH[who(s)], bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0), FLASH[who(s)], me.facing_side)
 end
 
 -- An effect at its attach point 0 (`sub_8018810`) for `ticks` ticks.
@@ -439,7 +439,7 @@ end
 -- `sub_80BD20A`: a hero for `user` on (`x`, `y`) with `element` and the
 -- damage word `damage`, of the user's side and facing and with its
 -- NameID, running while dimmed.
-local function spawn(user: Object, x: number, y: number, element: number, damage: number, protoman: boolean): Object?
+local function spawn(user: Object, x: number, y: number, element: Element, damage: number, protoman: boolean): Object?
     local o = battle.spawn(heroes.kind)
     if not o then
         return nil
@@ -481,7 +481,7 @@ local function init(me: Object)
     if not s.protoman then
         sprite.palette = user.sprite.palette
     end
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     overlays.add_parts_of(me, me, false, true)
     dimming.hide_user(user)
     if not s.protoman then

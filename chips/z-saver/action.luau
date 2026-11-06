@@ -33,7 +33,7 @@ return {
             new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 4, steps = 13 },
             new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 4, steps = 13 },
         },
-        boom = function(owner: Object, x: number, y: number, element: number, damage: number, boom: SonicBoom): Object?
+        boom = function(owner: Object, x: number, y: number, element: Element, damage: number, boom: SonicBoom): Object?
             return sonic_boom.throw(owner, x, y, element, damage, boom)
         end,
         step = nil,

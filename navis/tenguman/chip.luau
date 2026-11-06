@@ -41,7 +41,7 @@ local function tornadoes(me: Object)
     for y = 1, 3 do
         for x = 1, 6 do
             if me.facing * (me.panel_x - x) < 0 and field.any(x, y, TARGETS, me.alliance) then
-                tornado.spawn(me, x, y, element, damage, Vec3.new(y, element, TORNADO_Z))
+                tornado.spawn(me, x, y, element, damage, Vec3.new(y, element.byte, TORNADO_Z))
             end
         end
     end
@@ -53,7 +53,7 @@ local function field_hit(me: Object)
     battle.hitbox(me, {
         panel_x = 0,
         panel_y = 0,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.field,
         hit_effect = nil,
@@ -75,7 +75,7 @@ local function blow(me: Object, s: State)
         field_hit(me)
         battle.play_sound(SOUND)
         local cx, cy = field.center(me.panel_x, me.panel_y)
-        battle.effect(Vec3.new(cx, cy, GUST_Z), GUST, link.flip(me))
+        battle.effect(Vec3.new(cx, cy, GUST_Z), GUST, me.facing_side)
         s.timer = BLOW_TICKS
     elseif link.run_out(s) then
         link.go(me, RECOVER)

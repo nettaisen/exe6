@@ -28,7 +28,7 @@ wave.kind = common.make_kind {
 -- `sub_80CB686`: a wave of `variant` from `owner` on panel (x, y) at
 -- height `z` (16.16), with `element`, the damage word and the hit
 -- modifier a piercing variant uses; nil if the attack pool is full.
-function wave.fire(owner: Object, x: number, y: number, z: number, variant: WaveVariant, element: number, damage: number, hit_mod: number): Object?
+function wave.fire(owner: Object, x: number, y: number, z: number, variant: WaveVariant, element: Element, damage: number, hit_mod: number): Object?
     return common.fire(wave.kind, owner, x, y, z, variant, element, damage, hit_mod)
 end
 

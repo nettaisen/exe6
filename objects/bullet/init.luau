@@ -28,7 +28,7 @@ bullet.kind = common.make_kind("bullet", EXE6)
 -- `sub_80C6ADA`: a bullet of `variant` from `owner` on panel (x, y) at
 -- height `z` (16.16), with `element` and the damage word. Of `kind`, EXE6's
 -- by default.
-function bullet.fire(owner: Object, x: number, y: number, z: number, variant: BulletVariant, element: number, damage: number, kind: Kind?): Object?
+function bullet.fire(owner: Object, x: number, y: number, z: number, variant: BulletVariant, element: Element, damage: number, kind: Kind?): Object?
     return common.fire(kind or bullet.kind, owner, x, y, z, variant, element, damage)
 end
 

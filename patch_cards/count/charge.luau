@@ -39,9 +39,9 @@ local function raise(me: Object, s: State)
     me.status.using_action = true
     s.timer = TICKS
     s.sound = 0x10
-    local x = bit32.bxor(me.alliance, 1) * 3 + 2
+    local x = battle.other_side(me.alliance) * 3 + 2
     local damage = me.attack_damage + me.hit_param * 0x10000
-    dust_storm.spawn(me, x, 2, STORM_Z, 0, damage, { ticks = TICKS, tied = charge.action })
+    dust_storm.spawn(me, x, 2, STORM_Z, Element.null, damage, { ticks = TICKS, tied = charge.action })
     me.step = BLOW
     me.step_init = 0
 end

@@ -141,7 +141,7 @@ local status = {
                 { emotion = "worn_out", when = { { mood = 0 }, { exhausted = true } } },
                 { emotion = "angry", when = { { angry = true } } },
                 { emotion = "tired", when = { { tired = true } } },
-                { emotion = "full_synchro", when = { { mood = 0xFF } } },
+                { emotion = "full_synchro", when = { { mood = "full_synchro" } } },
                 { emotion = "normal" },
             },
             -- What the framework does by them: Full Synchro and anger double the next damaging chip (Full Synchro

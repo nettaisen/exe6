@@ -25,7 +25,7 @@ shot.look = {
         mark = asset.sound("mark"),
         hit = asset.sound("col-army-2"),
     },
-    spark = sparks.of_element(0),
+    spark = sparks.of_element(Element.null),
     target = collision.hits_navis,
     flash = effects.flash,
 } :: CircGunLook

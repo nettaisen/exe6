@@ -23,7 +23,7 @@ local SHOT = spreader.action {
 }
 
 -- The attack: 70 damage, hit parameter 0x0A, Aqua.
-local DAMAGE, HIT_PARAM, AQUA = 0x46, 0x0A, 2
+local DAMAGE, HIT_PARAM, AQUA = 0x46, 0x0A, Element.aqua
 
 -- `sub_80123AA`.
 local function setup(navi: Object): Action

@@ -12,30 +12,30 @@ local spark_0e_sprite = asset.sprite("spark-0e")
 
 local sparks = {}
 
--- By element (null, fire, aqua, elec, wood, and 5), the spark
+-- By primary element (null, fire, aqua, elec, wood, and the drain), the spark
 -- `sub_801A146` gives an attack of that element (hit effects 0 to 5).
-local BY_ELEMENT: { [number]: Spark } = {
-    [0] = new.spark { sprite = hit_sparks_sprite, anim = 0, palette = 0, steps = 4 },
-    [1] = new.spark { sprite = hit_sparks_sprite, anim = 2, palette = 0, steps = 15 },
-    [2] = new.spark { sprite = hit_sparks_sprite, anim = 3, palette = 0, steps = 11 },
-    [3] = new.spark { sprite = hit_sparks_sprite, anim = 4, palette = 0, steps = 12 },
-    [4] = new.spark { sprite = hit_sparks_sprite, anim = 5, palette = 0, steps = 13 },
-    [5] = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
+local BY_ELEMENT: { [PrimaryElement]: Spark } = {
+    null = new.spark { sprite = hit_sparks_sprite, anim = 0, palette = 0, steps = 4 },
+    fire = new.spark { sprite = hit_sparks_sprite, anim = 2, palette = 0, steps = 15 },
+    aqua = new.spark { sprite = hit_sparks_sprite, anim = 3, palette = 0, steps = 11 },
+    elec = new.spark { sprite = hit_sparks_sprite, anim = 4, palette = 0, steps = 12 },
+    wood = new.spark { sprite = hit_sparks_sprite, anim = 5, palette = 0, steps = 13 },
+    drain = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
 }
 
 -- The element sparks by name (hit effects 1 to 4), for hits that name
 -- theirs rather than take their element's.
-sparks.fire, sparks.aqua, sparks.elec, sparks.wood = BY_ELEMENT[1], BY_ELEMENT[2], BY_ELEMENT[3], BY_ELEMENT[4]
+sparks.fire, sparks.aqua, sparks.elec, sparks.wood = BY_ELEMENT.fire, BY_ELEMENT.aqua, BY_ELEMENT.elec, BY_ELEMENT.wood
 
 -- The plain hit (spark 0) and the charged shot's (5), as named sparks.
-sparks.plain = BY_ELEMENT[0]
-sparks.charged = BY_ELEMENT[5]
+sparks.plain = BY_ELEMENT.null
+sparks.charged = BY_ELEMENT.drain
 
 -- The element sparks by name (hit effects 1 to 3: a flame's, a bubble
 -- star's, a thunder ball's).
-sparks.fire = BY_ELEMENT[1]
-sparks.aqua = BY_ELEMENT[2]
-sparks.elec = BY_ELEMENT[3]
+sparks.fire = BY_ELEMENT.fire
+sparks.aqua = BY_ELEMENT.aqua
+sparks.elec = BY_ELEMENT.elec
 
 -- A cannon's impact (spark 7: the cannons, AirShot).
 sparks.impact = new.spark { sprite = impact_sprite, anim = 0, palette = 0, steps = 19 }
@@ -56,10 +56,10 @@ sparks.bat = new.spark { sprite = hit_marker_sprite, anim = 1, palette = 0, step
 
 -- The element sparks by name (hit effects 1 to 3), for hits that name
 -- theirs rather than take their element's.
-sparks.fire, sparks.aqua, sparks.elec = BY_ELEMENT[1], BY_ELEMENT[2], BY_ELEMENT[3]
+sparks.fire, sparks.aqua, sparks.elec = BY_ELEMENT.fire, BY_ELEMENT.aqua, BY_ELEMENT.elec
 
 -- The wood spark (hit effect 4): the boomerang's, the lances'.
-sparks.wood = BY_ELEMENT[4]
+sparks.wood = BY_ELEMENT.wood
 
 -- The erase beams' spark (hit effect 0x0C).
 sparks.erase = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 2, steps = 10 }
@@ -70,11 +70,11 @@ sparks.heavy = new.spark { sprite = hit_sparks_sprite, anim = 8, palette = 0, st
 
 -- `sub_801A146`: the spark of an attack of `element` (its primary
 -- element, the low nibble).
-function sparks.of_element(element: number): Spark
-    local e = bit32.band(element, 0xF)
-    local s = BY_ELEMENT[e]
+function sparks.of_element(element: Element): Spark
+    local p = element.primary
+    local s = if p then BY_ELEMENT[p] else nil
     if not s then
-        error(string.format("sub_801A146: element %d has no hit spark", e))
+        error(string.format("sub_801A146: element %s has no hit spark", tostring(element)))
     end
     return s
 end

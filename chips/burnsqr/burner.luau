@@ -44,7 +44,7 @@ local CORNER = new.effect { sprite = hit_sparks_sprite, anim = 12, palette = 0, 
 local ACROSS, DOWN = 0x28_0000, 0x18_0000
 -- Its flames (`sub_80C8DE0`): fire, HeatMan's (acting while dimmed), 30
 -- ticks.
-local FIRE = 1
+local FIRE = Element.fire
 local FLAME: HeatFlame = { while_dimmed = true, ticks = 0x1E, is = collision.attack }
 
 -- `sub_80BB23E`: the square's four corners at its panels' centers.
@@ -144,7 +144,7 @@ local function fire(me: Object, s: State)
     local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
     for _, p in { { s.x, s.y }, { s.x + d, s.y }, { s.x + d, s.y + 1 }, { s.x, s.y + 1 } } do
         if field.solid(p[1], p[2]) then
-            heat_flame.spawn(me, p[1], p[2], FIRE, FLAME, damage, Vec3.new(p[2], FIRE, z))
+            heat_flame.spawn(me, p[1], p[2], FIRE, FLAME, damage, Vec3.new(p[2], FIRE.byte, z))
         end
     end
     me.timer = AFTER

@@ -59,9 +59,9 @@ local function init(me: Object)
     sprite:set_animation(anim)
     sprite:step()
     sprite.palette = s.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if s.look.keeps_parts then
-        sprite.hidden_parts = s.hidden_parts
+        sprite:hide_saved_parts(s.hidden_parts)
     end
     -- sub_80103BC: the side's first actor, if it is a player.
     local navi = battle.player(s.side)

@@ -25,7 +25,7 @@ local lunge = {}
 local LEAVE, APPEAR, SLASH, RETURN, RECOVER = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- Sword (secondary element 0x80), the hit's counter byte.
-local SWORD, HIT_PARAM = 0x80, 0x9E
+local SWORD, HIT_PARAM = Element.new("null", { sword = true }), 0x9E
 
 -- The lock-on searches: beside a target in the navi's row, and in the
 -- navi's row otherwise.

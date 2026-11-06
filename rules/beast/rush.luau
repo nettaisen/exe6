@@ -119,7 +119,7 @@ local function afterimage(navi: Object, pos: Vec3, anim: number, lifetime: numbe
     local beast = kind.beast(navi.alliance)
     battle.afterimage(navi, pos, {
         anim = anim,
-        flip = bit32.bxor(navi.alliance, navi.flip),
+        facing = navi.facing_side,
         lifetime = lifetime,
         color_shader = 0x83E0,
         shadow = "ground",

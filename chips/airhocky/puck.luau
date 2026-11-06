@@ -36,7 +36,7 @@ function puck.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     z: number,
     damage: number,
     variant: Variant,

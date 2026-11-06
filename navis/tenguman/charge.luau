@@ -24,7 +24,7 @@ local SOUND = asset.sound("tenguman-nose")
 -- The hits' counter byte, and their element: Null (the attack's element
 -- byte).
 local HIT_PARAM = 0x8A
-local NULL = 0
+local NULL = Element.null
 
 -- The hits, one, two and three panels ahead (`byte_80F1B18`): their hit
 -- modifier and status.

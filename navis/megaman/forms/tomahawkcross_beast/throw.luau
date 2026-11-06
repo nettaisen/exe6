@@ -21,7 +21,7 @@ local throw = {}
 local WIND_UP, SWING = 0x0, 0x4
 
 -- Wood, and the hit's counter byte.
-local WOOD, HIT_PARAM = 4, 0x9E
+local WOOD, HIT_PARAM = Element.wood, 0x9E
 
 -- The swing's length, and when the tomahawks fly (on row 1, then row 3).
 local SWING_TICKS = 0x5F

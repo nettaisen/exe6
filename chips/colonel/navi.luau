@@ -85,7 +85,7 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = (me.state :: State).palette
     sprite.color_shader = 0x7FFF;
     (me.state :: State).cape = battle.form_overlay(me, CAPE)
@@ -163,7 +163,7 @@ function colonel.hit(me: Object, x: number, y: number, region: Region)
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
-        element = 0,
+        element = Element.null,
         z = 0x10_0000,
         region = region,
         hit_effect = nil,
@@ -180,7 +180,7 @@ end
 
 -- The column of the enemy's back row, where he doesn't strike.
 function colonel.at_back(me: Object): boolean
-    return bit32.bxor(me.alliance, 1) * 5 + 1 == me.panel_x
+    return battle.other_side(me.alliance) * 5 + 1 == me.panel_x
 end
 
 local COLONEL_STRIKE = schema.record_type("colonel-strike")
@@ -327,7 +327,7 @@ colonel.kind = new.kind {
 -- (`off_802CD5C[17]`): Colonel for `user`, reporting to `controller`.
 function colonel.summon(args: Summon): (user: Object, controller: Object, spec: NaviChipSpec) -> Object?
     return function(user: Object, controller: Object, spec: NaviChipSpec): Object?
-        local o = battle.spawn(colonel.kind, Vec3.new(spec.panel_y, spec.element, SPAWNER_ADDRESS))
+        local o = battle.spawn(colonel.kind, Vec3.new(spec.panel_y, spec.element.byte, SPAWNER_ADDRESS))
         if not o then
             return nil
         end

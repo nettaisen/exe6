@@ -317,7 +317,7 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
     navi_status.end_anger(me, "reset")
     if seq == "beast_out" then
         if full_synchro then
-            battle.set_mood(side, 0xFF)
+            battle.set_mood(side, "full_synchro")
         end
     else
         battle.set_mood(side, 0x80)

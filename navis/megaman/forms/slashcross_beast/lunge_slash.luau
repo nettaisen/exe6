@@ -84,8 +84,8 @@ lunge_slash.kind = new.kind {
 -- `sub_80DB970`: a slash for `owner` on (x, y) with `element` and the
 -- damage word `damage`. (Its position is the spawner's registers, Y, the
 -- element and 0, until its init places it.)
-function lunge_slash.spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(lunge_slash.kind, Vec3.new(y, element, 0))
+function lunge_slash.spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(lunge_slash.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

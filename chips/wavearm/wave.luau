@@ -112,7 +112,7 @@ local function steer(me: Object): (number, number)
         end
         return x, row
     end
-    local ahead = AHEAD[bit32.bxor(me.alliance, me.flip)][me.panel_x]
+    local ahead = AHEAD[me.facing_side][me.panel_x]
     if ahead == nil then
         error(string.format("shock wave on column %d reads past byte_80C6DB8", me.panel_x))
     end
@@ -220,7 +220,7 @@ local function init(me: Object)
     me.timer = v.ticks
     me.timer2 = 4
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     mark(x, y, v.panel)
     me:set_coordinates_from_panel()
     if not me:create_collision() then
@@ -269,7 +269,7 @@ function wave.spawn(from: Object, x: number, y: number, variant: Variant, damage
         local s = o.state :: State
         s.variant, s.turned = variant, turned or 0
         o.panel_x, o.panel_y = x, y
-        o.element = 0
+        o.element = Element.null
         o:set_damage_word(damage)
         o.alliance, o.flip = from.alliance, from.flip
         o.related1 = from

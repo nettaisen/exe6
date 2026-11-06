@@ -37,7 +37,7 @@ local HIT_TICKS, HIT_MOD = 5, 3
 local function init(me: Object)
     me:set_coordinates_from_panel()
     local p = me.pos
-    local facing = if bit32.bxor(me.alliance, me.flip) == 0 then 1 else -1
+    local facing = if me.facing_side == 0 then 1 else -1
     -- The whole parts of X and Z (their halfwords above the fractions).
     local x = bit32.bor(bit32.band(p.x, 0xFFFF), bit32.lshift(bit32.band(bit32.rshift(p.x, 16) + facing * AHEAD, 0xFFFF), 16))
     local z = bit32.bor(bit32.band(p.z, 0xFFFF), bit32.lshift(HEIGHT, 16))
@@ -50,7 +50,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -146,8 +146,8 @@ volcano_rock.kind = new.kind {
 -- and the damage word `damage`. It runs while dimmed (and waits). `z` is
 -- the register its spawner leaves for its position's Z, whose fraction its
 -- init keeps.
-function volcano_rock.spawn(owner: Object, x: number, y: number, element: number, damage: number, z: number): Object?
-    local o = battle.spawn(volcano_rock.kind, Vec3.new(y, element, z))
+function volcano_rock.spawn(owner: Object, x: number, y: number, element: Element, damage: number, z: number): Object?
+    local o = battle.spawn(volcano_rock.kind, Vec3.new(y, element.byte, z))
     if o then
         o.future_panel_x, o.future_panel_y = x, y
         o.panel_x, o.panel_y = owner.panel_x, owner.panel_y

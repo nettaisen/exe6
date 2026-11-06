@@ -120,8 +120,8 @@ junk.kind = new.kind {
 -- `element` and the damage word; it runs while dimmed (flag 0x10). `z` is
 -- the spawner's r3 (DustMan's: the object loop's, `battle.loop_register`),
 -- which becomes its Z, of which the init keeps the fraction.
-function junk.throw(owner: Object, x: number, y: number, element: number, damage: number, look: Identity, z: number): Object?
-    local o = battle.spawn(junk.kind, Vec3.new(y, element, z))
+function junk.throw(owner: Object, x: number, y: number, element: Element, damage: number, look: Identity, z: number): Object?
+    local o = battle.spawn(junk.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

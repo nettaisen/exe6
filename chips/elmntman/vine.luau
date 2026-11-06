@@ -29,7 +29,7 @@ local function init(me: Object)
     me.anim_loaded = ANIM
     sprite:set_animation(ANIM)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -101,8 +101,8 @@ vine.kind = new.kind {
 -- `sub_80DC5B4`: a vine on (x, y) with `element` and the damage word; `z`
 -- is the spawner's register (the row it checked minus 1), which becomes
 -- its Z, of which it keeps the fraction.
-function vine.spawn(owner: Object, x: number, y: number, element: number, damage: number, z: number): Object?
-    local o = battle.spawn(vine.kind, Vec3.new(y, element, z))
+function vine.spawn(owner: Object, x: number, y: number, element: Element, damage: number, z: number): Object?
+    local o = battle.spawn(vine.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

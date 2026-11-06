@@ -123,7 +123,7 @@ local function init(me: Object)
     me.anim_loaded = 6
     sprite:set_animation(6)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     s.command = false
     s.presses, s.press_ticks = 0, 0
     s.target = true

@@ -48,7 +48,7 @@ tornado.kind = common.make_kind("tornado/tornado", EXE6)
 
 -- `sub_80CA0E2`: a tornado for `owner`'s side on (x, y) with the damage
 -- word `damage`, of `kind` (EXE6's by default).
-function tornado.spawn(owner: Object, x: number, y: number, element: number, damage: number, spec: TornadoSpec, kind: Kind?): Object?
+function tornado.spawn(owner: Object, x: number, y: number, element: Element, damage: number, spec: TornadoSpec, kind: Kind?): Object?
     return common.spawn(kind or tornado.kind, owner, x, y, element, damage, spec)
 end
 

@@ -28,7 +28,7 @@ ball.kind = common.make_kind {
 
 -- `sub_80DBB0C`: a ball at (x, y) on the ground with `element` and the
 -- damage word, of `owner`'s side and facing, running while dimmed.
-function ball.spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
+function ball.spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
     return common.spawn(ball.kind, owner, x, y, element, damage)
 end
 

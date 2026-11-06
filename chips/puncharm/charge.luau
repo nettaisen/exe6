@@ -11,7 +11,7 @@ local charge = require("../../lib/navi_boost/charge")
 local fist = require("../firehit/fist")
 
 -- The attack's element byte: Fire.
-local ELEMENT = 1
+local ELEMENT = Element.fire
 local DAMAGE = 0x64
 -- The fists' hit modifier.
 local HIT_MOD = 3

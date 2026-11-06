@@ -108,7 +108,7 @@ local function init(me: Object)
     sprite:set_animation(2)
     sprite:step()
     sprite.shadow = "ground"
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     local x, z = p.x + me.facing * AHEAD, p.z + UP
@@ -153,8 +153,8 @@ junk_shot.kind = new.kind {
 -- word `damage`, at the navi's height `z`, for the target panel `target`
 -- (x | y << 4). (Its X and Y are the spawner's registers, Y and the
 -- element, until its init places it.)
-function junk_shot.spawn(owner: Object, x: number, y: number, element: number, damage: number, z: number, target: number): Object?
-    local o = battle.spawn(junk_shot.kind, Vec3.new(y, element, z))
+function junk_shot.spawn(owner: Object, x: number, y: number, element: Element, damage: number, z: number, target: number): Object?
+    local o = battle.spawn(junk_shot.kind, Vec3.new(y, element.byte, z))
     if o then
         (o.state :: State).target = target
         o.panel_x, o.panel_y = x, y

@@ -13,7 +13,7 @@ local variants = require("../../objects/projectile/variants")
 local function setup(navi: Object): Action
     local stats = battle.navi(navi.alliance)
     navi.attack_damage = (stats.attack + 1) * 10
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.hit_param = 0

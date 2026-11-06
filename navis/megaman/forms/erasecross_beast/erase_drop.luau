@@ -36,7 +36,7 @@ local APPEAR = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps =
 local BURST = effects.puff
 
 -- Its element: Cursor, whatever the attack's.
-local CURSOR = 0x40
+local CURSOR = Element.new("null", { cursor = true })
 
 -- Its hit: piercing, at navis, with the plain spark and a bug (code 0x18,
 -- argument 1).
@@ -104,7 +104,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.panel_x, me.panel_y = s.x, s.y
     me:set_coordinates_from_panel()
     local ticks = s.ticks

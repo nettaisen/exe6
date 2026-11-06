@@ -76,7 +76,7 @@ function strike.action(spec: StrikeSpec): Action
             me.step_init = 4
         end
         if s.timer == 0x0C then
-            for _, target in battle.alive_actors(bit32.bxor(me.alliance, 1)) do
+            for _, target in battle.alive_actors(battle.other_side(me.alliance)) do
                 slash(me, target)
             end
         end

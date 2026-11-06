@@ -155,7 +155,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -193,8 +193,8 @@ rock.kind = new.kind {
 -- damage word, running while dimmed (flag 0x10; the rock's own gate
 -- still holds it unless it acts while dimmed). `z` is the spawner's
 -- register its position takes until the init places it.
-function rock.drop(owner: Object, x: number, y: number, element: number, damage: number, how: Drop, z: number): Object?
-    local o = battle.spawn(rock.kind, Vec3.new(y, element, z))
+function rock.drop(owner: Object, x: number, y: number, element: Element, damage: number, how: Drop, z: number): Object?
+    local o = battle.spawn(rock.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

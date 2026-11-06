@@ -82,7 +82,7 @@ local function init(me: Object)
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -108,7 +108,7 @@ tornado.kind = new.kind {
 -- damage word `damage`. It runs while dimmed (and waits). `pos` is where
 -- its spawner's registers leave it (its row, the element and a Z), of
 -- which its init keeps the Z's fraction.
-function tornado.spawn(owner: Object, x: number, y: number, element: number, damage: number, pos: Vec3): Object?
+function tornado.spawn(owner: Object, x: number, y: number, element: Element, damage: number, pos: Vec3): Object?
     local o = battle.spawn(tornado.kind, pos)
     if o then
         o.panel_x, o.panel_y = x, y
