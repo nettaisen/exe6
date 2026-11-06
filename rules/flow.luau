@@ -26,4 +26,10 @@ return {
     custom_request = "navi_input",
     -- The battle's counts of fight ticks (BattleState +0x0E and +0x16, while neither paused nor dimmed): 20 and 180.
     fight_cycles = { 20, 180 },
+    -- Its battle effects of its own (the settings' word, `GetBattleEffects`), which its stages name besides the
+    -- engine's (`full_hp`, `link`, `random`...): the folder dealt with its Regular chip and tag chips first and
+    -- shuffled (`sub_800A3E4`), and EXE5's light/dark bit (its battle's end changes the light/dark value:
+    -- exe5-map.md), which EXE6's netbattle records carry as EXE5's do. The engine reads neither but through
+    -- `battle.has_effect`.
+    effect_bits = { shuffled_folder = 0x80, karma_changes = 0x800 },
 }
