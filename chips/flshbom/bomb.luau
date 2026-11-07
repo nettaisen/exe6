@@ -181,7 +181,7 @@ local function tick(me: Object)
         finish(me)
         return
     end
-    if me.action == 8 and hp.apply_damage(me, TakeDamageMode.damage_sound) == "broken" then
+    if me.action == 8 and hp.apply_damage(me, TakeDamageMode.damage_sound) == DamageTaken.broken then
         finish(me)
         return
     end

@@ -44,16 +44,16 @@ local CHAIN_BLOCK_TICKS = 12
 
 -- The framework's states an attack isn't (the original's CurAction below
 -- 0x10).
-local STATES = {
-    entry = true,
-    take_control = true,
-    deletion = true,
-    flinch = true,
-    paralysis = true,
-    drag = true,
-    freeze = true,
-    bubble = true,
-    idle = true,
+local STATES: { [any]: boolean } = {
+    [EngineAction.entry] = true,
+    [EngineAction.take_control] = true,
+    [EngineAction.deletion] = true,
+    [EngineAction.flinch] = true,
+    [EngineAction.paralysis] = true,
+    [EngineAction.drag] = true,
+    [EngineAction.freeze] = true,
+    [EngineAction.bubble] = true,
+    [EngineAction.idle] = true,
 }
 
 local function set_phase(s: State, phase: number)
@@ -182,7 +182,7 @@ end
 -- queued chip or warp home.
 local function attack(navi: Object, s: State)
     local action = navi:navi_action()
-    if type(action) ~= "string" or not STATES[action] then
+    if not STATES[action] then
         navi:run_wrapped()
         if navi:navi_action() ~= EngineAction.idle then
             return
