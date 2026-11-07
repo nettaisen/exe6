@@ -27,7 +27,7 @@ local ground_drill = {}
 local BURROW, EMERGE, DRILL, SINK, RETURN = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- The attack: Break (secondary element 0x10) and its hit parameter.
-local BREAK, COUNTER = Element.new("null", { ["break"] = true }), 20
+local BREAK, COUNTER = Element.new(PrimaryElement.null, { ["break"] = true }), 20
 -- The drill's time (the original's parameter word 0x1800), and how long
 -- the navi stands after it.
 local DRILL_TICKS, AFTER = 0x18, 0xA

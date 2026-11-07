@@ -26,7 +26,7 @@ return common.make {
     spark = sparks.breaking,
     wave_is = collision.attack,
     -- Break (secondary element 0x10); the landing's hits are of none.
-    element = Element.new("null", { ["break"] = true }),
+    element = Element.new(PrimaryElement.null, { ["break"] = true }),
     waves_take_element = false,
     effects = { explosion = effects.explosion, burst = effects.burst, puff = effects.puff },
 }

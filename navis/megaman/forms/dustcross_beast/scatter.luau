@@ -27,7 +27,7 @@ local scatter = {}
 local RISE, THROW, LAND = 0x0, 0x4, 0x8
 
 -- Break (secondary element 0x10), the hit's counter byte.
-local BREAK, COUNTER = Element.new("null", { ["break"] = true }), 30
+local BREAK, COUNTER = Element.new(PrimaryElement.null, { ["break"] = true }), 30
 -- The rise: its first speed and acceleration, 16.16.
 local RISE_SPEED, RISE_ACCELERATION = 0x6000, 0x3000
 

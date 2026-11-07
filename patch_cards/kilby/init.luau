@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 24,
     effects = {
         cards.bug(cards.hp_percent(-20)),
-        cards.body("wood"),
+        cards.body(Element.wood),
         cards.status_guard(true),
         cards.charged_shot(charge),
         cards.bug(cards.panel_trail("grass", 2)),

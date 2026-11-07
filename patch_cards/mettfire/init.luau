@@ -7,7 +7,7 @@ local b_button = require("@self/b_button")
 local card: PatchCard = {
     mb = 20,
     effects = {
-        cards.body("fire"),
+        cards.body(Element.fire),
         cards.b_button(b_button),
         cards.bug(cards.step_bug(1)),
     },

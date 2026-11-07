@@ -17,7 +17,7 @@ local card: PatchCard = {
     effects = {
         cards.version("gregar", cards.hp(200)),
         cards.version("falzar", cards.hp_percent(20)),
-        cards.body("null"),
+        cards.body(Element.null),
         cards.bug(cards.mega_folder(-2)),
         cards.version("gregar", cards.super_armor(true)),
         cards.version("falzar", cards.float_shoes(true)),

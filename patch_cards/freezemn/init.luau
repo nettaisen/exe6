@@ -9,7 +9,7 @@ local card: PatchCard = {
     mb = 30,
     effects = {
         cards.bug(cards.hp_percent(-5)),
-        cards.body("aqua"),
+        cards.body(Element.aqua),
         cards.buster_shot(variants.ice),
         cards.first_barrier(barriers.barrier_200),
     },

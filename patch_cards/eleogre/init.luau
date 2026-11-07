@@ -7,7 +7,7 @@ local card: PatchCard = {
     mb = 16,
     effects = {
         cards.hp(50),
-        cards.body("elec"),
+        cards.body(Element.elec),
         cards.emotion_bug(0),
         cards.status_bug(0),
     },

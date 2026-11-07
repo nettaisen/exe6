@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 13,
     effects = {
         cards.hp(90),
-        cards.body("wood"),
+        cards.body(Element.wood),
         cards.buster_shot(variants.grass),
         cards.hit_status("none"),
     },

@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 42,
     effects = {
         cards.hp(320),
-        cards.body("aqua"),
+        cards.body(Element.aqua),
         cards.bug(cards.custom(-2)),
         cards.mega_folder(1),
         cards.charged_shot(charge),

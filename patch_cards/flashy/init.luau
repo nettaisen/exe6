@@ -7,7 +7,7 @@ local card: PatchCard = {
     mb = 11,
     effects = {
         cards.hp_percent(5),
-        cards.body("elec"),
+        cards.body(Element.elec),
         cards.bug(cards.attack(-1)),
         cards.custom_damage(0),
     },

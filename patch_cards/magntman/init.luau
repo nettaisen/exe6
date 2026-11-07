@@ -9,7 +9,7 @@ local card: PatchCard = {
     mb = 37,
     effects = {
         cards.hp(240),
-        cards.body("elec"),
+        cards.body(Element.elec),
         cards.bug(cards.charge_shot_kind(variants.charged)),
         cards.back_special(back_special),
     },

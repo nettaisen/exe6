@@ -7,7 +7,7 @@ local card: PatchCard = {
     mb = 28,
     effects = {
         cards.bug(cards.hp(-80)),
-        cards.body("fire"),
+        cards.body(Element.fire),
         cards.attack(1),
         cards.float_shoes(true),
         cards.panel_trail("none", 0),

@@ -92,9 +92,9 @@ function navicust_bugs.navi_flinched(side: number, navi: Object)
     local function word(lo: number, hi: number): number
         return lo + hi * 0x10000
     end
-    local sum = word(c:element_damage("null"), c.final_damage)
-        + word(c:element_damage("aqua"), c:element_damage("fire"))
-        + word(c:element_damage("wood"), c:element_damage("elec"))
+    local sum = word(c:element_damage(PrimaryElement.null), c.final_damage)
+        + word(c:element_damage(PrimaryElement.aqua), c:element_damage(PrimaryElement.fire))
+        + word(c:element_damage(PrimaryElement.wood), c:element_damage(PrimaryElement.elec))
     if sum % 0x100000000 == 0 then
         return
     end

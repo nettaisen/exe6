@@ -7,7 +7,7 @@ local shield = require("../navis/megaman/weapons/shield")
 local card: PatchCard = {
     mb = 8,
     effects = {
-        cards.body("aqua"),
+        cards.body(Element.aqua),
         cards.rapid(4),
         cards.back_special(shield.shield),
     },

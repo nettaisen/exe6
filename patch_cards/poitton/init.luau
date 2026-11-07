@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 13,
     effects = {
         cards.bug(cards.hp(-40)),
-        cards.body("wood"),
+        cards.body(Element.wood),
         cards.undershirt(true),
         cards.first_barrier(barriers.barrier_10),
         cards.hit_status("none"),

@@ -44,7 +44,7 @@ local DASH, COUNT, SLASH, RETURN, FINISH = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- The charged shot's attack: Sword (secondary element 0x80) and its hit
 -- parameter.
-local SWORD, COUNTER = Element.new("null", { sword = true }), 20
+local SWORD, COUNTER = Element.new(PrimaryElement.null, { sword = true }), 20
 -- The panels a dash may end on (`sub_8015B00`, two ahead): on the field
 -- (0x10000), with no body on it (0xF800000).
 local DASH_SET: PanelCondition = { on_field = true, any_body = false }

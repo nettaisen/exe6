@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 9,
     effects = {
         cards.hp(80),
-        cards.body("elec"),
+        cards.body(Element.elec),
         cards.bug(cards.air_shoes(false)),
         cards.buster_shot(variants.cracking),
         cards.bug(cards.panel_trail("hole", 1)),

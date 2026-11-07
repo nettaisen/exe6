@@ -7,7 +7,7 @@ local charge = require("@self/charge")
 local card: PatchCard = {
     mb = 19,
     effects = {
-        cards.body("wood"),
+        cards.body(Element.wood),
         cards.bug(cards.air_shoes(false)),
         cards.charged_shot(charge),
     },

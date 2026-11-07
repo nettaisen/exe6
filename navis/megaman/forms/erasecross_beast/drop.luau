@@ -20,7 +20,7 @@ local drop_weapon = {}
 local RAISE, DROP, RECOVER = 0x0, 0x4, 0x8
 
 -- Cursor (secondary element 0x40), the hit's counter byte.
-local CURSOR, COUNTER = Element.new("null", { cursor = true }), 30
+local CURSOR, COUNTER = Element.new(PrimaryElement.null, { cursor = true }), 30
 local SOUND = asset.sound("justice-one")
 
 -- The navi raises its arms over 3 of its sprite's steps, and drops over

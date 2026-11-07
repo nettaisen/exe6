@@ -27,7 +27,7 @@ local dash_weapon = {}
 local WIND_UP, DASH, LAND = 0x0, 0x4, 0x8
 
 -- Break (secondary element 0x10), the hit's counter byte.
-local BREAK, COUNTER = Element.new("null", { ["break"] = true }), 10
+local BREAK, COUNTER = Element.new(PrimaryElement.null, { ["break"] = true }), 10
 -- The dash's first speed and its acceleration, 16.16 (the acceleration
 -- kept in the attack's marker word, AIAttackVars+0x30).
 local ACCELERATION = 0x1_0000

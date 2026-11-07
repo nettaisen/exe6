@@ -14,7 +14,7 @@ local sparks = {}
 
 -- By primary element (null, fire, aqua, elec, wood, and the drain), the spark
 -- `sub_801A146` gives an attack of that element (hit effects 0 to 5).
-local BY_ELEMENT: { [PrimaryElement]: Spark } = {
+local BY_ELEMENT: { [string]: Spark } = {
     null = new.spark { sprite = hit_sparks_sprite, anim = 0, palette = 0, steps = 4 },
     fire = new.spark { sprite = hit_sparks_sprite, anim = 2, palette = 0, steps = 15 },
     aqua = new.spark { sprite = hit_sparks_sprite, anim = 3, palette = 0, steps = 11 },
@@ -72,7 +72,7 @@ sparks.heavy = new.spark { sprite = hit_sparks_sprite, anim = 8, palette = 0, st
 -- element, the low nibble).
 function sparks.of_element(element: Element): Spark
     local p = element.primary
-    local s = if p then BY_ELEMENT[p] else nil
+    local s = if p then BY_ELEMENT[p.name] else nil
     if not s then
         error(string.format("sub_801A146: element %s has no hit spark", tostring(element)))
     end

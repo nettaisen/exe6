@@ -7,7 +7,7 @@ local card: PatchCard = {
     mb = 13,
     effects = {
         cards.hp(120),
-        cards.body("aqua"),
+        cards.body(Element.aqua),
         cards.charge(4),
         cards.bug(cards.gauge(GaugeSpeed.slow)),
     },

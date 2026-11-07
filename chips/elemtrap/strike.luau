@@ -26,7 +26,7 @@ local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0, s
 -- (`byte_80E3714`; none for the null element), its hit (`byte_80E36EC`:
 -- the hit spark, hit modifier and status; every one a single panel's, an
 -- attack that reaches navis) and the bursts' look (`byte_80E371E`).
-local STRIKES: { [PrimaryElement]: ElemTrapStrike } = {
+local STRIKES: { [string]: ElemTrapStrike } = {
     null = { sound = nil, spark = sparks.breaking, hit_mod = { flinch = true, flash = true }, status = nil, burst = effects.shell_burst },
     fire = {
         sound = asset.sound("target-move"),
