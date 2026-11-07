@@ -30,40 +30,40 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y + OFFSET, p.z + OFFSET)
     local sprite = me.sprite
     sprite:load(s.look :: SpriteAsset)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = s.anim, s.anim
     sprite:set_animation(s.anim)
     sprite.palette = 0
     sprite:face(me)
     me.timer = s.ticks
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080EE396: gone when the battle is over or its time runs out.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local t = me.timer - 1
     me.timer = t
     if t <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 arrival.kind = new.kind {
     id = "beast-chips/arrival",
-    pool = "effect",
+    pool = Pool.effect,
     state = { look = schema.sprite, anim = schema.u8, ticks = schema.u8 },
     -- 0x080EE300: by state (its end `object_freeMemory`), then the sprite,
     -- stepping while dimmed.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

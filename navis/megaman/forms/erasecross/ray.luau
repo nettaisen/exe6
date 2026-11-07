@@ -129,7 +129,7 @@ local function tick(me: Object)
     local t = me.timer - 1
     me.timer = t
     if t <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -138,7 +138,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -150,13 +150,13 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x + int.mul32(me.facing, s.ahead), p.y, p.z)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 erase_ray.kind = new.kind {
     id = "erasecross/ray",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         columns = schema.array(schema.object, 5),
         count = schema.u8,
@@ -169,9 +169,9 @@ erase_ray.kind = new.kind {
     -- `sub_80D8E10`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

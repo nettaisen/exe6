@@ -36,8 +36,8 @@ local CAR_WAIT = 0x3C
 
 -- `sub_80BB938`: on his panel, on the ground.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
-    me:set_lifecycle("update")
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
+    me:enter_update()
 end
 
 -- `sub_80BB99C`: he appears; 3 ticks; on, or straight to leaving if his
@@ -183,14 +183,14 @@ local ACTIONS = { [0] = appear, [4] = hitch, [8] = charge, [0xC] = leave, [0x10]
 
 chrgeman.kind = new.kind {
     id = "chrgeman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, cars = schema.u32 },
     -- `sub_80BB914`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("ChargeMan action %#x reads past his table (off_80BB988)", me.action))

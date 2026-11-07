@@ -16,7 +16,7 @@ local BEE3: HoneyBee = { palette = 2, speed = 0x3_8000, turn_speed = 0x2_1999 }
 local chips: { [string]: Chip } = {
     rskyhny1 = {
         codes = { "B", "G", "S" },
-        element = "wood", family = "wood", class = "standard",
+        element = "wood", family = "wood", class = ChipClass.standard,
         rarity = 0, mb = 21, damage = 10, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -26,7 +26,7 @@ local chips: { [string]: Chip } = {
     },
     rskyhny2 = {
         codes = { "C", "R", "V" },
-        element = "wood", family = "wood", class = "standard",
+        element = "wood", family = "wood", class = ChipClass.standard,
         rarity = 1, mb = 28, damage = 15, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -38,7 +38,7 @@ local chips: { [string]: Chip } = {
         codes = { "A", "D", "M" },
         element = "wood",
         family = "wood",
-        class = "standard",
+        class = ChipClass.standard,
         rarity = 2,
         mb = 35,
         damage = 20,

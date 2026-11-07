@@ -16,7 +16,7 @@ striker.kind = common.make_kind {
     -- with no look.
     identity = new.identity {
         id = "bodygrd-striker",
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 0,
         ai_index = 1,
         scrap = false,

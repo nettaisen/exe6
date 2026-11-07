@@ -22,7 +22,7 @@ type State = {
 -- out.
 local SWINGS = { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3 }
 -- `dword_8013E54`: the mood a normal (0) or Full Synchro (3) swing sets.
-local SWING_MOODS: { [number]: Mood } = { [0] = 0x99, [1] = 0x3C, [2] = 0x00, [3] = "full_synchro" }
+local SWING_MOODS: { [number]: NaviMood } = { [0] = 0x99, [1] = 0x3C, [2] = 0x00, [3] = Mood.full_synchro }
 
 -- `sub_8013892`'s part: a navi whose Beast Out counter is spent starts the
 -- round tired (`sub_801443C`); the NaviCust's swing bug ticks with it.
@@ -46,7 +46,7 @@ end
 local function countered(side: number, victim: Object)
     local form = battle.navi(side).form
     if (form.base or form.kind == "beast") and not victim.mood_held then
-        battle.set_mood(side, "full_synchro")
+        battle.set_mood(side, Mood.full_synchro)
     end
 end
 

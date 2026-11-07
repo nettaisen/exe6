@@ -78,7 +78,7 @@ local function shine(me: Object)
     local left = me.timer - 1
     me.timer = left
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -104,27 +104,27 @@ local function init(me: Object)
     me.anim_loaded = ANIM
     sprite:set_animation(ANIM)
     sprite:step()
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x + me.facing * AHEAD * 0x10000, p.y, 0)
     local s = me.state :: State
     s.ticks = 0
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 moon_beam.kind = new.kind {
     id = "sunmoon/moon-beam",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ticks = schema.u8 },
     -- `sub_80DC0E8`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

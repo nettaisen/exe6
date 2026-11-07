@@ -49,7 +49,7 @@ local function init(me: Object)
     me.timer = int.tdiv(way.distance, speed)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     local anim = way.anim
     me.anim = anim
@@ -64,7 +64,7 @@ local function init(me: Object)
     me:setup_collision(collision.attack, collision.hits_navis, HIT_MOD)
     me.collision:set_hit_effect(sparks.fire)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80C84E0`: move, highlighting the panel it is over; gone when its
@@ -81,7 +81,7 @@ local function fly(me: Object)
         return
     end
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80C8498`: resolve the hits; a hit (or the battle's end) ends it;
@@ -92,7 +92,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() or c.hit then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if (me.state :: State).while_dimmed or not battle.dimmed() then
@@ -106,7 +106,7 @@ end
 
 fire.kind = new.kind {
     id = "blastman/fire",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         speed = schema.u32,
         direction = { "left",
@@ -118,9 +118,9 @@ fire.kind = new.kind {
     -- `sub_80C8388`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

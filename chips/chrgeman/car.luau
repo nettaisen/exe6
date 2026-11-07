@@ -58,7 +58,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, int.i32(y), int.i32(z))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -66,7 +66,7 @@ local function init(me: Object)
     sprite.palette = 0
     sprite:face(me)
     visibility.update(me)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     me:set_action(if s.wait ~= 0 then 0 else 4)
 end
 
@@ -133,7 +133,7 @@ local function roll(me: Object)
         -- (The floor it needs, `byte_80DB004`, both rows alike: solid.)
         if not field.solid(x, y) then
             explode(me)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
     end
@@ -144,7 +144,7 @@ local function roll(me: Object)
     local left = me.timer - 1
     me.timer = left
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -156,7 +156,7 @@ local ACTIONS = { [0] = wait, [4] = roll }
 local function tick(me: Object)
     if battle.over() then
         explode(me)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     visibility.update(me)
@@ -164,7 +164,7 @@ local function tick(me: Object)
     local action = s.owner_action
     if action ~= UNTIED and (me.related1 :: Object).action ~= action then
         explode(me)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     if not s.while_dimmed and battle.dimmed() then
@@ -179,7 +179,7 @@ end
 
 car.kind = new.kind {
     id = "chrgeman/car",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         speed = schema.u32,
         while_dimmed = schema.bool,
@@ -191,9 +191,9 @@ car.kind = new.kind {
     -- `sub_80DAE94`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
@@ -242,7 +242,7 @@ end
 -- store: its action and phase stay).
 function car.burst(o: Object)
     explode(o)
-    o.lifecycle = "destroy"
+    o.lifecycle = Lifecycle.destroy
 end
 
 return car

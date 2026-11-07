@@ -66,7 +66,7 @@ local TOMAHAWK = boomerang.variant {
     turn_speed = 314573,
     grass = false,
     sprite = boomerang_tomahawk_sprite,
-    shadow = "with_sprite",
+    shadow = Shadow.with_sprite,
     off_row_1_anim = 1,
 }
 

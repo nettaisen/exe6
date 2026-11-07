@@ -37,7 +37,7 @@ end
 local function fade(me: Object)
     if me.sprite.steps >= FADE_STEPS then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -47,7 +47,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if me.collision.hit then
@@ -73,7 +73,7 @@ local function init(me: Object): boolean
     end
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -91,21 +91,21 @@ local function init(me: Object): boolean
     me.collision:set_region(regions.single)
     me.collision:set_hit_effect(nil)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     return true
 end
 
 shot.kind = new.kind {
     id = "rflectr/shot",
-    pool = "attack",
+    pool = Pool.attack,
     -- `sub_80C9BC4`: the state, then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             if not init(me) then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

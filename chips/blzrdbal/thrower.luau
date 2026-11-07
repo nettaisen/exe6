@@ -73,17 +73,17 @@ end
 
 thrower.kind = new.kind {
     id = "blzrdbal/thrower",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- `sub_80B8A18`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80B8A3C: drawn as the user, who vanishes; on at once.
             stand_in.init(me)
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

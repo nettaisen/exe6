@@ -9,7 +9,7 @@ local traps = require("../lib/traps/controller")
 
 local chip: Chip = {
     codes = { "G", "S", "U", "*" },
-    element = "null", family = "null", class = "standard",
+    element = "null", family = "null", class = ChipClass.standard,
     rarity = 2, mb = 42, damage = 240, counter = 30, cant_counter = true, lockout = 0,
     flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     slot_in_limit = 1,

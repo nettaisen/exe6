@@ -30,13 +30,13 @@ local function init(me: Object)
     me.vel = Vec3.new(me.facing * VX, me.vel.y, VZ)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80E213C`.
@@ -76,16 +76,16 @@ end
 
 mote.kind = new.kind {
     id = "dust-storm-mote",
-    pool = "effect",
+    pool = Pool.effect,
     state = { tied = schema.action },
     -- `sub_80E2080`.
     update = function(me: Object)
         -- (Read before a free: the sprite steps by it either way.)
         local untied = (me.state :: State).tied == nil
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

@@ -42,7 +42,7 @@ end
 function dragon.place(me: Object, v: DragonVariant, anim: number)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim = anim
     me.anim_loaded = anim
     sprite:set_animation(anim)

@@ -63,13 +63,13 @@ local navi: NaviDef = {
     charged_chips = { family = "fire", damaging = true, when = by_level.from(3) },
     fire_charge = by_level.row({ 0, 0, 0, 30, 30, 30, 30, 30, 30, 50, 50, 50, 50, 50, 100 }),
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 5,
         -- The Full Synchro aura's animation, and the ice block that fits.
         aura_anim = 5,
-        ice = "medium",
+        ice = IceSize.medium,
         attach_points = {
             { 0, 0 },
             { 0, 10 },

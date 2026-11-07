@@ -36,15 +36,15 @@ local form: FormDef = {
     -- The buster arm it raises (lib/buster).
     buster_arm = { anim = 1 },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         changes_form = true,
         breaks_on_weakness = true,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 25,
         -- The Full Synchro aura's animation, and the ice block that fits.
         aura_anim = 25,
-        ice = "medium",
+        ice = IceSize.medium,
         -- What it wears over MegaMan's body.
         parts = cross_overlay(heatcross_overlay_sprite),
         attach_points = {

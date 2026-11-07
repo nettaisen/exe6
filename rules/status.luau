@@ -9,78 +9,78 @@ local status = {
     paralyze_90 = new.status {
         id = "paralyze-90",
         duration = 90,
-        timer = "paralyze",
+        timer = StatusKind.paralyze,
     },
     paralyze_120 = new.status {
         id = "paralyze-120",
         duration = 120,
-        timer = "paralyze",
+        timer = StatusKind.paralyze,
     },
     paralyze_150 = new.status {
         id = "paralyze-150",
         duration = 150,
-        timer = "paralyze",
+        timer = StatusKind.paralyze,
     },
     -- Confusion.
     confuse_480 = new.status {
         id = "confuse-480",
         duration = 480,
-        timer = "confuse",
+        timer = StatusKind.confuse,
     },
     confuse_960 = new.status {
         id = "confuse-960",
         duration = 960,
-        timer = "confuse",
+        timer = StatusKind.confuse,
     },
     confuse_4 = new.status {
         id = "confuse-4",
         duration = 4,
-        timer = "confuse",
+        timer = StatusKind.confuse,
     },
     -- Blindness.
     blind_480 = new.status {
         id = "blind-480",
         duration = 480,
-        timer = "blind",
+        timer = StatusKind.blind,
     },
     blind_1200 = new.status {
         id = "blind-1200",
         duration = 1200,
-        timer = "blind",
+        timer = StatusKind.blind,
     },
     blind_4 = new.status {
         id = "blind-4",
         duration = 4,
-        timer = "blind",
+        timer = StatusKind.blind,
     },
     -- Immobilization.
     immobilize_120 = new.status {
         id = "immobilize-120",
         duration = 120,
-        timer = "immobilize",
+        timer = StatusKind.immobilize,
     },
     immobilize_4 = new.status {
         id = "immobilize-4",
         duration = 4,
-        timer = "immobilize",
+        timer = StatusKind.immobilize,
     },
     immobilize_30 = new.status {
         id = "immobilize-30",
         duration = 30,
-        timer = "immobilize",
+        timer = StatusKind.immobilize,
     },
     -- Freezing: the hit that lands one doesn't flinch.
     freeze_150 = new.status {
         id = "freeze-150",
         duration = 150,
-        timer = "freeze",
+        timer = StatusKind.freeze,
         cancels_flinch = true,
     },
     -- Bubbling: a counter hit that lands one keeps it.
     bubble_150 = new.status {
         id = "bubble-150",
         duration = 150,
-        timer = "bubble",
+        timer = StatusKind.bubble,
         survives_counter = true,
     },
     -- EXE6's per-form tick table (`off_80EA93C`) runs (`sub_80F0608`: the Fire chips' charge, a form's height). Its
@@ -154,7 +154,7 @@ local status = {
                 { emotion = "worn_out", when = { { mood = 0 }, { exhausted = true } } },
                 { emotion = "angry", when = { { angry = true } } },
                 { emotion = "tired", when = { { tired = true } } },
-                { emotion = "full_synchro", when = { { mood = "full_synchro" } } },
+                { emotion = "full_synchro", when = { { mood = Mood.full_synchro } } },
                 { emotion = "normal" },
             },
             -- What the framework does by them: Full Synchro and anger double the next damaging chip (Full Synchro

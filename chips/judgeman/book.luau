@@ -60,7 +60,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim = ANIM_WAIT
     me.anim_loaded = ANIM_WAIT
@@ -75,7 +75,7 @@ local function init(me: Object)
     me:setup_collision(collision.attack, collision.hits_navis, { flinch = true })
     me.collision:set_hit_effect(sparks.heavy)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80D7CCC`: its target: the first enemy navi along its row from its
@@ -175,7 +175,7 @@ end
 -- Region off, and gone (a byte store of the lifecycle: the action stays).
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me.lifecycle = "destroy"
+    me.lifecycle = Lifecycle.destroy
 end
 
 -- `sub_80D7BB0`: wait 30 + 12 ticks a turn (to -1).
@@ -249,14 +249,14 @@ end
 
 book.kind = new.kind {
     id = "judgeman/book",
-    pool = "attack",
+    pool = Pool.attack,
     state = { turn = schema.u8, axis = schema.u8, judge = schema.object, target_x = schema.u32, target_y = schema.u32 },
     -- `sub_80D7ACC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- sub_80D7C6E

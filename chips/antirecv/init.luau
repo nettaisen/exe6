@@ -10,7 +10,7 @@ local chip: Chip = {
     codes = { "A", "F", "V", "*" },
     element = "null",
     family = "null",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 37,
     damage = 0,
@@ -19,7 +19,7 @@ local chip: Chip = {
     lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 1,
-    trap = "anti_recovery",
+    trap = TrapKind.anti_recovery,
     dimming = traps.hook(),
 }
 

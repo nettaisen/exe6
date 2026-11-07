@@ -41,14 +41,14 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80E38C8`: 9 ticks rising (the first counted on the tick it
@@ -97,7 +97,7 @@ end
 local function fallen(me: Object)
     local signal = me.phase_init
     if signal == DONE then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     elseif signal == SPOUT then
         me.anim = 3
         me:set_action(0x10)
@@ -120,7 +120,7 @@ local function tick(me: Object)
     local own = (me.state :: State).while_dimmed
     local owner = me.related1 :: Object
     if not own and owner.action ~= OWNER_ACTION then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     visibility.copy(me, owner)
@@ -148,14 +148,14 @@ end
 
 pillar.kind = new.kind {
     id = "spoutman/pillar",
-    pool = "effect",
+    pool = Pool.effect,
     state = { slot_owner = schema.object, while_dimmed = schema.bool },
     -- `sub_80E37F4`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             finish(me)

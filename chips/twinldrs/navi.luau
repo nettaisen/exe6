@@ -56,10 +56,10 @@ export type State = {
 -- cape, `sub_8010FAC`).
 local COLONEL_IDENTITY = new.identity {
     id = "colonel",
-    class = "navi",
+    class = IdentityClass.navi,
     version = 0,
     ai_index = 0x12,
-    ice = "large",
+    ice = IceSize.large,
     parts = {
         body = {
             sprite = colonel_sprite,
@@ -129,7 +129,7 @@ end
 local function sword_off(me: Object)
     local sword = (me.state :: State).held
     if sword then
-        sword:set_lifecycle("destroy")
+        sword:enter_destroy()
     end
 end
 
@@ -152,7 +152,7 @@ local function afterimages(me: Object, anim: number)
         facing = flip,
         lifetime = AFTERIMAGE_TICKS,
         color_shader = AFTERIMAGE_SHADER,
-        shadow = "ground",
+        shadow = Shadow.ground,
     })
 end
 
@@ -341,7 +341,7 @@ local function slash(me: Object)
         local cx, cy = field.center(x, y)
         battle.effect(Vec3.new(cx, cy, 0x10_0000), WIDE_SLASH, me.facing_side)
         battle.shake_camera(1, 0xA)
-        battle.palette_flash("one_layer", 0xA, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0xA, true, false)
     end
     if tick_down(me) <= 0 then
         me.phase, me.phase_init = 0, 0
@@ -477,7 +477,7 @@ local function strike(me: Object)
         end
         battle.play_sound(SOUND_STRIKE)
         battle.shake_camera(3, 0x23)
-        battle.palette_flash("one_layer", 0x28, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0x28, true, false)
         me.timer = 0x1E
         return
     end
@@ -567,7 +567,7 @@ local function leave(me: Object)
         return
     end
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Run an action's phase from its table.
@@ -632,7 +632,7 @@ local function init(me: Object)
     local look = if s.colonel then COLONEL else PROTOMAN
     local sprite = me.sprite
     sprite:load(look.sprite)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0xFF
     local p = (me.related1 :: Object).pos
@@ -655,7 +655,7 @@ local function init(me: Object)
         end
         s.partner = colonel
     end
-    me:set_lifecycle("update")
+    me:enter_update()
     act(me)
 end
 
@@ -674,7 +674,7 @@ end
 
 twinldrs.kind = new.kind {
     id = "twinldrs/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         colonel = schema.bool,
         controller = schema.object,
@@ -691,9 +691,9 @@ twinldrs.kind = new.kind {
     -- `sub_80BD388`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             act(me)
         else
             destroy(me)

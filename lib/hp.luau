@@ -13,7 +13,7 @@ local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 -- with its sound.
 function hp.apply_damage(me: Object, mode: TakeDamageMode): DamageTaken
     local r = me:take_damage(mode)
-    if r ~= "none" then
+    if r ~= DamageTaken.none then
         battle.effect(me.pos, effects.explosion)
         battle.play_sound(SOUND_HIT_BOMB)
     end

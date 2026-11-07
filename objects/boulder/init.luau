@@ -30,7 +30,7 @@ boulder.kind = common.make {
     -- (DustMan's junk).
     identity = new.identity {
         id = "boulder",
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 1,
         ai_index = 1,
         look = { sprite = SPRITE, anim = 0, palette = 0, shadow = false },

@@ -32,7 +32,7 @@ return common.make {
     -- Japanese games on every console.
     identity = new.identity {
         id = "otenko",
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 2,
         ai_index = 1,
         look = { sprite = SPRITE, anim = 1, palette = 0, shadow = true },
@@ -40,7 +40,7 @@ return common.make {
     lifetime = 0x708,
     -- One of its side's two field objects of class 0 (a third evicts the
     -- oldest).
-    class = "two_a_side",
+    class = ObstacleClass.two_a_side,
     sounds = { appear = asset.sound("appear"), ["break"] = asset.sound("panel-poison") },
     -- Another body of its side.
     is = collision.own_body,

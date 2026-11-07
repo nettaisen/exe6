@@ -90,7 +90,7 @@ end
 
 controller.kind = new.kind {
     id = "dblbeast/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { bonus = schema.u16, gregar_out = schema.bool, falzar_out = schema.bool },
     -- `sub_80E9310`.
     update = dimming_chips.phases { name = "DblBeast", effect = effect },

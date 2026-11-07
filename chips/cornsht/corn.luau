@@ -91,7 +91,7 @@ end
 local function finish(me: Object)
     me.collision:set_region(nil)
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80C6650`: a panel forward; off the field it ends.
@@ -147,7 +147,7 @@ local function bursting(me: Object, s: State)
         me.phase, me.phase_init = 0, 0
     else
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -195,7 +195,7 @@ local function init(me: Object)
     local s = me.state :: State
     s.bursts = BURSTS
     me.timer2 = SPREAD_TICKS
-    me:set_lifecycle("update")
+    me:enter_update()
     if not s.probe then
         me.action = 4
         if s.spreads then
@@ -206,14 +206,14 @@ end
 
 corn.kind = new.kind {
     id = "cornsht/corn",
-    pool = "attack",
+    pool = Pool.attack,
     state = { probe = schema.bool, spreads = schema.bool, bursts = schema.u8, grassed = schema.bool, ticks = schema.u32, spread = schema.array(schema.u8, 3), count = schema.u8 },
     -- `sub_80C6580`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

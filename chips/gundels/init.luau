@@ -20,7 +20,7 @@ local WIDE_BEAM_IN_SUN: SunBeam = { sprite = sun_beam_ex_sprite, palette = 3 }
 local chips: { [string]: Chip } = {
     gundels1 = {
         codes = { "C", "M", "T", "*" },
-        element = "null", family = "null", class = "standard",
+        element = "null", family = "null", class = ChipClass.standard,
         rarity = 1, mb = 15, damage = 0, counter = 0, lockout = 0,
         flags = { standard_library = true, library = true },
         slot_in_limit = 3,
@@ -36,7 +36,7 @@ local chips: { [string]: Chip } = {
     },
     gundels2 = {
         codes = { "B", "E", "R" },
-        element = "null", family = "null", class = "standard",
+        element = "null", family = "null", class = ChipClass.standard,
         rarity = 2, mb = 30, damage = 0, counter = 0, lockout = 0,
         flags = { standard_library = true, library = true },
         slot_in_limit = 3,
@@ -52,7 +52,7 @@ local chips: { [string]: Chip } = {
     },
     gundels3 = {
         codes = { "N", "Q", "W" },
-        element = "null", family = "null", class = "standard",
+        element = "null", family = "null", class = ChipClass.standard,
         rarity = 3, mb = 38, damage = 0, counter = 0, lockout = 0,
         flags = { standard_library = true, library = true },
         slot_in_limit = 3,
@@ -72,7 +72,7 @@ local chips: { [string]: Chip } = {
     -- games' is no folder chip, with no flags.
     gundelex = {
         codes = { "G" },
-        element = "null", family = "null", class = "standard",
+        element = "null", family = "null", class = ChipClass.standard,
         rarity = 4, mb = 80, damage = 0, counter = 0, lockout = 0,
         flags = { library = true },
         slot_in_limit = 1,

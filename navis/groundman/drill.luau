@@ -53,7 +53,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.bor(bit32.band(p.z, 0xFFFF), bit32.lshift(HEIGHT, 16)))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     local anim = ANIM_WAIT[s.side]
     me.anim = anim
@@ -68,7 +68,7 @@ local function init(me: Object)
     me:setup_collision(collision.breaking, collision.hits_navis, HIT_MOD)
     me.collision:set_hit_effect(sparks.breaking)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Stop flying and drill (byte stores: the phase's entry flag stays).
@@ -109,7 +109,7 @@ local function fly(me: Object)
     me:update_collision_panels()
     if not field.valid(me.panel_x, me.panel_y) then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local t = me.timer - 1
@@ -147,7 +147,7 @@ local function drill_on(me: Object)
     if t == FIRST_HIT or t == SECOND_HIT then
         hit(me)
     elseif t <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -160,7 +160,7 @@ local function tick(me: Object)
     if battle.over() or (me.related1 :: Object):navi_action() ~= s.action then
         c:set_region(nil)
         -- (A byte store: its action and phase stay.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     if c:hit_any(STOPS) then
@@ -183,14 +183,14 @@ end
 
 drill.kind = new.kind {
     id = "groundman/drill",
-    pool = "attack",
+    pool = Pool.attack,
     state = { side = schema.bool, wait = schema.u8, action = schema.action },
     -- `sub_80DDDF0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

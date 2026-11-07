@@ -184,7 +184,7 @@ function beast.leave(me: Object, flag: "gregar_out" | "falzar_out")
     if c and c.active then
         (c.state :: { [string]: boolean })[flag] = false
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- The beasts' common init (`sub_80C1A34`, `sub_80C215C`): at rest, drawn
@@ -195,7 +195,7 @@ function beast.init(me: Object, sprite: SpriteAsset, ahead: boolean, identity: I
     beast.rest(me, ahead)
     local sp = me.sprite
     sp:load(sprite)
-    sp.shadow = "with_sprite"
+    sp.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0
     sp:set_animation(0)
     sp.palette = 0

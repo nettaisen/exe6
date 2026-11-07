@@ -74,7 +74,7 @@ function action.action(spec: HoneySpec): Action
     -- cleared instead).
     local function release(me: Object, s: State)
         if spec.drags then
-            me.drag_step = "start"
+            me.drag_step = DragStep.start
         else
             release_bee(me)
         end

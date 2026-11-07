@@ -57,25 +57,25 @@ local function init(me: Object)
     me:set_panel_from_coordinates()
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 propeller.kind = new.kind {
     id = "airraid/propeller",
-    pool = "actor",
+    pool = Pool.actor,
     state = { keeps_flip = schema.bool },
     -- `sub_80B88D0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             follow(me)
         else
             me:free()
@@ -100,7 +100,7 @@ end
 
 -- `sub_80B8A0A`: it goes (at its next update).
 function propeller.stop(o: Object)
-    o:set_lifecycle("destroy")
+    o:enter_destroy()
 end
 
 return propeller

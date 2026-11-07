@@ -16,7 +16,7 @@ local drum = effects.drum(statuses.immobilize_4, collision.guard_breaking, colli
 
 local chip: Chip = {
     codes = { "I", "O", "T", "*" },
-    element = "null", family = "summon", class = "standard",
+    element = "null", family = "summon", class = ChipClass.standard,
     rarity = 1, mb = 20, damage = 0, counter = 0, lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 3,
@@ -24,7 +24,7 @@ local chip: Chip = {
     dimming = instruments.hook(instrument.instrument {
         identity = new.identity {
             id = "timpani",
-            class = "field_object",
+            class = IdentityClass.field_object,
             version = 0,
             ai_index = 1,
             look = { sprite = instrument_sprite, anim = 0, palette = 4, shadow = true },

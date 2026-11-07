@@ -219,7 +219,7 @@ end
 
 gunner.kind = new.kind {
     id = "magnum/gunner",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         far_x = schema.i32,
@@ -231,12 +231,12 @@ gunner.kind = new.kind {
     -- `sub_80BB2A0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80BB2C4: drawn as the user, who vanishes; on at once.
             stand_in.init(me)
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

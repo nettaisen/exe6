@@ -42,14 +42,14 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x + me.facing * AHEAD, p.y, bit32.band(p.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim = 0x19
     me.anim_loaded = 0x19
     sprite:set_animation(0x19)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80DB864`: the other side's body or object on its panel.
@@ -151,7 +151,7 @@ local function burst(me: Object)
             field.crack(me.panel_x, me.panel_y)
         end
     elseif left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -159,7 +159,7 @@ end
 -- it runs on).
 local function tick(me: Object)
     if battle.over() then
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     if not (me.state :: State).while_dimmed and battle.dimmed() then
@@ -177,14 +177,14 @@ end
 
 junk_ball.kind = new.kind {
     id = "dustcross/junk-ball",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool },
     -- `sub_80DB6A4`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

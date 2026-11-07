@@ -40,7 +40,7 @@ local function tick(me: Object)
         return
     end
     c:set_region(nil)
-    me.lifecycle = "destroy"
+    me.lifecycle = Lifecycle.destroy
 end
 
 -- `sub_80DF0C8`: on its panel, 8 pixels up, drawn without a shadow, the
@@ -52,7 +52,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, Z)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -66,20 +66,20 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.heavy)
     me.collision:present()
     me.timer = (me.state :: State).ticks
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 flame.kind = new.kind {
     id = "gregar/flame",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ticks = schema.u8 },
     -- `sub_80DF0A4`: by state (its end `object_genericDestroy`), then the
     -- sprite, stepping while dimmed.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

@@ -60,14 +60,14 @@ end
 local function finish(me: Object)
     me.visible = false
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Done after setting down or trying to: its reservation goes too.
 local function leave(me: Object)
     me.collision:set_region(nil)
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
     me.visible = false
 end
 
@@ -75,7 +75,7 @@ end
 -- word `damage` (a paralyzing status, the original's 0x10..0x15, comes
 -- without the hit modifier).
 local function flash(me: Object, v: FlashBombVariant, status: Status, damage: number)
-    local hit_mod = if status.timer == "paralyze" then {} else { flinch = true }
+    local hit_mod = if status.timer == StatusKind.paralyze then {} else { flinch = true }
     if v.strong then
         damage = STRONG_DAMAGE
     end
@@ -155,7 +155,7 @@ end
 -- second hit for variants that have one.
 local function count_down(me: Object, v: FlashBombVariant)
     if me.timer == FLASH_AT then
-        battle.palette_flash("two_layers", 6)
+        battle.palette_flash(PaletteFlashVariant.two_layers, 6)
         battle.play_sound(SOUND_FLASH)
         flash(me, v, v.status, me.damage_word)
     end
@@ -181,7 +181,7 @@ local function tick(me: Object)
         finish(me)
         return
     end
-    if me.action == 8 and hp.apply_damage(me, "damage_sound") == "broken" then
+    if me.action == 8 and hp.apply_damage(me, TakeDamageMode.damage_sound) == "broken" then
         finish(me)
         return
     end
@@ -210,7 +210,7 @@ local function init(me: Object)
     local v = (me.state :: State).variant
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0xFF
     if not me:create_collision() then
@@ -224,23 +224,23 @@ local function init(me: Object)
     me.collision:present()
     sprite.palette = v.palette
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 flash_bomb.kind = new.kind {
     id = "flshbom/bomb",
-    pool = "attack",
+    pool = Pool.attack,
     state = { variant = FLASH_BOMB_VARIANT, target_x = schema.u8, target_y = schema.u8 },
     -- `sub_80D9A50`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

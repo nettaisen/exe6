@@ -47,10 +47,10 @@ local navi_left = require("@exelib/navi_chips/left")
 local looks = require("@exelib/looks")
 local BASS = new.identity {
     id = "bass",
-    class = "navi",
+    class = IdentityClass.navi,
     version = 0,
     ai_index = 0x13,
-    ice = "medium",
+    ice = IceSize.medium,
     parts = {
         body = {
             sprite = BASS_SPRITE,
@@ -138,7 +138,7 @@ end
 local function let_go(me: Object)
     local held = (me.state :: State).held
     if held then
-        held:set_lifecycle("destroy")
+        held:enter_destroy()
     end
 end
 
@@ -281,7 +281,7 @@ end
 -- `sub_80BF9FE`: 30 ticks, then he goes.
 local function after_bass(me: Object)
     if count(me, 0x1E) <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -313,7 +313,7 @@ local function afterimages(me: Object, anim: number)
         facing = flip,
         lifetime = AFTERIMAGE_TICKS,
         color_shader = AFTERIMAGE_SHADER,
-        shadow = "ground",
+        shadow = Shadow.ground,
     })
 end
 
@@ -414,7 +414,7 @@ local function slash(me: Object)
         local cx, cy = field.center(x, y)
         battle.effect(Vec3.new(cx, cy, 0x10_0000), BIG_SLASH, me.facing_side, 4)
         battle.shake_camera(2, 0x28)
-        battle.palette_flash("one_layer", 0x1E, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0x1E, true, false)
     end
     local t = me.timer + 1
     me.timer = t
@@ -461,7 +461,7 @@ end
 -- `sub_80BFC94`: 30 ticks, then he goes.
 local function faded(me: Object)
     if count(me, 0x1E) <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -515,7 +515,7 @@ local function init(me: Object)
     local sprite = me.sprite
     if s.bass then
         sprite:load(BASS_SPRITE)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         me.anim = 0
         me.anim_loaded = 0xFF
     else
@@ -533,7 +533,7 @@ local function init(me: Object)
     else
         overlays.add_parts_of(me, me, false, true)
     end
-    me:set_lifecycle("update")
+    me:enter_update()
     act(me)
 end
 
@@ -558,14 +558,14 @@ end
 
 darkness.kind = new.kind {
     id = "darkness/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { bass = schema.bool, held = schema.object, controller = schema.object, leader = schema.object },
     -- `sub_80BF6EC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             act(me)
         else
             destroy(me)

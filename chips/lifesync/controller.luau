@@ -40,7 +40,7 @@ local MARK_POINT = 0x1B
 
 -- NameIDs 0x49 to 0x4E.
 local function immune(o: Object): boolean
-    return o.actor_type == "virus" and o.ai_index == IMMUNE_AI
+    return o.actor_type == ActorType.virus and o.ai_index == IMMUNE_AI
 end
 
 -- `sub_80E7486`: if the panel shows the other side's player navi, the
@@ -190,7 +190,7 @@ end
 
 controller.kind = new.kind {
     id = "lifesync/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { target = schema.object, synced = schema.array(schema.object, 4) },
     -- `sub_80E7260`.
     update = dimming_chips.phases { name = "LifeSync", effect = effect },

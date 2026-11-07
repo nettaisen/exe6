@@ -38,7 +38,7 @@ end
 -- Ending: its region cleared, then the destroy state.
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D18F8`: on its owner, collision on.
@@ -52,7 +52,7 @@ local function init(me: Object)
     me:setup_collision(s.is, s.hits, s.hit_mod)
     me.collision:set_hit_effect(s.spark)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80D1934`: resolve its hits; follow the owner while he stays in his
@@ -94,14 +94,14 @@ end
 
 riding_hit.kind = new.kind {
     id = "slashman/riding-hit",
-    pool = "attack",
+    pool = Pool.attack,
     state = { is = schema.collision, hits = schema.collision, hit_mod = schema.u8, spark = schema.spark, keeps_going = schema.bool, action = schema.action },
     -- `sub_80D18D8`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             destroy(me)
@@ -129,7 +129,7 @@ end
 
 -- `sub_80D1A00`: end it (its next update frees it).
 function riding_hit.stop(o: Object)
-    o:set_lifecycle("destroy")
+    o:enter_destroy()
 end
 
 return riding_hit

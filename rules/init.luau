@@ -51,11 +51,11 @@ local rules: Rules = {
         -- window's (./cross/window.luau).
         charge_cross_screens = schema.u8,
         crosses_used = schema.array(schema.bool, 5),
-        offered = schema.role("form_list.offered", schema.array(schema.u8, 5)),
-        offered_count = schema.role("form_list.count", schema.u8),
-        marked = schema.role("form_list.marked", schema.array(schema.bool, 5)),
-        cross_chosen = schema.role("form_list.chosen", schema.bool),
-        chosen = schema.role("form_list.chosen_place", schema.u8),
+        offered = schema.role(SchemaRole.form_list_offered, schema.array(schema.u8, 5)),
+        offered_count = schema.role(SchemaRole.form_list_count, schema.u8),
+        marked = schema.role(SchemaRole.form_list_marked, schema.array(schema.bool, 5)),
+        cross_chosen = schema.role(SchemaRole.form_list_chosen, schema.bool),
+        chosen = schema.role(SchemaRole.form_list_chosen_place, schema.u8),
         -- (What a form change notes of the round, `byte_203EAE0`, nettai keeps none of: ./forms.)
         -- The NaviCust's emotion-swing bug (./emotion): AIData+0x3A, ticks toward the next swing, and AIData+0x0B,
         -- the emotion it last rolled.
@@ -84,7 +84,7 @@ local rules: Rules = {
     -- the patch cards' bug count does), and ChpShufl and NumbrOpn (+0x60, the custom screen's re-deal button,
     -- ./navicust; +0x61, ten chips dealt, ./cross).
     stats = {
-        beast_out_counter = schema.role("window_count", schema.u8),
+        beast_out_counter = schema.role(SchemaRole.window_count, schema.u8),
         sun = schema.bool,
         chip_drops = schema.u8,
         encounters = schema.u8,
@@ -127,13 +127,13 @@ local rules: Rules = {
         -- MstrCros plays (the original's "his user's game", NaviStats+0x20), whatever the navi; its version's are
         -- the console's pictures (the engine's version: a form's own `version`). No default: a side states it, or
         -- the round doesn't start. A save's is its version's (Gregar's ROMs' or Falzar's), which a boundary writes.
-        cybeast = schema.role("version", schema.form),
+        cybeast = schema.role(SchemaRole.version, schema.form),
         -- The Crosses they have (./cross/window.luau), up to five, of either version, in the window's order: as
         -- many as the window offers (`sub_8029EC8` counts five flags). A side that leaves them out has none. A
         -- save's are those of its version's five it owns (by Cross number: Gregar's event flags 0xE2-0xE6,
         -- Falzar's 0xE7-0xEB), which a boundary writes as the list of them. The engine's form list (the window's
         -- offer).
-        crosses = schema.role("form_list", schema.array(schema.form, 5)),
+        crosses = schema.role(SchemaRole.form_list, schema.array(schema.form, 5)),
         -- Beast Out unlocked (event flag 0xE0).
         beast_out = schema.bool,
         -- What the save brings to the navi's stats (./save): the base HP (HP Memories, +0x3E), the Regular memory

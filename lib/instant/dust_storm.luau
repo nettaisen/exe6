@@ -79,7 +79,7 @@ local function storm(me: Object, s: State)
     local left = me.timer - 1
     me.timer = left
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local next = me.timer2 - 1
@@ -94,13 +94,13 @@ end
 -- `sub_80C62B0`.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local s = me.state :: State
     if s.tied ~= nil then
         if (me.related1 :: Object):navi_action() ~= s.tied then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         if battle.dimmed() then
@@ -116,18 +116,18 @@ end
 
 dust_storm.kind = new.kind {
     id = "dust-storm",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ticks = schema.u16, tied = schema.action },
     -- `sub_80C6280`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80C62A0: on its panel, Z's whole pixels cleared.
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

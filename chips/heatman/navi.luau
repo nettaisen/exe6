@@ -42,9 +42,9 @@ local APPEAR, STAND, INHALE, FIRE, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10
 -- `sub_80B909C`: on his panel, on the ground (Z's whole part cleared),
 -- with his parts.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground")
+    navi_chips.stand(me, SPRITE, Shadow.ground)
     me:add_parts(IDENTITY, 1)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Enter the phase (phase 4; a word store of the timers when `word`), or
@@ -159,14 +159,14 @@ local ACTIONS = { [APPEAR] = appear, [STAND] = stand, [INHALE] = inhale, [FIRE] 
 
 heatman.kind = new.kind {
     id = "heatman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- `sub_80B9078`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("HeatMan action %#x reads past his table (off_80B90F8)", me.action))

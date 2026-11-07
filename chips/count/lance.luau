@@ -51,7 +51,7 @@ local function init(me: Object)
     set_height(me, WAITING_HEIGHT)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = ANIM
     me.anim_loaded = ANIM
@@ -68,7 +68,7 @@ local function init(me: Object)
     c:set_region(nil)
     c:present()
     -- A byte store of the state, the phase cleared, then the action.
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     me.phase, me.phase_init = 0, 0
     me.action = if s.while_dimmed then STRIKE else WARN
 end
@@ -120,7 +120,7 @@ local function strike(me: Object)
         return
     end
     c:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Each tick: resolve the hits; when the battle is over it goes; once it
@@ -133,7 +133,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -155,13 +155,13 @@ end
 
 lance.kind = new.kind {
     id = "count/lance",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool, warn_ticks = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

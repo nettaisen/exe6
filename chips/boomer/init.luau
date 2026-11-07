@@ -9,7 +9,7 @@ local boomerang = require("@self/boomerang")
 local chips: { [string]: Chip } = {
     boomer = {
         codes = { "J", "K", "T" },
-        element = "wood", family = "wood", class = "standard",
+        element = "wood", family = "wood", class = ChipClass.standard,
         rarity = 1, mb = 16, damage = 100, counter = 10, lockout = 20,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -17,7 +17,7 @@ local chips: { [string]: Chip } = {
     },
     hiboomer = {
         codes = { "B", "L", "V" },
-        element = "wood", family = "wood", class = "standard",
+        element = "wood", family = "wood", class = ChipClass.standard,
         rarity = 2, mb = 26, damage = 140, counter = 10, lockout = 20,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -25,7 +25,7 @@ local chips: { [string]: Chip } = {
     },
     ["m-boomer"] = {
         codes = { "I", "M", "W" },
-        element = "wood", family = "wood", class = "standard",
+        element = "wood", family = "wood", class = ChipClass.standard,
         rarity = 3, mb = 36, damage = 170, counter = 10, lockout = 20,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

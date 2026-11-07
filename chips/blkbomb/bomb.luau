@@ -22,7 +22,7 @@ local hit_sparks_sprite = asset.sprite("hit-sparks")
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {
     id = "blkbomb",
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 2,
     ai_index = 1,
     look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
@@ -46,14 +46,14 @@ black_bomb.finish = common.finish
 local function destroyed(me: Object)
     me.collision:set_region(nil)
     local how = obstacle.removal(me)
-    if how ~= "broken" then
-        if how == "absorbed" then
+    if how ~= ObstacleRemoval.broken then
+        if how == ObstacleRemoval.absorbed then
             obstacle.fly_to_absorber(me, ABSORBED)
         else
             local blink = obstacle.blink_out(me)
-            if blink == "blinking" then
+            if blink == BlinkOut.blinking then
                 return
-            elseif blink == "no" then
+            elseif blink == BlinkOut.no then
                 local p = me.pos
                 battle.effect(Vec3.new(p.x, p.y, p.z + 0xC_0000), effects.puff)
             end
@@ -85,14 +85,14 @@ black_bomb.kind = common.make_kind("blkbomb/bomb", {
     tracked = true,
     set_off_empties_hp = true,
     bursts_as_freed = true,
-    crush = "breaks",
+    crush = ObstacleCrush.breaks,
     sprite = SPRITE,
     spark = HIT_SPARK,
     is = collision.neutral_object,
     target = collision.everything,
     burst_is = collision.attack,
     burst_target = collision.hits_navis,
-    push = "keeps_damage",
+    push = ObstaclePush.keeps_damage,
     land_sound = asset.sound("land"),
     burst_sound = asset.sound("burst"),
     burst_effect = effects.explosion,

@@ -30,7 +30,7 @@ local REGION = regions.long
 local function finish(me: Object)
     me.collision:set_region(nil)
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D3946`: the animation by the ticks left; the region back every
@@ -67,7 +67,7 @@ local function tick(me: Object)
     if battle.time_up() then
         me.visible = false
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -88,7 +88,7 @@ local function init(me: Object)
     me.visible = true
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
@@ -108,20 +108,20 @@ local function init(me: Object)
     c:set_region(REGION)
     c:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 surge.kind = new.kind {
     id = "spoutcross-beast/surge",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ticks = schema.u8, beat = schema.u8 },
     -- `sub_80D385C`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

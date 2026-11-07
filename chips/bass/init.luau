@@ -9,7 +9,7 @@ local chip: Chip = {
     codes = { "F" },
     element = "null",
     family = "null",
-    class = "giga",
+    class = ChipClass.giga,
     -- The version whose saves hold it (rules/folder).
     version = "gregar",
     rarity = 4,

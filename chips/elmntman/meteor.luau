@@ -45,14 +45,14 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x - me.facing * START, p.y, START)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80D6D3E`: the hit on its panel (`object_spawnCollisionRegion`; with
@@ -93,7 +93,7 @@ local function fall(me: Object)
                 battle.effect(me.pos, effects.explosion)
                 hit(me)
             end
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
     end
@@ -108,7 +108,7 @@ end
 -- it runs in one.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if not (me.state :: State).while_dimmed and battle.dimmed() then
@@ -122,14 +122,14 @@ end
 
 meteor.kind = new.kind {
     id = "elmntman/meteor",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool },
     -- `sub_80D6BD4`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

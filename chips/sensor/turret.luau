@@ -39,7 +39,7 @@ local SPRITE = asset.sprite("sensor")
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {
     id = "sensor",
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 5,
     ai_index = 1,
     look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
@@ -102,7 +102,7 @@ local function finish(me: Object)
     me.collision:set_region(nil)
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80DA15C`: the appearing sound, then it scans.
@@ -206,7 +206,7 @@ end
 -- `sub_80DA37A`: pushed, its scanner and laser end and its scan starts
 -- over; then the push (`sub_8017CC0`).
 local function pushed(me: Object)
-    if me.drag_step == "start" then
+    if me.drag_step == DragStep.start then
         (me.state :: State).restart = true
         stop_parts(me)
     end
@@ -231,13 +231,13 @@ end
 local function destroyed(me: Object)
     local how = obstacle.removal(me)
     local p = me.pos
-    if how == "absorbed" then
+    if how == ObstacleRemoval.absorbed then
         obstacle.fly_to_absorber(me, ABSORBED)
-    elseif how ~= "broken" then
+    elseif how ~= ObstacleRemoval.broken then
         local b = obstacle.blink_out(me)
-        if b == "blinking" then
+        if b == BlinkOut.blinking then
             return
-        elseif b == "no" then
+        elseif b == BlinkOut.no then
             battle.effect(Vec3.new(p.x, p.y, p.z + 0xC_0000), effects.puff)
         end
     else
@@ -274,7 +274,7 @@ local ACTIONS: { [number]: (Object) -> () } = {
 local function tick(me: Object)
     me.visible = true
     me.sprite.white = false
-    obstacle.take_hits(me, "keeps_damage")
+    obstacle.take_hits(me, ObstaclePush.keeps_damage)
     obstacle.tick_lifetime(me)
     local a = obstacle.react(me)
     if a then
@@ -295,7 +295,7 @@ local function init(me: Object)
     me.visible = true
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = ANIM_STAND, 0
     sprite:set_animation(ANIM_STAND)
     sprite:step()
@@ -315,13 +315,13 @@ local function init(me: Object)
     end
     me:setup_collision(collision.own_body, collision.hit_by_other_side, HIT_MOD)
     me.collision:present()
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 turret.kind = new.kind {
     id = "sensor/turret",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         palette = schema.u8,
         hp = schema.u8,
@@ -334,9 +334,9 @@ turret.kind = new.kind {
     -- `sub_80DA050`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- `sub_80DA070`.
@@ -360,7 +360,7 @@ function turret.spawn(owner: Object, x: number, y: number, element: Element, dam
     o.element = element
     o.alliance, o.flip = owner.alliance, owner.flip
     o.run_while_dimmed = true
-    obstacle.register(o, o.alliance, "one_a_side")
+    obstacle.register(o, o.alliance, ObstacleClass.one_a_side)
     local s = o.state :: State
     s.palette, s.hp = palette, hp
     return o

@@ -343,7 +343,7 @@ local function wait_finale(me: Object)
     if controller then
         navi_left(controller)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80BE878`.
@@ -429,7 +429,7 @@ local function blink_out(me: Object)
     end
     done(me)
     overlays.remove_parts_of(me, me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80BEB90`: 20 ticks for each place before his.
@@ -534,7 +534,7 @@ local function sword(me: Object)
         hit(me, x, y, 0, look.region)
         local cx, cy = field.center(x, y)
         battle.effect(Vec3.new(cx, cy, 0x10_0000), look.slash, me.facing_side, look.palette)
-        battle.palette_flash("one_layer", 0xA, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0xA, true, false)
     end
     local t = me.timer + 1
     me.timer = t
@@ -557,7 +557,7 @@ local function beam(me: Object)
         s.child = ray
         battle.play_sound(SOUND_BEAM)
         me.timer = 0x46
-        battle.palette_flash("one_layer", 0xA, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0xA, true, false)
         me.phase_init = 4
     end
     -- (Without a beam the game reads a byte of the BIOS, never its third
@@ -584,7 +584,7 @@ local function drill_out(me: Object)
         end
         me.timer = 0x1E
         battle.play_sound(SOUND_DRILL)
-        battle.palette_flash("one_layer", 0xA, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0xA, true, false)
         local p = me.pos
         me.pos = Vec3.new(p.x, p.y + 0x10000, p.z + 0x10000)
         me.phase_init = 4
@@ -634,7 +634,7 @@ local function fan(me: Object)
     end
     if me.timer == 0xC then
         hit(me, me.panel_x + me.facing, me.panel_y, 0x10_0000, regions.wide)
-        battle.palette_flash("one_layer", 0xA, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0xA, true, false)
     end
     if tick_down(me) < 0 then
         me.phase, me.phase_init = 4, 0
@@ -702,7 +702,7 @@ local function strike(me: Object)
         -- the BIOS. The bursts wait out the dimming.)
         panel_bursts.spawn(me, area, 2, 0, effects.explosion)
         battle.shake_camera(3, 0x1E)
-        battle.palette_flash("one_layer", 0x23, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0x23, true, false)
         battle.play_sound(SOUND_FINALE)
     end
     local t = me.timer + 1
@@ -729,7 +729,7 @@ local function leave(me: Object)
         me.anim = 4
         local held = (me.state :: State).held
         if held then
-            held:set_lifecycle("destroy")
+            held:enter_destroy()
         end
     end
     if count(me, 3) > 0 then
@@ -738,7 +738,7 @@ local function leave(me: Object)
     me.visible = false
     done(me)
     overlays.remove_parts_of(me, me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Run an action's phase from its table.
@@ -806,7 +806,7 @@ local function init(me: Object)
         me.sprite:face(me)
         overlays.add_parts_of(me, me, false, true)
     end
-    me:set_lifecycle("update")
+    me:enter_update()
     if form and s.move == "charge" then
         me.action = FINALE_ENTRY
     end
@@ -815,7 +815,7 @@ end
 
 mstrcros.kind = new.kind {
     id = "mstrcros/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         form = schema.form,
         move = MOVE_TYPE,
@@ -831,9 +831,9 @@ mstrcros.kind = new.kind {
     -- `sub_80BE798`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             me:free()

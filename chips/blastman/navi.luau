@@ -27,8 +27,8 @@ local BLAST_SPEED = 0x6_0000
 
 -- `sub_80B8EC4`: on his panel, on the ground.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
-    me:set_lifecycle("update")
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
+    me:enter_update()
 end
 
 -- Enter the phase (phase 4, a word store of the timers when `word`), or
@@ -124,14 +124,14 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = wind_up, [0xC] = attack, [0x1
 
 blastman.kind = new.kind {
     id = "blastman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- `sub_80B8EA0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("BlastMan action %#x reads past his table (off_80B8F1C)", me.action))

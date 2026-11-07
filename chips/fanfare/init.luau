@@ -23,7 +23,7 @@ end
 
 local chip: Chip = {
     codes = { "P", "S", "Z", "*" },
-    element = "null", family = "summon", class = "standard",
+    element = "null", family = "summon", class = ChipClass.standard,
     rarity = 1, mb = 20, damage = 0, counter = 0, lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 3,
@@ -31,7 +31,7 @@ local chip: Chip = {
     dimming = instruments.hook(instrument.instrument {
         identity = new.identity {
             id = "fanfare",
-            class = "field_object",
+            class = IdentityClass.field_object,
             version = 4,
             ai_index = 1,
             look = { sprite = instrument_sprite, anim = 0, palette = 0, shadow = true },

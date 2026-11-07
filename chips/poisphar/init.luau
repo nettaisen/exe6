@@ -18,7 +18,7 @@ local STATUE = statue.variant {
     lifetime = 1441,
     identity = new.identity {
         id = "poisphar",
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 3,
         ai_index = 1,
         look = { sprite = anubis_sprite, anim = 1, palette = 0, shadow = true },
@@ -29,7 +29,7 @@ local chip: Chip = {
     codes = {},
     element = "null",
     family = "program_advance",
-    class = "program_advance",
+    class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
     damage = 1,

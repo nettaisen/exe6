@@ -174,52 +174,52 @@ end
 -- `sub_802D358`: use the next chip, unless (for the first three moves after
 -- a chip) the opponent under the lock-on marker is flashing, or no chip is
 -- left or it can't start; then the buster is next.
-local function use_chip(navi: Object, s: State): "nothing" | "chip"
+local function use_chip(navi: Object, s: State): ControlOutcome
     if s.controller_moves <= 3 then
         local t = berserk.locked_opponent(navi)
         if t ~= nil and t.status.flashing then
             s.controller_step = BUSTER
-            return "nothing"
+            return ControlOutcome.nothing
         end
     end
     if navi:next_chip() == nil then
         s.controller_step = BUSTER
-        return "nothing"
+        return ControlOutcome.nothing
     end
     navi.requests.chip = true
     if not navi:use_chip() then
         s.controller_step = BUSTER
-        return "nothing"
+        return ControlOutcome.nothing
     end
     s.controller_moves = 0
     s.controller_step = MOVE
-    return "chip"
+    return ControlOutcome.chip
 end
 
 -- `sub_802D3A8`: after three moves, or with an opponent in the navi's row,
 -- fire the buster; a move is next either way.
-local function buster(navi: Object, s: State): "nothing" | "buster"
+local function buster(navi: Object, s: State): ControlOutcome
     s.controller_step = MOVE
     if not (s.controller_moves > 2 or berserk.opponent_in_row(navi, navi.panel_y) ~= nil) then
-        return "nothing"
+        return ControlOutcome.nothing
     end
     s.controller_moves = 0
-    return "buster"
+    return ControlOutcome.buster
 end
 
 -- `sub_802D3CA`: step to a panel near an opponent (`sub_802D430`); a chip
 -- is next.
-function berserk.step_toward_opponent(navi: Object, s: State): "moved"
+function berserk.step_toward_opponent(navi: Object, s: State): ControlOutcome
     local cond = if navi.status.air_shoe then berserk_rules.step.floor_free else berserk_rules.step.grounded
     local tx, ty = choose_panel(navi, cond)
     navi:start_move_to(tx, ty, 8)
     s.controller_moves = (s.controller_moves + 1) % 0x10000
     s.controller_step = USE_CHIP
-    return "moved"
+    return ControlOutcome.moved
 end
 
 -- `sub_802D322`: one tick of the controller, from the idle action.
-function berserk.control(side: number, navi: Object): "nothing" | "chip" | "buster" | "moved"
+function berserk.control(side: number, navi: Object): ControlOutcome
     local s = rules.state() :: State
     -- (`sub_802D310` cleared it: it starts over.)
     if navi.controller_fresh then

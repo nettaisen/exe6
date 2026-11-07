@@ -60,7 +60,7 @@ end
 local function finish(me: Object)
     me.visible = false
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_800E6E8`: `c` lies past `a` and up to `b`, either way,
@@ -174,7 +174,7 @@ local function init(me: Object)
     else
         look:load(v.sprite)
     end
-    look.shadow = if v.shadow then "ground" else "with_sprite"
+    look.shadow = if v.shadow then Shadow.ground else Shadow.with_sprite
     me.anim = anim
     me.anim_loaded = 0xFF
     me.visible = true
@@ -201,13 +201,13 @@ local function init(me: Object)
     end
     c:present()
     me.vel = Vec3.new(me.vel.x, me.vel.y, if s.falls then FALL else 0)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 flying_shot.kind = new.kind {
     id = "flying-shot",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         variant = FLYING_SHOT_VARIANT,
         wait = schema.u8,
@@ -220,12 +220,12 @@ flying_shot.kind = new.kind {
     -- `sub_80C60A8`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

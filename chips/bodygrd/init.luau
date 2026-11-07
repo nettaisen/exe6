@@ -14,7 +14,7 @@ local chip: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "null",
     family = "program_advance",
-    class = "program_advance",
+    class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
     damage = 100,
@@ -24,7 +24,7 @@ local chip: Chip = {
     flags = { dimming = true, has_damage = true, library = true },
     slot_in_limit = 1,
     program_advances = { { order = 3, sequence = { antinavi, antiswrd, antidmg } } },
-    trap = "body_guard",
+    trap = TrapKind.body_guard,
     dimming = traps.hook(),
 }
 

@@ -95,7 +95,7 @@ local function close(me: Object)
     end
     me:update_sprite_even_paused()
     if me.sprite.steps >= CLOSE_STEPS then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -120,29 +120,29 @@ local function init(me: Object)
     me.visible = true
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     local worm = (me.state :: State).worm :: Object
     sprite.palette = worm.sprite.palette
     sprite:set_animation(0)
     sprite:step()
     me:set_coordinates_from_panel()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 hole.kind = new.kind {
     id = "sandwrm/hole",
-    pool = "actor",
+    pool = Pool.actor,
     state = { worm = schema.object },
     -- `sub_80BC87C`: gone at once once the battle is over.
     update = function(me: Object)
         if battle.over() then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

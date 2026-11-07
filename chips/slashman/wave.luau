@@ -59,7 +59,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.bor(bit32.band(p.z, 0xFFFF), HEIGHT * 0x10000))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -77,7 +77,7 @@ local function init(me: Object)
     c:present()
     local s = me.state :: State
     s.steered = false
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80D0A5C`: the hit on its panel as it winds up (not the navi
@@ -206,7 +206,7 @@ local function fly(me: Object)
     me:update_collision_panels()
     if not field.valid(me.panel_x, me.panel_y) then
         me.collision:set_region(nil)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -221,7 +221,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() or c:hit_any(ENDS) then
         c:set_region(nil)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     if not (me.state :: State).variant.while_dimmed and battle.dimmed() then
@@ -237,14 +237,14 @@ end
 
 wave.kind = new.kind {
     id = "slashman/wave",
-    pool = "attack",
+    pool = Pool.attack,
     state = { variant = SLASHMAN_WAVE, steered = schema.bool },
     -- `sub_80D07CC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

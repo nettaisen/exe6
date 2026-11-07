@@ -131,7 +131,7 @@ local function roll(me: Object, _: State)
     me:update_collision_panels()
     if not field.valid(me.panel_x, me.panel_y) then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -150,7 +150,7 @@ local function broken(me: Object, _: State)
     local t = me.timer - 1
     me.timer = t
     if bit32.band(t, 0xFFFF) == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -168,7 +168,7 @@ local function burst(me: Object)
     puff(me)
     battle.play_sound(SOUND_HIT_BOMB)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Out of the fight: hidden, the broken action from its start.
@@ -191,7 +191,7 @@ local function tick(me: Object)
     end
     if me.action == BROKEN then
         to_broken(me)
-    elseif me:take_damage("damage_sound") == "broken" then
+    elseif me:take_damage(TakeDamageMode.damage_sound) == DamageTaken.broken then
         local lift = if s.big then HEIGHT + BIG_HEIGHT else HEIGHT
         battle.effect(Vec3.new(me.pos.x, me.pos.y, lift * 0x10000), effects.explosion)
         battle.play_sound(SOUND_HIT_BOMB)
@@ -227,7 +227,7 @@ local function init(me: Object, hp: number)
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim = 0
     me.anim_loaded = 0xFF
     if not me:create_collision() then
@@ -248,20 +248,20 @@ local function init(me: Object, hp: number)
     c:set_region(nil)
     c:present()
     launch(me, s)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
 end
 
 log.kind = new.kind {
     id = "rlnglog/log",
-    pool = "attack",
+    pool = Pool.attack,
     state = { last_hp = schema.u16, big = schema.bool, stop_ticks = schema.u8, thrown = schema.bool },
     -- `sub_80D1218`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- Its HP is its spawner's (`last_hp` holds it until here).
             init(me, (me.state :: State).last_hp)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

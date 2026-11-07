@@ -154,7 +154,7 @@ local function hop_2(me: Object)
     if not field.solid(x, y) then
         hit(me, x, y)
         battle.effect(me.pos, GONE)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     -- sub_80E5050
@@ -181,14 +181,14 @@ local function landed(me: Object)
     local left = me.timer - 1
     me.timer = left
     if left == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 -- `sub_80E4E84`.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local a = me.action
@@ -212,7 +212,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     sprite:face(me)
     if not (me.state :: State).own_panel then
         local side = me.alliance
@@ -237,20 +237,20 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 4, 0
     sprite:set_animation(4)
     sprite:step()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 golem.kind = new.kind {
     id = "golmhit/golem",
-    pool = "effect",
+    pool = Pool.effect,
     state = { palette = schema.u8, own_panel = schema.bool, cracks = schema.bool, cracks_column = schema.bool },
     -- `sub_80E4DB0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

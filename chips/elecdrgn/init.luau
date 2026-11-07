@@ -9,7 +9,7 @@ local sparks = require("../lib/sparks")
 
 local chip: Chip = {
     codes = { "A", "L", "V" },
-    element = "elec", family = "elec", class = "standard",
+    element = "elec", family = "elec", class = ChipClass.standard,
     rarity = 2, mb = 40, damage = 150, counter = 30, lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,

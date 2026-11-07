@@ -39,7 +39,7 @@ end
 local function finish(me: Object)
     me.visible = false
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D8172`: resolve its hits; blink out after a hit, or move on,
@@ -105,7 +105,7 @@ local function init(me: Object)
     me.related1 = nil
     local sprite = me.sprite
     sprite:load(v.sprite)
-    sprite.shadow = if v.ground_shadow then "ground" else "with_sprite"
+    sprite.shadow = if v.ground_shadow then Shadow.ground else Shadow.with_sprite
     me.anim = v.anim
     me.anim_loaded = 0xFF
     sprite.palette = v.palette
@@ -134,7 +134,7 @@ local function init(me: Object)
     end
     c:present()
     me:update_sprite()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
@@ -143,9 +143,9 @@ end
 local function update(me: Object)
     local animates = (me.state :: State).variant.animates
     local l = me.lifecycle
-    if l == "init" then
+    if l == Lifecycle.init then
         init(me)
-    elseif l == "update" then
+    elseif l == Lifecycle.update then
         tick(me)
     else
         me:destroy()
@@ -162,7 +162,7 @@ local SWORD_WAVE_VARIANT = schema.record_type("sword-wave-variant")
 
 sword_wave.kind = new.kind {
     id = "slashcross/sword-wave",
-    pool = "attack",
+    pool = Pool.attack,
     state = { variant = SWORD_WAVE_VARIANT, started = schema.bool, reach = schema.u8, hidden = schema.bool },
     update = update,
 }

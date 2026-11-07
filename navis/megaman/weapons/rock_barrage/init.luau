@@ -7,5 +7,5 @@ return new.weapon {
     charge_ticks = { 60, 60, 60, 60, 60, 100, 90, 80 }, -- by Charge 0..7; past 4, the next routine's row
     -- As an A-charge: GroundCross's rocks fall, then the charged chip is the
     -- chip itself. (The original's routine is empty; nothing starts it.)
-    charged_chip = "rock_barrage",
+    charged_chip = ChargedChip.rock_barrage,
 }

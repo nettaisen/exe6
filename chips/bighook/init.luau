@@ -29,7 +29,7 @@ local chip: Chip = {
     codes = { "H" },
     element = "null",
     family = "break",
-    class = "giga",
+    class = ChipClass.giga,
     -- The version whose saves hold it (rules/folder).
     version = "gregar",
     rarity = 4,

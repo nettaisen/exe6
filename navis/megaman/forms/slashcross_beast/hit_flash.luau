@@ -14,7 +14,7 @@ export type State = {
 
 -- The flash (`off_80E8934`): over two layers (the screen and the objects)
 -- for 2 ticks, neither going on while dimmed nor while paused.
-local FLASH_VARIANT: PaletteFlashVariant, FLASH_TICKS = "two_layers", 2
+local FLASH_VARIANT: PaletteFlashVariant, FLASH_TICKS = PaletteFlashVariant.two_layers, 2
 
 -- The flashes, and the ticks between them.
 local FLASHES, GAP = 3, 8
@@ -25,7 +25,7 @@ local FLASHING, WAITING = 0, 1
 -- `sub_80E88D8`: a flash, then 8 ticks; three times.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if me.action == FLASHING then
@@ -42,7 +42,7 @@ local function tick(me: Object)
     local flashes = s.flashes - 1
     s.flashes = flashes
     if flashes == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     me.action = FLASHING
@@ -52,20 +52,20 @@ end
 local function init(me: Object)
     (me.state :: State).flashes = FLASHES
     battle.shake_camera(2, 0xC)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 hit_flash.kind = new.kind {
     id = "slashcross-beast/hit-flash",
-    pool = "effect",
+    pool = Pool.effect,
     state = { flashes = schema.u8 },
     -- `sub_80E88A0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

@@ -53,7 +53,7 @@ local GLOW = follow_effect.make {
         if not battle.dimmed() then
             me.hp = 0
             if owner:navi_action() ~= action then
-                me:set_lifecycle("destroy")
+                me:enter_destroy()
             end
         end
         me.pos = owner.pos
@@ -211,10 +211,10 @@ local chip: Chip = {
     codes = { "E" },
     element = "elec",
     family = "elec",
-    class = "special",
+    class = ChipClass.special,
     rarity = 1,
     mb = 99,
-    damage = { formula = "navi_level", base = 40, per_level = 20 },
+    damage = { formula = Formula.navi_level, base = 40, per_level = 20 },
     counter = 10,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },

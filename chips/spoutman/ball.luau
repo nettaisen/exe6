@@ -39,14 +39,14 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x + me.facing * AHEAD, p.y, HEIGHT)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 1
     me.anim_loaded = 1
     sprite:set_animation(1)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80C85F4`: fly (the flight's ticks and fall come from two BIOS
@@ -71,7 +71,7 @@ local function fly(me: Object)
     if field.solid(me.panel_x, me.panel_y) then
         me:set_action(4)
     else
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -88,7 +88,7 @@ local function splash_down(me: Object)
     if field.solid(next_x, y) then
         splash.spawn(me, next_x, y, me.element, { while_dimmed = s.while_dimmed }, damage, 0)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local ACTIONS = { [0] = fly, [4] = splash_down }
@@ -97,7 +97,7 @@ local ACTIONS = { [0] = fly, [4] = splash_down }
 -- is the navi chip's.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if not (me.state :: State).while_dimmed and battle.dimmed() then
@@ -112,14 +112,14 @@ end
 
 ball.kind = new.kind {
     id = "spoutman/ball",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool, cracks = schema.bool },
     -- `sub_80C853C`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

@@ -52,7 +52,7 @@ local function init(me: Object)
     me:set_panel_from_coordinates()
     local sprite = me.sprite
     sprite:load(s.look.sprite)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     local anim = s.anim
     me.anim = anim
     me.anim_loaded = anim
@@ -79,7 +79,7 @@ local function init(me: Object)
         int.tdiv(int.i32(ARRIVAL_Z - p.z), FLIGHT)
     )
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80E991C`: fly; once there (with its navi still absorbing), join the
@@ -97,7 +97,7 @@ local function fly(me: Object)
         local absorbed = if left <= 0 then (navi.state :: NaviState).absorbed else nil
         if absorbed and #absorbed < MAX_ABSORBED then
             absorbed[#absorbed + 1] = { look = (me.state :: State).look, anim = me.anim }
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     end
     me.sprite:step()
@@ -109,7 +109,7 @@ local function tick(me: Object)
     if battle.over() or not field.valid(me.panel_x, me.panel_y) then
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + PUFF_LIFT), PUFF)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local a = me.action
@@ -121,7 +121,7 @@ end
 
 absorbed_obstacle.kind = new.kind {
     id = "absorbed-obstacle",
-    pool = "effect",
+    pool = Pool.effect,
     state = {
         look = obstacle.absorbed_look,
         side = schema.u8,
@@ -132,9 +132,9 @@ absorbed_obstacle.kind = new.kind {
     -- `sub_80E97F0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

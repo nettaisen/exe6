@@ -53,7 +53,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.bor(bit32.band(p.z, 0xFFFF), height * 0x10000))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = anim, anim
     sprite:set_animation(anim)
     sprite.palette = 0
@@ -72,7 +72,7 @@ local function init(me: Object)
     me.collision:set_region(nil)
     me.collision:present()
     me.timer = DELAY
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80D9498`: after its delay it shows and arms.
@@ -110,7 +110,7 @@ end
 -- `sub_80D94E6`: ended by its turret.
 local function ended(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D9434`, unless paused: resolve the hits; it goes with the
@@ -124,7 +124,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -152,7 +152,7 @@ end
 
 laser.kind = new.kind {
     id = "sensor/laser",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         turret = schema.object,
         slot = schema.u8,
@@ -162,9 +162,9 @@ laser.kind = new.kind {
     -- `sub_80D9350`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

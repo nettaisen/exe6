@@ -58,7 +58,7 @@ local function fall(me: Object)
     me.action = BLINKING
     me.phase, me.phase_init = 0, 0
     if not field.solid(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         battle.effect(me.pos, BURST)
     else
         battle.shake_camera(SHAKE, SHAKE_TICKS)
@@ -89,7 +89,7 @@ local function blink(me: Object)
         return
     end
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D96C8`: on its panel, high up behind it, falling toward it.
@@ -97,7 +97,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -116,7 +116,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x - front * FALL - front * BACK, p.y, FALL + UP)
     me.vel = Vec3.new(int.tdiv(front * FALL, ticks), me.vel.y, int.tdiv(FALL, ticks))
     battle.effect(me.pos, APPEAR)
-    me:set_lifecycle("update")
+    me:enter_update()
     fall(me)
 end
 
@@ -125,7 +125,7 @@ local function tick(me: Object)
     if battle.over() then
         battle.effect(me.pos, BURST)
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if battle.dimmed() then
@@ -143,14 +143,14 @@ end
 
 erase_drop.kind = new.kind {
     id = "erasecross-beast/drop",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ticks = schema.u8, x = schema.u8, y = schema.u8 },
     -- `sub_80D96A4`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

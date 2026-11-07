@@ -67,23 +67,23 @@ local function tick(me: Object)
         me.phase_init = WAITING
     end
     if s.snakes == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 nest.kind = new.kind {
     id = "snake/nest",
-    pool = "attack",
+    pool = Pool.attack,
     state = { scan_x = schema.u8, scan_y = schema.u8, snakes = schema.u8, holder = schema.object },
     -- `sub_80D2BDC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80D2C00: on its panel; on at once.
             me:set_coordinates_from_panel()
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- sub_80D2E86: the holder goes on; freed.

@@ -10,7 +10,7 @@ local card: PatchCard = {
     effects = {
         cards.b_button(b_sword),
         cards.charged_shot(charge),
-        cards.gauge("fast"),
+        cards.gauge(GaugeSpeed.fast),
     },
 }
 

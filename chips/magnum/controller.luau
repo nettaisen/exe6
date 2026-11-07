@@ -31,7 +31,7 @@ end
 
 local kind = new.kind {
     id = "magnum/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { bonus = schema.u16, busy = schema.bool },
     -- `sub_80E71C4`.
     update = dimming_chips.phases { name = "Magnum", effect = effect },

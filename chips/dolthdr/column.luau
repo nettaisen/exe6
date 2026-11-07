@@ -69,7 +69,7 @@ local function tick(me: Object)
         end
     end
     c:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D6952`.
@@ -96,20 +96,20 @@ local function init(me: Object)
     end
     register(me, me)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 thunder_column.kind = new.kind {
     id = "dolthdr/thunder-column",
-    pool = "attack",
+    pool = Pool.attack,
     state = { owner = schema.object, link = schema.u8, variant = THUNDER_COLUMN_VARIANT },
     -- `sub_80D6924`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- `sub_80D6944`.

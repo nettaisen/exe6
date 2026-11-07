@@ -31,7 +31,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -45,7 +45,7 @@ local function init(me: Object)
     me:setup_collision(s.is, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_hit_effect(sparks.fire)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80C8D64`: flaring up, 5 ticks.
@@ -92,7 +92,7 @@ local function die_down(me: Object)
     local left = me.timer - 1
     me.timer = left
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -106,7 +106,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -124,14 +124,14 @@ end
 
 flame.kind = new.kind {
     id = "heatman/flame",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool, ticks = schema.u8, is = schema.collision },
     -- `sub_80C8C74`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

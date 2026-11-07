@@ -65,11 +65,11 @@ local scrap: ButtonSpec = {
         local stats = battle.navi(side)
         return stats.navi.forms ~= nil and stats.form.scrap_button == true
     end,
-    state = function(side: number): "selectable" | "unavailable"
-        return if custom.last_pick_is_chip(side) then "selectable" else "unavailable"
+    state = function(side: number): ButtonState
+        return if custom.last_pick_is_chip(side) then ButtonState.selectable else ButtonState.unavailable
     end,
     pressed = function(side: number)
-        if custom.cursor_state(side) == "selectable" then
+        if custom.cursor_state(side) == ButtonState.selectable then
             custom.sacrifice(side)
         else
             custom.refuse(side)

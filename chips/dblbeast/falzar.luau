@@ -71,7 +71,7 @@ end
 -- `sub_80B8E58`: an attachment ends.
 local function detach(a: Object?)
     if a then
-        a:set_lifecycle("destroy")
+        a:enter_destroy()
     end
 end
 
@@ -225,19 +225,19 @@ end
 
 falzar.kind = new.kind {
     id = "dblbeast/falzar",
-    pool = "actor",
+    pool = Pool.actor,
     state = beast.STATE,
     -- `sub_80C2138`: by state, then the sprite (stepping while dimmed).
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80C215C: at rest behind the user, its head on (its
             -- identity's parts, stepping even while paused); its update
             -- first runs next tick.
             beast.init(me, SPRITE, false, IDENTITY)
             overlays.add_parts_of(me, me, false, true)
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

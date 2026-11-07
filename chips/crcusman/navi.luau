@@ -29,10 +29,10 @@ local SPARKLE = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0, 
 -- What he is taken for: his actor record, and what he wears (his two overlays, `sub_8010FD8`).
 local IDENTITY = new.identity {
     id = "circusman",
-    class = "navi",
+    class = IdentityClass.navi,
     version = 0,
     ai_index = 0xE,
-    ice = "large",
+    ice = IceSize.large,
     parts = {
         body = {
             sprite = SPRITE,
@@ -63,9 +63,9 @@ local APPEAR, STAND, CROUCH, LEAP, CATCH, SHOW, BOW, MISS, RISE, NO_FOOTING =
 -- `sub_80BA388`: on his panel, on the ground (Z's whole part cleared), no
 -- shadow, with his parts.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "with_sprite")
+    navi_chips.stand(me, SPRITE, Shadow.with_sprite)
     me:add_parts(IDENTITY, 1)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Z's whole part (the game's halfword stores).
@@ -283,14 +283,14 @@ local ACTIONS = {
 
 crcusman.kind = new.kind {
     id = "crcusman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- `sub_80BA364`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("CircusMan action %#x reads past his table (off_80BA3EC)", me.action))

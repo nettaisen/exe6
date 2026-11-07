@@ -109,7 +109,7 @@ end
 -- form's).
 local function afterimage_anim(navi: Object): number
     local identity = navi.identity
-    return if identity ~= nil and identity.class == "player" and not identity.changes_form then 0 else 0xF
+    return if identity ~= nil and identity.class == IdentityClass.player and not identity.changes_form then 0 else 0xF
 end
 
 -- `sub_80E33FA` with Param1 0xFF: a copy of the navi at `pos` for
@@ -122,8 +122,8 @@ local function afterimage(navi: Object, pos: Vec3, anim: number, lifetime: numbe
         facing = navi.facing_side,
         lifetime = lifetime,
         color_shader = 0x83E0,
-        shadow = "ground",
-        tether = if beast then "form" else "attack",
+        shadow = Shadow.ground,
+        tether = if beast then Tether.form else Tether.attack,
     })
 end
 
@@ -184,7 +184,7 @@ local function attack(navi: Object, s: State)
     local action = navi:navi_action()
     if type(action) ~= "string" or not STATES[action] then
         navi:run_wrapped()
-        if navi:navi_action() ~= "idle" then
+        if navi:navi_action() ~= EngineAction.idle then
             return
         end
         if s.rush_chain and navi:chain_next_chip() then

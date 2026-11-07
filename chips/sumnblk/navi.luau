@@ -241,7 +241,7 @@ local function leave(me: Object)
     local t = me.timer - 1
     me.timer = int.u16(t)
     if t <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -265,7 +265,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     me:set_coordinates_from_panel()
@@ -273,20 +273,20 @@ local function init(me: Object)
     sprite:face(me)
     sprite.palette = s.palette
     me.visible = false
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 navi.kind = new.kind {
     id = "sumnblk/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { holder = schema.object, palette = schema.u8, target_x = schema.u8, target_y = schema.u8 },
     -- `sub_80C1570`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- `sub_80C17E6`: its controller is told.

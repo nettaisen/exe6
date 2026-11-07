@@ -58,7 +58,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         c:present()
         return
     end
@@ -83,7 +83,7 @@ local function tick(me: Object)
     me.timer = bit32.band(left, 0xFFFF)
     if left <= 0 then
         c:set_region(nil)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     else
         by_timer(me)
     end
@@ -98,7 +98,7 @@ local function init(me: Object)
     end
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     sprite.palette = 0
     sprite:set_animation(0)
     me.visible = true
@@ -119,19 +119,19 @@ local function init(me: Object)
     c:set_hit_effect(sparks.fire)
     c:set_region(nil)
     c:present()
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 eruption.kind = new.kind {
     id = "eruption",
-    pool = "attack",
+    pool = Pool.attack,
     state = { lifetime = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

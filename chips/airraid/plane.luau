@@ -39,7 +39,7 @@ local SPRITE = asset.sprite("air-raid-plane")
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {
     id = "airraid-plane",
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 2,
     ai_index = 1,
     look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
@@ -86,7 +86,7 @@ local function finish(me: Object)
     me.collision:set_region(nil)
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D37F4`: the other side's bodies from the column ahead to the
@@ -218,17 +218,17 @@ end
 -- puff), else broken (an explosion and its sound).
 local function destroyed(me: Object)
     local how = obstacle.removal(me)
-    if how == "broken" then
+    if how == ObstacleRemoval.broken then
         battle.play_sound(BREAK_SOUND)
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + 0x14_0000), effects.explosion)
-    elseif how == "absorbed" then
+    elseif how == ObstacleRemoval.absorbed then
         obstacle.fly_to_absorber(me, ABSORBED)
     else
         local blink = obstacle.blink_out(me)
-        if blink == "blinking" then
+        if blink == BlinkOut.blinking then
             return
-        elseif blink == "no" then
+        elseif blink == BlinkOut.no then
             local p = me.pos
             battle.effect(Vec3.new(p.x, p.y, p.z + 0xC_0000), effects.puff)
         end
@@ -255,7 +255,7 @@ local ACTIONS: { [number]: (Object) -> () } = {
 local function tick(me: Object)
     me.visible = true
     me.sprite.white = false
-    obstacle.take_hits(me, "keeps_damage")
+    obstacle.take_hits(me, ObstaclePush.keeps_damage)
     obstacle.tick_lifetime(me)
     local a = obstacle.react(me)
     if a then
@@ -277,7 +277,7 @@ local function init(me: Object)
     me.visible = true
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite:step()
@@ -296,13 +296,13 @@ local function init(me: Object)
     me:setup_collision(collision.own_body, collision.hit_by_other_side, HIT_MOD)
     me.collision:present()
     s.propeller = propeller.spawn(me, false)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 plane.kind = new.kind {
     id = "airraid/plane",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         plane = AIRRAID_PLANE,
         propeller = schema.object,
@@ -313,9 +313,9 @@ plane.kind = new.kind {
     -- `sub_80D34CC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- `sub_80D34EC`: its propeller and flame go with it.
@@ -342,7 +342,7 @@ function plane.spawn(owner: Object, x: number, y: number, p: AirRaidPlane, damag
     o.panel_x, o.panel_y = x, y
     o.alliance, o.flip = owner.alliance, owner.flip
     o.run_while_dimmed = true
-    obstacle.register(o, o.alliance, "one_a_side")
+    obstacle.register(o, o.alliance, ObstacleClass.one_a_side)
     local s = o.state :: State
     s.plane = p
     return o

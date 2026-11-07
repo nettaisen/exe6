@@ -60,13 +60,13 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, 0)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- The entry of most of his actions: on phase 0 go to phase 4 with an
@@ -223,21 +223,21 @@ local function leave(me: Object)
     if controller then
         navi_left(controller)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local ACTIONS = { [APPEAR] = appear, [STAND] = stand, [AIM] = aim, [RAISE] = raise, [SLASH] = slash, [LEAVE] = leave }
 
 eraseman.kind = new.kind {
     id = "eraseman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { cycle = schema.u8, aim = schema.u8, controller = schema.object, aim_ticks = schema.u8 },
     -- `sub_80BB608`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("EraseMan action %#x reads past his table", me.action))

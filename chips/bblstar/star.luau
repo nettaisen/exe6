@@ -71,7 +71,7 @@ local function drift(me: Object)
     local px = me.panel_x
     if px < 1 or px > 6 then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
     me:highlight_collision_panels()
 end
@@ -87,7 +87,7 @@ local function tick(me: Object)
         if c:hit_any(BURSTS) then
             puff(me)
             c:set_region(nil)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         s.hit_panel = panel_word(me)
@@ -120,7 +120,7 @@ local function setup(me: Object): boolean
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0xFF
     if not me:create_collision() then
@@ -157,20 +157,20 @@ local function init(me: Object)
     c:set_hit_effect(sparks.aqua)
     c.status_base = STATUS
     c:present()
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 star.kind = new.kind {
     id = "bblstar/star",
-    pool = "attack",
+    pool = Pool.attack,
     state = { speed = schema.i32, palette = schema.u8, hit_panel = schema.u32, phase_step = schema.i32, center_y = schema.i32 },
     -- `sub_80CC5A8`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

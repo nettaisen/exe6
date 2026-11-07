@@ -116,7 +116,7 @@ local function step(me: Object)
         me:update_collision_panels()
         if not field.valid(me.panel_x, me.panel_y) then
             c:set_region(nil)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         s.steps -= 1
@@ -143,7 +143,7 @@ local function sow(me: Object)
     local s = me.state :: State
     local p = if n < BURSTS and not battle.over() then next_panel(me, s) else nil
     if not p then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     burst(me, panels.x(p), panels.y(p))
@@ -184,19 +184,19 @@ local function init(me: Object)
         s.ring[i] = 0
     end
     s.steps = STEPS
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 sower.kind = new.kind {
     id = "cornfsta/sower",
-    pool = "attack",
+    pool = Pool.attack,
     state = { steps = schema.i32, holder = schema.object, ring = schema.array(schema.u8, 3), ring_next = schema.u8 },
     -- `sub_80DAA28`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- sub_80DAB8A: the holder goes on; destroyed.

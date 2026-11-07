@@ -280,7 +280,7 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
         end
         stats.form = target
         if seq == "beast_out" or seq == "cross_beast" or seq == "beast_over" then
-            battle.palette_flash("one_layer", 14, true, true)
+            battle.palette_flash(PaletteFlashVariant.one_layer, 14, true, true)
             battle.play_sound(BEAST_OUT)
         end
         -- `sub_8015B22`: the form's NameID (the navi's own, for a form
@@ -291,12 +291,12 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
         if o then
             if seq == "beast_out" or seq == "beast_over" then
                 -- Its Param3 = 0.
-                overlays.set_stepping(me, "normal")
+                overlays.set_stepping(me, FormOverlayStepping.normal)
             elseif seq == "cross_beast" or seq == "beast_cross" then
                 -- Its animation 0 and Param3 0 (and in a Cross Beast,
                 -- flags 0x14).
                 o.anim = 0
-                overlays.set_stepping(me, "normal")
+                overlays.set_stepping(me, FormOverlayStepping.normal)
                 if seq == "cross_beast" then
                     o.run_while_paused = true
                     o.run_while_dimmed = true
@@ -317,7 +317,7 @@ local function emerge(me: Object, s: State, seq: Sequence, target: FormDef)
     navi_status.end_anger(me, "reset")
     if seq == "beast_out" then
         if full_synchro then
-            battle.set_mood(side, "full_synchro")
+            battle.set_mood(side, Mood.full_synchro)
         end
     else
         battle.set_mood(side, 0x80)

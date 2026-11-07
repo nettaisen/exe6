@@ -80,7 +80,7 @@ local function fall(me: Object)
         return
     end
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D1A64`.
@@ -90,7 +90,7 @@ local function tick(me: Object)
     panel_spark(me)
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -123,20 +123,20 @@ local function init(me: Object)
     me.collision:set_hit_effect(s.spark)
     me.collision:set_region(nil)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 strike.kind = new.kind {
     id = "tomahawkman/strike",
-    pool = "attack",
+    pool = Pool.attack,
     state = { delay = schema.u8, is = schema.collision, hits = schema.collision, spark = schema.spark },
     -- `sub_80D1A08`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

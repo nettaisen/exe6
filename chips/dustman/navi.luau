@@ -40,8 +40,8 @@ local APPEAR, TAKE, WIND_UP, THROW, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- `sub_80BBF30`: on his panel, on the ground (Z's whole part cleared).
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground")
-    me:set_lifecycle("update")
+    navi_chips.stand(me, SPRITE, Shadow.ground)
+    me:enter_update()
 end
 
 -- `sub_80BBF94`: he appears; 10 ticks; on, or away if his panel can't
@@ -167,14 +167,14 @@ local ACTIONS = { [APPEAR] = appear, [TAKE] = suck, [WIND_UP] = wind_up, [THROW]
 
 dustman.kind = new.kind {
     id = "dustman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { taken = schema.array(schema.identity, 8), count = schema.u8, thrown = schema.u8, controller = schema.object },
     -- `sub_80BBF0C`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("DustMan action %#x reads past his table (off_80BBF80)", me.action))

@@ -9,7 +9,7 @@ local navi_boost = require("../lib/navi_boost/controller")
 -- name.)
 local chip: Chip = {
     codes = { "V" },
-    element = "null", family = "sword", class = "giga",
+    element = "null", family = "sword", class = ChipClass.giga,
     -- The version whose saves hold it (rules/folder).
     version = "gregar",
     rarity = 4, mb = 80, damage = 0, counter = 40, cant_counter = true, lockout = 0,

@@ -71,13 +71,13 @@ local navi: NaviDef = {
         },
     },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 10,
         -- The Full Synchro aura's animation, and the ice block that fits.
         aura_anim = 10,
-        ice = "large",
+        ice = IceSize.large,
         attach_points = {
             { 2, 6 },
             { 2, 6 },

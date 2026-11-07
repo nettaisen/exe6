@@ -71,7 +71,7 @@ end
 -- marker flashes; otherwise use one of the special's chips (not the hand's:
 -- the attack comes from its record, and the chip isn't spent) and move
 -- next.
-local function special_chip(side: number, navi: Object, s: State): "nothing" | "own_chip"
+local function special_chip(side: number, navi: Object, s: State): ControlOutcome
     if not s.controller_started then
         s.controller_started = true
         battle.play_sound(SOUND_START)
@@ -85,7 +85,7 @@ local function special_chip(side: number, navi: Object, s: State): "nothing" | "
             -- `special_volley` says: in the base form (0) the volley lasts
             -- until the row is clear (or 65536 shots).
             s.controller_volley = battle.navi(side).form.special_volley or 0
-            return "nothing"
+            return ControlOutcome.nothing
         end
     end
     s.controller_moves = 0
@@ -98,24 +98,24 @@ local function special_chip(side: number, navi: Object, s: State): "nothing" | "
     if damage_of ~= nil then
         navi.attack_word = damage_word.with_damage(navi.attack_word, record_damage(damage_of))
     end
-    navi:start_chip_attack(chip, "unspent_chip")
+    navi:start_chip_attack(chip, AttackKind.unspent_chip)
     local beast = chip.beast
     navi.wrapped = beast ~= nil and beast.rush ~= false
     s.controller_step = berserk.MOVE
-    return "own_chip"
+    return ControlOutcome.own_chip
 end
 
 -- `sub_802D588`: the volley: the buster fires while an opponent is in the
 -- navi's row and shots are left; then a move is next.
-local function volley(navi: Object, s: State): "nothing" | "buster"
+local function volley(navi: Object, s: State): ControlOutcome
     if berserk.opponent_in_row(navi, navi.panel_y) ~= nil then
         s.controller_volley = (s.controller_volley - 1) % 0x10000
         if s.controller_volley ~= 0 then
-            return "buster"
+            return ControlOutcome.buster
         end
     end
     s.controller_step = berserk.MOVE
-    return "nothing"
+    return ControlOutcome.nothing
 end
 
 -- `sub_80EFDB2`, action 0x59: the special is over (its ticks ran out). The
@@ -186,7 +186,7 @@ cross_special.action = new.action {
 
 -- `sub_802D4C6`: one tick of the special's controller, from the idle
 -- action; when its ticks have run out, its end.
-function cross_special.takeover(side: number, navi: Object): ("nothing" | "own_chip" | "buster" | "moved")?
+function cross_special.takeover(side: number, navi: Object): ControlOutcome?
     local s = rules.state() :: State
     -- (`sub_802D310` cleared the shared state: it starts over.)
     if navi.controller_fresh then
@@ -195,8 +195,8 @@ function cross_special.takeover(side: number, navi: Object): ("nothing" | "own_c
     end
     if battle.takeover_ticks(side) == 0 then
         battle.end_takeover(side)
-        navi:set_attack(cross_special.action, "plain")
-        return "nothing"
+        navi:set_attack(cross_special.action, AttackKind.plain)
+        return ControlOutcome.nothing
     end
     if s.controller_step == berserk.USE_CHIP then
         return special_chip(side, navi, s)

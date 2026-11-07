@@ -36,7 +36,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.bor(bit32.band(p.z, 0xFFFF), HEIGHT * 0x10000))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 1
     me.anim_loaded = 1
@@ -53,7 +53,7 @@ local function init(me: Object)
     c:set_hit_effect(sparks.aqua)
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80D6E70`: turn its panel to ice and hit it for its ticks.
@@ -75,7 +75,7 @@ local function stand(me: Object)
         return
     end
     c:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D6E1E`: resolve the hits (its region goes once it hit), then act
@@ -86,7 +86,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -105,14 +105,14 @@ end
 
 ice.kind = new.kind {
     id = "elmntman/ice",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ticks = schema.u8, while_dimmed = schema.bool },
     -- `sub_80D6D80`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

@@ -60,8 +60,8 @@ local APPEAR, STAND, RAISE, LASH, BOOKS, WAIT_BOOKS, LEAVE = 0x0, 0x4, 0x8, 0xC,
 
 -- `sub_80BA72C`: on his panel, on the ground (Z's whole part cleared).
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground")
-    me:set_lifecycle("update")
+    navi_chips.stand(me, SPRITE, Shadow.ground)
+    me:enter_update()
 end
 
 -- `sub_800D618`: a panel his side owns by home that the other side holds.
@@ -243,7 +243,7 @@ local ACTIONS =
 
 judgeman.kind = new.kind {
     id = "judgeman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         whip = schema.object,
         books = schema.u8,
@@ -255,9 +255,9 @@ judgeman.kind = new.kind {
     -- `sub_80BA708`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("JudgeMan action %#x reads past his table (off_80BA784)", me.action))

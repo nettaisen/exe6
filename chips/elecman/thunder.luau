@@ -48,7 +48,7 @@ local function init(me: Object)
     set_height(me, 0xFF)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -64,7 +64,7 @@ local function init(me: Object)
     c:set_hit_effect(sparks.elec)
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80D0E64`: 20 ticks of warning, the panel highlighted 4 ticks out
@@ -147,7 +147,7 @@ local function strike(me: Object)
         return
     end
     c:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local ACTIONS = { [WARN] = warn, [STRIKE] = strike }
@@ -160,7 +160,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -179,14 +179,14 @@ end
 
 thunder.kind = new.kind {
     id = "elecman/thunder",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool, cracks = schema.bool, spreads = schema.bool },
     -- `sub_80D0D7C`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

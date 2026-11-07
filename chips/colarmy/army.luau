@@ -143,7 +143,7 @@ local function leave(me: Object)
     end
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80C9D9E`.
@@ -174,7 +174,7 @@ local function init(me: Object)
     end
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     face(me)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -192,19 +192,19 @@ local function init(me: Object)
     c:present()
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
     me:reserve_panel(me.panel_x, me.panel_y)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 army.kind = new.kind {
     id = "colarmy/army",
-    pool = "attack",
+    pool = Pool.attack,
     -- `sub_80C9D00`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

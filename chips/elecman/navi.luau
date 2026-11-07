@@ -41,8 +41,8 @@ local APPEAR, STAND, RAISE, THUNDER, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10
 
 -- `sub_80B92DC`: on his panel, on the ground.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
-    me:set_lifecycle("update")
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
+    me:enter_update()
 end
 
 -- Enter the phase (phase 4; a word store of the timers when `word`), or
@@ -161,14 +161,14 @@ local ACTIONS = { [APPEAR] = appear, [STAND] = stand, [RAISE] = raise, [THUNDER]
 
 elecman.kind = new.kind {
     id = "elecman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- `sub_80B92B8`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("ElecMan action %#x reads past his table (off_80B932C)", me.action))

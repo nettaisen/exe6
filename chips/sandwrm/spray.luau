@@ -97,7 +97,7 @@ end
 -- `sub_80DEEE8`.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if battle.dimmed() then
@@ -112,7 +112,7 @@ local function tick(me: Object)
     elseif a == DONE then
         -- sub_80DEFC6
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     else
         error(string.format("sand action %#x reads past its table", a))
     end
@@ -123,7 +123,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "hidden"
+    sprite.shadow = Shadow.hidden
     me.visible = false
     local a = s.first_anim
     me.anim, me.anim_loaded = a, a
@@ -131,13 +131,13 @@ local function init(me: Object)
     sprite.palette = s.palette
     aim(me, s)
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 spray.kind = new.kind {
     id = "sandwrm/spray",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         palette = schema.u8,
         first_anim = schema.u8,
@@ -152,9 +152,9 @@ spray.kind = new.kind {
     -- `sub_80DEE60`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

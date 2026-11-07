@@ -88,7 +88,7 @@ local function init(me: Object)
     me.pos = Vec3.new(me.pos.x, me.pos.y, bit32.band(me.pos.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -97,14 +97,14 @@ local function init(me: Object)
     local s = me.state :: State
     s.found = false
     battle.play_sound(STEP_SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80D91C8`: it goes with the battle's end; it notes the other side's
 -- bodies (dimmed or not), and moves while not dimmed.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local s = me.state :: State
@@ -123,7 +123,7 @@ end
 
 scanner.kind = new.kind {
     id = "sensor/scanner",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         turret = schema.object,
         aim = schema.u8,
@@ -135,9 +135,9 @@ scanner.kind = new.kind {
     -- `sub_80D9154`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
@@ -179,7 +179,7 @@ function scanner.stop(o: Object)
     if turret then
         turret.state.scanner = nil
     end
-    o:set_lifecycle("destroy")
+    o:enter_destroy()
 end
 
 return scanner

@@ -33,7 +33,7 @@ local made = common.make {
     -- place shows (DustMan's junk).
     identity = new.identity {
         id = "guardian",
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 4,
         ai_index = 1,
         look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },

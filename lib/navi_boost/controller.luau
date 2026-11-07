@@ -88,7 +88,7 @@ end
 
 navi_boost.kind = new.kind {
     id = "navi-boost",
-    pool = "effect",
+    pool = Pool.effect,
     state = { change = NAVI_BOOST_CHANGE },
     -- `sub_80E9570`, its effect `sub_80E95B4`.
     update = dimming_chips.phases {

@@ -75,7 +75,7 @@ local function dive(me: Object, s: State)
             hit(me, s)
             battle.effect(me.pos, effects.copy_mark)
             battle.shake_camera(SHAKE, SHAKE_TICKS)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
     end
@@ -92,7 +92,7 @@ local function tick(me: Object)
     local s = me.state :: State
     if not s.while_dimmed then
         if battle.over() then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         if battle.dimmed() then
@@ -114,27 +114,27 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x - me.facing * START, p.y, START)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 feather.kind = new.kind {
     id = "falzar/feather",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool },
     -- `sub_80DCB1C`: by state (its end `object_genericDestroy`), then the
     -- sprite: stepping while dimmed if it acts while dimmed, else while
     -- paused only.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

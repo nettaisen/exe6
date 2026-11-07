@@ -28,7 +28,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -42,7 +42,7 @@ local function init(me: Object)
     me:setup_collision(collision.thrown, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_hit_effect(sparks.aqua)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80C87B8`: 30 ticks.
@@ -58,7 +58,7 @@ local function stand(me: Object)
         return
     end
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80C876C`: resolve the hits (its region goes once it hit), act
@@ -69,7 +69,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -94,14 +94,14 @@ end
 
 splash.kind = new.kind {
     id = "spoutman/splash",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool, cracks = schema.bool },
     -- `loc_80C86D8`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             finish(me)

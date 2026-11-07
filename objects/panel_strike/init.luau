@@ -44,7 +44,7 @@ local function init(me: Object)
     c:set_hit_effect(sparks.plain)
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 local CRACKED: PanelFlags = { cracked = true }
@@ -64,12 +64,12 @@ local function wait(me: Object)
     local s = me.state :: State
     if s.solid_only and not field.solid(me.panel_x, me.panel_y) then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -93,7 +93,7 @@ local function burst(me: Object)
         me.collision:set_region(nil)
     end
     if me.sprite.steps >= BURST_STEPS then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -107,7 +107,7 @@ local function tick(me: Object)
     me:hit_spark()
     if not me.run_while_dimmed and battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local action = ACTIONS[me.action]
@@ -120,14 +120,14 @@ end
 
 panel_strike.kind = new.kind {
     id = "panel-strike",
-    pool = "attack",
+    pool = Pool.attack,
     state = { cracks = schema.bool, warning = schema.u8, hit_mod = schema.u8, solid_only = schema.bool },
     -- `sub_80C5DDC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

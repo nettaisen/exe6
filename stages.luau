@@ -21,7 +21,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-2"] = {
         layout = {
@@ -34,7 +34,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-3"] = {
         layout = {
@@ -48,8 +48,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 5, y = 2 },
         },
@@ -66,8 +66,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 2, y = 2 },
         },
@@ -84,8 +84,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 3 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 1 },
         },
@@ -102,8 +102,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 1 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 3 },
         },
@@ -120,8 +120,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 1 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 3 },
         },
@@ -138,8 +138,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 3 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 1 },
         },
@@ -155,7 +155,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-10"] = {
         layout = {
@@ -168,7 +168,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-11"] = {
         layout = {
@@ -181,7 +181,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-12"] = {
         layout = {
@@ -194,7 +194,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-13"] = {
         layout = {
@@ -207,7 +207,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-14"] = {
         layout = {
@@ -220,7 +220,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-15"] = {
         layout = {
@@ -233,7 +233,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-16"] = {
         layout = {
@@ -246,7 +246,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-17"] = {
         layout = {
@@ -259,7 +259,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-18"] = {
         layout = {
@@ -272,7 +272,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-19"] = {
         layout = {
@@ -285,7 +285,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-20"] = {
         layout = {
@@ -298,7 +298,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-21"] = {
         layout = {
@@ -311,7 +311,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-22"] = {
         layout = {
@@ -324,7 +324,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-23"] = {
         layout = {
@@ -338,8 +338,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = boulder.kind, x = 2, y = 3 },
             { place = boulder.kind, x = 5, y = 1 },
         },
@@ -356,8 +356,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = boulder.kind, x = 5, y = 1 },
             { place = boulder.kind, x = 2, y = 3 },
         },
@@ -374,8 +374,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = boulder.kind, x = 2, y = 1 },
             { place = boulder.kind, x = 5, y = 3 },
         },
@@ -392,8 +392,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = boulder.kind, x = 5, y = 3 },
             { place = boulder.kind, x = 2, y = 1 },
         },
@@ -410,8 +410,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = boulder.kind, x = 2, y = 2 },
             { place = boulder.kind, x = 5, y = 2 },
         },
@@ -428,8 +428,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = boulder.kind, x = 5, y = 2 },
             { place = boulder.kind, x = 2, y = 2 },
         },
@@ -445,7 +445,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-30"] = {
         layout = {
@@ -458,7 +458,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-31"] = {
         layout = {
@@ -471,7 +471,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-32"] = {
         layout = {
@@ -484,7 +484,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-33"] = {
         layout = {
@@ -497,7 +497,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-34"] = {
         layout = {
@@ -510,7 +510,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-35"] = {
         layout = {
@@ -523,7 +523,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-36"] = {
         layout = {
@@ -536,7 +536,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-37"] = {
         layout = {
@@ -549,7 +549,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-38"] = {
         layout = {
@@ -562,7 +562,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-39"] = {
         layout = {
@@ -575,7 +575,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-40"] = {
         layout = {
@@ -588,7 +588,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-41"] = {
         layout = {
@@ -602,8 +602,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 3, y = 1 },
             { place = rock.kind, variant = rock.variants.ice, x = 4, y = 3 },
         },
@@ -620,8 +620,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 4, y = 3 },
             { place = rock.kind, variant = rock.variants.ice, x = 3, y = 1 },
         },
@@ -638,8 +638,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 3, y = 3 },
             { place = rock.kind, variant = rock.variants.ice, x = 4, y = 1 },
         },
@@ -656,8 +656,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 4, y = 1 },
             { place = rock.kind, variant = rock.variants.ice, x = 3, y = 3 },
         },
@@ -674,8 +674,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 5, y = 2 },
         },
@@ -692,8 +692,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 2, y = 2 },
         },
@@ -709,7 +709,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-48"] = {
         layout = {
@@ -722,7 +722,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-49"] = {
         layout = {
@@ -735,7 +735,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-50"] = {
         layout = {
@@ -748,7 +748,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-51"] = {
         layout = {
@@ -761,7 +761,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-52"] = {
         layout = {
@@ -774,7 +774,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-53"] = {
         layout = {
@@ -787,7 +787,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-54"] = {
         layout = {
@@ -800,7 +800,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-55"] = {
         layout = {
@@ -813,7 +813,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-56"] = {
         layout = {
@@ -826,7 +826,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-57"] = {
         layout = {
@@ -839,7 +839,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-58"] = {
         layout = {
@@ -852,7 +852,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-59"] = {
         layout = {
@@ -865,7 +865,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-60"] = {
         layout = {
@@ -878,7 +878,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-61"] = {
         layout = {
@@ -891,7 +891,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-62"] = {
         layout = {
@@ -904,7 +904,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-63"] = {
         layout = {
@@ -917,7 +917,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-64"] = {
         layout = {
@@ -930,7 +930,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-65"] = {
         layout = {
@@ -943,7 +943,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-66"] = {
         layout = {
@@ -956,7 +956,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-67"] = {
         layout = {
@@ -969,7 +969,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-68"] = {
         layout = {
@@ -982,7 +982,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-69"] = {
         layout = {
@@ -995,7 +995,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-70"] = {
         layout = {
@@ -1008,7 +1008,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-71"] = {
         layout = {
@@ -1021,7 +1021,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-72"] = {
         layout = {
@@ -1034,7 +1034,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-73"] = {
         layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice missing missing ice ice" },
@@ -1043,7 +1043,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-74"] = {
         layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice missing missing ice ice" },
@@ -1052,7 +1052,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-75"] = {
         layout = {
@@ -1065,7 +1065,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-76"] = {
         layout = {
@@ -1078,7 +1078,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-77"] = {
         layout = {
@@ -1091,7 +1091,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-78"] = {
         layout = {
@@ -1104,7 +1104,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-79"] = {
         layout = {
@@ -1117,7 +1117,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-80"] = {
         layout = {
@@ -1130,7 +1130,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-81"] = {
         layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
@@ -1140,8 +1140,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 1, y = 1 },
             { place = rock.kind, variant = rock.variants.ice, x = 6, y = 3 },
         },
@@ -1154,8 +1154,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 6, y = 3 },
             { place = rock.kind, variant = rock.variants.ice, x = 1, y = 1 },
         },
@@ -1168,8 +1168,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 1, y = 3 },
             { place = rock.kind, variant = rock.variants.ice, x = 6, y = 1 },
         },
@@ -1182,8 +1182,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 6, y = 1 },
             { place = rock.kind, variant = rock.variants.ice, x = 1, y = 3 },
         },
@@ -1200,8 +1200,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = statue.kind, x = 1, y = 1 },
             { place = statue.kind, x = 6, y = 1 },
         },
@@ -1218,8 +1218,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = statue.kind, x = 6, y = 1 },
             { place = statue.kind, x = 1, y = 1 },
         },
@@ -1235,7 +1235,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-88"] = {
         layout = {
@@ -1248,7 +1248,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-89"] = {
         layout = {
@@ -1261,7 +1261,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-90"] = {
         layout = {
@@ -1274,7 +1274,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-91"] = {
         layout = {
@@ -1287,7 +1287,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-92"] = {
         layout = {
@@ -1300,7 +1300,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-93"] = {
         layout = {
@@ -1314,8 +1314,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 3 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 1 },
         },
@@ -1332,8 +1332,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 1 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 3 },
         },
@@ -1350,8 +1350,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 1 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 3 },
         },
@@ -1368,8 +1368,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 3 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 1 },
         },
@@ -1385,7 +1385,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-98"] = {
         layout = {
@@ -1398,7 +1398,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-99"] = {
         layout = {
@@ -1412,8 +1412,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 5, y = 2 },
         },
@@ -1430,8 +1430,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 2, y = 2 },
         },
@@ -1448,8 +1448,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 3 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 1 },
         },
@@ -1466,8 +1466,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 1 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 3 },
         },
@@ -1484,8 +1484,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 1 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 3 },
         },
@@ -1502,8 +1502,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 3 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 1 },
         },
@@ -1519,7 +1519,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-106"] = {
         layout = {
@@ -1532,7 +1532,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-107"] = {
         layout = {
@@ -1545,7 +1545,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-108"] = {
         layout = {
@@ -1558,7 +1558,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-109"] = {
         layout = {
@@ -1571,7 +1571,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-110"] = {
         layout = {
@@ -1584,7 +1584,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-111"] = {
         layout = {
@@ -1597,7 +1597,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-112"] = {
         layout = {
@@ -1610,7 +1610,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-113"] = {
         layout = {
@@ -1623,7 +1623,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-114"] = {
         layout = {
@@ -1636,7 +1636,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-115"] = {
         layout = {
@@ -1649,7 +1649,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-116"] = {
         layout = {
@@ -1662,7 +1662,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-117"] = {
         layout = {
@@ -1675,7 +1675,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-118"] = {
         layout = {
@@ -1688,7 +1688,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-119"] = {
         layout = {
@@ -1702,8 +1702,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = boulder.kind, x = 2, y = 3 },
             { place = boulder.kind, x = 5, y = 1 },
         },
@@ -1720,8 +1720,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = boulder.kind, x = 5, y = 1 },
             { place = boulder.kind, x = 2, y = 3 },
         },
@@ -1738,8 +1738,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = boulder.kind, x = 2, y = 1 },
             { place = boulder.kind, x = 5, y = 3 },
         },
@@ -1756,8 +1756,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = boulder.kind, x = 5, y = 3 },
             { place = boulder.kind, x = 2, y = 1 },
         },
@@ -1774,8 +1774,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = boulder.kind, x = 2, y = 2 },
             { place = boulder.kind, x = 5, y = 2 },
         },
@@ -1792,8 +1792,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = boulder.kind, x = 5, y = 2 },
             { place = boulder.kind, x = 2, y = 2 },
         },
@@ -1809,7 +1809,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-126"] = {
         layout = {
@@ -1822,7 +1822,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-127"] = {
         layout = {
@@ -1835,7 +1835,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-128"] = {
         layout = {
@@ -1848,7 +1848,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-129"] = {
         layout = {
@@ -1861,7 +1861,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-130"] = {
         layout = {
@@ -1874,7 +1874,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-131"] = {
         layout = {
@@ -1887,7 +1887,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-132"] = {
         layout = {
@@ -1900,7 +1900,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-133"] = {
         layout = {
@@ -1913,7 +1913,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-134"] = {
         layout = {
@@ -1926,7 +1926,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-135"] = {
         layout = {
@@ -1939,7 +1939,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-136"] = {
         layout = {
@@ -1952,7 +1952,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-137"] = {
         layout = {
@@ -1966,8 +1966,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 3, y = 1 },
             { place = rock.kind, variant = rock.variants.ice, x = 4, y = 3 },
         },
@@ -1984,8 +1984,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 4, y = 3 },
             { place = rock.kind, variant = rock.variants.ice, x = 3, y = 1 },
         },
@@ -2002,8 +2002,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 3, y = 3 },
             { place = rock.kind, variant = rock.variants.ice, x = 4, y = 1 },
         },
@@ -2020,8 +2020,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 4, y = 1 },
             { place = rock.kind, variant = rock.variants.ice, x = 3, y = 3 },
         },
@@ -2038,8 +2038,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 1, y = 2 },
-            { place = "navi", side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 5, y = 2 },
         },
@@ -2056,8 +2056,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 6, y = 2 },
-            { place = "navi", side = 0, x = 1, y = 2 },
+            { place = Place.navi, side = 1, x = 6, y = 2 },
+            { place = Place.navi, side = 0, x = 1, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 2, y = 2 },
         },
@@ -2073,7 +2073,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-144"] = {
         layout = {
@@ -2086,7 +2086,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-145"] = {
         layout = {
@@ -2099,7 +2099,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-146"] = {
         layout = {
@@ -2112,7 +2112,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-147"] = {
         layout = {
@@ -2125,7 +2125,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-148"] = {
         layout = {
@@ -2138,7 +2138,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-149"] = {
         layout = {
@@ -2151,7 +2151,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-150"] = {
         layout = {
@@ -2164,7 +2164,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-151"] = {
         layout = {
@@ -2177,7 +2177,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-152"] = {
         layout = {
@@ -2190,7 +2190,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-153"] = {
         layout = {
@@ -2203,7 +2203,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-154"] = {
         layout = {
@@ -2216,7 +2216,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-155"] = {
         layout = {
@@ -2229,7 +2229,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-156"] = {
         layout = {
@@ -2242,7 +2242,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-157"] = {
         layout = {
@@ -2255,7 +2255,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-158"] = {
         layout = {
@@ -2268,7 +2268,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-159"] = {
         layout = {
@@ -2281,7 +2281,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-160"] = {
         layout = {
@@ -2294,7 +2294,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-161"] = {
         layout = {
@@ -2307,7 +2307,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-162"] = {
         layout = {
@@ -2320,7 +2320,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-163"] = {
         layout = {
@@ -2333,7 +2333,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-164"] = {
         layout = {
@@ -2346,7 +2346,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-165"] = {
         layout = {
@@ -2359,7 +2359,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-166"] = {
         layout = {
@@ -2372,7 +2372,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-167"] = {
         layout = {
@@ -2385,7 +2385,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-168"] = {
         layout = {
@@ -2398,7 +2398,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-169"] = {
         layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice missing missing ice ice" },
@@ -2407,7 +2407,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-170"] = {
         layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice missing missing ice ice" },
@@ -2416,7 +2416,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-171"] = {
         layout = {
@@ -2429,7 +2429,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-172"] = {
         layout = {
@@ -2442,7 +2442,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-173"] = {
         layout = {
@@ -2455,7 +2455,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-174"] = {
         layout = {
@@ -2468,7 +2468,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-175"] = {
         layout = {
@@ -2481,7 +2481,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 1, y = 2 }, { place = "navi", side = 1, x = 6, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-176"] = {
         layout = {
@@ -2494,7 +2494,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 6, y = 2 }, { place = "navi", side = 0, x = 1, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-177"] = {
         layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
@@ -2504,8 +2504,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 1, y = 1 },
             { place = rock.kind, variant = rock.variants.ice, x = 6, y = 3 },
         },
@@ -2518,8 +2518,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 6, y = 3 },
             { place = rock.kind, variant = rock.variants.ice, x = 1, y = 1 },
         },
@@ -2532,8 +2532,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 1, y = 3 },
             { place = rock.kind, variant = rock.variants.ice, x = 6, y = 1 },
         },
@@ -2546,8 +2546,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.ice, x = 6, y = 1 },
             { place = rock.kind, variant = rock.variants.ice, x = 1, y = 3 },
         },
@@ -2564,8 +2564,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = statue.kind, x = 1, y = 1 },
             { place = statue.kind, x = 6, y = 1 },
         },
@@ -2582,8 +2582,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = statue.kind, x = 6, y = 1 },
             { place = statue.kind, x = 1, y = 1 },
         },
@@ -2599,7 +2599,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-184"] = {
         layout = {
@@ -2612,7 +2612,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-185"] = {
         layout = {
@@ -2625,7 +2625,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-186"] = {
         layout = {
@@ -2638,7 +2638,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-187"] = {
         layout = {
@@ -2651,7 +2651,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 0, x = 2, y = 2 }, { place = "navi", side = 1, x = 5, y = 2 } },
+        actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
     ["netbattle-188"] = {
         layout = {
@@ -2664,7 +2664,7 @@ local stages: { [string]: StageDef } = {
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
-        actors = { { place = "navi", side = 1, x = 5, y = 2 }, { place = "navi", side = 0, x = 2, y = 2 } },
+        actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
     ["netbattle-189"] = {
         layout = {
@@ -2678,8 +2678,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 3 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 1 },
         },
@@ -2696,8 +2696,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 1 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 3 },
         },
@@ -2714,8 +2714,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 0, x = 2, y = 2 },
-            { place = "navi", side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 1 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 3 },
         },
@@ -2732,8 +2732,8 @@ local stages: { [string]: StageDef } = {
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true, random = true },
         actors = {
-            { place = "navi", side = 1, x = 5, y = 2 },
-            { place = "navi", side = 0, x = 2, y = 2 },
+            { place = Place.navi, side = 1, x = 5, y = 2 },
+            { place = Place.navi, side = 0, x = 2, y = 2 },
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 3 },
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 1 },
         },

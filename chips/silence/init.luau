@@ -14,7 +14,7 @@ local hush = effects.hush(statuses.blind_4, collision.guard_breaking, collision.
 
 local chip: Chip = {
     codes = { "B", "R", "W", "*" },
-    element = "null", family = "summon", class = "standard",
+    element = "null", family = "summon", class = ChipClass.standard,
     rarity = 1, mb = 20, damage = 0, counter = 0, lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 3,
@@ -22,7 +22,7 @@ local chip: Chip = {
     dimming = instruments.hook(instrument.instrument {
         identity = new.identity {
             id = "silence",
-            class = "field_object",
+            class = IdentityClass.field_object,
             version = 1,
             ai_index = 1,
             look = { sprite = instrument_sprite, anim = 0, palette = 6, shadow = true },

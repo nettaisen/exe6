@@ -27,12 +27,12 @@
 
 local folder_rules = require("@exelib/folder_rules")
 
-local FOLDER_CLASSES: { [string]: boolean } = { standard = true, mega = true, giga = true }
+local FOLDER_CLASSES: { [ChipClass]: boolean } = { [ChipClass.standard] = true, [ChipClass.mega] = true, [ChipClass.giga] = true }
 
 local RULES: FolderRules = {
     size = 30,
     in_pack = function(c: Chip): boolean
-        return FOLDER_CLASSES[c.class or ""] == true
+        return c.class ~= nil and FOLDER_CLASSES[c.class] == true
             and c.codes ~= nil
             and #c.codes > 0
             and (c.flags and c.flags.library or (c :: any).version ~= nil or (c :: any).collectible == true)

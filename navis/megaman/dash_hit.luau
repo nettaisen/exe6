@@ -74,7 +74,7 @@ local function tick(me: Object)
     local gone = running ~= s.action
     if c.region == nil and s.hit_panel ~= me.panel_x + me.panel_y * 0x100 then
         c:set_region(regions.single)
-        gone = running ~= "take_control"
+        gone = running ~= EngineAction.take_control
     end
     if gone then
         return finish(me)
@@ -113,20 +113,20 @@ local function init(me: Object)
     if v.reports then
         (me.related1 :: Object).marker = 1
     end
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 dash_hit.kind = new.kind {
     id = "megaman/dash-hit",
-    pool = "attack",
+    pool = Pool.attack,
     state = { hit_panel = schema.u16, reach = schema.u8, variant = MEGAMAN_DASH_HIT_VARIANT, action = schema.action },
     -- `sub_80DB570`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

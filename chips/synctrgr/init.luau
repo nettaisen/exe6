@@ -12,12 +12,12 @@ local SOUND = asset.sound("cross-change")
 local function sync(user: Object, _spec: InstantChipSpec)
     battle.play_sound(SOUND)
     -- sub_8015BEC
-    battle.set_mood(user.alliance, "full_synchro")
+    battle.set_mood(user.alliance, Mood.full_synchro)
 end
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null", family = "null", class = "mega",
+    element = "null", family = "null", class = ChipClass.mega,
     rarity = 4, mb = 80, damage = 0, counter = 10, lockout = 20,
     slot_in_limit = 1,
     instant = sync,

@@ -103,14 +103,14 @@ local function leave(me: Object)
         dragon.splash(me, s.leg)
     end
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80DE1B8`: follow the path, but not while dimmed; gone when the
 -- battle is.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if battle.dimmed() then
@@ -142,13 +142,13 @@ local function init(me: Object)
         s.angle_step = step
     end
     s.leg = dragon.DOWN
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 body.kind = new.kind {
     id = "dragon-body",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         count = schema.u8,
         leg = schema.u8,
@@ -161,9 +161,9 @@ body.kind = new.kind {
     -- `sub_80DE13C`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

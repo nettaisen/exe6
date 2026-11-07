@@ -61,19 +61,19 @@ local function init(me: Object)
     c:set_region(regions.x)
     c:set_hit_effect(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 lunge_slash.kind = new.kind {
     id = "slashcross-beast/lunge-slash",
-    pool = "attack",
+    pool = Pool.attack,
     -- `sub_80DB8CC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

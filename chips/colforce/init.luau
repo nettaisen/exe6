@@ -8,7 +8,7 @@ local force = require("@self/force")
 
 local chip: Chip = {
     codes = { "Q" },
-    element = "null", family = "null", class = "giga",
+    element = "null", family = "null", class = ChipClass.giga,
     -- The version whose saves hold it (rules/folder).
     version = "gregar",
     rarity = 4, mb = 90, damage = 30, counter = 10, cant_counter = true, lockout = 0,

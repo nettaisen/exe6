@@ -45,7 +45,7 @@ local function init(me: Object)
     me:setup_collision(collision.breaking, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_hit_effect(sparks.breaking)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80DBC48`: its flight: on the first tick, its velocity and how long
@@ -64,7 +64,7 @@ local function fly(me: Object)
     me.timer = left
     if left <= 0 then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local p = me.pos
@@ -73,7 +73,7 @@ local function fly(me: Object)
     me:update_collision_panels()
     if me.collision.hit then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if not field.valid(me.panel_x, me.panel_y) then
@@ -88,7 +88,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() or c.hit then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if me.action ~= 0 then
@@ -100,14 +100,14 @@ end
 
 junk.kind = new.kind {
     id = "dustman/junk",
-    pool = "attack",
+    pool = Pool.attack,
     state = { look = schema.identity },
     -- `sub_80DBB40`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

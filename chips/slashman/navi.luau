@@ -58,8 +58,8 @@ local LAND: PanelCondition = { solid = true, occupied = false }
 
 -- `sub_80B9F68`: on his panel, on the ground.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
-    me:set_lifecycle("update")
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
+    me:enter_update()
 end
 
 -- Enter the phase (phase 4, a word store of the timers), or count down;
@@ -289,7 +289,7 @@ local function leave(me: Object)
     if controller then
         navi_left(controller)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local ACTIONS = {
@@ -305,14 +305,14 @@ local ACTIONS = {
 
 slashman.kind = new.kind {
     id = "slashman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, wave_damage = schema.u8, column = schema.u8 },
     -- `sub_80B9F44`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("SlashMan action %#x reads past his table (off_80B9FB8)", me.action))

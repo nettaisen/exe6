@@ -9,7 +9,7 @@ local card: PatchCard = {
         cards.hp_percent(25),
         cards.super_armor(true),
         cards.undershirt(true),
-        cards.bug(cards.gauge("slow")),
+        cards.bug(cards.gauge(GaugeSpeed.slow)),
     },
 }
 

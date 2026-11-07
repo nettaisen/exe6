@@ -93,7 +93,7 @@ local function finish(me: Object)
     if (me.state :: State).registers then
         slot.fill(me.related1 :: Object, user_slot(me), nil)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D5806`.
@@ -127,7 +127,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -149,19 +149,19 @@ local function init(me: Object)
         x -= me.facing * PANEL * 0x10000
     end
     me.pos = Vec3.new(x, y, z)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 doll.kind = new.kind {
     id = "dolthdr/doll",
-    pool = "attack",
+    pool = Pool.attack,
     state = { columns = schema.array(schema.object, 6), slot = slot.TYPE, registers = schema.bool, ticks = schema.u8 },
     -- `sub_80D5740`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

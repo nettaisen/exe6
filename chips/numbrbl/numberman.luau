@@ -33,7 +33,7 @@ local BALL_Z, BALL_WAIT = 0x10_0000, 0xA
 -- Beast forms, whose arms are their forms' animations); nil for the other
 -- navis and anything not a player, who raise no arm.
 local function arm_anim(user: Object): number?
-    if user.actor_type ~= "player" then
+    if user.actor_type ~= ActorType.player then
         return nil
     end
     local stats = battle.navi(user.alliance)
@@ -134,17 +134,17 @@ end
 
 numberman.kind = new.kind {
     id = "numbrbl/numberman",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, balls = schema.u8, held = schema.object },
     -- `sub_80C3000`: by state, then the sprite (stepping while dimmed).
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80C3024: drawn as the user, who vanishes; his update
             -- first runs next tick.
             stand_in.init(me)
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

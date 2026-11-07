@@ -37,7 +37,7 @@ end
 
 local kind = new.kind {
     id = "blzrdbal/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { bonus = schema.u16, busy = schema.bool },
     -- `sub_80E6F88`.
     update = dimming_chips.phases { name = "BlzrdBal", effect = effect },

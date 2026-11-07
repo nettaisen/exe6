@@ -36,7 +36,7 @@ local function show(me: Object)
     local left = me.timer - 1
     me.timer = left
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -46,7 +46,7 @@ end
 local function tick(me: Object)
     local own = (me.state :: State).while_dimmed
     if battle.over() or (not own and (me.related1 :: Object).action ~= OWNER_ACTION) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if not own and battle.dimmed() then
@@ -67,7 +67,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y + 2 * 0x10000, z)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     local anim = if (me.state :: State).column then ANIM_COLUMN else ANIM_TRAIL
     me.anim = anim
@@ -75,20 +75,20 @@ local function init(me: Object)
     sprite:set_animation(anim)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 mark.kind = new.kind {
     id = "spoutman/mark",
-    pool = "effect",
+    pool = Pool.effect,
     state = { column = schema.bool, ticks = schema.u8, while_dimmed = schema.bool },
     -- `sub_80E39A0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

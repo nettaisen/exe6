@@ -86,7 +86,7 @@ local function tick(me: Object)
     local t = me.timer - 1
     me.timer = t
     if t <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -98,26 +98,26 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x + me.facing * AHEAD, p.y, 0)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 tornado.kind = new.kind {
     id = "falzar/tornado",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ticks = schema.u8, every = schema.u32, blows = schema.u32 },
     -- `sub_80DF188`: by state (its end `object_genericDestroy`), then the
     -- sprite, stepping while dimmed.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

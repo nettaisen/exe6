@@ -194,7 +194,7 @@ end
 
 burner.kind = new.kind {
     id = "burnsqr/burner",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         start_x = schema.u32,
@@ -206,12 +206,12 @@ burner.kind = new.kind {
     -- `sub_80BAF50`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80BAF74: drawn as the user, who vanishes; on at once.
             stand_in.init(me)
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

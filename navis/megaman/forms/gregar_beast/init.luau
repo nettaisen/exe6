@@ -34,17 +34,17 @@ local form: FormDef = {
     -- The buster arm it raises (lib/buster).
     buster_arm = { anim = 11 },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         changes_form = true,
         breaks_on_weakness = true,
         -- Where a held thing with no attach point sits (BatCan's cannon).
         held_offset = { 11, -7 },
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 35,
         -- The Full Synchro aura's animation, and the ice block that fits.
         aura_anim = 12,
-        ice = "medium",
+        ice = IceSize.medium,
         attach_points = {
             { 6, 0 },
             { 6, 0 },

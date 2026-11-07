@@ -66,7 +66,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local s = me.state :: State
@@ -95,14 +95,14 @@ local function tick(me: Object)
         return
     end
     c:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80DDAA8`: on the navi's panel, rolling forward, with its hit.
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -123,20 +123,20 @@ local function init(me: Object)
     sprite.palette = 0
     local s = me.state :: State
     s.trail = TRAIL_FIRST
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 charge_wave.kind = new.kind {
     id = "chargecross-beast/wave",
-    pool = "attack",
+    pool = Pool.attack,
     state = { hit_panel = schema.u16, trail = schema.i32 },
     -- `sub_80DDA84`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

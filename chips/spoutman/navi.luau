@@ -62,8 +62,8 @@ local SPOUT, DONE = 1, 2
 
 -- `sub_80B94E0`: on his panel, on the ground (Z's whole part cleared).
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground")
-    me:set_lifecycle("update")
+    navi_chips.stand(me, SPRITE, Shadow.ground)
+    me:enter_update()
 end
 
 -- Enter the phase (phase 4, a word store of the timers), or count down;
@@ -240,14 +240,14 @@ local ACTIONS = {
 
 spoutman.kind = new.kind {
     id = "spoutman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, pillar = schema.object },
     -- `sub_80B94BC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("SpoutMan action %#x reads past his table (off_80B9530)", me.action))

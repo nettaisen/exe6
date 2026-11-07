@@ -120,7 +120,7 @@ local function leave(me: Object)
         return
     end
     if count(me) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -131,19 +131,19 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, DROP_Z)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `loc_80DF390`.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if battle.dimmed() then
@@ -167,14 +167,14 @@ end
 
 soldier.kind = new.kind {
     id = "colforce/soldier",
-    pool = "attack",
+    pool = Pool.attack,
     state = { delay = schema.u8 },
     -- `sub_80DF328`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

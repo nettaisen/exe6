@@ -173,7 +173,7 @@ local function linger(me: Object)
     end
     off_field(me)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80C6C14`: resolve its hits; it ends with the battle or when its
@@ -184,7 +184,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() or not field.solid(me.panel_x, me.panel_y) then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -212,7 +212,7 @@ local function init(me: Object)
     local v = (me.state :: State).variant
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = v.anim
     me.anim_loaded = v.anim
@@ -234,22 +234,22 @@ local function init(me: Object)
     c:set_hit_effect(nil)
     c:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 wave.kind = new.kind {
     id = "wavearm/wave",
-    pool = "attack",
+    pool = Pool.attack,
     state = { variant = SHOCK_WAVE_VARIANT, turned = schema.u8 },
     -- `sub_80C6B40`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

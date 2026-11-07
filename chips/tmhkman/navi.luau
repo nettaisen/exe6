@@ -34,8 +34,8 @@ local EARTH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, ste
 
 -- `sub_80B97E4`: on his panel, on the ground (Z's whole part cleared).
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground")
-    me:set_lifecycle("update")
+    navi_chips.stand(me, SPRITE, Shadow.ground)
+    me:enter_update()
 end
 
 -- `sub_80B9848`: he appears; 3 ticks (Timer and Timer2 a word); on to
@@ -154,14 +154,14 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = raise, [0xC] = swing, [0x10] 
 
 tmhkman.kind = new.kind {
     id = "tmhkman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- `sub_80B97C0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("TomahawkMan action %#x reads past his table (off_80B9834)", me.action))

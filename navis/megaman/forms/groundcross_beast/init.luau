@@ -48,15 +48,15 @@ local form: FormDef = {
     -- The buster arm it raises (lib/buster).
     buster_arm = { anim = 21 },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         changes_form = true,
         breaks_on_weakness = true,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 45,
         -- The Full Synchro aura's animation, and the ice block that fits.
         aura_anim = 13,
-        ice = "medium",
+        ice = IceSize.medium,
         -- The beast's head, in the Cross's palette.
         parts = { beast_head = { sprite = beast_head_sprite, palette = 8 } },
         attach_points = {

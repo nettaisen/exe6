@@ -28,7 +28,7 @@ local chip: Chip = {
     codes = { "X" },
     element = "null",
     family = "null",
-    class = "giga",
+    class = ChipClass.giga,
     -- The version whose saves hold it (rules/folder).
     version = "falzar",
     rarity = 4,

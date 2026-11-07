@@ -41,7 +41,7 @@ end
 -- `sub_80E5A22`.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local left = me.timer - 1
@@ -57,26 +57,26 @@ local function tick(me: Object)
     local drops = me.timer2 - 1
     me.timer2 = drops
     if drops <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 meteor_shower.kind = new.kind {
     id = "meteor-shower",
-    pool = "effect",
+    pool = Pool.effect,
     state = { target = schema.object, drops = schema.u8 },
     -- `sub_80E59E8`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80E5A08
             local s = me.state :: State
             s.target = meteor_shower.pick(me)
             me.timer2 = s.drops
             me.timer = 0
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

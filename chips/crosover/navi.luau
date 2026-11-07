@@ -111,7 +111,7 @@ end
 -- the slot keeps it.
 local function let_go(o: Object?)
     if o then
-        o:set_lifecycle("destroy")
+        o:enter_destroy()
     end
 end
 
@@ -134,7 +134,7 @@ end
 -- He goes: out of sight, to his destroy.
 local function gone(me: Object)
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
@@ -376,10 +376,10 @@ local function slash(me: Object)
     if me.timer == 0xA then
         if slash_hit(me) then
             battle.shake_camera(3, 0x23)
-            battle.palette_flash("one_layer", 0x28, true, false)
+            battle.palette_flash(PaletteFlashVariant.one_layer, 0x28, true, false)
         else
             battle.shake_camera(1, 0x19)
-            battle.palette_flash("one_layer", 0x1E, true, false)
+            battle.palette_flash(PaletteFlashVariant.one_layer, 0x1E, true, false)
         end
     end
     local t = me.timer + 1
@@ -625,7 +625,7 @@ local function wear_navi_image(me: Object, user: Object): boolean
     if not own then
         sprite = looks.navi_sprite(megaman, battle.navi(me.alliance).base_form)
         identity = megaman.identity
-    elseif looks.actor_type(identity) == "player" then
+    elseif looks.actor_type(identity) == ActorType.player then
         local stats = battle.navi(user.alliance)
         sprite = looks.navi_sprite(stats.navi, stats.form)
     else
@@ -637,7 +637,7 @@ local function wear_navi_image(me: Object, user: Object): boolean
     me.sprite:load(sprite)
     me.identity = identity
     me.anim, me.anim_loaded = 0, 0xFF
-    me.sprite.shadow = "ground"
+    me.sprite.shadow = Shadow.ground
     me.sprite.palette = palette
     return own
 end
@@ -680,7 +680,7 @@ local function init(me: Object)
     if s.django then
         local sprite = me.sprite
         sprite:load(DJANGO_SPRITE)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         me.anim = 0
         me.anim_loaded = 0xFF
         me:set_coordinates_from_panel()
@@ -690,7 +690,7 @@ local function init(me: Object)
         init_megaman(me)
     end
     s.in_position = false
-    me:set_lifecycle("update")
+    me:enter_update()
     act(me)
 end
 
@@ -709,7 +709,7 @@ end
 
 crosover.kind = new.kind {
     id = "crosover/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         django = schema.bool,
         controller = schema.object,
@@ -722,9 +722,9 @@ crosover.kind = new.kind {
     -- `sub_80BDBA4`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             act(me)
         else
             destroy(me)

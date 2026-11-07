@@ -16,7 +16,7 @@ local STATUE = statue.variant {
     lifetime = 3000,
     identity = new.identity {
         id = "anubis",
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 2,
         ai_index = 1,
         look = { sprite = anubis_sprite, anim = 0, palette = 0, shadow = true },
@@ -27,7 +27,7 @@ local chip: Chip = {
     codes = { "P" },
     element = "null",
     family = "summon",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 4,
     mb = 86,
     damage = 1,

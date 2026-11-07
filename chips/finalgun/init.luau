@@ -5,7 +5,7 @@
 local plus = require("../lib/instant/plus")
 
 local chip: Chip = {
-    element = "null", family = "null", class = "special",
+    element = "null", family = "null", class = ChipClass.special,
     rarity = 0, mb = 99, damage = 10, counter = 0, lockout = 0,
     slot_in_limit = 1,
     instant = plus.attack,

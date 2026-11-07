@@ -183,7 +183,7 @@ end
 -- The end: no more hits, and gone at its next update.
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80D31EC`: fly; at each panel's center, steer.
@@ -265,7 +265,7 @@ local function fade(me: Object)
     local t = me.timer - 1
     me.timer = t
     if t == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -315,7 +315,7 @@ local function init(me: Object): boolean
     me:set_coordinates_from_panel()
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0xFF
     if not me:create_collision() then
@@ -332,22 +332,22 @@ local function init(me: Object): boolean
     me.vel = Vec3.new(me.facing * s.speed, me.vel.y, me.vel.z)
     -- Ticks a panel takes.
     me.timer2 = int.tdiv(PANEL_WIDTH, s.speed)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     return true
 end
 
 bee.kind = new.kind {
     id = "rskyhny/bee",
-    pool = "attack",
+    pool = Pool.attack,
     state = { speed = schema.i32, turn_speed = schema.i32, target = schema.object, palette = schema.u8, turns = schema.u8 },
     -- `sub_80D30D0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             if not init(me) then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

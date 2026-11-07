@@ -9,7 +9,7 @@ local top = require("@self/top")
 local chips: { [string]: Chip } = {
     airspin1 = {
         codes = { "F", "G", "R" },
-        element = "null", family = "wind", class = "standard",
+        element = "null", family = "wind", class = ChipClass.standard,
         rarity = 1, mb = 22, damage = 50, counter = 10, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -17,7 +17,7 @@ local chips: { [string]: Chip } = {
     },
     airspin2 = {
         codes = { "A", "L", "T" },
-        element = "null", family = "wind", class = "standard",
+        element = "null", family = "wind", class = ChipClass.standard,
         rarity = 2, mb = 29, damage = 50, counter = 10, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -25,7 +25,7 @@ local chips: { [string]: Chip } = {
     },
     airspin3 = {
         codes = { "N", "O", "T" },
-        element = "null", family = "wind", class = "standard",
+        element = "null", family = "wind", class = ChipClass.standard,
         rarity = 3, mb = 36, damage = 50, counter = 10, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

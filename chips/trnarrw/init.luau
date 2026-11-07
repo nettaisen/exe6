@@ -158,7 +158,7 @@ end
 
 local trnarrw1: Chip = {
     codes = { "A", "F", "K" },
-    element = "aqua", family = "aqua", class = "standard",
+    element = "aqua", family = "aqua", class = ChipClass.standard,
     rarity = 0, mb = 30, damage = 30, counter = 30, lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
@@ -168,7 +168,7 @@ local trnarrw1: Chip = {
 }
 local trnarrw2: Chip = {
     codes = { "G", "M", "Z" },
-    element = "aqua", family = "aqua", class = "standard",
+    element = "aqua", family = "aqua", class = ChipClass.standard,
     rarity = 1, mb = 36, damage = 40, counter = 30, lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
@@ -178,7 +178,7 @@ local trnarrw2: Chip = {
 }
 local trnarrw3: Chip = {
     codes = { "M", "S", "Y" },
-    element = "aqua", family = "aqua", class = "standard",
+    element = "aqua", family = "aqua", class = ChipClass.standard,
     rarity = 2, mb = 42, damage = 50, counter = 30, lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,

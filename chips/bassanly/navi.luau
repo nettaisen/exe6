@@ -18,7 +18,7 @@ return common.make {
     sprite = SPRITE,
     -- His cloak: a form overlay on his sprite, stepping while dimmed, on his
     -- animation + 0x14 (`dword_80C3D98`).
-    cloak = { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x14 },
+    cloak = { sprite = SPRITE, stepping = FormOverlayStepping.while_dimmed, anim_offset = 0x14 },
     sounds = { appear = asset.sound("appear"), raise = asset.sound("bass-anly") },
     anims = { raise = 8, stance = 0xD, fire = 9, fire_loop = nil, rest = 0 },
     steps = { raise = 2 },

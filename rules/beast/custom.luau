@@ -95,7 +95,7 @@ end
 -- The BeastOut chip shows its picture in the chip window (`sub_802871C`).
 custom_beast.button = {
     slot = 11,
-    view = "chip_picture",
+    view = ButtonView.chip_picture,
     shown = function(side: number): boolean
         return megaman(side)
             and not sealed(side)
@@ -104,21 +104,21 @@ custom_beast.button = {
             and (rules.setup() :: Setup).beast_out
     end,
     -- `sub_8028F48`: with room left, no Cross chosen, and the navi able to.
-    state = function(side: number): "selectable" | "unavailable"
+    state = function(side: number): ButtonState
         if not custom.full(side) and available(side) and not custom.form_taken(side, "beast_out") then
-            return "selectable"
+            return ButtonState.selectable
         end
-        return "unavailable"
+        return ButtonState.unavailable
     end,
     -- `sub_8028D6C`: picked, and the animation runs; the column shows the
     -- BeastOut chip (`sub_802A034`).
     pressed = function(side: number)
-        if custom.cursor_state(side) ~= "selectable" or custom.full(side) then
+        if custom.cursor_state(side) ~= ButtonState.selectable or custom.full(side) then
             custom.refuse(side)
             return
         end
         custom.pick(side)
-        custom.play(side, "pick")
+        custom.play(side, ScreenSound.pick)
         custom.open_window(side, "beast_out")
         custom.set_column_icon(side, beast_out_chip)
     end,
@@ -126,8 +126,8 @@ custom_beast.button = {
     taken_back = function(side: number, _place: number)
         custom.set_form(side, "beast_out", nil)
         custom.set_face(side, nil)
-        custom.play(side, "back")
-        custom.play(side, "cancel")
+        custom.play(side, ScreenSound.back)
+        custom.play(side, ScreenSound.cancel)
     end,
 } :: ButtonSpec
 
@@ -143,8 +143,8 @@ end
 function custom_beast.chip_taken_back(side: number, chip: Chip, _place: number)
     if chip == beast_out_chip then
         custom.set_face(side, nil)
-        custom.play(side, "back")
-        custom.play(side, "cancel")
+        custom.play(side, ScreenSound.back)
+        custom.play(side, ScreenSound.cancel)
     end
 end
 
@@ -167,7 +167,7 @@ custom_beast.chip_window = {
             -- Beast Out, and the screen fades.
             custom.shake(side, SHAKE_MAGNITUDE, SHAKE_TICKS)
             custom.set_frame(side, 0)
-            custom.fade(side, "half_out", FADE_SPEED)
+            custom.fade(side, CustomFade.half_out, FADE_SPEED)
             custom.play_sound(side, CHOSEN_SOUNDS[beast_game(side)])
             custom.play_sound(side, FLASH_SOUND)
         elseif tick == 68 then
@@ -175,7 +175,7 @@ custom_beast.chip_window = {
             custom.pick_first(side, nil)
             custom.set_face(side, beast_form(side, false))
             custom.update_availability(side)
-            custom.fade(side, "half_out_back", FADE_SPEED)
+            custom.fade(side, CustomFade.half_out_back, FADE_SPEED)
         end
         custom.draw_emblem(side, 0)
         return tick < 85
@@ -196,9 +196,9 @@ custom_beast.window = {
             -- camera shakes, 40 ticks at magnitude 1.
             custom.shake(side, SHAKE_MAGNITUDE, SHAKE_TICKS)
             custom.set_frame(side, 0)
-            custom.fade(side, "half_out", FADE_SPEED)
+            custom.fade(side, CustomFade.half_out, FADE_SPEED)
             custom.play_sound(side, CHOSEN_SOUNDS[beast_game(side)])
-            custom.play(side, "pick")
+            custom.play(side, ScreenSound.pick)
             custom.play_sound(side, FLASH_SOUND)
         elseif tick >= 3 and tick <= 52 then
             -- sub_802777C
@@ -207,10 +207,10 @@ custom_beast.window = {
             -- sub_8027796: the screen fades back in, and the emotion window
             -- shows the Beast form (sub_802A040). Beast Out goes first in
             -- the selection, so B takes it back last.
-            custom.fade(side, "half_out_back", FADE_SPEED)
+            custom.fade(side, CustomFade.half_out_back, FADE_SPEED)
             custom.set_face(side, beast_form(side, custom.player(side).emotion == "tired"))
             custom.pick_first(side, beast_out_chip)
-            custom.set_button_state(side, "beast_out", "selected")
+            custom.set_button_state(side, "beast_out", ButtonState.selected)
             custom.update_availability(side)
         end
         custom.draw_emblem(side, 0)

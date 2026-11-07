@@ -100,7 +100,7 @@ end
 
 local chip: Chip = {
     codes = { "G", "M", "W" },
-    element = "null", family = "break", class = "standard",
+    element = "null", family = "break", class = ChipClass.standard,
     rarity = 2, mb = 32, damage = 70, counter = 10, lockout = 0,
     flags = { has_damage = true, library = true },
     slot_in_limit = 3,

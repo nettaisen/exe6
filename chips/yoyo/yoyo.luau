@@ -212,7 +212,7 @@ end
 
 -- Home: the destroy state.
 local function home(me: Object)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
     me.collision:set_region(nil)
 end
 
@@ -286,7 +286,7 @@ local function setup(me: Object): boolean
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0xFF
     if not me:create_collision() then
@@ -309,7 +309,7 @@ local function init(me: Object)
     me.vel = Vec3.new(me.facing * SPEED, v.y, v.z)
     me.collision:present()
     battle.play_sound(SOUND)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
 end
 
 -- `sub_80CEA88`: clear the slot that holds it (if it still does), then
@@ -345,7 +345,7 @@ end
 
 yoyo.kind = new.kind {
     id = "yoyo/yoyo",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         panels = schema.u8,
         rounds = schema.u8,
@@ -357,9 +357,9 @@ yoyo.kind = new.kind {
     -- `sub_80CE81C`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             gone(me)
@@ -420,13 +420,13 @@ local function control(me: Object)
         if navi then
             navi.related1 = nil
         end
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 yoyo.controller = new.kind {
     id = "yoyo/great-yoyo",
-    pool = "effect",
+    pool = Pool.effect,
     state = {
         panels = schema.u8,
         rounds = schema.u8,
@@ -437,11 +437,11 @@ yoyo.controller = new.kind {
     -- `sub_80E857C`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80E859C
-            me:set_lifecycle("update")
+            me:enter_update()
             control(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             control(me)
         else
             me:free()

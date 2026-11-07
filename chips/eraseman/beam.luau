@@ -50,7 +50,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x - me.facing * BACK, p.y, bit32.bor(bit32.band(p.z, 0xFFFF), height * 0x10000))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = anim
     me.anim_loaded = anim
@@ -66,13 +66,13 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.erase)
     me.collision:present()
     me.timer = s.ticks
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `object_clearCollisionRegion`, and the destroy state.
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80DDA08`: resolve the hits; once it hit something its region goes;
@@ -105,14 +105,14 @@ end
 
 beam.kind = new.kind {
     id = "eraseman/beam",
-    pool = "attack",
+    pool = Pool.attack,
     state = { aim = schema.u8, ticks = schema.u8, while_dimmed = schema.bool, tied = schema.bool, action = schema.action },
     -- `sub_80DD940`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

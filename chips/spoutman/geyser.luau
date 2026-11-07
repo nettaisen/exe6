@@ -141,7 +141,7 @@ local function erupt(me: Object)
     local left = me.timer - 1
     me.timer = left
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local wait = me.timer2 - 1
@@ -159,7 +159,7 @@ end
 local function tick(me: Object)
     local own = (me.state :: State).while_dimmed
     if battle.over() or (not own and (me.related1 :: Object).action ~= OWNER_ACTION) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if not own and battle.dimmed() then
@@ -180,27 +180,27 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y + 1 * 0x10000, z)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 geyser.kind = new.kind {
     id = "spoutman/geyser",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool, ticks = schema.u8, target = schema.u8, column = schema.u8 },
     -- `sub_80C6DCC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

@@ -45,7 +45,7 @@ local SPRITE = asset.sprite("lil-boiler")
 -- place shows (DustMan's junk).
 local IDENTITY = new.identity {
     id = "lilbolr",
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 0,
     ai_index = 1,
     look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },
@@ -89,7 +89,7 @@ local function finish(me: Object)
     obstacle.release_tracking(me)
     obstacle.unregister(me)
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
     battle.hide_hp(me)
 end
 
@@ -131,7 +131,7 @@ local function fly(me: Object)
     me.collision:set_region(nil)
     obstacle.unregister(me)
     obstacle.release_tracking(me)
-    me.lifecycle = "destroy"
+    me.lifecycle = Lifecycle.destroy
 end
 
 -- `sub_80D789C`: leaving: a chip's removal (absorbed, blinking out, or a
@@ -140,14 +140,14 @@ end
 local function destroyed(me: Object)
     me.collision:set_region(nil)
     local how = obstacle.removal(me)
-    if how ~= "broken" then
-        if how == "absorbed" then
+    if how ~= ObstacleRemoval.broken then
+        if how == ObstacleRemoval.absorbed then
             obstacle.fly_to_absorber(me, ABSORBED)
         else
             local blink = obstacle.blink_out(me)
-            if blink == "blinking" then
+            if blink == BlinkOut.blinking then
                 return
-            elseif blink == "no" then
+            elseif blink == BlinkOut.no then
                 local p = me.pos
                 battle.effect(Vec3.new(p.x, p.y, p.z + 0xC_0000), effects.puff)
             end
@@ -253,7 +253,7 @@ local function erupt(me: Object)
             -- `sub_80D7A0E`.
             me:unreserve_panel(me.future_panel_x, me.future_panel_y)
             me.visible = false
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             battle.hide_hp(me)
         else
             error(string.format("LilBoiler eruption phase %#x reads past off_80D794C", phase))
@@ -322,12 +322,12 @@ end
 local function tick(me: Object)
     local s = me.state :: State
     me.visible = true
-    obstacle.take_hits(me, "keeps_damage")
+    obstacle.take_hits(me, ObstaclePush.keeps_damage)
     me:hit_spark()
     obstacle.tick_lifetime(me)
     -- `sub_801B878`: "breaks", but a crushing touch is as any hit while it
     -- erupts.
-    local a = obstacle.react(me, if s.erupting then "ignores" else "breaks")
+    local a = obstacle.react(me, if s.erupting then ObstacleCrush.ignores else ObstacleCrush.breaks)
     if a then
         local action = ACTIONS[a]
         if not action then
@@ -356,7 +356,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     sprite:face(me)
     sprite.palette = s.palette
     me.identity = IDENTITY
@@ -399,13 +399,13 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.breaking)
     me.collision:present()
     battle.show_hp(me, HP_NUMBER)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 boiler.kind = new.kind {
     id = "lilbolr/boiler",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         palette = schema.u8,
         body_damage = schema.u16,
@@ -420,9 +420,9 @@ boiler.kind = new.kind {
     -- `sub_80D75FC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
@@ -455,7 +455,7 @@ function boiler.thrower(palette: number, body_damage: number): Thrower
                 if user.flip then
                     error("LilBoiler thrown by a flipped user: setFieldBattleObject_800F614 registers it far past the field-object registry")
                 end
-                obstacle.register(o, user.alliance, "one_a_side")
+                obstacle.register(o, user.alliance, ObstacleClass.one_a_side)
             end
             return o
         end,

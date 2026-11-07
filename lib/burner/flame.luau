@@ -90,7 +90,7 @@ local function burn(me: Object)
     s.ticks = left
     if left == 0 then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -102,7 +102,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -127,7 +127,7 @@ local function init(me: Object)
     local spread = s.spread
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     local anim = s.anim
     me.anim = anim
@@ -160,7 +160,7 @@ local function init(me: Object)
     c:set_hit_effect(sparks.fire)
     c:present()
     me.timer = SPREAD_AT
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80C53E4`: out; it cracks its panel if it cracks.
@@ -173,7 +173,7 @@ end
 
 flame.kind = new.kind {
     id = "flame",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         ticks = schema.u8,
         spread = schema.u8,
@@ -185,9 +185,9 @@ flame.kind = new.kind {
     -- `sub_80C53C0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             out(me)

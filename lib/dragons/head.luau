@@ -162,7 +162,7 @@ local function leave(me: Object)
     end
     me.collision:set_region(nil)
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80DE4EC`: resolve the last hits (a blocked one stops its hits
@@ -174,7 +174,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c:hit_any(BLOCKED) then
@@ -227,14 +227,14 @@ local function init(me: Object): boolean
     end
     dragon.splash(me, 1)
     battle.play_sound(ROAR)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
     return true
 end
 
 head.kind = new.kind {
     id = "dragon-head",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         last_x = schema.u8,
         last_y = schema.u8,
@@ -249,11 +249,11 @@ head.kind = new.kind {
     -- `sub_80DE404`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             if not init(me) then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

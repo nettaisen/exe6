@@ -172,8 +172,8 @@ local redeal: ButtonSpec = {
         return stats.navi.forms ~= nil and stats.chip_shuffle
     end,
     pressed = function(side: number)
-        if custom.cursor_state(side) == "selectable" then
-            custom.play(side, "redeal")
+        if custom.cursor_state(side) == ButtonState.selectable then
+            custom.play(side, ScreenSound.redeal)
             custom.redeal(side)
         else
             custom.refuse(side)

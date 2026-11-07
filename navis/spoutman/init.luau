@@ -62,13 +62,13 @@ local navi: NaviDef = {
     charged_chips = { family = "aqua", damaging = true, when = by_level.from(11) },
     charge_doubles = { element = "aqua" },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 6,
         -- The Full Synchro aura's animation, and the ice block that fits.
         aura_anim = 6,
-        ice = "medium",
+        ice = IceSize.medium,
         -- What he wears while he stands.
         parts = { idle = { sprite = idle_overlay_sprite } },
         attach_points = {

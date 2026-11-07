@@ -229,7 +229,7 @@ local function dive(me: Object)
         panels.crack_region(x, y, DIVE_REGION)
         -- sub_801BD3C, with the 3 left in r7 as the marks' Z.
         battle.region_effects(x, y, DIVE_REGION, me.alliance, effects.burst, 3)
-        battle.palette_flash("one_layer", 0x1E, true)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0x1E, true)
     end
     me.phase, me.phase_init = 8, 0
     me.visible = false
@@ -238,7 +238,7 @@ end
 -- `sub_80BF67E`: 60 ticks, then it goes.
 local function linger(me: Object)
     if countdown(me, 0x3C) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -274,7 +274,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0xFF
     sprite:face(me)
@@ -282,7 +282,7 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, HEIGHT)
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
@@ -297,14 +297,14 @@ end
 
 sunmoon.kind = new.kind {
     id = "sunmoon/sun",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- `sub_80BF260`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             leave(me)

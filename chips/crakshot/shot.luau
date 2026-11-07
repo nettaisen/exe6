@@ -43,7 +43,7 @@ end
 local function finish(me: Object)
     me.visible = false
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80CA61A`: resolve its hits; rise, then fly.
@@ -100,7 +100,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0xFF
     sprite.palette = 0
@@ -115,23 +115,23 @@ local function init(me: Object)
     me:setup_collision(collision.attack, collision.hits_navis, { flinch = true })
     me.collision:set_hit_effect(sparks.charged)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 shot.kind = new.kind {
     id = "crakshot/shot",
-    pool = "attack",
+    pool = Pool.attack,
     state = { centers = schema.u8 },
     -- `sub_80CA544`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

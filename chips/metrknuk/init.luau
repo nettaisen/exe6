@@ -8,7 +8,7 @@ local controller = require("@self/controller")
 
 local chip: Chip = {
     codes = { "N" },
-    element = "null", family = "break", class = "giga",
+    element = "null", family = "break", class = ChipClass.giga,
     -- The version whose saves hold it (rules/folder).
     version = "falzar",
     rarity = 4, mb = 90, damage = 100, counter = 20, cant_counter = true, lockout = 0,

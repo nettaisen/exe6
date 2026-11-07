@@ -101,7 +101,7 @@ function falzar_beast_buster.beast_setup(navi: Object, over: string, volleys: Vo
     navi.extra = 0
     navi.attack_lockout = 0
     navi.marker = 0
-    local cross_special = chip_gate_battle() and battle.side_special(navi.alliance) == "takeover"
+    local cross_special = chip_gate_battle() and battle.side_special(navi.alliance) == SideSpecial.takeover
     if cross_special or battle.navi(navi.alliance).form.id == over then
         volleys.cycle = 1
         volleys.repeats = REPEATS
@@ -212,7 +212,7 @@ local function recover(me: Object, s: State)
             return
         end
     end
-    if battle.navi(me.alliance).form.id == BEAST_OVER or me.requests.alt_chip or me.actor_type ~= "player" then
+    if battle.navi(me.alliance).form.id == BEAST_OVER or me.requests.alt_chip or me.actor_type ~= ActorType.player then
         return finish(me)
     end
     if not me.held.b then

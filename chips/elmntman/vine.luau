@@ -23,14 +23,14 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = ANIM
     me.anim_loaded = ANIM
     sprite:set_animation(ANIM)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80DC5DA`: the hit, running while dimmed (`sub_80C53A6`).
@@ -64,14 +64,14 @@ local function grow(me: Object)
     local left = me.timer - 1
     me.timer = left
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 -- `loc_80DC562`: gone once the battle is over.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if me.action ~= 0 then
@@ -82,13 +82,13 @@ end
 
 vine.kind = new.kind {
     id = "elmntman/vine",
-    pool = "attack",
+    pool = Pool.attack,
     -- `sub_80DC4FC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

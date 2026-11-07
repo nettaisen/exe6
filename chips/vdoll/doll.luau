@@ -20,7 +20,7 @@ return common.make {
     -- Its identity: a field object, with the look something that takes its place shows (DustMan's junk).
     identity = new.identity {
         id = "vdoll",
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 3,
         ai_index = 1,
         look = { sprite = SPRITE, anim = 1, palette = 0, shadow = true },

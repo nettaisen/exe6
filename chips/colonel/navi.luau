@@ -45,7 +45,7 @@ local SOUND_SPIN = asset.sound("spin")
 -- His cape (`dword_80B85C4`): his own sprite, stepping while dimmed, his
 -- animation plus 0x0D, his palette.
 local CAPE: FormOverlaySpec =
-    { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x0D, pinned = false, owner_palette = true }
+    { sprite = SPRITE, stepping = FormOverlayStepping.while_dimmed, anim_offset = 0x0D, pinned = false, owner_palette = true }
 
 -- His sword (`dword_80B85C8`: the original's attachment 0x1F, animation
 -- 0x1C, animating while dimmed).
@@ -78,7 +78,7 @@ local STRIKE_TICK = 0x20
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
@@ -89,7 +89,7 @@ local function init(me: Object)
     sprite.palette = (me.state :: State).palette
     sprite.color_shader = 0x7FFF;
     (me.state :: State).cape = battle.form_overlay(me, CAPE)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Action 0 (`sub_80B82C4`): appear.
@@ -201,7 +201,7 @@ colonel.screen_divide = colonel.strike(function(me: Object)
     colonel.hit(me, x, y, SCREEN_DIVIDE)
     local cx, cy = field.center(x + me.facing, y)
     battle.effect(Vec3.new(cx, cy, 0), DIVIDE, me.alliance)
-    battle.palette_flash("one_layer", 0x14, true, false)
+    battle.palette_flash(PaletteFlashVariant.one_layer, 0x14, true, false)
 end)
 
 -- Action 4 (`sub_80B8376`): the strike.
@@ -260,9 +260,9 @@ local function leave(me: Object)
     me.visible = false
     local cape = (me.state :: State).cape
     if cape then
-        cape:set_lifecycle("destroy")
+        cape:enter_destroy()
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local PHASES: { [number]: { [number]: (Object) -> () } } = {
@@ -301,7 +301,7 @@ end
 
 colonel.kind = new.kind {
     id = "colonel/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         gray = schema.u8,
         cape = schema.object,
@@ -312,9 +312,9 @@ colonel.kind = new.kind {
     -- `sub_80B8210`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update_state(me)
         else
             finish(me)

@@ -79,7 +79,7 @@ local function fade(me: Object)
     local t = me.timer - 1
     me.timer = t
     if t < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -87,7 +87,7 @@ end
 local function finish(me: Object)
     me.visible = false
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80CE5F0`: resolve its hits; still while dimmed; gone once it hit
@@ -126,7 +126,7 @@ local function init(me: Object)
     end
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     sprite.palette = (me.state :: State).palette
     me:set_coordinates_from_panel()
@@ -149,23 +149,23 @@ local function init(me: Object)
     me.anim_loaded = ANIM
     sprite:set_animation(ANIM)
     battle.play_sound(SOUND_FALL)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 needle.kind = new.kind {
     id = "aquandl/needle",
-    pool = "attack",
+    pool = Pool.attack,
     state = { palette = schema.u8, cracks = schema.bool },
     -- `sub_80CE530`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

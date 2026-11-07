@@ -73,14 +73,14 @@ local function init(me: Object)
     set_height(me, 0)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
     if not me:create_collision() then
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     me:setup_collision(collision.attack, collision.hits_navis, HIT_MOD)
@@ -88,7 +88,7 @@ local function init(me: Object)
     c:set_hit_effect(sparks.heavy)
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Enter the phase (phase 4, a word store of the timers), or count down;
@@ -136,7 +136,7 @@ local function leap(me: Object)
     me.timer = left
     if left == 0x14 then
         set_height(me, 0xFF)
-        me.sprite.shadow = "with_sprite"
+        me.sprite.shadow = Shadow.with_sprite
         return
     end
     if left <= 0 then
@@ -148,7 +148,7 @@ end
 local function start_sweep(me: Object, anim: number, from: { number })
     me.anim = anim
     set_height(me, 0x10)
-    me.sprite.shadow = "ground"
+    me.sprite.shadow = Shadow.ground
     me.panel_x, me.panel_y = from[1], from[2]
     me:set_coordinates_from_panel()
     me:update_collision_panels()
@@ -228,7 +228,7 @@ local function dive(me: Object)
         return
     end
     me.collision:set_region(nil)
-    me.lifecycle = "destroy"
+    me.lifecycle = Lifecycle.destroy
 end
 
 local ACTIONS = { [0] = appear, [4] = stand, [8] = leap, [0xC] = dash, [0x10] = dive }
@@ -267,14 +267,14 @@ end
 
 tenguman.kind = new.kind {
     id = "tenguman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- `sub_80B9C14`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             finish(me)

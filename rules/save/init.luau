@@ -67,10 +67,10 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
     local by_level = if navi.levels ~= nil then navi.levels.by_level else nil
     if level ~= nil then
         if by_level == nil then
-            problem({ kind = "not_taken", field = "level", text = string.format("level %d: %s takes no level", level, name) })
+            problem({ kind = SetupProblemKind.not_taken, field = "level", text = string.format("level %d: %s takes no level", level, name) })
         elseif level > #by_level - 1 then
             problem({
-                kind = "range",
+                kind = SetupProblemKind.range,
                 field = "level",
                 value = level,
                 least = 0,
@@ -80,14 +80,14 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
         end
     elseif by_level ~= nil and navi.forms == nil then
         problem({
-            kind = "missing",
+            kind = SetupProblemKind.missing,
             field = "level",
             text = string.format("%s has no level (0 to %d): a link navi exists only through its navi code", name, #by_level - 1),
         })
     end
     if navi.forms == nil and setup.hp ~= MAX_HP then
         problem({
-            kind = "not_taken",
+            kind = SetupProblemKind.not_taken,
             field = "hp",
             text = string.format("hp: %s's HP is its level's; a side states the base HP of the navi that compiles a NaviCust", name),
         })

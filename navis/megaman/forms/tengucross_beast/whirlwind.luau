@@ -116,7 +116,7 @@ local function tick(me: Object)
     local t = me.timer - 1
     me.timer = t
     if t <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local front = me.facing
@@ -131,7 +131,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     local anim = s.anim
     me.anim = anim
@@ -143,20 +143,20 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x + me.facing * AHEAD, p.y, p.z)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 whirlwind.kind = new.kind {
     id = "tengucross-beast/whirlwind",
-    pool = "attack",
+    pool = Pool.attack,
     state = { at_once = schema.bool, ticks = schema.u8, anim = schema.u8, action = schema.action },
     -- `sub_80D5580`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

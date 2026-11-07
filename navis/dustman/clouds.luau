@@ -27,21 +27,21 @@ local function put_on(me: Object, sprite_asset: SpriteAsset, anim: number)
     me.pos = (me.related1 :: Object).pos
     local sprite = me.sprite
     sprite:load(sprite_asset)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = anim
     me.anim_loaded = anim
     sprite:set_animation(anim)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80E86F6`, `sub_80E8802`: on its owner, in his look, while he stays
 -- in his action.
 local function follow(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local owner = me.related1 :: Object
@@ -53,7 +53,7 @@ local function follow(me: Object)
     look:face(me)
     looks.copy(look, worn, "alpha")
     if owner:navi_action() ~= (me.state :: State).action then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -62,9 +62,9 @@ end
 local function update(sprite_asset: SpriteAsset, fixed_anim: number?): (me: Object) -> ()
     return function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             put_on(me, sprite_asset, fixed_anim or (me.state :: State).anim)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             follow(me)
         else
             me:free()
@@ -76,7 +76,7 @@ end
 
 clouds.cloud = new.kind {
     id = "dustman/cloud",
-    pool = "effect",
+    pool = Pool.effect,
     state = { anim = schema.u8, action = schema.action },
     -- `sub_80E8794`.
     update = update(CLOUD_SPRITE, nil),
@@ -84,7 +84,7 @@ clouds.cloud = new.kind {
 
 clouds.overlay = new.kind {
     id = "dustman/overlay",
-    pool = "effect",
+    pool = Pool.effect,
     state = { anim = schema.u8, action = schema.action },
     -- `sub_80E8688`.
     update = update(DUSTMAN_SPRITE, DUSTMAN_ANIM),
@@ -116,7 +116,7 @@ end
 
 -- `sub_80E8894`, `sub_80E8788`: take one off (at its next update).
 function clouds.take_off(o: Object)
-    o:set_lifecycle("destroy")
+    o:enter_destroy()
 end
 
 return clouds

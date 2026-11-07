@@ -113,7 +113,7 @@ local function become(me: Object, spec: Spec, i: number)
         error(string.format("the variable sword's pick %s has no action", chip.id :: string))
     end
     me.attack_chip = chip
-    me:set_attack(action, "plain")
+    me:set_attack(action, AttackKind.plain)
     local lockon = chip.beast ~= nil and chip.beast.rush ~= false
     if me.special_source ~= 0 then
         me.wrapped = lockon
@@ -124,7 +124,7 @@ local function become(me: Object, spec: Spec, i: number)
         return
     end
     if chip ~= spec.no_charged and me.charged ~= 0 then
-        me:set_attack(slash_charge.of_action(me, action), "plain")
+        me:set_attack(slash_charge.of_action(me, action), AttackKind.plain)
     end
     if kind.beast(me.alliance) then
         me.wrapped = lockon

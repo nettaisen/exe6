@@ -149,7 +149,7 @@ local function sink(me: Object)
             (c.state :: { falzar_out: boolean }).falzar_out = false
         end
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080C42E6: by action (0x080C42F8).
@@ -184,26 +184,26 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y - lead, HEIGHT - lead)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     local a = anim(me, 0)
     me.anim, me.anim_loaded = a, a
     sprite:set_animation(a)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 summon.kind = new.kind {
     id = "falzar/summon",
-    pool = "actor",
+    pool = Pool.actor,
     state = { leads = schema.bool, anims = schema.u8, controller = schema.object },
     -- 0x080C4268: by state (its end `object_freeMemory`), then the sprite,
     -- stepping while dimmed.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

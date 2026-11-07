@@ -71,7 +71,7 @@ local function done(me: Object)
     -- sub_80B8E58: the gun ends (its lifecycle word goes to destroy).
     local gun = (me.state :: State).held
     if gun then
-        gun:set_lifecycle("destroy")
+        gun:enter_destroy()
     end
     stand_in.leave(me)
 end
@@ -92,17 +92,17 @@ end
 
 farmer.kind = new.kind {
     id = "cornfsta/farmer",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, held = schema.object, sowing = schema.bool },
     -- `sub_80BCB50`: by state, then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80BCB74: drawn as the user, who vanishes; on at once.
             stand_in.init(me)
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

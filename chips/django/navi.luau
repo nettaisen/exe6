@@ -116,7 +116,7 @@ local function init(me: Object)
     set_height(me, START_HEIGHT)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 6
     me.anim_loaded = 6
@@ -127,7 +127,7 @@ local function init(me: Object)
     s.presses, s.press_ticks = 0, 0
     s.target = true
     attachment.attach(me, BIKE, "held", { anim = BIKE_ANIM, while_dimmed = true })
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Enter an action's first phase: phase 4 with an animation and a timer;
@@ -157,7 +157,7 @@ local function let_go_bike(me: Object)
     local s = me.state :: State
     local bike = s.held
     if bike then
-        bike:set_lifecycle("destroy")
+        bike:enter_destroy()
         s.held = nil
     end
 end
@@ -333,7 +333,7 @@ local function appear(me: Object)
         me.panel_x, me.panel_y = x, y
         me:set_coordinates_from_panel()
         me.anim = 1
-        me.sprite.shadow = "ground"
+        me.sprite.shadow = Shadow.ground
         battle.play_sound(SOUND_APPEAR)
         me.timer, me.timer2 = 3, 0
         return
@@ -398,7 +398,7 @@ local ACTIONS: { [number]: (me: Object) -> () } = {
 
 django.kind = new.kind {
     id = "django/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         slash_damage = schema.u8,
@@ -410,9 +410,9 @@ django.kind = new.kind {
     },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("Django: action %#x reads past his table", me.action))

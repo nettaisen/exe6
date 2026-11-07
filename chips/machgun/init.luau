@@ -144,7 +144,7 @@ end
 local chips: { [string]: Chip } = {
     machgun1 = {
         codes = { "A", "R", "T", "*" },
-        element = "null", family = "cursor", class = "standard",
+        element = "null", family = "cursor", class = ChipClass.standard,
         rarity = 0, mb = 12, damage = 30, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -152,7 +152,7 @@ local chips: { [string]: Chip } = {
     },
     machgun2 = {
         codes = { "E", "G", "S" },
-        element = "null", family = "cursor", class = "standard",
+        element = "null", family = "cursor", class = ChipClass.standard,
         rarity = 1, mb = 24, damage = 50, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -160,7 +160,7 @@ local chips: { [string]: Chip } = {
     },
     machgun3 = {
         codes = { "B", "F", "M" },
-        element = "null", family = "cursor", class = "standard",
+        element = "null", family = "cursor", class = ChipClass.standard,
         rarity = 2, mb = 36, damage = 70, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

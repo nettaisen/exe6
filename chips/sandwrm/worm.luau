@@ -114,7 +114,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 1, 1
     sprite:set_animation(1)
@@ -131,7 +131,7 @@ local function init(me: Object)
     c:present()
     aim(me, s)
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
     return true
 end
 
@@ -209,7 +209,7 @@ local function dive(me: Object, s: State)
     s.end_timer = 0
     hole.close(s.end_hole)
     s.end_hole = nil
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80DEB1C`.
@@ -218,7 +218,7 @@ local function tick(me: Object)
     c:remove()
     me:hit_spark()
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c:hit_any(HIT) then
@@ -244,7 +244,7 @@ end
 
 worm.kind = new.kind {
     id = "sandwrm/worm",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         target_x = schema.u8,
         target_y = schema.u8,
@@ -265,11 +265,11 @@ worm.kind = new.kind {
     -- `sub_80DEA7C`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             if init(me) then
                 tick(me)
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

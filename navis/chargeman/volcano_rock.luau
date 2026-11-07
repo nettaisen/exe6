@@ -50,14 +50,14 @@ local function init(me: Object)
     me.pos = Vec3.new(int.i32(x), p.y, int.i32(z))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80D5EDE`: the burst's hit on its panel.
@@ -99,7 +99,7 @@ local function fly(me: Object)
             battle.effect(me.pos, effects.explosion)
             hit(me)
         end
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         me.timer2 = 0
         return
     end
@@ -117,7 +117,7 @@ end
 -- `sub_80D5DC8`: gone when the battle is over; still while dimmed.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if battle.dimmed() then
@@ -131,13 +131,13 @@ end
 
 volcano_rock.kind = new.kind {
     id = "chargeman/volcano-rock",
-    pool = "attack",
+    pool = Pool.attack,
     -- `sub_80D5D54`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

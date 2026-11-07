@@ -61,7 +61,7 @@ local function tick(me: Object)
         end
     end
     let_go(me, owner)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80E3FFC`: raised over him.
@@ -69,26 +69,26 @@ local function init(me: Object)
     me:set_panel_from_coordinates()
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = ANIM_RAISED
     me.anim_loaded = ANIM_RAISED
     sprite:set_animation(ANIM_RAISED)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 axe.kind = new.kind {
     id = "tomahawkman/axe",
-    pool = "effect",
+    pool = Pool.effect,
     state = { action = schema.action },
     -- `sub_80E3FD0`: its sprite steps unless the battle is paused.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

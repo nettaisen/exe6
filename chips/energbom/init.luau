@@ -26,7 +26,7 @@ end
 local chips: { [string]: Chip } = {
     energbom = {
         codes = { "C", "K", "V", "*" },
-        element = "null", family = "null", class = "standard",
+        element = "null", family = "null", class = ChipClass.standard,
         rarity = 1, mb = 11, damage = 40, counter = 10, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -36,7 +36,7 @@ local chips: { [string]: Chip } = {
     },
     megenbom = {
         codes = { "G", "M", "O", "*" },
-        element = "null", family = "null", class = "standard",
+        element = "null", family = "null", class = ChipClass.standard,
         rarity = 2, mb = 27, damage = 60, counter = 10, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

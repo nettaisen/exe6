@@ -26,7 +26,7 @@ local function init(me: Object)
     me.pos = owner.pos
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -34,7 +34,7 @@ local function init(me: Object)
     sprite.palette = 0
     sprite:face(me)
     visibility.copy(me, owner)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80E7816`: follow the owner (his position, visibility, palette,
@@ -42,7 +42,7 @@ end
 -- once he has left it. Gone when the battle is over.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local owner = me.related1 :: Object
@@ -55,20 +55,20 @@ local function tick(me: Object)
     sprite:face(me)
     looks.copy(sprite, look, "alpha")
     if s.follows_action and owner:navi_action() ~= s.action then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 drill.kind = new.kind {
     id = "grndman/drill",
-    pool = "effect",
+    pool = Pool.effect,
     state = { follows_action = schema.bool, action = schema.action },
     -- `sub_80E7788`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()
@@ -111,7 +111,7 @@ end
 -- `sub_80E78AE`: take the drill off (at its next update).
 function drill.take_off(o: Object?)
     if o then
-        o:set_lifecycle("destroy")
+        o:enter_destroy()
     end
 end
 

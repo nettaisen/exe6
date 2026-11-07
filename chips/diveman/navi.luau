@@ -21,10 +21,10 @@ local SOUND_SURFACE = asset.sound("sand-worm")
 -- What he is taken for: his actor record, and what he wears (his overlay, `sub_8010F96`).
 local IDENTITY = new.identity {
     id = "diveman",
-    class = "navi",
+    class = IdentityClass.navi,
     version = 0,
     ai_index = 0xD,
-    ice = "large",
+    ice = IceSize.large,
     parts = {
         body = {
             sprite = SPRITE,
@@ -51,9 +51,9 @@ local SURFACE, WAIT, DIVE, WAVES, RISE, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14
 -- `sub_80B99E4`: on his panel, on the ground (Z's whole part cleared),
 -- with his parts.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground")
+    navi_chips.stand(me, SPRITE, Shadow.ground)
     me:add_parts(IDENTITY, 1)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80B9A60`: he surfaces; 19 ticks.
@@ -146,14 +146,14 @@ local ACTIONS = { [SURFACE] = surface, [WAIT] = wait, [DIVE] = dive, [WAVES] = w
 
 diveman.kind = new.kind {
     id = "diveman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- `sub_80B99C0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("DiveMan action %#x reads past his table (off_80B9A48)", me.action))

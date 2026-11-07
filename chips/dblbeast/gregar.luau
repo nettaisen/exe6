@@ -90,7 +90,7 @@ end
 -- the slot keeps the handle).
 local function detach(a: Object?)
     if a then
-        a:set_lifecycle("destroy")
+        a:enter_destroy()
     end
 end
 
@@ -337,17 +337,17 @@ end
 
 gregar.kind = new.kind {
     id = "dblbeast/gregar",
-    pool = "actor",
+    pool = Pool.actor,
     state = beast.STATE,
     -- `sub_80C1A10`: by state, then the sprite (stepping while dimmed).
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80C1A34: at rest in front of the user; its update first
             -- runs next tick.
             beast.init(me, SPRITE, true, IDENTITY)
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

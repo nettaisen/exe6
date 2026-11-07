@@ -14,7 +14,7 @@ end
 function weapon.end_arm(navi: Object)
     local arm = navi.overlay
     if arm then
-        arm:set_lifecycle("destroy")
+        arm:enter_destroy()
     end
 end
 

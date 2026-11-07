@@ -10,7 +10,7 @@ local card: PatchCard = {
         cards.hp(30),
         cards.body("aqua"),
         cards.charged_shot(charge),
-        cards.bug(cards.gauge("normal")),
+        cards.bug(cards.gauge(GaugeSpeed.normal)),
     },
 }
 

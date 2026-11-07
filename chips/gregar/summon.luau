@@ -220,7 +220,7 @@ local function sink(me: Object)
             (c.state :: { gregar_out: boolean }).gregar_out = false
         end
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080C3E92: by action (0x080C3EA4).
@@ -255,19 +255,19 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y + lift, lift)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     local a = anim(me, 0)
     me.anim, me.anim_loaded = a, a
     sprite:set_animation(a)
     sprite.palette = 0
     sprite:face(me)
     s.last_x, s.last_y = 0, 0
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 summon.kind = new.kind {
     id = "gregar/summon",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         piece = schema.u8,
         rock_damage = schema.u8,
@@ -281,9 +281,9 @@ summon.kind = new.kind {
     -- stepping while dimmed.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

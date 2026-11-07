@@ -32,14 +32,14 @@ local NEEDLES, INTERVAL = 3, 8
 -- The enemies it aims at, by what they are taken for: viruses (the
 -- original's NameIDs up to 0xAE, short of the last virus, 0xBA: an object
 -- with no identity is its NameID 0), then navis (0x100 to 0x1C3).
-local NAVIS: { [string]: boolean } = {
-    navi = true,
-    player = true,
+local NAVIS: { [IdentityClass]: boolean } = {
+    [IdentityClass.navi] = true,
+    [IdentityClass.player] = true,
 }
 
 local function is_virus(o: Object): boolean
     local identity = o.identity
-    return identity == nil or identity.class == "virus"
+    return identity == nil or identity.class == IdentityClass.virus
 end
 
 local function is_navi(o: Object): boolean
@@ -126,7 +126,7 @@ end
 -- third, or when the battle is over.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local s = me.state :: State
@@ -151,7 +151,7 @@ local function tick(me: Object)
     local left = s.left - 1
     s.left = left
     if left == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     else
         me.action = 0
     end
@@ -162,20 +162,20 @@ local function init(me: Object)
     local s = me.state :: State
     aim(me, s)
     s.left = NEEDLES
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 volley.kind = new.kind {
     id = "aquandl/volley",
-    pool = "effect",
+    pool = Pool.effect,
     state = { targets = schema.array(schema.u8, 3), next = schema.u8, left = schema.u8, palette = schema.u8 },
     -- `sub_80E50C4`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

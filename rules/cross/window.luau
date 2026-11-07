@@ -202,10 +202,10 @@ function window.choose(side: number, entry: number)
     end
     local i = entry + 1
     if s.marked[i] then
-        custom.play(side, "refused")
+        custom.play(side, ScreenSound.refused)
         return
     end
-    custom.play(side, "pick")
+    custom.play(side, ScreenSound.pick)
     s.marked[i] = true
     s.cross_chosen = true
     s.chosen = s.offered[i]
@@ -230,7 +230,7 @@ function window.unchoose(side: number): boolean
     s.chosen = 0
     custom.set_form(side, "cross_chosen", nil)
     custom.set_face(side, custom_beast.picked_face(side))
-    custom.play(side, "cancel")
+    custom.play(side, ScreenSound.cancel)
     return true
 end
 
@@ -238,7 +238,7 @@ end
 -- is white the Cross is put on (`sub_8027AAE`: the face, the window, the
 -- sound), and when it is clear again the chips are chosen (`sub_8027ADE`).
 window.chosen = {
-    view = "form_chosen",
+    view = WindowView.form_chosen,
     update = function(side: number): boolean
         local s = rules.state() :: State
         local tick = custom.window_tick(side)
@@ -248,9 +248,9 @@ window.chosen = {
             custom.set_frame(side, custom.frame(side) + 1)
         elseif tick == 17 then
             custom.set_frame(side, 0)
-            custom.fade(side, "end_to_white", FADE_SPEED)
+            custom.fade(side, CustomFade.end_to_white, FADE_SPEED)
         elseif tick == PUT_ON_TICK then
-            custom.fade(side, "intro_from_white", FADE_SPEED)
+            custom.fade(side, CustomFade.intro_from_white, FADE_SPEED)
             if s.cross_chosen then
                 custom.set_face(side, cross_face(side, s.chosen))
             end

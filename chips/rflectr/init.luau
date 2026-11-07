@@ -25,7 +25,7 @@ local RFLECTR1, RFLECTR2, RFLECTR3 = look(0), look(6), look(8)
 local chips: { [string]: Chip } = {
     rflectr1 = {
         codes = { "A", "C", "P", "*" },
-        element = "null", family = "null", class = "standard",
+        element = "null", family = "null", class = ChipClass.standard,
         rarity = 0, mb = 7, damage = 60, counter = 20, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -33,7 +33,7 @@ local chips: { [string]: Chip } = {
     },
     rflectr2 = {
         codes = { "B", "G", "Y", "*" },
-        element = "null", family = "null", class = "standard",
+        element = "null", family = "null", class = ChipClass.standard,
         rarity = 1, mb = 16, damage = 120, counter = 20, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -41,7 +41,7 @@ local chips: { [string]: Chip } = {
     },
     rflectr3 = {
         codes = { "E", "F", "O", "*" },
-        element = "null", family = "null", class = "standard",
+        element = "null", family = "null", class = ChipClass.standard,
         rarity = 2, mb = 25, damage = 200, counter = 20, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

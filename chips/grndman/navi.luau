@@ -60,9 +60,9 @@ local APPEAR, BACK_OFF, DIG, ROCKFALL, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10
 -- `sub_80BBBBC`: on his panel, on the ground (a word store: nothing of the
 -- spawner's register is kept), with his parts.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
     me:add_parts(IDENTITY, 1)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Timer and Timer2 together (a word store).
@@ -241,14 +241,14 @@ local ACTIONS = { [APPEAR] = appear, [BACK_OFF] = back_off, [DIG] = dig, [ROCKFA
 
 grndman.kind = new.kind {
     id = "grndman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { drill = schema.object, rock_x = schema.u32, rock_y = schema.u32, controller = schema.object },
     -- `sub_80BBB98`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("GroundMan action %#x reads past his table (off_80BBC18)", me.action))

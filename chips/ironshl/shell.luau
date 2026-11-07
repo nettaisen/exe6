@@ -121,7 +121,7 @@ local function fly(me: Object)
     me:update_collision_panels()
     if not field.valid(me.panel_x, me.panel_y) then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -149,7 +149,7 @@ local function tick(me: Object)
     if not field.solid(me.panel_x, me.panel_y) then
         puff(me)
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local highlight = true
@@ -173,7 +173,7 @@ local function setup(me: Object, hit_mod: HitModifier): boolean
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = ANIM
     me.anim_loaded = 0xFF
     if not me:create_collision() then
@@ -210,13 +210,13 @@ local function init(me: Object)
     me.timer = int.tdiv(PANEL_WIDTH * panels, s.speed) + 1
     me.collision:present()
     battle.play_sound(SOUND)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 shell.kind = new.kind {
     id = "ironshl/shell",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         palette = schema.u8,
         speed = schema.i32,
@@ -228,9 +228,9 @@ shell.kind = new.kind {
     -- `sub_80CA6B8`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

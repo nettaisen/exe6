@@ -70,13 +70,13 @@ end
 -- `sub_80D7E7A`: pull until its time is up or the battle is over.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local t = me.timer - 1
     me.timer = t
     if t <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     cycle(me)
@@ -86,7 +86,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -99,20 +99,20 @@ local function init(me: Object)
     local hx, hz = user:attach_point(HAND)
     local p = me.pos
     me.pos = Vec3.new(p.x - me.facing * PANEL * 0x10000 + hx * 0x10000, p.y, p.z + hz * 0x10000)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 magnet.kind = new.kind {
     id = "magcoil/magnet",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ticks = schema.u8 },
     -- `sub_80D7DE4`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

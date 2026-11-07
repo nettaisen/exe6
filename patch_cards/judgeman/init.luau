@@ -10,7 +10,7 @@ local card: PatchCard = {
         cards.bug(cards.hp_percent(-10)),
         cards.custom(2),
         cards.charged_shot(charge),
-        cards.bug(cards.gauge("normal")),
+        cards.bug(cards.gauge(GaugeSpeed.normal)),
     },
 }
 

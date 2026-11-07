@@ -76,7 +76,7 @@ local function tick(me: Object)
     me.timer = t
     if t <= 0 then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     c:present()
@@ -95,7 +95,7 @@ local function init(me: Object)
     local look = s.look
     local sprite = me.sprite
     sprite:load(look.sprite)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -124,16 +124,16 @@ local function init(me: Object)
     if look.cracks then
         field.crack(me.panel_x, me.panel_y)
     end
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 -- `sub_80D0610`.
 local function update(me: Object)
     local l = me.lifecycle
-    if l == "init" then
+    if l == Lifecycle.init then
         init(me)
-    elseif l == "update" then
+    elseif l == Lifecycle.update then
         tick(me)
     else
         me:destroy()
@@ -143,7 +143,7 @@ end
 
 element_pillar.kind = new.kind {
     id = "element-pillar",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         look = ELEMENT_PILLAR_LOOK,
         ticks = schema.u8,

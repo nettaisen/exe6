@@ -104,8 +104,8 @@ local APPEAR, STAND, RAISE, RAIN_DOWN, LANCES, LOWER, LEAVE = 0x0, 0x4, 0x8, 0xC
 
 -- The init: on his panel, on the ground, his sprite with a shadow.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
-    me:set_lifecycle("update")
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
+    me:enter_update()
 end
 
 -- Enter an action's first phase: phase 4 with an animation and a timer;
@@ -299,13 +299,13 @@ local ACTIONS: { [number]: (me: Object) -> () } = {
 
 count.kind = new.kind {
     id = "count/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, lance_damage = schema.u8, targets = schema.array(schema.u8, 3), count = schema.u8, next = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("Count: action %#x reads past his table", me.action))

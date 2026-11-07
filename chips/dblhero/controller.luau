@@ -32,7 +32,7 @@ end
 
 controller.kind = new.kind {
     id = "dblhero/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { bonus = schema.u16, busy = schema.bool },
     -- `sub_80E7FDC`.
     update = dimming_chips.phases { name = "DblHero", effect = effect },

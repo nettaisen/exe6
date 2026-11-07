@@ -44,19 +44,19 @@ end
 
 -- Atk+'s `instant` hook: the side's attack bonus.
 function plus.attack(user: Object, _spec: InstantChipSpec)
-    effect(user, "attack", {})
+    effect(user, SpecialBonus.attack, {})
 end
 
 -- Navi+'s `instant` hook: the side's navi bonus.
 function plus.navi(user: Object, _spec: InstantChipSpec)
-    effect(user, "navi", {})
+    effect(user, SpecialBonus.navi, {})
 end
 
 -- A modifier chip's `instant` hook: the side's attack bonus, with the
 -- damage word's flag bits `flags` (`plus.PARALYZE`, `plus.UNINSTALL`).
 function plus.attack_with(flags: { [string]: boolean }): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, _spec: InstantChipSpec)
-        effect(user, "attack", flags)
+        effect(user, SpecialBonus.attack, flags)
     end
 end
 

@@ -43,7 +43,7 @@ end
 
 controller.kind = new.kind {
     id = "sumnblk/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { palette = schema.u8, busy = schema.bool, bonus = schema.u16 },
     update = dimming_chips.phases { name = "SumnBlk", effect = effect },
 }

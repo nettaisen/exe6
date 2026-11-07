@@ -30,14 +30,14 @@ local SPRITE = asset.sprite("rock-cubes")
 -- the looks something that takes their place shows).
 local ROCK = new.identity {
     id = "rock",
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 3,
     ai_index = 1,
     look = { sprite = SPRITE, anim = 1, palette = 0, shadow = true },
 }
 local ICE = new.identity {
     id = "ice-block",
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 4,
     ai_index = 1,
     look = { sprite = SPRITE, anim = 2, palette = 0, shadow = true },

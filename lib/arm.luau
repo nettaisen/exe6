@@ -13,9 +13,9 @@ local arm = {}
 -- `sub_80EBAE8`.
 function arm.anim(navi: Object): number
     local t, ai = navi.actor_type, navi.ai_index
-    if t == "navi" then
+    if t == ActorType.navi then
         return if ai < 0x0D then ai else 0
-    elseif t == "player" then
+    elseif t == ActorType.player then
         if ai ~= 0 then
             return if ai == 0x13 then 0x0E else ai
         end

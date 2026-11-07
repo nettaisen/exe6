@@ -46,7 +46,7 @@ local function init(me: Object, s: State)
     me.sprite:set_animation(0)
     -- sprite_removeShadow, palette 4, the object's facing, and white
     -- (sprite_forceWhitePalette at the end of the init).
-    me.sprite.shadow = "hidden"
+    me.sprite.shadow = Shadow.hidden
     me.sprite.palette = 4
     me.sprite:face(me)
     me.sprite.white = true
@@ -77,7 +77,7 @@ local function init(me: Object, s: State)
     if identity and identity.parts and identity.parts.idle and me.related2 then
         (me.related2 :: Object).pinned = true
     end
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- It reached MegaMan: its NameID's death hook (`sub_8011020`: its overlay,
@@ -134,7 +134,7 @@ end
 
 merge.kind = new.kind {
     id = "forms/cross-merge",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         navi = schema.navi,
         swings_left = schema.u16,
@@ -147,9 +147,9 @@ merge.kind = new.kind {
     update = function(me: Object)
         local s = me.state :: State
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me, s)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me, s)
         else
             me:free()

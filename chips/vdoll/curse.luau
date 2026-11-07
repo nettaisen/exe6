@@ -147,7 +147,7 @@ end
 
 curse.kind = new.kind {
     id = "vdoll/curse",
-    pool = "effect",
+    pool = Pool.effect,
     state = { targets = schema.array(schema.u8, 4), count = schema.u8 },
     -- `sub_80E6088`.
     update = dimming_chips.phases { name = "the curse", effect = effect },

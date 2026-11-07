@@ -19,7 +19,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -27,7 +27,7 @@ local function init(me: Object)
     sprite.palette = 0
     sprite:face(me)
     me.timer = (me.state :: State).ticks
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80E792A`: gone once the battle is over or its time is up.
@@ -45,14 +45,14 @@ end
 
 mark.kind = new.kind {
     id = "eraseman/mark",
-    pool = "effect",
+    pool = Pool.effect,
     state = { ticks = schema.u8 },
     -- `sub_80E78BC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

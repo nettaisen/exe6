@@ -77,7 +77,7 @@ end
 local function vanish(me: Object)
     me.visible = false
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80DDCF4`.
@@ -107,7 +107,7 @@ local function init(me: Object)
     me.anim_loaded = 2
     sprite:set_animation(2)
     sprite:step()
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
@@ -129,19 +129,19 @@ local function init(me: Object)
     c:set_region(nil)
     c:present()
     battle.play_sound(SOUND_THROW)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
 end
 
 junk_shot.kind = new.kind {
     id = "dustcross-beast/junk-shot",
-    pool = "attack",
+    pool = Pool.attack,
     state = { target = schema.u8 },
     -- `sub_80DDC10`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

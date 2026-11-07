@@ -72,16 +72,16 @@ local navi: NaviDef = {
         falzar = { form_list = { spoutcross, tomahawkcross, tengucross, groundcross, dustcross }, cybeast = falzar_beast, beast_over = falzar_beast_over },
     },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         changes_form = true,
         -- Where a held thing with no attach point sits (BatCan's cannon).
         held_offset = { 0, 0 },
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 0,
         -- The Full Synchro aura's animation, and the ice block that fits.
         aura_anim = 0,
-        ice = "medium",
+        ice = IceSize.medium,
         -- He wears what his form does: his death hook takes it off, and an animation
         -- change, a flinch and a drag restart it.
         overlay_hooks = { death = true, refresh = true, flinch = true, drag = true },

@@ -113,20 +113,20 @@ local function init(me: Object)
     me:set_panel_from_coordinates()
     local sprite = me.sprite
     sprite:load(s.sprite)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = s.anim, s.anim
     sprite:set_animation(s.anim)
     local owner = me.related1 :: Object
     sprite.palette = if s.own_palette then s.palette else owner.sprite.palette
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 layer.kind = new.kind {
     id = "lilbolr/layer",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         sprite = schema.sprite,
         own_palette = schema.bool,
@@ -142,9 +142,9 @@ layer.kind = new.kind {
     -- `sub_80C3EE0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()
@@ -176,7 +176,7 @@ end
 -- `sub_80C4072`: end it (it frees itself at its next update).
 function layer.finish(o: Object?)
     if o then
-        o:set_lifecycle("destroy")
+        o:enter_destroy()
     end
 end
 

@@ -157,7 +157,7 @@ local function dash(me: Object, s: State)
         facing = me.facing_side,
         lifetime = AFTERIMAGE_TICKS,
         color_shader = AFTERIMAGE_SHADER,
-        shadow = "ground",
+        shadow = Shadow.ground,
     })
     me.panel_x, me.panel_y = x, y
     me:set_coordinates_from_panel()

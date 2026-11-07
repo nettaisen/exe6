@@ -54,10 +54,10 @@ local SOUND_ELMNT_MAN_4 = asset.sound("elmnt-man-4")
 -- What he is taken for: his actor record, and what he wears (his overlay, `sub_8011004`).
 local IDENTITY = new.identity {
     id = "elementman",
-    class = "navi",
+    class = IdentityClass.navi,
     version = 0,
     ai_index = 0x10,
-    ice = "large",
+    ice = IceSize.large,
     parts = {
         body = {
             sprite = SPRITE,
@@ -82,9 +82,9 @@ local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 
 -- `sub_80BAAB0`: on his panel, on the ground, with his parts.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
     me:add_parts(IDENTITY, 1)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Enter the phase with a timer, or count it down; true once it is 0 or
@@ -394,7 +394,7 @@ local ACTIONS = {
 
 elmntman.kind = new.kind {
     id = "elmntman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         element = schema.u8,
         targets = schema.array(schema.u8, 18),
@@ -406,9 +406,9 @@ elmntman.kind = new.kind {
     -- `sub_80BAA8C`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("ElmntMan action %#x reads past his table (off_80BAB14)", me.action))

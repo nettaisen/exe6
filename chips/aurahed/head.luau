@@ -65,14 +65,14 @@ end
 -- `sub_80D75A4` (action 4): blink out; gone off the field.
 local function fade(me: Object)
     if not field.valid(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     me.visible = bit32.btest(me.timer, 2)
     local t = me.timer - 1
     me.timer = t
     if t == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -102,7 +102,7 @@ local function tick(me: Object)
         error(string.format("aura head action %#x reads past its table", a))
     end
     local highlight = true
-    if c.region == nil and me.action ~= 4 and me.lifecycle ~= "destroy" then
+    if c.region == nil and me.action ~= 4 and me.lifecycle ~= Lifecycle.destroy then
         if me.panel_x + me.panel_y * 0x100 == s.hit_panel then
             highlight = false
         else
@@ -135,7 +135,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = ANIM
     me.anim_loaded = 0xFF
     if not me:create_collision() then
@@ -159,13 +159,13 @@ local function init(me: Object)
     me.timer = int.tdiv(PANEL * panels - speed - speed, speed) + 1
     me.collision:present()
     battle.play_sound(SOUND)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 head.kind = new.kind {
     id = "aurahed/head",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         hit_panel = schema.u32,
         has_hit = schema.bool,
@@ -177,9 +177,9 @@ head.kind = new.kind {
     -- `sub_80D7400`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

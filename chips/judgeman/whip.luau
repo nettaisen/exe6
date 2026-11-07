@@ -23,14 +23,14 @@ local function init(me: Object)
     me.pos = owner.pos
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = ANIM_RAISE
     me.anim_loaded = ANIM_RAISE
     sprite:set_animation(ANIM_RAISE)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80E717A`: 15 ticks raised, then held.
@@ -55,7 +55,7 @@ end
 -- left it and holds still while dimmed. Gone when the battle is over.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local owner = me.related1 :: Object
@@ -63,7 +63,7 @@ local function tick(me: Object)
     local s = me.state :: State
     if s.follows_action then
         if owner:navi_action() ~= s.action then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         if battle.dimmed() then
@@ -75,14 +75,14 @@ end
 
 whip.kind = new.kind {
     id = "judgeman/whip",
-    pool = "effect",
+    pool = Pool.effect,
     state = { follows_action = schema.bool, action = schema.action },
     -- `sub_80E70C8`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()
@@ -125,7 +125,7 @@ end
 -- `sub_80E71B8`: take the whip off (at its next update).
 function whip.take_off(o: Object?)
     if o then
-        o:set_lifecycle("destroy")
+        o:enter_destroy()
     end
 end
 

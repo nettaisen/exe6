@@ -89,7 +89,7 @@ end
 -- destroy; the slot keeps the handle).
 local function detach(a: Object?)
     if a then
-        a:set_lifecycle("destroy")
+        a:enter_destroy()
     end
 end
 
@@ -281,7 +281,7 @@ end
 local function megaman_done(me: Object)
     local s = me.state :: State
     if me.phase_init == 0 then
-        if partner_of(me).lifecycle ~= "destroy" then
+        if partner_of(me).lifecycle ~= Lifecycle.destroy then
             return
         end
         me.anim = ANIM_IDLE
@@ -384,7 +384,7 @@ local function protoman_leave(me: Object)
     me.timer = t
     if t < 0 then
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -469,7 +469,7 @@ local function init(me: Object)
     else
         looks.load_like(sprite, user)
     end
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     me.visible = true
     local off = OFFSET[who(s)]
@@ -490,13 +490,13 @@ local function init(me: Object)
         end
         s.partner = proto
     end
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 heroes.kind = new.kind {
     id = "dblhero/heroes",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         protoman = schema.bool,
@@ -508,9 +508,9 @@ heroes.kind = new.kind {
     -- `sub_80BCD14`: by state, then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

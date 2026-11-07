@@ -112,7 +112,7 @@ local function spray(me: Object)
     local t = me.timer - 1
     me.timer = t
     if t <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     highlight(me, s.quarter)
@@ -133,7 +133,7 @@ end
 local function tick(me: Object)
     local s = me.state :: State
     if battle.over() or (s.action ~= nil and (me.related1 :: Object):navi_action() ~= s.action) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if battle.dimmed() then
@@ -152,25 +152,25 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
     sprite:set_animation(0)
     sprite.palette = 0
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 drip_shower.kind = new.kind {
     id = "spoutman/drip-shower",
-    pool = "attack",
+    pool = Pool.attack,
     state = { turns = schema.u8, quarter_ticks = schema.u8, action = schema.action, quarter = schema.u32, sound = schema.i32 },
     -- `sub_80C91A0`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

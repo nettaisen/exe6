@@ -7,7 +7,7 @@ local grab_shot_sprite = asset.sprite("grab-shot")
 
 local chip: Chip = {
     codes = { "A", "L", "R", "*" },
-    element = "aqua", family = "aqua", class = "standard",
+    element = "aqua", family = "aqua", class = ChipClass.standard,
     rarity = 1, mb = 31, damage = 10, counter = 10, lockout = 10,
     flags = { standard_library = true, library = true },
     slot_in_limit = 3,

@@ -63,24 +63,24 @@ local function tick(me: Object)
         me.timer = LOOK_TICKS
         return
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 force.kind = new.kind {
     id = "colforce/force",
-    pool = "effect",
+    pool = Pool.effect,
     -- `sub_80E9460`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- sub_80E9480: the other side's back column.
             me.panel_x = if me.alliance == 0 then 6 else 1
             me.timer = 0
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             -- sub_80E9498
             if battle.over() then
-                me:set_lifecycle("destroy")
+                me:enter_destroy()
             elseif not battle.dimmed() then
                 tick(me)
             end

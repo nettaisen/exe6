@@ -37,7 +37,7 @@ end
 -- (their timer set to 1).
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
     local s = me.state :: State
     for i = 1, 3 do
         local o = s.linked[i]
@@ -73,7 +73,7 @@ local function init(me: Object)
     local v = (me.state :: State).pulse
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = 0
     me.anim_loaded = 0
@@ -103,23 +103,23 @@ local function init(me: Object)
     end
     c:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 pulse.kind = new.kind {
     id = "elcpuls/pulse",
-    pool = "attack",
+    pool = Pool.attack,
     state = { linked = schema.array(schema.object, 3), pulse = ELEC_PULSE },
     -- `sub_80D6A20`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

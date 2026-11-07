@@ -63,13 +63,13 @@ local navi: NaviDef = {
     -- A hit's status doesn't take.
     traits = { status_immune = true },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 7,
         -- The Full Synchro aura's animation, and the ice block that fits.
         aura_anim = 7,
-        ice = "medium",
+        ice = IceSize.medium,
         attach_points = {
             { 0, 0 },
             { 4, 8 },

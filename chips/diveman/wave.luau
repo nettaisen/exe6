@@ -69,7 +69,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, bit32.band(p.z, 0xFFFF))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim = ANIM
     me.anim_loaded = ANIM
@@ -77,7 +77,7 @@ local function init(me: Object)
     sprite.palette = 0
     sprite:face(me)
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- `sub_80CB184`: the hits and the splashes.
@@ -97,7 +97,7 @@ local function wash(me: Object)
         splash(me, 2)
     elseif left <= 0 then
         splash(me, 1)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         me.timer2 = 0
     end
 end
@@ -106,7 +106,7 @@ end
 -- unless it is DiveMan's.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if not (me.state :: State).while_dimmed and battle.dimmed() then
@@ -120,14 +120,14 @@ end
 
 wave.kind = new.kind {
     id = "diveman/wave",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool },
     -- `sub_80CB0DC`.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
