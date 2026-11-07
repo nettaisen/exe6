@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local tenguman: Chip = {
     codes = { "T", "*" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "mega",
     rarity = 2,
     mb = 43,
@@ -27,8 +27,8 @@ local tenguman: Chip = {
 
 local tengumn_ex: Chip = {
     codes = { "T" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "mega",
     rarity = 3,
     mb = 61,
@@ -46,8 +46,8 @@ local tengumn_ex: Chip = {
 
 local tengumn_sp: Chip = {
     codes = { "T" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "mega",
     rarity = 4,
     mb = 74,

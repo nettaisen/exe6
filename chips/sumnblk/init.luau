@@ -10,7 +10,7 @@ local lockon = require("../rules/lockon")
 local chips: { [string]: Chip } = {
     sumnblk1 = {
         codes = { "E", "I", "P" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 0, mb = 30, damage = 160, counter = 30, cant_counter = true, lockout = 0,
         flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -19,7 +19,7 @@ local chips: { [string]: Chip } = {
     },
     sumnblk2 = {
         codes = { "H", "O", "V" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 1, mb = 40, damage = 200, counter = 30, cant_counter = true, lockout = 0,
         flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -28,7 +28,7 @@ local chips: { [string]: Chip } = {
     },
     sumnblk3 = {
         codes = { "W", "Y", "Z" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 2, mb = 46, damage = 260, counter = 30, cant_counter = true, lockout = 0,
         flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

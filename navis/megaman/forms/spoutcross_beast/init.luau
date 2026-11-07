@@ -19,22 +19,22 @@ local form: FormDef = {
     traits = { shows_target_marker = true, afterimages_stay = true, alt_charge_time = true },
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "falzar",
+    version = Version.falzar,
     cross_of = spoutman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = falzar_beast,
     sprite = spoutcross_beast_sprite,
-    element = "aqua",
+    element = Element.aqua,
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = charge.weapon },
     mugshot = asset.mugshot("spoutcross-beast"),
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
-    charged_chips = { { family = "aqua", damaging = true }, { family = "null", damaging = false } },
+    charged_chips = { { family = Family.aqua, damaging = true }, { family = Family.null, damaging = false } },
     -- A charged Aqua chip hits twice as hard, and an Aqua chip's use heals.
-    charge_doubles = { element = "aqua" },
-    chip_heals = { element = "aqua" },
+    charge_doubles = { element = Element.aqua },
+    chip_heals = { element = Element.aqua },
     -- What its status reset gives the navi (`sub_8014536`).
     status_reset = { air_shoes = true, float_shoes = true, floating_body = true, target_marker = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.

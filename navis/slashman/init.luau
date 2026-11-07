@@ -12,7 +12,7 @@ local navi: NaviDef = {
     sprite = slashman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 4, hold = 2 },
-    element = "null",
+    element = Element.null,
     weakness = { ["break"] = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -20,7 +20,7 @@ local navi: NaviDef = {
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- SlashMan face, and shows TenguMan's.
     mugshot = asset.mugshot("slashman"),
-    version = "gregar",
+    version = Version.gregar,
     merge_height = 4,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -29,7 +29,7 @@ local navi: NaviDef = {
     },
     own_chip = { chip = slashman, code = "S" },
     chip_bonus = {
-        family = "sword",
+        family = Family.sword,
         dimming_chips = false,
         damage = by_level.row({ 0, 0, 0, 0, 0, 0, 0, 30, 30, 30, 30, 40, 40, 40, 50 }),
     },

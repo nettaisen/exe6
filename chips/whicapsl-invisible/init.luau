@@ -8,8 +8,8 @@ local invisible = require("./invisibl/controller")
 -- 120 ticks (the record's first two parameter bytes, 120 and 0).
 local chip: Chip = {
     codes = {},
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "special",
     rarity = 0,
     mb = 30,

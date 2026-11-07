@@ -87,7 +87,7 @@ end
 local chips: { [string]: Chip } = {
     crakshot = {
         codes = { "A", "G", "T", "*" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 0, mb = 4, damage = 60, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -97,7 +97,7 @@ local chips: { [string]: Chip } = {
     },
     dublshot = {
         codes = { "C", "R", "U", "*" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 1, mb = 8, damage = 60, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -107,7 +107,7 @@ local chips: { [string]: Chip } = {
     },
     trplshot = {
         codes = { "J", "L", "V", "*" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 2, mb = 12, damage = 100, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

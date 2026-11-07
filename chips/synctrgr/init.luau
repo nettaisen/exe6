@@ -17,7 +17,7 @@ end
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null", family = "null", class = "mega",
+    element = Element.null, family = Family.null, class = "mega",
     rarity = 4, mb = 80, damage = 0, counter = 10, lockout = 20,
     slot_in_limit = 1,
     instant = sync,

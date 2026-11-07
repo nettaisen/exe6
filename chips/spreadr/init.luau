@@ -25,8 +25,8 @@ end
 
 local spreadr1: Chip = {
     codes = { "L", "M", "N", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 0,
     mb = 10,
@@ -41,8 +41,8 @@ local spreadr1: Chip = {
 
 local spreadr2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 18,
@@ -57,8 +57,8 @@ local spreadr2: Chip = {
 
 local spreadr3: Chip = {
     codes = { "Q", "R", "S", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 26,

@@ -14,8 +14,8 @@ local HOLD, SHORT_HOLD = TICKS - 5, 5
 
 local elcpuls1: Chip = {
     codes = { "J", "L", "S" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 0,
     mb = 32,
@@ -34,8 +34,8 @@ local elcpuls1: Chip = {
 
 local elcpuls2: Chip = {
     codes = { "A", "E", "J" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 1,
     mb = 36,
@@ -54,8 +54,8 @@ local elcpuls2: Chip = {
 
 local elcpuls3: Chip = {
     codes = { "A", "J", "S" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 2,
     mb = 40,
@@ -75,8 +75,8 @@ local elcpuls3: Chip = {
 
 local destpuls: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "elec",
-    family = "program_advance",
+    element = Element.elec,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

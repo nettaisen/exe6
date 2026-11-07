@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local spoutman: Chip = {
     codes = { "A", "*" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "mega",
     rarity = 2,
     mb = 42,
@@ -27,8 +27,8 @@ local spoutman: Chip = {
 
 local spoutmn_ex: Chip = {
     codes = { "A" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "mega",
     rarity = 3,
     mb = 56,
@@ -46,8 +46,8 @@ local spoutmn_ex: Chip = {
 
 local spoutmn_sp: Chip = {
     codes = { "A" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "mega",
     rarity = 4,
     mb = 78,

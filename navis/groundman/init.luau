@@ -13,14 +13,14 @@ local navi: NaviDef = {
     sprite = groundman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 5, hold = 2 },
-    element = "null",
+    element = Element.null,
     weakness = { cursor = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("groundman-win"), lose = asset.banner("groundman-deleted") },
     -- Its face in the emotion window (`byte_801CDDC`).
     mugshot = asset.mugshot("groundman"),
-    version = "falzar",
+    version = Version.falzar,
     merge_height = 0,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -29,7 +29,7 @@ local navi: NaviDef = {
     },
     own_chip = { chip = groundman, code = "G" },
     chip_bonus = {
-        family = "break",
+        family = Family["break"],
         dimming_chips = false,
         damage = by_level.row({ 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 }),
     },

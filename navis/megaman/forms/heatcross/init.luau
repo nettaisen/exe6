@@ -15,13 +15,13 @@ local form: FormDef = {
     kind = "cross",
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "gregar",
+    version = Version.gregar,
     cross_of = heatman,
     beast = heatcross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
     sprite = megaman_sprite,
-    element = "fire",
+    element = Element.fire,
     buster_bonus = 1,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
     palette = 2,
@@ -30,7 +30,7 @@ local form: FormDef = {
     mugshot = { normal = asset.mugshot("heatcross"), tired = asset.mugshot("heatcross-tired") },
     -- What R shows in the Cross window.
     -- The damage it adds to its family's damaging chips.
-    chip_bonus = { family = "fire", damage = 50 },
+    chip_bonus = { family = Family.fire, damage = 50 },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 1,
     -- The buster arm it raises (lib/buster).

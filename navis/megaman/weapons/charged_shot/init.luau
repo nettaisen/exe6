@@ -37,7 +37,7 @@ function charged_shot.setup(navi: Object): Action
     local side = navi.alliance
     local stats = battle.navi(side)
     local base = stats.attack + 1
-    if battle.emotion(side) == "worn_out" then
+    if battle.emotion(side) == Emotion.worn_out then
         base = 1
     end
     navi.attack_word = damage_word.of { amount = base * 10, counter = 0 }

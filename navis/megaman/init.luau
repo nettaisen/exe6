@@ -25,7 +25,7 @@ local navi: NaviDef = {
     -- How many steps of the sprite he is drawn with (his form's; every form's alike) his warp out (animation 4) and
     -- his hold (animation 0xA) last.
     animation_steps = { warp_out = 4, hold = 2 },
-    element = "null",
+    element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("megaman-win"), lose = asset.banner("megaman-deleted") },

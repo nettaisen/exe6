@@ -16,13 +16,13 @@ local form: FormDef = {
     kind = "cross",
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "falzar",
+    version = Version.falzar,
     cross_of = spoutman,
     beast = spoutcross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
     sprite = megaman_sprite,
-    element = "aqua",
+    element = Element.aqua,
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon, a_charge = charged_chip_bonus_1f },
     palette = 5,
@@ -30,10 +30,10 @@ local form: FormDef = {
     mugshot = { normal = asset.mugshot("spoutcross"), tired = asset.mugshot("spoutcross-tired") },
     -- What R shows in the Cross window.
     -- The chips A charges.
-    charged_chips = { { family = "aqua", damaging = true } },
+    charged_chips = { { family = Family.aqua, damaging = true } },
     -- A charged Aqua chip hits twice as hard, and an Aqua chip's use heals.
-    charge_doubles = { element = "aqua" },
-    chip_heals = { element = "aqua" },
+    charge_doubles = { element = Element.aqua },
+    chip_heals = { element = Element.aqua },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 6,
     -- The buster arm it raises (lib/buster).

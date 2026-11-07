@@ -176,7 +176,7 @@ local function grass(me: Object)
     for x = 1, 6 do
         for y = 1, 3 do
             if field.solid(x, y) then
-                field.set_type(x, y, "grass")
+                field.set_type(x, y, PanelType.grass)
                 local cx, cy = field.center(x, y)
                 battle.effect(Vec3.new(cx, cy, 8), effects.ripple, 0, 5)
             end
@@ -261,7 +261,7 @@ local function aqua(me: Object)
             -- r3 (1 << 16) becomes the ice's Z.
             ice.spawn(me, x, y, Element.aqua, ICE_TICKS, true, damage, 0x1_0000)
             if field.solid(x, y) then
-                field.set_type(x, y, "ice")
+                field.set_type(x, y, PanelType.ice)
             end
         end
         battle.play_sound(SOUND_ELMNT_MAN_4)

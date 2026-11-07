@@ -63,9 +63,9 @@ end)
 -- name.)
 local chip: Chip = {
     codes = { "J" },
-    element = "null", family = "null", class = "giga",
+    element = Element.null, family = Family.null, class = "giga",
     -- The version whose saves hold it (rules/folder).
-    version = "falzar",
+    version = Version.falzar,
     rarity = 4, mb = 99, damage = 0, counter = 20, cant_counter = true, lockout = 0,
     flags = { dimming = true, library = true },
     slot_in_limit = 1,

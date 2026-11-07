@@ -16,13 +16,13 @@ local form: FormDef = {
     kind = "cross",
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "falzar",
+    version = Version.falzar,
     cross_of = groundman,
     beast = groundcross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
     sprite = megaman_sprite,
-    element = "null",
+    element = Element.null,
     weakness = { cursor = true },
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = drill.weapon, a_charge = rock_barrage },
@@ -31,9 +31,9 @@ local form: FormDef = {
     mugshot = { normal = asset.mugshot("groundcross"), tired = asset.mugshot("groundcross-tired") },
     -- What R shows in the Cross window.
     -- The damage it adds to its family's damaging chips.
-    chip_bonus = { family = "break", damage = 10 },
+    chip_bonus = { family = Family["break"], damage = 10 },
     -- The chips A charges.
-    charged_chips = { { family = "break", damaging = true } },
+    charged_chips = { { family = Family["break"], damaging = true } },
     -- What its status reset gives the navi (`sub_8014536`).
     status_reset = { super_armor = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.

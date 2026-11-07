@@ -49,8 +49,8 @@ local BIG_BOMB = countdown.variant {
 
 local timebom1: Chip = {
     codes = { "F", "G", "H" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 1,
     mb = 20,
@@ -65,8 +65,8 @@ local timebom1: Chip = {
 
 local timebom2: Chip = {
     codes = { "C", "D", "E" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 2,
     mb = 30,
@@ -81,8 +81,8 @@ local timebom2: Chip = {
 
 local timebom3: Chip = {
     codes = { "L", "M", "N" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 3,
     mb = 37,
@@ -97,8 +97,8 @@ local timebom3: Chip = {
 
 local timebom: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

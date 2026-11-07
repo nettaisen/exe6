@@ -10,7 +10,7 @@ local worm = require("@self/worm")
 local chips: { [string]: Chip } = {
     sandwrm1 = {
         codes = { "A", "G", "L" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 0, mb = 30, damage = 130, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         beast = { rush = false, lockon = lockon.cannon },
@@ -19,7 +19,7 @@ local chips: { [string]: Chip } = {
     },
     sandwrm2 = {
         codes = { "B", "R", "Y" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 1, mb = 34, damage = 150, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         beast = { rush = false, lockon = lockon.cannon },
@@ -28,7 +28,7 @@ local chips: { [string]: Chip } = {
     },
     sandwrm3 = {
         codes = { "H", "J", "S" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 2, mb = 38, damage = 170, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         beast = { rush = false, lockon = lockon.cannon },

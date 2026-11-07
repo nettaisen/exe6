@@ -13,12 +13,12 @@ local form: FormDef = {
     kind = "cross_beast",
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "gregar",
+    version = Version.gregar,
     cross_of = slashman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = gregar_beast,
     sprite = slashcross_beast_sprite,
-    element = "null",
+    element = Element.null,
     weakness = { ["break"] = true },
     buster_bonus = 0,
     weapons = { buster = gregar_beast_buster.weapon, a_charge = slash_a_charge.weapon, alt_a_charge = lunge.weapon },
@@ -26,11 +26,11 @@ local form: FormDef = {
     -- SlashCross Beast face, and shows TenguCross Beast's.
     mugshot = asset.mugshot("slashcross-beast"),
     -- The damage it adds to its family's damaging chips.
-    chip_bonus = { family = "sword", damage = 50 },
+    chip_bonus = { family = Family.sword, damage = 50 },
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
-    charged_chips = { { family = "sword", damaging = true, element_swords = true }, { family = "null", damaging = false } },
+    charged_chips = { { family = Family.sword, damaging = true, element_swords = true }, { family = Family.null, damaging = false } },
     -- A charged chip hits 40 harder.
     charged_bonus = { damage = 40 },
     -- What its status reset gives the navi (`sub_8014536`).

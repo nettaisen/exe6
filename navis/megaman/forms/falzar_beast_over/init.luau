@@ -28,12 +28,12 @@ local form: FormDef = {
     },
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "falzar",
+    version = Version.falzar,
     -- (No hit breaks Beast Over; the original's routine, by the form's number, would drop
     -- either to the Falzar beast.)
     breaks_to = falzar_beast,
     sprite = falzar_beast_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, alt_a_charge = beast_claw.weapon },
     mugshot = asset.mugshot("falzar-beast-over"),

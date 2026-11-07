@@ -6,8 +6,8 @@ local zsaver = require("@self/action")
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "special",
     rarity = 0,
     mb = 5,

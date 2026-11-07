@@ -27,11 +27,11 @@ local ART_PALETTE = {
 local chip: Chip = {
     art_palette = ART_PALETTE,
     codes = { "X" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "giga",
     -- The version whose saves hold it (rules/folder).
-    version = "gregar",
+    version = Version.gregar,
     rarity = 4,
     mb = 99,
     damage = 300,

@@ -33,8 +33,8 @@ local CHARGED = slashes.slash {
 
 local chip: Chip = {
     codes = { "E", "K", "N" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 2,
     mb = 35,

@@ -161,7 +161,7 @@ function window.open(side: number)
     s.offered_count = 0
     s.cross_chosen = false
     s.chosen = 0
-    local allowed = crosses_allowed(side) and custom.player(side).emotion ~= "worn_out"
+    local allowed = crosses_allowed(side) and custom.player(side).emotion ~= Emotion.worn_out
     if allowed then
         local starting = battle.navi(side).starting_form
         for place = 0, CROSSES - 1 do
@@ -197,7 +197,7 @@ end
 -- held, and its window plays; Beast Out grays out.
 function window.choose(side: number, entry: number)
     local s = rules.state() :: State
-    if s.cross_chosen or entry >= s.offered_count or not megaman(side) or custom.form_taken(side, "cross_chosen") then
+    if s.cross_chosen or entry >= s.offered_count or not megaman(side) or custom.form_taken(side, Window.cross_chosen) then
         return
     end
     local i = entry + 1
@@ -209,8 +209,8 @@ function window.choose(side: number, entry: number)
     s.marked[i] = true
     s.cross_chosen = true
     s.chosen = s.offered[i]
-    custom.set_form(side, "cross_chosen", result_form(side, s.chosen))
-    custom.open_window(side, "cross_chosen")
+    custom.set_form(side, Window.cross_chosen, result_form(side, s.chosen))
+    custom.open_window(side, Window.cross_chosen)
     -- A chosen Cross grays out Beast Out (its button's state).
     custom.refresh_buttons(side)
 end
@@ -228,7 +228,7 @@ function window.unchoose(side: number): boolean
     end
     s.cross_chosen = false
     s.chosen = 0
-    custom.set_form(side, "cross_chosen", nil)
+    custom.set_form(side, Window.cross_chosen, nil)
     custom.set_face(side, custom_beast.picked_face(side))
     custom.play(side, "cancel")
     return true

@@ -7,8 +7,8 @@ local cornsht = require("@self/action")
 
 local cornsht1: Chip = {
     codes = { "J", "K", "L" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 0,
     mb = 14,
@@ -23,8 +23,8 @@ local cornsht1: Chip = {
 
 local cornsht2: Chip = {
     codes = { "C", "D", "E" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 1,
     mb = 26,
@@ -39,8 +39,8 @@ local cornsht2: Chip = {
 
 local cornsht3: Chip = {
     codes = { "P", "Q", "R" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 2,
     mb = 38,

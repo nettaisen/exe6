@@ -27,12 +27,12 @@ local form: FormDef = {
     },
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "gregar",
+    version = Version.gregar,
     -- (No hit breaks Beast Over; the original's routine, by the form's number, would drop
     -- either to the Falzar beast.)
     breaks_to = falzar_beast,
     sprite = gregar_beast_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = gregar_beast_buster.weapon, alt_a_charge = beast_claw.weapon },
     -- Its face in the emotion window (`byte_801E700`): the Falzar ROM has no

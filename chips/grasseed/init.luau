@@ -7,7 +7,7 @@ local grab_shot_sprite = asset.sprite("grab-shot")
 
 local chip: Chip = {
     codes = { "A", "F", "S", "*" },
-    element = "wood", family = "wood", class = "standard",
+    element = Element.wood, family = Family.wood, class = "standard",
     rarity = 1, mb = 19, damage = 10, counter = 10, lockout = 10,
     flags = { standard_library = true, library = true },
     slot_in_limit = 3,
@@ -17,7 +17,7 @@ local chip: Chip = {
         thrower = seed.thrower(seed.variant {
             element = Element.wood,
             palette = 2,
-            panel = "grass",
+            panel = PanelType.grass,
             -- Its green sprout (effect 0x3C).
             effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 8, steps = 16 },
             sound = asset.sound("grass"),

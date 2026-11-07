@@ -85,7 +85,7 @@ end
 local THROWN = flying_shot.variant {
     collision = { is = collision.breaking, hits = collision.hits_navis },
     hit_mod = { flinch = true, flash = true },
-    element = "null",
+    element = Element.null,
     secondary = { ["break"] = true },
     spark = sparks.breaking,
     sprite = beast_shot_sprite,

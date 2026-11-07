@@ -7,8 +7,8 @@ local grab_shot_sprite = asset.sprite("grab-shot")
 
 local chip: Chip = {
     codes = { "H", "N", "P", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 37,
@@ -24,7 +24,7 @@ local chip: Chip = {
         thrower = seed.thrower(seed.variant {
             element = Element.null,
             palette = 3,
-            panel = "poison",
+            panel = PanelType.poison,
             -- Its sprout (effect 0x3B).
             effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 16 },
             sound = asset.sound("panel-poison"),

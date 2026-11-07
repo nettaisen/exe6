@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local protoman: Chip = {
     codes = { "B", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 2,
     mb = 41,
@@ -27,8 +27,8 @@ local protoman: Chip = {
 
 local protomn_ex: Chip = {
     codes = { "B" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 3,
     mb = 53,
@@ -46,8 +46,8 @@ local protomn_ex: Chip = {
 
 local protomn_sp: Chip = {
     codes = { "B" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 4,
     mb = 68,

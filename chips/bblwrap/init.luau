@@ -7,7 +7,7 @@ local barriers = require("../lib/barriers")
 
 local chip: Chip = {
     codes = { "I", "Q", "Z" },
-    element = "null", family = "aqua", class = "standard",
+    element = Element.null, family = Family.aqua, class = "standard",
     rarity = 2, mb = 58, damage = 0, counter = 0, lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 1,

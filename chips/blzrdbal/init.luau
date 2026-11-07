@@ -7,8 +7,8 @@ local controller = require("@self/controller")
 
 local chip: Chip = {
     codes = { "H", "N", "T" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 3,
     mb = 39,

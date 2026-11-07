@@ -8,12 +8,12 @@ local panel_chips = require("../lib/panel_chips/controller")
 
 local chip: Chip = {
     codes = { "*" },
-    element = "null", family = "null", class = "standard",
+    element = Element.null, family = Family.null, class = "standard",
     rarity = 0, mb = 21, damage = 40, counter = 30, lockout = 0,
     flags = { dimming = true, library = true },
     slot_in_limit = 1,
     dimming = panel_chips.hook(panel_changer.change {
-        panel = "road_right",
+        panel = PanelType.road_right,
         side1_panel = "road_left",
         panels = "row",
         flicker = true,

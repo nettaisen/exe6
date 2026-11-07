@@ -8,7 +8,7 @@ local golem = require("@self/golem")
 local chips: { [string]: Chip } = {
     golmhit1 = {
         codes = { "I", "K", "Y" },
-        element = "null", family = "break", class = "standard",
+        element = Element.null, family = Family["break"], class = "standard",
         rarity = 0, mb = 17, damage = 140, counter = 30, lockout = 20,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -16,7 +16,7 @@ local chips: { [string]: Chip } = {
     },
     golmhit2 = {
         codes = { "D", "P", "U" },
-        element = "null", family = "break", class = "standard",
+        element = Element.null, family = Family["break"], class = "standard",
         rarity = 1, mb = 27, damage = 190, counter = 30, lockout = 20,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -24,7 +24,7 @@ local chips: { [string]: Chip } = {
     },
     golmhit3 = {
         codes = { "H", "M", "V" },
-        element = "null", family = "break", class = "standard",
+        element = Element.null, family = Family["break"], class = "standard",
         rarity = 2, mb = 37, damage = 250, counter = 30, lockout = 20,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

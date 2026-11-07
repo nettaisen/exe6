@@ -19,22 +19,22 @@ local form: FormDef = {
     traits = { shows_target_marker = true, afterimages_stay = true, alt_charge_time = true },
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "falzar",
+    version = Version.falzar,
     cross_of = groundman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = falzar_beast,
     sprite = groundcross_beast_sprite,
-    element = "null",
+    element = Element.null,
     weakness = { cursor = true },
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, a_charge = rock_barrage, alt_a_charge = dash.weapon },
     mugshot = asset.mugshot("groundcross-beast"),
     -- The damage it adds to its family's damaging chips.
-    chip_bonus = { family = "break", damage = 10 },
+    chip_bonus = { family = Family["break"], damage = 10 },
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
-    charged_chips = { { family = "break", damaging = true }, { family = "null", damaging = false } },
+    charged_chips = { { family = Family["break"], damaging = true }, { family = Family.null, damaging = false } },
     -- What its status reset gives the navi (`sub_8014536`).
     status_reset = {
         super_armor = true,

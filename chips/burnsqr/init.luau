@@ -7,8 +7,8 @@ local controller = require("@self/controller")
 
 local burnsqr1: Chip = {
     codes = { "H", "P", "V" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "standard",
     rarity = 0,
     mb = 24,
@@ -22,8 +22,8 @@ local burnsqr1: Chip = {
 
 local burnsqr2: Chip = {
     codes = { "D", "M", "T" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "standard",
     rarity = 1,
     mb = 30,
@@ -37,8 +37,8 @@ local burnsqr2: Chip = {
 
 local burnsqr3: Chip = {
     codes = { "E", "O", "Z" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "standard",
     rarity = 2,
     mb = 36,

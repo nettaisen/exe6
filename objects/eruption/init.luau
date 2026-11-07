@@ -65,7 +65,7 @@ local function tick(me: Object)
     local x, y = me.panel_x, me.panel_y
     local panel = field.panel(x, y)
     local ending
-    if not (panel and panel.kind == "volcano") then
+    if not (panel and panel.kind == PanelType.volcano) then
         ending = c.region ~= nil
         if ending then
             me.timer = 3

@@ -51,7 +51,7 @@ local HITS = { is = collision.attack, hits = collision.hits_navis }
 local SHOT = flying_shot.variant {
     collision = HITS,
     hit_mod = {},
-    element = "null",
+    element = Element.null,
     spark = sparks.charged,
     sprite = SHOT_SPRITE,
     speed = 0xC_0000,
@@ -60,7 +60,7 @@ local SHOT = flying_shot.variant {
 local VOLLEY_SHOT = flying_shot.variant {
     collision = HITS,
     hit_mod = {},
-    element = "null",
+    element = Element.null,
     spark = sparks.charged,
     sprite = SHOT_SPRITE,
     speed = 0xC_0000,

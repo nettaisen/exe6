@@ -278,7 +278,7 @@ end
 -- The user's game's table (its version: NaviStats+0x20, 0 Gregar, else Falzar): the version of the user's Cybeast.
 local function game(me: Object): string
     local cybeast = exe6.cybeast(me.alliance)
-    return if cybeast ~= nil and cybeast.version == "gregar" then "gregar" else "falzar"
+    return if cybeast ~= nil and cybeast.version == Version.gregar then "gregar" else "falzar"
 end
 
 -- `sub_80BE8AE`: the first wave, all in one tick: each Cross beside his

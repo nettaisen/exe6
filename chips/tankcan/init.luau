@@ -14,7 +14,7 @@ local SHELL = { hit_mod = { flinch = true, flash = true, back_far = true, drag =
 local chips: { [string]: Chip } = {
     tankcan1 = {
         codes = { "A", "G", "R" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 0, mb = 17, damage = 120, counter = 20, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -24,7 +24,7 @@ local chips: { [string]: Chip } = {
     },
     tankcan2 = {
         codes = { "L", "S", "V" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 1, mb = 28, damage = 160, counter = 20, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -34,7 +34,7 @@ local chips: { [string]: Chip } = {
     },
     tankcan3 = {
         codes = { "B", "M", "P" },
-        element = "null", family = "null", class = "standard",
+        element = Element.null, family = Family.null, class = "standard",
         rarity = 2, mb = 39, damage = 200, counter = 20, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

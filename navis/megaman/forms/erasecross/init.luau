@@ -17,13 +17,13 @@ local form: FormDef = {
     plain_erase_beam = true,
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "gregar",
+    version = Version.gregar,
     cross_of = eraseman,
     beast = erasecross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
     sprite = megaman_sprite,
-    element = "null",
+    element = Element.null,
     weakness = { wind = true },
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
@@ -33,7 +33,7 @@ local form: FormDef = {
     mugshot = { normal = asset.mugshot("erasecross"), tired = asset.mugshot("erasecross-tired") },
     -- What R shows in the Cross window.
     -- The damage it adds to its family's damaging chips (dimming chips too).
-    chip_bonus = { family = "cursor", damage = 30, dimming_chips = true },
+    chip_bonus = { family = Family.cursor, damage = 30, dimming_chips = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
     special_volley = 4,
     traits = { erases = true },

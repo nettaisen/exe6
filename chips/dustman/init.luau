@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local dustman: Chip = {
     codes = { "D", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 2,
     mb = 39,
@@ -27,8 +27,8 @@ local dustman: Chip = {
 
 local dustman_ex: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 56,
@@ -46,8 +46,8 @@ local dustman_ex: Chip = {
 
 local dustman_sp: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 74,

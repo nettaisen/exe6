@@ -14,7 +14,7 @@ local hush = effects.hush(statuses.blind_4, collision.guard_breaking, collision.
 
 local chip: Chip = {
     codes = { "B", "R", "W", "*" },
-    element = "null", family = "summon", class = "standard",
+    element = Element.null, family = Family.summon, class = "standard",
     rarity = 1, mb = 20, damage = 0, counter = 0, lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 3,

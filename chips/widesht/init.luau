@@ -11,8 +11,8 @@ local WAVE = shot.variant { speed = 0x6_0000, pierces = false, holds = false, tr
 
 local chip: Chip = {
     codes = { "P", "Q", "R" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 2,
     mb = 34,

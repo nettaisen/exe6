@@ -12,14 +12,14 @@ local navi: NaviDef = {
     sprite = dustman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 5, hold = 8 },
-    element = "null",
+    element = Element.null,
     weakness = { cursor = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("dustman-win"), lose = asset.banner("dustman-deleted") },
     -- Its face in the emotion window (`byte_801CDDC`).
     mugshot = asset.mugshot("dustman"),
-    version = "falzar",
+    version = Version.falzar,
     merge_height = 0,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -28,7 +28,7 @@ local navi: NaviDef = {
     },
     own_chip = { chip = dustman, code = "D" },
     chip_bonus = {
-        family = "break",
+        family = Family["break"],
         dimming_chips = false,
         damage = by_level.row({ 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 }),
     },

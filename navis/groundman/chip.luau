@@ -220,8 +220,8 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [READY] = ready, [D
 
 local chip: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "special",
     rarity = 0,
     mb = 99,

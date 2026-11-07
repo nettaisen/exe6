@@ -33,8 +33,8 @@ local PARA = shell.variant {
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

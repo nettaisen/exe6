@@ -14,13 +14,13 @@ local navi: NaviDef = {
     sprite = spoutman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 7, hold = 2 },
-    element = "aqua",
+    element = Element.aqua,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("spoutman-win"), lose = asset.banner("spoutman-deleted") },
     -- Its face in the emotion window (`byte_801CDDC`).
     mugshot = asset.mugshot("spoutman"),
-    version = "falzar",
+    version = Version.falzar,
     merge_height = 0,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -59,8 +59,8 @@ local navi: NaviDef = {
         },
     },
     -- The chips A charges (its family's damaging chips, from a navi level on), and those a charge doubles.
-    charged_chips = { family = "aqua", damaging = true, when = by_level.from(11) },
-    charge_doubles = { element = "aqua" },
+    charged_chips = { family = Family.aqua, damaging = true, when = by_level.from(11) },
+    charge_doubles = { element = Element.aqua },
     identity = new.identity {
         class = "player",
         version = 0,

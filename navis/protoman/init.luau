@@ -17,7 +17,7 @@ local navi: NaviDef = {
     sprite = protoman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 4, hold = 2 },
-    element = "null",
+    element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("protoman-win"), lose = asset.banner("protoman-deleted") },
@@ -61,8 +61,8 @@ local navi: NaviDef = {
         },
     },
     -- The chips A charges (its family's damaging chips, from a navi level on), and those a charge doubles.
-    charged_chips = { family = "sword", damaging = true, when = by_level.from(11) },
-    charge_doubles = { family = "sword" },
+    charged_chips = { family = Family.sword, damaging = true, when = by_level.from(11) },
+    charge_doubles = { family = Family.sword },
     identity = new.identity {
         class = "player",
         version = 0,

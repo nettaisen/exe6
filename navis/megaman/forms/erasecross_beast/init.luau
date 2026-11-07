@@ -13,12 +13,12 @@ local form: FormDef = {
     kind = "cross_beast",
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "gregar",
+    version = Version.gregar,
     cross_of = eraseman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = gregar_beast,
     sprite = erasecross_beast_sprite,
-    element = "null",
+    element = Element.null,
     weakness = { wind = true },
     buster_bonus = 0,
     weapons = { buster = gregar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = drop.weapon },
@@ -26,11 +26,11 @@ local form: FormDef = {
     -- EraseCross Beast face, and shows GroundCross Beast's.
     mugshot = asset.mugshot("erasecross-beast"),
     -- The damage it adds to its family's damaging chips (dimming chips too).
-    chip_bonus = { family = "cursor", damage = 30, dimming_chips = true },
+    chip_bonus = { family = Family.cursor, damage = 30, dimming_chips = true },
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
-    charged_chips = { { family = "null", damaging = false } },
+    charged_chips = { { family = Family.null, damaging = false } },
     -- What its status reset gives the navi (`sub_8014536`).
     status_reset = { super_armor = true, target_marker = true, invulnerable = true, controller_restart = true },
     -- After a NaviCust change only the SuperArmor comes back (`sub_801469C`).

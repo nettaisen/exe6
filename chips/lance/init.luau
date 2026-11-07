@@ -6,7 +6,7 @@ local lance = require("@self/lance")
 
 local chip: Chip = {
     codes = { "A", "R", "W", "*" },
-    element = "wood", family = "wood", class = "standard",
+    element = Element.wood, family = Family.wood, class = "standard",
     rarity = 3, mb = 42, damage = 150, counter = 30, lockout = 10,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,

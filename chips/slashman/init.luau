@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local slashman: Chip = {
     codes = { "S", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 2,
     mb = 42,
@@ -27,8 +27,8 @@ local slashman: Chip = {
 
 local slashmn_ex: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 3,
     mb = 65,
@@ -46,8 +46,8 @@ local slashmn_ex: Chip = {
 
 local slashmn_sp: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 4,
     mb = 79,

@@ -13,14 +13,14 @@ local navi: NaviDef = {
     sprite = chargeman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 4, hold = 2 },
-    element = "fire",
+    element = Element.fire,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("chargeman-win"), lose = asset.banner("chargeman-deleted") },
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- ChargeMan face, and shows DustMan's.
     mugshot = asset.mugshot("chargeman"),
-    version = "gregar",
+    version = Version.gregar,
     merge_height = 0,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -60,7 +60,7 @@ local navi: NaviDef = {
     },
     -- The chips A charges (its family's damaging chips, from a navi level on), and the most damage the charge adds to a
     -- Fire chip, by the navi's level.
-    charged_chips = { family = "fire", damaging = true, when = by_level.from(3) },
+    charged_chips = { family = Family.fire, damaging = true, when = by_level.from(3) },
     fire_charge = by_level.row({ 0, 0, 0, 30, 30, 30, 30, 30, 30, 50, 50, 50, 50, 50, 100 }),
     identity = new.identity {
         class = "player",

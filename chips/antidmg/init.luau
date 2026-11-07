@@ -8,8 +8,8 @@ local traps = require("../lib/traps/controller")
 
 local chip: Chip = {
     codes = { "G", "R", "V", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 30,

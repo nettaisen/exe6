@@ -138,8 +138,8 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [PULL] = draw_in, [
 
 local chip: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "special",
     rarity = 0,
     mb = 99,

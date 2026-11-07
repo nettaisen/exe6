@@ -50,8 +50,8 @@ return {
         grass = {
             flags = { solid = true, grass = true, on_field = true },
             trail_sound = asset.sound("grass"),
-            cleared_by = "fire",
-            doubles = "fire",
+            cleared_by = Element.fire,
+            doubles = Element.fire,
             stand = panel_types.grass(9),
         },
         ice = {
@@ -66,13 +66,13 @@ return {
         volcano = {
             flags = { solid = true, volcano = true, on_field = true },
             trail_sound = asset.sound("panel-volcano"),
-            cleared_by = "aqua",
+            cleared_by = Element.aqua,
             tick = eruption.volcano,
         },
         road_up = {
             flags = { solid = true, road = true, on_field = true },
             expires = 0x708,
-            cleared_by = "wood",
+            cleared_by = Element.wood,
             carries = { dx = 0, dy = -1, panels = 1 },
             trail_sound = asset.sound("immobilizer"),
             rest = panel_types.road,
@@ -81,7 +81,7 @@ return {
         road_down = {
             flags = { solid = true, road = true, on_field = true },
             expires = 0x708,
-            cleared_by = "wood",
+            cleared_by = Element.wood,
             carries = { dx = 0, dy = 1, panels = 1 },
             trail_sound = asset.sound("immobilizer"),
             rest = panel_types.road,
@@ -90,7 +90,7 @@ return {
         road_left = {
             flags = { solid = true, road = true, on_field = true },
             expires = 0x708,
-            cleared_by = "wood",
+            cleared_by = Element.wood,
             carries = { dx = -1, dy = 0, panels = 1 },
             trail_sound = asset.sound("immobilizer"),
             rest = panel_types.road,
@@ -99,7 +99,7 @@ return {
         road_right = {
             flags = { solid = true, road = true, on_field = true },
             expires = 0x708,
-            cleared_by = "wood",
+            cleared_by = Element.wood,
             carries = { dx = 1, dy = 0, panels = 1 },
             trail_sound = asset.sound("immobilizer"),
             rest = panel_types.road,
@@ -175,7 +175,7 @@ return {
     -- The types the engine's own code needs: the missing panel, which no type change reaches (`_object_setPanelType`);
     -- what a break and a crack make (`object_crackPanel` and its kin: 1 and 3); the normal panel, what a mend, an
     -- expiry and a clearing leave (`sub_800C380`, `sub_3007708`: 2).
-    roles = { missing = "missing", broken = "broken", cracked = "cracked", normal = "normal" },
+    roles = { missing = PanelType.missing, broken = PanelType.broken, cracked = PanelType.cracked, normal = PanelType.normal },
     -- A reservation marks its holder (`object_reservePanel` sets its header flag 0x20), and the holder's destroy
     -- releases what it holds (`sub_801BB78`, from `object_genericDestroy` and the navis' end).
     reservations = "marked",

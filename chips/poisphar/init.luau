@@ -27,8 +27,8 @@ local STATUE = statue.variant {
 
 local chip: Chip = {
     codes = {},
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

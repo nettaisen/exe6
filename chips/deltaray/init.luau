@@ -7,11 +7,11 @@ local navi_chips = require("../lib/navi_chips/chip")
 
 local chip: Chip = {
     codes = { "Z" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "giga",
     -- The version whose saves hold it (rules/folder).
-    version = "gregar",
+    version = Version.gregar,
     rarity = 4,
     mb = 82,
     damage = 260,

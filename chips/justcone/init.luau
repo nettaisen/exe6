@@ -6,7 +6,7 @@ local strike = require("@self/strike")
 
 local chip: Chip = {
     codes = { "J" },
-    element = "null", family = "break", class = "standard",
+    element = Element.null, family = Family["break"], class = "standard",
     rarity = 4, mb = 90, damage = 220, counter = 50, cant_counter = true, lockout = 20,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 1,

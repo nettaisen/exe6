@@ -13,12 +13,12 @@ local form: FormDef = {
     kind = "cross_beast",
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "gregar",
+    version = Version.gregar,
     cross_of = chargeman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = gregar_beast,
     sprite = chargecross_beast_sprite,
-    element = "fire",
+    element = Element.fire,
     buster_bonus = 0,
     weapons = { buster = gregar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = wave.weapon },
     -- Its face in the emotion window (`byte_801E700`): the Falzar ROM has no
@@ -27,7 +27,7 @@ local form: FormDef = {
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
-    charged_chips = { { family = "fire", damaging = true }, { family = "null", damaging = false } },
+    charged_chips = { { family = Family.fire, damaging = true }, { family = Family.null, damaging = false } },
     -- The A charge builds up the next Fire chip's damage, up to this much.
     fire_charge = 100,
     -- What its status reset gives the navi (`sub_8014536`).

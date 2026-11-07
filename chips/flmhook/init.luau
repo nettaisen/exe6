@@ -27,8 +27,8 @@ local FLAMES = hook.flames {
 
 local flmhook1: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "fire",
-    family = "program_advance",
+    element = Element.fire,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -43,8 +43,8 @@ local flmhook1: Chip = {
 
 local flmhook2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "fire",
-    family = "program_advance",
+    element = Element.fire,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -59,8 +59,8 @@ local flmhook2: Chip = {
 
 local flmhook3: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "fire",
-    family = "program_advance",
+    element = Element.fire,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

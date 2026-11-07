@@ -10,8 +10,8 @@ local SPEED = 0xC_0000
 
 local aurahed1: Chip = {
     codes = { "B", "C", "D" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 0,
     mb = 25,
@@ -30,8 +30,8 @@ local aurahed1: Chip = {
 
 local aurahed2: Chip = {
     codes = { "D", "E", "F" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 1,
     mb = 33,
@@ -50,8 +50,8 @@ local aurahed2: Chip = {
 
 local aurahed3: Chip = {
     codes = { "F", "G", "H" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 2,
     mb = 39,
@@ -70,8 +70,8 @@ local aurahed3: Chip = {
 
 local streamhd: Chip = {
     codes = {},
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

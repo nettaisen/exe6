@@ -6,8 +6,8 @@ local plus = require("../lib/instant/plus")
 
 local chip: Chip = {
     codes = { "G", "L", "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 60,

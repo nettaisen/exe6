@@ -10,7 +10,7 @@ local throw = require("../lib/bombs/throw")
 
 local chip: Chip = {
     codes = { "O", "P", "V" },
-    element = "null", family = "null", class = "standard",
+    element = Element.null, family = Family.null, class = "standard",
     rarity = 3, mb = 32, damage = 140, counter = 30, lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,

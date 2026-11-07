@@ -121,8 +121,8 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [JUMP] = jump, [PRE
 
 local chip: Chip = {
     codes = { "H" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "special",
     rarity = 0,
     mb = 99,

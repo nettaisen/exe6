@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local judgeman: Chip = {
     codes = { "J", "*" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 2,
     mb = 52,
@@ -27,8 +27,8 @@ local judgeman: Chip = {
 
 local judgemn_ex: Chip = {
     codes = { "J" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 3,
     mb = 62,
@@ -46,8 +46,8 @@ local judgemn_ex: Chip = {
 
 local judgemn_sp: Chip = {
     codes = { "J" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 4,
     mb = 72,

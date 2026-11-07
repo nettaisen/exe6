@@ -12,8 +12,8 @@ local PUCK = puck.variant { steps = 0x12, own_side = 1, ticks = 6, trail = 0x831
 
 local chip: Chip = {
     codes = {},
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

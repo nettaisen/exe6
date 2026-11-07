@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local eraseman: Chip = {
     codes = { "K", "*" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = "mega",
     rarity = 2,
     mb = 51,
@@ -27,8 +27,8 @@ local eraseman: Chip = {
 
 local erasemn_ex: Chip = {
     codes = { "K" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = "mega",
     rarity = 3,
     mb = 65,
@@ -46,8 +46,8 @@ local erasemn_ex: Chip = {
 
 local erasemn_sp: Chip = {
     codes = { "K" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = "mega",
     rarity = 4,
     mb = 79,

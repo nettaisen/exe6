@@ -16,8 +16,8 @@ local wideswrd = require("./wideswrd").wideswrd
 
 local chip: Chip = {
     codes = { "K", "V", "W" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "standard",
     rarity = 2,
     mb = 28,

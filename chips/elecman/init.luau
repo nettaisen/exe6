@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local elecman: Chip = {
     codes = { "E", "*" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 2,
     mb = 38,
@@ -27,8 +27,8 @@ local elecman: Chip = {
 
 local elecman_ex: Chip = {
     codes = { "E" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 3,
     mb = 52,
@@ -46,8 +46,8 @@ local elecman_ex: Chip = {
 
 local elecman_sp: Chip = {
     codes = { "E" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 4,
     mb = 79,

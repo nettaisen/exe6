@@ -13,13 +13,13 @@ local navi: NaviDef = {
     sprite = tomahawkman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 4, hold = 2 },
-    element = "wood",
+    element = Element.wood,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("tomahawkman-win"), lose = asset.banner("tomahawkman-deleted") },
     -- Its face in the emotion window (`byte_801CDDC`).
     mugshot = asset.mugshot("tomahawkman"),
-    version = "falzar",
+    version = Version.falzar,
     merge_height = 0,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -58,8 +58,8 @@ local navi: NaviDef = {
         },
     },
     -- The chips A charges (its family's damaging chips, from a navi level on), and those a charge doubles.
-    charged_chips = { family = "wood", damaging = true, when = by_level.from(11) },
-    charge_doubles = { element = "wood" },
+    charged_chips = { family = Family.wood, damaging = true, when = by_level.from(11) },
+    charge_doubles = { element = Element.wood },
     -- A hit's status doesn't take.
     traits = { status_immune = true },
     identity = new.identity {

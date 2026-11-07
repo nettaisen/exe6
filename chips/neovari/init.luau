@@ -12,8 +12,8 @@ local vari = require("../lib/swords/vari")
 
 local chip: Chip = {
     codes = { "N" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "standard",
     rarity = 3,
     mb = 52,

@@ -84,7 +84,7 @@ end
 local chips: { [string]: Chip } = {
     bblstar1 = {
         codes = { "B", "E", "T" },
-        element = "aqua", family = "aqua", class = "standard",
+        element = Element.aqua, family = Family.aqua, class = "standard",
         rarity = 0, mb = 30, damage = 60, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -94,7 +94,7 @@ local chips: { [string]: Chip } = {
     },
     bblstar2 = {
         codes = { "C", "L", "V" },
-        element = "aqua", family = "aqua", class = "standard",
+        element = Element.aqua, family = Family.aqua, class = "standard",
         rarity = 1, mb = 38, damage = 80, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -104,7 +104,7 @@ local chips: { [string]: Chip } = {
     },
     bblstar3 = {
         codes = { "G", "R", "S" },
-        element = "aqua", family = "aqua", class = "standard",
+        element = Element.aqua, family = Family.aqua, class = "standard",
         rarity = 2, mb = 46, damage = 100, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

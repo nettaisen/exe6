@@ -7,7 +7,7 @@ local controller = require("@self/controller")
 
 local chip: Chip = {
     codes = { "A", "S", "T" },
-    element = "null", family = "summon", class = "standard",
+    element = Element.null, family = Family.summon, class = "standard",
     rarity = 2, mb = 28, damage = 200, counter = 50, cant_counter = true, lockout = 0,
     flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,

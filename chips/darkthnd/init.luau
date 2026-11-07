@@ -12,8 +12,8 @@ local PARALYZE = statuses.paralyze_90
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 4,
     mb = 80,

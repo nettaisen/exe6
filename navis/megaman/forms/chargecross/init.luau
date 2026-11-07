@@ -16,13 +16,13 @@ local form: FormDef = {
     kind = "cross",
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "gregar",
+    version = Version.gregar,
     cross_of = chargeman,
     beast = chargecross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
     sprite = megaman_sprite,
-    element = "fire",
+    element = Element.fire,
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = tackle.weapon, a_charge = charged_chip_bonus_29 },
     palette = 19,
@@ -31,7 +31,7 @@ local form: FormDef = {
     mugshot = { normal = asset.mugshot("chargecross"), tired = asset.mugshot("chargecross-tired") },
     -- What R shows in the Cross window.
     -- The chips A charges.
-    charged_chips = { { family = "fire", damaging = true } },
+    charged_chips = { { family = Family.fire, damaging = true } },
     -- The A charge builds up the next Fire chip's damage, up to this much.
     fire_charge = 100,
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.

@@ -17,12 +17,12 @@ local form: FormDef = {
     beast_shot_palette = 5,
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "falzar",
+    version = Version.falzar,
     cross_of = dustman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = falzar_beast,
     sprite = dustcross_beast_sprite,
-    element = "null",
+    element = Element.null,
     weakness = { cursor = true },
     buster_bonus = 0,
     weapons = {
@@ -35,7 +35,7 @@ local form: FormDef = {
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
-    charged_chips = { { family = "null", damaging = false } },
+    charged_chips = { { family = Family.null, damaging = false } },
     -- What its status reset gives the navi (`sub_8014536`).
     status_reset = { air_shoes = true, float_shoes = true, floating_body = true, target_marker = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.

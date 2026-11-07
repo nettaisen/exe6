@@ -55,11 +55,11 @@ end)
 
 local chip: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "giga",
     -- The version whose saves hold it (rules/folder).
-    version = "falzar",
+    version = Version.falzar,
     rarity = 4,
     mb = 93,
     damage = 250,
