@@ -7,8 +7,8 @@ local fist = require("@self/fist")
 
 local firehit1: Chip = {
     codes = { "D", "E", "F" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 0,
     mb = 12,
@@ -23,8 +23,8 @@ local firehit1: Chip = {
 
 local firehit2: Chip = {
     codes = { "R", "S", "T" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 1,
     mb = 22,
@@ -39,8 +39,8 @@ local firehit2: Chip = {
 
 local firehit3: Chip = {
     codes = { "A", "B", "C" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 2,
     mb = 32,

@@ -8,7 +8,7 @@ local variants = require("../objects/projectile/variants")
 
 local chip: Chip = {
     codes = { "*" },
-    element = "null", family = "wind", class = ChipClass.standard,
+    element = Element.null, family = Family.wind, class = ChipClass.standard,
     rarity = 1, mb = 4, damage = 20, counter = 20, lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     extra_flags = { free_slot_in = true },

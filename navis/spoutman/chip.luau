@@ -163,8 +163,8 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = {
 
 local chip: Chip = {
     codes = { "A" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.special,
     rarity = 0,
     mb = 99,

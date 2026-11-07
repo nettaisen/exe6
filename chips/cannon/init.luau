@@ -17,8 +17,8 @@ local M_CANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 2, atta
 
 local cannon: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 6,
@@ -33,8 +33,8 @@ local cannon: Chip = {
 
 local hicannon: Chip = {
     codes = { "L", "M", "N", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 24,
@@ -49,8 +49,8 @@ local hicannon: Chip = {
 
 local m_cannon: Chip = {
     codes = { "R", "S", "T", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 38,

@@ -12,7 +12,7 @@ local LOG: RollingLog = { big = true, stop_ticks = 60, hp = 20, thrown = true }
 local chips: { [string]: Chip } = {
     rlnglog1 = {
         codes = { "I", "K", "P" },
-        element = "wood", family = "wood", class = ChipClass.standard,
+        element = Element.wood, family = Family.wood, class = ChipClass.standard,
         rarity = 0, mb = 14, damage = 50, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -22,7 +22,7 @@ local chips: { [string]: Chip } = {
     },
     rlnglog2 = {
         codes = { "E", "Q", "Z" },
-        element = "wood", family = "wood", class = ChipClass.standard,
+        element = Element.wood, family = Family.wood, class = ChipClass.standard,
         rarity = 1, mb = 26, damage = 70, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -32,7 +32,7 @@ local chips: { [string]: Chip } = {
     },
     rlnglog3 = {
         codes = { "F", "N", "W" },
-        element = "wood", family = "wood", class = ChipClass.standard,
+        element = Element.wood, family = Family.wood, class = ChipClass.standard,
         rarity = 2, mb = 38, damage = 90, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

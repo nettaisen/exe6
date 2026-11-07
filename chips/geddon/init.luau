@@ -17,7 +17,7 @@ local BREAK = quake.change {
 
 local chip: Chip = {
     codes = { "A", "L", "R", "*" },
-    element = "null", family = "null", class = ChipClass.standard,
+    element = Element.null, family = Family.null, class = ChipClass.standard,
     rarity = 2, mb = 47, damage = 0, counter = 0, lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 1,

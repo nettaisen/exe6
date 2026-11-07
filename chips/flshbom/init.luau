@@ -22,7 +22,7 @@ end
 local chips: { [string]: Chip } = {
     flshbom1 = {
         codes = { "J", "L", "Q", "*" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 30, damage = 40, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -32,7 +32,7 @@ local chips: { [string]: Chip } = {
     },
     flshbom2 = {
         codes = { "G", "K", "R" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 1, mb = 34, damage = 70, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -42,7 +42,7 @@ local chips: { [string]: Chip } = {
     },
     flshbom3 = {
         codes = { "H", "P", "S" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 2, mb = 38, damage = 100, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

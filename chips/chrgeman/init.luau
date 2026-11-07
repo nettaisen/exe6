@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local chrgeman: Chip = {
     codes = { "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 2,
     mb = 42,
@@ -27,8 +27,8 @@ local chrgeman: Chip = {
 
 local chrgemn_ex: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 63,
@@ -46,8 +46,8 @@ local chrgemn_ex: Chip = {
 
 local chrgemn_sp: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 4,
     mb = 81,

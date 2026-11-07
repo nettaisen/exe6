@@ -23,7 +23,7 @@ local SUPER_SHOT = bullet.variant {
 local chips: { [string]: Chip } = {
     vulcan1 = {
         codes = { "B", "D", "S", "*" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 5, damage = 10, counter = 10, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -33,7 +33,7 @@ local chips: { [string]: Chip } = {
     },
     vulcan2 = {
         codes = { "D", "F", "L" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 1, mb = 18, damage = 15, counter = 10, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -43,7 +43,7 @@ local chips: { [string]: Chip } = {
     },
     vulcan3 = {
         codes = { "A", "G", "R" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 2, mb = 30, damage = 20, counter = 10, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -53,7 +53,7 @@ local chips: { [string]: Chip } = {
     },
     suprvulc = {
         codes = { "V" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 3, mb = 75, damage = 20, counter = 4, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 1,

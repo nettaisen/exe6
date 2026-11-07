@@ -12,14 +12,14 @@ local navi: NaviDef = {
     sprite = elecman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 4, hold = 1 },
-    element = "elec",
+    element = Element.elec,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("elecman-win"), lose = asset.banner("elecman-deleted") },
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- ElecMan face, and shows TomahawkMan's.
     mugshot = asset.mugshot("elecman"),
-    version = "gregar",
+    version = Version.gregar,
     merge_height = 0,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -28,7 +28,7 @@ local navi: NaviDef = {
     },
     own_chip = { chip = elecman, code = "E" },
     chip_bonus = {
-        family = "elec",
+        family = Family.elec,
         dimming_chips = false,
         damage = by_level.row({ 0, 0, 0, 0, 0, 0, 0, 30, 30, 30, 30, 40, 40, 40, 50 }),
     },

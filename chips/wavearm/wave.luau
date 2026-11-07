@@ -77,9 +77,9 @@ local OFF_FIELD = 0xF0
 local function mark(x: number, y: number, panel: PanelType?)
     if panel == nil then
         return
-    elseif panel == "cracked" then
+    elseif panel == PanelType.cracked then
         field.crack(x, y)
-    elseif panel == "broken" then
+    elseif panel == PanelType.broken then
         field.shatter(x, y)
     else
         field.set_type(x, y, panel)

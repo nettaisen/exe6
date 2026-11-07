@@ -112,7 +112,7 @@ local function burst(me: Object, s: State)
         s.grassed = true
         -- (A solid panel turns to grass under the first burst.)
         if field.solid(me.panel_x, me.panel_y) then
-            field.set_type(me.panel_x, me.panel_y, "grass")
+            field.set_type(me.panel_x, me.panel_y, PanelType.grass)
         end
     end
     me:reset_collision_types(collision.attack, collision.hits_navis, HIT_MOD)

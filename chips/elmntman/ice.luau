@@ -62,7 +62,7 @@ local function stand(me: Object)
     if me.phase == 0 then
         me.phase = 4
         c:set_region(regions.single)
-        field.set_type(me.panel_x, me.panel_y, "ice")
+        field.set_type(me.panel_x, me.panel_y, PanelType.ice)
         me.timer = (me.state :: State).ticks
         return
     end

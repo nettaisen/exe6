@@ -14,7 +14,7 @@
 export type FlyingShotVariant = {
     collision: { is: CollisionType, hits: CollisionType },
     hit_mod: HitModifier,
-    element: ElementName,
+    element: Element,
     secondary: SecondaryElements?,
     spark: Spark?,
     sprite: SpriteAsset,
@@ -572,3 +572,21 @@ export type NaviState = {
     thrown_look: AbsorbedLook?,
     thrown_anim: number,
 }
+
+-- The names the game defines, as value tables (docs/design/scripting.md §2.1): what its rules, builds and root
+-- say it has, which the engine holds a module's reads to (written by verify tools/api-names/api-game-names/declare.py).
+declare PanelType: {
+    missing: PanelType, broken: PanelType, normal: PanelType, cracked: PanelType, poison: PanelType, holy: PanelType,
+    grass: PanelType, ice: PanelType, volcano: PanelType, road_up: PanelType, road_down: PanelType,
+    road_left: PanelType, road_right: PanelType,
+}
+declare Family: {
+    fire: Family, aqua: Family, elec: Family, wood: Family, plus: Family, sword: Family, cursor: Family, summon: Family,
+    wind: Family, ["break"]: Family, null: Family, program_advance: Family, special: Family,
+}
+declare Emotion: { normal: Emotion, worn_out: Emotion, angry: Emotion, tired: Emotion, full_synchro: Emotion }
+declare Version: { gregar: Version, falzar: Version }
+declare Window: { beast_out: Window, beast_out_chip: Window, cross_chosen: Window }
+declare Button: { beast_out: Button, redeal: Button, scrap: Button }
+declare Collection: { navicust_programs: Collection, patch_cards: Collection }
+-- (End of the names the game defines.)

@@ -8,7 +8,7 @@ local controller = require("@self/controller")
 local chips: { [string]: Chip } = {
     colorpt = {
         codes = { "*" },
-        element = "null", family = "plus", class = ChipClass.standard,
+        element = Element.null, family = Family.plus, class = ChipClass.standard,
         rarity = 1, mb = 31, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         slot_in_limit = 1,
@@ -16,7 +16,7 @@ local chips: { [string]: Chip } = {
     },
     dblpoint = {
         codes = { "*" },
-        element = "null", family = "plus", class = ChipClass.standard,
+        element = Element.null, family = Family.plus, class = ChipClass.standard,
         rarity = 3, mb = 50, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         slot_in_limit = 1,

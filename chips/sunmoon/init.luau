@@ -10,8 +10,8 @@ local sun = require("@self/sun")
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,

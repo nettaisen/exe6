@@ -107,14 +107,14 @@ local rules: Rules = {
         -- switched off is none of the side's: it does nothing in battle). A card each version's ROM gives effects of
         -- its own (card 117, Bass-Cross MegaMan) has the variant chosen for it, a version's (its effects'
         -- `variant`s), as a NaviCust program's color is chosen; a card without variants, none (left out).
-        patch_cards = schema.list({ card = schema.entry("patch_cards"), variant = { "gregar", "falzar" } }, 32),
+        patch_cards = schema.list({ card = schema.entry(Collection.patch_cards), variant = { "gregar", "falzar" } }, 32),
         -- Their NaviCust (./navicust): how far its board has been expanded (none: no NaviCust, the stats as the
         -- setup gives them: a navi but MegaMan's, a recording's), and the programs placed on its 7x7 grid in its
         -- list's order, each in one of its colors (its definition's `colors`), its center at (x, y), turned
         -- `rotation` quarters clockwise, compressed or not.
         navicust_expansions = schema.optional(schema.u8),
         navicust_programs = schema.list({
-            program = schema.entry("navicust_programs"),
+            program = schema.entry(Collection.navicust_programs),
             color = { "white", "pink", "yellow", "red", "blue", "green" },
             x = schema.u8,
             y = schema.u8,
@@ -197,7 +197,7 @@ local rules: Rules = {
             sp = { by_time = schema.array(schema.u16, 11) },
             -- The version whose saves hold the chip (./folder: a version's own Giga chips), and a chip a save can
             -- collect though no library lists it (the Japanese game's gift, DblBeast).
-            version = { "gregar", "falzar" },
+            version = { Version.gregar, Version.falzar },
             collectible = schema.bool,
         },
         form = {

@@ -19,8 +19,8 @@ end
 
 local firebrn1: Chip = {
     codes = { "F", "G", "H", "*" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 0,
     mb = 8,
@@ -35,8 +35,8 @@ local firebrn1: Chip = {
 
 local firebrn2: Chip = {
     codes = { "S", "T", "U" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 1,
     mb = 21,
@@ -51,8 +51,8 @@ local firebrn2: Chip = {
 
 local firebrn3: Chip = {
     codes = { "C", "D", "E" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 2,
     mb = 34,

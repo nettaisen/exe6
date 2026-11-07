@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local tmhkman: Chip = {
     codes = { "T", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.mega,
     rarity = 2,
     mb = 40,
@@ -27,8 +27,8 @@ local tmhkman: Chip = {
 
 local tmhkman_ex: Chip = {
     codes = { "T" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.mega,
     rarity = 3,
     mb = 60,
@@ -46,8 +46,8 @@ local tmhkman_ex: Chip = {
 
 local tmhkman_sp: Chip = {
     codes = { "T" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.mega,
     rarity = 4,
     mb = 80,

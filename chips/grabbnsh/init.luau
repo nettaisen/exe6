@@ -7,8 +7,8 @@ local controller = require("@self/controller")
 
 local grabbnsh: Chip = {
     codes = { "B", "M", "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 24,
@@ -23,8 +23,8 @@ local grabbnsh: Chip = {
 
 local grabrvng: Chip = {
     codes = { "I", "Q", "Z" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 3,
     mb = 50,

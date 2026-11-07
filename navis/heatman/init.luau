@@ -13,14 +13,14 @@ local navi: NaviDef = {
     sprite = heatman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA, which loops) last.
     animation_steps = { warp_out = 5, hold = 12, hold_loops = true },
-    element = "fire",
+    element = Element.fire,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("heatman-win"), lose = asset.banner("heatman-deleted") },
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- HeatMan face, and shows SpoutMan's.
     mugshot = asset.mugshot("heatman"),
-    version = "gregar",
+    version = Version.gregar,
     merge_height = 8,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -29,7 +29,7 @@ local navi: NaviDef = {
     },
     own_chip = { chip = heatman, code = "H" },
     chip_bonus = {
-        family = "fire",
+        family = Family.fire,
         dimming_chips = false,
         damage = by_level.row({ 0, 0, 0, 0, 0, 0, 0, 30, 30, 30, 30, 40, 40, 40, 50 }),
     },

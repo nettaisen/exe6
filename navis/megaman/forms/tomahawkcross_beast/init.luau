@@ -16,21 +16,21 @@ local form: FormDef = {
     beast_shot_palette = 2,
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "falzar",
+    version = Version.falzar,
     cross_of = tomahawkman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = falzar_beast,
     sprite = tomahawkcross_beast_sprite,
-    element = "wood",
+    element = Element.wood,
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = throw.weapon },
     mugshot = asset.mugshot("tomahawkcross-beast"),
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
-    charged_chips = { { family = "wood", damaging = true }, { family = "null", damaging = false } },
+    charged_chips = { { family = Family.wood, damaging = true }, { family = Family.null, damaging = false } },
     -- A charged Wood chip hits twice as hard.
-    charge_doubles = { element = "wood" },
+    charge_doubles = { element = Element.wood },
     -- What its status reset gives the navi (`sub_8014536`).
     status_reset = {
         clear_statuses = true,

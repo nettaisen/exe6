@@ -17,7 +17,7 @@ end
 local chips: { [string]: Chip } = {
     lilbolr1 = {
         codes = { "F", "K", "L" },
-        element = "null", family = "summon", class = ChipClass.standard,
+        element = Element.null, family = Family.summon, class = ChipClass.standard,
         rarity = 0, mb = 18, damage = 100, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -25,7 +25,7 @@ local chips: { [string]: Chip } = {
     },
     lilbolr2 = {
         codes = { "E", "M", "V" },
-        element = "null", family = "summon", class = ChipClass.standard,
+        element = Element.null, family = Family.summon, class = ChipClass.standard,
         rarity = 1, mb = 23, damage = 140, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -33,7 +33,7 @@ local chips: { [string]: Chip } = {
     },
     lilbolr3 = {
         codes = { "G", "S", "Z" },
-        element = "null", family = "summon", class = ChipClass.standard,
+        element = Element.null, family = Family.summon, class = ChipClass.standard,
         rarity = 2, mb = 28, damage = 180, counter = 30, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

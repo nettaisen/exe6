@@ -10,7 +10,7 @@ local plane = require("@self/plane")
 local chips: { [string]: Chip } = {
     airraid1 = {
         codes = { "G", "K", "R" },
-        element = "null", family = "summon", class = ChipClass.standard,
+        element = Element.null, family = Family.summon, class = ChipClass.standard,
         rarity = 0, mb = 26, damage = 10, counter = 30, cant_counter = true, lockout = 0,
         flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -19,7 +19,7 @@ local chips: { [string]: Chip } = {
     },
     airraid2 = {
         codes = { "O", "T", "Y" },
-        element = "null", family = "summon", class = ChipClass.standard,
+        element = Element.null, family = Family.summon, class = ChipClass.standard,
         rarity = 1, mb = 32, damage = 10, counter = 30, cant_counter = true, lockout = 0,
         flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -28,7 +28,7 @@ local chips: { [string]: Chip } = {
     },
     airraid3 = {
         codes = { "N", "U", "Z" },
-        element = "null", family = "summon", class = ChipClass.standard,
+        element = Element.null, family = Family.summon, class = ChipClass.standard,
         rarity = 2, mb = 39, damage = 10, counter = 30, cant_counter = true, lockout = 0,
         flags = { dimming = true, has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

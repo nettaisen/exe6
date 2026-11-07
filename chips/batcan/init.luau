@@ -16,7 +16,7 @@ local batcan = shot.action
 local chips: { [string]: Chip } = {
     batcan1 = {
         codes = { "*" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 5, damage = 40, counter = 30, lockout = 0,
         flags = { has_damage = true },
         slot_in_limit = 1,
@@ -26,7 +26,7 @@ local chips: { [string]: Chip } = {
     },
     batcan2 = {
         codes = { "S" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 5, damage = 40, counter = 30, lockout = 0,
         flags = { has_damage = true },
         slot_in_limit = 1,
@@ -36,7 +36,7 @@ local chips: { [string]: Chip } = {
     },
     batcan3 = {
         codes = { "R" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 5, damage = 40, counter = 30, lockout = 0,
         flags = { has_damage = true },
         slot_in_limit = 1,
@@ -46,7 +46,7 @@ local chips: { [string]: Chip } = {
     },
     batcan4 = {
         codes = { "Z" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 5, damage = 40, counter = 30, lockout = 0,
         flags = { has_damage = true },
         slot_in_limit = 1,

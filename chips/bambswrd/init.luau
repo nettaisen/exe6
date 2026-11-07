@@ -31,8 +31,8 @@ local CHARGED = slashes.slash {
 
 local chip: Chip = {
     codes = { "H", "S", "W" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 2,
     mb = 34,

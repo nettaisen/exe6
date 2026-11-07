@@ -9,8 +9,8 @@ local statue = require("@self/statue")
 
 local chip: Chip = {
     codes = { "O" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.standard,
     rarity = 4,
     mb = 66,

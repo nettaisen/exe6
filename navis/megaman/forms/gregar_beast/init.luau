@@ -15,9 +15,9 @@ local form: FormDef = {
     traits = { shows_target_marker = true, afterimages_stay = true, alt_charge_time = true, mood_palette = true },
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "gregar",
+    version = Version.gregar,
     sprite = gregar_beast_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = gregar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = beast_claw.weapon },
     -- Its faces in the emotion window, and in Full Synchro (`byte_801E700`): the
@@ -26,7 +26,7 @@ local form: FormDef = {
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
-    charged_chips = { { family = "null", damaging = false } },
+    charged_chips = { { family = Family.null, damaging = false } },
     -- What its status reset gives the navi (`sub_8014536`).
     status_reset = { super_armor = true, target_marker = true },
     -- The Cross special's buster volley (`sub_802D4F0`).

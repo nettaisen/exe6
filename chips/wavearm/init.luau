@@ -12,8 +12,8 @@ local WAVE = wave.variant { anim = 1, steps = 17, ticks = 6, quick = true, steer
 
 local wavearm1: Chip = {
     codes = { "E", "F", "G" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 15,
@@ -27,8 +27,8 @@ local wavearm1: Chip = {
 
 local wavearm2: Chip = {
     codes = { "L", "M", "N" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 22,
@@ -42,8 +42,8 @@ local wavearm2: Chip = {
 
 local wavearm3: Chip = {
     codes = { "R", "S", "T" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 29,

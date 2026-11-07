@@ -16,7 +16,7 @@ local confuse = effects.confuse(statuses.confuse_4, collision.guard_breaking, co
 
 local chip: Chip = {
     codes = { "A", "G", "S", "*" },
-    element = "null", family = "summon", class = ChipClass.standard,
+    element = Element.null, family = Family.summon, class = ChipClass.standard,
     rarity = 1, mb = 20, damage = 0, counter = 0, lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 3,

@@ -21,8 +21,8 @@ end
 
 local widebrn1: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "fire",
-    family = "program_advance",
+    element = Element.fire,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
@@ -38,8 +38,8 @@ local widebrn1: Chip = {
 
 local widebrn2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "fire",
-    family = "program_advance",
+    element = Element.fire,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
@@ -55,8 +55,8 @@ local widebrn2: Chip = {
 
 local widebrn3: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "fire",
-    family = "program_advance",
+    element = Element.fire,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,

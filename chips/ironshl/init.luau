@@ -28,8 +28,8 @@ local IRON = shell.variant {
 
 local ironshl1: Chip = {
     codes = { "J", "K", "L" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 0,
     mb = 13,
@@ -44,8 +44,8 @@ local ironshl1: Chip = {
 
 local ironshl2: Chip = {
     codes = { "C", "D", "E" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 1,
     mb = 20,
@@ -60,8 +60,8 @@ local ironshl2: Chip = {
 
 local ironshl3: Chip = {
     codes = { "L", "M", "N" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 2,
     mb = 27,

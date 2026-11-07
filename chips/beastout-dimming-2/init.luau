@@ -17,7 +17,7 @@ local CRACK = quake.change {
 }
 
 local chip: Chip = {
-    element = "null", family = "special", class = ChipClass.special,
+    element = Element.null, family = Family.special, class = ChipClass.special,
     rarity = 0, mb = 99, damage = 0, counter = 0, lockout = 0,
     flags = { dimming = true },
     slot_in_limit = 1,

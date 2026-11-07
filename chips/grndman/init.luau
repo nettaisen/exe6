@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local grndman: Chip = {
     codes = { "G", "*" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.mega,
     rarity = 2,
     mb = 41,
@@ -27,8 +27,8 @@ local grndman: Chip = {
 
 local grndman_ex: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.mega,
     rarity = 3,
     mb = 66,
@@ -46,8 +46,8 @@ local grndman_ex: Chip = {
 
 local grndman_sp: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.mega,
     rarity = 4,
     mb = 85,

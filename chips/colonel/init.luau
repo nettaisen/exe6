@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local colonel: Chip = {
     codes = { "C", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.mega,
     rarity = 2,
     mb = 45,
@@ -27,8 +27,8 @@ local colonel: Chip = {
 
 local colonel_ex: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.mega,
     rarity = 3,
     mb = 70,
@@ -46,8 +46,8 @@ local colonel_ex: Chip = {
 
 local colonel_sp: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.mega,
     rarity = 4,
     mb = 91,

@@ -8,8 +8,8 @@ local cornsht_chips = require("./cornsht")
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "wood",
-    family = "program_advance",
+    element = Element.wood,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,

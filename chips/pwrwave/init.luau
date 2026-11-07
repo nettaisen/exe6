@@ -13,8 +13,8 @@ local WAVE = wave.variant { anim = 1, steps = 17, ticks = 6, quick = true }
 
 local pwrwave1: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
@@ -29,8 +29,8 @@ local pwrwave1: Chip = {
 
 local pwrwave2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
@@ -45,8 +45,8 @@ local pwrwave2: Chip = {
 
 local pwrwave3: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,

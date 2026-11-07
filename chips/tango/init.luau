@@ -6,8 +6,8 @@ local cannon_chips = require("./cannon")
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.special,
     rarity = 0,
     mb = 5,

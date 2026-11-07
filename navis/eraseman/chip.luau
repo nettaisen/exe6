@@ -76,8 +76,8 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [RAISE] = raise, [S
 
 local chip: Chip = {
     codes = { "K" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = ChipClass.special,
     rarity = 0,
     mb = 99,

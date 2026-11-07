@@ -16,13 +16,13 @@ local form: FormDef = {
     kind = "cross",
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "falzar",
+    version = Version.falzar,
     cross_of = dustman,
     beast = dustcross_beast,
     -- A weakness hit breaks the Cross: back to the base form.
     breaks_to = base,
     sprite = megaman_sprite,
-    element = "null",
+    element = Element.null,
     weakness = { cursor = true },
     buster_bonus = 0,
     weapons = { buster = throw_absorbed.weapon, charge_shot = charge.weapon, back_special = absorb.weapon },

@@ -216,8 +216,8 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [CURL] = curl, [LAU
 
 local chip: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.special,
     rarity = 0,
     mb = 99,

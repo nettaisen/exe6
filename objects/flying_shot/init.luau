@@ -184,7 +184,7 @@ local function init(me: Object)
         look:face(me)
     end
     look.palette = s.palette
-    me.element = Element.new(v.element, v.secondary)
+    me.element = Element.new(v.element.primary :: PrimaryElement, v.secondary)
     s.range = v.range
     me:set_panel_from_coordinates()
     me.vel = Vec3.new(me.facing * v.speed, me.vel.y, me.vel.z)

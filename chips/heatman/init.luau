@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local heatman: Chip = {
     codes = { "H", "*" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 2,
     mb = 32,
@@ -27,8 +27,8 @@ local heatman: Chip = {
 
 local heatman_ex: Chip = {
     codes = { "H" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 3,
     mb = 55,
@@ -46,8 +46,8 @@ local heatman_ex: Chip = {
 
 local heatman_sp: Chip = {
     codes = { "H" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 4,
     mb = 70,

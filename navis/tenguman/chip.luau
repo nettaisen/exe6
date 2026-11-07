@@ -97,8 +97,8 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [BLOW] = blow, [REC
 
 local chip: Chip = {
     codes = { "T" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = ChipClass.special,
     rarity = 0,
     mb = 99,

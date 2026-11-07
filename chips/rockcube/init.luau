@@ -8,8 +8,8 @@ local rock = require("@self/rock")
 
 local rockcube: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.standard,
     rarity = 0,
     mb = 6,
@@ -25,8 +25,8 @@ local rockcube: Chip = {
 
 local icecube: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.special,
     rarity = 0,
     mb = 5,

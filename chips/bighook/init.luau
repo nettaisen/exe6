@@ -27,11 +27,11 @@ local FLAMES = hook.flames {
 
 local chip: Chip = {
     codes = { "H" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.giga,
     -- The version whose saves hold it (rules/folder).
-    version = "gregar",
+    version = Version.gregar,
     rarity = 4,
     mb = 92,
     damage = 240,

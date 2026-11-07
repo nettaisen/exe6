@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local crcusman: Chip = {
     codes = { "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 2,
     mb = 42,
@@ -27,8 +27,8 @@ local crcusman: Chip = {
 
 local crcusmn_ex: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 64,
@@ -46,8 +46,8 @@ local crcusmn_ex: Chip = {
 
 local crcusmn_sp: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 4,
     mb = 86,

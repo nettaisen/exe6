@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local diveman: Chip = {
     codes = { "D", "*" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.mega,
     rarity = 2,
     mb = 45,
@@ -27,8 +27,8 @@ local diveman: Chip = {
 
 local diveman_ex: Chip = {
     codes = { "D" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.mega,
     rarity = 3,
     mb = 60,
@@ -46,8 +46,8 @@ local diveman_ex: Chip = {
 
 local diveman_sp: Chip = {
     codes = { "D" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.mega,
     rarity = 4,
     mb = 75,

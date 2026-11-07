@@ -22,7 +22,7 @@ local CHARGED = slashes.slash {
 
 local chip: Chip = {
     codes = { "B", "L", "P" },
-    element = "null", family = "sword", class = ChipClass.standard,
+    element = Element.null, family = Family.sword, class = ChipClass.standard,
     rarity = 2, mb = 28, damage = 160, counter = 20, lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,

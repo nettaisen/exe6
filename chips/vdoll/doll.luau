@@ -34,7 +34,7 @@ return common.make {
     hit_mod = { flinch = true },
     spark = sparks.plain,
     set_down = { is = collision.neutral_body, hits = collision.everything, hit_mod = { flinch = true, flash = true } },
-    landing_panel = "poison",
+    landing_panel = PanelType.poison,
     landing_sound = asset.sound("panel-poison"),
     puff = effects.puff,
     trajectory = trajectory,

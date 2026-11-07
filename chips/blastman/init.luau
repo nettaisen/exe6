@@ -8,8 +8,8 @@ local sp_chips = require("../rules/sp_chips")
 
 local blastman: Chip = {
     codes = { "B", "*" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 2,
     mb = 30,
@@ -27,8 +27,8 @@ local blastman: Chip = {
 
 local blastmn_ex: Chip = {
     codes = { "B" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 3,
     mb = 49,
@@ -46,8 +46,8 @@ local blastmn_ex: Chip = {
 
 local blastmn_sp: Chip = {
     codes = { "B" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 4,
     mb = 68,

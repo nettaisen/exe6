@@ -45,7 +45,7 @@ end
 local chips: { [string]: Chip } = {
     tornado = {
         codes = { "L", "R", "T" },
-        element = "null", family = "wind", class = ChipClass.standard,
+        element = Element.null, family = Family.wind, class = ChipClass.standard,
         rarity = 2, mb = 16, damage = 20, counter = 4, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
@@ -58,7 +58,7 @@ local chips: { [string]: Chip } = {
     },
     static = {
         codes = { "G", "S", "V" },
-        element = "null", family = "wind", class = ChipClass.standard,
+        element = Element.null, family = Family.wind, class = ChipClass.standard,
         rarity = 2, mb = 30, damage = 20, counter = 4, lockout = 0,
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,

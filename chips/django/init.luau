@@ -14,8 +14,8 @@ local navi_chips = require("../lib/navi_chips/chip")
 
 local django: Chip = {
     codes = { "D", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 2,
     mb = 30,
@@ -32,8 +32,8 @@ local django: Chip = {
 
 local django2: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 70,
@@ -50,8 +50,8 @@ local django2: Chip = {
 
 local django3: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 4,
     mb = 90,

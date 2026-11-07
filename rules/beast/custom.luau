@@ -53,13 +53,13 @@ end
 -- the other game's when the player's Crosses hold one of its, which a
 -- save's never do; docs/engine/custom-screen.md §4.1), and the base form
 -- the player's Cybeast's.
-local function beast_game(side: number): "gregar" | "falzar"
+local function beast_game(side: number): Version
     local form = battle.navi(side).form
     if form.version ~= nil and not form.base then
-        return form.version :: "gregar" | "falzar"
+        return form.version
     end
     local cybeast = (rules.setup() :: Setup).cybeast
-    return if cybeast ~= nil and cybeast.version == "gregar" then "gregar" else "falzar"
+    return if cybeast ~= nil and cybeast.version == Version.gregar then Version.gregar else Version.falzar
 end
 
 -- The form Beast Out takes the navi to (`sub_802937A`, `sub_802A040`): when
@@ -71,8 +71,8 @@ local function beast_form(side: number, tired: boolean): FormDef?
     if forms == nil then
         return nil
     end
-    local function of(game: "gregar" | "falzar"): FormSet?
-        return if game == "gregar" then forms.gregar else forms.falzar
+    local function of(game: Version): FormSet?
+        return if game == Version.gregar then forms.gregar else forms.falzar
     end
     if tired then
         local set = of(beast_game(side))
@@ -88,7 +88,7 @@ end
 local function available(side: number): boolean
     local s = rules.state() :: State
     local emotion = custom.player(side).emotion
-    return emotion ~= "worn_out" and (emotion ~= "tired" or s.beast_out_used) and not kind.beast(side)
+    return emotion ~= Emotion.worn_out and (emotion ~= Emotion.tired or s.beast_out_used) and not kind.beast(side)
 end
 
 -- The Beast Out button (`sub_8029FB4`, battle mode 0), in the special slot.
@@ -105,7 +105,7 @@ custom_beast.button = {
     end,
     -- `sub_8028F48`: with room left, no Cross chosen, and the navi able to.
     state = function(side: number): ButtonState
-        if not custom.full(side) and available(side) and not custom.form_taken(side, "beast_out") then
+        if not custom.full(side) and available(side) and not custom.form_taken(side, Button.beast_out) then
             return ButtonState.selectable
         end
         return ButtonState.unavailable
@@ -119,12 +119,12 @@ custom_beast.button = {
         end
         custom.pick(side)
         custom.play(side, ScreenSound.pick)
-        custom.open_window(side, "beast_out")
+        custom.open_window(side, Window.beast_out)
         custom.set_column_icon(side, beast_out_chip)
     end,
     -- `sub_802A0EC`: taking Beast Out back takes its face back.
     taken_back = function(side: number, _place: number)
-        custom.set_form(side, "beast_out", nil)
+        custom.set_form(side, Button.beast_out, nil)
         custom.set_face(side, nil)
         custom.play(side, ScreenSound.back)
         custom.play(side, ScreenSound.cancel)
@@ -135,7 +135,7 @@ custom_beast.button = {
 -- animation (`sub_80275EC`).
 function custom_beast.chip_picked(side: number, chip: Chip)
     if chip == beast_out_chip then
-        custom.open_window(side, "beast_out_chip")
+        custom.open_window(side, Window.beast_out_chip)
     end
 end
 
@@ -168,7 +168,7 @@ custom_beast.chip_window = {
             custom.shake(side, SHAKE_MAGNITUDE, SHAKE_TICKS)
             custom.set_frame(side, 0)
             custom.fade(side, CustomFade.half_out, FADE_SPEED)
-            custom.play_sound(side, CHOSEN_SOUNDS[beast_game(side)])
+            custom.play_sound(side, CHOSEN_SOUNDS[beast_game(side).name])
             custom.play_sound(side, FLASH_SOUND)
         elseif tick == 68 then
             -- sub_8027672
@@ -188,7 +188,7 @@ custom_beast.window = {
         local tick = custom.window_tick(side)
         if tick == 1 then
             -- sub_8027738: the form's taken, and the emblem spins.
-            custom.set_form(side, "beast_out", beast_form(side, custom.player(side).emotion == "tired"))
+            custom.set_form(side, Button.beast_out, beast_form(side, custom.player(side).emotion == Emotion.tired))
             custom.set_frame(side, 0)
             custom.spin(side)
         elseif tick == 2 then
@@ -197,7 +197,7 @@ custom_beast.window = {
             custom.shake(side, SHAKE_MAGNITUDE, SHAKE_TICKS)
             custom.set_frame(side, 0)
             custom.fade(side, CustomFade.half_out, FADE_SPEED)
-            custom.play_sound(side, CHOSEN_SOUNDS[beast_game(side)])
+            custom.play_sound(side, CHOSEN_SOUNDS[beast_game(side).name])
             custom.play(side, ScreenSound.pick)
             custom.play_sound(side, FLASH_SOUND)
         elseif tick >= 3 and tick <= 52 then
@@ -208,9 +208,9 @@ custom_beast.window = {
             -- shows the Beast form (sub_802A040). Beast Out goes first in
             -- the selection, so B takes it back last.
             custom.fade(side, CustomFade.half_out_back, FADE_SPEED)
-            custom.set_face(side, beast_form(side, custom.player(side).emotion == "tired"))
+            custom.set_face(side, beast_form(side, custom.player(side).emotion == Emotion.tired))
             custom.pick_first(side, beast_out_chip)
-            custom.set_button_state(side, "beast_out", ButtonState.selected)
+            custom.set_button_state(side, Button.beast_out, ButtonState.selected)
             custom.update_availability(side)
         end
         custom.draw_emblem(side, 0)
@@ -239,7 +239,7 @@ end
 
 -- OK with Beast Out picked: the round has had it.
 function custom_beast.confirmed(side: number)
-    if custom.button_picked(side, "beast_out") then
+    if custom.button_picked(side, Button.beast_out) then
         (rules.state() :: State).beast_out_used = true
     end
 end

@@ -8,8 +8,8 @@ local yoyo = require("@self/yoyo")
 
 local chip: Chip = {
     codes = { "L", "M", "N", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 32,

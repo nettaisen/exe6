@@ -15,7 +15,7 @@ local PALETTE = 2
 -- chains it.)
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null", family = "null", class = ChipClass.standard,
+    element = Element.null, family = Family.null, class = ChipClass.standard,
     rarity = 4, mb = 40, damage = 0, counter = 30, lockout = 20,
     slot_in_limit = 1,
     dimming = navi_boost.arm(charge.weapon, PALETTE),

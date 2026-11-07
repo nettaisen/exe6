@@ -7,8 +7,8 @@ local navi_chips = require("../lib/navi_chips/chip")
 
 local roll: Chip = {
     codes = { "R", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 2,
     mb = 20,
@@ -29,8 +29,8 @@ local roll: Chip = {
 
 local roll2: Chip = {
     codes = { "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 40,
@@ -51,8 +51,8 @@ local roll2: Chip = {
 
 local roll3: Chip = {
     codes = { "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 4,
     mb = 60,

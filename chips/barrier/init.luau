@@ -8,7 +8,7 @@ local barriers = require("../lib/barriers")
 local chips: { [string]: Chip } = {
     barrier = {
         codes = { "A", "F", "R", "*" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 1, mb = 7, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         extra_flags = { free_slot_in = true },
@@ -17,7 +17,7 @@ local chips: { [string]: Chip } = {
     },
     barr100 = {
         codes = { "H", "O", "Y" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 2, mb = 30, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         slot_in_limit = 1,
@@ -25,7 +25,7 @@ local chips: { [string]: Chip } = {
     },
     barr200 = {
         codes = { "K", "U", "W" },
-        element = "null", family = "null", class = ChipClass.standard,
+        element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 3, mb = 52, damage = 0, counter = 0, lockout = 0,
         flags = { dimming = true, standard_library = true, library = true },
         slot_in_limit = 1,

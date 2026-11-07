@@ -16,23 +16,23 @@ local form: FormDef = {
     traits = { shows_target_marker = true, afterimages_stay = true, alt_charge_time = true },
     -- What changes MegaMan into it (EXE6's five sequences).
     change = forms.action,
-    version = "gregar",
+    version = Version.gregar,
     cross_of = heatman,
     -- A weakness hit breaks the Cross: back to the Beast.
     breaks_to = gregar_beast,
     sprite = heatcross_beast_sprite,
-    element = "fire",
+    element = Element.fire,
     buster_bonus = 1,
     weapons = { buster = gregar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = charge.weapon },
     -- Its face in the emotion window (`byte_801E700`): the Falzar ROM has no
     -- HeatCross Beast face, and shows SpoutCross Beast's.
     mugshot = asset.mugshot("heatcross-beast"),
     -- The damage it adds to its family's damaging chips.
-    chip_bonus = { family = "fire", damage = 50 },
+    chip_bonus = { family = Family.fire, damage = 50 },
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
-    charged_chips = { { family = "null", damaging = false } },
+    charged_chips = { { family = Family.null, damaging = false } },
     -- What its status reset gives the navi (`sub_8014536`).
     status_reset = { super_armor = true, target_marker = true, invulnerable = true, controller_restart = true },
     -- After a NaviCust change only the SuperArmor comes back (`sub_801469C`).

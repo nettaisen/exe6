@@ -7,8 +7,8 @@ local invisible = require("@self/controller")
 -- 360 ticks (the record's first two parameter bytes, 104 and 1).
 local chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 30,

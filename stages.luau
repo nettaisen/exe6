@@ -8,13 +8,14 @@
 local boulder = require("./objects/boulder")
 local rock = require("./chips/rockcube/rock")
 local statue = require("./chips/guardian/statue")
+local P = PanelType
 
 local stages: { [string]: StageDef } = {
     ["netbattle-1"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -25,9 +26,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-2"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -38,9 +39,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-3"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -56,9 +57,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-4"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -74,9 +75,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-5"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -92,9 +93,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-6"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -110,9 +111,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-7"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -128,9 +129,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-8"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -146,9 +147,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-9"] = {
         layout = {
-            "cracked normal normal normal normal cracked",
-            "normal normal normal normal normal normal",
-            "normal normal cracked cracked normal normal",
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.cracked, P.cracked, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -159,9 +160,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-10"] = {
         layout = {
-            "cracked normal normal normal normal cracked",
-            "normal normal normal normal normal normal",
-            "normal normal cracked cracked normal normal",
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.cracked, P.cracked, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -172,9 +173,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-11"] = {
         layout = {
-            "cracked normal cracked cracked normal cracked",
-            "normal normal normal normal normal normal",
-            "cracked normal cracked cracked normal cracked",
+            { P.cracked, P.normal, P.cracked, P.cracked, P.normal, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.normal, P.cracked, P.cracked, P.normal, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -185,9 +186,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-12"] = {
         layout = {
-            "cracked normal cracked cracked normal cracked",
-            "normal normal normal normal normal normal",
-            "cracked normal cracked cracked normal cracked",
+            { P.cracked, P.normal, P.cracked, P.cracked, P.normal, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.normal, P.cracked, P.cracked, P.normal, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -198,9 +199,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-13"] = {
         layout = {
-            "cracked normal normal normal normal cracked",
-            "cracked normal normal normal normal cracked",
-            "cracked normal normal normal normal cracked",
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -211,9 +212,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-14"] = {
         layout = {
-            "cracked normal normal normal normal cracked",
-            "cracked normal normal normal normal cracked",
-            "cracked normal normal normal normal cracked",
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -224,9 +225,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-15"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal missing normal normal missing normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -237,9 +238,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-16"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal missing normal normal missing normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -250,9 +251,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-17"] = {
         layout = {
-            "normal normal missing normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal missing normal normal",
+            { P.normal, P.normal, P.missing, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.missing, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -263,9 +264,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-18"] = {
         layout = {
-            "normal normal missing normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal missing normal normal",
+            { P.normal, P.normal, P.missing, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.missing, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -276,9 +277,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-19"] = {
         layout = {
-            "normal normal normal missing normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal missing normal normal normal",
+            { P.normal, P.normal, P.normal, P.missing, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.missing, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -289,9 +290,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-20"] = {
         layout = {
-            "normal normal normal missing normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal missing normal normal normal",
+            { P.normal, P.normal, P.normal, P.missing, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.missing, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -302,9 +303,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-21"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -315,9 +316,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-22"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -328,9 +329,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-23"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -346,9 +347,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-24"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -364,9 +365,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-25"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -382,9 +383,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-26"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -400,9 +401,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-27"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -418,9 +419,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-28"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -436,9 +437,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-29"] = {
         layout = {
-            "grass grass normal normal grass grass",
-            "grass grass normal normal grass grass",
-            "grass grass normal normal grass grass",
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -449,9 +450,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-30"] = {
         layout = {
-            "grass grass normal normal grass grass",
-            "grass grass normal normal grass grass",
-            "grass grass normal normal grass grass",
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -462,9 +463,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-31"] = {
         layout = {
-            "normal normal normal normal grass grass",
-            "grass grass normal normal grass grass",
-            "grass grass normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -475,9 +476,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-32"] = {
         layout = {
-            "normal normal normal normal grass grass",
-            "grass grass normal normal grass grass",
-            "grass grass normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -488,9 +489,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-33"] = {
         layout = {
-            "grass grass normal normal normal normal",
-            "grass grass normal normal grass grass",
-            "normal normal normal normal grass grass",
+            { P.grass, P.grass, P.normal, P.normal, P.normal, P.normal },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.normal, P.normal, P.normal, P.normal, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -501,9 +502,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-34"] = {
         layout = {
-            "grass grass normal normal normal normal",
-            "grass grass normal normal grass grass",
-            "normal normal normal normal grass grass",
+            { P.grass, P.grass, P.normal, P.normal, P.normal, P.normal },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.normal, P.normal, P.normal, P.normal, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -514,9 +515,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-35"] = {
         layout = {
-            "normal grass grass grass grass normal",
-            "grass grass grass grass grass grass",
-            "normal grass grass grass grass normal",
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -527,9 +528,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-36"] = {
         layout = {
-            "normal grass grass grass grass normal",
-            "grass grass grass grass grass grass",
-            "normal grass grass grass grass normal",
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -540,9 +541,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-37"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -553,9 +554,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-38"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -566,9 +567,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-39"] = {
         layout = {
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -579,9 +580,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-40"] = {
         layout = {
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -592,9 +593,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-41"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -610,9 +611,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-42"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -628,9 +629,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-43"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -646,9 +647,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-44"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -664,9 +665,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-45"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -682,9 +683,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-46"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -700,9 +701,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-47"] = {
         layout = {
-            "normal road_left normal normal road_right normal",
-            "normal normal normal normal normal normal",
-            "normal road_right normal normal road_left normal",
+            { P.normal, P.road_left, P.normal, P.normal, P.road_right, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_right, P.normal, P.normal, P.road_left, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -713,9 +714,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-48"] = {
         layout = {
-            "normal road_left normal normal road_right normal",
-            "normal normal normal normal normal normal",
-            "normal road_right normal normal road_left normal",
+            { P.normal, P.road_left, P.normal, P.normal, P.road_right, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_right, P.normal, P.normal, P.road_left, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -726,9 +727,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-49"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal road_right normal normal road_left normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_right, P.normal, P.normal, P.road_left, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -739,9 +740,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-50"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal road_right normal normal road_left normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_right, P.normal, P.normal, P.road_left, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -752,9 +753,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-51"] = {
         layout = {
-            "road_right road_right normal normal road_left road_left",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -765,9 +766,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-52"] = {
         layout = {
-            "road_right road_right normal normal road_left road_left",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -778,9 +779,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-53"] = {
         layout = {
-            "normal normal road_down road_down normal normal",
-            "normal normal normal normal normal normal",
-            "normal road_up normal normal road_up normal",
+            { P.normal, P.normal, P.road_down, P.road_down, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_up, P.normal, P.normal, P.road_up, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -791,9 +792,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-54"] = {
         layout = {
-            "normal normal road_down road_down normal normal",
-            "normal normal normal normal normal normal",
-            "normal road_up normal normal road_up normal",
+            { P.normal, P.normal, P.road_down, P.road_down, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_up, P.normal, P.normal, P.road_up, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -804,9 +805,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-55"] = {
         layout = {
-            "normal road_left road_left road_right road_right normal",
-            "normal normal normal normal normal normal",
-            "road_right road_right normal normal road_left road_left",
+            { P.normal, P.road_left, P.road_left, P.road_right, P.road_right, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -817,9 +818,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-56"] = {
         layout = {
-            "normal road_left road_left road_right road_right normal",
-            "normal normal normal normal normal normal",
-            "road_right road_right normal normal road_left road_left",
+            { P.normal, P.road_left, P.road_left, P.road_right, P.road_right, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -830,9 +831,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-57"] = {
         layout = {
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -843,9 +844,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-58"] = {
         layout = {
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -856,9 +857,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-59"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -869,9 +870,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-60"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -882,9 +883,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-61"] = {
         layout = {
-            "poison poison grass grass poison poison",
-            "poison grass grass grass grass poison",
-            "grass grass grass grass grass grass",
+            { P.poison, P.poison, P.grass, P.grass, P.poison, P.poison },
+            { P.poison, P.grass, P.grass, P.grass, P.grass, P.poison },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -895,9 +896,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-62"] = {
         layout = {
-            "poison poison grass grass poison poison",
-            "poison grass grass grass grass poison",
-            "grass grass grass grass grass grass",
+            { P.poison, P.poison, P.grass, P.grass, P.poison, P.poison },
+            { P.poison, P.grass, P.grass, P.grass, P.grass, P.poison },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -908,9 +909,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-63"] = {
         layout = {
-            "volcano normal normal normal normal volcano",
-            "volcano normal normal normal normal volcano",
-            "volcano normal normal normal normal volcano",
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -921,9 +922,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-64"] = {
         layout = {
-            "volcano normal normal normal normal volcano",
-            "volcano normal normal normal normal volcano",
-            "volcano normal normal normal normal volcano",
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -934,9 +935,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-65"] = {
         layout = {
-            "normal volcano volcano volcano volcano normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.volcano, P.volcano, P.volcano, P.volcano, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -947,9 +948,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-66"] = {
         layout = {
-            "normal volcano volcano volcano volcano normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.volcano, P.volcano, P.volcano, P.volcano, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -960,9 +961,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-67"] = {
         layout = {
-            "normal normal volcano volcano normal normal",
-            "normal normal volcano volcano normal normal",
-            "normal normal volcano volcano normal normal",
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -973,9 +974,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-68"] = {
         layout = {
-            "normal normal volcano volcano normal normal",
-            "normal normal volcano volcano normal normal",
-            "normal normal volcano volcano normal normal",
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -986,9 +987,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-69"] = {
         layout = {
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -999,9 +1000,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-70"] = {
         layout = {
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1012,9 +1013,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-71"] = {
         layout = {
-            "normal volcano volcano volcano volcano normal",
-            "normal normal volcano volcano normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.volcano, P.volcano, P.volcano, P.volcano, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1025,9 +1026,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-72"] = {
         layout = {
-            "normal volcano volcano volcano volcano normal",
-            "normal normal volcano volcano normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.volcano, P.volcano, P.volcano, P.volcano, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1037,7 +1038,11 @@ local stages: { [string]: StageDef } = {
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-73"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice missing missing ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.missing, P.missing, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -1046,7 +1051,11 @@ local stages: { [string]: StageDef } = {
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-74"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice missing missing ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.missing, P.missing, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -1056,9 +1065,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-75"] = {
         layout = {
-            "poison poison poison poison poison poison",
-            "poison normal poison poison normal poison",
-            "poison poison poison poison poison poison",
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
+            { P.poison, P.normal, P.poison, P.poison, P.normal, P.poison },
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1069,9 +1078,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-76"] = {
         layout = {
-            "poison poison poison poison poison poison",
-            "poison normal poison poison normal poison",
-            "poison poison poison poison poison poison",
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
+            { P.poison, P.normal, P.poison, P.poison, P.normal, P.poison },
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1082,9 +1091,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-77"] = {
         layout = {
-            "road_right road_right normal normal road_left road_left",
-            "road_up normal normal normal normal road_up",
-            "normal normal normal normal normal normal",
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
+            { P.road_up, P.normal, P.normal, P.normal, P.normal, P.road_up },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1095,9 +1104,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-78"] = {
         layout = {
-            "road_right road_right normal normal road_left road_left",
-            "road_up normal normal normal normal road_up",
-            "normal normal normal normal normal normal",
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
+            { P.road_up, P.normal, P.normal, P.normal, P.normal, P.road_up },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1108,9 +1117,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-79"] = {
         layout = {
-            "grass poison poison poison poison grass",
-            "grass poison poison poison poison grass",
-            "grass poison poison poison poison grass",
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1121,9 +1130,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-80"] = {
         layout = {
-            "grass poison poison poison poison grass",
-            "grass poison poison poison poison grass",
-            "grass poison poison poison poison grass",
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1133,7 +1142,11 @@ local stages: { [string]: StageDef } = {
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-81"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -1147,7 +1160,11 @@ local stages: { [string]: StageDef } = {
         },
     },
     ["netbattle-82"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -1161,7 +1178,11 @@ local stages: { [string]: StageDef } = {
         },
     },
     ["netbattle-83"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -1175,7 +1196,11 @@ local stages: { [string]: StageDef } = {
         },
     },
     ["netbattle-84"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -1190,9 +1215,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-85"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1208,9 +1233,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-86"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1226,9 +1251,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-87"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal holy normal normal holy normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1239,9 +1264,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-88"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal holy normal normal holy normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1252,9 +1277,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-89"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1265,9 +1290,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-90"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1278,9 +1303,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-91"] = {
         layout = {
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1291,9 +1316,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-92"] = {
         layout = {
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1304,9 +1329,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-93"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1322,9 +1347,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-94"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1340,9 +1365,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-95"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1358,9 +1383,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-96"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1376,9 +1401,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-97"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1389,9 +1414,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-98"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1402,9 +1427,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-99"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1420,9 +1445,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-100"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1438,9 +1463,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-101"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1456,9 +1481,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-102"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1474,9 +1499,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-103"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1492,9 +1517,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-104"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1510,9 +1535,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-105"] = {
         layout = {
-            "cracked normal normal normal normal cracked",
-            "normal normal normal normal normal normal",
-            "normal normal cracked cracked normal normal",
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.cracked, P.cracked, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1523,9 +1548,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-106"] = {
         layout = {
-            "cracked normal normal normal normal cracked",
-            "normal normal normal normal normal normal",
-            "normal normal cracked cracked normal normal",
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.cracked, P.cracked, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1536,9 +1561,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-107"] = {
         layout = {
-            "cracked normal cracked cracked normal cracked",
-            "normal normal normal normal normal normal",
-            "cracked normal cracked cracked normal cracked",
+            { P.cracked, P.normal, P.cracked, P.cracked, P.normal, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.normal, P.cracked, P.cracked, P.normal, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1549,9 +1574,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-108"] = {
         layout = {
-            "cracked normal cracked cracked normal cracked",
-            "normal normal normal normal normal normal",
-            "cracked normal cracked cracked normal cracked",
+            { P.cracked, P.normal, P.cracked, P.cracked, P.normal, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.normal, P.cracked, P.cracked, P.normal, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1562,9 +1587,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-109"] = {
         layout = {
-            "cracked normal normal normal normal cracked",
-            "cracked normal normal normal normal cracked",
-            "cracked normal normal normal normal cracked",
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1575,9 +1600,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-110"] = {
         layout = {
-            "cracked normal normal normal normal cracked",
-            "cracked normal normal normal normal cracked",
-            "cracked normal normal normal normal cracked",
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
+            { P.cracked, P.normal, P.normal, P.normal, P.normal, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1588,9 +1613,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-111"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal missing normal normal missing normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1601,9 +1626,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-112"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal missing normal normal missing normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1614,9 +1639,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-113"] = {
         layout = {
-            "normal normal missing normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal missing normal normal",
+            { P.normal, P.normal, P.missing, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.missing, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1627,9 +1652,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-114"] = {
         layout = {
-            "normal normal missing normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal missing normal normal",
+            { P.normal, P.normal, P.missing, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.missing, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1640,9 +1665,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-115"] = {
         layout = {
-            "normal normal normal missing normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal missing normal normal normal",
+            { P.normal, P.normal, P.normal, P.missing, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.missing, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1653,9 +1678,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-116"] = {
         layout = {
-            "normal normal normal missing normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal missing normal normal normal",
+            { P.normal, P.normal, P.normal, P.missing, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.missing, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1666,9 +1691,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-117"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1679,9 +1704,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-118"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1692,9 +1717,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-119"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1710,9 +1735,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-120"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1728,9 +1753,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-121"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1746,9 +1771,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-122"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1764,9 +1789,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-123"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1782,9 +1807,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-124"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1800,9 +1825,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-125"] = {
         layout = {
-            "grass grass normal normal grass grass",
-            "grass grass normal normal grass grass",
-            "grass grass normal normal grass grass",
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1813,9 +1838,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-126"] = {
         layout = {
-            "grass grass normal normal grass grass",
-            "grass grass normal normal grass grass",
-            "grass grass normal normal grass grass",
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1826,9 +1851,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-127"] = {
         layout = {
-            "normal normal normal normal grass grass",
-            "grass grass normal normal grass grass",
-            "grass grass normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1839,9 +1864,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-128"] = {
         layout = {
-            "normal normal normal normal grass grass",
-            "grass grass normal normal grass grass",
-            "grass grass normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.grass, P.grass, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1852,9 +1877,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-129"] = {
         layout = {
-            "grass grass normal normal normal normal",
-            "grass grass normal normal grass grass",
-            "normal normal normal normal grass grass",
+            { P.grass, P.grass, P.normal, P.normal, P.normal, P.normal },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.normal, P.normal, P.normal, P.normal, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1865,9 +1890,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-130"] = {
         layout = {
-            "grass grass normal normal normal normal",
-            "grass grass normal normal grass grass",
-            "normal normal normal normal grass grass",
+            { P.grass, P.grass, P.normal, P.normal, P.normal, P.normal },
+            { P.grass, P.grass, P.normal, P.normal, P.grass, P.grass },
+            { P.normal, P.normal, P.normal, P.normal, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1878,9 +1903,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-131"] = {
         layout = {
-            "normal grass grass grass grass normal",
-            "grass grass grass grass grass grass",
-            "normal grass grass grass grass normal",
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1891,9 +1916,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-132"] = {
         layout = {
-            "normal grass grass grass grass normal",
-            "grass grass grass grass grass grass",
-            "normal grass grass grass grass normal",
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1904,9 +1929,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-133"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1917,9 +1942,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-134"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1930,9 +1955,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-135"] = {
         layout = {
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1943,9 +1968,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-136"] = {
         layout = {
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1956,9 +1981,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-137"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1974,9 +1999,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-138"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -1992,9 +2017,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-139"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2010,9 +2035,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-140"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2028,9 +2053,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-141"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2046,9 +2071,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-142"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2064,9 +2089,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-143"] = {
         layout = {
-            "normal road_left normal normal road_right normal",
-            "normal normal normal normal normal normal",
-            "normal road_right normal normal road_left normal",
+            { P.normal, P.road_left, P.normal, P.normal, P.road_right, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_right, P.normal, P.normal, P.road_left, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2077,9 +2102,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-144"] = {
         layout = {
-            "normal road_left normal normal road_right normal",
-            "normal normal normal normal normal normal",
-            "normal road_right normal normal road_left normal",
+            { P.normal, P.road_left, P.normal, P.normal, P.road_right, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_right, P.normal, P.normal, P.road_left, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2090,9 +2115,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-145"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal road_right normal normal road_left normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_right, P.normal, P.normal, P.road_left, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2103,9 +2128,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-146"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal road_right normal normal road_left normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_right, P.normal, P.normal, P.road_left, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2116,9 +2141,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-147"] = {
         layout = {
-            "road_right road_right normal normal road_left road_left",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2129,9 +2154,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-148"] = {
         layout = {
-            "road_right road_right normal normal road_left road_left",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2142,9 +2167,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-149"] = {
         layout = {
-            "normal normal road_down road_down normal normal",
-            "normal normal normal normal normal normal",
-            "normal road_up normal normal road_up normal",
+            { P.normal, P.normal, P.road_down, P.road_down, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_up, P.normal, P.normal, P.road_up, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2155,9 +2180,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-150"] = {
         layout = {
-            "normal normal road_down road_down normal normal",
-            "normal normal normal normal normal normal",
-            "normal road_up normal normal road_up normal",
+            { P.normal, P.normal, P.road_down, P.road_down, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.road_up, P.normal, P.normal, P.road_up, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2168,9 +2193,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-151"] = {
         layout = {
-            "normal road_left road_left road_right road_right normal",
-            "normal normal normal normal normal normal",
-            "road_right road_right normal normal road_left road_left",
+            { P.normal, P.road_left, P.road_left, P.road_right, P.road_right, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2181,9 +2206,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-152"] = {
         layout = {
-            "normal road_left road_left road_right road_right normal",
-            "normal normal normal normal normal normal",
-            "road_right road_right normal normal road_left road_left",
+            { P.normal, P.road_left, P.road_left, P.road_right, P.road_right, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2194,9 +2219,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-153"] = {
         layout = {
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2207,9 +2232,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-154"] = {
         layout = {
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2220,9 +2245,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-155"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2233,9 +2258,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-156"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2246,9 +2271,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-157"] = {
         layout = {
-            "poison poison grass grass poison poison",
-            "poison grass grass grass grass poison",
-            "grass grass grass grass grass grass",
+            { P.poison, P.poison, P.grass, P.grass, P.poison, P.poison },
+            { P.poison, P.grass, P.grass, P.grass, P.grass, P.poison },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2259,9 +2284,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-158"] = {
         layout = {
-            "poison poison grass grass poison poison",
-            "poison grass grass grass grass poison",
-            "grass grass grass grass grass grass",
+            { P.poison, P.poison, P.grass, P.grass, P.poison, P.poison },
+            { P.poison, P.grass, P.grass, P.grass, P.grass, P.poison },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2272,9 +2297,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-159"] = {
         layout = {
-            "volcano normal normal normal normal volcano",
-            "volcano normal normal normal normal volcano",
-            "volcano normal normal normal normal volcano",
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2285,9 +2310,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-160"] = {
         layout = {
-            "volcano normal normal normal normal volcano",
-            "volcano normal normal normal normal volcano",
-            "volcano normal normal normal normal volcano",
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
+            { P.volcano, P.normal, P.normal, P.normal, P.normal, P.volcano },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2298,9 +2323,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-161"] = {
         layout = {
-            "normal volcano volcano volcano volcano normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.volcano, P.volcano, P.volcano, P.volcano, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2311,9 +2336,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-162"] = {
         layout = {
-            "normal volcano volcano volcano volcano normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.volcano, P.volcano, P.volcano, P.volcano, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2324,9 +2349,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-163"] = {
         layout = {
-            "normal normal volcano volcano normal normal",
-            "normal normal volcano volcano normal normal",
-            "normal normal volcano volcano normal normal",
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2337,9 +2362,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-164"] = {
         layout = {
-            "normal normal volcano volcano normal normal",
-            "normal normal volcano volcano normal normal",
-            "normal normal volcano volcano normal normal",
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2350,9 +2375,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-165"] = {
         layout = {
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2363,9 +2388,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-166"] = {
         layout = {
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2376,9 +2401,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-167"] = {
         layout = {
-            "normal volcano volcano volcano volcano normal",
-            "normal normal volcano volcano normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.volcano, P.volcano, P.volcano, P.volcano, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2389,9 +2414,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-168"] = {
         layout = {
-            "normal volcano volcano volcano volcano normal",
-            "normal normal volcano volcano normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.volcano, P.volcano, P.volcano, P.volcano, P.normal },
+            { P.normal, P.normal, P.volcano, P.volcano, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2401,7 +2426,11 @@ local stages: { [string]: StageDef } = {
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-169"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice missing missing ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.missing, P.missing, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -2410,7 +2439,11 @@ local stages: { [string]: StageDef } = {
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
     ["netbattle-170"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice missing missing ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.missing, P.missing, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -2420,9 +2453,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-171"] = {
         layout = {
-            "poison poison poison poison poison poison",
-            "poison normal poison poison normal poison",
-            "poison poison poison poison poison poison",
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
+            { P.poison, P.normal, P.poison, P.poison, P.normal, P.poison },
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2433,9 +2466,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-172"] = {
         layout = {
-            "poison poison poison poison poison poison",
-            "poison normal poison poison normal poison",
-            "poison poison poison poison poison poison",
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
+            { P.poison, P.normal, P.poison, P.poison, P.normal, P.poison },
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2446,9 +2479,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-173"] = {
         layout = {
-            "road_right road_right normal normal road_left road_left",
-            "road_up normal normal normal normal road_up",
-            "normal normal normal normal normal normal",
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
+            { P.road_up, P.normal, P.normal, P.normal, P.normal, P.road_up },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2459,9 +2492,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-174"] = {
         layout = {
-            "road_right road_right normal normal road_left road_left",
-            "road_up normal normal normal normal road_up",
-            "normal normal normal normal normal normal",
+            { P.road_right, P.road_right, P.normal, P.normal, P.road_left, P.road_left },
+            { P.road_up, P.normal, P.normal, P.normal, P.normal, P.road_up },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2472,9 +2505,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-175"] = {
         layout = {
-            "grass poison poison poison poison grass",
-            "grass poison poison poison poison grass",
-            "grass poison poison poison poison grass",
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2485,9 +2518,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-176"] = {
         layout = {
-            "grass poison poison poison poison grass",
-            "grass poison poison poison poison grass",
-            "grass poison poison poison poison grass",
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2497,7 +2530,11 @@ local stages: { [string]: StageDef } = {
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
     ["netbattle-177"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -2511,7 +2548,11 @@ local stages: { [string]: StageDef } = {
         },
     },
     ["netbattle-178"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -2525,7 +2566,11 @@ local stages: { [string]: StageDef } = {
         },
     },
     ["netbattle-179"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -2539,7 +2584,11 @@ local stages: { [string]: StageDef } = {
         },
     },
     ["netbattle-180"] = {
-        layout = { "ice ice ice ice ice ice", "ice ice ice ice ice ice", "ice ice ice ice ice ice" },
+        layout = {
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+        },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
         mode = 0,
@@ -2554,9 +2603,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-181"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2572,9 +2621,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-182"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2590,9 +2639,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-183"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal holy normal normal holy normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2603,9 +2652,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-184"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal holy normal normal holy normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2616,9 +2665,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-185"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2629,9 +2678,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-186"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2642,9 +2691,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-187"] = {
         layout = {
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2655,9 +2704,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-188"] = {
         layout = {
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2668,9 +2717,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-189"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2686,9 +2735,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-190"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2704,9 +2753,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-191"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),
@@ -2722,9 +2771,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-192"] = {
         layout = {
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
-            "poison normal normal normal normal poison",
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
+            { P.poison, P.normal, P.normal, P.normal, P.normal, P.poison },
         },
         panel_pattern = 0x38,
         music = asset.sound("virus-battle"),

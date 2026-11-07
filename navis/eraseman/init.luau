@@ -12,7 +12,7 @@ local navi: NaviDef = {
     sprite = eraseman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) and its hold (animation 0xA) last.
     animation_steps = { warp_out = 4, hold = 2 },
-    element = "null",
+    element = Element.null,
     weakness = { wind = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -20,7 +20,7 @@ local navi: NaviDef = {
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- EraseMan face, and shows GroundMan's.
     mugshot = asset.mugshot("eraseman"),
-    version = "gregar",
+    version = Version.gregar,
     merge_height = 0,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -29,7 +29,7 @@ local navi: NaviDef = {
     },
     own_chip = { chip = eraseman, code = "K" },
     chip_bonus = {
-        family = "cursor",
+        family = Family.cursor,
         dimming_chips = true,
         damage = by_level.row({ 0, 0, 0, 0, 10, 10, 10, 10, 10, 20, 20, 20, 20, 20, 30 }),
     },

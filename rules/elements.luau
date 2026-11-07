@@ -31,7 +31,7 @@ return {
         program_advance = 11,
         special = 12,
     },
-    non_elemental = "null",
+    non_elemental = Family.null,
     family_elements = {
         sword = { sword = true },
         cursor = { cursor = true },
