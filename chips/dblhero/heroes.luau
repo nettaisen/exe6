@@ -76,9 +76,9 @@ local SHOT_REGIONS: { [number]: Region? } = {
     [1] = regions.single,
     [2] = regions.long,
     [3] = regions.line,
-    [4] = new.region { panels = { { 0, 0 }, { 1, 0 }, { 2, 0 }, { 3, 0 } } },
-    [5] = new.region { panels = { { 0, 0 }, { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } } },
-    [6] = new.region { panels = { { 0, 0 }, { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } } },
+    [4] = regions.line_4,
+    [5] = regions.line_5,
+    [6] = regions.row,
 }
 
 local function who(s: State): string

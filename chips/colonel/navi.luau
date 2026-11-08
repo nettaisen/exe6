@@ -12,6 +12,7 @@
 
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
+local regions = require("@exelib/regions")
 
 -- What a chip's strike does as it lands (`colonel.strike`, its own: the
 -- original picks it by the chip's third parameter).
@@ -54,9 +55,7 @@ local SWORD_ANIM = 0x1C
 
 -- ScreenDivide's X (region 0x29: the diagonals of a column of three
 -- panels, three columns deep), and its effect (0x38).
-local SCREEN_DIVIDE = new.region {
-    panels = { { 0, -1 }, { 1, -1 }, { 2, -1 }, { 1, 0 }, { 0, 1 }, { 1, 1 }, { 2, 1 } },
-}
+local SCREEN_DIVIDE = regions.hourglass_ahead
 local DIVIDE = new.effect { sprite = colonel_effect_sprite, anim = 3, palette = 0, steps = 16 }
 
 -- His fade-in's starting gray.

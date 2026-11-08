@@ -44,16 +44,8 @@ local DIVE_FROM = { [0] = { 2, 0 }, { 5, 0 } }
 local DIVE_MARK = { [0] = { 4, 2 }, { 3, 2 } }
 -- The regions he highlights: the dash's (region 0x23: three rows of six
 -- from the mark) and the dive's (0x25: a band slanting across the mark).
-local DASH_REGION = new.region {
-    panels = {
-        { 0, -1 }, { 1, -1 }, { 2, -1 }, { 3, -1 }, { 4, -1 }, { 5, -1 },
-        { 0, 0 }, { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 },
-        { 0, 1 }, { 1, 1 }, { 2, 1 }, { 3, 1 }, { 4, 1 }, { 5, 1 },
-    },
-}
-local DIVE_REGION = new.region {
-    panels = { { -2, -1 }, { -1, -1 }, { 0, -1 }, { -1, 0 }, { 0, 0 }, { 1, 0 }, { 0, 1 }, { 1, 1 }, { 2, 1 } },
-}
+local DASH_REGION = regions.wide_long_6
+local DIVE_REGION = regions.falling_band
 
 -- The dash: its speed and acceleration forward; the dive: its speed
 -- forward and down (16.16).

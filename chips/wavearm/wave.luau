@@ -39,14 +39,11 @@ local SOUND = asset.sound("shock-wave")
 -- The rows ahead it looks for enemies in (`byte_80C6DB8`), by facing
 -- (right, left) and panel column: the panels from the next one to the
 -- field's edge (regions 0x08, 0x20, 0x07, 0x06, 0x02, 0x01).
-local AHEAD_4 = new.region { panels = { { 0, 0 }, { 1, 0 }, { 2, 0 }, { 3, 0 } } }
-local AHEAD_5 = new.region { panels = { { 0, 0 }, { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } } }
-local AHEAD_6 = new.region { panels = { { 0, 0 }, { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } } }
 local AHEAD: { [number]: { [number]: Region } } = {
     [0] = {
-        [0] = AHEAD_6,
-        AHEAD_5,
-        AHEAD_4,
+        [0] = regions.row,
+        regions.line_5,
+        regions.line_4,
         regions.line,
         regions.long,
         regions.single,
@@ -59,17 +56,15 @@ local AHEAD: { [number]: { [number]: Region } } = {
         regions.single,
         regions.long,
         regions.line,
-        AHEAD_4,
-        AHEAD_5,
-        AHEAD_6,
+        regions.line_4,
+        regions.line_5,
+        regions.row,
     },
 }
 -- Up and down a row (`dword_80C6DC8`), by the row change (1 up, 2 down;
 -- the word's other bytes are 0), and where it looks for an enemy before
 -- turning (regions 0x16 and 0x17).
 local ROW_TURN = { -1, 1, 0, 0 }
-local UP_AHEAD = new.region { panels = { { 0, 0 }, { 1, -1 } } }
-local DOWN_AHEAD = new.region { panels = { { 0, 0 }, { 1, 1 } } }
 -- Where it goes when it is done: x 240 pixels, off the field.
 local OFF_FIELD = 0xF0
 
@@ -119,11 +114,11 @@ local function steer(me: Object): (number, number)
     if panels.random_enemy_panel(me, x, y, ahead) then
         return x, y
     end
-    if y - 1 ~= 0 and panels.random_enemy_panel(me, x, y - 1, UP_AHEAD) then
+    if y - 1 ~= 0 and panels.random_enemy_panel(me, x, y - 1, regions.up_ahead) then
         s.turned = 1
         return x, y - 1
     end
-    if y + 1 <= 3 and panels.random_enemy_panel(me, x, y + 1, DOWN_AHEAD) then
+    if y + 1 <= 3 and panels.random_enemy_panel(me, x, y + 1, regions.down_ahead) then
         s.turned = 2
         return x, y + 1
     end
