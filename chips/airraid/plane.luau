@@ -135,7 +135,7 @@ local function bomb(me: Object)
         if draw == 1 or draw == 5 then
             local dir = panels.side_direction(me.alliance)
             local cond = STRAY
-            local nx, ny = regions.random_panel(x, y, regions.neighbors, dir, cond, me.alliance)
+            local nx, ny = panels.random_in_region(x, y, cond, regions.neighbors, dir, me.alliance)
             if nx and ny then
                 x = nx
                 y = ny

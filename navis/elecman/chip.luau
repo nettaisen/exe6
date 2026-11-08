@@ -87,7 +87,7 @@ local function stop_here(me: Object): boolean
     if not field.any(x + me.facing, y, ON_FIELD) then
         return true
     end
-    local found = panels.random_in(x, y, ENEMY_NAVI, regions.wide, panels.side_direction(me.alliance), me.alliance)
+    local found = panels.random_in_region(x, y, ENEMY_NAVI, regions.wide, panels.side_direction(me.alliance), me.alliance)
     return found ~= nil
 end
 
