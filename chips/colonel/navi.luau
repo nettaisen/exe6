@@ -53,9 +53,9 @@ local CAPE: FormOverlaySpec =
 local SWORD = attachment.look { sprite = colonel_sword_sprite, palette = 0 }
 local SWORD_ANIM = 0x1C
 
--- ScreenDivide's X (region 0x29: the diagonals of a column of three
--- panels, three columns deep), and its effect (0x38).
-local SCREEN_DIVIDE = regions.hourglass_ahead
+-- ScreenDivide's Z (region 0x29: the rows of three above and below the
+-- panel ahead, and that panel), and its effect (0x38).
+local SCREEN_DIVIDE = regions.z_ahead
 local DIVIDE = new.effect { sprite = colonel_effect_sprite, anim = 3, palette = 0, steps = 16 }
 
 -- His fade-in's starting gray.
