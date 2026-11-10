@@ -327,6 +327,17 @@ local rules: Rules = {
             folder.validate(side, problem)
             return out
         end,
+        -- What is wrong with a side's setup as a player's build, beside what `validate` says of any setup: its limits,
+        -- as the tool's ruleset leaves them (rules/rulesets' `limits`): the patch cards' MB, the folder's.
+        build_check = function(side: number): { SetupProblem }
+            local out: { SetupProblem } = {}
+            local function problem(p: SetupProblem)
+                table.insert(out, p)
+            end
+            patch_cards.build_check(side, problem)
+            folder.build_check(side, problem)
+            return out
+        end,
     },
     -- Its rule sections (each a plain table, which the engine reads by its schema) and its roles.
     banners = require("@self/banners"),

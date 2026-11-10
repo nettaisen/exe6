@@ -154,9 +154,14 @@ end
 -- The most MB of cards a list holds.
 local LIST_MB = 80
 
--- `validate`'s part: no card installed twice, and the cards' MB together at most the list's.
+-- `validate`'s part: no card installed twice.
 local function validate(side: number, problem: (p: SetupProblem) -> ())
-    apply_cards.check(rules.setup_of(side).patch_cards, LIST_MB, problem)
+    apply_cards.check(rules.setup_of(side).patch_cards, problem)
+end
+
+-- `build_check`'s part: the cards' MB together at most the list's (as the tool's ruleset leaves it).
+local function build_check(side: number, problem: (p: SetupProblem) -> ())
+    apply_cards.check_memory(rules.setup_of(side).patch_cards, LIST_MB, problem)
 end
 
 -- `overview`'s part: the cards' abilities and bugs (MegaMan's: the cards apply to no other navi), a bug effect as
@@ -170,5 +175,6 @@ end
 return {
     apply = apply,
     validate = validate,
+    build_check = build_check,
     overview = overview,
 }

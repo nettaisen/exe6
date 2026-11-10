@@ -1,8 +1,8 @@
 --!strict
 -- EXE6's folder rules, as its folder editor enforces them (`sub_8135080`, with `sub_8135500`) and a link battle checks
 -- them again before it starts (`sub_8120D10`, counting with `sub_8120AE8`): a tool's questions (`folder_check`,
--- `folder_view`, `validate`: a match's checks, netplay's offer, the build screens), never the simulation's. The rules
--- every game of the series shares are @exelib/folder_rules; these are EXE6's own.
+-- `folder_view`, `validate`, `build_check`: a match's checks, netplay's offer, the build screens), never the
+-- simulation's. The rules every game of the series shares are @exelib/folder_rules; these are EXE6's own.
 --
 -- - The chips a folder can hold are those a save can collect, which is what its chip pack can list (`sub_811FE7C`):
 --   the Standard, Mega and Giga chips its library lists (the record's flags 0x40), each with a code; a version's own
@@ -62,5 +62,8 @@ return {
     end,
     validate = function(side: number, problem: (p: SetupProblem) -> ())
         folder_rules.validate(RULES, side, rules.setup_of(side), problem)
+    end,
+    build_check = function(side: number, problem: (p: SetupProblem) -> ())
+        folder_rules.build_check(RULES, side, rules.setup_of(side), problem)
     end,
 }
