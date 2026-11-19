@@ -1,11 +1,11 @@
 --!strict
 -- Gregar Beast Over: one of MegaMan's forms.
 
-local falzar_beast = require("./falzar_beast")["falzar-beast"]
+local falzar_beast = require("./falzar_beast").falzar_beast
 local gregar_beast_buster = require("../weapons/gregar_beast_buster")
 local beast_claw = require("../weapons/beast_claw")
 local forms = require("../../../rules/forms")
-local gregar_beast_sprite = asset.sprite("gregar-beast")
+local gregar_beast_sprite = asset.sprite("gregar_beast")
 
 local form: FormDef = {
     kind = "beast_over",
@@ -37,7 +37,7 @@ local form: FormDef = {
     weapons = { buster = gregar_beast_buster.weapon, alt_a_charge = beast_claw.weapon },
     -- Its face in the emotion window (`byte_801E700`): the Falzar ROM has no
     -- Gregar Beast Over face, and shows Falzar Beast Over's.
-    mugshot = asset.mugshot("gregar-beast-over"),
+    mugshot = asset.mugshot("gregar_beast_over"),
     -- What its status reset gives the navi (`sub_8014536`).
     status_reset = { super_armor = true, target_marker = true, invulnerable = true, controller_restart = true },
     -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
@@ -92,4 +92,4 @@ local form: FormDef = {
     },
 }
 
-return { ["gregar-beast-over"] = form }
+return { gregar_beast_over = form }

@@ -41,7 +41,7 @@ return common.make {
     -- One of its side's two field objects of class 0 (a third evicts the
     -- oldest).
     class = ObstacleClass.two_a_side,
-    sounds = { appear = asset.sound("appear"), ["break"] = asset.sound("panel-poison") },
+    sounds = { appear = asset.sound("appear"), ["break"] = asset.sound("panel_poison") },
     -- Another body of its side.
     is = collision.own_body,
     hits = collision.hit_by_other_side,

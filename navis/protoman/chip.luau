@@ -1,11 +1,11 @@
 --!strict
--- ProtoMan's own chip, StepSwrd: StepSwrd's step and slash (chips/stepswrd),
+-- ProtoMan's own chip, StepSwrd: StepSwrd's step and slash (chips/step_sword),
 -- with ProtoMan's damage by his level.
 
 local parts = require("../../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../../lib/swords/slash")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 
 -- The slash over a column.
 local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
@@ -23,7 +23,7 @@ local chip: Chip = {
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     action = slash.action {
-        id = "stepswrd-protoman/action",
+        id = "step_sword_protoman/action",
         blade = parts.blade,
         hit = { region = regions.wide, collision = parts.slashes_navis, hit_mod = { flinch = true, flash = true } },
         effect = WIDE_SLASH,
@@ -32,4 +32,4 @@ local chip: Chip = {
     },
 }
 
-return { ["stepswrd-protoman"] = chip }
+return { step_sword_protoman = chip }

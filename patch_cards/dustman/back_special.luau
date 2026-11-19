@@ -1,6 +1,6 @@
 --!strict
 -- The B+Back special of the patch card dustman
--- (`patch-cards/dustman/back-special`): the fan, TenguCross's wind (the
+-- (`patch_cards/dustman/back_special`): the fan, TenguCross's wind (the
 -- original's instant effect 0x14, `sub_80CD4AC`: a gust down each row
 -- toward the navi), without TenguCross's cooldown. The original's weapon
 -- routine 0x86 (`sub_801254A`).
@@ -14,7 +14,7 @@ local function setup(_navi: Object)
 end
 
 return new.weapon {
-    id = "patch-cards/dustman/back-special",
+    id = "patch_cards/dustman/back_special",
     -- The charge table's row 0x86, by Charge 0 to 7: past 4 it reads on
     -- into the next routine's row, as the original's table does.
     charge_ticks = { 0, 0, 0, 0, 0, 160, 150, 140 },

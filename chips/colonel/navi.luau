@@ -6,7 +6,7 @@
 -- he draws his sword (in his first related slot, which held his user) and
 -- strikes his chip's strike: the Colonel chips' ScreenDivide, an X of hit
 -- regions over the middle row of the first column ahead that is wholly
--- the enemy's (`colonel.screen_divide`); CrossDiv's own (chips/crossdiv).
+-- the enemy's (`colonel.screen_divide`); CrossDiv's own (chips/cross_divide).
 -- A camera shake. Then he goes, and the controller moves on. See
 -- docs/engine/chips.md §3.6.22.
 
@@ -37,8 +37,8 @@ export type State = {
 local colonel = {}
 
 local SPRITE = asset.sprite("colonel")
-local colonel_effect_sprite = asset.sprite("colonel-effect")
-local colonel_sword_sprite = asset.sprite("colonel-sword")
+local colonel_effect_sprite = asset.sprite("colonel_effect")
+local colonel_sword_sprite = asset.sprite("colonel_sword")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SPIN = asset.sound("spin")
@@ -181,7 +181,7 @@ function colonel.at_back(me: Object): boolean
     return battle.other_side(me.alliance) * 5 + 1 == me.panel_x
 end
 
-local COLONEL_STRIKE = schema.record_type("colonel-strike")
+local COLONEL_STRIKE = schema.record_type("colonel_strike")
 
 -- A chip's strike, as it lands.
 function colonel.strike(run: (me: Object) -> ()): Strike

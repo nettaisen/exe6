@@ -16,10 +16,10 @@ local sparks = require("../../lib/sparks")
 local navi_chips = require("../../lib/navi_chips/navi")
 local parts = require("../../lib/swords/parts")
 local regions = require("@exelib/regions")
-local big_slash_sprite = asset.sprite("big-slash")
-local charge_glow_sprite = asset.sprite("charge-glow")
-local dark_aura_sprite = asset.sprite("dark-aura")
-local element_pillar_flames_sprite = asset.sprite("element-pillar-flames")
+local big_slash_sprite = asset.sprite("big_slash")
+local charge_glow_sprite = asset.sprite("charge_glow")
+local dark_aura_sprite = asset.sprite("dark_aura")
+local element_pillar_flames_sprite = asset.sprite("element_pillar_flames")
 
 -- The big slash.
 local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0, steps = 15 }
@@ -42,7 +42,7 @@ export type State = {
 -- parts (NameID 0x16D's: his cape). Dark MegaMan wears MegaMan's identity,
 -- in his base form (NameID 0x1A0: no parts), whose attach points his aura
 -- takes.
-local BASS_SPRITE = asset.sprite("bass-anly")
+local BASS_SPRITE = asset.sprite("bass_anly")
 local navi_left = require("@exelib/navi_chips/left")
 local looks = require("@exelib/looks")
 local BASS = new.identity {
@@ -62,8 +62,8 @@ local BASS = new.identity {
 }
 
 local SOUND_DARK, SOUND_APPEAR, SOUND_ROAR = asset.sound("immobilizer"), asset.sound("appear"), asset.sound("roar")
-local SOUND_SWOOP, SOUND_SLASH = asset.sound("swoop"), asset.sound("big-sword-swing")
-local SOUND_CHARGE, SOUND_CHARGED = asset.sound("buster-charge"), asset.sound("buster-charged")
+local SOUND_SWOOP, SOUND_SLASH = asset.sound("swoop"), asset.sound("big_sword_swing")
+local SOUND_CHARGE, SOUND_CHARGED = asset.sound("buster_charge"), asset.sound("buster_charged")
 
 -- Dark MegaMan's palette, and his aura (attachment 0x32).
 local DARK_PALETTE = 0x19

@@ -6,12 +6,12 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/mine/land_mine")
 local blast_sprite = asset.sprite("blast")
-local land_mine_sprite = asset.sprite("land-mine")
+local land_mine_sprite = asset.sprite("land_mine")
 
 local land_mine = {}
 
 land_mine.kind = common.make_kind {
-    id = "mine/land-mine",
+    id = "mine/land_mine",
     identity = new.identity {
         id = "mine",
         class = IdentityClass.field_object,
@@ -25,7 +25,7 @@ land_mine.kind = common.make_kind {
     hop_sound = asset.sound("hop"),
     -- The original's effect 0x47.
     blast = new.effect { sprite = blast_sprite, anim = 0, palette = 0, steps = 18 },
-    blast_sound = asset.sound("hit-bomb-1"),
+    blast_sound = asset.sound("hit_bomb_1"),
     self_type = collision.mine,
     target = collision.hits_both_sides,
 }

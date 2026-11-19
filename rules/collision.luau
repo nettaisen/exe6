@@ -9,7 +9,7 @@
 --
 -- The types the converted content uses so far; the generator adds the
 -- rest (docs/design/content-model-v2.md §9.3). Names other than `thrown`
--- and `hits-navis` (the design's) were made up by what the flags do; they
+-- and `hits_navis` (the design's) were made up by what the flags do; they
 -- are listed there for review.
 
 local collision = {}

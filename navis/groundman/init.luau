@@ -4,9 +4,9 @@
 local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local groundman = require("@self/chip")["rc-brakr"]
-local groundman_overlay_sprite = asset.sprite("groundman-overlay")
-local groundman_portrait_sprite = asset.sprite("groundman-portrait")
+local groundman = require("@self/chip").rock_crush_breaker
+local groundman_overlay_sprite = asset.sprite("groundman_overlay")
+local groundman_portrait_sprite = asset.sprite("groundman_portrait")
 local groundman_sprite = asset.sprite("groundman")
 
 local navi: NaviDef = {
@@ -17,7 +17,7 @@ local navi: NaviDef = {
     weakness = { cursor = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("groundman-win"), lose = asset.banner("groundman-deleted") },
+    banners = { win = asset.banner("groundman_win"), lose = asset.banner("groundman_deleted") },
     -- Its face in the emotion window (`byte_801CDDC`).
     mugshot = asset.mugshot("groundman"),
     version = Version.falzar,

@@ -1,0 +1,39 @@
+--!strict
+-- ElecCross's charged shot (`elec_cross/charge`): the original's weapon
+-- routine 0xB (`sub_8011C38`). It strikes with DolThdr's lightning (the
+-- original's action 0x3E, chips/doll_thunder), the navi holding up the buster
+-- arm, as an Elec attack of 40 damage and 20 more per point of buster
+-- Attack (up to 5). It leaves the variant, the charge and the lockout as
+-- they were.
+
+local buster = require("../../../../lib/buster")
+local doll_thunder = require("../../../../chips/doll_thunder/action")
+local weapon = require("../../../../lib/weapon")
+
+local charge = {}
+
+-- DolThdr's action with its parameters (the word 0x10F00): the thunder's
+-- 15 ticks, and the buster arm held up rather than the doll
+-- (`dword_80EE29C`: attachment row 6, animation 0x19). (Its compat key
+-- maps it to 0x3E.)
+local THUNDER = doll_thunder.action { id = "elec_cross/charge/thunder", ticks = 0x0F, held = buster.arm, held_anim = 0x19 }
+
+-- The attack's element (Elec) and hit parameter.
+local ELEC, COUNTER = Element.elec, 20
+-- `sub_8011C38`.
+local function setup(navi: Object): Action
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x28, 0x14), counter = COUNTER, cant_counter = true }
+    navi.extra = 0
+    navi.attack_element = ELEC
+    return THUNDER
+end
+
+charge.weapon = new.weapon {
+    id = "elec_cross/charge",
+    -- The charge table's row 0xB, by Charge 0 to 7: past 4 it reads on
+    -- into the next routine's row, as the original's table does.
+    charge_ticks = { 90, 80, 70, 65, 60, 60, 50, 40 },
+    setup = setup,
+}
+
+return charge

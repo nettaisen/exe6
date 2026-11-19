@@ -10,7 +10,7 @@ local regions = require("@exelib/regions")
 
 local tornado = {}
 
-local SPRITE = asset.sprite("tengu-tornado")
+local SPRITE = asset.sprite("tengu_tornado")
 
 -- Its hits: pushing, reaching nothing by its target; no spark.
 local HIT_MOD: HitModifier = { flinch = true }

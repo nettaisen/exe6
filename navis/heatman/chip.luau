@@ -133,7 +133,7 @@ local chip: Chip = {
     slot_in_limit = 1,
     -- `sub_80F0778` (`off_80F078C`).
     action = new.action {
-        id = "heatpres/action",
+        id = "heat_press/action",
         state = STATE,
         update = function(me: Object, s: State)
             link.run(me, s, PHASES, "HeatPres (sub_80F0778)")
@@ -141,4 +141,4 @@ local chip: Chip = {
     },
 }
 
-return { heatpres = chip }
+return { heat_press = chip }

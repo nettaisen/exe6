@@ -1,5 +1,5 @@
 --!strict
--- The patch cards' triple buster (`patch-cards/triple-buster`, the original's
+-- The patch cards' triple buster (`patch_cards/triple_buster`, the original's
 -- weapon routine 0x8F, `sub_8012612`; Bass BX's and the Bass Cross card's B
 -- button): MegaMan's buster, with the attack's variant 1, so that its shot is
 -- the spread (two more shots a row up and down). A blank or a charged shot
@@ -21,7 +21,7 @@ local function setup(navi: Object): Action
 end
 
 return new.weapon {
-    id = "patch-cards/triple-buster",
+    id = "patch_cards/triple_buster",
     -- The charge table's row 0x8F (the buster isn't charged), by Charge 0
     -- to 7: past 4 it reads on into the next routine's row.
     charge_ticks = { 0, 0, 0, 0, 0, 130, 120, 110 },

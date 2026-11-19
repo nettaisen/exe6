@@ -1,0 +1,16 @@
+--!strict
+-- BugFix: a cut-in chip that fixes the user's NaviCust bugs while a copy
+-- of its navi glows over it (controller.luau).
+
+local bug_fix = require("@self/controller")
+
+local chip: Chip = {
+    codes = { "K", "P", "Z", "*" },
+    element = Element.null, family = Family.null, class = ChipClass.standard,
+    rarity = 3, mb = 62, damage = 0, counter = 0, lockout = 0,
+    flags = { dimming = true, standard_library = true, library = true },
+    slot_in_limit = 1,
+    dimming = bug_fix.spawn,
+}
+
+return { bug_fix = chip }

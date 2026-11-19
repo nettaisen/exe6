@@ -2,12 +2,12 @@
 -- DustMan (the original's actor object #0x18, `sub_80BBF0C`), the navi of
 -- the DustMan chips, brought by the navi chip controller. He appears, takes
 -- every field object he can, rolls a ball of junk forward (DustCross's
--- junk ball, navis/megaman/forms/dustcross, running on while dimmed), then throws what
+-- junk ball, navis/megaman/forms/dust_cross, running on while dimmed), then throws what
 -- he took back at the other side one by one, 20 ticks apart (./junk). See
 -- docs/engine/chips.md §3.6.26.
 
 local navi_chips = require("../../lib/navi_chips/navi")
-local junk_ball = require("../../navis/megaman/forms/dustcross/junk_ball")
+local junk_ball = require("../../navis/megaman/forms/dust_cross/junk_ball")
 local junk = require("./junk")
 
 local dustman = {}
@@ -25,8 +25,8 @@ export type State = {
 local SPRITE = asset.sprite("dustman")
 local looks = require("@exelib/looks")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_TAKE = asset.sound("dustbrk")
-local SOUND_THROW = asset.sound("junk-shot")
+local SOUND_TAKE = asset.sound("dust_break")
+local SOUND_THROW = asset.sound("junk_shot")
 
 -- The controller calls his spawner through r3, which his position takes:
 -- its address with the Thumb bit, whose fraction his Z keeps.

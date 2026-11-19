@@ -10,18 +10,18 @@
 -- subtype 1 or 2 would pick the other strikes there). Nothing in the game
 -- sets the request.
 
-local assnswrd = require("../../chips/assnswrd").assnswrd
-local elemswrd = require("../../chips/elemswrd").elemswrd
-local mchnswrd = require("../../chips/mchnswrd").mchnswrd
+local assassin_sword = require("../../chips/assassin_sword").assassin_sword
+local element_sword = require("../../chips/element_sword").element_sword
+local machine_sword = require("../../chips/machine_sword").machine_sword
 local strike = require("./strike")
 
 return {
     action = new.action {
-        id = "stun-strike/action",
+        id = "stun_strike/action",
         state = strike.STATE,
         update = function(me: Object, s: any)
             local chip = me.attack_chip
-            local sword = if chip ~= nil and (chip == elemswrd or chip == assnswrd) then chip else mchnswrd;
+            local sword = if chip ~= nil and (chip == element_sword or chip == assassin_sword) then chip else machine_sword;
             (sword.action :: Action).update(me, s)
         end,
     },

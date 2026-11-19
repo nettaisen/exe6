@@ -22,7 +22,7 @@ export type State = {
 
 local SPRITE = asset.sprite("elecman")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_ELEC_MAN = asset.sound("elec-man")
+local SOUND_ELEC_MAN = asset.sound("elec_man")
 -- Where he looks (a panel region around him, dx along his side's
 -- direction), and what for, by strike, of his side (`byte_80B94AC`, by
 -- strike and side): an enemy's body, then a neutral object, on the field.

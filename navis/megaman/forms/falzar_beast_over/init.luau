@@ -1,12 +1,12 @@
 --!strict
 -- Falzar Beast Over: one of MegaMan's forms.
 
-local falzar_beast = require("./falzar_beast")["falzar-beast"]
+local falzar_beast = require("./falzar_beast").falzar_beast
 local falzar_beast_buster = require("../weapons/falzar_beast_buster")
 local beast_claw = require("../weapons/beast_claw")
 local forms = require("../../../rules/forms")
-local beast_head_sprite = asset.sprite("beast-head")
-local falzar_beast_sprite = asset.sprite("falzar-beast")
+local beast_head_sprite = asset.sprite("beast_head")
+local falzar_beast_sprite = asset.sprite("falzar_beast")
 
 local form: FormDef = {
     kind = "beast_over",
@@ -36,7 +36,7 @@ local form: FormDef = {
     element = Element.null,
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, alt_a_charge = beast_claw.weapon },
-    mugshot = asset.mugshot("falzar-beast-over"),
+    mugshot = asset.mugshot("falzar_beast_over"),
     -- What its status reset gives the navi (`sub_8014536`): untouchable, with AirShoe and FloatShoe (one
     -- literal, 0x08000030), so no hit reaches it.
     status_reset = {
@@ -112,4 +112,4 @@ local form: FormDef = {
     },
 }
 
-return { ["falzar-beast-over"] = form }
+return { falzar_beast_over = form }

@@ -25,7 +25,7 @@ local slashman: Chip = {
     },
 }
 
-local slashmn_ex: Chip = {
+local slashman_ex: Chip = {
     codes = { "S" },
     element = Element.null,
     family = Family.sword,
@@ -39,12 +39,12 @@ local slashmn_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "slashmn-ex/controller",
+        id = "slashman_ex/controller",
         summon = navi.summon { wave_damage = 20 },
     },
 }
 
-local slashmn_sp: Chip = {
+local slashman_sp: Chip = {
     codes = { "S" },
     element = Element.null,
     family = Family.sword,
@@ -59,9 +59,9 @@ local slashmn_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "slashmn-sp/controller",
+        id = "slashman_sp/controller",
         summon = navi.summon { wave_damage = 20 },
     },
 }
 
-return { slashman = slashman, ["slashmn-ex"] = slashmn_ex, ["slashmn-sp"] = slashmn_sp }
+return { slashman = slashman, slashman_ex = slashman_ex, slashman_sp = slashman_sp }

@@ -9,39 +9,39 @@
 "stay" = 0x00
 "cannon" = 0x01
 "thunder" = 0x02
-"widesht" = 0x03
-"firebrn1" = 0x04
-"yoyo" = 0x05
-"drksword" = 0x06
-"crakshot" = 0x07
-"dublshot" = 0x08
-"gundels1" = 0x09
-"trnarrw1" = 0x0A
-"beast-lunge" = 0x0B
-"beast-claw" = 0x0C
-"crosswrd" = 0x0D
-"sprsonic" = 0x0E
-"bigbomb" = 0x0F
-"gundelex" = 0x10
-"elcpuls1" = 0x11
-"moonbld" = 0x12
+"wide_shot" = 0x03
+"fire_burner_1" = 0x04
+"yo_yo" = 0x05
+"dark_sword" = 0x06
+"crack_shot" = 0x07
+"double_shot" = 0x08
+"gun_del_sol_1" = 0x09
+"train_arrow_1" = 0x0A
+"beast_lunge" = 0x0B
+"beast_claw" = 0x0C
+"cross_sword" = 0x0D
+"super_sonic" = 0x0E
+"big_bomb" = 0x0F
+"gun_del_sol_ex" = 0x10
+"elec_pulse_1" = 0x11
+"moon_blade" = 0x12
 
 # Statuses (`off_80209EC`): a hit's status byte (group in the high nibble, from 0x10).
 [statuses]
-"paralyze-90" = 0x10
-"paralyze-120" = 0x11
-"paralyze-150" = 0x12
-"confuse-480" = 0x20
-"confuse-960" = 0x22
-"confuse-4" = 0x23
-"blind-480" = 0x30
-"blind-1200" = 0x32
-"blind-4" = 0x33
-"immobilize-120" = 0x42
-"immobilize-4" = 0x43
-"immobilize-30" = 0x46
-"freeze-150" = 0x50
-"bubble-150" = 0x60
+"paralyze_90" = 0x10
+"paralyze_120" = 0x11
+"paralyze_150" = 0x12
+"confuse_480" = 0x20
+"confuse_960" = 0x22
+"confuse_4" = 0x23
+"blind_480" = 0x30
+"blind_1200" = 0x32
+"blind_4" = 0x33
+"immobilize_120" = 0x42
+"immobilize_4" = 0x43
+"immobilize_30" = 0x46
+"freeze_150" = 0x50
+"bubble_150" = 0x60
 
 # The identities with a key of their own (what an object is taken for): the original's
 # NameID, which picks the object's actor record (`byte_80182C4`), a field object's look
@@ -57,26 +57,26 @@
 "boulder" = 0xCE
 "otenko" = 0xCF
 "rock" = 0xD0
-"ice-block" = 0xD1
-"bodygrd-striker" = 0xD3
-"blkbomb" = 0xD5
+"ice_block" = 0xD1
+"bodygrd_striker" = 0xD3
+"black_bomb" = 0xD5
 "wind" = 0xD6
 "fan" = 0xD7
 "timebomb" = 0xD8
-"timebomb-big" = 0xD9
+"timebomb_big" = 0xD9
 "mine" = 0xDA
 "anubis" = 0xDB
-"poisphar" = 0xDC
+"poison_pharaoh" = 0xDC
 "fanfare" = 0xDD
 "discord" = 0xDE
 "timpani" = 0xDF
 "silence" = 0xE0
-"vdoll" = 0xE2
+"voodoo_doll" = 0xE2
 "guardian" = 0xE3
 "sensor" = 0xE4
-"airspin-top" = 0xE5
-"airraid-plane" = 0xE7
-"lilbolr" = 0xEB
+"airspin_top" = 0xE5
+"airraid_plane" = 0xE7
+"little_boiler" = 0xEB
 
 # The roles `effects` of rules/roles.luau: the one-shot effect (`byte_80E0398`) the original's
 # routines name each by.
@@ -116,8 +116,8 @@ floating_navi = 0x10
 # definitions give (a type is defined once and shared).
 [collision_types]
 "anubis/statue/update/init/look/drain" = 0x52
-"blzrdbal/roller/update/look/self_type" = 0x58
-"blzrdbal/roller/update/look/target" = 0x49
+"blizzard_ball/roller/update/look/self_type" = 0x58
+"blizzard_ball/roller/update/look/target" = 0x49
 "rules/collision/attack" = 0x04
 "rules/collision/attack_480" = 0x25
 "rules/collision/attack_a0" = 0x47

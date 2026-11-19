@@ -27,7 +27,7 @@ plus.UNINSTALL = { uninstall = true } :: { [string]: boolean }
 
 -- `loc_80104B6` (shared with `sub_80104E0`): a sparkle by the navi's
 -- panel, on the enemy's side of it.
-plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel-poison"))
+plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel_poison"))
 
 -- `sub_8010488`: from a special source, the attack's damage plus `extra`
 -- into the side's bonus `bonus`; else the sparkle.

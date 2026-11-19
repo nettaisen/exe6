@@ -1,0 +1,285 @@
+--!strict
+-- SlashCross's charged shot (`slash_cross/charge`): the original's weapon
+-- routine 0x12 (`sub_8011CD6`), and the charged slash both it and
+-- SlashCross's A-charge (`megaman/slash_a_charge`,
+-- ../../weapons/slash-a-charge) start: the original's action 0x41
+-- (`sub_80EE34A`). The navi may first dash two panels forward (a step
+-- sword's slash, as StepSwrd's), leaving an afterimage; it raises its
+-- sword (the charged shot's own slash and MoonBld's swing the arm alone),
+-- and on the tick its 21-tick count reaches 12 sends its slash's sword
+-- wave (./sword_wave) from the panel in front (CrosSwrd's sends a second,
+-- hidden one). DblDream's slashes twice. A dash ends back on the panel it
+-- started from.
+--
+-- What the slash is comes with its `ChargedSlash` (./slashes), which the
+-- action keeps in its state: the charged shot's own, or the one the
+-- charged chip's sword states (`slash_charge.of_action`; a chip that
+-- states none, the plain sword's, `slash_charge.plain`). (The original
+-- keeps the charged chip's subtype in the attack's variant and its first
+-- parameter, and reads each part of the slash from a table by it.)
+
+local lockon = require("../../../../rules/lockon")
+local parts = require("../../../../lib/swords/parts")
+local regions = require("@exelib/regions")
+local slashes = require("./slashes")
+local sword_wave = require("./sword_wave")
+local weapon = require("../../../../lib/weapon")
+local charged_slash_sprite = asset.sprite("charged_slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
+
+export type State = {
+    -- AIAttackVars+0x10: ticks into the slash, or of the end. (The slashes
+    -- to go are the navi's `attack_count`.)
+    timer: number,
+    -- The slash (the original's attack variant), and whether the navi
+    -- dashes in first (its first parameter).
+    slash: ChargedSlash,
+    dash: boolean,
+}
+
+local slash_charge = {}
+
+-- The phases, on the attack's step.
+local DASH, COUNT, SLASH, RETURN, FINISH = 0x0, 0x4, 0x8, 0xC, 0x10
+
+-- The charged shot's attack: Sword (secondary element 0x80) and its hit
+-- parameter.
+local SWORD, COUNTER = Element.new(PrimaryElement.null, { sword = true }), 20
+-- The panels a dash may end on (`sub_8015B00`, two ahead): on the field
+-- (0x10000), with no body on it (0xF800000).
+local DASH_SET: PanelCondition = { on_field = true, any_body = false }
+
+-- The dash's afterimage: its color shader and lifetime.
+local AFTERIMAGE_SHADER, AFTERIMAGE_TICKS = 0xFFE0, 0x14
+
+-- The tick of the count the wave goes out on (the game means 17 for the
+-- slashes without a blade, but compares the wrong register).
+local WAVE_TICK = 12
+
+-- The navi's animations the return waits out, and their lengths in its
+-- sprite's steps (SlashCross's and its Beast's alike): the one in place of
+-- a blocked dash, 4; raising the sword, 22; raising the arm alone (a slash
+-- without a blade), 16.
+local NO_DASH, RAISE_SWORD, RAISE_ARM = 4, 5, 0xC
+local NO_DASH_STEPS, RAISE_SWORD_STEPS, RAISE_ARM_STEPS = 4, 22, 16
+
+-- The steps the navi's animation `anim` (one of the above) lasts.
+local function steps_of(anim: number): number
+    if anim == NO_DASH then
+        return NO_DASH_STEPS
+    elseif anim == RAISE_SWORD then
+        return RAISE_SWORD_STEPS
+    end
+    return RAISE_ARM_STEPS
+end
+
+-- The charged slash as `slash`, with a dash first or not: its action, for
+-- `navi` to start. (The Beast Out rush locks on in the slash's mode, which
+-- it reads from this state: the original's table by the variant,
+-- `sub_80EAF26`.)
+function slash_charge.begin(navi: Object, slash: ChargedSlash, dash: boolean): Action
+    local s = navi:action_state(slash_charge.action) :: State
+    s.slash = slash
+    s.dash = dash
+    return slash_charge.action
+end
+
+-- The plain sword's slash (the original's row 0, what a chip without a
+-- subtype reads): over the panel ahead.
+slash_charge.plain = slashes.slash {
+    wave = slashes.wave { region = regions.single, sprite = sword_slash_sprite, anim = 2 },
+    blade = parts.blade,
+    sound = parts.swing,
+    lockon = lockon.thunder,
+}
+
+-- The charged slash of a sword whose action is `action` (a slash of
+-- lib/swords, or MoonBld's swing: what its spec names as `charged`, with
+-- a step sword's dash). An action that names none slashes as the plain
+-- sword (the original's row 0, what a chip without a subtype reads).
+function slash_charge.of_action(navi: Object, action: Action): Action
+    local spec = action.args :: { charged: ChargedSlash?, step: boolean? }?
+    local slash = (spec and spec.charged) or slash_charge.plain
+    return slash_charge.begin(navi, slash, spec ~= nil and spec.step == true)
+end
+
+-- The charged shot's own slash: a short wave over a column (its sprite
+-- also steps after each update), no blade.
+local OWN = slashes.slash {
+    wave = slashes.wave {
+        region = regions.wide,
+        sprite = charged_slash_sprite,
+        anim = 0,
+        reach = 1,
+        steps = true,
+    },
+    sound = parts.swing,
+    lockon = lockon.wide_shot,
+}
+
+-- `sub_8011CD6`: 60 damage and 20 more per point of buster Attack (up to
+-- 5), a Sword attack: the charge's own slash, no dash.
+local function setup(navi: Object): Action
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x3C, 0x14), counter = COUNTER, cant_counter = true }
+    navi.attack_element = SWORD
+    navi.extra = 0
+    return slash_charge.begin(navi, OWN, false)
+end
+
+local function moving_or_sliding(me: Object): boolean
+    return me.status.moving or me.status.sliding
+end
+
+-- `sub_80EE370`: for a dash with the navi still, dash two panels forward
+-- if it can (leaving an afterimage where it stood); else no slash at all
+-- (the animation 4, then back).
+local function dash(me: Object, s: State)
+    me.step = COUNT
+    me.step_init = 0
+    if not s.dash or moving_or_sliding(me) then
+        return
+    end
+    me.status.moving = true
+    me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
+    me:reserve_panel(me.panel_x, me.panel_y)
+    local x, y = me.panel_x + 2 * me.facing, me.panel_y
+    if not field.check(x, y, DASH_SET) then
+        me:set_animation(NO_DASH)
+        me.step = RETURN
+        me.step_init = 0
+        return
+    end
+    -- A copy of the navi's sprite (Param1 0xFF), animation 0
+    -- (`sub_800F2AA`'s nullsub leaves it), the navi's flip; a shadow kept
+    -- on the ground (the lifetime word's bytes 2 and 3 set).
+    battle.afterimage(me, me.pos, {
+        anim = 0,
+        facing = me.facing_side,
+        lifetime = AFTERIMAGE_TICKS,
+        color_shader = AFTERIMAGE_SHADER,
+        shadow = Shadow.ground,
+    })
+    me.panel_x, me.panel_y = x, y
+    me:set_coordinates_from_panel()
+    me:update_collision_panels()
+end
+
+-- `sub_80EE3F0`: how many slashes.
+local function count(me: Object, s: State)
+    me.attack_count = if s.slash.again then 2 else 1
+    me.marker = 0
+    me.step = SLASH
+    me.step_init = 0
+end
+
+-- `sub_80EE406`: raise the sword; send the wave on the 12th tick; after
+-- 21 ticks slash again or go on.
+local function slash(me: Object, s: State)
+    if me.step_init == 0 then
+        local slash = s.slash
+        local blade = slash.blade
+        me:set_animation(if blade then RAISE_SWORD else RAISE_ARM)
+        me:refresh_form_overlay()
+        me:open_counter_window()
+        battle.play_sound(slash.sound)
+        if blade then
+            -- `sub_80EBB34`: the blade, in the first related slot.
+            parts.hold(me, blade, parts.blade_palette(me))
+        end
+        me.status.using_action = true
+        s.timer = 0x15
+        me.step_init = 4
+    end
+    if s.timer == WAVE_TICK then
+        local slash = s.slash
+        local x, y = me.panel_x + me.facing, me.panel_y
+        local damage = damage_word.plus(me.attack_word, me.extra)
+        sword_wave.spawn(me, slash.wave, x, y, me.attack_element, damage)
+        if slash.hidden_wave then
+            sword_wave.spawn(me, slash.hidden_wave, x, y, me.attack_element, damage, true)
+        elseif slash.again then
+            -- The next slash is the second.
+            s.slash = slash.again
+        end
+    end
+    local t = s.timer - 1
+    s.timer = t
+    if t >= 0 then
+        return
+    end
+    local left = me.attack_count - 1
+    me.attack_count = left
+    if left > 0 then
+        -- Again from the entry. (The game returns through a mismatched
+        -- `pop`, leaving r8 with the navi's AIData pointer.)
+        me.related1 = nil
+        me.overlay = nil
+        me.step_init = 0
+        return
+    end
+    me.step = if s.dash then RETURN else FINISH
+    me.step_init = 0
+end
+
+-- `sub_80EE50C`: after the animation's last frame, back on the panel the
+-- dash started from.
+local function return_(me: Object)
+    if me.sprite.steps < steps_of(me.anim) then
+        return
+    end
+    me.panel_x, me.panel_y = me.future_panel_x, me.future_panel_y
+    me:unreserve_panel(me.panel_x, me.panel_y)
+    me:update_collision_panels()
+    me:set_coordinates_from_panel()
+    me.step = FINISH
+    me.step_init = 0
+end
+
+-- `sub_80EE532`: 6 ticks, then idle.
+local function finish(me: Object, s: State)
+    if me.step_init == 0 then
+        me.status.moving = false
+        s.timer = 5
+        me.step_init = 4
+    end
+    local t = s.timer - 1
+    s.timer = t
+    if t >= 0 then
+        return
+    end
+    me.related1 = nil
+    me.overlay = nil
+    me:exit_attack()
+end
+
+slash_charge.action = new.action {
+    id = "slash_cross/charge/action",
+    state = { timer = schema.u16, slash = slashes.CHARGED_SLASH, dash = schema.bool },
+    -- `sub_80EE34A`.
+    update = function(me: Object, s: State)
+        local step = me.step
+        if step == DASH then
+            dash(me, s)
+        elseif step == COUNT then
+            count(me, s)
+        elseif step == SLASH then
+            slash(me, s)
+        elseif step == RETURN then
+            return_(me)
+        elseif step == FINISH then
+            finish(me, s)
+        else
+            error(string.format("charged slash phase %#x reads past its phase table (sub_80EE34A)", step))
+        end
+    end,
+}
+
+slash_charge.weapon = new.weapon {
+    id = "slash_cross/charge",
+    -- The charge table's row 0x12, by Charge 0 to 7: past 4 it reads on
+    -- into the next routine's row, as the original's table does.
+    charge_ticks = { 80, 70, 60, 55, 50, 60, 60, 60 },
+    setup = setup,
+}
+
+return slash_charge

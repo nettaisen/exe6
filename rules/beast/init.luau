@@ -16,7 +16,7 @@ local cross_special = require("@self/cross_special")
 local kind = require("./forms/kind")
 local custom_beast = require("@self/custom")
 local rush = require("@self/rush")
-local slash_charge = require("../navis/megaman/forms/slashcross/charge")
+local slash_charge = require("../navis/megaman/forms/slash_cross/charge")
 
 -- The side's form runs its charged sword inside the rush (SlashCross
 -- Beast's `charged_sword_rush`).

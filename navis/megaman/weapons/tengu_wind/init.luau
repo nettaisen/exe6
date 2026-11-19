@@ -1,5 +1,5 @@
 --!strict
--- TenguCross's B+Back special (`megaman/tengu-wind`): the original's
+-- TenguCross's B+Back special (`megaman/tengu_wind`): the original's
 -- weapon routine 0x10 (`sub_8011CA8`), which names the instant chips'
 -- action with an effect no chip has (`sub_80CD4AC`, the original's instant
 -- effect 0x14) and a 40-tick cooldown before the next B+Back. The effect
@@ -14,7 +14,7 @@ local tengu_wind = {}
 
 local COOLDOWN = 0x28
 
-local SOUND = asset.sound("dustbrk")
+local SOUND = asset.sound("dust_break")
 
 -- `sub_8011CA8`: the cooldown; its effect is the weapon's `instant`, which
 -- the instant chips' action runs.
@@ -30,7 +30,7 @@ function tengu_wind.blow(user: Object, _spec: InstantChipSpec)
 end
 
 tengu_wind.weapon = new.weapon {
-    id = "megaman/tengu-wind",
+    id = "megaman/tengu_wind",
     -- The charge table's row 0x10, by Charge 0 to 7: past 4 it reads on
     -- into the next routine's row, as the original's table does.
     charge_ticks = { 0, 0, 0, 0, 0, 60, 60, 60 },

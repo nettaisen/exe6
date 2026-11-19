@@ -11,7 +11,7 @@
 -- L, L, L, A meanwhile, he comes back on foot in front of the nearest
 -- enemy and slashes it. See docs/engine/chips.md §3.6.38.
 --
--- (CrosOver's Django, chips/crosover/navi, is another kind: the US games'
+-- (CrosOver's Django, chips/cross_over/navi, is another kind: the US games'
 -- code, which these share nothing with but the sprite.)
 --
 -- Each chip's `navi` hook is `django.summon { slash_damage = n }` (JP
@@ -52,8 +52,8 @@ export type State = {
 
 local SPRITE = asset.sprite("django")
 local navi_left = require("@exelib/navi_chips/left")
-local SOUND_APPEAR, SOUND_BIKE = asset.sound("appear"), asset.sound("django-bike")
-local SOUND_COMMAND, SOUND_SWING = asset.sound("ok-8b"), asset.sound("sword-swing")
+local SOUND_APPEAR, SOUND_BIKE = asset.sound("appear"), asset.sound("django_bike")
+local SOUND_COMMAND, SOUND_SWING = asset.sound("ok_8b"), asset.sound("sword_swing")
 
 -- The controller calls his spawner through r3, which his position takes:
 -- JP Falzar's address with the Thumb bit (JP Gregar's is 0x080BEF03),

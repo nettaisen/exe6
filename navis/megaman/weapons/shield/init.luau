@@ -1,17 +1,17 @@
 --!strict
 -- The NaviCust programs' shields, B+Back specials: `megaman/shield` and
--- `megaman/shield-2` (the original's weapon routines 0x3B, `sub_801216E`,
+-- `megaman/shield_2` (the original's weapon routines 0x3B, `sub_801216E`,
 -- and 0x8C, `sub_80125AC`, the same) raise a Reflector's guard
--- (chips/rflectr/guard.luau, the original's action 0x2B as its subtype 3)
--- that only guards; `megaman/reflect-2` and `megaman/reflect` (0x3C,
+-- (chips/reflector/guard.luau, the original's action 0x2B as its subtype 3)
+-- that only guards; `megaman/reflect_2` and `megaman/reflect` (0x3C,
 -- `sub_8012194`, and 0x8B, `sub_8012586`) raise it as its subtype 4: a hit
 -- it guards is fired back as a 50-damage buster shot. The shield holds 20
 -- ticks in the Shield's look or the Reflect's, and the navi's chips wait 40
 -- ticks after it.
 
-local guard = require("../../../chips/rflectr/guard")
+local guard = require("../../../chips/reflector/guard")
 local projectile = require("../../../lib/projectile")
-local reflector_shield = require("../../../chips/rflectr/shield")
+local reflector_shield = require("../../../chips/reflector/shield")
 local variants = require("../../../objects/projectile/variants")
 
 local shield = {}
@@ -95,7 +95,7 @@ shield.shield = new.weapon {
     setup = setup,
 }
 shield.shield_2 = new.weapon {
-    id = "megaman/shield-2",
+    id = "megaman/shield_2",
     charge_ticks = { 0, 0, 0, 0, 0, 100, 90, 80 },
     setup = setup,
 }
@@ -105,7 +105,7 @@ shield.reflect = new.weapon {
     setup = setup_counter,
 }
 shield.reflect_2 = new.weapon {
-    id = "megaman/reflect-2",
+    id = "megaman/reflect_2",
     charge_ticks = { 0, 0, 0, 0, 0, 0, 0, 0 },
     setup = setup_counter,
 }

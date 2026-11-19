@@ -1,24 +1,24 @@
 --!strict
 -- MegaMan: the navi that changes form.
 
-local heatcross = require("@self/forms/heatcross").heatcross
-local eleccross = require("@self/forms/eleccross").eleccross
-local slashcross = require("@self/forms/slashcross").slashcross
-local erasecross = require("@self/forms/erasecross").erasecross
-local chargecross = require("@self/forms/chargecross").chargecross
-local spoutcross = require("@self/forms/spoutcross").spoutcross
-local tomahawkcross = require("@self/forms/tomahawkcross").tomahawkcross
-local tengucross = require("@self/forms/tengucross").tengucross
-local groundcross = require("@self/forms/groundcross").groundcross
-local dustcross = require("@self/forms/dustcross").dustcross
-local gregar_beast = require("@self/forms/gregar_beast")["gregar-beast"]
-local falzar_beast = require("@self/forms/falzar_beast")["falzar-beast"]
-local gregar_beast_over = require("@self/forms/gregar_beast_over")["gregar-beast-over"]
-local falzar_beast_over = require("@self/forms/falzar_beast_over")["falzar-beast-over"]
+local heat_cross = require("@self/forms/heat_cross").heat_cross
+local elec_cross = require("@self/forms/elec_cross").elec_cross
+local slash_cross = require("@self/forms/slash_cross").slash_cross
+local erase_cross = require("@self/forms/erase_cross").erase_cross
+local charge_cross = require("@self/forms/charge_cross").charge_cross
+local aqua_cross = require("@self/forms/aqua_cross").aqua_cross
+local tomahawk_cross = require("@self/forms/tomahawk_cross").tomahawk_cross
+local tengu_cross = require("@self/forms/tengu_cross").tengu_cross
+local ground_cross = require("@self/forms/ground_cross").ground_cross
+local dust_cross = require("@self/forms/dust_cross").dust_cross
+local gregar_beast = require("@self/forms/gregar_beast").gregar_beast
+local falzar_beast = require("@self/forms/falzar_beast").falzar_beast
+local gregar_beast_over = require("@self/forms/gregar_beast_over").gregar_beast_over
+local falzar_beast_over = require("@self/forms/falzar_beast_over").falzar_beast_over
 local buster = require("@self/weapons/buster")
 local charged_shot = require("@self/weapons/charged_shot")
-local megaman_navi_sprite = asset.sprite("megaman-navi")
-local megaman_portrait_sprite = asset.sprite("megaman-portrait")
+local megaman_navi_sprite = asset.sprite("megaman_navi")
+local megaman_portrait_sprite = asset.sprite("megaman_portrait")
 
 local navi: NaviDef = {
     sprite = megaman_navi_sprite,
@@ -28,7 +28,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("megaman-win"), lose = asset.banner("megaman-deleted") },
+    banners = { win = asset.banner("megaman_win"), lose = asset.banner("megaman_deleted") },
     merge_height = 0,
     -- The no-running message's portrait: the speaker beside the box. Its
     -- words are locales/<lang>.toml's; the content's own (en) time it.
@@ -68,8 +68,8 @@ local navi: NaviDef = {
     -- His forms, by game: the Crosses by their number on the custom screen, the Cybeast (the
     -- form Beast Out takes him into: a build's `cybeast` names one of these) and Beast Over.
     forms = {
-        gregar = { form_list = { heatcross, eleccross, slashcross, erasecross, chargecross }, cybeast = gregar_beast, beast_over = gregar_beast_over },
-        falzar = { form_list = { spoutcross, tomahawkcross, tengucross, groundcross, dustcross }, cybeast = falzar_beast, beast_over = falzar_beast_over },
+        gregar = { form_list = { heat_cross, elec_cross, slash_cross, erase_cross, charge_cross }, cybeast = gregar_beast, beast_over = gregar_beast_over },
+        falzar = { form_list = { aqua_cross, tomahawk_cross, tengu_cross, ground_cross, dust_cross }, cybeast = falzar_beast, beast_over = falzar_beast_over },
     },
     identity = new.identity {
         class = IdentityClass.player,

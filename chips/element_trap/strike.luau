@@ -1,0 +1,68 @@
+--!strict
+-- ElemTrap's counterattack (the original's effect object #0x2B,
+-- `sub_80E35A4`): the shared counterattack (@exelib/element_trap/strike), EXE6's
+-- kind and look: its strikes by element, and EXE6's panel bursts.
+
+local collision = require("../../rules/collision")
+local common = require("@exelib/element_trap/strike")
+local effects = require("../../lib/effects")
+local panel_bursts = require("../../objects/panel_bursts")
+local sparks = require("../../lib/sparks")
+local statuses = require("../../rules/status")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
+local lightning_sprite = asset.sprite("lightning")
+local spout_splash_sprite = asset.sprite("spout_splash")
+
+local strike = {}
+
+-- The bursts' looks: water for aqua, lightning for elec, leaves for wood
+-- (the original's panel-burst rows 0, 2 and 4; fire and the null element
+-- take the shells' fiery burst, row 3).
+local SPLASH = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 }
+local LIGHTNING = new.effect { sprite = lightning_sprite, anim = 0, palette = 0, steps = 17 }
+local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0, steps = 13 }
+
+-- The strike by element (null, fire, aqua, elec, wood): its sound
+-- (`byte_80E3714`; none for the null element), its hit (`byte_80E36EC`:
+-- the hit spark, hit modifier and status; every one a single panel's, an
+-- attack that reaches navis) and the bursts' look (`byte_80E371E`).
+local STRIKES: { [string]: ElemTrapStrike } = {
+    null = { sound = nil, spark = sparks.breaking, hit_mod = { flinch = true, flash = true }, status = nil, burst = effects.shell_burst },
+    fire = {
+        sound = asset.sound("target_move"),
+        spark = sparks.fire,
+        hit_mod = { flinch = true, flash = true },
+        status = nil,
+        burst = effects.shell_burst,
+    },
+    aqua = { sound = asset.sound("spout_ball"), spark = sparks.aqua, hit_mod = { flinch = true, flash = true }, status = nil, burst = SPLASH },
+    elec = {
+        sound = asset.sound("beast_over_burst"),
+        spark = sparks.elec,
+        hit_mod = { flinch = true },
+        status = statuses.paralyze_90,
+        burst = LIGHTNING,
+    },
+    wood = { sound = asset.sound("junk_shot"), spark = sparks.wood, hit_mod = { flinch = true }, status = statuses.confuse_480, burst = LEAVES },
+}
+-- EXE6's look: the strikes by element, what the hits are and reach, and the
+-- bursts' kind.
+local EXE6: ElemTrapStrikeLook = {
+    strikes = STRIKES,
+    self_type = collision.attack,
+    target = collision.hits_navis,
+    bursts = panel_bursts.kind,
+}
+
+-- A counterattack kind (`id`) of `look`.
+strike.make_kind = common.make_kind
+
+strike.kind = common.make_kind("element_trap/strike", EXE6)
+
+-- `sub_80E360E`: the counterattack for `user`, of `element`, with the
+-- trap's damage word and bonus. Of `kind`, EXE6's by default.
+function strike.spawn(user: Object, element: Element, damage: number, bonus: number, kind: Kind?): Object?
+    return common.spawn(kind or strike.kind, user, element, damage, bonus)
+end
+
+return strike

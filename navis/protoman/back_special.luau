@@ -1,14 +1,14 @@
 --!strict
--- ProtoMan's B+Back specials: `protoman/back-special` (the original's
+-- ProtoMan's B+Back specials: `protoman/back_special` (the original's
 -- weapon routine 0x34, `sub_80120A6`) raises a Reflector's guard
--- (chips/rflectr/guard, the original's action 0x2B as its subtype 3) that
--- only guards, in the NaviCust Reflect's look; `protoman/back-special-2`
+-- (chips/reflector/guard, the original's action 0x2B as its subtype 3) that
+-- only guards, in the NaviCust Reflect's look; `protoman/back_special_2`
 -- (0x30, `sub_8012018`) raises the NaviCust Reflect's own guard
 -- (navis/megaman's `megaman/reflect/action`: a hit it guards is fired back
 -- as a buster shot), with the damage his stats give. Either holds 20
 -- ticks, and his chips wait 40 ticks after it.
 
-local guard = require("../../chips/rflectr/guard")
+local guard = require("../../chips/reflector/guard")
 local navicust = require("../megaman/weapons/shield")
 
 local back_special = {}
@@ -19,7 +19,7 @@ local TICKS = 0x14
 -- The guard that only guards (the original's params word 0x114 with
 -- subtype 3).
 local GUARD = guard.action {
-    id = "protoman/back-special/action",
+    id = "protoman/back_special/action",
     ticks = TICKS,
     look = navicust.reflect_look,
     heedless = true,
@@ -46,7 +46,7 @@ local function setup_reflect(navi: Object): Action
 end
 
 back_special.weapon = new.weapon {
-    id = "protoman/back-special",
+    id = "protoman/back_special",
     -- The charge table's row 0x34, by Charge 0 to 7: past 4 it reads on
     -- into the next routine's row, as the original's table does.
     charge_ticks = { 70, 70, 70, 70, 70, 90, 80, 70 },
@@ -54,7 +54,7 @@ back_special.weapon = new.weapon {
 }
 
 back_special.weapon_2 = new.weapon {
-    id = "protoman/back-special-2",
+    id = "protoman/back_special_2",
     -- The charge table's row 0x30, by Charge 0 to 7: past 4 it reads on
     -- into the next routine's row, as the original's table does.
     charge_ticks = { 0, 0, 0, 0, 0, 0, 0, 0 },

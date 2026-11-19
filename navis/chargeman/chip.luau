@@ -112,7 +112,7 @@ local chip: Chip = {
     slot_in_limit = 1,
     -- `sub_80F1334` (`off_80F1348`).
     action = new.action {
-        id = "volcchrg/action",
+        id = "volcano_charge/action",
         state = STATE,
         update = function(me: Object, s: State)
             link.run(me, s, PHASES, "VolcChrg (sub_80F1334)")
@@ -120,4 +120,4 @@ local chip: Chip = {
     },
 }
 
-return { volcchrg = chip }
+return { volcano_charge = chip }

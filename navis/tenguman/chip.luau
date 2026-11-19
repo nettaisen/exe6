@@ -18,7 +18,7 @@ local STATE = { timer = schema.u16 }
 
 local BLOW, RECOVER = 0x0, 0x4
 local ANIM_BLOW, ANIM_RECOVER = 0x10, 7
-local SOUND = asset.sound("aqua-surge")
+local SOUND = asset.sound("aqua_surge")
 
 -- The gust on him (32 pixels up).
 local GUST = new.effect { sprite = swirl_sprite, anim = 1, palette = 1, steps = 15 }
@@ -109,7 +109,7 @@ local chip: Chip = {
     slot_in_limit = 1,
     -- `sub_80F1A46` (`off_80F1A58`).
     action = new.action {
-        id = "ftornado/action",
+        id = "fuujin_tornado/action",
         state = STATE,
         update = function(me: Object, s: State)
             link.run(me, s, PHASES, "FTornado (sub_80F1A46)")
@@ -117,4 +117,4 @@ local chip: Chip = {
     },
 }
 
-return { ftornado = chip }
+return { fuujin_tornado = chip }

@@ -31,7 +31,7 @@ local cannon: Chip = {
     action = shooter.action { id = "cannon/action", arm = CANNON_ARM, shot = variants.cannon },
 }
 
-local hicannon: Chip = {
+local high_cannon: Chip = {
     codes = { "L", "M", "N", "*" },
     element = Element.null,
     family = Family.null,
@@ -44,10 +44,10 @@ local hicannon: Chip = {
     flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.cannon },
     slot_in_limit = 3,
-    action = shooter.action { id = "hicannon/action", arm = HICANNON_ARM, shot = variants.cannon },
+    action = shooter.action { id = "high_cannon/action", arm = HICANNON_ARM, shot = variants.cannon },
 }
 
-local m_cannon: Chip = {
+local mega_cannon: Chip = {
     codes = { "R", "S", "T", "*" },
     element = Element.null,
     family = Family.null,
@@ -60,7 +60,7 @@ local m_cannon: Chip = {
     flags = { has_damage = true, standard_library = true, library = true },
     beast = { lockon = lockon.cannon },
     slot_in_limit = 3,
-    action = shooter.action { id = "m-cannon/action", arm = M_CANNON_ARM, shot = variants.cannon },
+    action = shooter.action { id = "mega_cannon/action", arm = M_CANNON_ARM, shot = variants.cannon },
 }
 
-return { cannon = cannon, hicannon = hicannon, ["m-cannon"] = m_cannon }
+return { cannon = cannon, high_cannon = high_cannon, mega_cannon = mega_cannon }

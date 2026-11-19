@@ -5,7 +5,7 @@
 -- puts the navi in at the turn's start (`sub_802937A`, `sub_802A040`), and
 -- the round's record of it (`dword_20349A0`). Its state is the rules'.
 
-local beast_out_chip = require("../../chips/beastout").beastout
+local beast_out_chip = require("../../chips/beast_out").beast_out
 local exe6 = require("../api")
 local kind = require("../forms/kind")
 local chip_gate_battle = require("../../lib/chip_gate_battle")
@@ -25,8 +25,8 @@ local SHAKE_MAGNITUDE, SHAKE_TICKS = 1, 0x28
 local FADE_SPEED = 8
 -- Its sounds with the pick's (`sub_802774C`, and the BeastOut chip's `sub_8027624`): the first by the Beast's game
 -- (Gregar's on a Gregar console; the original's 0x191 and 0x193), then the flash (0xBC).
-local CHOSEN_SOUNDS = { gregar = asset.sound("beast-out-chosen-gregar"), falzar = asset.sound("beast-out-chosen-falzar") }
-local FLASH_SOUND = asset.sound("blinding-flash")
+local CHOSEN_SOUNDS = { gregar = asset.sound("beast_out_chosen_gregar"), falzar = asset.sound("beast_out_chosen_falzar") }
+local FLASH_SOUND = asset.sound("blinding_flash")
 
 -- The side's navi changes form (MegaMan).
 local function megaman(side: number): boolean

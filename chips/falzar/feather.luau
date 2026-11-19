@@ -21,8 +21,8 @@ export type State = {
     while_dimmed: boolean,
 }
 
-local SPRITE = asset.sprite("falzar-feather")
-local SOUND = asset.sound("justice-one")
+local SPRITE = asset.sprite("falzar_feather")
+local SOUND = asset.sound("justice_one")
 
 -- Where it starts: 192 pixels back and up (16.16).
 local START = 0xC0_0000

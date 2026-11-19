@@ -24,7 +24,7 @@ local program: NaviCustProgram = {
         ".......",
     },
     bug = "emotion",
-    exclusive = "l-button",
+    exclusive = "l_button",
     effects = { programs.outside("poem") },
 }
 

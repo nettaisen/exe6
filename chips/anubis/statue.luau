@@ -26,7 +26,7 @@ local DRAIN_IS = new.collision { flags = { own_attack = true, breaks_guard = tru
 local made = common.make {
     id = "anubis/statue",
     sprite = anubis_sprite,
-    sounds = { land = asset.sound("land"), ["break"] = asset.sound("hit-bomb-1") },
+    sounds = { land = asset.sound("land"), ["break"] = asset.sound("hit_bomb_1") },
     -- A field obstacle of its side, hit by the other side.
     is = collision.own_body,
     hits = collision.hit_by_other_side,

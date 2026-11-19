@@ -9,7 +9,7 @@
 "slashman" = { navi = 0x03, name_id = 0x1A3 }
 "eraseman" = { navi = 0x04, name_id = 0x1A4 }
 "chargeman" = { navi = 0x05, name_id = 0x1A5 }
-"spoutman" = { navi = 0x06, name_id = 0x1A6 }
+"aquaman" = { navi = 0x06, name_id = 0x1A6 }
 "tomahawkman" = { navi = 0x07, name_id = 0x1A7 }
 "tenguman" = { navi = 0x08, name_id = 0x1A8 }
 "groundman" = { navi = 0x09, name_id = 0x1A9 }

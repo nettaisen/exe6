@@ -6,32 +6,32 @@
 # The save's SP navi deletion times (`byte_203EB00`, 20 halfwords), by the SP chip whose
 # damage goes by each slot's time (the rules' `sp_times`).
 [sp_slots]
-"heatman-sp" = 0
-"elecman-sp" = 1
-"slashmn-sp" = 2
-"erasemn-sp" = 3
-"chrgemn-sp" = 4
-"spoutmn-sp" = 5
-"tmhkman-sp" = 6
-"tengumn-sp" = 7
-"grndman-sp" = 8
-"dustman-sp" = 9
-"protomn-sp" = 10
-"blastmn-sp" = 11
-"diveman-sp" = 12
-"crcusmn-sp" = 13
-"judgemn-sp" = 14
-"elmntmn-sp" = 15
-"count-sp" = 16
-"colonel-sp" = 17
+"heatman_sp" = 0
+"elecman_sp" = 1
+"slashman_sp" = 2
+"eraseman_sp" = 3
+"chargeman_sp" = 4
+"aquaman_sp" = 5
+"tomahawkman_sp" = 6
+"tenguman_sp" = 7
+"groundman_sp" = 8
+"dustman_sp" = 9
+"protoman_sp" = 10
+"blastman_sp" = 11
+"diveman_sp" = 12
+"circusman_sp" = 13
+"judgeman_sp" = 14
+"elementman_sp" = 15
+"count_sp" = 16
+"colonel_sp" = 17
 
 # The rocks a stage places, by the argument of the actor list's entry (the row of
 # `byte_80CF934`).
 [rock_variants]
-"rockcube/rock/brittle" = 0
-"rockcube/rock/cube" = 1
-"rockcube/rock/hard" = 2
-"rockcube/rock/ice" = 3
+"rock_cube/rock/brittle" = 0
+"rock_cube/rock/cube" = 1
+"rock_cube/rock/hard" = 2
+"rock_cube/rock/ice" = 3
 
 # The projectile's variants a navi's stats name as a shot program (NaviStats+0x4D the
 # buster shot's, +0x4F the charged shot's), by the row of `off_80C4C78`. (The byte 0 is no
@@ -46,37 +46,37 @@
 "shot/charged" = 6
 "shot/cracking" = 7
 "shot/poisoning" = 8
-"shot/chip-destruction" = 9
+"shot/chip_destruction" = 9
 "shot/confusing" = 10
 "shot/blinding" = 11
-"shot/gigacan" = 12
+"shot/giga_cannon" = 12
 "shot/grass" = 13
 "shot/ice" = 14
 "shot/flinching" = 15
 "shot/erasing" = 16
 "shot/paralyzing" = 17
-"shot/charged-confusing" = 18
-"shot/charged-paralyzing" = 19
-"shot/charged-blinding" = 20
-"shot/charged-cracking" = 21
-"shot/charged-panel-breaking" = 22
-"shot/charged-volcano" = 23
-"shot/charged-poisoning" = 24
-"shot/charged-attack-a0" = 25
-"shot/charged-uninstalling" = 26
-"shot/charged-hp-bug" = 27
-"shot/charged-flinching" = 28
+"shot/charged_confusing" = 18
+"shot/charged_paralyzing" = 19
+"shot/charged_blinding" = 20
+"shot/charged_cracking" = 21
+"shot/charged_panel_breaking" = 22
+"shot/charged_volcano" = 23
+"shot/charged_poisoning" = 24
+"shot/charged_attack_a0" = 25
+"shot/charged_uninstalling" = 26
+"shot/charged_hp_bug" = 27
+"shot/charged_flinching" = 28
 "shot/climbing" = 29
 "shot/pushing" = 30
 "shot/shoving" = 31
-"shot/charged-pulling" = 32
-"shot/charged-bubbling" = 33
-"shot/charged-road" = 34
-"shot/charged-hp-bug-marked" = 35
-"shot/charged-road-back" = 36
-"shot/charged-grass" = 37
-"shot/charged-freezing" = 38
-"shot/charged-ice" = 39
+"shot/charged_pulling" = 32
+"shot/charged_bubbling" = 33
+"shot/charged_road" = 34
+"shot/charged_hp_bug_marked" = 35
+"shot/charged_road_back" = 36
+"shot/charged_grass" = 37
+"shot/charged_freezing" = 38
+"shot/charged_ice" = 39
 
 # The barriers a navi's stats name as the one it enters with (NaviStats+0x06), by the
 # type `sub_801A7CC` takes (the byte 0 is none): the NaviCust's FirstBarrier sets 1, the
@@ -86,4 +86,4 @@
 "barrier/100" = 5
 "barrier/200" = 7
 "barrier/bubble" = 8
-"barrier/life-aura" = 9
+"barrier/life_aura" = 9

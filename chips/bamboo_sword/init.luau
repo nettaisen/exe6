@@ -1,0 +1,57 @@
+--!strict
+-- BambSwrd: a wood slash on the column ahead.
+
+local attachment = require("../objects/attachment")
+local lockon = require("../rules/lockon")
+local parts = require("../lib/swords/parts")
+local regions = require("@exelib/regions")
+local slash = require("../lib/swords/slash")
+local slashes = require("../navis/megaman/forms/slash_cross/slashes")
+local sword_slash_sprite = asset.sprite("sword_slash")
+local sword_sprite = asset.sprite("sword")
+
+-- The slash over a column.
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
+-- BambSwrd's blade (row 0x1C: the sword in palette 2).
+local BAMBOO_BLADE = attachment.look { sprite = sword_sprite, palette = 2 }
+
+-- Its charged slash in SlashCross: over a column, in palette 4, its own blade.
+local CHARGED = slashes.slash {
+    wave = slashes.wave {
+        region = regions.wide,
+        sprite = sword_slash_sprite,
+        anim = 0,
+        palette = 4,
+        hit_mod = { flinch = true },
+    },
+    blade = BAMBOO_BLADE,
+    sound = parts.swing,
+    lockon = lockon.wide_shot,
+}
+
+local chip: Chip = {
+    codes = { "H", "S", "W" },
+    element = Element.wood,
+    family = Family.wood,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 34,
+    damage = 150,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    beast = { lockon = lockon.wide_shot },
+    slot_in_limit = 3,
+    traits = { element_sword = true },
+    action = slash.action {
+        id = "bamboo_sword/action",
+        blade = BAMBOO_BLADE,
+        hit = { region = regions.wide, collision = parts.slashes_navis, hit_mod = { flinch = true } },
+        effect = WIDE_SLASH,
+        effect_palette = 4,
+        sound = parts.swing,
+        charged = CHARGED,
+    },
+}
+
+return { bamboo_sword = chip }

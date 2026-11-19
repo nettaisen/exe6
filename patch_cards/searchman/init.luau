@@ -1,0 +1,17 @@
+--!strict
+-- The patch card SearchMn (99, サーチマン in the Japanese games), 37 MB.
+
+local cards = require("../rules/patch_cards/cards")
+local charge = require("@self/charge")
+
+local card: PatchCard = {
+    mb = 37,
+    effects = {
+        cards.hp_percent(5),
+        cards.bug(cards.air_shoes(false)),
+        cards.charged_shot(charge),
+        cards.chip_shuffle(true),
+    },
+}
+
+return { searchman = card }

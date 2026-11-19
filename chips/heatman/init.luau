@@ -39,7 +39,7 @@ local heatman_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "heatman-ex/controller",
+        id = "heatman_ex/controller",
         summon = navi.summon,
     },
 }
@@ -59,9 +59,9 @@ local heatman_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "heatman-sp/controller",
+        id = "heatman_sp/controller",
         summon = navi.summon,
     },
 }
 
-return { heatman = heatman, ["heatman-ex"] = heatman_ex, ["heatman-sp"] = heatman_sp }
+return { heatman = heatman, heatman_ex = heatman_ex, heatman_sp = heatman_sp }

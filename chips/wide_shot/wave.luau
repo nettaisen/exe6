@@ -1,0 +1,35 @@
+--!strict
+-- The wide wave (the original's attack object #0x3B, `sub_80CB49C`): the
+-- shared wave (@exelib/wide_shot/wave), EXE6's kind and look. Its variants
+-- (`wave.variant { ... }`, the original's kinds by `byte_80CB58C`'s
+-- speeds) are its users' (./action): WideSht's ends on its first hit;
+-- SuprSpr's goes through, hitting each panel once. See
+-- docs/engine/shot-chips.md §10.1.
+
+local collision = require("../../rules/collision")
+local common = require("@exelib/wide_shot/wave")
+local rock_cubes_sprite = asset.sprite("rock_cubes")
+local wide_wave_sprite = asset.sprite("wide_wave")
+
+local wave = {}
+
+-- A wave variant: its speed (16.16 pixels a tick), whether it goes
+-- through, and its collision.
+wave.variant = common.variant
+
+wave.kind = common.make_kind {
+    id = "wide_shot/wave",
+    sprite = wide_wave_sprite,
+    sound = asset.sound("wide_shot"),
+    trail_sprite = rock_cubes_sprite,
+    target = collision.hits_navis,
+}
+
+-- `sub_80CB686`: a wave of `variant` from `owner` on panel (x, y) at
+-- height `z` (16.16), with `element`, the damage word and the hit
+-- modifier a piercing variant uses; nil if the attack pool is full.
+function wave.fire(owner: Object, x: number, y: number, z: number, variant: WaveVariant, element: Element, damage: number, hit_mod: HitModifier): Object?
+    return common.fire(wave.kind, owner, x, y, z, variant, element, damage, hit_mod)
+end
+
+return wave

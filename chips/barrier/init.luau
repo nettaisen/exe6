@@ -15,7 +15,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         dimming = barrier_chips.hook(barriers.barrier_10),
     },
-    barr100 = {
+    barrier_100 = {
         codes = { "H", "O", "Y" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 2, mb = 30, damage = 0, counter = 0, lockout = 0,
@@ -23,7 +23,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         dimming = barrier_chips.hook(barriers.barrier_100),
     },
-    barr200 = {
+    barrier_200 = {
         codes = { "K", "U", "W" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 3, mb = 52, damage = 0, counter = 0, lockout = 0,

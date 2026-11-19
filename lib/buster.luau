@@ -6,9 +6,9 @@
 
 local attachment = require("../objects/attachment")
 local common = require("@exelib/buster")
-local buster_arm_sprite = asset.sprite("buster-arm")
-local elec_coil_sprite = asset.sprite("elec-coil")
-local muzzle_flash_sprite = asset.sprite("muzzle-flash")
+local buster_arm_sprite = asset.sprite("buster_arm")
+local elec_coil_sprite = asset.sprite("elec_coil")
+local muzzle_flash_sprite = asset.sprite("muzzle_flash")
 
 return common.make {
     -- The muzzle flash a shot leaves in the navi's first related slot (the

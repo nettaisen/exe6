@@ -1,0 +1,92 @@
+--!strict
+-- TenguCross: one of MegaMan's forms.
+
+local base = require("./base").base
+local cross_overlay = require("./cross_overlay")
+local tenguman = require("../../tenguman").tenguman
+local tengu_cross_beast = require("./tengu_cross_beast").tengu_cross_beast
+local buster = require("../weapons/buster")
+local charge = require("@self/charge")
+local tengu_wind = require("../weapons/tengu_wind")
+local forms = require("../../../rules/forms")
+local megaman_sprite = asset.sprite("megaman")
+local tengucross_overlay_sprite = asset.sprite("tengu_cross_overlay")
+
+local form: FormDef = {
+    kind = "cross",
+    -- What changes MegaMan into it (EXE6's five sequences).
+    change = forms.action,
+    version = Version.falzar,
+    cross_of = tenguman,
+    beast = tengu_cross_beast,
+    -- A weakness hit breaks the Cross: back to the base form.
+    breaks_to = base,
+    sprite = megaman_sprite,
+    element = Element.null,
+    weakness = { sword = true },
+    buster_bonus = 0,
+    weapons = { buster = buster.weapon, charge_shot = charge.weapon, back_special = tengu_wind.weapon },
+    palette = 11,
+    -- Its faces in the emotion window, and once Beast Out is spent (`byte_801E700`).
+    mugshot = { normal = asset.mugshot("tengu_cross"), tired = asset.mugshot("tengu_cross_tired") },
+    -- What R shows in the Cross window.
+    -- The damage it adds to its family's damaging chips.
+    chip_bonus = { family = Family.wind, damage = 10 },
+    -- What its status reset gives the navi (`sub_8014536`).
+    status_reset = { air_shoes = true },
+    -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
+    special_volley = 8,
+    -- The buster arm it raises (lib/buster).
+    buster_arm = { anim = 8 },
+    identity = new.identity {
+        class = IdentityClass.player,
+        changes_form = true,
+        breaks_on_weakness = true,
+        version = 0,
+        actor_type = ActorType.player,
+        ai_index = 32,
+        -- The Full Synchro aura's animation, and the ice block that fits.
+        aura_anim = 32,
+        ice = IceSize.medium,
+        -- What it wears over MegaMan's body.
+        parts = cross_overlay(tengucross_overlay_sprite),
+        attach_points = {
+            { 2, 0 },
+            { 2, 0 },
+            { 2, 0 },
+            { 8, 48 },
+            { 8, 48 },
+            { 8, 48 },
+            { 16, 0 },
+            { 16, 24 },
+            { 16, 24 },
+            { 24, 24 },
+            { 18, 24 },
+            { 18, 24 },
+            { 18, 24 },
+            { 24, 24 },
+            { 23, 25 },
+            { 24, 24 },
+            { 40, 26 },
+            { 5, 11 },
+            { 31, 25 },
+            { 40, 26 },
+            { 20, 25 },
+            { 2, 16 },
+            { 24, 24 },
+            { 24, 25 },
+            { 24, 23 },
+            { 22, 25 },
+            { 28, 25 },
+            { 2, 18 },
+            { 88, 16 },
+            { 120, -4 },
+            { -8, 16 },
+            { 64, 16 },
+            { 2, 0 },
+            { 0, 0 },
+        },
+    },
+}
+
+return { tengu_cross = form }

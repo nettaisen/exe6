@@ -16,7 +16,7 @@ export type State = {
     action: Action?,
 }
 
-local CLOUD_SPRITE = asset.sprite("dust-cloud")
+local CLOUD_SPRITE = asset.sprite("dust_cloud")
 local DUSTMAN_SPRITE = asset.sprite("dustman")
 local looks = require("@exelib/looks")
 local visibility = require("@exelib/visibility")

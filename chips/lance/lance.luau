@@ -16,7 +16,7 @@ lance.instant_of = common.instant_of
 
 lance.kind = common.make_kind("lance/lance", {
     sprite = lance_sprite,
-    sound = asset.sound("sword-swing"),
+    sound = asset.sound("sword_swing"),
 })
 
 -- Lance's hit (`dword_80D25C8`'s row 0): one panel, the wood spark, an

@@ -1,0 +1,25 @@
+--!strict
+-- AntiNavi: a hidden trap that turns the other side's next navi chip
+-- around, so its navi comes for this side instead (the dimming service's
+-- `sub_800BDB2`). Its controller is the trap chips' (lib/traps/controller);
+-- it sets no object of its own.
+
+local traps = require("../lib/traps/controller")
+
+local chip: Chip = {
+    codes = { "F", "L", "T", "*" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 3,
+    mb = 50,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { dimming = true, standard_library = true, library = true },
+    slot_in_limit = 1,
+    trap = TrapKind.anti_navi,
+    dimming = traps.hook(),
+}
+
+return { anti_navi = chip }

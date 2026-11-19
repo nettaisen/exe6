@@ -8,7 +8,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/snake")
 local trajectory = require("../../lib/trajectory")
-local pink_flash_sprite = asset.sprite("pink-flash")
+local pink_flash_sprite = asset.sprite("pink_flash")
 local snake_sprite = asset.sprite("snake")
 
 local snake = {}
@@ -26,7 +26,7 @@ snake.kind = common.make_kind("snake/snake", {
     trajectory = trajectory,
     sprite = snake_sprite,
     rise_sound = asset.sound("appear"),
-    leap_sound = asset.sound("aqua-needle-2"),
+    leap_sound = asset.sound("aqua_needle_2"),
     -- 20 ticks.
     wait = 0x14,
     -- Its strike (`sub_80C53A6`, 0x04050501): an attack hitting navis with

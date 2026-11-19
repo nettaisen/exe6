@@ -8,6 +8,6 @@ local beat_sprite = asset.sprite("beat")
 return common.make {
     id = "beat",
     sprite = beat_sprite,
-    swoop_sound = asset.sound("set-down"),
+    swoop_sound = asset.sound("set_down"),
     snatch_sound = asset.sound("snatch"),
 }

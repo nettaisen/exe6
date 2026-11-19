@@ -7,7 +7,7 @@ local barriers = require("../barriers")
 local common = require("@exelib/supports/heal")
 local trajectory = require("../trajectory")
 local heal_sprite = asset.sprite("heal")
-local tango_heal_sprite = asset.sprite("tango-heal")
+local tango_heal_sprite = asset.sprite("tango_heal")
 
 return common.make {
     id = "tango/heal",

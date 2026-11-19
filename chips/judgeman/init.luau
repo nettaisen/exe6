@@ -25,7 +25,7 @@ local judgeman: Chip = {
     },
 }
 
-local judgemn_ex: Chip = {
+local judgeman_ex: Chip = {
     codes = { "J" },
     element = Element.elec,
     family = Family.elec,
@@ -39,12 +39,12 @@ local judgemn_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "judgemn-ex/controller",
+        id = "judgeman_ex/controller",
         summon = navi.summon { book_damage = 30 },
     },
 }
 
-local judgemn_sp: Chip = {
+local judgeman_sp: Chip = {
     codes = { "J" },
     element = Element.elec,
     family = Family.elec,
@@ -59,9 +59,9 @@ local judgemn_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "judgemn-sp/controller",
+        id = "judgeman_sp/controller",
         summon = navi.summon { book_damage = 40 },
     },
 }
 
-return { judgeman = judgeman, ["judgemn-ex"] = judgemn_ex, ["judgemn-sp"] = judgemn_sp }
+return { judgeman = judgeman, judgeman_ex = judgeman_ex, judgeman_sp = judgeman_sp }

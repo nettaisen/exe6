@@ -46,7 +46,7 @@ local SPARKS: HitNames = {
     neutral = true,
 }
 
-local FLYING_SHOT_VARIANT = schema.record_type("flying-shot-variant")
+local FLYING_SHOT_VARIANT = schema.record_type("flying_shot_variant")
 
 -- A flying shot variant (a row of `byte_80C6038`, 16 bytes: its collision,
 -- hit modifier, element, spark, look, highlight, range, shadow, status and
@@ -206,7 +206,7 @@ local function init(me: Object)
 end
 
 flying_shot.kind = new.kind {
-    id = "flying-shot",
+    id = "flying_shot",
     pool = Pool.attack,
     state = {
         variant = FLYING_SHOT_VARIANT,

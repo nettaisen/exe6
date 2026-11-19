@@ -15,7 +15,7 @@ local STATE = { timer = schema.u16 }
 
 local RAISE, SLASH, RECOVER = 0x0, 0x4, 0x8
 local ANIM_RAISE, ANIM_SLASH = 0x11, 0x12
-local SOUND = asset.sound("erase-man-2")
+local SOUND = asset.sound("erase_man_2")
 
 -- The beams: aimed straight, 60 ticks, his own (they go when his action
 -- does, and stand still while dimmed); five at most.
@@ -88,7 +88,7 @@ local chip: Chip = {
     slot_in_limit = 1,
     -- `sub_80F1056` (`off_80F1068`).
     action = new.action {
-        id = "edeletbm/action",
+        id = "eraser_delete_beam/action",
         state = STATE,
         update = function(me: Object, s: State)
             link.run(me, s, PHASES, "EDeletBm (sub_80F1056)")
@@ -96,4 +96,4 @@ local chip: Chip = {
     },
 }
 
-return { edeletbm = chip }
+return { eraser_delete_beam = chip }

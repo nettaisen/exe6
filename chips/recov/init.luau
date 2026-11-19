@@ -5,7 +5,7 @@
 local heal = require("@exelib/recov/heal")
 
 local chips: { [string]: Chip } = {
-    recov10 = {
+    recovery_10 = {
         codes = { "A", "D", "L", "*" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 4, damage = 0, counter = 30, lockout = 30,
@@ -13,7 +13,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         action = heal.action { hp = 10 },
     },
-    recov30 = {
+    recovery_30 = {
         codes = { "E", "L", "Q", "*" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 12, damage = 0, counter = 30, lockout = 30,
@@ -21,7 +21,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         action = heal.action { hp = 30 },
     },
-    recov50 = {
+    recovery_50 = {
         codes = { "C", "M", "P", "*" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 18, damage = 0, counter = 40, lockout = 30,
@@ -29,7 +29,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         action = heal.action { hp = 50 },
     },
-    recov80 = {
+    recovery_80 = {
         codes = { "H", "K", "V", "*" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 1, mb = 24, damage = 0, counter = 40, lockout = 30,
@@ -37,7 +37,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         action = heal.action { hp = 80 },
     },
-    recov120 = {
+    recovery_120 = {
         codes = { "F", "P", "S" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 1, mb = 32, damage = 0, counter = 50, lockout = 30,
@@ -45,7 +45,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         action = heal.action { hp = 120 },
     },
-    recov150 = {
+    recovery_150 = {
         codes = { "J", "M", "T" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 2, mb = 38, damage = 0, counter = 50, lockout = 30,
@@ -53,7 +53,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         action = heal.action { hp = 150 },
     },
-    recov200 = {
+    recovery_200 = {
         codes = { "I", "Q", "Z" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 2, mb = 42, damage = 0, counter = 50, lockout = 30,
@@ -61,7 +61,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 1,
         action = heal.action { hp = 200 },
     },
-    recov300 = {
+    recovery_300 = {
         codes = { "J", "O", "Y" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 3, mb = 48, damage = 0, counter = 49, lockout = 30,

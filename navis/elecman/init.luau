@@ -4,8 +4,8 @@
 local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local elecman = require("@self/chip").delecswd
-local elecman_portrait_sprite = asset.sprite("elecman-portrait")
+local elecman = require("@self/chip").dash_elec_sword
+local elecman_portrait_sprite = asset.sprite("elecman_portrait")
 local elecman_sprite = asset.sprite("elecman")
 
 local navi: NaviDef = {
@@ -15,7 +15,7 @@ local navi: NaviDef = {
     element = Element.elec,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("elecman-win"), lose = asset.banner("elecman-deleted") },
+    banners = { win = asset.banner("elecman_win"), lose = asset.banner("elecman_deleted") },
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- ElecMan face, and shows TomahawkMan's.
     mugshot = asset.mugshot("elecman"),

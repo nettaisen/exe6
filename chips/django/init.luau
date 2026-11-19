@@ -30,7 +30,7 @@ local django: Chip = {
     },
 }
 
-local django2: Chip = {
+local django_v2: Chip = {
     codes = { "D" },
     element = Element.null,
     family = Family.null,
@@ -43,12 +43,12 @@ local django2: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "django2/controller",
+        id = "django_v2/controller",
         summon = navi.summon { slash_damage = 0x50 },
     },
 }
 
-local django3: Chip = {
+local django_v3: Chip = {
     codes = { "D" },
     element = Element.null,
     family = Family.null,
@@ -61,9 +61,9 @@ local django3: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "django3/controller",
+        id = "django_v3/controller",
         summon = navi.summon { slash_damage = 0x78 },
     },
 }
 
-return { django = django, django2 = django2, django3 = django3 }
+return { django = django, django_v2 = django_v2, django_v3 = django_v3 }

@@ -40,7 +40,7 @@ export type State = {
 
 local SPRITE = asset.sprite("judgeman")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_LASH = asset.sound("erase-man-2")
+local SOUND_LASH = asset.sound("erase_man_2")
 
 -- The controller calls his spawner through r3, which his position takes:
 -- its address with the Thumb bit, whose fraction his Z keeps.

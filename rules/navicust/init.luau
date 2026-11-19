@@ -87,7 +87,7 @@ local BUG_WORK: { [string]: (stats: Navi, level: number, hp: number) -> () } = {
     status = function(stats, _)
         stats.battle_start_bug = 9
     end,
-    ["status-strong"] = function(stats, _)
+    status_strong = function(stats, _)
         stats.battle_start_bug = 10
     end,
 }
@@ -97,7 +97,7 @@ local BUG_WORK: { [string]: (stats: Navi, level: number, hp: number) -> () } = {
 -- how much of it: its level, or its amount, never both.
 --
 -- - The step bug, the emotion bug and a hit's status are on or off: level 1.
--- - The battle start's bug: level 1 (+0x1A = 9, the NaviCust's `status`) or 2 (10, `status-strong`).
+-- - The battle start's bug: level 1 (+0x1A = 9, the NaviCust's `status`) or 2 (10, `status_strong`).
 -- - An HP drain, the fight's or the custom screen's: its level is the stat's own, 1 to 7, which the card adds to (so
 --   the caller adds the NaviCust's bug's level to the fight's).
 -- - The custom screen's damage: the amount, the damage itself. No level: the NaviCust brings no such bug in EXE6

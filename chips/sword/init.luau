@@ -5,8 +5,8 @@ local lockon = require("../rules/lockon")
 local parts = require("../lib/swords/parts")
 local regions = require("@exelib/regions")
 local slash = require("../lib/swords/slash")
-local slashes = require("../navis/megaman/forms/slashcross/slashes")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local slashes = require("../navis/megaman/forms/slash_cross/slashes")
+local sword_slash_sprite = asset.sprite("sword_slash")
 
 -- Sword's slash over the panel ahead.
 local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0, steps = 10 }

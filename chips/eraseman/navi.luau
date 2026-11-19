@@ -34,7 +34,7 @@ export type State = {
 
 local SPRITE = asset.sprite("eraseman")
 local navi_left = require("@exelib/navi_chips/left")
-local SOUND_APPEAR, SOUND_MARK, SOUND_SLASH = asset.sound("appear"), asset.sound("erase-man"), asset.sound("erase-man-2")
+local SOUND_APPEAR, SOUND_MARK, SOUND_SLASH = asset.sound("appear"), asset.sound("erase_man"), asset.sound("erase_man_2")
 
 -- The aims each row cycles through, five bytes a row, 0xFF ending a row
 -- early (`byte_80BB88C`).

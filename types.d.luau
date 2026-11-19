@@ -84,7 +84,7 @@ export type StrikeSpec = {
     effect_palette: number,
 }
 
--- A FlashBomb (chips/flshbom/bomb): ticks set down, HP, the flash's status
+-- A FlashBomb (chips/flash_bomb/bomb): ticks set down, HP, the flash's status
 -- and a second hit's as it goes (0 none), its palette; `strong`: the flash
 -- hits with damage 20 and counter 0; `own_side`: it flashes its own side.
 export type FlashBombVariant = {
@@ -97,7 +97,7 @@ export type FlashBombVariant = {
     own_side: boolean?,
 }
 
--- ---- The field objects (chips/rockcube/rock, objects/boulder) ---------------
+-- ---- The field objects (chips/rock_cube/rock, objects/boulder) ---------------
 
 -- What an element pillar is spawned with (objects/element_pillar; the
 -- original's four parameters): its look (`element_pillar.look`: flames or
@@ -120,11 +120,11 @@ export type ElementPillar = {
     owner_state: number?,
 }
 
--- AirRaid's plane (chips/airraid, a row of the original's `byte_80D34C0`):
+-- AirRaid's plane (chips/air_raid, a row of the original's `byte_80D34C0`):
 -- its lifetime in ticks, its bombs, its palette and HP.
 export type AirRaidPlane = { lifetime: number, bombs: number, palette: number, hp: number }
 
--- A shock wave's look and timing (chips/wavearm/wave, a row of the
+-- A shock wave's look and timing (chips/wave_arm/wave, a row of the
 -- original's `byte_80C6B00`): its animation, and the steps of its sprite
 -- that animation loops over (at each loop's end it goes out of sight),
 -- ticks on a panel before the next rolls on, the panel type it leaves
@@ -133,18 +133,18 @@ export type AirRaidPlane = { lifetime: number, bombs: number, palette: number, h
 -- it turns toward an enemy's row.
 export type ShockWaveVariant = { anim: number, steps: number, ticks: number, panel: PanelType?, quick: boolean?, steers: boolean? }
 
--- A hockey puck (chips/airhocky/puck, a row of the original's
+-- A hockey puck (chips/air_hockey/puck, a row of the original's
 -- `byte_80C9818`): the steps it lasts (0: no limit), how it bounces (1:
 -- off its own side too once across, 0: not), the ticks per step, and the
 -- tint of its afterimage trail if it leaves one.
 export type HockeyPuckVariant = { steps: number, own_side: number, ticks: number, trail: number? }
 
--- How an iron shell slides (chips/ironshl/shell): its palette and speed
+-- How an iron shell slides (chips/iron_shell/shell): its palette and speed
 -- (16.16 a tick), how many times it bumps at the far column, and its
 -- chip's variant.
 export type IronShell = { palette: number, speed: number, bumps: number, variant: IronShellVariant }
 
--- A chip's iron shells (chips/ironshl/shell's `variant`; the original's
+-- A chip's iron shells (chips/iron_shell/shell's `variant`; the original's
 -- third parameter, IronShl's or ParaShl's): where its throw puts them
 -- (`throw`, given the spawn of one on a panel), the ticks one stops at the
 -- end, how many panels it slides (none: to the opponent's back column),
@@ -170,7 +170,7 @@ export type Flame = { ticks: number, spread: number, wide: boolean?, cracks: boo
 -- the action's key when no chip definition holds it.
 export type BurnSpec = { id: string?, burner: AttachmentLook, flame: Flame }
 
--- A Reflector's guard (chips/rflectr/guard, the original's action 0x2B):
+-- A Reflector's guard (chips/reflector/guard, the original's action 0x2B):
 -- how long it guards and the shield it holds up; the counterattack the
 -- first blocked hit sends, the user's own (from the navi one panel ahead,
 -- (x, y), with the attack's damage word: the Reflectors' wave, the NaviCust
@@ -189,14 +189,14 @@ export type ReflectorGuard = {
 -- original's parameter bytes by name. `id`: the action's key when no chip
 -- definition holds it (its compat key).
 
--- AquaNdl (chips/aquandl, the original's action 0x32): the needles'
+-- AquaNdl (chips/aqua_needle, the original's action 0x32): the needles'
 -- palette.
 export type AquaNeedleSpec = {
     id: string?,
     palette: number,
 }
 
--- A rolling log (chips/rlnglog/log): a big one also covers the panel
+-- A rolling log (chips/rolling_log/log): a big one also covers the panel
 -- above it; the ticks a hit that takes HP stops it; its HP; thrown in an
 -- arc onto the panel ahead (else it drops in from above).
 export type RollingLog = {
@@ -206,13 +206,13 @@ export type RollingLog = {
     thrown: boolean,
 }
 
--- RlngLog (chips/rlnglog, action 0x36): the logs it throws.
+-- RlngLog (chips/rolling_log, action 0x36): the logs it throws.
 export type RollingLogSpec = {
     id: string?,
     log: RollingLog,
 }
 
--- DolThdr (chips/dolthdr, action 0x3E): the thunder's ticks, and what the
+-- DolThdr (chips/doll_thunder, action 0x3E): the thunder's ticks, and what the
 -- navi holds out, in which animation (the original's third parameter picks
 -- it: DolThdr's doll; ElecCross's charged shot's buster arm, animation
 -- 0x19).
@@ -223,13 +223,13 @@ export type DollThunderSpec = {
     held_anim: number?,
 }
 
--- WindRack (chips/windrack, action 0x3F): the rack the navi swings.
+-- WindRack (chips/wind_racket, action 0x3F): the rack the navi swings.
 export type WindRackSpec = {
     id: string?,
     rack: AttachmentLook,
 }
 
--- An electric pulse (chips/elcpuls/pulse): its hit modifier and status,
+-- An electric pulse (chips/elec_pulse/pulse): its hit modifier and status,
 -- its ticks, its palette and the bug its hits carry (none by default).
 export type ElecPulse = {
     hit_mod: HitModifier,
@@ -240,7 +240,7 @@ export type ElecPulse = {
     bug_arg: number?,
 }
 
--- ElcPuls (chips/elcpuls, action 0x42): the pulse, and the ticks the navi
+-- ElcPuls (chips/elec_pulse, action 0x42): the pulse, and the ticks the navi
 -- holds it out.
 export type ElecPulseSpec = {
     id: string?,
@@ -248,7 +248,7 @@ export type ElecPulseSpec = {
     hold: number,
 }
 
--- An aura head (chips/aurahed/head): its palette and speed (16.16 a
+-- An aura head (chips/aura_head/head): its palette and speed (16.16 a
 -- tick), its stronger hit (hit modifier 3, else 1), and whether it runs to
 -- the field's far edge (else 3 panels).
 export type AuraHead = {
@@ -258,7 +258,7 @@ export type AuraHead = {
     far: boolean,
 }
 
--- AuraHed (chips/aurahed, action 0x43): the head it fires; StreamHd's
+-- AuraHed (chips/aura_head, action 0x43): the head it fires; StreamHd's
 -- `stream` fires five, counting their palettes up, the last strong.
 export type AuraHeadSpec = {
     id: string?,
@@ -266,7 +266,7 @@ export type AuraHeadSpec = {
     stream: boolean?,
 }
 
--- MagCoil (chips/magcoil, action 0x44): the magnet's ticks.
+-- MagCoil (chips/magnet_coil, action 0x44): the magnet's ticks.
 export type MagCoilSpec = {
     id: string?,
     ticks: number,
@@ -291,7 +291,7 @@ export type DragonSpec = {
     dragon: DragonVariant,
 }
 
--- A honey bee (chips/rskyhny/bee): its palette and its speeds across and
+-- A honey bee (chips/risky_honey/bee): its palette and its speeds across and
 -- along the field (16.16 a tick).
 export type HoneyBee = {
     palette: number,
@@ -299,7 +299,7 @@ export type HoneyBee = {
     turn_speed: number,
 }
 
--- RskyHny (chips/rskyhny, action 0x39): the bees; `drags` (no chip) the
+-- RskyHny (chips/risky_honey, action 0x39): the bees; `drags` (no chip) the
 -- first release clears the navi's drag step instead of sending a bee.
 export type HoneySpec = {
     id: string?,
@@ -307,13 +307,13 @@ export type HoneySpec = {
     drags: boolean?,
 }
 
--- The sun beam's look (chips/gundels/beam): its sprite and palette.
+-- The sun beam's look (chips/gun_del_sol/beam): its sprite and palette.
 export type SunBeam = {
     sprite: SpriteAsset,
     palette: number,
 }
 
--- GunDelSol (chips/gundels, action 0x37): the gun the navi holds, how
+-- GunDelSol (chips/gun_del_sol, action 0x37): the gun the navi holds, how
 -- long it fires, the beam in the shade and in the sun, and whether its
 -- hits cover two columns (GunDelEX).
 export type GunDelSolSpec = {
@@ -327,7 +327,7 @@ export type GunDelSolSpec = {
     region: Region,
 }
 
--- ---- DblBeast's beasts (chips/dblbeast/beast) -------------------------------
+-- ---- DblBeast's beasts (chips/double_beast/beast) -------------------------------
 
 -- A beast's state: the controller waiting on it, the damage word its hits
 -- add theirs to, the next target, the targets, a missed attack, the
@@ -384,7 +384,7 @@ export type SlashWave = {
     while_dimmed: boolean?,
 }
 
--- A train car (chips/chrgeman/car): whether it acts while the battle is
+-- A train car (chips/chargeman/car): whether it acts while the battle is
 -- dimmed (the navi chip's), its hit's modifier (the navi chip's 3, else 1:
 -- the original's by Param1), its place in the train, the ticks it waits
 -- before it rolls (0: it rolls at once, ChargeMan's own), and its owner's
@@ -397,7 +397,7 @@ export type ChargeCar = {
     owner_action: number?,
 }
 
--- SpoutMan's water ball and its splashes (chips/spoutman/ball, splash):
+-- SpoutMan's water ball and its splashes (chips/aquaman/ball, splash):
 -- whether it acts while the battle is dimmed (the navi chip's), and
 -- whether it cracks the panel it lands on.
 export type WaterBall = {
@@ -405,7 +405,7 @@ export type WaterBall = {
     cracks: boolean?,
 }
 
--- A mark of SpoutMan's geyser (chips/spoutman/mark): the geyser's column
+-- A mark of SpoutMan's geyser (chips/aquaman/mark): the geyser's column
 -- (else the trail to it), how long it shows, and whether it counts down
 -- while the battle is dimmed.
 export type GeyserMark = {
@@ -496,12 +496,12 @@ export type Whirlwind = { at_once: boolean, ticks: number, anim: number }
 -- ticks.
 export type AquaSurge = { ticks: number, beat: number }
 
--- What a drip shower is spawned with (navis/spoutman/drip_shower): its
+-- What a drip shower is spawned with (navis/aquaman/drip_shower): its
 -- turns and the ticks a quarter lasts; and whether it lasts only while its
 -- owner stays in his action.
 export type DripShower = { turns: number, quarter_ticks: number, follows_action: boolean }
 
--- How GroundMan's rocks drop (chips/grndman/rock): the ticks its panel
+-- How GroundMan's rocks drop (chips/groundman/rock): the ticks its panel
 -- blinks first, whether it acts while dimmed, whether it cracks the panel
 -- it lands on, and silently.
 export type GroundRockDrop = { warning: number, while_dimmed: boolean, cracks: boolean, silent: boolean }
@@ -565,7 +565,7 @@ export type FormSet = { form_list: { FormDef }, cybeast: FormDef?, beast_over: F
 -- DustCross's absorbed obstacles, oldest first (at most 8:
 -- navis/megaman/weapons/absorb, objects/absorbed_obstacle), and the look and
 -- animation of the one its last throw took
--- (navis/megaman/forms/dustcross/throw_absorbed), which the buster's shot
+-- (navis/megaman/forms/dust_cross/throw_absorbed), which the buster's shot
 -- throws.
 export type NaviState = {
     absorbed: { { look: AbsorbedLook, anim: number } },

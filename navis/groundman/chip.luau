@@ -2,19 +2,19 @@
 -- GroundMan's own chip, RC Brakr (the original's `sub_80F1C1C`, his action
 -- table's entry 0xA): he readies his drill (13 ticks), then digs along his
 -- row at 4 pixels a tick, invulnerable, his drill on him
--- (chips/grndman/drill), hitting each panel he enters. Reaching the far
--- column he brings down nine rocks (chips/grndman/rock), one every 20
+-- (chips/groundman/drill), hitting each panel he enters. Reaching the far
+-- column he brings down nine rocks (chips/groundman/rock), one every 20
 -- ticks, each on a panel with an enemy navi, the camera shaking; stopped on
 -- the way (no solid ground, a body of the other side's or an object), he
 -- drops none. Then he comes up and is back on his panel. See
 -- docs/engine/standard-chips.md, "Action 0x0A".
 
 local collision = require("../../rules/collision")
-local drill = require("../../chips/grndman/drill")
+local drill = require("../../chips/groundman/drill")
 local link = require("../../lib/link_chips")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
-local rock = require("../../chips/grndman/rock")
+local rock = require("../../chips/groundman/rock")
 local sparks = require("../../lib/sparks")
 
 export type State = {
@@ -29,7 +29,7 @@ local STATE = { timer = schema.u16, rocks = schema.u8, drill = schema.object }
 
 local READY, DIG, ROCKFALL, RISE, HOME, REST = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14
 local ANIM_READY, ANIM_DIG, ANIM_RISE, ANIM_HOME = 0x11, 0x12, 4, 3
-local SOUND_DRILL, SOUND_ROCKFALL = asset.sound("drill-spin"), asset.sound("rockfall")
+local SOUND_DRILL, SOUND_ROCKFALL = asset.sound("drill_spin"), asset.sound("rockfall")
 
 local READY_TICKS, RISE_TICKS, HOME_TICKS, REST_TICKS = 0xC, 4, 9, 0x14
 
@@ -232,7 +232,7 @@ local chip: Chip = {
     slot_in_limit = 1,
     -- `sub_80F1C1C` (`off_80F1C30`).
     action = new.action {
-        id = "rc-brakr/action",
+        id = "rock_crush_breaker/action",
         state = STATE,
         update = function(me: Object, s: State)
             link.run(me, s, PHASES, "RC Brakr (sub_80F1C1C)")
@@ -240,4 +240,4 @@ local chip: Chip = {
     },
 }
 
-return { ["rc-brakr"] = chip }
+return { rock_crush_breaker = chip }

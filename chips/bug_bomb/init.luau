@@ -1,0 +1,18 @@
+--!strict
+-- BugBomb: a bomb (bomb.luau) lobbed three panels ahead that bursts a
+-- second later and gives what it hits a NaviCust bug.
+
+local bomb = require("../lib/bombs/bomb")
+local bug_bomb = require("@self/bomb")
+local throw = require("../lib/bombs/throw")
+
+local chip: Chip = {
+    codes = { "G", "S", "V" },
+    element = Element.null, family = Family.null, class = ChipClass.standard,
+    rarity = 2, mb = 24, damage = 0, counter = 0, lockout = 0,
+    flags = { standard_library = true, library = true },
+    slot_in_limit = 3,
+    action = throw.action { held = bomb.held, held_anim = 4, thrower = bug_bomb.thrower() },
+}
+
+return { bug_bomb = chip }

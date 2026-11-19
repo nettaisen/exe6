@@ -1,13 +1,13 @@
 --!strict
 -- Falzar Beast: one of MegaMan's forms.
 
-local gregar_beast = require("./gregar_beast")["gregar-beast"]
+local gregar_beast = require("./gregar_beast").gregar_beast
 local falzar_beast_buster = require("../weapons/falzar_beast_buster")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local beast_claw = require("../weapons/beast_claw")
 local forms = require("../../../rules/forms")
-local beast_head_sprite = asset.sprite("beast-head")
-local falzar_beast_sprite = asset.sprite("falzar-beast")
+local beast_head_sprite = asset.sprite("beast_head")
+local falzar_beast_sprite = asset.sprite("falzar_beast")
 
 local form: FormDef = {
     kind = "beast",
@@ -26,7 +26,7 @@ local form: FormDef = {
     buster_bonus = 0,
     weapons = { buster = falzar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = beast_claw.weapon },
     -- Its faces in the emotion window, and in Full Synchro (`byte_801E700`).
-    mugshot = { normal = asset.mugshot("falzar-beast"), full_synchro = asset.mugshot("falzar-beast-full-synchro") },
+    mugshot = { normal = asset.mugshot("falzar_beast"), full_synchro = asset.mugshot("falzar_beast_full_synchro") },
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
@@ -88,4 +88,4 @@ local form: FormDef = {
     },
 }
 
-return { ["falzar-beast"] = form }
+return { falzar_beast = form }

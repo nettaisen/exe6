@@ -54,7 +54,7 @@ local function tick(me: Object)
 end
 
 arrival.kind = new.kind {
-    id = "beast-chips/arrival",
+    id = "beast_chips/arrival",
     pool = Pool.effect,
     state = { look = schema.sprite, anim = schema.u8, ticks = schema.u8 },
     -- 0x080EE300: by state (its end `object_freeMemory`), then the sprite,

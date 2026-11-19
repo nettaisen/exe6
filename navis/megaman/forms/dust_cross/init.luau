@@ -1,0 +1,90 @@
+--!strict
+-- DustCross: one of MegaMan's forms.
+
+local base = require("./base").base
+local cross_overlay = require("./cross_overlay")
+local dustman = require("../../dustman").dustman
+local dust_cross_beast = require("./dust_cross_beast").dust_cross_beast
+local throw_absorbed = require("@self/throw_absorbed")
+local charge = require("@self/charge")
+local absorb = require("../weapons/absorb")
+local forms = require("../../../rules/forms")
+local dustcross_overlay_sprite = asset.sprite("dust_cross_overlay")
+local megaman_sprite = asset.sprite("megaman")
+
+local form: FormDef = {
+    kind = "cross",
+    -- What changes MegaMan into it (EXE6's five sequences).
+    change = forms.action,
+    version = Version.falzar,
+    cross_of = dustman,
+    beast = dust_cross_beast,
+    -- A weakness hit breaks the Cross: back to the base form.
+    breaks_to = base,
+    sprite = megaman_sprite,
+    element = Element.null,
+    weakness = { cursor = true },
+    buster_bonus = 0,
+    weapons = { buster = throw_absorbed.weapon, charge_shot = charge.weapon, back_special = absorb.weapon },
+    palette = 21,
+    -- Its faces in the emotion window, and once Beast Out is spent (`byte_801E700`).
+    mugshot = { normal = asset.mugshot("dust_cross"), tired = asset.mugshot("dust_cross_tired") },
+    -- What R shows in the Cross window.
+    -- The Cross special's buster volley (`sub_802D4F0`): the original meant 6, and stores the form's number.
+    special_volley = 10,
+    -- The custom screen has the scrap button (rules/cross's, `sub_8027F10`).
+    scrap_button = true,
+    -- The buster arm it raises (lib/buster).
+    buster_arm = { anim = 10 },
+    identity = new.identity {
+        class = IdentityClass.player,
+        changes_form = true,
+        breaks_on_weakness = true,
+        version = 0,
+        actor_type = ActorType.player,
+        ai_index = 34,
+        -- The Full Synchro aura's animation, and the ice block that fits.
+        aura_anim = 34,
+        ice = IceSize.medium,
+        -- What it wears over MegaMan's body.
+        parts = cross_overlay(dustcross_overlay_sprite),
+        attach_points = {
+            { 2, 0 },
+            { 2, 0 },
+            { 2, 0 },
+            { 8, 48 },
+            { 8, 48 },
+            { 8, 48 },
+            { 16, 0 },
+            { 16, 24 },
+            { 16, 24 },
+            { 24, 24 },
+            { 18, 24 },
+            { 18, 24 },
+            { 18, 24 },
+            { 24, 24 },
+            { 23, 25 },
+            { 24, 24 },
+            { 40, 26 },
+            { 5, 11 },
+            { 31, 25 },
+            { 40, 26 },
+            { 20, 25 },
+            { 2, 16 },
+            { 24, 24 },
+            { 24, 25 },
+            { 24, 23 },
+            { 22, 25 },
+            { 28, 25 },
+            { 2, 18 },
+            { 88, 16 },
+            { 120, -4 },
+            { -8, 16 },
+            { 64, 16 },
+            { 2, 0 },
+            { 0, 0 },
+        },
+    },
+}
+
+return { dust_cross = form }

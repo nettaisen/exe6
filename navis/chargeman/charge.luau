@@ -4,11 +4,11 @@
 -- (`sub_80F1198`). Invulnerable and harmless to touch, he charges along
 -- his row at 6 pixels a tick toward the far edge, hitting each panel he
 -- reaches; as he passes his first two panel centers a train car
--- (chips/chrgeman/car) sets off behind him from the panel he left. Where
+-- (chips/chargeman/car) sets off behind him from the panel he left. Where
 -- the floor ends he stops and his cars burst; then he is back on his
 -- panel.
 
-local car = require("../../chips/chrgeman/car")
+local car = require("../../chips/chargeman/car")
 local collision = require("../../rules/collision")
 local link = require("../../lib/link_chips")
 local regions = require("@exelib/regions")
@@ -30,7 +30,7 @@ local CHARGE, STOP, BACK, RECOVER = 0x0, 0x4, 0x8, 0xC
 local ANIM_CHARGE, ANIM_STOP, ANIM_BACK = 0xF, 4, 3
 local STOP_TICKS, BACK_TICKS, RECOVER_TICKS = 3, 3, 0x1E
 
-local SOUND = asset.sound("charge-train")
+local SOUND = asset.sound("charge_train")
 
 -- The hits' counter byte, and his hits' element: Fire (the attack's
 -- element byte).

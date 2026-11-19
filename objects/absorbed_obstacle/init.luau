@@ -120,7 +120,7 @@ local function tick(me: Object)
 end
 
 absorbed_obstacle.kind = new.kind {
-    id = "absorbed-obstacle",
+    id = "absorbed_obstacle",
     pool = Pool.effect,
     state = {
         look = obstacle.absorbed_look,

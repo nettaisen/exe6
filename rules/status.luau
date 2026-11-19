@@ -7,78 +7,78 @@
 local status = {
     -- Paralysis.
     paralyze_90 = new.status {
-        id = "paralyze-90",
+        id = "paralyze_90",
         duration = 90,
         timer = StatusKind.paralyze,
     },
     paralyze_120 = new.status {
-        id = "paralyze-120",
+        id = "paralyze_120",
         duration = 120,
         timer = StatusKind.paralyze,
     },
     paralyze_150 = new.status {
-        id = "paralyze-150",
+        id = "paralyze_150",
         duration = 150,
         timer = StatusKind.paralyze,
     },
     -- Confusion.
     confuse_480 = new.status {
-        id = "confuse-480",
+        id = "confuse_480",
         duration = 480,
         timer = StatusKind.confuse,
     },
     confuse_960 = new.status {
-        id = "confuse-960",
+        id = "confuse_960",
         duration = 960,
         timer = StatusKind.confuse,
     },
     confuse_4 = new.status {
-        id = "confuse-4",
+        id = "confuse_4",
         duration = 4,
         timer = StatusKind.confuse,
     },
     -- Blindness.
     blind_480 = new.status {
-        id = "blind-480",
+        id = "blind_480",
         duration = 480,
         timer = StatusKind.blind,
     },
     blind_1200 = new.status {
-        id = "blind-1200",
+        id = "blind_1200",
         duration = 1200,
         timer = StatusKind.blind,
     },
     blind_4 = new.status {
-        id = "blind-4",
+        id = "blind_4",
         duration = 4,
         timer = StatusKind.blind,
     },
     -- Immobilization.
     immobilize_120 = new.status {
-        id = "immobilize-120",
+        id = "immobilize_120",
         duration = 120,
         timer = StatusKind.immobilize,
     },
     immobilize_4 = new.status {
-        id = "immobilize-4",
+        id = "immobilize_4",
         duration = 4,
         timer = StatusKind.immobilize,
     },
     immobilize_30 = new.status {
-        id = "immobilize-30",
+        id = "immobilize_30",
         duration = 30,
         timer = StatusKind.immobilize,
     },
     -- Freezing: the hit that lands one doesn't flinch.
     freeze_150 = new.status {
-        id = "freeze-150",
+        id = "freeze_150",
         duration = 150,
         timer = StatusKind.freeze,
         cancels_flinch = true,
     },
     -- Bubbling: a counter hit that lands one keeps it.
     bubble_150 = new.status {
-        id = "bubble-150",
+        id = "bubble_150",
         duration = 150,
         timer = StatusKind.bubble,
         survives_counter = true,

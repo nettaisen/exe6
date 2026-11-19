@@ -23,7 +23,7 @@ local STATE = { timer = schema.u16, cloud = schema.object, overlay = schema.obje
 
 local PULL, CRUSH, RECOVER = 0x0, 0x4, 0x8
 local ANIM_PULL, ANIM_CRUSH = 0x12, 0x14
-local SOUND_PULL, SOUND_CRUSH = asset.sound("dustbrk"), asset.sound("dustbrk-2")
+local SOUND_PULL, SOUND_CRUSH = asset.sound("dust_break"), asset.sound("dust_break_2")
 
 local PULL_TICKS, CRUSH_TICKS, RECOVER_TICKS = 0x1E, 0x28, 0x1E
 -- The timer value the crush lands at.
@@ -150,7 +150,7 @@ local chip: Chip = {
     slot_in_limit = 1,
     -- `sub_80F1FA0` (`off_80F1FB4`).
     action = new.action {
-        id = "dustbrk/action",
+        id = "dust_break/action",
         state = STATE,
         update = function(me: Object, s: State)
             link.run(me, s, PHASES, "DustBrk (sub_80F1FA0)")
@@ -158,4 +158,4 @@ local chip: Chip = {
     },
 }
 
-return { dustbrk = chip }
+return { dust_break = chip }

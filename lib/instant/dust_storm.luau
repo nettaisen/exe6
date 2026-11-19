@@ -115,7 +115,7 @@ local function tick(me: Object)
 end
 
 dust_storm.kind = new.kind {
-    id = "dust-storm",
+    id = "dust_storm",
     pool = Pool.attack,
     state = { ticks = schema.u16, tied = schema.action },
     -- `sub_80C6280`.

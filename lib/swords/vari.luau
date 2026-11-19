@@ -7,7 +7,7 @@
 -- attack's special source), the sword is random. The chosen chip's action
 -- starts in place (`object_setAttack0`) as that chip's, with the original
 -- damage; charged (SlashCross's A-charge), it starts as the charged slash
--- of the pick instead (navis/megaman/forms/slashcross/charge). Each
+-- of the pick instead (navis/megaman/forms/slash_cross/charge). Each
 -- chip composes its own (`vari.action { ... }`, a `VariSwordSpec`): its
 -- sequences, and the actions they give.
 
@@ -20,7 +20,7 @@
 type State = VariSwordState
 type Spec = VariSwordSpec
 
-local slash_charge = require("../../navis/megaman/forms/slashcross/charge")
+local slash_charge = require("../../navis/megaman/forms/slash_cross/charge")
 local kind = require("../../rules/forms/kind")
 
 local vari = {}
@@ -33,7 +33,7 @@ vari.STATE = { flip = schema.bool, progress = schema.array(schema.u8, 5) }
 local COUNTDOWN = 0x30
 -- The phases, on the attack's step.
 local START, PICK = 0, 4
-local SOUND = asset.sound("ok-8b")
+local SOUND = asset.sound("ok_8b")
 -- A form that waits while A is up (its `var_sword_waits`: SlashCross and
 -- its Beast; the Beast Overs pick at random, and the Beast forms give the
 -- pick's Beast lock-on).

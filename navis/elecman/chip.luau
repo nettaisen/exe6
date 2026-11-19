@@ -15,8 +15,8 @@ local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local statuses = require("../../rules/status")
 local swords = require("../../lib/swords/parts")
-local elec_sword_sprite = asset.sprite("elec-sword")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local elec_sword_sprite = asset.sprite("elec_sword")
+local sword_slash_sprite = asset.sprite("sword_slash")
 
 -- The slash over a column.
 local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }
@@ -32,7 +32,7 @@ local STATE = { timer = schema.u16, glow = schema.object }
 local SLIDE, SLASH, RETURN, RECOVER = 0x0, 0x4, 0x8, 0xC
 local ANIM_SLIDE, ANIM_SLASH, ANIM_RETURN = 0x10, 0x11, 3
 local SPEED = 0x5_0000
-local SOUND = asset.sound("sword-swing")
+local SOUND = asset.sound("sword_swing")
 
 -- DElecSwd (his action 0xA), which his glow lasts through.
 local action: Action
@@ -42,7 +42,7 @@ local action: Action
 -- sprite, and doesn't look; it goes once he leaves DElecSwd); shown as he
 -- is. It shows the slash's animation once he slashes.
 local GLOW = follow_effect.make {
-    id = "delecswd/glow",
+    id = "dash_elec_sword/glow",
     sprite = elec_sword_sprite,
     anim = 0xF,
     palette = 0,
@@ -200,7 +200,7 @@ local PHASES: { [number]: (me: Object, s: State) -> () } = { [SLIDE] = slide, [S
 
 -- `sub_80F09B8` (`off_80F09CC`).
 action = new.action {
-    id = "delecswd/action",
+    id = "dash_elec_sword/action",
     state = STATE,
     update = function(me: Object, s: State)
         link.run(me, s, PHASES, "DElecSwd (sub_80F09B8)")
@@ -222,4 +222,4 @@ local chip: Chip = {
     action = action,
 }
 
-return { delecswd = chip }
+return { dash_elec_sword = chip }

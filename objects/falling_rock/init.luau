@@ -10,14 +10,14 @@ local effects = require("../lib/effects")
 local falling = require("@exelib/rock/falling")
 local sparks = require("../lib/sparks")
 local chip = require("@self/chip")
-local falling_rock_sprite = asset.sprite("falling-rock")
+local falling_rock_sprite = asset.sprite("falling_rock")
 
 local falling_rock = {}
 
 -- Its look: from 104 pixels, falling 1/8 pixel a tick faster each tick; a thrown attack that breaks, against navis,
 -- hit modifier 1, the plain spark; a puff into a hole (effect 0x14), its chips with their crash.
 falling_rock.kind = falling.make_kind {
-    id = "falling-rock",
+    id = "falling_rock",
     sprite = falling_rock_sprite,
     height = 0x68_0000,
     gravity = 0x2000,
@@ -27,7 +27,7 @@ falling_rock.kind = falling.make_kind {
     spark = sparks.plain,
     puff = effects.puff,
     chips = chip,
-    shatter_sound = asset.sound("falling-rock"),
+    shatter_sound = asset.sound("falling_rock"),
 }
 
 return falling_rock

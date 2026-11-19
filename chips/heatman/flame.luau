@@ -15,8 +15,8 @@ local flame = {}
 type Spec = HeatFlame
 export type State = Spec
 
-local SPRITE = asset.sprite("heat-flame")
-local SOUND = asset.sound("form-change")
+local SPRITE = asset.sprite("heat_flame")
+local SOUND = asset.sound("form_change")
 
 -- Its actions.
 local FLARE, BURN, DIE_DOWN = 0x0, 0x4, 0x8

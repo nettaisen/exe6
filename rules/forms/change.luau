@@ -33,13 +33,13 @@ export type State = {
 export type Sequence = "cross" | "beast_out" | "cross_beast" | "beast_cross" | "beast_over"
 
 -- The sounds it plays.
-local FORM_CHANGE = asset.sound("form-change")
-local GREGAR_ROAR = asset.sound("gregar-roar")
-local FALZAR_ROAR = asset.sound("falzar-roar")
-local BEAST_OVER_RUMBLE = asset.sound("beast-over")
-local BEAST_OUT = asset.sound("beast-out")
-local CROSS_CHANGE = asset.sound("cross-change")
-local CROSS_CHANGE_CHIME = asset.sound("log-in")
+local FORM_CHANGE = asset.sound("form_change")
+local GREGAR_ROAR = asset.sound("gregar_roar")
+local FALZAR_ROAR = asset.sound("falzar_roar")
+local BEAST_OVER_RUMBLE = asset.sound("beast_over")
+local BEAST_OUT = asset.sound("beast_out")
+local CROSS_CHANGE = asset.sound("cross_change")
+local CROSS_CHANGE_CHIME = asset.sound("log_in")
 
 -- The steps, in the attack's step.
 local PREPARE = 0

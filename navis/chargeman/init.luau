@@ -5,8 +5,8 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local a_charge = require("./megaman/weapons/charged_chip_bonus_29")
 local charge = require("@self/charge")
-local chargeman = require("@self/chip").volcchrg
-local chargeman_portrait_sprite = asset.sprite("chargeman-portrait")
+local chargeman = require("@self/chip").volcano_charge
+local chargeman_portrait_sprite = asset.sprite("chargeman_portrait")
 local chargeman_sprite = asset.sprite("chargeman")
 
 local navi: NaviDef = {
@@ -16,7 +16,7 @@ local navi: NaviDef = {
     element = Element.fire,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("chargeman-win"), lose = asset.banner("chargeman-deleted") },
+    banners = { win = asset.banner("chargeman_win"), lose = asset.banner("chargeman_deleted") },
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- ChargeMan face, and shows DustMan's.
     mugshot = asset.mugshot("chargeman"),

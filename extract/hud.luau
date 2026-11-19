@@ -151,10 +151,10 @@ function hud.font_chars(glyphs: { string }): { string }
     return first(glyphs, hud.FONT_GLYPHS)
 end
 
--- A chip's key as the pack has its icon and picture under (`chip-13a` where compat names none).
+-- A chip's key as the pack has its icon and picture under (`chip_13a` where compat names none).
 function hud.chip_key(names: AssetNames, id: number): string
     local keys = names.chips or {}
-    return keys[id] or string.format("chip-%03x", id)
+    return keys[id] or string.format("chip_%03x", id)
 end
 
 -- An emotion-window face of `rom`'s table: { tiles, palette }.

@@ -7,13 +7,13 @@
 -- second piece leads: it brings the arrival's look and clears the field's
 -- obstacles as it appears, and while it stays it roars, breathes flames
 -- over the three columns ahead of its user (./flame), and drops a rock
--- every 20 ticks on a panel of the other side's (chips/grndman/rock), then
+-- every 20 ticks on a panel of the other side's (chips/groundman/rock), then
 -- tells the controller it is done. Both then sink (10) and go.
 
 local arrival = require("../../lib/beast_chips/arrival")
 local flame = require("./flame")
 local regions = require("@exelib/regions")
-local rock = require("../grndman/rock")
+local rock = require("../groundman/rock")
 local targets = require("../../lib/beast_chips/targets")
 
 local summon = {}
@@ -37,13 +37,13 @@ export type State = {
     roar: number,
 }
 
-local SPRITE = asset.sprite("gregar-summon")
+local SPRITE = asset.sprite("gregar_summon")
 -- The arrival's look: animation 8 of its sprite.
 local ARRIVAL_ANIM = 8
 
-local SOUND_APPEAR = asset.sound("log-in")
+local SOUND_APPEAR = asset.sound("log_in")
 local SOUND_FLASH = asset.sound("bug")
-local SOUND_ROAR = asset.sound("beast-out-chosen-gregar")
+local SOUND_ROAR = asset.sound("beast_out_chosen_gregar")
 local SOUND_GROWL = asset.sound("roar")
 
 -- Its actions.

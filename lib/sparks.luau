@@ -1,14 +1,14 @@
 --!strict
 -- Hit sparks: what shows where a hit lands (`collision:set_hit_effect`).
 
-local chip_destruction_spark_sprite = asset.sprite("chip-destruction-spark")
+local chip_destruction_spark_sprite = asset.sprite("chip_destruction_spark")
 local explosion_sprite = asset.sprite("explosion")
-local hit_marker_sprite = asset.sprite("hit-marker")
-local hit_sparks_sprite = asset.sprite("hit-sparks")
+local hit_marker_sprite = asset.sprite("hit_marker")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
 local hit_sprite = asset.sprite("hit")
 local impact_sprite = asset.sprite("impact")
-local pink_flash_sprite = asset.sprite("pink-flash")
-local spark_0e_sprite = asset.sprite("spark-0e")
+local pink_flash_sprite = asset.sprite("pink_flash")
+local spark_0e_sprite = asset.sprite("spark_0e")
 
 local sparks = {}
 

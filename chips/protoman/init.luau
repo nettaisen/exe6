@@ -25,7 +25,7 @@ local protoman: Chip = {
     },
 }
 
-local protomn_ex: Chip = {
+local protoman_ex: Chip = {
     codes = { "B" },
     element = Element.null,
     family = Family.sword,
@@ -39,12 +39,12 @@ local protomn_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "protomn-ex/controller",
+        id = "protoman_ex/controller",
         summon = navi.summon,
     },
 }
 
-local protomn_sp: Chip = {
+local protoman_sp: Chip = {
     codes = { "B" },
     element = Element.null,
     family = Family.sword,
@@ -59,9 +59,9 @@ local protomn_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "protomn-sp/controller",
+        id = "protoman_sp/controller",
         summon = navi.summon,
     },
 }
 
-return { protoman = protoman, ["protomn-ex"] = protomn_ex, ["protomn-sp"] = protomn_sp }
+return { protoman = protoman, protoman_ex = protoman_ex, protoman_sp = protoman_sp }

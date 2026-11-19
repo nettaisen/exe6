@@ -6,14 +6,14 @@
 -- change (`navi_boost.change`; the original picks a routine of
 -- `off_80E95C8` by its first chip parameter):
 --
---   HubBatc's (0, `sub_80E95D8`, chips/hubbatc): the buster at attack
+--   HubBatc's (0, `sub_80E95D8`, chips/hub_batch): the buster at attack
 --     level 5 or more, rapid and charge 4, the custom screen at 8, the
 --     hand-shrink bug held off a turn, a B+Back special if the navi had
 --     none, and the shoes and undershirt, then 60 ticks;
 --   BugRSwrd's and BgDthThd's (1, `sub_80E96C6`, `navi_boost.bug`) and the
 --     arms' (2, `sub_80E9714`, `navi_boost.arm`): the charged shot becomes
 --     the chip's weapon, then 60 ticks;
---   DarkInvs's (3, `sub_80E9784`, chips/darkinvs): the navi's cross-special
+--   DarkInvs's (3, `sub_80E9784`, chips/dark_invisible): the navi's cross-special
 --     request.
 --
 -- A chip's `dimming` hook (`sub_80E979C`, `off_802CCB4[38]`) is
@@ -21,14 +21,14 @@
 
 local dimming_chips = require("@exelib/dimming")
 local bug_sprite = asset.sprite("bug")
-local charge_glow_a_sprite = asset.sprite("charge-glow-a")
+local charge_glow_a_sprite = asset.sprite("charge_glow_a")
 
 local navi_boost = {}
 
 -- What a chip changes: the controller's effect, its chip's own.
 export type Change = { run: (me: Object) -> () }
 
-local NAVI_BOOST_CHANGE = schema.record_type("navi-boost-change")
+local NAVI_BOOST_CHANGE = schema.record_type("navi_boost_change")
 
 function navi_boost.change(run: (me: Object) -> ()): Change
     return new.record(NAVI_BOOST_CHANGE, { run = run })
@@ -44,7 +44,7 @@ navi_boost.WAIT = 0x3C
 -- the sounds.
 local BUG_EFFECT = new.effect { sprite = bug_sprite, anim = 0, palette = 0, steps = 41 }
 local ARM_EFFECT = new.effect { sprite = charge_glow_a_sprite, anim = 3, palette = 1, steps = 22 }
-local BUG_SOUND, LOG_IN_SOUND = asset.sound("bug"), asset.sound("log-in")
+local BUG_SOUND, LOG_IN_SOUND = asset.sound("bug"), asset.sound("log_in")
 -- When the arms' log-in sound plays, by timer.
 local ARM_LOG_IN_AT = 0x28
 
@@ -87,7 +87,7 @@ local function new_charged_shot(user: Object, weapon: Weapon?)
 end
 
 navi_boost.kind = new.kind {
-    id = "navi-boost",
+    id = "navi_boost",
     pool = Pool.effect,
     state = { change = NAVI_BOOST_CHANGE },
     -- `sub_80E9570`, its effect `sub_80E95B4`.

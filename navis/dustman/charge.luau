@@ -2,10 +2,10 @@
 -- DustMan's charged attack (`dustman/charge`): the original's weapon
 -- routine 0x49 (`sub_80122C2`) and his action table's entry 9
 -- (`sub_80F1F18`). He rolls a ball of junk out from his own panel
--- (DustCross's junk ball, navis/megaman/forms/dustcross, the kind that
+-- (DustCross's junk ball, navis/megaman/forms/dust_cross, the kind that
 -- stands still while dimmed); 35 ticks, then 30 more.
 
-local junk_ball = require("../megaman/forms/dustcross/junk_ball")
+local junk_ball = require("../megaman/forms/dust_cross/junk_ball")
 local link = require("../../lib/link_chips")
 local weapon = require("../../lib/weapon")
 
@@ -17,7 +17,7 @@ local ROLL, RECOVER = 0x0, 0x4
 local ANIM_ROLL = 0x17
 local ROLL_TICKS, RECOVER_TICKS = 0x23, 0x1E
 
-local SOUND = asset.sound("junk-shot")
+local SOUND = asset.sound("junk_shot")
 
 -- The hits' counter byte, and the ball's element: Null (the attack's
 -- element byte).

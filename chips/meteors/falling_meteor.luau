@@ -21,9 +21,9 @@ falling_meteor.spawn_kind = common.spawn_kind
 -- shake of 1; the panel left as it is.
 falling_meteor.row = common.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = { flinch = true, flash = true }, shake = 1, panel = "none" }
 
-falling_meteor.kind = common.make_kind("meteors/falling-meteor", {
+falling_meteor.kind = common.make_kind("meteors/falling_meteor", {
     sprite = meteor_sprite,
-    sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
+    sounds = { fall = asset.sound("justice_one"), land = asset.sound("hit_bomb_1") },
     spark = sparks.of_element,
     burst = effects.burst,
     marker = marker.kind,

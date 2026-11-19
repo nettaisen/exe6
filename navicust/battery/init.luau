@@ -24,7 +24,7 @@ local program: NaviCustProgram = {
         ".......",
     },
     bug = "encounter",
-    exclusive = "encounter-element",
+    exclusive = "encounter_element",
     effects = { programs.outside("battery") },
 }
 

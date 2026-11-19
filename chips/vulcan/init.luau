@@ -7,7 +7,7 @@ local bullet = require("../objects/bullet")
 local lockon = require("../rules/lockon")
 local regions = require("@exelib/regions")
 local vulcan = require("@self/action")
-local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local vulcan_hit_sprite = asset.sprite("vulcan_hit")
 
 -- The Vulcans' bullet (the bullet's row 0xC): the panel found and the one
 -- behind it, staggering, its hit shown once at the bullet.
@@ -21,7 +21,7 @@ local SUPER_SHOT = bullet.variant {
 }
 
 local chips: { [string]: Chip } = {
-    vulcan1 = {
+    vulcan_1 = {
         codes = { "B", "D", "S", "*" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 0, mb = 5, damage = 10, counter = 10, lockout = 0,
@@ -31,7 +31,7 @@ local chips: { [string]: Chip } = {
         beast = { lockon = lockon.cannon },
         action = vulcan.action { shots = 3, bullet = SHOT },
     },
-    vulcan2 = {
+    vulcan_2 = {
         codes = { "D", "F", "L" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 1, mb = 18, damage = 15, counter = 10, lockout = 0,
@@ -41,7 +41,7 @@ local chips: { [string]: Chip } = {
         beast = { lockon = lockon.cannon },
         action = vulcan.action { shots = 4, bullet = SHOT },
     },
-    vulcan3 = {
+    vulcan_3 = {
         codes = { "A", "G", "R" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 2, mb = 30, damage = 20, counter = 10, lockout = 0,
@@ -51,7 +51,7 @@ local chips: { [string]: Chip } = {
         beast = { lockon = lockon.cannon },
         action = vulcan.action { shots = 5, bullet = SHOT },
     },
-    suprvulc = {
+    super_vulcan = {
         codes = { "V" },
         element = Element.null, family = Family.null, class = ChipClass.standard,
         rarity = 3, mb = 75, damage = 20, counter = 4, lockout = 0,

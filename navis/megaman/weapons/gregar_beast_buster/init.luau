@@ -1,5 +1,5 @@
 --!strict
--- The Gregar Beast forms' buster (`megaman/gregar-beast-buster`): the
+-- The Gregar Beast forms' buster (`megaman/gregar_beast_buster`): the
 -- original's weapon routine 4 (`sub_8011B4A`) and action 0x1D
 -- (`sub_80EC45E`). The navi raises the buster and fires the projectile
 -- (objects/projectile) at a random height from the panel in front, with the
@@ -32,9 +32,9 @@ local gregar_beast_buster = {}
 local SHOOT, NEXT = 0x0, 0x4
 
 -- Gregar Beast Over.
-local BEAST_OVER = "gregar-beast-over"
+local BEAST_OVER = "gregar_beast_over"
 
-local SOUND = asset.sound("col-army-2")
+local SOUND = asset.sound("col_army_2")
 
 -- The projectile, whichever way the draw's low bit falls (`dword_80EC5B4`:
 -- the charged shot's either way).
@@ -137,13 +137,13 @@ local function update(me: Object, s: State)
 end
 
 gregar_beast_buster.action = new.action {
-    id = "megaman/gregar-beast-buster/action",
+    id = "megaman/gregar_beast_buster/action",
     state = { timer = schema.u16, repeats = schema.u8, cycle = schema.u8 },
     update = update,
 }
 
 gregar_beast_buster.weapon = new.weapon {
-    id = "megaman/gregar-beast-buster",
+    id = "megaman/gregar_beast_buster",
     -- The charge table's row 4, by Charge 0 to 7: past 4 it reads on
     -- into the next routine's row, as the original's table does.
     charge_ticks = { 80, 75, 70, 65, 60, 20, 20, 20 },

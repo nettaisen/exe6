@@ -1,5 +1,5 @@
 --!strict
--- The Beast forms' claw (`megaman/beast-claw`): the original's weapon
+-- The Beast forms' claw (`megaman/beast_claw`): the original's weapon
 -- routine 0x1E (`sub_8011E1C`), what a charged Null-family chip becomes in
 -- a Beast form (the alternative A-charge), and its action 0x52
 -- (`sub_80EF534`). The chip-use framework runs it inside the Beast Out
@@ -32,14 +32,14 @@ local COUNTER = 30
 -- (`byte_80EF606`), the hit's region (`byte_80EF5FC`'s records: the panel
 -- and the one ahead, then the column) and hit modifier (`byte_80EF604`),
 -- and the sound.
-local CLAWS = asset.sprite("slash-man-effect")
+local CLAWS = asset.sprite("slash_man_effect")
 local LOOKS = {
     [0] = new.effect { sprite = CLAWS, anim = 1, palette = 0, steps = 11 },
     [1] = new.effect { sprite = CLAWS, anim = 0, palette = 0, steps = 11 },
 }
 local REGIONS = { [0] = regions.long, [1] = regions.wide }
 local HIT_MODS: { [number]: HitModifier } = { [0] = { flinch = true }, [1] = { flinch = true, flash = true } }
-local FIRST_SOUND, SECOND_SOUND = asset.sound("beast-claw"), asset.sound("beast-claw-2")
+local FIRST_SOUND, SECOND_SOUND = asset.sound("beast_claw"), asset.sound("beast_claw_2")
 
 -- The hit: no spark, an attack at navis.
 local HIT_EFFECT: Spark? = nil
@@ -125,7 +125,7 @@ local function recover(me: Object, s: State)
 end
 
 beast_claw.action = new.action {
-    id = "megaman/beast-claw/action",
+    id = "megaman/beast_claw/action",
     state = { timer = schema.u16 },
     -- `sub_80EF534`.
     update = function(me: Object, s: State)
@@ -141,7 +141,7 @@ beast_claw.action = new.action {
 }
 
 beast_claw.weapon = new.weapon {
-    id = "megaman/beast-claw",
+    id = "megaman/beast_claw",
     -- The charge table's row 0x1E, by Charge 0 to 7: past 4 it reads on
     -- into the next routine's row, as the original's table does.
     charge_ticks = { 20, 20, 20, 20, 20, 40, 40, 40 },

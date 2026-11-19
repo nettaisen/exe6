@@ -51,7 +51,7 @@ local BLOCKED: HitNames = {
 local SWIM_ANIM = { [0] = 2, 6 }
 local SWIM_ANIM_DIR = { [0] = 1, -1 }
 local HEAD_ANIM = 2
-local ROAR = asset.sound("form-change")
+local ROAR = asset.sound("form_change")
 -- Its actions: dive or climb, swim, leave.
 local COLUMN, SWIM, LEAVE = 0, 4, 8
 
@@ -233,7 +233,7 @@ local function init(me: Object): boolean
 end
 
 head.kind = new.kind {
-    id = "dragon-head",
+    id = "dragon_head",
     pool = Pool.attack,
     state = {
         last_x = schema.u8,

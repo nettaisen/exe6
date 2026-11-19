@@ -18,7 +18,7 @@ local THROW, RECOVER = 0x0, 0x4
 local ANIM_THROW, ANIM_RECOVER = 0xF, 7
 local THROW_TICKS, RECOVER_TICKS = 0x46, 0x14
 
-local SOUND = asset.sound("drill-launch")
+local SOUND = asset.sound("drill_launch")
 
 -- The hits' counter byte, and the drills' element: Null (the attack's
 -- element byte).

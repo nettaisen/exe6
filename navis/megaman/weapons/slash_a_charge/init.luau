@@ -1,15 +1,15 @@
 --!strict
--- SlashCross's A-charge (`megaman/slash-a-charge`): the original's weapon
+-- SlashCross's A-charge (`megaman/slash_a_charge`): the original's weapon
 -- routine 0x11 (`sub_8011CB4`), what a charged sword chip becomes in
 -- SlashCross and its Beast form. The chip is used as usual (`sub_80127C0`:
 -- its damage, bonuses and parameters), and then the navi slashes as
--- SlashCross's charged slash (forms/slashcross/charge) of the chip's
+-- SlashCross's charged slash (forms/slash_cross/charge) of the chip's
 -- sword: the slash its action's spec names (`charged`, lib/swords/slash;
 -- MoonBld's its ring), with a step sword's dash. A variable sword (VarSwrd,
 -- NeoVari: `charged = "own"`) runs its own action, charged: its pick is
 -- what becomes the charged slash (lib/swords/vari).
 
-local slash_charge = require("../forms/slashcross/charge")
+local slash_charge = require("../forms/slash_cross/charge")
 
 local slash_a_charge = {}
 
@@ -32,7 +32,7 @@ local function setup(navi: Object): Action
 end
 
 slash_a_charge.weapon = new.weapon {
-    id = "megaman/slash-a-charge",
+    id = "megaman/slash_a_charge",
     -- The charge table's row 0x11, by Charge 0 to 7: past 4 it reads on
     -- into the next routine's row, as the original's table does.
     charge_ticks = { 60, 60, 60, 60, 60, 80, 70, 60 },

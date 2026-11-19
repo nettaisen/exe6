@@ -41,7 +41,7 @@ programs.hp = effects.hp
 
 -- The bugs, in the order the bugs' routine runs them (`sub_813CBCC`, its
 -- table `byte_813CC18` by bug and level): a program's `bug` names the one
--- it brings, the colors' count brings `status` or `status-strong`. Each
+-- it brings, the colors' count brings `status` or `status_strong`. Each
 -- writes the navi's stats by its level, 1 to 3.
 programs.BUGS = {
     -- 1: steps go astray (+0x31 = 1).
@@ -70,7 +70,7 @@ programs.BUGS = {
     -- 11: a status at the battle's start (+0x1A = 9): five colors.
     "status",
     -- 12: a stronger one (+0x1A = 10): six or more.
-    "status-strong",
+    "status_strong",
 }
 
 -- What each bug is where a tool lists a build's bugs (`overview`): the named bugs it brings, each by its name's key
@@ -86,7 +86,7 @@ programs.BUGS = {
 -- - `hp`: two bugs. It raises the HP drain by its level, +0x18, which effect 0x96 adds to or clears ("BatHPbug");
 --   and it sets the hit status, +0x16 = 3 (a hit gives the HP bug), which effect 0x92 writes ("DmgHPbug") and 0x93
 --   clears. A card that clears one leaves the other;
--- - `status`, `status-strong`: the battle start's bug, +0x1A = 9 and 10, which effect 0x98 writes for 1 and for more
+-- - `status`, `status_strong`: the battle start's bug, +0x1A = 9 and 10, which effect 0x98 writes for 1 and for more
 --   ("StatBug"): one bug, at level 1 and 2.
 --
 -- The others no card effect writes, and are listed under their own names: `custom` shrinks the hand (+0x63; the
@@ -100,7 +100,7 @@ programs.BUG_NAMES = {
     buster = { { name = "buster_blanks", kind = "buster_blanks" } },
     hp = { { name = "hp_drain", kind = "hp_drain" }, { name = "hit_status.hp_bug", kind = "hit_status" } },
     status = { { name = "status_bug", kind = "status_bug" } },
-    ["status-strong"] = { { name = "status_bug", kind = "status_bug" } },
+    status_strong = { { name = "status_bug", kind = "status_bug" } },
 } :: { [string]: { BugName } }
 
 return programs

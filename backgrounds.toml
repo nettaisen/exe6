@@ -10,9 +10,9 @@ stage = "comp"
 # in the table's order; three are there twice, so twice as likely). Whoever makes a random match picks from them (the
 # engine picks none: a round's settings state its background).
 link_battle = [
-    "lans-hp", "acdc-hp", "acdc-hp", "aquarium-hp", "sky-hp", "green-hp", "robot-control-comp", "comp",
-    "comp-alt", "central-area", "aquarium-comp", "seaside-area", "judgetree-comp", "green-area", "sky-area",
-    "undernet", "mr-weather-comp", "underground", "underground", "acdc-area", "acdc-area"
+    "lans_hp", "acdc_hp", "acdc_hp", "aquarium_hp", "sky_hp", "green_hp", "robot_control_comp", "comp",
+    "comp_alternate", "central_area", "aquarium_comp", "seaside_area", "judge_tree_comp", "green_area", "sky_area",
+    "undernet", "mr_weather_comp", "underground", "underground", "acdc_area", "acdc_area"
 ]
 
 # Each background's music, the battle theme a round drawn on it plays where the player picked none (docs/app.md §1,
@@ -24,33 +24,33 @@ link_battle = [
 # battle's, the virus battles'. A comp or dungeon that ends in a story navi's battle has the boss battles' (the user's
 # pick: by count every one would be the virus battles', its encounters outnumbering them).
 [backgrounds]
-acdc-area = { music = "virus-battle" }
-acdc-hp = { music = "virus-battle" }
+acdc_area = { music = "virus_battle" }
+acdc_hp = { music = "virus_battle" }
 # AquarumComp3's navi battle (record 0x43) ends its dungeon.
-aquarium-comp = { music = "boss-battle" }
-aquarium-hp = { music = "virus-battle" }
-central-area = { music = "virus-battle" }
-comp = { music = "virus-battle" }
-comp-alt = { music = "virus-battle" }
+aquarium_comp = { music = "boss_battle" }
+aquarium_hp = { music = "virus_battle" }
+central_area = { music = "virus_battle" }
+comp = { music = "virus_battle" }
+comp_alternate = { music = "virus_battle" }
 # vs Cybeast, the user's pick: the two battles against a Cybeast (records 0x84 and 0x85) are on CopyBotComp. By count
 # it would be the virus battles' (4 encounters).
-copybot-comp = { music = "final-battle" }
+copybot_comp = { music = "final_battle" }
 # The crossover battle's, the user's pick: by count it would be the virus battles' (60, and 4 navis').
-graveyard = { music = "crossover-battle" }
-green-area = { music = "virus-battle" }
-green-hp = { music = "virus-battle" }
+graveyard = { music = "crossover_battle" }
+green_area = { music = "virus_battle" }
+green_hp = { music = "virus_battle" }
 # JdgTreeComp3's navi battle (record 0x51) ends its dungeon; PavilonComp2's (0x81) too.
-judgetree-comp = { music = "boss-battle" }
-lans-hp = { music = "virus-battle" }
+judge_tree_comp = { music = "boss_battle" }
+lans_hp = { music = "virus_battle" }
 # MrWeathrCmp3's navi battle (record 0x70) ends its dungeon; PavilonComp3's (0x82) too.
-mr-weather-comp = { music = "boss-battle" }
+mr_weather_comp = { music = "boss_battle" }
 # MrWeathrCmp in its storm: the same comp's.
-mr-weather-comp-storm = { music = "boss-battle" }
+mr_weather_comp_typhoon = { music = "boss_battle" }
 # RobCtrlComp2's navi battle (record 0x41) ends its dungeon; PavilonComp4's (0x83) too.
-robot-control-comp = { music = "boss-battle" }
-seaside-area = { music = "virus-battle" }
-sky-area = { music = "virus-battle" }
-sky-hp = { music = "virus-battle" }
+robot_control_comp = { music = "boss_battle" }
+seaside_area = { music = "virus_battle" }
+sky_area = { music = "virus_battle" }
+sky_hp = { music = "virus_battle" }
 # Underground2's four navi battles (records 0x7A, 0x7B, 0x8C and 0x8D).
-underground = { music = "boss-battle" }
-undernet = { music = "virus-battle" }
+underground = { music = "boss_battle" }
+undernet = { music = "virus_battle" }

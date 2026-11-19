@@ -28,7 +28,7 @@ local HEIGHT = 0x24
 -- The legs of its path: down a column, then up one.
 dragon.DOWN, dragon.UP = 0, 1
 
-local DRAGON_VARIANT = schema.record_type("dragon-variant")
+local DRAGON_VARIANT = schema.record_type("dragon_variant")
 dragon.DRAGON_VARIANT = DRAGON_VARIANT
 
 -- A dragon's variant.

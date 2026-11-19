@@ -2,7 +2,7 @@
 -- A panel strike (the original's attack object #0x09, `sub_80C5DDC`): it
 -- highlights its panel 4 ticks out of 8 for its warning, then shows a
 -- burst and hits the panel once; it goes when the burst's animation ends.
--- Bass's shots (chips/bass) and MachGun's (chips/machgun) are these.
+-- Bass's shots (chips/bass) and MachGun's (chips/machine_gun) are these.
 --
 -- What it is spawned with is a `PanelStrike` (types.d.luau; the
 -- original's parameters): whether the burst cracks an uncracked panel
@@ -25,10 +25,10 @@ export type State = {
     solid_only: boolean,
 }
 
-local SPRITE = asset.sprite("panel-strike")
+local SPRITE = asset.sprite("panel_strike")
 -- The burst plays over 12 of its sprite's steps (its animation's length).
 local BURST_STEPS = 12
-local SOUND_COL_ARMY_2 = asset.sound("col-army-2")
+local SOUND_COL_ARMY_2 = asset.sound("col_army_2")
 
 -- `sub_80C5E00`: on its panel, its collision on with its region off.
 local function init(me: Object)
@@ -119,7 +119,7 @@ local function tick(me: Object)
 end
 
 panel_strike.kind = new.kind {
-    id = "panel-strike",
+    id = "panel_strike",
     pool = Pool.attack,
     state = { cracks = schema.bool, warning = schema.u8, hit_mod = schema.u8, solid_only = schema.bool },
     -- `sub_80C5DDC`.

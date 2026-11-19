@@ -20,17 +20,17 @@ export type State = {
     steered: boolean,
 }
 
-local SPRITE = asset.sprite("slash-wave")
-local SOUND_AQUA_NEEDLE_2 = asset.sound("aqua-needle-2")
+local SPRITE = asset.sprite("slash_wave")
+local SOUND_AQUA_NEEDLE_2 = asset.sound("aqua_needle_2")
 local SOUND_BOOMERANG = asset.sound("boomerang")
-local SOUND_OK_8B = asset.sound("ok-8b")
+local SOUND_OK_8B = asset.sound("ok_8b")
 
 -- Its height (a halfword store over Z's whole part).
 local HEIGHT = 0x14
 -- Its own hit's modifier, and its wind-up hits'.
 local HIT_MOD, EARLY_HIT_MOD = { flinch = true, flash = true }, { flinch = true }
 
-local SLASHMAN_WAVE = schema.record_type("slashman-wave")
+local SLASHMAN_WAVE = schema.record_type("slashman_wave")
 
 -- A variant (the original's rows of `byte_80D0914`, the wind-up,
 -- `byte_80D0950`, the swing, and `byte_80D0A54`, the speed, 16.16), its

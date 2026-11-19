@@ -19,7 +19,7 @@ local THRUST, RECOVER = 0x0, 0x4
 local ANIM_THRUST, ANIM_RECOVER = 0x16, 7
 local THRUST_TICKS, RECOVER_TICKS = 0x1E, 0x14
 
-local SOUND = asset.sound("tenguman-nose")
+local SOUND = asset.sound("tenguman_nose")
 
 -- The hits' counter byte, and their element: Null (the attack's element
 -- byte).

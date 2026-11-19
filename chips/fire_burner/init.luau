@@ -1,0 +1,68 @@
+--!strict
+-- FireBrn1, FireBrn2 and FireBrn3: the burner's flame (lib/burner) on the
+-- panel ahead, burning 30 ticks and spreading two panels forward, cracking
+-- the panels it leaves. The three differ only in their damage.
+
+local attachment = require("../objects/attachment")
+local burn = require("../lib/burner/burn")
+local lockon = require("../rules/lockon")
+local burner_sprite = asset.sprite("burner")
+
+local function fire_burn(id: string): Action
+    return burn.action {
+        id = id,
+        -- The burner (the original's attachment row 0x16).
+        burner = attachment.look { sprite = burner_sprite, palette = 0, attach_point = 0x14 },
+        flame = { ticks = 30, spread = 2, cracks = true },
+    }
+end
+
+local fire_burner_1: Chip = {
+    codes = { "F", "G", "H", "*" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 8,
+    damage = 70,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    beast = { lockon = lockon.fire_burner_1 },
+    slot_in_limit = 3,
+    action = fire_burn("fire_burner_1/action"),
+}
+
+local fire_burner_2: Chip = {
+    codes = { "S", "T", "U" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 21,
+    damage = 110,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    beast = { lockon = lockon.fire_burner_1 },
+    slot_in_limit = 3,
+    action = fire_burn("fire_burner_2/action"),
+}
+
+local fire_burner_3: Chip = {
+    codes = { "C", "D", "E" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 34,
+    damage = 150,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    beast = { lockon = lockon.fire_burner_1 },
+    slot_in_limit = 3,
+    action = fire_burn("fire_burner_3/action"),
+}
+
+return { fire_burner_1 = fire_burner_1, fire_burner_2 = fire_burner_2, fire_burner_3 = fire_burner_3 }

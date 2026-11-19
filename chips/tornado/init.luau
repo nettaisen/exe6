@@ -14,7 +14,7 @@ local attachment = require("../objects/attachment")
 local common = require("@exelib/tornado/blow")
 local lockon = require("../rules/lockon")
 local tornado = require("@self/tornado")
-local hand_fan_sprite = asset.sprite("hand-fan")
+local hand_fan_sprite = asset.sprite("hand_fan")
 
 -- The fan (the original's attachment rows 0x21 and 0x22).
 local FAN = attachment.look { sprite = hand_fan_sprite, palette = 0, attach_point = 9 }
@@ -50,7 +50,7 @@ local chips: { [string]: Chip } = {
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
-        beast = { lockon = lockon.firebrn1 },
+        beast = { lockon = lockon.fire_burner_1 },
         action = blow {
             fan = FAN,
             single = { variant = PLAIN, status = nil, ticks = 0x20 },
@@ -63,7 +63,7 @@ local chips: { [string]: Chip } = {
         flags = { has_damage = true, standard_library = true, library = true },
         slot_in_limit = 3,
         -- The Beast rush, and its lock-on mode (rules/lockon).
-        beast = { lockon = lockon.firebrn1 },
+        beast = { lockon = lockon.fire_burner_1 },
         action = blow {
             fan = CHARGED_FAN,
             spread = {

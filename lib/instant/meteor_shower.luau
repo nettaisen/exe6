@@ -62,7 +62,7 @@ local function tick(me: Object)
 end
 
 meteor_shower.kind = new.kind {
-    id = "meteor-shower",
+    id = "meteor_shower",
     pool = Pool.effect,
     state = { target = schema.object, drops = schema.u8 },
     -- `sub_80E59E8`.

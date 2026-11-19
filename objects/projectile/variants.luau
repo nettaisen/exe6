@@ -42,7 +42,7 @@ variants.air = v {
 variants.charged = v { id = "shot/charged", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged }
 -- GigaCan's shot: it bursts around what it hits, and over the last two
 -- columns when it leaves the field.
-variants.gigacan = v { id = "shot/gigacan", collision = SHOT, hit_mod = { flinch = true, flash = true }, element = Element.null, spark = sparks.blast, bursts = true }
+variants.giga_cannon = v { id = "shot/giga_cannon", collision = SHOT, hit_mod = { flinch = true, flash = true }, element = Element.null, spark = sparks.blast, bursts = true }
 -- CrosOver's MegaMan's shot: it staggers, and climbs a pixel a panel.
 variants.climbing = v { id = "shot/climbing", collision = SHOT, hit_mod = { flinch = true, flash = true }, element = Element.null, spark = sparks.charged, climbs = true }
 
@@ -70,7 +70,7 @@ variants.grass = v { id = "shot/grass", collision = SHOT, hit_mod = {}, element 
 variants.ice = v { id = "shot/ice", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.plain, hit_panel = panel(PanelType.ice) }
 -- The chip destruction shot (row 9): it destroys the chip the navi it hits holds.
 variants.chip_destruction = v {
-    id = "shot/chip-destruction",
+    id = "shot/chip_destruction",
     collision = { is = collision.chip_destruction, hits = collision.hits_navis },
     hit_mod = {},
     element = Element.null,
@@ -86,11 +86,11 @@ variants.flinching = v { id = "shot/flinching", collision = SHOT, hit_mod = { fl
 variants.erasing = v { id = "shot/erasing", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.erase }
 -- Charged shots with a status: confusion, paralysis, blindness, a bubble,
 -- ice.
-variants.charged_confusing = v { id = "shot/charged-confusing", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, status = statuses.confuse_480 }
-variants.charged_paralyzing = v { id = "shot/charged-paralyzing", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, status = statuses.paralyze_90 }
-variants.charged_blinding = v { id = "shot/charged-blinding", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, status = statuses.blind_480 }
+variants.charged_confusing = v { id = "shot/charged_confusing", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, status = statuses.confuse_480 }
+variants.charged_paralyzing = v { id = "shot/charged_paralyzing", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, status = statuses.paralyze_90 }
+variants.charged_blinding = v { id = "shot/charged_blinding", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, status = statuses.blind_480 }
 variants.charged_bubbling = v {
-    id = "shot/charged-bubbling",
+    id = "shot/charged_bubbling",
     collision = SHOT,
     hit_mod = {},
     element = Element.null,
@@ -99,7 +99,7 @@ variants.charged_bubbling = v {
     rare_buster_shot = true,
 }
 variants.charged_freezing = v {
-    id = "shot/charged-freezing",
+    id = "shot/charged_freezing",
     collision = SHOT,
     hit_mod = {},
     element = Element.null,
@@ -109,12 +109,12 @@ variants.charged_freezing = v {
 }
 -- Charged shots that change the panel they hit on: cracked, broken,
 -- volcano, poison, grass, ice.
-variants.charged_cracking = v { id = "shot/charged-cracking", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, hit_panel = { effect = "crack" } }
-variants.charged_panel_breaking = v { id = "shot/charged-panel-breaking", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, hit_panel = { effect = "break" } }
-variants.charged_volcano = v { id = "shot/charged-volcano", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, hit_panel = panel(PanelType.volcano) }
-variants.charged_poisoning = v { id = "shot/charged-poisoning", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, hit_panel = panel(PanelType.poison) }
+variants.charged_cracking = v { id = "shot/charged_cracking", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, hit_panel = { effect = "crack" } }
+variants.charged_panel_breaking = v { id = "shot/charged_panel_breaking", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, hit_panel = { effect = "break" } }
+variants.charged_volcano = v { id = "shot/charged_volcano", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, hit_panel = panel(PanelType.volcano) }
+variants.charged_poisoning = v { id = "shot/charged_poisoning", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, hit_panel = panel(PanelType.poison) }
 variants.charged_grass = v {
-    id = "shot/charged-grass",
+    id = "shot/charged_grass",
     collision = SHOT,
     hit_mod = {},
     element = Element.null,
@@ -123,7 +123,7 @@ variants.charged_grass = v {
     rare_buster_shot = true,
 }
 variants.charged_ice = v {
-    id = "shot/charged-ice",
+    id = "shot/charged_ice",
     collision = SHOT,
     hit_mod = {},
     element = Element.null,
@@ -135,7 +135,7 @@ variants.charged_ice = v {
 -- side's shots and the other way for the right side's (the routine's own
 -- values, 0xC and 0xB, for side 1), and the reverse.
 variants.charged_road = v {
-    id = "shot/charged-road",
+    id = "shot/charged_road",
     collision = SHOT,
     hit_mod = {},
     element = Element.null,
@@ -144,7 +144,7 @@ variants.charged_road = v {
     rare_buster_shot = true,
 }
 variants.charged_road_back = v {
-    id = "shot/charged-road-back",
+    id = "shot/charged_road_back",
     collision = SHOT,
     hit_mod = {},
     element = Element.null,
@@ -154,7 +154,7 @@ variants.charged_road_back = v {
 }
 -- A charged shot of the attack type 0xA0.
 variants.charged_attack_a0 = v {
-    id = "shot/charged-attack-a0",
+    id = "shot/charged_attack_a0",
     collision = { is = collision.attack_a0, hits = collision.hits_navis },
     hit_mod = {},
     element = Element.null,
@@ -163,10 +163,10 @@ variants.charged_attack_a0 = v {
 -- Charged shots with a bug code: the body's programs go (0xFB), the HP
 -- bug a level up (0x18 with 1), the HP bug a level up with its mark
 -- (0xF4).
-variants.charged_uninstalling = v { id = "shot/charged-uninstalling", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, bug = 0xFB }
-variants.charged_hp_bug = v { id = "shot/charged-hp-bug", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, bug = 0x18, bug_arg = 1 }
+variants.charged_uninstalling = v { id = "shot/charged_uninstalling", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, bug = 0xFB }
+variants.charged_hp_bug = v { id = "shot/charged_hp_bug", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.charged, bug = 0x18, bug_arg = 1 }
 variants.charged_hp_bug_marked = v {
-    id = "shot/charged-hp-bug-marked",
+    id = "shot/charged_hp_bug_marked",
     collision = SHOT,
     hit_mod = {},
     element = Element.null,
@@ -176,7 +176,7 @@ variants.charged_hp_bug_marked = v {
     rare_charged_shot = true,
 }
 -- A charged shot that flinches.
-variants.charged_flinching = v { id = "shot/charged-flinching", collision = SHOT, hit_mod = { flinch = true }, element = Element.null, spark = sparks.charged }
+variants.charged_flinching = v { id = "shot/charged_flinching", collision = SHOT, hit_mod = { flinch = true }, element = Element.null, spark = sparks.charged }
 -- Shots that move what they hit: a panel away (hit modifier 0x61), six
 -- panels away (0x49), and a charged one six panels toward the shooter
 -- (0x45).
@@ -197,7 +197,7 @@ variants.shoving = v {
     rare_buster_shot = true,
 }
 variants.charged_pulling = v {
-    id = "shot/charged-pulling",
+    id = "shot/charged_pulling",
     collision = SHOT,
     hit_mod = { flinch = true, forward_far = true, drag = true },
     element = Element.null,

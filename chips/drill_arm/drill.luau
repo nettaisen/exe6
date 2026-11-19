@@ -1,0 +1,43 @@
+--!strict
+-- A drill (the original's attack object #0x71, `sub_80D2A94`): the shared
+-- drill (@exelib/drill_arm/drill), EXE6's kind: DrilArm's (./chip), which
+-- GroundCross's charged shot (navis/megaman/forms/ground_cross/drill) and
+-- MstrCros's GroundCross (chips/master_cross/navi) use too.
+
+local attachment = require("../../objects/attachment")
+local collision = require("../../rules/collision")
+local common = require("@exelib/drill_arm/drill")
+local sparks = require("../../lib/sparks")
+local drill_arm_sprite = asset.sprite("drill_arm")
+
+local drill = {}
+
+-- The drill arm the navi wears while it drills (the original's attachment
+-- row 0x20), in its drilling animation (1) or drawn back (0).
+drill.arm = attachment.look { sprite = drill_arm_sprite, palette = 0, attach_point = 0x13 }
+drill.ARM_DRILLING = 1
+
+local exe6_kind, exe6_spawn = common.make_kind("drill_arm/drill", {
+    spark = sparks.breaking,
+    first = collision.breaking,
+    second = collision.second_drill,
+    hits = collision.hits_navis,
+    keeps_element = true,
+})
+drill.kind = exe6_kind
+
+-- `sub_80D2B8E` from its user: the first drill for `owner`, held in its
+-- first related object (a navi's attack), or in its state's `child` (a
+-- navi chip's navi, whose kind has that field).
+function drill.spawn(
+    owner: Object,
+    element: Element,
+    z: number,
+    damage: number,
+    spec: { ticks: number, light: boolean? },
+    slot: ("related" | "child")?
+): Object?
+    return exe6_spawn(owner, element, z, damage, spec, slot)
+end
+
+return drill

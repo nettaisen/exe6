@@ -1,0 +1,17 @@
+--!strict
+-- The patch card BlizMan (46, ブリザードマン in the Japanese games), 30 MB.
+
+local cards = require("../rules/patch_cards/cards")
+local charge = require("@self/charge")
+
+local card: PatchCard = {
+    mb = 30,
+    effects = {
+        cards.hp(60),
+        cards.body(Element.aqua),
+        cards.bug(cards.float_shoes(false)),
+        cards.charged_shot(charge),
+    },
+}
+
+return { blizzardman = card }

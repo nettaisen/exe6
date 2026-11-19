@@ -70,7 +70,7 @@ local rules: Rules = {
     },
     -- The state of each navi, its object's own (the pack's `NaviState`): DustCross's absorbed obstacles, oldest first
     -- (AIData+0x6C, their count at +0x0D: navis/megaman/weapons/absorb, objects/absorbed_obstacle), and the one its
-    -- last throw took (the attack's marker word: navis/megaman/forms/dustcross/throw_absorbed), which the buster's shot
+    -- last throw took (the attack's marker word: navis/megaman/forms/dust_cross/throw_absorbed), which the buster's shot
     -- throws and the next throw replaces.
     navi_state = {
         absorbed = schema.list({ look = obstacle.absorbed_look, anim = schema.u8 }, 8),
@@ -162,24 +162,24 @@ local rules: Rules = {
         sun = true,
         -- Every SP navi deleted in no time (its chip's best damage), in the save's order.
         sp_times = {
-            { chip = "heatman-sp", frames = 0 },
-            { chip = "elecman-sp", frames = 0 },
-            { chip = "slashmn-sp", frames = 0 },
-            { chip = "erasemn-sp", frames = 0 },
-            { chip = "chrgemn-sp", frames = 0 },
-            { chip = "spoutmn-sp", frames = 0 },
-            { chip = "tmhkman-sp", frames = 0 },
-            { chip = "tengumn-sp", frames = 0 },
-            { chip = "grndman-sp", frames = 0 },
-            { chip = "dustman-sp", frames = 0 },
-            { chip = "protomn-sp", frames = 0 },
-            { chip = "blastmn-sp", frames = 0 },
-            { chip = "diveman-sp", frames = 0 },
-            { chip = "crcusmn-sp", frames = 0 },
-            { chip = "judgemn-sp", frames = 0 },
-            { chip = "elmntmn-sp", frames = 0 },
-            { chip = "count-sp", frames = 0 },
-            { chip = "colonel-sp", frames = 0 },
+            { chip = "heatman_sp", frames = 0 },
+            { chip = "elecman_sp", frames = 0 },
+            { chip = "slashman_sp", frames = 0 },
+            { chip = "eraseman_sp", frames = 0 },
+            { chip = "chargeman_sp", frames = 0 },
+            { chip = "aquaman_sp", frames = 0 },
+            { chip = "tomahawkman_sp", frames = 0 },
+            { chip = "tenguman_sp", frames = 0 },
+            { chip = "groundman_sp", frames = 0 },
+            { chip = "dustman_sp", frames = 0 },
+            { chip = "protoman_sp", frames = 0 },
+            { chip = "blastman_sp", frames = 0 },
+            { chip = "diveman_sp", frames = 0 },
+            { chip = "circusman_sp", frames = 0 },
+            { chip = "judgeman_sp", frames = 0 },
+            { chip = "elementman_sp", frames = 0 },
+            { chip = "count_sp", frames = 0 },
+            { chip = "colonel_sp", frames = 0 },
         },
     },
     -- EXE6's fields on its definitions (docs/design/rules-in-luau.md §7.5), which the engine checks and reads none
@@ -221,7 +221,7 @@ local rules: Rules = {
             -- Falzar Crosses' own in Beast Out; none, 0).
             var_sword_waits = schema.bool,
             beast_shot_palette = schema.u8,
-            -- EraseCross's charged shot fires its own beam in it (navis/megaman/forms/erasecross/charge: EraseCross;
+            -- EraseCross's charged shot fires its own beam in it (navis/megaman/forms/erase_cross/charge: EraseCross;
             -- in any other form, its Beast form's).
             plain_erase_beam = schema.bool,
         },

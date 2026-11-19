@@ -276,11 +276,11 @@ end
 -- on 2: its triangle stays) and in the Cross window's header (0x58 to 0x62), and B:EXIT at its foot (0x81 to 0x87: 5
 -- and its B's 3, on 2). Each: its name, its tiles, its letters' rows, their colors.
 local LABELS: { WindowLabel } = {
-    { name = "battle-chip", first = 0x02, last = 0x0A, top = 1, bottom = 5, letters = { 7 } },
-    { name = "chip-select", first = 0x27, last = 0x2D, top = 3, bottom = 6, letters = { 4 } },
-    { name = "cross-select", first = 0x4A, last = 0x54, top = 2, bottom = 6, letters = { 5 } },
-    { name = "cross-select", first = 0x58, last = 0x62, top = 1, bottom = 5, letters = { 5 } },
-    { name = "b-exit", first = 0x81, last = 0x87, top = 2, bottom = 6, letters = { 5, 3 } },
+    { name = "battle_chip", first = 0x02, last = 0x0A, top = 1, bottom = 5, letters = { 7 } },
+    { name = "chip_select", first = 0x27, last = 0x2D, top = 3, bottom = 6, letters = { 4 } },
+    { name = "cross_select", first = 0x4A, last = 0x54, top = 2, bottom = 6, letters = { 5 } },
+    { name = "cross_select", first = 0x58, last = 0x62, top = 1, bottom = 5, letters = { 5 } },
+    { name = "b_exit", first = 0x81, last = 0x87, top = 2, bottom = 6, letters = { 5, 3 } },
 }
 
 -- `c` with what the four ROMs have alike, read from `rom`.

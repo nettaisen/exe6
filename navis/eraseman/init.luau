@@ -4,8 +4,8 @@
 local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local eraseman = require("@self/chip").edeletbm
-local eraseman_portrait_sprite = asset.sprite("eraseman-portrait")
+local eraseman = require("@self/chip").eraser_delete_beam
+local eraseman_portrait_sprite = asset.sprite("eraseman_portrait")
 local eraseman_sprite = asset.sprite("eraseman")
 
 local navi: NaviDef = {
@@ -16,7 +16,7 @@ local navi: NaviDef = {
     weakness = { wind = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("eraseman-win"), lose = asset.banner("eraseman-deleted") },
+    banners = { win = asset.banner("eraseman_win"), lose = asset.banner("eraseman_deleted") },
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- EraseMan face, and shows GroundMan's.
     mugshot = asset.mugshot("eraseman"),

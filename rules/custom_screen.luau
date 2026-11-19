@@ -107,9 +107,9 @@ return {
         opens_from = { 0, 1, 2, 3, 4, 10 },
         opening = 12,
         closing = 6,
-        open_sound = asset.sound("select-7a"),
-        close_sound = asset.sound("cross-window-close"),
-        tab = "cross-select",
-        exit = "b-exit",
+        open_sound = asset.sound("select_7a"),
+        close_sound = asset.sound("cross_window_close"),
+        tab = "cross_select",
+        exit = "b_exit",
     },
 }

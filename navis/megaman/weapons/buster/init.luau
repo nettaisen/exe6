@@ -25,7 +25,7 @@ local lib = require("../../../lib/buster")
 local projectile = require("../../../lib/projectile")
 local sparks = require("../../../lib/sparks")
 local variants = require("../../../objects/projectile/variants")
-local beast_shot_sprite = asset.sprite("beast-shot")
+local beast_shot_sprite = asset.sprite("beast_shot")
 
 -- (The recovery after the shot is the navi's `attack_count`, AIAttackVars+0x12:
 -- a throw doesn't write it, so it waits the last shot's, whatever ran in
@@ -95,7 +95,7 @@ local THROWN = flying_shot.variant {
     obstacle = true,
 }
 
-local THROW_SOUND = asset.sound("junk-shot")
+local THROW_SOUND = asset.sound("junk_shot")
 
 -- `sub_80EB450`'s throw (the original's attack variant 2): the junk shot's
 -- sound besides the shot's, and the last obstacle absorbed (what the
@@ -120,7 +120,7 @@ buster.shot = common.shot_action {
     buster = lib,
     projectiles = projectile,
     attachment = attachment.kind,
-    shot_sound = asset.sound("buster-shot"),
+    shot_sound = asset.sound("buster_shot"),
     plain = variants.plain,
 }
 

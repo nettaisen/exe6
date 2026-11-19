@@ -93,7 +93,7 @@ local function destroy(me: Object)
 end
 
 riding_hit.kind = new.kind {
-    id = "slashman/riding-hit",
+    id = "slashman/riding_hit",
     pool = Pool.attack,
     state = { is = schema.collision, hits = schema.collision, hit_mod = schema.u8, spark = schema.spark, keeps_going = schema.bool, action = schema.action },
     -- `sub_80D18D8`.

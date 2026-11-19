@@ -1,5 +1,5 @@
 --!strict
--- The charged shot of the patch card count (`patch-cards/count/charge`):
+-- The charged shot of the patch card count (`patch_cards/count/charge`):
 -- Count's rain. The original's weapon routine 0x6D (`sub_801244A`) sets up
 -- action 0x5E (`sub_80F020E`): the navi raises a dust storm
 -- (lib/instant/dust_storm) over the middle of the other side's area, 20
@@ -21,7 +21,7 @@ export type State = {
 local RAISE, BLOW = 0x0, 0x4
 
 local ANIM = 0x0F
-local SOUND = asset.sound("drip-shower")
+local SOUND = asset.sound("drip_shower")
 -- The attack: 20 damage, hit parameter 0x8A; the storm's ticks (the
 -- parameter word's second byte, 0x3C).
 local DAMAGE, COUNTER, TICKS = 0x14, 10, 0x3C
@@ -82,7 +82,7 @@ local function update(me: Object, s: State)
 end
 
 charge.action = new.action {
-    id = "patch-cards/count/charge/action",
+    id = "patch_cards/count/charge/action",
     state = { timer = schema.u16, sound = schema.u16 },
     update = update,
 }
@@ -94,7 +94,7 @@ local function setup(navi: Object): Action
 end
 
 charge.weapon = new.weapon {
-    id = "patch-cards/count/charge",
+    id = "patch_cards/count/charge",
     -- The charge table's row 0x6D, by Charge 0 to 7: past 4 it reads on
     -- into the next routine's row, as the original's table does.
     charge_ticks = { 210, 200, 190, 185, 180, 160, 150, 140 },

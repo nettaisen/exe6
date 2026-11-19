@@ -25,7 +25,7 @@ local blastman: Chip = {
     },
 }
 
-local blastmn_ex: Chip = {
+local blastman_ex: Chip = {
     codes = { "B" },
     element = Element.fire,
     family = Family.fire,
@@ -39,12 +39,12 @@ local blastmn_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "blastmn-ex/controller",
+        id = "blastman_ex/controller",
         summon = navi.summon,
     },
 }
 
-local blastmn_sp: Chip = {
+local blastman_sp: Chip = {
     codes = { "B" },
     element = Element.fire,
     family = Family.fire,
@@ -59,9 +59,9 @@ local blastmn_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "blastmn-sp/controller",
+        id = "blastman_sp/controller",
         summon = navi.summon,
     },
 }
 
-return { blastman = blastman, ["blastmn-ex"] = blastmn_ex, ["blastmn-sp"] = blastmn_sp }
+return { blastman = blastman, blastman_ex = blastman_ex, blastman_sp = blastman_sp }

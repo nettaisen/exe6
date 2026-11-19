@@ -24,7 +24,7 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("groundman")
-local SOUND = asset.sound("drilarm")
+local SOUND = asset.sound("drill_arm")
 
 -- Its actions.
 local WAIT, FLY, DRILL = 0, 4, 8

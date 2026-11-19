@@ -1,0 +1,16 @@
+--!strict
+-- AreaGrab: a dimming that drops grab shots on the first column in front
+-- not wholly the user's side's, taking the panels it can.
+
+local grab = require("../lib/grab/controller")
+
+local chip: Chip = {
+    codes = { "B", "F", "S", "*" },
+    element = Element.null, family = Family.null, class = ChipClass.standard,
+    rarity = 1, mb = 8, damage = 10, counter = 10, cant_counter = true, lockout = 0,
+    flags = { dimming = true, standard_library = true, library = true },
+    slot_in_limit = 1,
+    dimming = grab.area,
+}
+
+return { area_grab = chip }

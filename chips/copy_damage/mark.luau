@@ -1,0 +1,23 @@
+--!strict
+-- CopyDmg's mark (the original's attack object #0x28, `sub_80C8FFC`): the
+-- one EXE5 shares (@exelib/copy_damage/mark) in EXE6's look: an unseen probe
+-- that steps a panel a tick along its row until it hits something; a navi
+-- it hits is marked for 180 ticks, taking on top of its own the damage its
+-- side took the tick before.
+
+local collision = require("../../rules/collision")
+local common = require("@exelib/copy_damage/mark")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
+
+return common.make {
+    id = "copy_damage/mark",
+    sprite = hit_sparks_sprite,
+    anim = 0x0B,
+    sound = asset.sound("mark"),
+    is = collision.attack,
+    hits = collision.hits_navis,
+    ticks = 180,
+    over_navi = "attach_point",
+    reload_anim = false,
+    own_gauges_hit = nil,
+}

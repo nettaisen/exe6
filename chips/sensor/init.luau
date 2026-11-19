@@ -6,7 +6,7 @@
 local controller = require("@self/controller")
 
 local chips: { [string]: Chip } = {
-    sensor1 = {
+    sensor_1 = {
         codes = { "J", "O", "W" },
         element = Element.elec, family = Family.elec, class = ChipClass.standard,
         rarity = 0, mb = 32, damage = 100, counter = 30, lockout = 0,
@@ -14,7 +14,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 3,
         dimming = controller.hook { palette = 0, hp = 20 },
     },
-    sensor2 = {
+    sensor_2 = {
         codes = { "N", "U", "Y" },
         element = Element.elec, family = Family.elec, class = ChipClass.standard,
         rarity = 1, mb = 35, damage = 130, counter = 30, lockout = 0,
@@ -22,7 +22,7 @@ local chips: { [string]: Chip } = {
         slot_in_limit = 3,
         dimming = controller.hook { palette = 3, hp = 30 },
     },
-    sensor3 = {
+    sensor_3 = {
         codes = { "I", "K", "Q" },
         element = Element.elec, family = Family.elec, class = ChipClass.standard,
         rarity = 2, mb = 38, damage = 160, counter = 30, lockout = 0,

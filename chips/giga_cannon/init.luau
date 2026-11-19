@@ -1,0 +1,77 @@
+--!strict
+-- GigaCan1-3: the Program Advances of three Cannons, HiCannons or
+-- M-Cannons of one code. The cannon of the chip they're made of fires a
+-- shot that bursts over the 3x3 around what it hits (and over the last two
+-- columns when it leaves the field), and the cannon and the navi leave
+-- afterimages as it charges (the original's action 0x14 with subtypes 4 to
+-- 6; lib/cannon.luau).
+
+local attachment = require("../objects/attachment")
+local cannon = require("../lib/cannon")
+local variants = require("../objects/projectile/variants")
+local cannon_chips = require("./cannon")
+local lockon = require("../rules/lockon")
+local cannon_sprite = asset.sprite("cannon")
+
+-- Their cannons (the original's attachment rows 0 to 2: the cannon in
+-- palettes 0, 1 and 2, the Cannons'), at the navi's attach point 7.
+local GIGACAN1_ARM = attachment.look { sprite = cannon_sprite, palette = 0, attach_point = 7 }
+local GIGACAN2_ARM = attachment.look { sprite = cannon_sprite, palette = 1, attach_point = 7 }
+local GIGACAN3_ARM = attachment.look { sprite = cannon_sprite, palette = 2, attach_point = 7 }
+
+local function giga(id: string, arm: AttachmentLook): Action
+    return cannon.action { id = id, arm = arm, shot = variants.giga_cannon, afterimages = true }
+end
+
+local giga_cannon_1: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.program_advance,
+    class = ChipClass.program_advance,
+    rarity = 0,
+    mb = 5,
+    damage = 300,
+    counter = 50,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    beast = { lockon = lockon.cannon },
+    slot_in_limit = 1,
+    program_advances = { { order = 13, code_run = { chip = cannon_chips.cannon, count = 3 } } },
+    action = giga("giga_cannon_1/action", GIGACAN1_ARM),
+}
+
+local giga_cannon_2: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.program_advance,
+    class = ChipClass.program_advance,
+    rarity = 0,
+    mb = 5,
+    damage = 400,
+    counter = 50,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    beast = { lockon = lockon.cannon },
+    slot_in_limit = 1,
+    program_advances = { { order = 14, code_run = { chip = cannon_chips.high_cannon, count = 3 } } },
+    action = giga("giga_cannon_2/action", GIGACAN2_ARM),
+}
+
+local giga_cannon_3: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.program_advance,
+    class = ChipClass.program_advance,
+    rarity = 0,
+    mb = 5,
+    damage = 500,
+    counter = 50,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    beast = { lockon = lockon.cannon },
+    slot_in_limit = 1,
+    program_advances = { { order = 15, code_run = { chip = cannon_chips.mega_cannon, count = 3 } } },
+    action = giga("giga_cannon_3/action", GIGACAN3_ARM),
+}
+
+return { giga_cannon_1 = giga_cannon_1, giga_cannon_2 = giga_cannon_2, giga_cannon_3 = giga_cannon_3 }

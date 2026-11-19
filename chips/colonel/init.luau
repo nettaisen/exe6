@@ -39,7 +39,7 @@ local colonel_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "colonel-ex/controller",
+        id = "colonel_ex/controller",
         summon = navi.summon { palette = 0, strike = navi.screen_divide },
     },
 }
@@ -59,9 +59,9 @@ local colonel_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "colonel-sp/controller",
+        id = "colonel_sp/controller",
         summon = navi.summon { palette = 3, strike = navi.screen_divide },
     },
 }
 
-return { colonel = colonel, ["colonel-ex"] = colonel_ex, ["colonel-sp"] = colonel_sp }
+return { colonel = colonel, colonel_ex = colonel_ex, colonel_sp = colonel_sp }

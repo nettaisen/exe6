@@ -49,8 +49,8 @@ local LIFETIME = 0x2D0
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- How it looks absorbed (the original's obstacle kind's sprite: its own).
 local ABSORBED = absorbed_obstacle.look { sprite = SPRITE }
-local APPEAR_SOUND, BREAK_SOUND = asset.sound("appear"), asset.sound("hit-bomb-1")
-local FIRE_SOUND = asset.sound("beast-over")
+local APPEAR_SOUND, BREAK_SOUND = asset.sound("appear"), asset.sound("hit_bomb_1")
+local FIRE_SOUND = asset.sound("beast_over")
 -- The aim by row (`dword_80DA104`), the aim's row step (`dword_80DA3E8`).
 local AIM_BY_ROW: { [number]: number } = { [0] = 0, [1] = 2, [2] = 1, [3] = 0 }
 local ROW_STEP: { [number]: number } = { [0] = -1, [1] = 0, [2] = 1 }

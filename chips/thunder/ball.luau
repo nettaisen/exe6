@@ -14,7 +14,7 @@ ball.make_kind = common.make_kind
 -- EXE6's look: one sprite, its animations small and big (+1 bursting); an
 -- attack hitting navis with modifier 1 and the elec spark; its sound
 -- (DarkThnd's its own).
-local SPRITE = asset.sprite("thunder-ball")
+local SPRITE = asset.sprite("thunder_ball")
 local EXE6: ThunderBallLook = {
     sprite = SPRITE,
     small_anim = 0,
@@ -26,7 +26,7 @@ local EXE6: ThunderBallLook = {
     target = collision.hits_navis,
     hit_mod = { flinch = true },
     spark = sparks.elec,
-    sound = asset.sound("erase-man-2"),
+    sound = asset.sound("erase_man_2"),
 }
 
 ball.kind = common.make_kind("thunder/ball", EXE6)

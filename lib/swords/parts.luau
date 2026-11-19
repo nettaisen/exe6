@@ -21,8 +21,8 @@ parts.blade = attachment.look { sprite = sword_sprite, palette = 0 }
 
 -- The swings' sounds: most swords', and the big swords' (LifeSrd, DrkSword, DblDream). (The slashes over the panels
 -- each sword hits are its own.)
-parts.swing = asset.sound("sword-swing")
-parts.big_swing = asset.sound("big-sword-swing")
+parts.swing = asset.sound("sword_swing")
+parts.big_swing = asset.sound("big_sword_swing")
 
 -- MegaMan's base AI's blade, by side `side`'s form: 0, or a Beast form's
 -- (0xC for Gregar's, 0xD for Falzar's). (CrosOver's MegaMan, whose user may

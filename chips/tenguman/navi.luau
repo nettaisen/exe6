@@ -26,7 +26,7 @@ local tenguman = {}
 local SPRITE = asset.sprite("tenguman")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_TENGU_MAN = asset.sound("tengu-man")
+local SOUND_TENGU_MAN = asset.sound("tengu_man")
 
 -- His body's hit region while he sweeps, and his hit's modifier.
 local REGION = regions.wide

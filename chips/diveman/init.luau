@@ -39,7 +39,7 @@ local diveman_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "diveman-ex/controller",
+        id = "diveman_ex/controller",
         summon = navi.summon,
     },
 }
@@ -59,9 +59,9 @@ local diveman_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "diveman-sp/controller",
+        id = "diveman_sp/controller",
         summon = navi.summon,
     },
 }
 
-return { diveman = diveman, ["diveman-ex"] = diveman_ex, ["diveman-sp"] = diveman_sp }
+return { diveman = diveman, diveman_ex = diveman_ex, diveman_sp = diveman_sp }

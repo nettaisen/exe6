@@ -1,0 +1,27 @@
+--!strict
+-- A MetrKnuk fist (the original's attack object #0xB4, `sub_80DBCEC`;
+-- docs/engine/dimming-chip-effects.md §18): the shared fist
+-- (@exelib/meteor_knuckle/fist), EXE6's kind. It falls from high up behind its
+-- panel onto it, hits it with a burst, cracks it and shakes the camera,
+-- then bounces back up and goes.
+
+local collision = require("../../rules/collision")
+local common = require("@exelib/meteor_knuckle/fist")
+local effects = require("../../lib/effects")
+local sparks = require("../../lib/sparks")
+local justice_one_sprite = asset.sprite("justice_one")
+
+-- Its hit (`sub_80DBEBA`, 0x15050001): a breaking thrown attack hitting
+-- navis on its panel, with the null spark.
+return common.make {
+    id = "meteor_knuckle/fist",
+    sprite = justice_one_sprite,
+    anim = 0,
+    sound = asset.sound("justice_one"),
+    burst = effects.burst,
+    burst_on_fist = false,
+    self_type = collision.thrown_break,
+    target = collision.hits_navis,
+    spark = sparks.of_element(Element.null),
+    ends_with_battle = false,
+}

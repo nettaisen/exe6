@@ -27,7 +27,7 @@ local roll: Chip = {
     },
 }
 
-local roll2: Chip = {
+local roll_v2: Chip = {
     codes = { "R" },
     element = Element.null,
     family = Family.null,
@@ -42,14 +42,14 @@ local roll2: Chip = {
     slot_in_limit = 1,
     -- (AntiRecv springs on her heal; she brings her user back herself.)
     navi = navi_chips.make {
-        id = "roll2/controller",
+        id = "roll_v2/controller",
         summon = navi.summon { rounds = 1, palette = 0 },
         course = navi_chips.USER_RETURNED,
         heals = true,
     },
 }
 
-local roll3: Chip = {
+local roll_v3: Chip = {
     codes = { "R" },
     element = Element.null,
     family = Family.null,
@@ -64,11 +64,11 @@ local roll3: Chip = {
     slot_in_limit = 1,
     -- (AntiRecv springs on her heal; she brings her user back herself.)
     navi = navi_chips.make {
-        id = "roll3/controller",
+        id = "roll_v3/controller",
         summon = navi.summon { rounds = 1, palette = 1 },
         course = navi_chips.USER_RETURNED,
         heals = true,
     },
 }
 
-return { roll = roll, roll2 = roll2, roll3 = roll3 }
+return { roll = roll, roll_v2 = roll_v2, roll_v3 = roll_v3 }

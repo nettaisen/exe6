@@ -65,24 +65,24 @@ local lockon = {
         clear_path = false,
         prefers_middle_row = false,
     }),
-    widesht = record({
-        id = "widesht",
+    wide_shot = record({
+        id = "wide_shot",
         rule = "near",
         offsets = { { -1, -1 }, { -1, 1 }, { -1, 0 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = true,
     }),
-    firebrn1 = record({
-        id = "firebrn1",
+    fire_burner_1 = record({
+        id = "fire_burner_1",
         rule = "near",
         offsets = { { -2, 0 }, { -1, 0 }, { -2, -1 }, { -1, -1 }, { -2, 1 }, { -1, 1 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = false,
     }),
-    yoyo = record({
-        id = "yoyo",
+    yo_yo = record({
+        id = "yo_yo",
         rule = "near",
         offsets = {
             { -3, 0 },
@@ -99,40 +99,40 @@ local lockon = {
         clear_path = false,
         prefers_middle_row = false,
     }),
-    drksword = record({
-        id = "drksword",
+    dark_sword = record({
+        id = "dark_sword",
         rule = "near",
         offsets = { { -1, 0 }, { -1, -1 }, { -1, 1 }, { -2, 0 }, { -2, -1 }, { -2, 1 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = true,
     }),
-    crakshot = record({
-        id = "crakshot",
+    crack_shot = record({
+        id = "crack_shot",
         rule = "near",
         offsets = { { -2, 0 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = false,
     }),
-    dublshot = record({
-        id = "dublshot",
+    double_shot = record({
+        id = "double_shot",
         rule = "near",
         offsets = { { -3, 0 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = false,
     }),
-    gundels1 = record({
-        id = "gundels1",
+    gun_del_sol_1 = record({
+        id = "gun_del_sol_1",
         rule = "near",
         offsets = { { -2, 0 }, { -2, -1 }, { -2, 1 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = true,
     }),
-    trnarrw1 = record({
-        id = "trnarrw1",
+    train_arrow_1 = record({
+        id = "train_arrow_1",
         rule = "near",
         offsets = { { -5, 0 }, { -4, 0 }, { -3, 0 }, { -2, 0 }, { -1, 0 } },
         column_shifts = false,
@@ -142,7 +142,7 @@ local lockon = {
     -- SlashCross Beast's lunge at a target off its row: a panel in front of
     -- it or two (two, in the far column).
     beast_lunge = record({
-        id = "beast-lunge",
+        id = "beast_lunge",
         rule = "near",
         offsets = { { 0, 0 }, { -2, 0 } },
         far_column_offsets = { { -2, 0 } },
@@ -152,31 +152,31 @@ local lockon = {
     }),
     -- The Beast forms' charged claw's and GroundCross's drill's.
     beast_claw = record({
-        id = "beast-claw",
+        id = "beast_claw",
         rule = "near",
         offsets = { { -1, 0 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = false,
     }),
-    crosswrd = record({
-        id = "crosswrd",
+    cross_sword = record({
+        id = "cross_sword",
         rule = "near",
         offsets = { { -1, 0 }, { -2, -1 }, { -2, 1 }, { 1, -1 }, { 1, 1 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = false,
     }),
-    sprsonic = record({
-        id = "sprsonic",
+    super_sonic = record({
+        id = "super_sonic",
         rule = "near",
         offsets = { { -5, 0 }, { -4, 0 }, { -3, 0 }, { -2, 0 }, { -1, 0 } },
         column_shifts = false,
         clear_path = false,
         prefers_middle_row = true,
     }),
-    bigbomb = record({
-        id = "bigbomb",
+    big_bomb = record({
+        id = "big_bomb",
         rule = "near",
         offsets = {
             { -3, 0 },
@@ -193,24 +193,24 @@ local lockon = {
         clear_path = false,
         prefers_middle_row = false,
     }),
-    gundelex = record({
-        id = "gundelex",
+    gun_del_sol_ex = record({
+        id = "gun_del_sol_ex",
         rule = "near",
         offsets = { { -3, 0 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = true,
     }),
-    elcpuls1 = record({
-        id = "elcpuls1",
+    elec_pulse_1 = record({
+        id = "elec_pulse_1",
         rule = "near",
         offsets = { { -2, 0 }, { -2, -1 }, { -2, 1 }, { -1, 0 } },
         column_shifts = true,
         clear_path = false,
         prefers_middle_row = false,
     }),
-    moonbld = record({
-        id = "moonbld",
+    moon_blade = record({
+        id = "moon_blade",
         rule = "near",
         offsets = { { -1, 0 }, { -1, -1 }, { -1, 1 }, { 0, -1 }, { 0, 1 }, { 1, -1 }, { 1, 1 }, { 1, 0 } },
         column_shifts = true,
@@ -220,7 +220,7 @@ local lockon = {
 }
 lockon.LOCKON = LOCKON
 
-local LOCKON_SEARCH = schema.record_type("lockon-search")
+local LOCKON_SEARCH = schema.record_type("lockon_search")
 
 -- The column shifts toward the user tried, in order, when no panel next to the target fits (`byte_8026735`), and
 -- what every panel between the chosen one and the target must be for the modes that need a clear path, of the

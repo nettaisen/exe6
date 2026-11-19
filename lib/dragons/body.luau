@@ -147,7 +147,7 @@ local function init(me: Object)
 end
 
 body.kind = new.kind {
-    id = "dragon-body",
+    id = "dragon_body",
     pool = Pool.attack,
     state = {
         count = schema.u8,

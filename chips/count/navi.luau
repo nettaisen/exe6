@@ -43,7 +43,7 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("count")
-local SOUND_APPEAR, SOUND_RAIN = asset.sound("appear"), asset.sound("drip-shower")
+local SOUND_APPEAR, SOUND_RAIN = asset.sound("appear"), asset.sound("drip_shower")
 
 -- The controller calls his spawner through r3, which his position takes
 -- (JP Falzar's address with the Thumb bit; JP Gregar's is 0x080BEA97).

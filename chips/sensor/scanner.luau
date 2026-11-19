@@ -21,8 +21,8 @@ export type State = {
     found: boolean,
 }
 
-local SPRITE = asset.sprite("erase-mark")
-local STEP_SOUND = asset.sound("erase-man")
+local SPRITE = asset.sprite("erase_mark")
+local STEP_SOUND = asset.sound("erase_man")
 -- The aim's row step (`off_80D9328`).
 local ROW_STEP: { [number]: number } = { [0] = -1, [1] = 0, [2] = 1 }
 -- The other side's bodies, of its side (`off_80D9340`, `off_80D9344`);

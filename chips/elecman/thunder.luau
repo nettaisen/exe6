@@ -25,7 +25,7 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("lightning")
-local SOUND_BEAST_OVER_BURST = asset.sound("beast-over-burst")
+local SOUND_BEAST_OVER_BURST = asset.sound("beast_over_burst")
 -- The hit modifier of its own hit and of the hits around it, and their
 -- status.
 local HIT_MOD, AROUND_HIT_MOD, AROUND_STATUS = { flinch = true, flash = true }, { flinch = true }, statuses.paralyze_150

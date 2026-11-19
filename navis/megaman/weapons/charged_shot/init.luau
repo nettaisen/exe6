@@ -1,5 +1,5 @@
 --!strict
--- MegaMan's charged shot (`megaman/charged-shot`): the original's weapon
+-- MegaMan's charged shot (`megaman/charged_shot`): the original's weapon
 -- routine 1 (`sub_8011A7E`), which sets up action 0x16 with (Attack + 1) *
 -- 10 damage (10 when worn out), and action 0x16 (`sub_80EBE00`), the shot.
 -- The rules also start the shot without the setup (the role
@@ -64,16 +64,16 @@ function charged_shot.setup(navi: Object): Action
 end
 
 charged_shot.action = common.action {
-    id = "megaman/charged-shot/action",
+    id = "megaman/charged_shot/action",
     buster = lib,
     projectiles = projectile,
     attachment = attachment.kind,
-    shot_sound = asset.sound("buster-shot"),
+    shot_sound = asset.sound("buster_shot"),
     plain = variants.plain,
 }
 
 charged_shot.weapon = new.weapon {
-    id = "megaman/charged-shot",
+    id = "megaman/charged_shot",
     -- The charge table's row 1; Charge 5 reads on into row 2's first
     -- entry, as the original's table does.
     charge_ticks = { 100, 90, 80, 70, 60, 180 },

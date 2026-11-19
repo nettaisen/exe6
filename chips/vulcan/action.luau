@@ -16,7 +16,7 @@ local vulcan = {}
 vulcan.STATE = common.STATE
 
 local LOOK: VulcanLook = {
-    sound = asset.sound("col-army-2"),
+    sound = asset.sound("col_army_2"),
     -- The vulcan (the original's attachment row 0xD).
     arm = attachment.look { sprite = vulcan_sprite, palette = 0, attach_point = 14 },
     -- Held in the overlay (`sub_80EBF30`), its animation 0.

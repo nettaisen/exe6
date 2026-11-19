@@ -12,8 +12,8 @@
 local common = require("@exelib/bass/navi")
 local panel_strike = require("../../objects/panel_strike")
 local effects = require("../../lib/effects")
-local bass_anly_sprite = asset.sprite("bass-anly")
-local hit_sparks_sprite = asset.sprite("hit-sparks")
+local bass_anly_sprite = asset.sprite("bass_anly")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
 
 -- His shots: 20 ticks of warning, hit modifier 3, on solid panels only.
 local SHOT: PanelStrike = { warning = 0x14, hit_mod = { flinch = true, flash = true }, solid_only = true }

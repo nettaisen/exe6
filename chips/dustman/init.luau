@@ -39,7 +39,7 @@ local dustman_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "dustman-ex/controller",
+        id = "dustman_ex/controller",
         summon = navi.summon,
     },
 }
@@ -59,9 +59,9 @@ local dustman_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "dustman-sp/controller",
+        id = "dustman_sp/controller",
         summon = navi.summon,
     },
 }
 
-return { dustman = dustman, ["dustman-ex"] = dustman_ex, ["dustman-sp"] = dustman_sp }
+return { dustman = dustman, dustman_ex = dustman_ex, dustman_sp = dustman_sp }

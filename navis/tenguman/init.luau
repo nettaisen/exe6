@@ -5,8 +5,8 @@ local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local tengu_wind = require("./megaman/weapons/tengu_wind")
 local charge = require("@self/charge")
-local tenguman = require("@self/chip").ftornado
-local tenguman_portrait_sprite = asset.sprite("tenguman-portrait")
+local tenguman = require("@self/chip").fuujin_tornado
+local tenguman_portrait_sprite = asset.sprite("tenguman_portrait")
 local tenguman_sprite = asset.sprite("tenguman")
 
 local navi: NaviDef = {
@@ -17,7 +17,7 @@ local navi: NaviDef = {
     weakness = { sword = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("tenguman-win"), lose = asset.banner("tenguman-deleted") },
+    banners = { win = asset.banner("tenguman_win"), lose = asset.banner("tenguman_deleted") },
     -- Its face in the emotion window (`byte_801CDDC`).
     mugshot = asset.mugshot("tenguman"),
     version = Version.falzar,

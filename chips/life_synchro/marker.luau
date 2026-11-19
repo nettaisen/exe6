@@ -1,0 +1,20 @@
+--!strict
+-- LifeSync's marker (the original's effect object #0x60, `sub_80E76F8`;
+-- docs/engine/dimming-chip-effects.md §14): the shared marker
+-- (@exelib/life_synchro/marker) in EXE6's hit sparks, palette 2. A cursor over the panel
+-- two ahead of the user, then over the enemy there, for 81 ticks. Only
+-- drawn; LifeSync's controller places it outside link battles only.
+
+local common = require("@exelib/life_synchro/marker")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
+
+local marker = {}
+
+marker.kind = common.make_kind { id = "life_synchro/marker", sprite = hit_sparks_sprite, palette = 2 }
+
+-- `sub_80E7774`: a marker at `pos` for `ticks` ticks.
+function marker.spawn(pos: Vec3, ticks: number): Object?
+    return common.spawn(marker.kind, pos, ticks)
+end
+
+return marker

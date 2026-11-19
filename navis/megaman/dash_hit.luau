@@ -2,8 +2,8 @@
 -- A dash's hit (the original's attack object #0xAF, `sub_80DB570`): an
 -- invisible hit region that rides along with its owner, some steps of 58
 -- pixels in front of it, while the owner stays in the action that sent it:
--- GroundCross Beast's dash (forms/groundcross-beast/dash: two of them) and
--- ChargeCross's charged tackle (forms/chargecross/tackle), each its own
+-- GroundCross Beast's dash (forms/ground_cross_beast/dash: two of them) and
+-- ChargeCross's charged tackle (forms/charge_cross/tackle), each its own
 -- variant (`dash_hit.variant`; the original's second parameter picks it).
 -- A tackle's ends after its first hit and reports that it is there in its
 -- owner's marker word (the spawner passes the address of the attack's
@@ -21,7 +21,7 @@ local dash_hit = {}
 -- original's second parameter, the marker's address; the dash's 0).
 export type Variant = { hit_mod: HitModifier, spark: Spark, reports: boolean }
 
-local MEGAMAN_DASH_HIT_VARIANT = schema.record_type("megaman-dash-hit-variant")
+local MEGAMAN_DASH_HIT_VARIANT = schema.record_type("megaman_dash_hit_variant")
 
 function dash_hit.variant(v: Variant): Variant
     return new.record(MEGAMAN_DASH_HIT_VARIANT, v)
@@ -118,7 +118,7 @@ local function init(me: Object)
 end
 
 dash_hit.kind = new.kind {
-    id = "megaman/dash-hit",
+    id = "megaman/dash_hit",
     pool = Pool.attack,
     state = { hit_panel = schema.u16, reach = schema.u8, variant = MEGAMAN_DASH_HIT_VARIANT, action = schema.action },
     -- `sub_80DB570`.

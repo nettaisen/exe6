@@ -23,7 +23,7 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("count")
-local SOUND_STRIKE = asset.sound("elmnt-vine")
+local SOUND_STRIKE = asset.sound("elmnt_vine")
 
 -- Its animation, and its height until it strikes (whole pixels).
 local ANIM = 0xC

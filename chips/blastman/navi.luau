@@ -17,9 +17,9 @@ export type State = {
 
 local blastman = {}
 
-local SPRITE = asset.sprite("blast-fire")
+local SPRITE = asset.sprite("blast_fire")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_BLAST_MAN = asset.sound("blast-man")
+local SOUND_BLAST_MAN = asset.sound("blast_man")
 
 -- His blasts' speed (16.16 a tick; the original's Param1 4, a row of
 -- `byte_80C8454`).

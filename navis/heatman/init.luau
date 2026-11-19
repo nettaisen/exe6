@@ -4,9 +4,9 @@
 local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local heatman = require("@self/chip").heatpres
-local heatman_overlay_sprite = asset.sprite("heatman-overlay")
-local heatman_portrait_sprite = asset.sprite("heatman-portrait")
+local heatman = require("@self/chip").heat_press
+local heatman_overlay_sprite = asset.sprite("heatman_overlay")
+local heatman_portrait_sprite = asset.sprite("heatman_portrait")
 local heatman_sprite = asset.sprite("heatman")
 
 local navi: NaviDef = {
@@ -16,7 +16,7 @@ local navi: NaviDef = {
     element = Element.fire,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("heatman-win"), lose = asset.banner("heatman-deleted") },
+    banners = { win = asset.banner("heatman_win"), lose = asset.banner("heatman_deleted") },
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- HeatMan face, and shows SpoutMan's.
     mugshot = asset.mugshot("heatman"),

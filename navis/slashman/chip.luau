@@ -31,7 +31,7 @@ local STATE = { timer = schema.u16, hit = schema.object, speed = schema.i32, leg
 local CURL, LAUNCH, ROLL, LAND = 0x0, 0x4, 0x8, 0xC
 local ANIM_CURL, ANIM_ROLL, ANIM_LAND = 0x12, 0x13, 7
 local SPEED = 0x4_0000
-local SOUND = asset.sound("rslash")
+local SOUND = asset.sound("rolling_slash")
 
 local CURL_TICKS, LAUNCH_TICKS, LAND_TICKS = 0x14, 0x0A, 0x14
 
@@ -228,7 +228,7 @@ local chip: Chip = {
     slot_in_limit = 1,
     -- `sub_80F0CB0` (`off_80F0CC4`).
     action = new.action {
-        id = "rslash/action",
+        id = "rolling_slash/action",
         state = STATE,
         update = function(me: Object, s: State)
             link.run(me, s, PHASES, "RSlash (sub_80F0CB0)")
@@ -236,4 +236,4 @@ local chip: Chip = {
     },
 }
 
-return { rslash = chip }
+return { rolling_slash = chip }

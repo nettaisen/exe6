@@ -39,7 +39,7 @@ local elecman_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "elecman-ex/controller",
+        id = "elecman_ex/controller",
         summon = navi.summon,
     },
 }
@@ -59,9 +59,9 @@ local elecman_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "elecman-sp/controller",
+        id = "elecman_sp/controller",
         summon = navi.summon,
     },
 }
 
-return { elecman = elecman, ["elecman-ex"] = elecman_ex, ["elecman-sp"] = elecman_sp }
+return { elecman = elecman, elecman_ex = elecman_ex, elecman_sp = elecman_sp }

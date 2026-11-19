@@ -16,7 +16,7 @@
 local absorbed_obstacle = require("./absorbed_obstacle")
 local collision = require("../rules/collision")
 local common = require("@exelib/boulder")
-local debris = require("../chips/rockcube/debris")
+local debris = require("../chips/rock_cube/debris")
 local effects = require("../lib/effects")
 
 local boulder = {}

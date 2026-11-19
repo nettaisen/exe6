@@ -22,7 +22,7 @@ local strike = require("./strike")
 
 local statue = {}
 
-local SPRITE = asset.sprite("guardian-statue")
+local SPRITE = asset.sprite("guardian_statue")
 local lightning_sprite = asset.sprite("lightning")
 local puff_sprite = asset.sprite("puff")
 
@@ -44,8 +44,8 @@ local made = common.make {
     stage_damage = 0x00A8_00C8,
     sounds = {
         place = asset.sound("appear"),
-        crumble = asset.sound("panel-poison"),
-        strike = asset.sound("beast-over-burst"),
+        crumble = asset.sound("panel_poison"),
+        strike = asset.sound("beast_over_burst"),
     },
     -- The flash it arrives in, 16 pixels up (effect 0x15).
     arrival = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 },

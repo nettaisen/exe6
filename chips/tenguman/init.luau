@@ -25,7 +25,7 @@ local tenguman: Chip = {
     },
 }
 
-local tengumn_ex: Chip = {
+local tenguman_ex: Chip = {
     codes = { "T" },
     element = Element.null,
     family = Family.wind,
@@ -39,12 +39,12 @@ local tengumn_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "tengumn-ex/controller",
+        id = "tenguman_ex/controller",
         summon = navi.summon,
     },
 }
 
-local tengumn_sp: Chip = {
+local tenguman_sp: Chip = {
     codes = { "T" },
     element = Element.null,
     family = Family.wind,
@@ -59,9 +59,9 @@ local tengumn_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "tengumn-sp/controller",
+        id = "tenguman_sp/controller",
         summon = navi.summon,
     },
 }
 
-return { tenguman = tenguman, ["tengumn-ex"] = tengumn_ex, ["tengumn-sp"] = tengumn_sp }
+return { tenguman = tenguman, tenguman_ex = tenguman_ex, tenguman_sp = tenguman_sp }

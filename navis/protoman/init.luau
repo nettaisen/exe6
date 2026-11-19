@@ -6,8 +6,8 @@ local buster = require("./megaman/weapons/buster")
 local a_charge = require("@self/a_charge")
 local back_special = require("@self/back_special")
 local charge = require("@self/charge")
-local protoman = require("@self/chip")["stepswrd-protoman"]
-local protoman_portrait_sprite = asset.sprite("protoman-portrait")
+local protoman = require("@self/chip").step_sword_protoman
+local protoman_portrait_sprite = asset.sprite("protoman_portrait")
 local protoman_sprite = asset.sprite("protoman")
 
 local navi: NaviDef = {
@@ -20,7 +20,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("protoman-win"), lose = asset.banner("protoman-deleted") },
+    banners = { win = asset.banner("protoman_win"), lose = asset.banner("protoman_deleted") },
     -- Its face in the emotion window (`byte_801CDDC`).
     mugshot = asset.mugshot("protoman"),
     merge_height = 0,

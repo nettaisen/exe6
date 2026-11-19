@@ -1,0 +1,45 @@
+--!strict
+-- RlngLog1-3: two big logs thrown onto the panel ahead that roll down the
+-- rows (./action, ./log). The levels differ only in damage.
+
+local action = require("@self/action")
+local lockon = require("../rules/lockon")
+
+-- Every level's log: big, stopped 60 ticks by a hit, 20 HP, thrown (the
+-- original's parameters 1, 60, 20, 1).
+local LOG: RollingLog = { big = true, stop_ticks = 60, hp = 20, thrown = true }
+
+local chips: { [string]: Chip } = {
+    rolling_log_1 = {
+        codes = { "I", "K", "P" },
+        element = Element.wood, family = Family.wood, class = ChipClass.standard,
+        rarity = 0, mb = 14, damage = 50, counter = 30, lockout = 0,
+        flags = { has_damage = true, standard_library = true, library = true },
+        slot_in_limit = 3,
+        -- The Beast rush, and its lock-on mode (rules/lockon).
+        beast = { lockon = lockon.gun_del_sol_1 },
+        action = action.action { log = LOG },
+    },
+    rolling_log_2 = {
+        codes = { "E", "Q", "Z" },
+        element = Element.wood, family = Family.wood, class = ChipClass.standard,
+        rarity = 1, mb = 26, damage = 70, counter = 30, lockout = 0,
+        flags = { has_damage = true, standard_library = true, library = true },
+        slot_in_limit = 3,
+        -- The Beast rush, and its lock-on mode (rules/lockon).
+        beast = { lockon = lockon.gun_del_sol_1 },
+        action = action.action { log = LOG },
+    },
+    rolling_log_3 = {
+        codes = { "F", "N", "W" },
+        element = Element.wood, family = Family.wood, class = ChipClass.standard,
+        rarity = 2, mb = 38, damage = 90, counter = 30, lockout = 0,
+        flags = { has_damage = true, standard_library = true, library = true },
+        slot_in_limit = 3,
+        -- The Beast rush, and its lock-on mode (rules/lockon).
+        beast = { lockon = lockon.gun_del_sol_1 },
+        action = action.action { log = LOG },
+    },
+}
+
+return chips

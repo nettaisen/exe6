@@ -5,4 +5,4 @@
 # and 0x17B in Falzar, 0x173 and 0x175 in Gregar: the disassembly's "final battle") and the crossover battle's (record
 # 0, the disassembly's name). Their names are the locales' (`battle_themes`, by asset name). Presentation, read with
 # the locales: no tick reads them, so the content hash leaves them out.
-themes = ["virus-battle", "boss-battle", "final-battle", "crossover-battle"]
+themes = ["virus_battle", "boss_battle", "final_battle", "crossover_battle"]

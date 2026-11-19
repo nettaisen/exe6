@@ -4,8 +4,8 @@
 local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local slashman = require("@self/chip").rslash
-local slashman_portrait_sprite = asset.sprite("slashman-portrait")
+local slashman = require("@self/chip").rolling_slash
+local slashman_portrait_sprite = asset.sprite("slashman_portrait")
 local slashman_sprite = asset.sprite("slashman")
 
 local navi: NaviDef = {
@@ -16,7 +16,7 @@ local navi: NaviDef = {
     weakness = { ["break"] = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("slashman-win"), lose = asset.banner("slashman-deleted") },
+    banners = { win = asset.banner("slashman_win"), lose = asset.banner("slashman_deleted") },
     -- Its face in the emotion window (`byte_801CDDC`): the Falzar ROM has no
     -- SlashMan face, and shows TenguMan's.
     mugshot = asset.mugshot("slashman"),

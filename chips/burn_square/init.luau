@@ -1,0 +1,53 @@
+--!strict
+-- BurnSqr1-3: the user's stand-in moves a 2x2 square over the field until
+-- A or 300 ticks, then sets its solid panels on fire
+-- (docs/engine/dimming-chip-effects.md §2).
+
+local controller = require("@self/controller")
+
+local burn_square_1: Chip = {
+    codes = { "H", "P", "V" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 24,
+    damage = 100,
+    counter = 30,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    dimming = controller.hook,
+}
+
+local burn_square_2: Chip = {
+    codes = { "D", "M", "T" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 30,
+    damage = 120,
+    counter = 30,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    dimming = controller.hook,
+}
+
+local burn_square_3: Chip = {
+    codes = { "E", "O", "Z" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 36,
+    damage = 140,
+    counter = 30,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    dimming = controller.hook,
+}
+
+return { burn_square_1 = burn_square_1, burn_square_2 = burn_square_2, burn_square_3 = burn_square_3 }

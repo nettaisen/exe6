@@ -1,5 +1,5 @@
 --!strict
--- The Falzar Beast forms' buster (`megaman/falzar-beast-buster`): the
+-- The Falzar Beast forms' buster (`megaman/falzar_beast_buster`): the
 -- original's weapon routine 3 (`sub_8011AF2`), also what DustCross Beast's
 -- buster fires without an absorbed obstacle, and action 0x1E
 -- (`sub_80EC5BC`). The navi raises the buster and fires the flying shot
@@ -38,15 +38,15 @@ export type Volleys = { repeats: number, cycle: number }
 local SHOOT, RECOVER = 0x0, 0x4
 
 -- Falzar Beast Over.
-local BEAST_OVER = "falzar-beast-over"
+local BEAST_OVER = "falzar_beast_over"
 
-local SOUND = asset.sound("aqua-needle-2")
+local SOUND = asset.sound("aqua_needle_2")
 
 -- The shots (the flying shot's rows 3 and 5: `sub_80EC5EC` passes 3, and
 -- `sub_80EC710` adds 2 for the volley's): the shot ahead, and the volley's
 -- other two, which fly two panels and burst.
-local SHOT_SPRITE = asset.sprite("beast-shot")
-local hit_sparks_sprite = asset.sprite("hit-sparks")
+local SHOT_SPRITE = asset.sprite("beast_shot")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
 local HITS = { is = collision.attack, hits = collision.hits_navis }
 local SHOT = flying_shot.variant {
     collision = HITS,
@@ -237,13 +237,13 @@ local function update(me: Object, s: State)
 end
 
 falzar_beast_buster.action = new.action {
-    id = "megaman/falzar-beast-buster/action",
+    id = "megaman/falzar_beast_buster/action",
     state = { timer = schema.u16, repeats = schema.u8, cycle = schema.u8 },
     update = update,
 }
 
 falzar_beast_buster.weapon = new.weapon {
-    id = "megaman/falzar-beast-buster",
+    id = "megaman/falzar_beast_buster",
     -- The charge table's row 3, by Charge 0 to 7: past 4 it reads on
     -- into the next routine's row, as the original's table does.
     charge_ticks = { 40, 60, 90, 120, 150, 80, 75, 70 },

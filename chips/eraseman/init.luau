@@ -25,7 +25,7 @@ local eraseman: Chip = {
     },
 }
 
-local erasemn_ex: Chip = {
+local eraseman_ex: Chip = {
     codes = { "K" },
     element = Element.null,
     family = Family.cursor,
@@ -39,12 +39,12 @@ local erasemn_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "erasemn-ex/controller",
+        id = "eraseman_ex/controller",
         summon = navi.summon { aim_ticks = 16 },
     },
 }
 
-local erasemn_sp: Chip = {
+local eraseman_sp: Chip = {
     codes = { "K" },
     element = Element.null,
     family = Family.cursor,
@@ -59,9 +59,9 @@ local erasemn_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "erasemn-sp/controller",
+        id = "eraseman_sp/controller",
         summon = navi.summon { aim_ticks = 12 },
     },
 }
 
-return { eraseman = eraseman, ["erasemn-ex"] = erasemn_ex, ["erasemn-sp"] = erasemn_sp }
+return { eraseman = eraseman, eraseman_ex = eraseman_ex, eraseman_sp = eraseman_sp }

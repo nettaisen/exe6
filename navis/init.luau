@@ -7,6 +7,7 @@ local merge = require("@exelib/merge")
 
 return merge {
     -- Navis.
+    require("@self/aquaman"),
     require("@self/chargeman"),
     require("@self/dustman"),
     require("@self/elecman"),
@@ -16,7 +17,6 @@ return merge {
     require("@self/megaman"),
     require("@self/protoman"),
     require("@self/slashman"),
-    require("@self/spoutman"),
     require("@self/tenguman"),
     require("@self/tomahawkman"),
 }

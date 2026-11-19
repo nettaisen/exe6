@@ -11,7 +11,7 @@ local collision = require("../../rules/collision")
 local link = require("../../lib/link_chips")
 local regions = require("@exelib/regions")
 local weapon = require("../../lib/weapon")
-local big_slash_sprite = asset.sprite("big-slash")
+local big_slash_sprite = asset.sprite("big_slash")
 
 export type State = {
     timer: number,
@@ -31,7 +31,7 @@ local SLASH_AT = 0x14
 -- The waits routine 0x45 gives.
 local RAISE_TICKS, RECOVER_TICKS = 0x1E, 0x1E
 
-local SOUND = asset.sound("tomahawk-man")
+local SOUND = asset.sound("tomahawk_man")
 
 -- The hits' counter byte, and the slash's element: Wood (the attack's
 -- element byte).

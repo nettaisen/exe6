@@ -1,0 +1,45 @@
+--!strict
+-- LongSwrd: a slash on the two panels ahead.
+
+local lockon = require("../rules/lockon")
+local parts = require("../lib/swords/parts")
+local regions = require("@exelib/regions")
+local slash = require("../lib/swords/slash")
+local slashes = require("../navis/megaman/forms/slash_cross/slashes")
+local sword_slash_sprite = asset.sprite("sword_slash")
+
+-- The slash over two panels.
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0, steps = 13 }
+
+-- Its charged slash in SlashCross: over two panels.
+local CHARGED = slashes.slash {
+    wave = slashes.wave { region = regions.long, sprite = sword_slash_sprite, anim = 1 },
+    blade = parts.blade,
+    sound = parts.swing,
+    lockon = lockon.fire_burner_1,
+}
+
+local chip: Chip = {
+    codes = { "H", "L", "S", "*" },
+    element = Element.null,
+    family = Family.sword,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 25,
+    damage = 100,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    beast = { lockon = lockon.fire_burner_1 },
+    slot_in_limit = 3,
+    action = slash.action {
+        id = "long_sword/action",
+        blade = parts.blade,
+        hit = { region = regions.long, collision = parts.slashes_navis, hit_mod = { flinch = true, flash = true } },
+        effect = LONG_SLASH,
+        sound = parts.swing,
+        charged = CHARGED,
+    },
+}
+
+return { long_sword = chip }

@@ -1,0 +1,256 @@
+--!strict
+-- GroundCross's charged shot (`ground_cross/drill`): the original's weapon
+-- routine 0x19 (`sub_8011D74`) and action 0x4D (`sub_80EEFDC`). The navi
+-- burrows (its body leaves the field 3 ticks in), comes up on the panel
+-- Beast Out lock-on mode 0xC picks in front of the first enemy in its row
+-- (or of the other side's front column there), drills there with a drill
+-- arm (DrilArm's drill, chips/drill_arm/drill) for 24 ticks and waits 10 more, then burrows back to
+-- the panel it left.
+
+local attachment = require("../../../../objects/attachment")
+local drill_object = require("../../../../chips/drill_arm/drill")
+local lockon = require("../../../../rules/lockon")
+local panels = require("@exelib/panels")
+local regions = require("@exelib/regions")
+local weapon = require("../../../../lib/weapon")
+local ground_drill_effect_sprite = asset.sprite("ground_drill_effect")
+local puff_sprite = asset.sprite("puff")
+
+export type State = {
+    -- AIAttackVars+0x10: ticks left in the phase.
+    timer: number,
+}
+
+local ground_drill = {}
+
+-- The phases, on the attack's step.
+local BURROW, EMERGE, DRILL, SINK, RETURN = 0x0, 0x4, 0x8, 0xC, 0x10
+
+-- The attack: Break (secondary element 0x10) and its hit parameter.
+local BREAK, COUNTER = Element.new(PrimaryElement.null, { ["break"] = true }), 20
+-- The drill's time (the original's parameter word 0x1800), and how long
+-- the navi stands after it.
+local DRILL_TICKS, AFTER = 0x18, 0xA
+
+-- (The sound GroundCross Beast's dash also starts with.)
+local SOUND = asset.sound("ground_beast_dash")
+
+-- The dust where it burrows, and the puffs where it sinks and where it
+-- comes back up.
+local DUST = new.effect { sprite = ground_drill_effect_sprite, anim = 0, palette = 0, steps = 1 }
+local SINK_PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
+local RETURN_PUFF = new.effect { sprite = puff_sprite, anim = 1, palette = 0, steps = 4 }
+
+-- Where the navi waits off the field (X, 16.16).
+local AWAY = 0xB4_0000
+
+-- The panel it comes up in front of: one with the other side's navi
+-- (`off_8109784`, by side), or else the other side's first panel in the
+-- row (`byte_80EF0A4`, by side).
+local ENEMY: PanelCondition = { enemy_body = true }
+local ENEMY_PANEL: PanelCondition = { enemy_area = true }
+
+-- The Beast Out lock-on mode it uses (the Beast claw's).
+local LOCKON = lockon.beast_claw
+
+-- `sub_8011D74`: 10 damage and 10 more per point of buster Attack (up to
+-- 5), Break.
+local function setup(navi: Object): Action
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x0A, 0x0A), counter = COUNTER, cant_counter = true }
+    navi.attack_element = BREAK
+    navi.charged = 0
+    navi.extra = 0
+    navi.attack_lockout = 0
+    return ground_drill.action
+end
+
+-- `sub_8109746`: the first panel ahead in the navi's row with the other
+-- side's navi on it (column 0 if none).
+local function enemy_ahead(me: Object): number
+    if me.alliance > 1 then
+        error(string.format("side %d reads past off_8109784 (sub_8109746)", me.alliance))
+    end
+    local x = me.panel_x + me.facing
+    while true do
+        if field.check(x, me.panel_y, ENEMY, me.alliance) then
+            return x
+        end
+        x += me.facing
+        if x == 0 or x == 7 then
+            return 0
+        end
+        if x < 0 or x > 7 then
+            error("sub_8109746 scans past the field's edge forever")
+        end
+    end
+end
+
+-- `sub_80EF004`: once still, burrow: on the 3rd tick a puff of dust and
+-- the body leaves the field; after 30, come up by the target.
+local function burrow(me: Object, s: State)
+    if me.step_init == 0 then
+        if me.status.moving or me.status.sliding then
+            return
+        end
+        me.step_init = 1
+        s.timer = 0x1E
+        me:set_animation(0x16)
+        me:reserve_panel(me.panel_x, me.panel_y)
+        me.collision.region = nil
+        me.status.moving = true
+    end
+    if s.timer == 0x1B then
+        local dust = battle.effect(me.pos, DUST)
+        if dust then
+            dust.timer = 0x1B
+            dust.pos = dust.pos - Vec3.new(0, 0x1_0000, 0x1_0000)
+        end
+        local p = me.pos
+        me.pos = Vec3.new(AWAY, p.y, p.z)
+    end
+    local t = s.timer - 1
+    s.timer = t
+    if t > 0 then
+        return
+    end
+    local y = me.panel_y
+    local x = enemy_ahead(me)
+    if x == 0 then
+        if me.alliance > 1 then
+            error(string.format("side %d reads past byte_80EF0A4 (sub_80EF004)", me.alliance))
+        end
+        x = panels.closest_in_row(battle.other_side(me.alliance), y, ENEMY_PANEL, me.alliance)
+    end
+    me.panel_x, me.panel_y = lockon.panel(me, x, y, LOCKON)
+    me:set_coordinates_from_panel()
+    me:update_collision_panels()
+    me.collision.region = regions.single
+    me.step = EMERGE
+    me.step_init = 0
+end
+
+-- `sub_80EF0B4`: 10 ticks coming up (standing from the 3rd), then drill
+-- (at once: true).
+local function emerge(me: Object, s: State): boolean
+    if me.step_init == 0 then
+        s.timer = 0xA
+        me.step_init = 4
+    end
+    if s.timer == 7 then
+        me:set_animation(0)
+    end
+    local t = s.timer - 1
+    s.timer = t
+    if t > 0 then
+        return false
+    end
+    me.step = DRILL
+    me.step_init = 0
+    return true
+end
+
+-- `sub_80EF0E2`: the drill arm and the drill's hit, for the drill's time
+-- and 10 ticks more. (The parameter word's third byte, 0 here, would make
+-- the drill a light one.)
+local function drill(me: Object, s: State)
+    if me.step_init == 0 then
+        me.status.using_action = true
+        me:set_animation(0xA)
+        attachment.attach(me, drill_object.arm, "overlay", { anim = drill_object.ARM_DRILLING })
+        local damage = damage_word.plus(me.attack_word, me.extra)
+        drill_object.spawn(me, me.attack_element, 0x10_0000, damage, { ticks = DRILL_TICKS })
+        me:open_counter_window()
+        s.timer = DRILL_TICKS + AFTER
+        battle.play_sound(SOUND)
+        me.step_init = 4
+    end
+    local t = s.timer - 1
+    s.timer = t
+    if t > 0 then
+        return
+    end
+    me.step = SINK
+    me.step_init = 0
+end
+
+-- `sub_80EF14A`: lower the arm; 10 ticks later sink in a puff and leave
+-- the field.
+local function sink(me: Object, s: State)
+    if me.step_init == 0 then
+        local arm = me.overlay
+        if arm then
+            -- sub_80B8E70
+            arm.anim = 0
+            arm.anim_loaded = 0xFF
+        end
+        s.timer = 0xA
+        me.step_init = 8
+    end
+    local t = s.timer - 1
+    s.timer = t
+    if t > 0 then
+        return
+    end
+    battle.effect(me.pos + Vec3.new(0, 0, 0x10_0000), SINK_PUFF)
+    local fx, fy = field.center(me.future_panel_x, me.future_panel_y)
+    battle.effect(Vec3.new(fx, fy, 0x10_0000), RETURN_PUFF)
+    me.step = RETURN
+    me.step_init = 0
+    s.timer = 3
+    me.collision.region = nil
+    local p = me.pos
+    me.pos = Vec3.new(AWAY, p.y, p.z)
+    me.related1 = nil
+    me.overlay = nil
+end
+
+-- `sub_80EF1AE`: 3 ticks, then back on the panel it left, and idle.
+local function return_(me: Object, s: State)
+    local t = s.timer - 1
+    s.timer = t
+    if t > 0 then
+        return
+    end
+    me.status.using_action = false
+    me.status.moving = false
+    me.collision.region = regions.single
+    me.panel_x, me.panel_y = me.future_panel_x, me.future_panel_y
+    me:unreserve_panel(me.panel_x, me.panel_y)
+    me:set_coordinates_from_panel()
+    me:update_collision_panels()
+    me:exit_attack()
+end
+
+ground_drill.action = new.action {
+    id = "ground_cross/drill/action",
+    state = { timer = schema.u16 },
+    -- `sub_80EEFDC`.
+    update = function(me: Object, s: State)
+        local step = me.step
+        if step == BURROW then
+            burrow(me, s)
+        elseif step == EMERGE then
+            if emerge(me, s) then
+                drill(me, s)
+            end
+        elseif step == DRILL then
+            drill(me, s)
+        elseif step == SINK then
+            sink(me, s)
+        elseif step == RETURN then
+            return_(me, s)
+        else
+            error(string.format("GroundCross's charged shot phase %#x reads past its phase table (sub_80EEFDC)", step))
+        end
+    end,
+}
+
+ground_drill.weapon = new.weapon {
+    id = "ground_cross/drill",
+    -- The charge table's row 0x19, by Charge 0 to 7: past 4 it reads on
+    -- into the next routine's row, as the original's table does.
+    charge_ticks = { 100, 90, 80, 75, 70, 50, 50, 50 },
+    setup = setup,
+}
+
+return ground_drill

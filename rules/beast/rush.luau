@@ -11,7 +11,7 @@
 -- attack variables +0x1E to +0x27, next to the chip action's own).
 
 local beast_claw = require("../../navis/megaman/weapons/beast_claw")
-local slash_charge = require("../../navis/megaman/forms/slashcross/charge")
+local slash_charge = require("../../navis/megaman/forms/slash_cross/charge")
 local kind = require("../forms/kind")
 local lockon = require("../lockon")
 

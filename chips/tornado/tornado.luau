@@ -32,7 +32,7 @@ local ICE = variant { palette = 5, rearm = 4 }
 -- whatever its variant) and reaches, and the element's spark.
 local EXE6: TornadoLook = {
     sprite = tornado_sprite,
-    sound = asset.sound("aqua-surge"),
+    sound = asset.sound("aqua_surge"),
     panel_variants = {
         volcano = VOLCANO,
         grass = GRASS,

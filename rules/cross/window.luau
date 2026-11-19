@@ -65,7 +65,7 @@ local CROSSES = 5
 local FADE_SPEED = 0x20
 local PUT_ON_TICK = 25
 -- A Cross is put on (`sub_8027AAE`, 0x92).
-local CHOSEN_SOUND = asset.sound("delta-ray-2")
+local CHOSEN_SOUND = asset.sound("delta_ray_2")
 
 -- The side's navi changes form (MegaMan).
 local function megaman(side: number): boolean

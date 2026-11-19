@@ -37,13 +37,13 @@ return {
         cracked = { flags = { solid = true, cracked = true, on_field = true } },
         poison = {
             flags = { solid = true, poison = true, on_field = true },
-            trail_sound = asset.sound("panel-poison"),
+            trail_sound = asset.sound("panel_poison"),
             stand = panel_types.poison,
         },
         -- The damage a body standing on it takes is halved, rounding up, by element (`object_calculateFinalDamage1`).
         holy = {
             flags = { solid = true, holy = true, on_field = true },
-            trail_sound = asset.sound("panel-change"),
+            trail_sound = asset.sound("panel_change"),
             damage_shift = 1,
         },
         -- A fire hit counts once more on a body standing on grass (`applyHeatOnGrassDamage_300766c`).
@@ -65,7 +65,7 @@ return {
         -- It erupts when the field's cycle comes to its side's count (`sub_800C380`, `sub_80C5B76`).
         volcano = {
             flags = { solid = true, volcano = true, on_field = true },
-            trail_sound = asset.sound("panel-volcano"),
+            trail_sound = asset.sound("panel_volcano"),
             cleared_by = Element.aqua,
             tick = eruption.volcano,
         },

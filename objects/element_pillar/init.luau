@@ -35,7 +35,7 @@ export type State = {
 
 local element_pillar = {}
 
-local ELEMENT_PILLAR_LOOK = schema.record_type("element-pillar-look")
+local ELEMENT_PILLAR_LOOK = schema.record_type("element_pillar_look")
 
 function element_pillar.look(look: ElementPillarLook): ElementPillarLook
     return new.record(ELEMENT_PILLAR_LOOK, look)
@@ -142,7 +142,7 @@ local function update(me: Object)
 end
 
 element_pillar.kind = new.kind {
-    id = "element-pillar",
+    id = "element_pillar",
     pool = Pool.attack,
     state = {
         look = ELEMENT_PILLAR_LOOK,

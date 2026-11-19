@@ -1,0 +1,161 @@
+--!strict
+-- A crack shot (the original's attack object #0x33, `sub_80CA544`):
+-- CrakShot's, DublShot's and TrplShot's dug-up panel. On its panel it
+-- breaks the panel and flies off it: up 20 pixels, then forward at 8
+-- pixels a tick, hitting whatever it meets, until it has hit something,
+-- crossed its panel centers (its spawner's budget) or left the field. A
+-- panel it can't dig (not solid, or with something on it) only cracks, and
+-- the shot never appears. Either way it raises dust.
+
+local collision = require("../../rules/collision")
+local sparks = require("../../lib/sparks")
+
+local shot = {}
+
+export type State = {
+    -- Panel centers it may still cross (Param1).
+    centers: number,
+}
+
+local SPRITE = asset.sprite("crack_shot")
+local dust_sprite = asset.sprite("dust")
+local SOUND = asset.sound("crack_shot")
+-- The dust it raises on its panel (the original's effect 0x30).
+local DUST = new.effect { sprite = dust_sprite, anim = 0, palette = 0, steps = 17 }
+-- Up, then forward, 16.16 per tick; how high it flies (whole pixels).
+local RISE, SPEED, HEIGHT = 0x8_0000, 0x8_0000, 0x14
+local CRACKED: PanelFlags = { cracked = true }
+
+-- `sub_8109794`: crack (x, y) unless it is already cracked.
+local function crack(x: number, y: number)
+    if not field.any(x, y, CRACKED) then
+        field.crack(x, y)
+    end
+end
+
+-- `sub_800E6E8`: `center` lies past `from`, up to and including `to`, as
+-- `side` sees it (field.passed: along X as its side sees it, a move ahead counting on reaching for either side).
+local function crossed(to: number, from: number, center: number, side: number): boolean
+    return field.passed(to, from, center, side)
+end
+
+-- Out of the fight: hidden, its region cleared, then gone.
+local function finish(me: Object)
+    me.visible = false
+    me.collision:set_region(nil)
+    me:enter_destroy()
+end
+
+-- `sub_80CA61A`: resolve its hits; rise, then fly.
+local function tick(me: Object)
+    local c = me.collision
+    c:remove()
+    me:hit_spark()
+    if c.hit then
+        finish(me)
+    else
+        local p = me.pos
+        if bit32.rshift(p.z, 16) < HEIGHT then
+            me.pos = Vec3.new(p.x, p.y, p.z + me.vel.z)
+        else
+            local cx = field.center(me.panel_x, me.panel_y)
+            local x = int.i32(p.x + me.vel.x)
+            me.pos = Vec3.new(x, p.y, p.z)
+            local out = false
+            if crossed(x, p.x, cx, me.alliance) then
+                local s = me.state :: State
+                local left = s.centers - 1
+                s.centers = left
+                out = left <= 0
+            end
+            if out then
+                finish(me)
+            else
+                me:set_panel_from_coordinates()
+                me:update_collision_panels()
+                if not field.valid(me.panel_x, me.panel_y) then
+                    finish(me)
+                end
+            end
+        end
+    end
+    c:present()
+end
+
+local SOLID_NOT_OCCUPIED: PanelCondition = { solid = true, occupied = false }
+
+-- `sub_80CA568`: dig the panel and take off, or only crack it.
+local function init(me: Object)
+    me:set_coordinates_from_panel()
+    battle.effect(me.pos, DUST)
+    local x, y = me.panel_x, me.panel_y
+    -- (A panel it can dig: solid, with nothing on it: bodies, neutral objects, blockers, reservations.)
+    if not field.check(x, y, SOLID_NOT_OCCUPIED) then
+        crack(x, y)
+        me:free()
+        return
+    end
+    field.break_empty(x, y)
+    battle.play_sound(SOUND)
+    local sprite = me.sprite
+    sprite:load(SPRITE)
+    sprite:set_animation(0)
+    sprite.shadow = Shadow.ground
+    me.anim = 0
+    me.anim_loaded = 0xFF
+    sprite.palette = 0
+    me.visible = true
+    sprite:face(me)
+    me.vel = Vec3.new(me.facing * SPEED, me.vel.y, RISE)
+    me.timer = 2
+    if not me:create_collision() then
+        me:free()
+        return
+    end
+    me:setup_collision(collision.attack, collision.hits_navis, { flinch = true })
+    me.collision:set_hit_effect(sparks.charged)
+    me.collision:present()
+    me:enter_update()
+    tick(me)
+end
+
+shot.kind = new.kind {
+    id = "crack_shot/shot",
+    pool = Pool.attack,
+    state = { centers = schema.u8 },
+    -- `sub_80CA544`.
+    update = function(me: Object)
+        local l = me.lifecycle
+        if l == Lifecycle.init then
+            init(me)
+            if not me.active then
+                return
+            end
+        elseif l == Lifecycle.update then
+            tick(me)
+        else
+            me:destroy()
+            return
+        end
+        me:update_sprite()
+    end,
+}
+
+-- `sub_80CA686`: a shot for `owner` on (x, y), with the damage word
+-- `damage`, flying across at most `centers` panel centers. Its position
+-- is the spawner's registers (the panel Y, the element and 0) until its
+-- init places it.
+function shot.spawn(owner: Object, x: number, y: number, element: Element, damage: number, centers: number): Object?
+    local o = battle.spawn(shot.kind, Vec3.new(y, element.byte, 0))
+    if o then
+        (o.state :: State).centers = centers
+        o.panel_x, o.panel_y = x, y
+        o.element = element
+        o.damage_word = damage
+        o.alliance, o.flip = owner.alliance, owner.flip
+        o.related1 = owner
+    end
+    return o
+end
+
+return shot

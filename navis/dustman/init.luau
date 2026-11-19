@@ -4,8 +4,8 @@
 local by_level = require("../rules/by_level")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local dustman = require("@self/chip").dustbrk
-local dustman_portrait_sprite = asset.sprite("dustman-portrait")
+local dustman = require("@self/chip").dust_break
+local dustman_portrait_sprite = asset.sprite("dustman_portrait")
 local dustman_sprite = asset.sprite("dustman")
 
 local navi: NaviDef = {
@@ -16,7 +16,7 @@ local navi: NaviDef = {
     weakness = { cursor = true },
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("dustman-win"), lose = asset.banner("dustman-deleted") },
+    banners = { win = asset.banner("dustman_win"), lose = asset.banner("dustman_deleted") },
     -- Its face in the emotion window (`byte_801CDDC`).
     mugshot = asset.mugshot("dustman"),
     version = Version.falzar,

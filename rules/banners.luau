@@ -4,8 +4,8 @@
 
 return {
     holding = {
-        asset.banner("program-advance"),
-        asset.banner("hit-damage-judge"),
-        asset.banner("program-advance-empty"),
+        asset.banner("program_advance"),
+        asset.banner("hit_damage_judge"),
+        asset.banner("program_advance_empty"),
     },
 }

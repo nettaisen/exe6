@@ -5,7 +5,7 @@
 -- gives it the charge's damage and counter byte.
 
 local weapon = require("../../lib/weapon")
-local wideswrd = require("../../chips/wideswrd").wideswrd
+local wide_sword = require("../../chips/wide_sword").wide_sword
 
 local charge = {}
 
@@ -16,13 +16,13 @@ local SWORD, COUNTER = Element.new(PrimaryElement.null, { sword = true }), 10
 -- bonus; not charged), with 60 damage and 20 more per point of buster
 -- Attack (up to 5).
 local function setup(navi: Object): Action
-    navi.attack_chip = wideswrd
+    navi.attack_chip = wide_sword
     navi.attack_element = SWORD
     navi.attack_lockout = 0
     navi.extra = 0
     navi.charged = 0
     navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x3C, 0x14), counter = COUNTER, cant_counter = true }
-    return assert(wideswrd.action)
+    return assert(wide_sword.action)
 end
 
 charge.weapon = new.weapon {

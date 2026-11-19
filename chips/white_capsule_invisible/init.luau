@@ -1,0 +1,26 @@
+--!strict
+-- The second WhiCapsl (chip 0x17E, a special chip no folder holds): a
+-- dimming chip that turns its user invisible for two seconds
+-- (Invisibl's controller, chips/invisible/controller).
+
+local invisible = require("./invisible/controller")
+
+-- 120 ticks (the record's first two parameter bytes, 120 and 0).
+local chip: Chip = {
+    codes = {},
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.special,
+    rarity = 0,
+    mb = 30,
+    damage = 0,
+    counter = 50,
+    lockout = 0,
+    flags = { dimming = true },
+    extra_flags = { rush_cancels = true },
+    slot_in_limit = 1,
+    traits = { no_cut_in = true },
+    dimming = invisible.hook(120),
+}
+
+return { white_capsule_invisible = chip }

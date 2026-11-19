@@ -33,9 +33,9 @@ local TIMEOUT, STEP = 300, 12
 local FIRE_TICKS, FIRE_ANIM, FIRE_ANIM_AT, AFTER = 0x10, 0xC, 4, 0x3C
 -- (The cursor steps with the sound EraseMan's mark has, the original's
 -- 0x10E.)
-local SOUND_STEP = asset.sound("erase-man")
-local SOUND_SHOT = asset.sound("hockey-puck")
-local SOUND_BLAST = asset.sound("target-move")
+local SOUND_STEP = asset.sound("erase_man")
+local SOUND_SHOT = asset.sound("hockey_puck")
+local SOUND_BLAST = asset.sound("target_move")
 -- The sight (effect 0x49), each part 12 ticks: its panel and the column's
 -- other rows (24 pixels up and down) or the row's other columns (40
 -- pixels either side).

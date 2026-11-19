@@ -44,7 +44,7 @@ local count_ex: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "count-ex/controller",
+        id = "count_ex/controller",
         summon = navi.summon { lance_damage = 0x46 },
     },
 }
@@ -64,9 +64,9 @@ local count_sp: Chip = {
     flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     navi = navi_chips.make {
-        id = "count-sp/controller",
+        id = "count_sp/controller",
         summon = navi.summon { lance_damage = 0x64 },
     },
 }
 
-return { count = count, ["count-ex"] = count_ex, ["count-sp"] = count_sp }
+return { count = count, count_ex = count_ex, count_sp = count_sp }

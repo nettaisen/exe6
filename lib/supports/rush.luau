@@ -8,7 +8,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/supports/rush")
 local effects = require("../effects")
 local statuses = require("../../rules/status")
-local whicapsl_invisible = require("../../chips/whicapsl-invisible")["whicapsl-invisible"]
+local white_capsule_invisible = require("../../chips/white_capsule_invisible").white_capsule_invisible
 local rush_sprite = asset.sprite("rush")
 
 return common.make {
@@ -22,6 +22,6 @@ return common.make {
     hits = collision.hits_navis,
     status = statuses.paralyze_150,
     -- The chip he leaves in the hand: the second WhiCapsl.
-    spared = whicapsl_invisible,
+    spared = white_capsule_invisible,
     lost_target = "unbalances",
 }

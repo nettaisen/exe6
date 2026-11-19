@@ -6,7 +6,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/swords/sonic_boom")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 
 local sonic_boom = {}
 
@@ -23,7 +23,7 @@ local EXE6: SonicBoomLook = {
 -- Its speed (16.16 pixels a tick) as its throwers set it.
 sonic_boom.SPEED = common.SPEED
 
-sonic_boom.kind = common.make_kind("sonic-boom", EXE6)
+sonic_boom.kind = common.make_kind("sonic_boom", EXE6)
 
 -- `sub_80CF91E`: a sonic boom from `owner` on panel (x, y), with
 -- `element`, the damage word and what it is. (A game's own kind of it:

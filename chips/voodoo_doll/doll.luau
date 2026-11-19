@@ -1,0 +1,42 @@
+--!strict
+-- VDoll's doll (the original's attack object #0x7A, `sub_80D46B8`): the shared one (@exelib/voodoo_doll/doll) in EXE6's look.
+-- A field object with 50 HP thrown three panels ahead in a 60-tick arc, which can hit in its last five ticks. Where
+-- it lands the panel turns to poison. The first damage it takes after landing curses the other side (./curse): a
+-- dimming that hits every combatant there with that damage. See docs/engine/shot-chips.md §14.2.
+
+local absorbed_obstacle = require("../../objects/absorbed_obstacle")
+local collision = require("../../rules/collision")
+local common = require("@exelib/voodoo_doll/doll")
+local curse = require("./curse")
+local effects = require("../../lib/effects")
+local sparks = require("../../lib/sparks")
+local trajectory = require("../../lib/trajectory")
+
+local SPRITE = asset.sprite("voodoo_doll")
+
+return common.make {
+    id = "voodoo_doll/doll",
+    sprite = SPRITE,
+    -- Its identity: a field object, with the look something that takes its place shows (DustMan's junk).
+    identity = new.identity {
+        id = "voodoo_doll",
+        class = IdentityClass.field_object,
+        version = 3,
+        ai_index = 1,
+        look = { sprite = SPRITE, anim = 1, palette = 0, shadow = true },
+    },
+    -- How it looks absorbed (the original's obstacle kind's sprite: its own).
+    absorbed = absorbed_obstacle.look { sprite = SPRITE },
+    -- An object of its side that the other side's hits reach (hit modifier 1); set down, an obstacle of no side that
+    -- anything can hit (`sub_80D4870`: hit modifier 3).
+    is = collision.own_object,
+    hits = collision.hit_by_other_side_or_blockers,
+    hit_mod = { flinch = true },
+    spark = sparks.plain,
+    set_down = { is = collision.neutral_body, hits = collision.everything, hit_mod = { flinch = true, flash = true } },
+    landing_panel = PanelType.poison,
+    landing_sound = asset.sound("panel_poison"),
+    puff = effects.puff,
+    trajectory = trajectory,
+    curse = curse,
+}

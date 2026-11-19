@@ -8,7 +8,7 @@
 -- its absorbed list while the navi is still in this action); 11 ticks
 -- later the navi idles. See docs/engine/field-objects.md §4.4.
 
-local dust_cloud_sprite = asset.sprite("dust-cloud")
+local dust_cloud_sprite = asset.sprite("dust_cloud")
 
 export type State = {
     -- Ticks left in the phase (AIAttackVars+0x10).
@@ -31,9 +31,9 @@ local VORTEX = new.effect { sprite = dust_cloud_sprite, anim = 0, palette = 0, s
 local VORTEX_TICKS = 2
 
 -- DustCross's Beast form (the navi stats' form).
-local DUST_BEAST = "dustcross-beast"
+local DUST_BEAST = "dust_cross_beast"
 
-local SOUND = asset.sound("dustbrk")
+local SOUND = asset.sound("dust_break")
 
 -- `sub_8011F84`: only the cooldown.
 local function setup(navi: Object): Action

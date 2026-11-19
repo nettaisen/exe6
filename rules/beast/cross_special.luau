@@ -5,7 +5,7 @@
 -- part starts it: 0x1E0 ticks (`battle.take_over`), the navi
 -- invulnerable for good, the controllers' state cleared. While it runs, its
 -- controller (`sub_802D4C6`) moves next to an opponent and attacks with
--- chips of its own (the record `cross-special`'s rows, `sub_802D5A8`),
+-- chips of its own (the record `cross_special`'s rows, `sub_802D5A8`),
 -- with a buster volley while an opponent stays in its row; when its ticks
 -- run out it ends (`sub_80EFDB2`, the action below: compat 0x59). Its state
 -- is the berserk's (berserk.luau): the original's controllers share the
@@ -36,7 +36,7 @@ end
 -- The special's length.
 local TICKS = 0x1E0
 -- The sound its first chip makes (`sub_802D4F0`).
-local SOUND_START = asset.sound("elmnt-man-2")
+local SOUND_START = asset.sound("elmnt_man_2")
 
 -- `sub_802E4E4`'s start of it.
 function cross_special.requested(side: number, navi: Object)
@@ -177,7 +177,7 @@ local function finish(me: Object, s: EndState)
 end
 
 cross_special.action = new.action {
-    id = "beast/cross-special-end",
+    id = "beast/cross_special_end",
     state = { timer = schema.u16 },
     update = function(me: Object, s: any)
         finish(me, s :: EndState)

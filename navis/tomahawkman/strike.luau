@@ -6,7 +6,7 @@
 -- hit ends its region. See docs/engine/standard-chips.md, "Action 0x0A".
 
 local regions = require("@exelib/regions")
-local dust_2_sprite = asset.sprite("dust-2")
+local dust_2_sprite = asset.sprite("dust_2")
 
 local strike = {}
 

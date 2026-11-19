@@ -5,7 +5,7 @@ local gregar_beast_buster = require("../weapons/gregar_beast_buster")
 local charged_chip_bonus = require("../weapons/charged_chip_bonus")
 local beast_claw = require("../weapons/beast_claw")
 local forms = require("../../../rules/forms")
-local gregar_beast_sprite = asset.sprite("gregar-beast")
+local gregar_beast_sprite = asset.sprite("gregar_beast")
 
 local form: FormDef = {
     kind = "beast",
@@ -22,7 +22,7 @@ local form: FormDef = {
     weapons = { buster = gregar_beast_buster.weapon, a_charge = charged_chip_bonus, alt_a_charge = beast_claw.weapon },
     -- Its faces in the emotion window, and in Full Synchro (`byte_801E700`): the
     -- Falzar ROM has no Gregar Beast face, and shows Falzar's.
-    mugshot = { normal = asset.mugshot("gregar-beast"), full_synchro = asset.mugshot("gregar-beast-full-synchro") },
+    mugshot = { normal = asset.mugshot("gregar_beast"), full_synchro = asset.mugshot("gregar_beast_full_synchro") },
     -- Beast Out: its damaging Null chips' bonus, where the family's doesn't apply.
     null_bonus = 30,
     -- The chips A charges.
@@ -84,4 +84,4 @@ local form: FormDef = {
     },
 }
 
-return { ["gregar-beast"] = form }
+return { gregar_beast = form }

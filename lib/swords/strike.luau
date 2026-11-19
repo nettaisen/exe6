@@ -8,7 +8,7 @@
 local collision = require("../../rules/collision")
 local parts = require("./parts")
 local regions = require("@exelib/regions")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 
 -- The slash over a column.
 local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 13 }

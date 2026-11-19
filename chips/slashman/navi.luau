@@ -36,10 +36,10 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("slashman")
-local slash_man_effect_sprite = asset.sprite("slash-man-effect")
+local slash_man_effect_sprite = asset.sprite("slash_man_effect")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_FLAME_HOOK_FIRE = asset.sound("flame-hook-fire")
+local SOUND_FLAME_HOOK_FIRE = asset.sound("flame_hook_fire")
 -- His slash, drawn over the panel ahead (effect 0x39).
 local SLASH = new.effect { sprite = slash_man_effect_sprite, anim = 0, palette = 0, steps = 11 }
 

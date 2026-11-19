@@ -24,7 +24,7 @@ function barriers.barrier(b: Barrier): Barrier
 end
 
 local SPRITE, BUBBLE, AURA = barrier_sprite, bubble_sprite, aura_sprite
-local SOUND, BUBBLE_SOUND, BUBBLE_POP = asset.sound("barrier"), asset.sound("bubble"), asset.sound("bubble-pop")
+local SOUND, BUBBLE_SOUND, BUBBLE_POP = asset.sound("barrier"), asset.sound("bubble"), asset.sound("bubble_pop")
 
 -- Type 1: 10 HP.
 barriers.barrier_10 = barriers.barrier {
@@ -70,7 +70,7 @@ barriers.bubble = barriers.barrier {
 
 -- Type 9: an aura that stops every hit of less than 200 for 3000 ticks.
 barriers.life_aura = barriers.barrier {
-    id = "barrier/life-aura",
+    id = "barrier/life_aura",
     behavior = BarrierBehavior.plain,
     hp = 1,
     threshold = 200,

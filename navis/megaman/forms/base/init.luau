@@ -16,10 +16,10 @@ local form: FormDef = {
     -- MegaMan's faces in the emotion window, by his emotion (`byte_801E6F4`).
     mugshot = {
         normal = asset.mugshot("megaman"),
-        angry = asset.mugshot("megaman-angry"),
-        tired = asset.mugshot("megaman-tired"),
-        full_synchro = asset.mugshot("megaman-full-synchro"),
-        worn_out = asset.mugshot("megaman-worn-out"),
+        angry = asset.mugshot("megaman_angry"),
+        tired = asset.mugshot("megaman_tired"),
+        full_synchro = asset.mugshot("megaman_full_synchro"),
+        worn_out = asset.mugshot("megaman_worn_out"),
     },
     -- The buster arm it raises (lib/buster).
     buster_arm = { anim = 0 },

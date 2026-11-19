@@ -1,0 +1,45 @@
+--!strict
+-- HeatCross's charged shot (`heat_cross/charge`): the original's weapon
+-- routine 6 (`sub_8011BA2`). It burns FireBrn's flame (lib/burner, the
+-- original's action 0x27) from HeatCross's burner, as a Fire attack of 30
+-- damage and 20 more per point of buster Attack (up to 5): it burns 60
+-- ticks and spreads two panels forward, leaving the panels as they were.
+-- HeatCross's form definition names it as its charged shot.
+
+local attachment = require("../../../../objects/attachment")
+local burn = require("../../../../lib/burner/burn")
+local weapon = require("../../../../lib/weapon")
+local heatcross_burner_sprite = asset.sprite("heat_cross_burner")
+
+local heat_charge = {}
+
+-- The flame (the original's parameter word 0x23C) from HeatCross's burner
+-- (its attack variant 1).
+local FLAME = burn.action {
+    id = "heat_cross/charge/action",
+    -- HeatCross's burner (the original's attachment row 0x1E).
+    burner = attachment.look { sprite = heatcross_burner_sprite, palette = 0, attach_point = 0x16 },
+    flame = { ticks = 0x3C, spread = 2 },
+}
+
+-- The attack's element (Fire) and hit parameter.
+local FIRE, COUNTER = Element.fire, 20
+-- `sub_8011BA2`.
+local function setup(navi: Object): Action
+    navi.attack_word = damage_word.of { amount = weapon.charge_damage(navi, 0x1E, 0x14), counter = COUNTER, cant_counter = true }
+    navi.attack_element = FIRE
+    navi.charged = 0
+    navi.extra = 0
+    navi.attack_lockout = 0
+    return FLAME
+end
+
+heat_charge.weapon = new.weapon {
+    id = "heat_cross/charge",
+    -- The charge table's row 6; Charge 5 reads on into row 7's first
+    -- entry, as the original's table does.
+    charge_ticks = { 70, 60, 50, 45, 40, 90 },
+    setup = setup,
+}
+
+return heat_charge

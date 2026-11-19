@@ -12,7 +12,7 @@ export type State = {
     tied: Action?,
 }
 
-local SPRITE = asset.sprite("dust-storm-mote")
+local SPRITE = asset.sprite("dust_storm_mote")
 -- Where each drift starts: 20 pixels back and 128 up, then a random step
 -- of 15 along its line; its speed, 16.16.
 local BACK, TOP = 0x14_0000, 0x80_0000
@@ -75,7 +75,7 @@ local function tick(me: Object)
 end
 
 mote.kind = new.kind {
-    id = "dust-storm-mote",
+    id = "dust_storm_mote",
     pool = Pool.effect,
     state = { tied = schema.action },
     -- `sub_80E2080`.

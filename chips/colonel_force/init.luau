@@ -1,0 +1,20 @@
+--!strict
+-- ColForce: soldiers (force.luau, soldier.luau) drop in behind the other
+-- side's navis and objects, column by column, and fire. (Its record's menu
+-- classification bits, 0x04 and 0x10, which no battle routine reads, stay
+-- out: content-model-v2.md §3.1.)
+
+local force = require("@self/force")
+
+local chip: Chip = {
+    codes = { "Q" },
+    element = Element.null, family = Family.null, class = ChipClass.giga,
+    -- The version whose saves hold it (rules/folder).
+    version = Version.gregar,
+    rarity = 4, mb = 90, damage = 30, counter = 10, cant_counter = true, lockout = 0,
+    flags = { has_damage = true },
+    slot_in_limit = 1,
+    instant = force.instant,
+}
+
+return { colonel_force = chip }

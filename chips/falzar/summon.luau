@@ -24,14 +24,14 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = asset.sprite("falzar-summon")
+local SPRITE = asset.sprite("falzar_summon")
 -- The arrival's look: animation 0x0C of its sprite.
 local ARRIVAL_ANIM = 0x0C
 
-local SOUND_APPEAR = asset.sound("log-in")
+local SOUND_APPEAR = asset.sound("log_in")
 local SOUND_FLASH = asset.sound("bug")
-local SOUND_CRY = asset.sound("beast-out-chosen-falzar")
-local SOUND_GUST = asset.sound("elec-pulse")
+local SOUND_CRY = asset.sound("beast_out_chosen_falzar")
+local SOUND_GUST = asset.sound("elec_pulse")
 
 -- Its actions.
 local APPEAR, FLASH, RISE, STAY, ATTACK, SINK = 0x0, 0x4, 0x8, 0xC, 0x10, 0x14
