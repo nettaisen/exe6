@@ -138,7 +138,7 @@ local rules: Rules = {
         beast_out = schema.bool,
         -- He starts the battle in his Cybeast and stays in it (./beast: the starting form, NaviStats+0x17, the
         -- original's path for a battle that starts MegaMan as GBeast or FBeast). The navi that changes form's, with
-        -- no navi code received.
+        -- no navi code received. (The builds' GBeast and FBeast have Beast Out off besides: ./builds.)
         beast_start = schema.bool,
         -- What the save brings to the navi's stats (./save): the base HP (HP Memories, +0x3E), the Regular memory
         -- (RegUps, +0x09), fighting in the sun (+0x22), and the level of the navi code it received (0 to 14, none

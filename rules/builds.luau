@@ -21,7 +21,9 @@ return {
     -- "add fbeast and gbeast as navi selection options since they were also available in beast link gate right?
     -- also megaman as his link navi form"): MegaMan; GBeast and FBeast, MegaMan in his Cybeast from the battle's
     -- start for good (`beast_start`, with that Cybeast: the Japanese Beast Link Gate's MegaMan Beast Outs at will
-    -- and never goes Beast Over); and the LinkNavi MegaMan, received from a navi code at its last level (the
+    -- and never goes Beast Over), with Beast Out off (`beast_out`, event flag 0xE0: the emotion window's empty box
+    -- for the turns he never spends, and no Beast Out button he could never press, as a save without it has them);
+    -- and the LinkNavi MegaMan, received from a navi code at its last level (the
     -- Japanese Navi Change Box's: his NaviCust and his level's gains, his Crosses, no Beast Out and no patch card
     -- applied). A preset is told apart by what it sets: a fact of the choice's that a preset leaves out is at the
     -- rules' default on it (no level on MegaMan, no `beast_start` on the LinkNavi). Its names are the locales'
@@ -33,8 +35,8 @@ return {
             cards = true,
             presets = {
                 { id = "megaman", set = {} },
-                { id = "gregar_beast", set = { beast_start = true, cybeast = "gregar_beast" } },
-                { id = "falzar_beast", set = { beast_start = true, cybeast = "falzar_beast" } },
+                { id = "gregar_beast", set = { beast_start = true, beast_out = false, cybeast = "gregar_beast" } },
+                { id = "falzar_beast", set = { beast_start = true, beast_out = false, cybeast = "falzar_beast" } },
                 { id = "link_navi", set = { level = 14 } },
             },
         },
