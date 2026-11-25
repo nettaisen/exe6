@@ -136,6 +136,10 @@ local rules: Rules = {
         crosses = schema.role(SchemaRole.form_list, schema.array(schema.form, 5)),
         -- Beast Out unlocked (event flag 0xE0).
         beast_out = schema.bool,
+        -- He starts the battle in his Cybeast and stays in it (./beast: the starting form, NaviStats+0x17, the
+        -- original's path for a battle that starts MegaMan as GBeast or FBeast). The navi that changes form's, with
+        -- no navi code received.
+        beast_start = schema.bool,
         -- What the save brings to the navi's stats (./save): the base HP (HP Memories, +0x3E), the Regular memory
         -- (RegUps, +0x09), fighting in the sun (+0x22), and the level of the navi code it received (0 to 14, none
         -- without one: event flag 0x163, `dword_203CFA0`). A side that states none has the highest (`setup_defaults`;
@@ -322,6 +326,7 @@ local rules: Rules = {
                 table.insert(out, p)
             end
             save.validate(side, problem)
+            beast.validate(side, problem)
             patch_cards.validate(side, problem)
             navicust.validate(side, problem)
             folder.validate(side, problem)

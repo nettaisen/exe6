@@ -785,6 +785,12 @@ language = "en"
 "versions" = "Starts with the version's Crosses and Beast Out."
 "version.gregar" = "Gregar"
 "version.falzar" = "Falzar"
+# MegaMan's choice (rules/builds), a navi card each: MegaMan, GBeast and FBeast (in his Cybeast from the start),
+# and the LinkNavi MegaMan (received from a navi code: the Japanese game's "LinkNavi", リンクナビ).
+"megaman.megaman" = "MegaMan"
+"megaman.gregar_beast" = "GBeast"
+"megaman.falzar_beast" = "FBeast"
+"megaman.link_navi" = "Link MegaMan"
 
 # The rulesets' words (rules/rulesets): each category by its fact and each ready-made ruleset by its id,
 # for the lobby and a ruleset's page. Ours.

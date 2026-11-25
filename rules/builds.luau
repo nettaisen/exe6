@@ -16,11 +16,34 @@ return {
         { id = "gregar", color = 0x45E0A0 },
         { id = "falzar", color = 0xFF5D50 },
     },
+    -- A build's other choices, each of a few presets that set their facts together, the first a new build's. EXE6's
+    -- one is MegaMan's, which a tool offers as navis of their own, a card each among the game's (`cards`; the user:
+    -- "add fbeast and gbeast as navi selection options since they were also available in beast link gate right?
+    -- also megaman as his link navi form"): MegaMan; GBeast and FBeast, MegaMan in his Cybeast from the battle's
+    -- start for good (`beast_start`, with that Cybeast: the Japanese Beast Link Gate's MegaMan Beast Outs at will
+    -- and never goes Beast Over); and the LinkNavi MegaMan, received from a navi code at its last level (the
+    -- Japanese Navi Change Box's: his NaviCust and his level's gains, his Crosses, no Beast Out and no patch card
+    -- applied). A preset is told apart by what it sets: a fact of the choice's that a preset leaves out is at the
+    -- rules' default on it (no level on MegaMan, no `beast_start` on the LinkNavi). Its names are the locales'
+    -- ([builds], `megaman.<id>`), its face the form it sets, if any.
+    choices = {
+        {
+            id = "megaman",
+            navi = "megaman",
+            cards = true,
+            presets = {
+                { id = "megaman", set = {} },
+                { id = "gregar_beast", set = { beast_start = true, cybeast = "gregar_beast" } },
+                { id = "falzar_beast", set = { beast_start = true, cybeast = "falzar_beast" } },
+                { id = "link_navi", set = { level = 14 } },
+            },
+        },
+    },
     -- The facts a build never states: every build plays at the most the game allows, so these are always the rules'
-    -- defaults (the most HP and Regular memory, the sun, a link navi's last level, every SP navi deleted in no time).
+    -- defaults (the most HP and Regular memory, the sun, a link navi's last level, every SP navi deleted in no time;
+    -- MegaMan's level the choice above's).
     at_defaults = { hp = true, reg_up = true, sun = true, level = true, sp_times = true },
-    -- A new build is its group's forms, with this. (EXE6's builds have no other choice of presets: its MegaMan is
-    -- neither light nor dark.)
+    -- A new build is its group's forms and the choice's first preset (MegaMan), with this.
     new = {
         -- What a new build states besides its group's forms: the most BugFrags a save holds, which the dark chips'
         -- parts spend (Tango's four EXE6 netplay saves hold 9999, the word at their image's 0x1BE0).

@@ -96,7 +96,14 @@ beast.takeover = cross_special.takeover
 -- setup's `level`), in a battle without a gauge for each player (battle flag 0x40) that isn't random.
 function beast.round_setup(side: number)
     local mode = battle.mode()
-    local setup = rules.setup() :: { beast_out: boolean, level: number? }
+    local setup = rules.setup() :: { beast_out: boolean, level: number?, beast_start: boolean, cybeast: FormDef? }
+    -- `beast_start`: the navi that changes form starts the battle in his Cybeast, his starting form (NaviStats+0x17,
+    -- which the player's init puts him in, `sub_80172F0`), and stays in it: a turn there spends none of his Beast
+    -- Out turns (`sub_8015A38`, a starting form of 0x0B or 0x0C, GBeast or FBeast), so the turn-start check never
+    -- reverts him and he never tires into Beast Over.
+    if setup.beast_start and changes_form(side) and setup.cybeast ~= nil then
+        battle.navi(side).starting_form = setup.cybeast
+    end
     local shown = mode == 5
         or (
             mode ~= 1
@@ -106,6 +113,29 @@ function beast.round_setup(side: number)
             and not battle.random()
         )
     battle.hud(side).window_count = shown
+end
+
+-- `validate`'s part: `beast_start` is the navi that changes form's (his Cybeast is the form he starts in), and of
+-- none received from a navi code (event flag 0x163 takes his Beast Out: the custom screen's seal).
+function beast.validate(side: number, problem: (p: SetupProblem) -> ())
+    local setup = rules.setup_of(side)
+    local navi: NaviDef? = setup.navi
+    if not setup.beast_start or navi == nil then
+        return
+    end
+    if navi.forms == nil then
+        problem({
+            kind = SetupProblemKind.not_taken,
+            field = "beast_start",
+            text = string.format("beast_start: %s doesn't change form", battle.name(navi)),
+        })
+    elseif setup.level ~= nil then
+        problem({
+            kind = SetupProblemKind.not_taken,
+            field = "beast_start",
+            text = "beast_start: a MegaMan received from a navi code (a level) has no Beast Out",
+        })
+    end
 end
 
 function beast.form_reverted(side: number, navi: Object)

@@ -746,6 +746,10 @@ language = "zh-Hans"
 "versions" = "以该版本的交错和野兽出笼开始。"
 "version.gregar" = "库雷卡"
 "version.falzar" = "法尔沙"
+"megaman.megaman" = "洛克人"
+"megaman.gregar_beast" = "G野兽"
+"megaman.falzar_beast" = "F野兽"
+"megaman.link_navi" = "结系洛克人"
 
 [rulesets]
 "category.navi" = "领航员"

@@ -21,6 +21,7 @@
 
 local apply_cards = require("@exelib/patch_cards/apply")
 local cards = require("@self/cards")
+local exe6 = require("./api")
 
 -- The bug slots BugStop holds back.
 local BUG_KINDS: { [string]: boolean } = {
@@ -57,8 +58,10 @@ end
 -- none of the side's), the console's emotion window glitches if the stats
 -- then have a NaviCust bug (the Japanese `sub_813BF1C` reads event
 -- flag 0x1723, which the card routine sets, rather than 0x1720). Only
--- MegaMan's stats: with a link navi operated the original doesn't run the
--- routine, and the flag is as the stats are.
+-- MegaMan's stats, and his only with no navi code received: with a link navi
+-- operated the original doesn't run the routine, and with event flag 0x163
+-- set (MegaMan received from a code) the Japanese twin (0x08147268) runs his
+-- level's script instead (../navicust); the flag is as the stats are.
 local function apply(side: number)
     local setup = rules.setup_of(side)
     local installed: { InstalledPatchCard } = setup.patch_cards
@@ -66,7 +69,7 @@ local function apply(side: number)
         return
     end
     local stats = battle.navi(side)
-    if stats.navi.forms == nil then
+    if stats.navi.forms == nil or exe6.navi_level(side) ~= nil then
         battle.hud(side).emotion_window_glitch = bugged(stats)
         return
     end
@@ -159,15 +162,26 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
     apply_cards.check(rules.setup_of(side).patch_cards, problem)
 end
 
--- `build_check`'s part: the cards' MB together at most the list's (as the tool's ruleset leaves it).
+-- `build_check`'s part: the cards' MB together at most the list's (as the tool's ruleset leaves it); and none for
+-- a MegaMan received from a navi code, whom no card applies to (`apply`: a save of one may hold cards, a build's
+-- would do nothing).
 local function build_check(side: number, problem: (p: SetupProblem) -> ())
-    apply_cards.check_memory(rules.setup_of(side).patch_cards, LIST_MB, problem)
+    local setup = rules.setup_of(side)
+    apply_cards.check_memory(setup.patch_cards, LIST_MB, problem)
+    local navi: NaviDef? = setup.navi
+    if #setup.patch_cards > 0 and navi ~= nil and navi.forms ~= nil and setup.level ~= nil then
+        problem({
+            kind = SetupProblemKind.not_taken,
+            field = "patch_cards",
+            text = "patch_cards: no card applies to a MegaMan received from a navi code (a level)",
+        })
+    end
 end
 
--- `overview`'s part: the cards' abilities and bugs (MegaMan's: the cards apply to no other navi), a bug effect as
--- the bug it is (`card_bug`, ../navicust's), and their MB against the list's.
+-- `overview`'s part: the cards' abilities and bugs (a MegaMan's received from no navi code: the cards apply to no
+-- other navi), a bug effect as the bug it is (`card_bug`, ../navicust's), and their MB against the list's.
 local function overview(side: number, card_bug: (e: PatchCardEffect) -> SetupBug, out: SetupOverview)
-    local applies = battle.navi(side).navi.forms ~= nil
+    local applies = battle.navi(side).navi.forms ~= nil and exe6.navi_level(side) == nil
     local setup = rules.setup_of(side)
     apply_cards.overview(setup.patch_cards, LIST_MB, BUG_KINDS, applies, card_bug, out)
 end

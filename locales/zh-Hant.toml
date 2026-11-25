@@ -746,6 +746,10 @@ language = "zh-Hant"
 "versions" = "以該版本的交錯和野獸出籠開始。"
 "version.gregar" = "庫雷卡"
 "version.falzar" = "法爾沙"
+"megaman.megaman" = "洛克人"
+"megaman.gregar_beast" = "G野獸"
+"megaman.falzar_beast" = "F野獸"
+"megaman.link_navi" = "結繫洛克人"
 
 [rulesets]
 "category.navi" = "領航員"

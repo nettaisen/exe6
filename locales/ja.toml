@@ -777,6 +777,10 @@ language = "ja"
 "versions" = "そのバージョンのクロスと獣化から始まります。"
 "version.gregar" = "グレイガ"
 "version.falzar" = "ファルザー"
+"megaman.megaman" = "ロックマン"
+"megaman.gregar_beast" = "Gビースト"
+"megaman.falzar_beast" = "Fビースト"
+"megaman.link_navi" = "リンクロックマン"
 
 # The rulesets' words (en.toml's `[rulesets]` says what they are). Ours.
 [rulesets]
